@@ -3,4 +3,4 @@ A penetration testing playbook that's suitable for CTF challenges, bug bounty hu
 
 # DISCLAIMER!
 
-#### Usage of this knowledge is SOLELY the user's responsibility and the author has no liability for their actions. Use it at your own discretion.
+#### Usage of this knowledge is SOLELY the user's responsibility and the author of this playbook has no liability for their actions. Use it at your own discretion.
