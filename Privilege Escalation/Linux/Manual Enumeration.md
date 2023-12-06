@@ -16,3 +16,4 @@
 #### ifconfig /ip a = Network information of host
 #### arp -a = Routing table information
 #### find / -type f -perm -u=s 2>/dev/null = Search for binaries with SUID bit set
+#### find / -writable 2>/dev/null | cut -d "/" -f 2,3 | grep -v proc | sort -u = Find writable folders/files by your current user.
