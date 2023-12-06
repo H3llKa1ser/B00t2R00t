@@ -2,7 +2,7 @@
 
 ### getcap -r / 2>/dev/null
 
-## Affirmative discovery: cap_setuid+ep
+## True Positive: cap_setuid+ep
 
 ## Example:
 
