@@ -8,4 +8,4 @@
 
 #### Open a listener then wait. 
 
-#### Example: nc -lvnp <PORT>
+#### Example: nc -lvnp PORT
