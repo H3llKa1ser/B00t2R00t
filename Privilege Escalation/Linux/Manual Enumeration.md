@@ -1,6 +1,6 @@
 # Manual Enumeration Commands
 
-## PrivEsc resource: GTFOBINS
+## PrivEsc resource: GTFOBINS https://gtfobins.github.io/
 
 #### Hostname = Check Hostname
 #### uname -a = Check kernel info
