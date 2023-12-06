@@ -48,7 +48,7 @@
 
 ## SeImpersonate/SeAssignPrimaryToken
 
-### A lot of potato exploits work with these privileges, so in our example we will stalk about RoguePotato.
+### A lot of potato exploits work with these privileges, so in our example we will talk about RoguePotato.
 
 #### RogueWinRM.exe exploit
 
