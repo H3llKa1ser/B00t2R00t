@@ -8,4 +8,4 @@
 
 ### 4) Enforce SMB Signing ( Fully negate SMB Relay attacks )
 
-### 50 Least Privilege Principle
+### 5) Least Privilege Principle
