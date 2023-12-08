@@ -9,8 +9,8 @@
 
 #### klist
 
-## TIP: TGTs = Admin Credentials.
+### TIP: TGTs = Admin Credentials.
 
 #### Access to any service the user is allowed to access.
 
-## TGSs=Low-privileged account
+### TGSs=Low-privileged account
