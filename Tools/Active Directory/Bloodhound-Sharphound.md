@@ -17,3 +17,15 @@
 #### 4) Drag and drop zip file in Bloodhound GUI
 
 #### 5) EZ ENUMERATION!1!1!!!1!
+
+## BENEFITS
+
+#### 1) GUI
+
+#### 2) Shows attack paths
+
+#### 3) More profound insights into AD Objects
+
+## DRAWBACKS
+
+#### 1) Requires Sharphound which is VERY noisy
