@@ -1,3 +1,11 @@
+# Credentials to look for:
+
+### 1) Local admin rights on several machines
+
+### 2) Service accounts that have delegate permissions
+
+### 3) Accounts used for privileged AD Services (SCCM,WSUS,Exchange,etc.)
+
 ### Secretsdump.py on an account that is synced with the domain controller to dump hashes to PtH attack.
 
 ### Privileges: Replicate Directory Changes, Replicate Directory Changes All
