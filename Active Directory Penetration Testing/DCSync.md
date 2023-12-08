@@ -12,7 +12,7 @@
 
 ### Usually, Administrators, Domain Admins and Enterprise Admins have this privilege in their accounts.
 
-### 1) mimikatz.exe
+#### 1) mimikatz.exe
 
 #### 2) privilege::debug
 
