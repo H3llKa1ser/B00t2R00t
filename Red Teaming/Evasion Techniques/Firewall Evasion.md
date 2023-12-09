@@ -52,6 +52,8 @@
 
 # EVASION VIA FORCING FRAGMENTATION, MAXIMUM TRANSMISSION UNIT (MTU) AND DATA LENGTH 
 
+## Fragmentation
+
 ### Tool: nmap
 
 ### Examples:
@@ -60,4 +62,18 @@
 
 ### -ff = 16 bytes
 
-### nmap -sS -Pn -ff -F TARGET_IP
+#### nmap -sS -Pn -ff -F TARGET_IP
+
+## Maximum Transmission Unit MTU
+
+#### nmap option: --mtu NUM
+
+### TIP: Number must always be multiple of 8
+
+## Packets with specific length
+
+### nmap option: --data-length VALUE
+
+#### nmap -sS -Pn --data-length NUM -F TARGET_IP
+
+### TIP: Multiple of 8
