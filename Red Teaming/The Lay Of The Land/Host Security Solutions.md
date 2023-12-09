@@ -11,3 +11,7 @@
 #### 1) Get-Service WinDefend
 
 #### 2) Get-MpComputerStatus | select RealTimeProtectionEnabled
+
+# ENDPOINT DETECTION AND RESPONSE (EDR)
+
+### Tools: SharpEDRChecker, Invoke-EDRChecker
