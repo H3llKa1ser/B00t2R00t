@@ -105,3 +105,55 @@
 #### 2) Try nc/ncat/socat
 
 #### 3) Change the order of the flags (nc -lvnp TARGETED) (nc -vnlp EVADED) 
+
+# EVASION VIA ROUTE MANIPULATION
+
+### 1) Relying on source routing
+
+### 2) Proxy servers
+
+## Source Routing
+
+### Tool: nmap 
+
+#### options: --ip-options
+
+#### L ANY_IP ANY_IP = Loose routing
+
+#### S ANY_IP ANY_IP = Strict routing
+
+## Proxy Servers 
+
+### Tools: nmap, proxychains, foxyproxy
+
+### nmap options: --proxies 
+
+### format: PROTOCOL://HOST:PORT
+
+### Example:
+
+#### nmap -sS HTTP://PROXY_HOST:8080,SOCKS4://PROXY_HOST2:4153 TARGET_IP
+
+# EVASION VIA TACTICAL DENIAL OF SERVICE (DoS)
+
+### 1) Launch DoS against IDS/IPS
+
+### 2) Laucnh DoS against logging server
+
+### 3) Create huge amount of benign traffic
+
+# COMMAND AND CONTROL
+
+### Tools: Cobalt Strike, Powershell Empire, Covenant, etc.
+
+### Variables:
+
+#### 1) User-Agent
+
+#### 2) Sleep Time
+
+#### 3) Jitter (add randomness to sleep time)
+
+#### 4) SSL Certificate
+
+#### 5) DNS Beacon
