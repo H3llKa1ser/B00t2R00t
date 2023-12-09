@@ -50,3 +50,14 @@
 
 ### TIP: Use port number like 53,80,8080,etc
 
+# EVASION VIA FORCING FRAGMENTATION, MAXIMUM TRANSMISSION UNIT (MTU) AND DATA LENGTH 
+
+### Tool: nmap
+
+### Examples:
+
+### -f = 8 bytes
+
+### -ff = 16 bytes
+
+### nmap -sS -Pn -ff -F TARGET_IP
