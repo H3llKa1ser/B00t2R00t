@@ -1,3 +1,5 @@
+### Author: https://github.com/GhostPack/Rubeus
+
 ### Commands:
 
 #### asktgt = Request a ticket-granting-ticket (TGT) from a hash/key or password
