@@ -113,3 +113,49 @@
 #### -PO = IP protocol ping
 
 #### --traceroute = Trace hop path to each host (Network Mapping)
+
+# NMAP Scan phases
+
+### 1) Script pre-scanning
+
+### 2) Target enumeration (Passing IPs is faster than FQDN)
+
+#### 3) Host discovery
+
+#### 4) Reverse DNS resolutions
+
+#### 5) Port scanning
+
+#### 6) Version detection
+
+#### 7) OS Detection
+
+#### 8) Traceroute
+
+#### 9) Script scanning
+
+#### 10) Output
+
+#### 11) Script post-scanning
+
+# NMAP PORT STATES
+
+### 1) Open
+
+### 2) Closed
+
+### 3) Filtered
+
+### 4) Unfiltered
+
+### 5) Open|Filtered
+
+### 6) Closed|Filtered
+
+### Open = A port accepts a TCP connection/UDP packet
+
+### Closed = The device with a closed port doesn't listen for connections
+
+### Filtered = Nmap can't determine if it is open or not due to packet filtering preventing probes from reaching it. (Firewall rules, router rules, etc)
+
+### Unfiltered = Nmap can't determine if it is open or not, but it is sort of accessible nonetheless.
