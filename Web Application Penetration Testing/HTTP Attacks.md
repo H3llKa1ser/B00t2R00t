@@ -96,3 +96,16 @@ Content-Length: 0
 POST /index.php?reveal_flag=1 HTTP/1.1
 Foo: 
 ```
+
+## HTTP Verb Tampering
+
+`HTTP Method`
+- `HEAD`
+- `PUT`
+- `DELETE`
+- `OPTIONS`
+- `PATCH`
+
+| **Command**   | **Description**   |
+| --------------|-------------------|
+| `-X OPTIONS` | Set HTTP Method with Curl |
