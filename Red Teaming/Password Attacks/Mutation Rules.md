@@ -1,4 +1,4 @@
-# MUATION RULES
+# MUTATION RULES
 
 ### Border Mutation = Commonly used combinations of digits and special symbols can be added at the end or at the beginning or both
 
