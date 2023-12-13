@@ -1,5 +1,11 @@
 # POWERSHELL EMPIRE C2 FRAMEWORK 
 
+### Note: Thee is a GUI version named Starkiller
+
+### Start server: sudo powershell-empire server
+
+### Start client CLI: powershell-empire client
+
 ## LISTENERS
 
 ### Listeners in Empire are used to receive connections from stagers.  The default listener is the HTTP listener. This is what we will be using here, although there are many others available. It's worth noting that a single listener can be used more than once -- they do not die after their first usage.
