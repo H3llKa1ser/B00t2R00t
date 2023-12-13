@@ -6,6 +6,6 @@
 
 ### Pacthed in MS14-025, but it doesn't prevent previous uses
 
-### File might be an .xml file
+### GPP is an .xml file stored in SYSVOL directory
 
 ### command: gpp-decrypt CPASSWORD
