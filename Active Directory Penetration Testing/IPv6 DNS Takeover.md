@@ -1,6 +1,6 @@
 ### Essentially, we become Man-in-the-Middle using IPv6
 
-## Tool: mitm6
+## Tools: mitm6, ntlmrelayx
 
 ## Steps: 
 
