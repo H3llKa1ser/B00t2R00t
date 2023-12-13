@@ -1,5 +1,7 @@
 # REQUIRED TOOL TO INTERACT WITH THE CLUSTER
 
+## Download binary: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux
+
 ### We can:
 
 #### Interact with the cluster using kubectl
