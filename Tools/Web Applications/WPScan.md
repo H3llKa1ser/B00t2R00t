@@ -1,6 +1,6 @@
 # WPSCAN WORDPRESS SCANNER
 
-### --update = Updaets wpscan database
+### --update = Updates wpscan database
 
 ### --enumerate -t = Theme enumeration
 
