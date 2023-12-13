@@ -11,13 +11,15 @@
 #### Lateral movement into other workloads
 #### Gain access to the Kubernetes nodes
 
+## Note: If the user is in the microk8s group, we can issue kubectl commands with the microk8s.kubectl pretext.
+
 ### Example commands:
 
 #### 1) kubectl get pods
 
 #### 2) kubectl -A get pods
 
-#### 3) kubectl get deployments
+#### 3) kubectl get deployments -o wide
 
 #### 4) kubectl get services
 
