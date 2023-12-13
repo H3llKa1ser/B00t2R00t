@@ -44,3 +44,8 @@
 
 ### Hop Listeners create what looks like a regular listener in our list of listeners (like the http listener we used before); however, rather than opening a port to receive a connection, hop listeners create files to be copied across to the compromised "jump" server and served from there. These files contain instructions to connect back to a normal (usually HTTP) listener on our attacking machine. As such, the hop listener in the listeners menu can be thought of as more of a placeholder -- a reference to be used when generating stagers.
 
+#### Listener creation: uselistener http_hop
+
+#### Hop Listener setup: set RedirectListener FIRST_LISTENER_NAME, set Host COMPROMISED_IP set Port PORT(Above 15000)
+
+#### Execute
