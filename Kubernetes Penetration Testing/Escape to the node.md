@@ -4,6 +4,8 @@
 
 ### We can create a "bad" pod that mounts the node's file system.
 
+## EVERYTHING-ALLOWED-EXEC-POD: https://github.com/BishopFox/badPods/blob/main/manifests/everything-allowed/pod/everything-allowed-exec-pod.yaml
+
 ## STEPS:
 
 #### 1) Pull a container image (minikube's local docker registry) 
