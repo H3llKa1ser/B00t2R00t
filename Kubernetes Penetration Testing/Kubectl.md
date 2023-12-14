@@ -11,7 +11,7 @@
 #### Lateral movement into other workloads
 #### Gain access to the Kubernetes nodes
 
-## Note: If the user is in the microk8s group, we can issue kubectl commands with the microk8s.kubectl pretext.
+## Note: If the user is in the microk8s group, we can issue kubectl commands with the microk8s.kubectl or "k0s kubectl" pretext.
 
 ### Example commands:
 
