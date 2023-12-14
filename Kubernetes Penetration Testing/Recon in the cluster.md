@@ -15,3 +15,9 @@
 ## RECON COMMANDS
 
 ### env 
+
+## Service account JWT Tokens locations:
+
+#### /run/secrets/kubernetes.io/serviceaccount
+#### /var/run/secrets/kubernetes.io/serviceaccount
+#### /secrets/kubernetes.io/serviceaccount
