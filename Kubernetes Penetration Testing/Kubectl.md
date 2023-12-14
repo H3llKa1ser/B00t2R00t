@@ -25,4 +25,6 @@
 
 #### 5) kubectl get rs (Replica sets)
 
+#### 6) kubectl edit secret NAME
+
 ### For a detailed usage: we can do kubectl help or search online https://kubernetes.io/docs/reference/kubectl/
