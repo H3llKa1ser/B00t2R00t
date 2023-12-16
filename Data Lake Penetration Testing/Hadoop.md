@@ -20,3 +20,26 @@
 #### Edge Node - Any node that is hosting a Hadoop "user" application such as Zeppelin or Hue. These are applications that users can use to perform processing on the data stored in the datalake.
 
 #### Kerberised - The term given for a datalake that has security enabled through Kerberos.
+
+## Apache Hadoop Services
+
+#### HDFS - Hadoop Distributed File System is the primary storage application for unstructured data such as files
+
+#### Hive - Hive is the primary storage application for structured data. Think of it as a massive database.
+
+#### YARN - Main resource manager application of Hadoop, used to schedule jobs in the cluster
+
+#### MapReduce - Application executor of Hadoop to process vast amounts of data. It consists of a Map procedure, which performs filtering and sorting, and a reduce method, which performs a summary operation.
+
+#### HUE - A user application that provides a GUI for HDFS and Hive.
+
+#### Zookeeper - Provides operational services for the cluster to set the configuration of the cluster in question.
+
+#### Spark - Engine for large-scale data processing.
+
+#### Kafka - A message broker to build pipelines for real-time data processing.
+
+#### Ranger - Used for the configuration of privilege access control over the resources in the datalake.
+
+#### Zeppelin - A web-based notebook application for interactive data analytics.
+
