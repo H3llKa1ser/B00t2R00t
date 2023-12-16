@@ -4,6 +4,8 @@
 
 ## HOW TO USE:
 
+### Resource: https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html
+
 ### Find the corresponding /bin directory, that the hdfs binary exists within the host
 
 ### Since we possibly don't have available OS commands to traverse the HDFS, we use it via the binary:
