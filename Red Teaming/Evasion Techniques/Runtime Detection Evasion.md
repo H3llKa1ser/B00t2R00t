@@ -11,3 +11,9 @@
 ## Automation
 
 ### Tools: amsi.fail, AmsiTrigger
+
+## Patching amsi.dll
+
+### See a separate file in this repo.
+
+### Resource: https://github.com/rasta-mouse/AmsiScanBufferBypass/blob/main/AmsiBypass.cs
