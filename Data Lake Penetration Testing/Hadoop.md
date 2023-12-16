@@ -1,3 +1,5 @@
+## Resources: https://github.com/wavestone-cdt/hadoop-attack-library
+
 ## Terminology
 
 
