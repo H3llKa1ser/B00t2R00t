@@ -17,3 +17,5 @@
 ### See a separate file in this repo.
 
 ### Resource: https://github.com/rasta-mouse/AmsiScanBufferBypass/blob/main/AmsiBypass.cs
+
+### Resource to practice AMSI bypass obfuscation techniques: https://github.com/RythmStick/AMSITrigger
