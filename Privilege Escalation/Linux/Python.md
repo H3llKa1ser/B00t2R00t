@@ -2,6 +2,8 @@
 
 ## EXAMPLES:
 
+# MODULE HIJACKING
+
 #### 1) SETENV: NOPASSWD /usr/bin/python /home/whatever/script.py
 
 #### 2) Check if you can overwrite an already existing module in python, or simply create the missing import module that the script asks
