@@ -34,4 +34,6 @@
 
 ## TIP:
 
-#### Also use jobs then kill %num for chisel backgrounf processes too.
+#### Also use jobs then kill %num for chisel background processes too.
+
+#### And use chisel with proxychains on your attacking machine
