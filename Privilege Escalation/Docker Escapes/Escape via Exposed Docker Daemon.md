@@ -1,6 +1,6 @@
 # REQUIREMENTS:
 
-### 1) User must be in docker group to run docker commands
+### 1) User must be in docker group to run docker commands (or root in the container)
 
 ### 2) Docker socket must be exposed
 
