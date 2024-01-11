@@ -14,4 +14,12 @@
 
 #### 2) smbclient -U USER \\\\TARGET_IP\\SHARE 
 
+#### Upon login into an SMB session:
+
+#### 3) RECURSE ON
+
+#### 4) PROMPT OFF
+
+#### 5) mget * (Download ALL files/directories within the share)
+
 ### TIP: If SMB accepts anonymous sessions, we can use the username "anonymous" with no password, or just login with no username/password (Null session)
