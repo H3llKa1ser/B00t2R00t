@@ -23,3 +23,11 @@
 #### 4) show tables;
 
 #### 5) SELECT * FROM TABLE; (Dump everything from table)
+
+# POSTGRESQL SHELL NAVIGATION
+
+#### 1) psql -h IP_ADDRESS -U USER DATABASE
+
+#### 2) \dt (Shows tables of the database)
+
+#### 3) select * from TABLE;
