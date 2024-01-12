@@ -8,6 +8,8 @@
 
 ### Transfer to machine for rest of privesc
 
+#### First execute lxc init
+
 #### 1) lxc image list
 
 #### 2) Upload image to target
