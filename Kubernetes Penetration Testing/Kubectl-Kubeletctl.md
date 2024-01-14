@@ -2,6 +2,8 @@
 
 ## Download binary: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux
 
+## Download: curl -LO https://github.com/cyberark/kubeletctl/releases/download/v1.7/kubeletctl_linux_amd64
+
 ### We can:
 
 #### Interact with the cluster using kubectl
@@ -31,8 +33,8 @@
 
 ## If the kubernetes services are exposed to the internet, and anonymous access is allowed, we can do:
 
-#### 1) kubectl --server IP_ADDRESS pods (Enumerate the pods)
+#### 1) kubeletctl --server IP_ADDRESS pods (Enumerate the pods)
 
-#### 2) kubectl --server IP_ADDRESS scan rce (Check for pods vulnerable to RCE)
+#### 2) kubeletctl --server IP_ADDRESS scan rce (Check for pods vulnerable to RCE)
 
-#### 3) kubectl --server IP_ADDRESS exec "COMMAND" -p POD -c CONTAINER
+#### 3) kubeletctl --server IP_ADDRESS exec "COMMAND" -p POD -c CONTAINER
