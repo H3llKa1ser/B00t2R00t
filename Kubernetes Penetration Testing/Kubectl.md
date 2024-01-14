@@ -28,3 +28,11 @@
 #### 6) kubectl edit secret NAME
 
 ### For a detailed usage: we can do kubectl help or search online https://kubernetes.io/docs/reference/kubectl/
+
+## If the kubernetes services are exposed to the internet, and anonymous access is allowed, we can do:
+
+#### 1) kubectl --server IP_ADDRESS pods (Enumerate the pods)
+
+#### 2) kubectl --server IP_ADDRESS scan rce (Check for pods vulnerable to RCE)
+
+#### 3) kubectl --server IP_ADDRESS exec "COMMAND" -p POD -c CONTAINER
