@@ -2,7 +2,7 @@
 
 ## cat /etc/exports
 
-# Critical element: "no_root_squash" on a writable share (SUID bit set file create)
+# Critical element: "no_root_squash" on a writable share (SUID bit set file create) or fsid=0/fsid=root
 
 ### 1: showmount -e IP
 
