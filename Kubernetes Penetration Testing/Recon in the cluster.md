@@ -18,6 +18,6 @@
 
 ## Service account JWT Tokens locations:
 
-#### /run/secrets/kubernetes.io/serviceaccount
-#### /var/run/secrets/kubernetes.io/serviceaccount
-#### /secrets/kubernetes.io/serviceaccount
+#### /run/secrets/kubernetes.io/serviceaccount/token
+#### /var/run/secrets/kubernetes.io/serviceaccount/token
+#### /secrets/kubernetes.io/serviceaccount/token
