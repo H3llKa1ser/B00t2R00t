@@ -21,3 +21,5 @@
 #### /run/secrets/kubernetes.io/serviceaccount/token
 #### /var/run/secrets/kubernetes.io/serviceaccount/token
 #### /secrets/kubernetes.io/serviceaccount/token
+
+## Same directories we can find certificates in the form of ca.crt files
