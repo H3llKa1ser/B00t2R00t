@@ -31,3 +31,11 @@
 #### 2) \dt (Shows tables of the database)
 
 #### 3) select * from TABLE;
+
+# REDIS-CLI SHELL NAVIGATION
+
+#### 1) redis-cli -h HOST -u USER -a PASSWORD -p PORT
+
+#### 2) CONFIG GET * (Query the configuration of the redis instance)
+
+#### 3) 
