@@ -14,10 +14,12 @@
 
 ## EXAMPLE:
 
-#### 1) curl http://IP_ADDRESS:5000/v2/_catalog
+#### 1) curl http://IP_ADDRESS:5000/v2/_catalog (List repositories)
 
-#### 2) curl http://IP_ADDRESS:5000/v2/REPOSITORY/tags/list
+#### 2) curl http://IP_ADDRESS:5000/v2/REPOSITORY/tags/list (List manifests)
 
 #### 3) curl http://IP_ADDRESS:5000/v2/REPOSITORY/manifests/latest (Pull the manifests for the image)
 
 #### 4) curl -s http://IP_ADDRESS:5000/v2/REPOSITORY/blobs/sha256:HASH -output ARCHIVE.tar (Pull all layers of the image and save them in the form of .tar file)
+
+#### 5) tar -xvf ARCHIVE.tar ( Decompress the file to see the contents )
