@@ -1,6 +1,6 @@
 ### STEPS
 
-#### 1) cp /bin/bash . (In a user ssh session) (That requires the ssh running internaly of the container)
+#### 1) cp /bin/bash . (In a user ssh session) (That requires the ssh running internally of the container)
 
 #### 2) chown  root:root bash (In docker root shell)
 
