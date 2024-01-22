@@ -1,4 +1,4 @@
-### Kubernetes store  the token of the service account running a pod in /var/run/secrets/kubernetes.io/serviceaccount/token. 
+### Kubernetes stores the token of the service account running a pod in /var/run/secrets/kubernetes.io/serviceaccount/token. 
 
 ## Token type: JWT signed by the cluster
 
