@@ -29,6 +29,8 @@
 
 #### 6) kubectl edit secret NAME
 
+#### 7) kubectl get secret SECRET -n NAMESPACE 
+
 ### For a detailed usage: we can do kubectl help or search online https://kubernetes.io/docs/reference/kubectl/
 
 ## If the kubernetes services are exposed to the internet, and anonymous access is allowed, we can do:
