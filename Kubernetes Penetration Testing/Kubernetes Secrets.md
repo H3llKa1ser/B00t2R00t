@@ -4,6 +4,6 @@
 
 #### 2) kubectl get secrets
 
-#### 3) kebectl describe secret SECRET
+#### 3) kubectl describe secret SECRET
 
 #### 4) kubectl get secret SECRET -o 'json'
