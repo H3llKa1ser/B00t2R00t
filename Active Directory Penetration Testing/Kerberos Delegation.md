@@ -28,7 +28,7 @@
 
 #### 6) Exit mimikatz after "token::elevate" command
 
-#### 7) keko.exe
+#### 7) kekeo.exe
 
 #### 8) tgt::ask /user:USER/SERVICE /domain:DOMAIN /password:PASSWORD
 
