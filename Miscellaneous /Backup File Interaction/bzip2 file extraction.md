@@ -1,3 +1,7 @@
+## Compress file:
+
+#### cat FILE | xxd -r > bak 
+
 #### bzip2 -d bak
 #### file bak.out
 #### mv bak.out bak.gz
