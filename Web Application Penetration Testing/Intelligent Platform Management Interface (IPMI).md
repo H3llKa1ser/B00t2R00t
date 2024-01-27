@@ -14,7 +14,7 @@
 
 ### Then depending on the IPMI version, we can abuse the vulnerabilities below:
 
-### Dump password hashes for users with Metasploit
+### Dump password hashes for users with Metasploit (IPMI 2.0 RAKP Authentication Remote Password Hash Retrieval)
 
 #### 1) msfconsole
 
