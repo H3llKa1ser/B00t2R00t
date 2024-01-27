@@ -1,3 +1,5 @@
+### Resource: https://blog.xpnsec.com/azuread-connect-for-redteam/
+
 ### Service Name: ADSync
 
 ### Tools: https://github.com/dirkjanm/adconnectdump
