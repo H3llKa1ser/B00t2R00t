@@ -2,6 +2,18 @@
 
 ### UDP port: 623 (asf-rmcp)
 
+### Identify version using Metasploit
+
+#### 1) msfconsole
+
+#### 2) use auxiliary/scanner/ipmi/impi_version
+
+#### 3) set RHOSTS HOST
+
+#### 4) run
+
+### Then depending on the IPMI version, we can abuse the vulnerabilities below:
+
 ### Dump password hashes for users with Metasploit
 
 #### 1) msfconsole
