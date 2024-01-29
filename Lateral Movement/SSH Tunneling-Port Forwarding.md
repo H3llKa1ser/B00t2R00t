@@ -19,3 +19,7 @@
 #### ssh -D PORT user@172.16.1.5 -fN
 
 #### PORT should be available and configured in proxychains.
+
+#### If you want to use a tool via proxy, use like:
+
+#### proxychains nmap 127.0.0.1 -sT TARGET_IP (Example)
