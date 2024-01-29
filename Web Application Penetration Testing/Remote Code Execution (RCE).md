@@ -1,4 +1,4 @@
-## Ways to achive RCE:
+## Ways to achieve RCE:
 
 #### 1: Webshells
 
