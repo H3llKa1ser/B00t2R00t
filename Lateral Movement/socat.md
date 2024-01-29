@@ -8,7 +8,7 @@
 
 ### ./socat tcp-l:33060,fork,reuseaddr tcp:172.1.6.0.10:3306 &
 
-#### Fork: Puts every ocnnection into a new process
+#### Fork: Puts every connection into a new process
 
 #### Reuseaddr: The port stays open after a connection is made to it.
 
