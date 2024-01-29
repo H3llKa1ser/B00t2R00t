@@ -1,5 +1,7 @@
 ### REQUIREMENTS: Confirm that the server is vulnerable to Remote File Inclusion/Local File Inclusion
 
+### LOCATION: /windows/temp/sess_PHPSESSIONID
+
 ### STEPS:
 
 #### 1) Create a new user in the app inserting our encoded payload as the username value:
@@ -15,3 +17,5 @@
 #### 5) Repeat steps to get your reverse shell.
 
 ### Similar approach can be used on a linux machine as well
+
+
