@@ -2,7 +2,9 @@
 
 ## Port forwarding command example:
 
-#### ssh -L 8000:172.16.1.1:80 user@172.16.1.5 -fN
+#### ssh -L 8000:127.0.0.1:80 user@172.16.1.5 -fN
+
+#### Use browser to navigate to internal app with 127.0.0.1:8000 (Example)
 
 ## The flags mean:
 
@@ -14,6 +16,6 @@
 
 ## Proxying command example:
 
-#### ssd -D PORT user@172.16.1.5 -fN
+#### ssh -D PORT user@172.16.1.5 -fN
 
 #### PORT should be available and configured in proxychains.
