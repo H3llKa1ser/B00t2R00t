@@ -56,4 +56,4 @@
 
 ### DATA WRAPPER 
 
-#### data:text/plain,<?php phpinfo(); ?>
+#### data:text/plain,<?php phpinfo(); ?<
