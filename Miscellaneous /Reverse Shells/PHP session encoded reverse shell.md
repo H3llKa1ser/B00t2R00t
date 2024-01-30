@@ -18,4 +18,4 @@
 
 ### Similar approach can be used on a linux machine as well
 
-
+### LOCATION: /var/lib/php/sessions/sess_PHPSESSIONID
