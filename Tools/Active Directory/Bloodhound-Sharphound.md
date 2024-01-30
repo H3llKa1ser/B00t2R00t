@@ -12,7 +12,7 @@
 
 #### 2) bloodhound --no-sandbox
 
-#### 3) Use default credentials (neo4j:neo4j)
+#### 3) Use default credentials (neo4j:neo4j) Or you can go to http://localhost:7474 to change default credentials
 
 #### 4) Drag and drop zip file in Bloodhound GUI
 
