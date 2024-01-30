@@ -4,7 +4,9 @@
 
 ## WPAD (Web Proxy Auto-Discovery)
 
-### Tools: Responder, Hashcat
+### Tools: Responder, Hashcat, ntlm_theft.py
+
+### Github repo: https://github.com/Greenwolf/ntlm_theft
 
 ## Steps:
 
