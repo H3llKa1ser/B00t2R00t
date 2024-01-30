@@ -8,7 +8,7 @@
 
 #### 1) Gather domain accounts in a list
 
-#### 2) python3 Impacket-GetNPUsers.py -dc-ip DC_IP DOMAIN/USER -userfile /tmp/list.txt
+#### 2) python3 Impacket-GetNPUsers.py -dc-ip DC_IP DOMAIN/USER -outputfile /tmp/list.txt
 
 ### More tools:
 
