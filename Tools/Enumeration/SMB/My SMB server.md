@@ -15,6 +15,7 @@
 ####   browseable = yes
 ####   create mask = 0600
 
+
 #### 3)  cd /srv/smb (Go into the directory you configured in the smb.conf file)
 
 #### 4) Create any file of your choice
