@@ -29,3 +29,13 @@
 ## DRAWBACKS
 
 #### 1) Requires Sharphound which is VERY noisy
+
+## USAGE OF BLOODHOUND REMOTELY
+
+#### 1) bloodhound-python -d DOMAIN.LOCAL -u 'USER' -p 'PASSWORD -dc DC.DOMAIN.LOCAL -c all
+
+### TIP: If you receive DNS errors, you can set up a fake DNS server with the DNSChef tool https://github.com/iphelix/dnschef
+
+#### 2) python3 dnschef.py --fakeip RANDOM_IP --nameserver SAME_IP_LIKE_PREVIOUS_FLAG
+
+#### 3) bloodhound-python -d thm.corp -u 'USER' -p 'PASSWORD' -dc DC.DOMAIN.LOCAL -c all -ns 127.0.0.1
