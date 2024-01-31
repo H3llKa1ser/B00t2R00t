@@ -29,3 +29,7 @@
 ####     <img src=\\OUR_IP\share\WHATEVER.png /<
 ####        </body<
 #### </html<
+
+#### 2) On a windows machine, use the HTML Help Workshop https://www.microsoft.com/en-us/download/confirmation.aspx?id=21138
+
+#### 3) Open HTML Help Workshop then go to: File -> New -> Project
