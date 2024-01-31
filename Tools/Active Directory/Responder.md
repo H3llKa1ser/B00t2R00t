@@ -32,4 +32,15 @@
 
 #### 2) On a windows machine, use the HTML Help Workshop https://www.microsoft.com/en-us/download/confirmation.aspx?id=21138
 
-#### 3) Open HTML Help Workshop then go to: File -> New -> Project
+#### 3) Open HTML Help Workshop then go to: File -> New -> Project. Save at any folder you like
+
+#### 4) In the next window, click the box to include HTML files
+
+#### 5) Select your created HTML file here
+
+#### 6) In the tool bar, click the compile button. Then when prompted, click compile.
+
+#### 7) Copy your compiled .chm file to your linux machine, then upload it to your target machine.
+
+#### 8) PROFIT!
+
