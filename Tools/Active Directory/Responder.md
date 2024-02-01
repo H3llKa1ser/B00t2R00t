@@ -44,7 +44,7 @@
 
 #### 8) PROFIT!
 
-#### .SCF File
+### .SCF Files
 
 #### 1) Create an .scf file that points to your SMB server
 
