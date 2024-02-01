@@ -12,7 +12,7 @@
 
 #### 5) Download the certificate as Base64 Encoded
 
-#### 6) Use https://github.com/Alamot/code-snippets/blob/master/winrm/winrm_shell.rb with a few modifications to use our certificates (Replace the username and password variables with :client_cert => 'certnew.cer' and :client_key => 'TARGET.key'
+#### 6) Use https://github.com/Alamot/code-snippets/blob/master/winrm/winrm_shell.rb with a few modifications to use our certificates (Replace the username and password variables with :client_cert => 'certnew.cer', and :client_key => 'TARGET.key',
 
 #### 7) rlwrap ruby winrm_shell.rb
 
