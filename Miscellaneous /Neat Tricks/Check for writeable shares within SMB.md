@@ -4,4 +4,4 @@
 
 #### cd /mnt (Mount the share we have access to, on our machine
 
-#### 2) Run smbenum.sh script (Script located in Scripts folder in this repo)
+#### 2) Run smbwriteableenum.sh script (Script located in Scripts folder in this repo)
