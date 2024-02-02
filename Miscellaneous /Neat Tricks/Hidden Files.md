@@ -3,3 +3,5 @@
 #### 1) dir -force (Windows)
 
 #### 2) ls -la (Linux)
+
+#### 3) dir /r (Check if files have Alternate Data Streams hidden indide them)
