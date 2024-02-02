@@ -6,4 +6,4 @@
 
 #### 3) dir /r (Check if files have Alternate Data Streams hidden indide them)
 
-#### 4) type FILE.TXT:ADS_DATA.TXT:$VARIABLE
+#### 4) more < FILE.TXT:ADS_DATA.TXT
