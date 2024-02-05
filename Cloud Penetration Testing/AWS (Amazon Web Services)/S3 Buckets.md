@@ -1,3 +1,5 @@
 ### S3 Stands for Simple Storage Service
 
-### URL Format: http://s3.DOMAIN.com or https://s3.DOMAIN.com
+### URL Format: http://BUCKET_NAME.s3.DOMAIN.com or https://BUCKET_NAME.s3.DOMAIN.com
+
+### http://s3.DOMAIN.com/BUCKET_NAME
