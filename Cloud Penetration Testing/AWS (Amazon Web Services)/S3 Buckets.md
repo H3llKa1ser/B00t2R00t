@@ -3,3 +3,7 @@
 ### URL Format: http://BUCKET_NAME.s3.DOMAIN.com or https://BUCKET_NAME.s3.DOMAIN.com
 
 ### http://s3.DOMAIN.com/BUCKET_NAME
+
+### Tools: awscli
+
+### Interaction: aws --endpoint-url=http://s3.DOMAIN.com s3 COMMAND
