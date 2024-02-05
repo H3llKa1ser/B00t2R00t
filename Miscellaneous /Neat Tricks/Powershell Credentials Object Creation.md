@@ -9,3 +9,9 @@
 ### Use case:
 
 ### When we have valid credentials on a domain joined user, but he has no access to RDP or/and WinRM (Remote Desktop Users and Remote Management Users)
+
+### Alternatively, we can authenticate with a PSSession
+
+#### 4) $session = New-PSSession -CompuerName COMPUTER_NAME -Credential $Cred -Authentication AUTHENTICATION_METHOD (CREDSSP foe example)
+
+#### 5) Enter-PSSession $session
