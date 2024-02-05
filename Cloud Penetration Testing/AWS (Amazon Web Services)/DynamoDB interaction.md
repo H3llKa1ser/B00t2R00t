@@ -4,6 +4,8 @@
 
 #### 2) aws --endpoint-url=http://ENDPOINT_URL:PORT dynamodb scan --table-name TABLE
 
+#### 3) aws --endpoint-url=http://ENDPOINT_URL:PORT dynamodb create-table --table-name TABLE --attribute-definitions AttributeName=NAME,AttributeType=TYPE --key-schema AttributeName=NAME,AttributeType=S,KeyType=HASH provisioned-throughput ReadCapacityUnits=NUM,WriteCapacityUnits=NUM
+
 ### TIP: If we are in a machine that has the database internally, before we use aws configure we must make sure we define as the home directory somewhere our current user has permissions.
 
 #### 1) mkdir /tmp/f
