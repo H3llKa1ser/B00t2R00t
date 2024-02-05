@@ -2,7 +2,7 @@
 
 #### 1) aws --endpoint-url=http://ENDPOINT_URL:PORT dynamodb list-tables (List tables on the dynamoDB)
 
-#### 2) aws --endpoint-url=http://ENDPOINT_URL:PORT dynamodb scan --table-name TABLE
+#### 2) aws --endpoint-url=http://ENDPOINT_URL:PORT dynamodb scan --table-name TABLE (List contents of the table)
 
 #### 3) aws --endpoint-url=http://ENDPOINT_URL:PORT dynamodb create-table --table-name TABLE --attribute-definitions AttributeName=NAME,AttributeType=TYPE --key-schema AttributeName=NAME,AttributeType=S,KeyType=HASH provisioned-throughput ReadCapacityUnits=NUM,WriteCapacityUnits=NUM (Create a table with specific characteristics)
 
