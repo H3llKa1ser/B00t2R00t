@@ -28,6 +28,8 @@
 
 #### 1) psql -h IP_ADDRESS -U USER DATABASE
 
+#### psql.exe -h 127.0.0.1 -p 65432 -U postgres -d DATABASE -c "\dt" (Default port for postgresql is 65432)
+
 #### 2) \dt (Shows tables of the database)
 
 #### 3) select * from TABLE;
@@ -38,4 +40,4 @@
 
 #### 2) CONFIG GET * (Query the configuration of the redis instance)
 
-#### 3) 
+# 
