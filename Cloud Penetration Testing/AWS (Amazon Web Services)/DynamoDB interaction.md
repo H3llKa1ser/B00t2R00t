@@ -4,3 +4,10 @@
 
 #### 2) aws --endpoint-url=http://ENDPOINT_URL:PORT dynamodb scan --table-name TABLE
 
+### TIP: If we are in a machine that has the database internally, before we use aws configure we must make sure we define as the home directory somewhere our current user has permissions.
+
+#### 1) mkdir /tmp/f
+
+#### 2) export HOME=/tmp/f
+
+#### 3) aws configure (We are good to go!)
