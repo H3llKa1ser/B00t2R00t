@@ -10,7 +10,7 @@
 
 #### 1) aws --endpoint-url=http://s3.DOMAIN.com s3 ls (List contents inside S3 Bucket)
 
-###  2) aws --endpoint-url=http://s3.DOMAIN.com s3 ls s3://BUCKET_NAME (List contents inside the specified bucket)
+#### 2) aws --endpoint-url=http://s3.DOMAIN.com s3 ls s3://BUCKET_NAME (List contents inside the specified bucket)
 
 #### 3) aws --endpoint-url=http://s3.DOMAIN.com s3 sync s3://BUCKET_NAME . (Downloads any files within the specified bucket)
 
