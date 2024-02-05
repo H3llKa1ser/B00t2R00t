@@ -28,7 +28,7 @@
 
 #### 1) psql -h IP_ADDRESS -U USER DATABASE
 
-#### psql.exe -h 127.0.0.1 -p 65432 -U postgres -d DATABASE -c "\dt" (Default port for postgresql is 65432)
+#### psql.exe -h 127.0.0.1 -p 65432 -U postgres -d DATABASE -c "SQL COMMAND" (Default port for postgresql is 65432)
 
 #### 2) \dt (Shows tables of the database)
 
