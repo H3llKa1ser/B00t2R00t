@@ -13,3 +13,13 @@
 ### 1: Secure methods
 
 ### 2: Sanitization
+
+## Example payloads:
+
+## Go SSTI
+
+### 1) {{ .Password }} (Fetches the passwords of all users)
+
+### 2) {{ .GetFile "/etc/passwd" }} (Gets the passwd linux file)
+
+### 3) {{ .ExecuteCmd "whoami" }} Executes commands
