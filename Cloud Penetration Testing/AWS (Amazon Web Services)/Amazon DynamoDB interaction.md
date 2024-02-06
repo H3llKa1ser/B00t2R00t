@@ -1,5 +1,7 @@
 ### Tools: awscli
 
+### Default port: 4566
+
 #### 1) aws --endpoint-url=http://ENDPOINT_URL:PORT dynamodb list-tables (List tables on the dynamoDB)
 
 #### 2) aws --endpoint-url=http://ENDPOINT_URL:PORT dynamodb scan --table-name TABLE (List contents of the table)
