@@ -24,4 +24,4 @@
 
 ### 3) {{ .ExecuteCmd "whoami" }} Executes commands
 
-### 4) {{ . }} (Fetches all data available)
+### 4) {{ . }} (Dumps variables)
