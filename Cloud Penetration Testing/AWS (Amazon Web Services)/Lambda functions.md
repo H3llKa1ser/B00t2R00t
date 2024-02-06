@@ -1,4 +1,4 @@
-### AWS Lamda functions
+### AWS Lambda functions
 
 #### 1) aws --endpoint=url=http://ENDPOINT_URL.com lambda list-functions (List lambda functions on endpoint)
 
