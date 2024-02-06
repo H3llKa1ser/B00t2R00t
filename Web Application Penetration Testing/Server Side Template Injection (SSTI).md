@@ -18,7 +18,7 @@
 
 ## Go SSTI
 
-### 1) {{ .Password }} (Fetches the passwords of all users)
+### 1) {{ .Password }} (Fetches the passwords of all users) Hint: It depends on the struct the application has been made of to use the correct one! 
 
 ### 2) {{ .GetFile "/etc/passwd" }} (Gets the passwd linux file)
 
