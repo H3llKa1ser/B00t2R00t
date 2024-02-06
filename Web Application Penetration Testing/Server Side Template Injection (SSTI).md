@@ -23,3 +23,5 @@
 ### 2) {{ .GetFile "/etc/passwd" }} (Gets the passwd linux file)
 
 ### 3) {{ .ExecuteCmd "whoami" }} Executes commands
+
+### 4) {{ . }} (Fetches all data available)
