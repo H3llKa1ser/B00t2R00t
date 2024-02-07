@@ -34,4 +34,4 @@
 
 #### 15) Victim machine: certutil -user -p mimikatz -importpfx cert.pfx NoChain,NoRoot (Import the .pfx certificate.)
 
-#### 16) Now we can finally read the previously encrypted files!
+#### 16) Now we can finally read the root flag :p
