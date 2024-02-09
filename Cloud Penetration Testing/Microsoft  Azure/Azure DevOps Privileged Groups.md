@@ -10,7 +10,7 @@
 
 ## Steps:
 
-#### 1) Go to: Project Settings -> Agent Pools -> Setup -> Agents -> USER -> Capabilities (Check in whose context the build definition is executed)
+#### 1) Go to: Project Settings -> Agent Pools -> Setup -> Agents -> AGENT -> Capabilities (Check in whose context the build definition is executed)
 
 #### 2) Then go to: Pipelines -> New pipeline -> Use the classic editor -> Continue (Abuse this)
 
