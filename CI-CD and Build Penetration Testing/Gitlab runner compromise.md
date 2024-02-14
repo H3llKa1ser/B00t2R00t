@@ -13,3 +13,4 @@
 #### 4) Approval is OPTIONAL (Obviously this is a logic flaw of Gitlab) so we can approve our own merge requests without restrictions
 
 #### 5) Enjoy your shell
+
