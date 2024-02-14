@@ -14,4 +14,8 @@
 
 #### 6) Run a groovy reverse shell script
 
-### 7) Profit!
+#### 7) Profit!
+
+## BONUS!
+
+### Metasploit module: exploit/multi/http/jenkins_script_console
