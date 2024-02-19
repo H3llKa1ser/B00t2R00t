@@ -6,7 +6,7 @@
 
 #### 2) Create a reverse shell file (pwn.sh)
 
-#### 3) Upload the config file to the /etc/apt/apt.conf.d/00pwn via any method you want (FTP,tftp,etc)
+#### 3) Upload the config file to the /etc/apt/apt.conf.d/00pwn via any method you can (FTP,tftp,etc)
 
 #### 4) Setup listener
 
