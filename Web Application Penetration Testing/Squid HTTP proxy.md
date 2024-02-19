@@ -15,3 +15,5 @@
 #### http  TARGET_IP 3128
 
 #### sudo proxychains nmap -sT -p- -n localhost (Scan for internal ports by using the squid proxy)
+
+### Exposed squid proxy can be used to gain access to internal applications or ssh connections
