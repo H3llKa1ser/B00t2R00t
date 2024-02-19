@@ -1,6 +1,6 @@
 # POWERSHELL EMPIRE C2 FRAMEWORK 
 
-### Note: Thee is a GUI version named Starkiller
+### Note: There is a GUI version named Starkiller
 
 ### Start server: sudo powershell-empire server
 
