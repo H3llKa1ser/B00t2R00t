@@ -14,4 +14,4 @@
 
 ### BONUS!
 
-### Apt configuration files directory: /etc/apt/sources.list.d/
+### Apt configuration files directory: /etc/apt/sources.list.d/ (Check for any files that might contain places that are package repositories for the package manager to pull from)
