@@ -11,3 +11,7 @@
 #### 4) Setup listener
 
 #### 5) GG!
+
+### BONUS!
+
+### Apt configuration files directory: /etc/apt/sources.list.d/
