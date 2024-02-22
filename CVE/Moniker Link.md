@@ -4,6 +4,8 @@
 
 ### Scoring: 9.8
 
+### MS Article: https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2024-21413https://msrc.microsoft.com/update-guide/en-US/vulnerability/CVE-2024-21413
+
 ### Affected MS Office releases:
 
 #### 1) Microsoft Office LTSC 2021	(Version: from 19.0.0)
