@@ -29,3 +29,31 @@
 # https://github.com/ItsCyberAli/PowerMeUp
 
 # https://github.com/magicsword-io/LOLDrivers
+
+# https://github.com/DragoQCC/HardHatC2
+
+# https://github.com/AzureAD/AzureADAssessment
+
+# https://rhinosecuritylabs.com/aws/pacu-open-source-aws-exploitation-framework/
+
+# https://github.com/MazX0p/ThreatHound
+
+# https://github.com/TheD1rkMtr/FilelessPELoader
+
+# https://github.com/mhaskar/DNSKeyGen
+
+# https://github.com/binderlabs/DirCreate2System
+
+# https://github.com/kleiton0x00/RedditC2
+
+# https://github.com/D1rkMtr/IORI_Loader
+
+# https://www.blackhillsinfosec.com/impacket-offense-basics-with-an-azure-lab/
+
+# https://github.com/MeViMo/youbit
+
+# https://github.com/jaeles-project/jaeles
+
+# https://github.com/Tylous/SourcePoint
+
+# https://github.com/bigb0sss/RedTeam-OffensiveSecurity
