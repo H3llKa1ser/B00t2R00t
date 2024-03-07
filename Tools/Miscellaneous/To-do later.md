@@ -15,3 +15,17 @@
 # https://github.com/ACE-Responder/RogueSliver
 
 # https://github.com/jfjallid/go-secdump (Local admins have writeDACL permissions on the registry hives)
+
+# https://github.com/MzHmO/PowershellKerberos
+
+# https://badoption.eu/blog/2023/06/21/dumpit.html
+
+# https://redteamrecipe.com/64-Methods-For-Execute-Mimikatz/
+
+# https://github.com/lkarlslund/hashmuncher
+
+# https://offsec.tools/
+
+# https://github.com/ItsCyberAli/PowerMeUp
+
+# https://github.com/magicsword-io/LOLDrivers
