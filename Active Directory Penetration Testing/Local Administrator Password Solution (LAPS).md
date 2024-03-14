@@ -1,6 +1,6 @@
 # ENUMERATION
 
-#### dir ("C:\Program\LAPS\CSE"
+#### dir "C:\Program\LAPS\CSE"
 
 ### If admpwd.dll exists, then enumeration is successful.
 
