@@ -12,3 +12,6 @@
   - Password - (mandatory) Enter a password that your team members will use to connect the Cobalt Strike client to the team server.
   - Malleable C2 Profile - (optional) Specify a valid Malleable C2 Profile.
   - Kill Date - (optional) Enter a date value in YYYY-MM-DD format. The team server will embed this kill date into each Beacon stage it generates. The Beacon payload will refuse to run on or after this date and will also exit if it wakes up on or after this date.
+
+### When the team server starts, it will publish the SHA256 hash of the team server’s SSL certificate. Distribute this hash to your team members. When your team members connect, their Cobalt Strike client will ask if they recognize this hash before it authenticates to the team server. This is an important protection against man-in-the-middle attacks.
+
