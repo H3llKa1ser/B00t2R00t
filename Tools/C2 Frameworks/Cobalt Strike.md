@@ -54,6 +54,4 @@ Password - Enter the shared password for the team server.
 
 ### If you do, press Yes, and the Cobalt Strike client will connect to the server and open the client user interface.
 
-## NOTE: 
-
-### Cobalt Strike will also remember this SHA256 hash for future connections. You may manage these hashes through Cobalt Strike -> Preferences -> Fingerprints.
+## NOTE:  Cobalt Strike will also remember this SHA256 hash for future connections. You may manage these hashes through Cobalt Strike -> Preferences -> Fingerprints.
