@@ -36,10 +36,13 @@
 
 Alias - Enter an alias for the host or use the default. The alias name can not be empty,
 start with an '*', or use the same alias name of an active connection.
+
 Host - Specify your team server’s address in the Host field. The host name can not be
 empty.
+
 Port - Displays the default Port for the team server (50050). This is rarely change. The
 port can not be empty and must be a numeric number.
+
 User - The User field is your nickname on the team server. Change this to your call sign,
 handle, or made-up hacker fantasy name. The user name can not be empty.
 
