@@ -15,3 +15,15 @@
 
 ### When the team server starts, it will publish the SHA256 hash of the team server’s SSL certificate. Distribute this hash to your team members. When your team members connect, their Cobalt Strike client will ask if they recognize this hash before it authenticates to the team server. This is an important protection against man-in-the-middle attacks.
 
+## Cobalt Strike Client
+
+### To start the Cobalt Strike client, use the launcher included with your platform’s package.
+### a. For Linux:
+#### i. Enter the following commands:
+#### ./cobaltstrike
+### b. For MacOS X:
+#### i. Navigate to the Cobalt Strike folder.
+#### ii. Double-click cobaltstrike.
+### c. For Windows:
+#### i. Navigate to the Cobalt Strike folder.
+#### ii. Double-click cobaltstrike.exe.
