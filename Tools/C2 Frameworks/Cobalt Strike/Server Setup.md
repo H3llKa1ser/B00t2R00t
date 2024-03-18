@@ -72,3 +72,13 @@ Password - Enter the shared password for the team server.
 ### When connected to multiple servers, Cobalt Strike aggregates listeners from all of the servers it’s connected to. This aggregation allows you to send a phishing email from one server that references a malicious website hosted on another server. At the end of your engagement, Cobalt Strike’s reporting feature will query all of the servers you’re connected to and merge the data to tell one story.
 
 ## Reconnecting the Client
+
+### When the client disconnection is user-initiated with the Menu, Toolbar or Switchbar Server button, a red banner displays with a Reconnect and Close button.
+
+### Press Close to close the window. Press Reconnect to reconnect to the TeamServer.
+
+### If the TeamServer is not available a dialog displays asking if you want to retry (Yes/No). If Yes then connection is attempted again (repeats if needed). If No, the dialog closes.
+
+### When disconnection is initiated by the TeamServer or other network interruption the red banner will display a message with a countdown for connection retry. This will repeat until a connection is made with the TeamServer or the user clicks on Close. In this case the user can interact with other parts of the UI.
+
+### When the client reconnects, the red reconnect bar disappears.
