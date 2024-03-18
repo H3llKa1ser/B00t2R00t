@@ -55,3 +55,12 @@ Password - Enter the shared password for the team server.
 ### If you do, press Yes, and the Cobalt Strike client will connect to the server and open the client user interface.
 
 ## NOTE:  Cobalt Strike will also remember this SHA256 hash for future connections. You may manage these hashes through Cobalt Strike -> Preferences -> Fingerprints.
+
+## Distributed and Team Operations
+
+### Use Cobalt Strike to coordinate a distributed red team effort. Stage Cobalt Strike on one or more remote hosts. Start your team servers and have your team connect.
+
+### Once connected to a team server, your team will:
+  - Use the same sessions
+  - Share hosts, captured data, and downloaded files
+  - Communicate through a shared event log.
