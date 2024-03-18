@@ -46,3 +46,14 @@ port can not be empty and must be a numeric number.
 User - The User field is your nickname on the team server. Change this to your call sign,
 handle, or made-up hacker fantasy name. The user name can not be empty.
 
+Password - Enter the shared password for the team server.
+
+### Press Connect to connect to the Cobalt Strike team server
+
+### If this is your first connection to this team server, Cobalt Strike will ask if you recognize the SHA256 hash of this team server.
+
+### If you do, press Yes, and the Cobalt Strike client will connect to the server and open the client user interface.
+
+## NOTE: 
+
+### Cobalt Strike will also remember this SHA256 hash for future connections. You may manage these hashes through Cobalt Strike -> Preferences -> Fingerprints.
