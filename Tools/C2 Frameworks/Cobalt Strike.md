@@ -27,3 +27,7 @@
 ### c. For Windows:
 #### i. Navigate to the Cobalt Strike folder.
 #### ii. Double-click cobaltstrike.exe.
+
+### The Connect Dialog screen displays.
+
+### Cobalt Strike keeps track of the team servers you connect to and remembers your information. Select one of these team server profiles from the left-hand-side of the connect dialog to populate the connect dialog with its information. Use the Alias Names and Host Names buttons to toggle how the list of hosts are displayed. Active connections will be displayed in blue text. You may control how the host list is initially displayed, active connection text color, and prune the list through Cobalt Strike -> Preferences -> Team Servers
