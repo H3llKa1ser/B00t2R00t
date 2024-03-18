@@ -64,3 +64,11 @@ Password - Enter the shared password for the team server.
   - Use the same sessions
   - Share hosts, captured data, and downloaded files
   - Communicate through a shared event log.
+
+### The Cobalt Strike client may connect to multiple team servers. Go to Cobalt Strike -> New Connection to initiate a new connection. When connected to multiple servers, a switchbar will show up at the bottom of your Cobalt Strike window.
+
+### This switchbar allows you to switch between active Cobalt Strike server instances. Each server has its own button. Right-click a button and select Rename to make the button’s text reflect the role of the server during your engagement. The server button will display the active button in bold text and color based on color preference found in Cobalt Strike -> Preferences -> TeamServers to better indicate which button is active. This button name will also identify the server in the Cobalt Strike Activity Report.
+
+### When connected to multiple servers, Cobalt Strike aggregates listeners from all of the servers it’s connected to. This aggregation allows you to send a phishing email from one server that references a malicious website hosted on another server. At the end of your engagement, Cobalt Strike’s reporting feature will query all of the servers you’re connected to and merge the data to tell one story.
+
+## Reconnecting the Client
