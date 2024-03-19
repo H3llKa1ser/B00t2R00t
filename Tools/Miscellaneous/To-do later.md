@@ -57,3 +57,5 @@
 # https://github.com/Tylous/SourcePoint
 
 # https://github.com/bigb0sss/RedTeam-OffensiveSecurity
+
+# https://github.com/S1ckB0y1337/Cobalt-Strike-CheatSheet?tab=readme-ov-file#malleable-c2-profiles
