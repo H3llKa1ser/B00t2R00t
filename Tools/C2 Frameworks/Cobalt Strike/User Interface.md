@@ -43,3 +43,9 @@
 ### The Pivot Graph shows your Beacon chains in a natural way. Each Beacon session has an icon. As with the sessions table:the icon for each host indicates its operating system. If the icon is red with lightning bolts, the Beacon is running in a process with administrator privileges. A darker icon indicates that the Beacon session was asked to exit and it acknowledged this command.
 
 ### The firewall icon represents the egress point of your Beacon payload. A dashed green line indicates the use of beaconing HTTP or HTTPS connections to leave the network. A yellow dashed line indicates the use of DNS to leave the network.
+
+### An arrow connecting one Beacon session to another represents a link between two Beacons. Cobalt Strike’s Beacon uses Windows named pipes and TCP sockets to control Beacons in this peer-to-peer fashion. An orange arrow is a named pipe channel. SSH sessions use an orange arrow as well. A blue arrow is a TCP socket channel. A red (named pipe) or purple (TCP) arrow indicates that a Beacon link is broken.
+
+### Click a Beacon to select it. You may select multiple Beacons by clicking and dragging a box over the desired hosts. Press Ctrl and Shift and click to select or unselect an individual Beacon.
+
+### Right-click a Beacon to bring up a menu with available post-exploitation options.
