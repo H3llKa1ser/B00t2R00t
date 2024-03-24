@@ -1,5 +1,7 @@
 # HTTP Request Smuggling through broken WebSocket tunnels
 
+## Original research: https://github.com/0ang3el/websocket-smuggle
+
 ### To smuggle requests through a vulnerable proxy, we can create a malformed request such that the proxy thinks a WebSocket upgrade is performed, but the backend server doesn't really upgrade the connection. This will force the proxy into establishing a tunnel between client and server that will go unchecked since it assumes it is now a WebSocket connection, but the backend will still expect HTTP traffic.
 
 ### One way to force this is to send an upgrade request with an invalid Sec-Websocket-Version header. This header is used to specify the version of the WebSocket protocol to use and will normally take the value of 13 in most current WebSocket implementations. If the server supports the requested version, it should issue a 101 Switching Protocols response and upgrade the connection.
