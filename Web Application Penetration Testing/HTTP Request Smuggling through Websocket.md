@@ -87,3 +87,8 @@ Host: 10.10.55.67:8001
 
 ### While we won't be able to do this for all applications, if our target app has some vulnerability that allows us to proxy requests back to a server we control as attackers, we might be able to inject the 101 Switching Protocols response to an arbitrary request. In these special cases, we should be able to smuggle requests through a fake WebSocket connection again.
 
+### Example: You can abuse an SSRF vulnerability to create a fake webserver that only responds with status 101 to every request (101responseonly.py in scripts directory)
+
+### Then Abuse the SSRF vulnerability by sending a request to your fake webserver, then smuggle an HTTP request to gain access to restricted resources (Like the above example, except that you have to abuse the SSRF vulnerability)
+
+### Profit!
