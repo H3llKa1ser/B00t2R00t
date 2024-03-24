@@ -81,3 +81,9 @@ Host: 10.10.55.67:8001
 
 ## NOTE: This payload will randomly fail when using Burp. You can either retry the payload a couple of times until it works, or deliver it by pasting it into a terminal running nc 10.10.55.67 8001, where it will work every time (don't forget the trailing newlines).
 
+# Tricking the proxy that actually checks for the response code of the upgrade
+
+### Since we can't just smuggle requests anymore, we need to find a way to trick the proxy into believing a valid WebSocket connection has been established. This means we need to somehow force the backend web server to reply to our upgrade request with a fake 101 Switching Protocols response without actually upgrading the connection in the backend.
+
+### While we won't be able to do this for all applications, if our target app has some vulnerability that allows us to proxy requests back to a server we control as attackers, we might be able to inject the 101 Switching Protocols response to an arbitrary request. In these special cases, we should be able to smuggle requests through a fake WebSocket connection again.
+
