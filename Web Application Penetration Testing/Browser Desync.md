@@ -20,4 +20,10 @@ fetch('http://MACHINE_IP:5000/', {    method: 'POST',    body: 'GET /redirect HT
 
 #### 2) { method: 'POST' } = The method parameter specifies the HTTP method for the request. Here, it's set to 'POST'.
 
+#### 3) { body: 'GET /redirect HTTP/1.1\r\nFoo: x' } = In the body, there is the second request that is going to be injected into the queue.
+
+#### 4) { mode: 'cors' } = This flag triggers an error when visiting the 404 web page and avoids following the redirect.
+
+
+
 
