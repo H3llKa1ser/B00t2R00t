@@ -1,5 +1,8 @@
 # Tunneling requests via h2c smuggling
 
+## Tool: https://github.com/BishopFox/h2csmuggler
+
+## Usage: python3 h2csmuggler.py -x HTTPS://IP_ADDRESS:PORT/ https://IP_ADDRESS:PORT/private
 
 ### When an HTTP/1.1 connection upgrade is attempted via some reverse proxies, they will directly forward the upgrade headers to the backend server instead of handling it themselves. The backend server will perform the upgrade and manage communications in the new protocol afterwards. The proxy will tunnel any further communications between client and server but won't check their contents anymore, since it assumes the protocol changed to something other than HTTP.
 
