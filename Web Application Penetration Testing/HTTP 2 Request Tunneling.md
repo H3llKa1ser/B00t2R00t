@@ -33,3 +33,12 @@
 #### 10) Apply changes, then the request pane will go blank and show you a message indicating the request is "kettled". This means that there's no way to represent the request in pure text anymore because of the special characters it contains (CRLFs in our case). From now on, all modifications to the request shall be done through the Inspector only.
 
 #### 11) When the request is ready, you can press the Send button as usual to send it. Remember that our HTTP/2 request will be split into two backend requests, so the first time you send it, you will only obtain the response of the first request, which is empty. To get the value of the hidden internal headers, you will need to send the same request twice in quick succession. If all goes well, the website should reflect the internal headers to you on the second request
+
+## Bypassing Frontend Restrictions
+
+### In some scenarios, you will find that the frontend proxy enforces restrictions on what resources can be accessed on the backend website. For example, imagine your website has an admin panel at /admin, but you don't want it accessible to everyone on the Internet. As a simple solution, you could enforce a restriction in the frontend proxy to disallow any attempt to access /admin without requiring any changes in the backend server itself.
+
+### A request tunnelling vulnerability would allow us to smuggle a request to the backend without the frontend proxy noticing, effectively bypassing frontend security controls.
+
+### Another way to understand the attack, would be to say that we are using an allowed resource, in this case /hello, to smuggle a request to a forbidden resource, in this case /admin. From the point of view of the proxy, only a request for /hello was made, so no violations to the ACL were made. It is important to note that the resource we request via HTTP/2 must be allowed by the ACL for this attack to work. We are effectively smuggling an invalid request over a valid one. This same method can sometimes be used to smuggle request past Web Application Firewalls (WAF).
+
