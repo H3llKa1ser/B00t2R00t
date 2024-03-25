@@ -68,4 +68,23 @@
 
 #### X-Fake: a 
 
-## NOTE: Don't forget to disable update content-length (Gear icon)
+### NOTE: Don't forget to disable update content-length (Gear icon)
+
+## Web Cache Poisoning
+
+### Even if we can't influence other users' connections directly, we may be able to use request tunnelling to poison server-side caching mechanisms, affecting users indirectly. This kind of attack has a high severity as it impacts all users visiting the website for as long as the cached content lasts. Given the right conditions, the poisoned cached content can have anything the attacker wants, including javascript payloads. This can be used to issue malicious redirects or even steal user sessions.
+
+## Note: Extreme care needs to be taken when testing web cache poisonings in real-world production systems, as they may affect the availability of the website if not conducted properly
+
+### To achieve cache poisoning, what we want is to make a request to the proxy for /page1 and somehow force the backend web server to respond with the contents of /page2. It this were to happen, the proxy will wrongly associate the URL of /page1 with the cached content of /page2.
+
+### The trick we are using would allow you to poison the cache, but only with the content of other pages on the same website. This means the attacker wouldn't be able to pick arbitrary content for the cache poisoning. Luckily for us, there's some ways to overcome this limitation:
+
+#### 1) If the website has an upload functionality.
+
+#### 2) If we find a part of the website that reflects content from a request parameter. We can abuse articles or any other equivalent content to the website (Think of a blog).
+
+#### 3) Under certain circumstances, open redirects can also be abused, but we won't cover this case during the room.
+
+### In any of those cases, the attacker can add arbitrary content to the website, which can be cached by the proxy and associated with any URL (existing or not).
+
