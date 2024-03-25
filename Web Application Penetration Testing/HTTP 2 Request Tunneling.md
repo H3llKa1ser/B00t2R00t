@@ -88,3 +88,4 @@
 
 ### In any of those cases, the attacker can add arbitrary content to the website, which can be cached by the proxy and associated with any URL (existing or not).
 
+### Note that we included the Pragma: no-cache header in our request to force the proxy to bypass any cached content and send the request to the backend server. Doing so allows us to send several requests until our payload is correctly triggered without waiting for the cache to time out.
