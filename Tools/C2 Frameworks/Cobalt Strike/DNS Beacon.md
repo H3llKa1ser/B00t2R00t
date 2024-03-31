@@ -32,4 +32,10 @@ each item in the list. If the length is exceeded, hosts will be dropped from the
 of the list until it fits in the space. There will be messages in the team server log
 for dropped hosts.
 
-### 2) 
+### 2) Host Rotation Strategy
+
+ - This value configures the beacons behavior for choosing
+which host(s) from the list to use for egress. Select one of the following:
+
+ 1) round-robin: : Select to loop through the list of host names in the order they are
+provided. Each host is used for one connection.
