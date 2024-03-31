@@ -41,7 +41,7 @@
 
 #### 2) Direct -> Use the Nt* version of the function
 
-#### 3) Indirect -> Jump to the apprpriate instruction within the Nt* version of the function
+#### 3) Indirect -> Jump to the appropriate instruction within the Nt* version of the function
 
 ### There are some commands and workflows that inject or spawn a new beacon that do not allow you to set the initial system call method. In these cases, setting the ‘stage.syscall_method’ setting in the profile will allow you to control the initial method used at execution time.
 
