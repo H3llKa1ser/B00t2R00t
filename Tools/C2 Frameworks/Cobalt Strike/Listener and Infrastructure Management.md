@@ -12,3 +12,4 @@
 
 ### Use the Payload drop-down to select one of the available payload/listener types you wish to configure.
 
+### To edit a listener, highlight a listener and press Edit. To remove a listener, highlight the listener and press Remove.
