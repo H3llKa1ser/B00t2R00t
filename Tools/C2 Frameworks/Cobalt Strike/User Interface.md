@@ -87,3 +87,31 @@
 ## Consoles
 
 ### Cobalt Strike provides a console to interact with Beacon sessions, scripts, and chat with your teammates.
+
+### The consoles track your command history. Use the up arrow to cycle through previously typed commands. The down arrow moves back to the last command you typed. The history command lists previously typed commands. The ! command allows previously typed commands to be ran again.
+
+## Note: The list of previously typed commands is not maintained between sessions. Closing a console window and then reopening it will start with no previously typed commands.
+
+### Use the Tab key to complete commands and parameters.
+
+### Use Ctrl+Plus to make the console font size larger, Ctrl+Minus to make it smaller, and Ctrl+0 to reset it. This change is local to the current console only. Visit Cobalt Strike -> Preferences to permanently change the font.
+
+### Press Ctrl+F to show a panel that will let you search for text within the console. Use Ctrl+A to select all text in the console’s buffer.
+
+## Tables
+
+### Cobalt Strike uses tables to display sessions, credentials, targets, and other engagement information.
+
+### Most tables in Cobalt Strike have an option to assign a color highlight to the highlighted rows. These highlights are visible to other Cobalt Strike clients. Right-click and look for the Color menu.
+
+### Press Ctrl+F within a table to show the table search panel. This feature lets you filter the current table
+
+### The text field is where you type your filter criteria. The format of the criteria depends on the column you choose to apply the filter to. Use CIDR notation (e.g., 192.168.1.0/24) and host ranges (192.168.1-192.169.200) to filter columns that contain addresses. Use numbers or ranges of numbers for columns that contain numbers. Use wildcard characters (*, ?) to filter columns that contain strings.
+
+### The ! button negates the current criteria. Press enter to apply the specified criteria to the current table. You may stack as many criteria together as you like. The Reset button will remove the filters applied to the current table.
+
+## Keyboard Shortcuts
+
+### There are many default keyboard shortcuts available to you when working in the user interface. Some can be used anywhere while others are specific to different areas of the UI. 
+
+### The Aggressor function, openDefaultShortcutsDialog, can also be used to open the same list.
