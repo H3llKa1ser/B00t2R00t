@@ -14,4 +14,12 @@
 
 ## DNS Listener Setup
 
-### 
+### To create a DNS Beacon listener select Cobalt Strike -> Listeners on the main menu and press the Add button at the bottom of the Listeners tab display.
+
+### The New Listener panel displays.
+
+### Select Beacon DNS as the Payload type and give the listener a Name. Make sure to give the new listener a memorable name as this name is how you will refer to this listener through Cobalt Strike’s commands and workflows.
+
+## Parameters
+
+#### DNS Hosts - Press [+] to add one or more domains to beacon to. Your Cobalt Strike team server system must be authoritative for the domains you specify. Create a DNS A record and point it to your Cobalt Strike team server. Use DNS NS records to delegate several domains or sub-domains to your Cobalt Strike team server’s A record.
