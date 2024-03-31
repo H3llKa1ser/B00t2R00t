@@ -127,3 +127,13 @@ segments.
       - “ends with”supported by “*”wildcard character on the left side
 
   The guard is case-insensitive
+
+## Testing
+
+### To test your DNS configuration, open a terminal and type nslookup jibberish.beacon domain. If you get an A record reply of 0.0.0.0—then your DNS is correctly setup. If you do not get a reply, then your DNS configuration is not correct and the DNS Beacon will not communicate with you.
+
+# Notes: 
+
+## 1) Make sure your DNS records reference the primary address on your network interface. Cobalt Strike’s DNS server will always send responses from your network interface’s primary address. DNS resolvers tend to drop replies when they request information from one server, but receive a reply from another.
+
+## 2) If you are behind a NAT device, make sure that you use your public IP address for the NS record and set your firewall to forward UDP traffic on port 53 to your system. Cobalt Strike includes a DNS server to control Beacon.
