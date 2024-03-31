@@ -58,9 +58,72 @@ default options to choose from or you can create your own list with the
 LISTENER_MAX_RETRY_STRATEGIES hook.
 
  1) none: Select to ensure beacon will not exit because of failed connection attempts.
+    
  2) exit-xxx:  These settings use the syntax of exit-[max_attempts]-[increase_
 attempts]-[duration][m,h,d]. The max_attempt value is the number of
 consecutive failed attempts before beacon will exit. The increase_attempts is
 the number of consecutive failed attempts before increasing the sleep time.
 The duration value is the number of minutes, hours, or days to set the new
-sleep time.
+sleep time. The sleep time will not be updated if the current sleep time is greater than the
+newly specified duration value. The sleep time will be affected by the current
+jitter value.On any successful connection the failed attempts count will be
+reset to zero and the sleep time will be reset to the prior value.
+
+### 4) DNS Host (Stager)
+
+ - This configures the DNS Beacon’s TXT record stager. This stager
+is only used with Cobalt Strike features that require an explicit stager. Your Cobalt
+Strike team server system must be authoritative for this domain as well.
+
+### 5) Profile
+
+ - Allows a beacon to be configured with a selected Malleable C2 profile variant.
+
+### 6) DNS Port (Bind)
+
+ - This field specifies the port your DNS Beacon payload server will
+bind to. This option is useful if you want to set up port bending redirector such as
+a redirector that accepts connections on port 53 but routes the connection to
+your team server on another port.
+
+### 7) DNS Resolver
+
+ -  Allows a DNS Beacon to egress using a specific DNS resolver, rather
+than using the default DNS resolver for the target server. Specify the IP Address
+of the desired resolver. This DNS Resolver is not used by the stager of the DNS
+Beacon.
+
+### 8) Guardrails
+
+ - Beacon Guardrails allows the user to create a way to restrict the targets
+that the beacon can execute on.Once configured, these values will be the default
+guardrail for the Stageless or Windows Stageless Payload Generators.
+
+ - Press the ... button to open the Guardrails Settings:
+
+ 1) IP Address: Enter a specific IP Address or generic wildcard of the right most
+segments.
+
+ 2) User Name: Enter a specific name, or a value that:
+
+    - “starts with”supported by “*”wildcard character on the right side
+   
+    - “ends with”supported by “*”wildcard character on the left side
+
+  The guard is case-insensitive
+
+  3) Server Name: : Enter a specific computer name, or a value that:
+
+      - “starts with”supported by “*”wildcard character on the right side
+   
+      - “ends with”supported by “*”wildcard character on the left side
+
+  The guard is case-insensitive
+
+   4) Domain Name: : Enter a specific domain, or a value that:
+
+      - “starts with”supported by “*”wildcard character on the right side
+   
+      - “ends with”supported by “*”wildcard character on the left side
+
+  The guard is case-insensitive
