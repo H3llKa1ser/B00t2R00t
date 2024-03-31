@@ -49,3 +49,41 @@
 ### Click a Beacon to select it. You may select multiple Beacons by clicking and dragging a box over the desired hosts. Press Ctrl and Shift and click to select or unselect an individual Beacon.
 
 ### Right-click a Beacon to bring up a menu with available post-exploitation options.
+
+### Right-click the Pivot Graph with no selected Beacons to configure the layout of this graph. This menu also has an Unlinked menu. Select Hide to hide unlinked sessions in the pivot graph. Select Show to show unlinked sessions again.
+
+## Sessions Table
+
+### The sessions table shows which Beacons are calling home to this Cobalt Strike instance. Beacon is Cobalt Strike’s payload to emulate advanced threat actors.
+
+### If you use a DNS Beacon listener, be aware that Cobalt Strike will not know anything about a host until it checks in for the first time. If you see an entry with a last call time and that’s it, you will need to give that Beacon its first task to see more information.
+
+### Right-click one or more Beacon’s to see your post-exploitation options.
+
+## Targets Table
+
+### The Targets Table shows the targets in Cobalt Strike’s data model. The targets table displays the IP address of each target, its NetBIOS name, and a note that you or one of your team members assigned to the target. The icon to the left of a target indicates its operating system. A red icon with lightning bolts indicates that the target has a Cobalt Strike Beacon session associated with it.
+
+### Click any of the table headers to sort the hosts. Highlight a row and right-click it to bring up a menu with options for that host. Press Ctrl and Alt and click to select and deselect individual hosts.
+
+### The target’s table is a useful for lateral movement and to understand your target’s network.
+
+## Tabs
+
+### Cobalt Strike opens each dialog, console, and table in a tab. Click the X button to close a tab. Use Ctrl+D to close the active tab. Ctrl+Shift+D will close all tabs except the active on.
+
+### You may right-click the X button to open a tab in a window, take a screenshot of a tab, or close all tabs with the same name.
+
+### Keyboard shortcuts exist for these functions too. Use Ctrl+W to open the active tab in its own window. Use Ctrl+T to quickly save a screenshot of the active tab.
+
+### Ctrl+B will send the current tab to the bottom of the Cobalt Strike window. This is useful for tabs that you need to constantly watch. Ctrl+E will undo this action and remove the tab at the bottom of the Cobalt Strike window.
+
+### Hold shift and click X to close all tabs with the same name. Hold shift + control and click X to open the tab in its own window
+
+### Use Ctrl+Left and Ctrl+Right to quickly switch tabs. You may drag and drop tabs to change their order.
+
+## TIP: The full list of Default Keyboard Shortcuts are available from the menu (Help -> Default Keyboard Shortcuts).
+
+## Consoles
+
+### Cobalt Strike provides a console to interact with Beacon sessions, scripts, and chat with your teammates.
