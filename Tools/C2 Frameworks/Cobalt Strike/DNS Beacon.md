@@ -37,5 +37,30 @@ for dropped hosts.
  - This value configures the beacons behavior for choosing
 which host(s) from the list to use for egress. Select one of the following:
 
- 1) round-robin: : Select to loop through the list of host names in the order they are
+ 1) round-robin: Select to loop through the list of host names in the order they are
 provided. Each host is used for one connection.
+
+ 2) random: Select to randomly select a host name from the list each time a
+connection is attempted.
+
+ 3) failover-xx: Select to use a working host as long as possible. Use each host in the
+list until they reach a consecutive failover count (x) or duration time period
+(m,h,d), then use the next host.
+
+ 4) rotate-xx: Select to use each host for a period of time. Use each host in the list for
+the specified duration (m,h,d), then use the next host.
+
+### 3) Max Retry Strategy
+
+ - This configures the beacons behavior for exiting after a number of
+consecutive failed connection attempts to the Team Server. There are several
+default options to choose from or you can create your own list with the
+LISTENER_MAX_RETRY_STRATEGIES hook.
+
+ 1) none: Select to ensure beacon will not exit because of failed connection attempts.
+ 2) exit-xxx:  These settings use the syntax of exit-[max_attempts]-[increase_
+attempts]-[duration][m,h,d]. The max_attempt value is the number of
+consecutive failed attempts before beacon will exit. The increase_attempts is
+the number of consecutive failed attempts before increasing the sleep time.
+The duration value is the number of minutes, hours, or days to set the new
+sleep time.
