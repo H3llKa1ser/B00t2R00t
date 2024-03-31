@@ -6,3 +6,9 @@
 
 ## Listener Management
 
+### To manage Cobalt Strike listeners, go to Cobalt Strike -> Listeners. This will open a tab listing all of your configured payloads and listeners.
+
+### Press Add to create a new listener. The New Listener panel displays
+
+### Use the Payload drop-down to select one of the available payload/listener types you wish to configure.
+
