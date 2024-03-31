@@ -32,3 +32,28 @@
  - VirtualProtectEx
  - VirtualQuery
  - WriteProcessMemory
+
+### When you generate a stageless beacon payload from the Cobalt Strike UI or a supported aggressor function, you can choose which system call method will be used at execution time.
+
+### System Call Methods:
+
+#### 1) None -> Use the standard Windows API function
+
+#### 2) Direct -> Use the Nt* version of the function
+
+#### 3) Indirect -> Jump to the apprpriate instruction within the Nt* version of the function
+
+### There are some commands and workflows that inject or spawn a new beacon that do not allow you to set the initial system call method. In these cases, setting the ‘stage.syscall_method’ setting in the profile will allow you to control the initial method used at execution time.
+
+### The following commands and workflows use the stage.syscall_method setting:
+
+ - elevate
+ - inject
+ - jump
+ - spawn
+ - spawnas
+ - spawnu
+ - team server responding to a stageless payload request
+ - team server responding to an external c2 payload request
+
+### Use the syscall-method [method] command to modify which method will be used for subsequent commands. In addition, syscall-method without any arguments will query the current method.
