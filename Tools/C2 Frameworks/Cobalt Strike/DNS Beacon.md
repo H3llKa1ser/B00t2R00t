@@ -26,6 +26,10 @@
 
  - Press [+] to add one or more domains to beacon to. Your Cobalt Strike team server system must be authoritative for the domains you specify. Create a DNS A record and point it to your Cobalt Strike team server. Use DNS NS records to delegate several domains or sub-domains to your Cobalt Strike team server’s A record.
 
-#### 
+ - The length of the beacon host list in beacon payload is limited to 255 characters.
+This includes a randomly assigned URI for each host and delimiters between
+each item in the list. If the length is exceeded, hosts will be dropped from the end
+of the list until it fits in the space. There will be messages in the team server log
+for dropped hosts.
 
 ### 2) 
