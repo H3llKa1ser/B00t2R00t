@@ -6,3 +6,29 @@
 
 ### Beacon’s network indicators are malleable. Redefine Beacon’s communication with Cobalt Strike’s malleable C2 language. This allows you to cloak Beacon activity to look like other malware or blend-in as legitimate traffic.
 
+## System Calls
+
+### The Beacon payload has implemented the ability to use system calls instead of the standard Windows API functions. Currently Beacon supports a limited set of functions for this capability.
+
+### The following functions support the use of system calls:
+
+ - CloseHandle
+ - CreateFileMapping
+ - CreateRemoteThread
+ - CreateThread
+ - DuplicateHandle
+ - GetThreadContext
+ - MapViewOfFile
+ - OpenProcess
+ - OpenThread
+ - ReadProcessMemory
+ - ResumeThread
+ - SetThreadContext
+ - UnmapViewOfFile
+ - VirtualAlloc
+ - VirtualAllocEx
+ - VirtualFree
+ - VirtualProtect
+ - VirtualProtectEx
+ - VirtualQuery
+ - WriteProcessMemory
