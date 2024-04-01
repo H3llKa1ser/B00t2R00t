@@ -14,3 +14,40 @@
 
 ### The New Listener panel displays.
 
+### Select Beacon SMB as the Payload type and give the listener a Name. Make sure to give the new listener a memorable name as this name is how you will refer to this listener through Cobalt Strike’s commands and workflows.
+
+## Parameters
+
+### 1) Pipename (C2)
+
+ - Set an explicit pipename or accept the default option.
+
+### 2) Guardrails
+
+ - Beacon Guardrails allows the user to create a way to restrict the targets
+that the beacon can execute on.Once configured, these values will be the default
+guardrail for the Stageless or Windows Stageless Payload Generators.
+
+ - Press the ... button to open the Guardrails Settings:
+
+ 1) IP Address: Enter a specific IP Address or generic wildcard of the right most
+segments. For example:
+l 123.123.123.123
+l 123.123.123.*
+l 123.123.*.*
+l 123.*.*.*
+
+ 2) User Name: Enter a specific name, or a value that:
+l “starts with”supported by “*”wildcard character on the right side
+l “ends with”supported by “*”wildcard character on the left side
+The guard is case-insensitive.
+Server Name: Enter a specific computer name, or a value that:
+l “starts with”supported by “*”wildcard character on the right side
+l “ends with”supported by “*”wildcard character on the left side
+The guard is case-insensitive
+
+ 3) Domain: Enter a specific domain, or a value that:
+l “starts with”supported by “*”wildcard character on the right side
+l “ends with”supported by “*”wildcard character on the left side
+The guard is case-insensitive
+
