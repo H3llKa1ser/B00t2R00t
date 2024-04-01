@@ -47,3 +47,15 @@ socket. Includes unit tests and comments.
 365 C2 for Cobalt Strike.
 
  - Shared File C2 by Outflank BV. POC to use a file/share for command and control.
+
+### Links: 
+
+### 1) https://github.com/ryhanson/ExternalC2
+
+### 2) https://github.com/Und3rf10w/external_c2_framework
+
+### 3) https://labs.f-secure.com/tools/c3/
+
+### 4) https://labs.mwrinfosecurity.com/blog/tasking-office-365-for-cobalt-strike-c2
+
+### 5) https://github.com/outflanknl/external_c2
