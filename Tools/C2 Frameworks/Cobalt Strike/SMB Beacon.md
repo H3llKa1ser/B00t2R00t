@@ -51,3 +51,19 @@ l “starts with”supported by “*”wildcard character on the right side
 l “ends with”supported by “*”wildcard character on the left side
 The guard is case-insensitive
 
+## Linking and Unlinking
+
+### From the Beacon console, use link [host] [pipe] to link the current Beacon to an SMB Beacon that is waiting for a connection. When the current Beacon checks in, its linked peers will check in too.
+
+### To blend in with normal traffic, linked Beacons use Windows named pipes to communicate. This traffic is encapsulated in the SMB protocol. There are a few caveats to this approach:
+
+#### 1) Hosts with an SMB Beacon must accept connections on port 445.
+
+#### 2) You may only link Beacons managed by the same Cobalt Strike instance.
+
+### If you get an error 5 (access denied) after you try to link to a Beacon: steal a domain user’s token or use make_token DOMAIN\user password to populate your current token with valid credentials for the target. Try to link to the Beacon again.
+
+### To destroy a Beacon link use unlink [ip address] [session PID] in the parent or child. The [session PID] argument is the process ID of the Beacon to unlink. This value is how you specify a specific Beacon to de-link when there are multiple children Beacons.
+
+### When you de-link an SMB Beacon, it does not exit and go away. Instead, it goes into a state where it waits for a connection from another Beacon. You may use the link command to resume control of the SMB Beacon from another Beacon in the future.
+
