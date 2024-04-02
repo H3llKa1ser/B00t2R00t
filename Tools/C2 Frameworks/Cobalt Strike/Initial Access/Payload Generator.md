@@ -41,3 +41,9 @@ give you shellcode formatted as a byte array for that language):
  - 11) Veil: Custom shellcode suitable for use with the Veil Evasion Framework.
 
  - 12) VBA: Shellcode formatted as a byte array.
+
+### 3) x64
+
+ - Check the box to generate an x64 stager for the selected listener.
+
+### Press Generate to create a Payload for the selected output type.
