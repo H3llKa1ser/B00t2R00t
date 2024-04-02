@@ -28,9 +28,9 @@ give you shellcode formatted as a byte array for that language):
 
  - 5) Perl: Shellcode formatted as a byte array.
 
- - 6) PowerShell:PowerShell script to run shellcode
+ - 6) PowerShell: PowerShell script to run shellcode
 
- - 7) PowerShell Command:PowerShell one-liner to run a Beacon stager.
+ - 7) PowerShell Command: PowerShell one-liner to run a Beacon stager.
 
  - 8) Python: Shellcode formatted as a byte array.
 
