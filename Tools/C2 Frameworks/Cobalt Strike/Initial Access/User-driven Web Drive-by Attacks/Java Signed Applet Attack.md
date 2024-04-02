@@ -15,7 +15,7 @@ webserver.
 
 ### 2) Listener
 
- - - Press the ... button to select a Cobalt Strike listener you would like to output
+ -  Press the ... button to select a Cobalt Strike listener you would like to output
 a payload for.
 
 ### 3) SSL
