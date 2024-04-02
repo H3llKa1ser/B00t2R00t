@@ -22,7 +22,7 @@ give you shellcode formatted as a byte array for that language):
 
  - 2) C#: Shellcode formatted as a byte array.
 
- - 3) COM Scriptlet:A .sct file to run a listener
+ - 3) COM Scriptlet: A .sct file to run a listener
 
  - 4) Java: Shellcode formatted as a byte array.
 
@@ -38,6 +38,6 @@ give you shellcode formatted as a byte array for that language):
 
  - 10) Ruby: Shellcode formatted as a byte array.
 
- - 11) Veil:Custom shellcode suitable for use with the Veil Evasion Framework.
+ - 11) Veil: Custom shellcode suitable for use with the Veil Evasion Framework.
 
  - 12) VBA: Shellcode formatted as a byte array.
