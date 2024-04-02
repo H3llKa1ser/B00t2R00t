@@ -61,3 +61,5 @@
 # https://github.com/S1ckB0y1337/Cobalt-Strike-CheatSheet?tab=readme-ov-file#malleable-c2-profiles
 
 # https://github.com/NHAS/reverse_ssh
+
+# https://www.pentestpartners.com/security-blog/living-off-the-land-with-native-ssh-and-split-tunnelling/
