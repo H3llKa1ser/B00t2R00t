@@ -14,7 +14,7 @@ a payload for.
 ### 2) Output
 
 
- - - Use the drop-down to select one of the following output types (most options
+ - Use the drop-down to select one of the following output types (most options
 give you shellcode formatted as a byte array for that language):
 
 
