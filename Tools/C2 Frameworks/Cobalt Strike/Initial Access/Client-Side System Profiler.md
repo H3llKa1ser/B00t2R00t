@@ -10,3 +10,17 @@
 
 ### Check the Enable SSL box to serve the System Profiler over SSL. This box is disabled unless you specify a valid SSL certificate with Malleable C2. 
 
+# Application Browser
+
+### To view the results from the system profiler, go to View -> Applications. This opens an Applications tab with a table showing all application information captured by the System Profiler.
+
+## Analyst Tips
+
+### The Application Browser has a lot of information useful to plan a targeted attack. Here's how to get the most out of this output:
+
+#### The internal IP address field is gathered from a benign unsigned Java applet. If this field says unknown, this means the Java applet probably did not run. If you see an IP address here, this means the unsigned Java applet ran.
+
+#### Internet Explorer will report the base version the user installed. As Internet Explorer gets updates--the reported version information does not change. Cobalt Strike uses the JScript.dll version to estimate Internet Explorer's patch level. Go to support.microsoft.com and search for JScript.dll's build number (the third number in the version string) to map it to an Internet Explorer update.
+
+#### A *64 next to an application means it's an x64 application.
+
