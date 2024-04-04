@@ -4,15 +4,15 @@
 
 ### When you open a profile, here is what you will see:
 
-# this is a comment
+[#] this is a comment
 set global_option "value";
 protocol-transaction {
 set local_option "value";
 client {
-# customize client indicators
+[#] customize client indicators
   }
 server {
-# customize server indicators
+[#] customize server indicators
   }
 }
 
