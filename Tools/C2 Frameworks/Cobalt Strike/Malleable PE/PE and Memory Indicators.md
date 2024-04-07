@@ -56,7 +56,7 @@ stringw "I am not Beacon";
 
 ### The module_x86 and module_x64 setting now supports the ability to specify the starting ordinal value to search for an exported function. The optional 0x##part is the starting ordinal value specified as an integer. If a library is set and Beacon does not overwrite itself into the memory space then it likely the library does not have an exported function with an ordinal value of 1 through 15. To resolve this determine a valid ordinal value and specify this value using the optional syntax, for example: set module_x64 "libtemp.dll+0x90"
 
-## In-memory evasion and obfuscation
+# In-memory evasion and obfuscation
 
 ### Use the stage block’s prepend command to defeat analysis that scans the first few bytes of a memory segment to look for signs of an injected DLL. If tool-specific strings are used to detect your agents, change them with the strrep command.
 
