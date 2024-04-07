@@ -21,7 +21,8 @@
 #### 1) host-name (  The host-name field is a fixed string that links the Host Profile to matching HTTP Hosts field on the HTTP/HTTPS listener definitions. The field is required and case sensitive. It does NOT support embedded dynamic syntax (“[a|b|c]”).
 
 #### 2) uri 
-( - Applies to profile.http-get.uri and profile.http-post.uri.
+
+ Applies to profile.http-get.uri and profile.http-post.uri.
 
 - Resolved URI Length:
 
@@ -34,10 +35,58 @@ o Post Max Length = 64
 o NOT ALLOWED: [/aaa|/bbb||]
 - Must start with “/“.
 
-- Must resolve to valid HTTP URI syntax.)
-
-
+- Must resolve to valid HTTP URI syntax.
 
 #### 3) parameter
 
+Applies to profile.http-get.uri and profile.http-post.uri.
+
+- Up to 10 parameters in a single Host Profile get/post definition.
+
+- Supports embedded dynamic data syntax in the name and value.
+
+- If/when the name resolves to a blank value, the parameter will be
+dropped.
+
+- Blank parameter values are supported.
+
+
 #### 4) header
+
+Applies to profile.http-get.uri and profile.http-post.uri.
+
+- Up to 10 headers in a single Host Profile get/post definition.
+
+- Supports embedded dynamic data syntax in the name and value.
+
+- If/when the name resolves to a blank value, the header will be
+dropped.
+
+- If/when the value resolves to a blank value, the header will be
+dropped.
+
+## Restrictions
+
+- Up to 8 host profiles used per listener/beacon
+
+- 1024 byte limit on space for all profiles used in a beacon (use small simple definitions if possible)
+
+- Maximum tokens in a dynamic field: 32
+
+## Host Profile Linting
+
+- The linting process DOES NOT include Host Profile settings in the default/variant profile
+sample data it generates. The process does not know which hosts will be assigned to
+which listeners and which listeners will be assigned to the default or various profile
+variants to generate the examples.
+
+- The linting process includes several checks for the defined host profiles.
+
+- The Host Profile get/post URI’s must resolve to unique URI’s to identify HTTP requests
+appropriately. The linting feature will test for possible URI collisions. Linting does not
+know which profile variants might use specific host profiles, so the linting process
+checks for duplicates in a larger scope (all variants) than may be actually required.
+
+-  Linting requires the process resolve every potential URI, and header/parameter name.
+Complex dynamic data can result in very large sets of results, which will impact
+performance and memory.
