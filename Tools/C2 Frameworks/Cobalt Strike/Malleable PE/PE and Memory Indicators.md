@@ -13,7 +13,7 @@ prepend "\x90\x90";
 strrep "ReflectiveLoader" "DoLegitStuff";
 }
 transform-x64 {
-# transform the x64 rDLL stage
+#comment transform the x64 rDLL stage
 }
 stringw "I am not Beacon";
 }
