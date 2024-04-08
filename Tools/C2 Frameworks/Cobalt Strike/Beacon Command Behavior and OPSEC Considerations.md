@@ -60,7 +60,7 @@
 
  - upload
 
-## House-keeping Commands
+# House-keeping Commands
 
 ### The following commands are built into Beacon and exist to configure Beacon or perform housekeeping actions. Some of these commands (e.g., clear, downloads, help, mode, note) do not generate a task for Beacon to execute.
 
@@ -97,3 +97,50 @@
  - socks stop
 
  - spawnto
+
+# Inline Execute (BOF)
+
+### The following commands are implemented as internal Beacon Object Files. A Beacon Object File is a compiled C program, written to a certain convention, that executes within a Beacon session. The capability is cleaned up after it finishes running.
+
+ - dllload
+
+ - elevate svc-exe
+
+ - elevate uac-token-duplication
+
+ - getsystem
+
+ - jump psexec
+
+ - jump psexec64
+
+ - jump psexec_psh
+
+ - kerberos_ccache_use
+
+ - kerberos_ticket_purge
+
+ - kerberos_ticket_use
+
+ - net domain
+
+ - reg query
+
+ - reg queryv
+
+ - remote-exec psexec
+
+ - remote-exec wmi
+
+ - runasadmin uac-cmstplua
+
+ - runasadmin uac-token-duplication
+
+ - timestomp
+
+### The network interface resolution within both the portscan and covertvpn dialogs uses a Beacon Object File as well.
+
+## OPSEC Advice
+
+### The memory for Beacon Object Files is controlled with settings from the Malleable C2’s process-inject block.
+
