@@ -35,3 +35,8 @@
  - 5) RtlCreateUserThread = Risky on XP-era targets; uses RWX shellcode for x86 -> x64 injection. (Both x86 -> x64 and vice-versa injectable)
   
  - 6) SetThreadContext =  Suspended processes (e.g., post-ex jobs) only. (x64 -> x86 injectable)
+
+### The CreateThread and CreateRemoteThread options have variants that spawn a suspended thread with the address of another function, update the suspended thread to execute the injected code, and resume that thread. Use [function]“module!function+0x##”to specify the start address to spoof. For remote processes, ntdll and kernel32 are the only recommended modules to pull from. The optional 0x##part is an offset added to the start address. These variants work x86 -> x86 and x64 -> x64 only.
+
+### The execute options you choose must cover a variety of corner cases. These corner cases include self injection, injection into suspended temporary processes, cross-session remote process injection, x86 -> x64 injection, x64 -> x86 injection, and injection with or without passing an argument. The c2lint tool will warn you about contexts that your execute block does not cover.
+
