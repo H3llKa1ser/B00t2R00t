@@ -69,3 +69,21 @@
  - For the net and &bnet command the ‘domain’ command will not use the hook.
 
  - The ‘(use a hash)’ note means select a credential that references a hash.
+
+## Process Injection Explicit
+
+### The PROCESS_INJECT_EXPLICIT hook is used to define the explicit process injection technique. The following beacon commands, aggressor script functions, and UI interfaces listed in the table below will call the hook and the user can implement their own technique or use the built-in technique.
+
+### Note the following:
+
+ - The [Process Browser] interface is accessed by [beacon] -> Explore -> Process List.
+There is also a multi version of this interface which is accessed by selecting multiple
+sessions and using the same UI menu. When in the Process Browser use the buttons to
+perform additional commands on the selected process.
+
+ - The chromedump, dcsync, hashdump, keylogger, logonpasswords, mimikatz, net,
+portscan, printscreen, pth, screenshot, screenwatch, ssh, and ssh-key commands
+also have a fork&run version. To use the explicit version requires the pid and architecture
+arguments.
+
+ -  For the net and &bnet command the ‘domain’ command will not use the hook
