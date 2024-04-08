@@ -1,0 +1,30 @@
+post-ex {
+# control the temporary process we spawn to
+set spawnto_x86 "%windir%\\syswow64\\rundll32.exe";
+set spawnto_x64 "%windir%\\sysnative\\rundll32.exe";
+# change the permissions and content of our post-ex DLLs
+set obfuscate "true";
+# change our post-ex output named pipe names...
+set pipename "evil_####, stuff\\not_##_ev#l";
+# pass key function pointers from Beacon to its child jobs
+set smartinject "true";
+# disable AMSI in powerpick, execute-assembly, and psinject
+set amsi_disable "true";
+# cleanup the post-ex UDRL memory when the post-ex DLL is
+loaded
+set cleanup "true";
+transform-x64 {
+# replace a string in the port scanner dll
+strrepex "PortScanner" "Scanner module is complete"
+"Scan is complete";
+# replace a string in all post exploitation dlls
+strrep "is alive." "is up.";
+}
+transform-x86 {
+# replace a string in the port scanner dll
+strrepex "PortScanner" "Scanner module is complete"
+"Scan is complete";
+# replace a string in all post exploitation dlls
+strrep "is alive." "is up.";
+}
+}
