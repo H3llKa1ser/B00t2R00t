@@ -65,3 +65,22 @@
 #### 15) pe_stomp = Set a string to null characters. Start at a specified location and sets all characters to null until a null string terminator is reached.
 
 #### 16) pe_update_checksum = Update the checksum in the Beacon DLL Content.
+
+# Using User Defined Reflective DLL Loaders
+
+## Create/Compile your Reflective Loaders
+
+### The User Defined Reflective Loader (UDRL) Kit is the source code for the UDRL example. Go to Help -> Arsenal and download the UDRL Kit (your license key is required).
+
+### The following is the Cobalt Strike process for prepping beacons:
+
+ - The BEACON_RDLL_SIZE hook is called when preparing beacons.
+
+ - - This gives the user a chance to indicate that more than 5 KB space will be required for their reflective loader.
+ 
+ - - Users can use beacons with space reserved for a reflective loader up to 100 KB
+ 
+ - - When overriding available reflective loader space in the beacons, the beacons will be much larger. In fact, they will be too large for standard artifacts provided by Cobalt Strike. Users will need to update their process to use customized artifacts with larger reserved space for the larger beacons.
+
+ - - 
+
