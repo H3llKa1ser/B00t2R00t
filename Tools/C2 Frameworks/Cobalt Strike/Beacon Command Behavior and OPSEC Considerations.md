@@ -59,3 +59,41 @@
  - unlink
 
  - upload
+
+## House-keeping Commands
+
+### The following commands are built into Beacon and exist to configure Beacon or perform housekeeping actions. Some of these commands (e.g., clear, downloads, help, mode, note) do not generate a task for Beacon to execute.
+
+ - argue
+
+ - blockdlls
+
+ - cancel
+
+ - checkin
+
+ - clear
+
+ - downloads
+
+ - help
+
+ - jobs
+
+ - mode dns
+
+ - mode dns-txt
+
+ - mode dns6
+
+ - note
+
+ - powershell-import
+
+ - ppid
+
+ - sleep
+
+ - socks stop
+
+ - spawnto
