@@ -76,11 +76,13 @@
 
  - The BEACON_RDLL_SIZE hook is called when preparing beacons.
 
-  -- This gives the user a chance to indicate that more than 5 KB space will be required for their reflective loader.
+  - - This gives the user a chance to indicate that more than 5 KB space will be required for their reflective loader.
  
-  -- Users can use beacons with space reserved for a reflective loader up to 100 KB
+  - - Users can use beacons with space reserved for a reflective loader up to 100 KB
  
-  -- When overriding available reflective loader space in the beacons, the beacons will be much larger. In fact, they will be too large for standard artifacts provided by Cobalt Strike. Users will need to update their process to use customized artifacts with larger reserved space for the larger beacons.
+  - - When overriding available reflective loader space in the beacons, the beacons will be much larger. In fact, they will be too large for standard artifacts provided by Cobalt Strike. Users will need to update their process to use customized artifacts with larger reserved space for the larger beacons.
 
-  - 
+  - - This can be used to remove the reflective loader space from the Beacon DLL.
+
+ - Beacons are patched with required settings as payload data
 
