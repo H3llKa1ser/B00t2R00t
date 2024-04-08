@@ -50,6 +50,14 @@
 
 ### Since you are implementing your own injection technique, the process-inject settings in your Malleable C2 profile will not be used unless your BOF calls the Beacon API function BeaconInjectProcess or BeaconInjectTemporaryProcess. These functions implement the default injection and most likely will not be used unless it is to implement a fallback to the default technique.
 
+## Beacon Command -> Aggressor Script Function
+
+#### 1) shell --> &bshell
+
+#### 2) execute-assembly --> &bexecute-assembly
+
+#### 3) &bdllspawn
+
 ## Process Injection Spawn
 
 ### The PROCESS_INJECT_SPAWN hook is used to define the fork&run process injection technique. The following beacon commands, aggressor script functions, and UI interfaces listed in the table below will call the hook and the user can implement their own technique or use the built-in technique.
