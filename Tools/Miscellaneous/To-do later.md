@@ -65,3 +65,5 @@
 # https://www.pentestpartners.com/security-blog/living-off-the-land-with-native-ssh-and-split-tunnelling/
 
 # https://github.com/evilashz/CheeseOunce
+
+# https://github.com/Kl0ibi/esp32_hackingtool
