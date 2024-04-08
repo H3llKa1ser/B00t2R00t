@@ -12,7 +12,7 @@
 
 #### 5) hashdump --> &bhashdump --> [beacon] -> Access -> Dump Hashes
 
-#### 6) keylogger --> &bkeylogger
+#### 6) keylogger --> &bkeylogger --> [Process Browser] -> Log Keystrokes
 
 #### 7) logonpasswords --> &blogonpasswords --> [beacon] -> Access -> Run Mimikatz
 
@@ -36,12 +36,22 @@
 
 #### 17) [target] -> Scan (UI)
 
-#### 18) screenshot --> &bscreenshot --> [beacon] -> Explore -> Screenshot
+#### 18) screenshot --> &bscreenshot --> [beacon] -> Explore -> Screenshot ([Process Browser]) -> Screenshot (Yes)
 
-#### 19) screenwatch --> &bscreenwatch
+#### 19) screenwatch --> &bscreenwatch --> [Process Browser] -> Screenshot (No)
 
 #### 20) ssh --> &bshh --> [target] -> jump -> ssh
 
 #### 21) ssh-key --> &bssh_key --> [target -> jump -> ssh-key
 
 #### 22) [target] -> jump -> [exploit] (use a hash)
+
+#### 23) browserpivot --> &bbrowserpivot --> [beacon] -> Explore -> Browser Pivot
+
+#### 24) dllinject --> &bdllinject
+
+#### 25) inject --> &binject --> [Process Browser] -> Inject
+
+#### 26) shinject --> &bshinject
+
+#### 27) psinject --> &bpsinject
