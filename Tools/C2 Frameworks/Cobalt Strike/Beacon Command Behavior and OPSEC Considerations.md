@@ -280,3 +280,21 @@
 
 ### Use the spawnto command to set the temporary process to use. The ppid command sets a parent process for most of these commands. The blockdlls command will block userland hooks from some security products. Malleable C2's process-inject block gives a lot of control over the process injection process. Malleable C2's post-ex block provides options to adjust Beacon's in-memory evasion options.
 
+# Service Creation
+
+### The following internal Beacon commands create a service (either on the current host or a remote target) to run a command. These commands use Win32 APIs to create and manipulate services.
+
+ - elevate svc-exe
+
+ - jump psexec
+
+ - jump psexec64
+
+ - jump psexec_psh
+
+ - remote-exec psexec
+
+## OPSEC Advice
+
+### These commands use a service name that consists of random letters and numbers by default. The Aggressor Script PSEXEC_SERVICE hook allows you to change this behavior. Each of these commands (excepting jump psexec_psh and remote-exec psexec) generate a service EXE and upload it to the target. Cobalt Strike's built-in service EXE spawns rundll32.exe [with no arguments], injects a payload into it, and exits. This is done to allow immediate cleanup of the executable. Use the Artifact Kit to change the content and behaviors of the generated EXE.
+
