@@ -34,4 +34,4 @@
 
  - 5) RtlCreateUserThread = Risky on XP-era targets; uses RWX shellcode for x86 -> x64 injection. (Both x86 -> x64 and vice-versa injectable)
   
- - 6 SetThreadContext =  Suspended processes (e.g., post-ex jobs) only. (x64 -> x86 injectable)
+ - 6) SetThreadContext =  Suspended processes (e.g., post-ex jobs) only. (x64 -> x86 injectable)
