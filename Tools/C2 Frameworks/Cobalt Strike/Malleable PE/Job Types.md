@@ -54,4 +54,6 @@
 
 #### 26) shinject --> &bshinject
 
+## NOTE: Some approaches are used differently (example: Process injection spawn vs Process injection explicit) See Process Injection for more details
+
 #### 27) psinject --> &bpsinject
