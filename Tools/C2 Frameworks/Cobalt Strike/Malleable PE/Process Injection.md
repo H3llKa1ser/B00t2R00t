@@ -40,3 +40,24 @@
 
 ### The execute options you choose must cover a variety of corner cases. These corner cases include self injection, injection into suspended temporary processes, cross-session remote process injection, x86 -> x64 injection, x64 -> x86 injection, and injection with or without passing an argument. The c2lint tool will warn you about contexts that your execute block does not cover.
 
+# Controlling Process Injection
+
+### Cobalt Strike 4.5 added support to allow users to define their own process injection technique instead of using the built-in techniques. This is done through the PROCESS_INJECT_ SPAWN and PROCESS_INJECT_EXPLICIT hook functions. Cobalt Strike will call one of these hook functions when executing post exploitation commands. See the section on the hook for a table of supported commands.
+
+### The two hooks will cover most of the post exploitation commands. However, there are some exceptions which will not use these hooks and will continue to use the built-in technique.
+
+### To implement your own injection technique, you will be required to supply a Beacon Object File (BOF) containing your executable code for x86 and/or x64 architectures and an Aggressor Script file containing the hook function. See the Process Injection Hook Examples in the Community Kit.
+
+### Since you are implementing your own injection technique, the process-inject settings in your Malleable C2 profile will not be used unless your BOF calls the Beacon API function BeaconInjectProcess or BeaconInjectTemporaryProcess. These functions implement the default injection and most likely will not be used unless it is to implement a fallback to the default technique.
+
+## Process Injection Spawn
+
+### The PROCESS_INJECT_SPAWN hook is used to define the fork&run process injection technique. The following beacon commands, aggressor script functions, and UI interfaces listed in the table below will call the hook and the user can implement their own technique or use the built-in technique.
+
+### Note the following:
+
+ - The elevate, runasadmin, &belevate, &brunasadmin and [beacon] -> Access -> Elevate commands will only use the PROCESS_INJECT_SPAWN hook when the specified exploit uses one of the listed aggressor script functions in the table, for example &bpowerpick.
+
+ - For the net and &bnet command the ‘domain’ command will not use the hook.
+
+ - The ‘(use a hash)’ note means select a credential that references a hash.
