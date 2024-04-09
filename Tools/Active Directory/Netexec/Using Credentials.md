@@ -17,3 +17,15 @@
 ### By specifying a credential ID (or multiple credential IDs) with the -id flag nxc will automatically pull that credential from the back-end database and use it to authenticate (saves a lot of typing):
 
 #### netexec <protocol> <target(s)> -id <cred ID(s)>
+
+# Multi-Domain Environment
+
+### You can use nxc with mulitple domain environment
+
+#### netexec <protocol> <target(s)> -u FILE -p password
+
+### Where FILE is a file with usernames in this format
+
+#### DOMAIN1\user
+
+#### DOMAIN2\user
