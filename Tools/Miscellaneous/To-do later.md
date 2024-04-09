@@ -73,3 +73,5 @@
 # https://dirkjanm.io/krbrelayx-unconstrained-delegation-abuse-toolkit/
 
 # https://github.com/zer1t0/certi
+
+# https://github.com/quentinhardy/msdat
