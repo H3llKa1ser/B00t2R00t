@@ -17,3 +17,6 @@
 #### 8) vnc
 
 #### 9) mssql
+
+## Note that not all protocols support the same functionality, be sure to check each protocol's options
+
