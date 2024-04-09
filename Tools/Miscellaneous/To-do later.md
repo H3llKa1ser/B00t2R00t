@@ -67,3 +67,5 @@
 # https://github.com/evilashz/CheeseOunce
 
 # https://github.com/Kl0ibi/esp32_hackingtool
+
+# https://troopers.de/downloads/troopers19/TROOPERS19_AD_Fun_With_LDAP.pdf
