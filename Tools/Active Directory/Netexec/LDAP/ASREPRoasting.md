@@ -30,5 +30,5 @@
 
 ### To crack hashes on the file output.txt with hashcat use the following options:
 
-#### hashcat -m18200 output.txt wordlist
+#### hashcat -m 18200 output.txt wordlist
 
