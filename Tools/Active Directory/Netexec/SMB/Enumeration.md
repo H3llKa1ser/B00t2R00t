@@ -69,3 +69,53 @@ user:[zoro] rid:[0x46f]
 ### If you want to filter only by readable or writable share
 
 #### #~ nxc smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE' --shares --filter-shares READ WRITE
+
+# Disk Enumeration
+
+### Enumerate disks on the remote target
+
+#### nxc smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE' --disks
+
+# Logged on Users Enumeration
+
+### Enumerate logged users on the remote target
+
+#### nxc smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE' --loggedon-users
+
+# Domain Users Enumeration
+
+### Enumerate domain users on the remote target
+
+#### nxc smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE' --users
+
+# RID Bruteforce
+
+### Enumerate users by bruteforcing the RID on the remote target
+
+#### nxc smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE' --rid-brute
+
+# Domain Groups Enumeration
+
+### Enumerate domain groups on the remote target
+
+#### nxc smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE' --groups
+
+# Local Groups Enumeration
+
+### Enumerate local groups on the remote target
+
+#### nxc smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE' --local-group
+
+# Domain Password Policy Enumeration
+
+### Using the option --pass-pol you can get the password policy of the domain
+
+#### nxc smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE' --pass-pol
+
+# Anti-Virus & EDR Enumeration
+
+### Enumerate antivirus installed using NetExec
+
+## You don't need to be a privileged user to do this action
+
+#### nxc smb <ip> -u user -p pass -M enum_av
