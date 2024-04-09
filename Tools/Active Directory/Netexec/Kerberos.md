@@ -4,21 +4,29 @@
 
 ## when using the option -k or--use-kcache, you need to specify the same hostname (FQDN) as the one from the kerberos ticket
 
+---------------------------------------------------------------------
+
 #### $ sudo nxc smb zoro.gold.local -k -u bonclay -p Ocotober2022
 
 SMB         zoro.gold.local 445    ZORO             [*] Windows 10.0 Build 14393 (name:ZORO) (domain:gold.local) (signing:False) (SMBv1:False)
 
 SMB         zoro.gold.local 445    ZORO             [+] gold.local\bonclay
 
+---------------------------------------------------------------------
+
 ### Or, using --use-kcache
 
 #### $ export KRB5CCNAME=/home/bonclay/impacket/administrator.ccache 
+
+---------------------------------------------------------------------
 
 #### $ nxc smb zoro.gold.local --use-kcache
 
 SMB         zoro.gold.local 445    ZORO             [*] Windows 10.0 Build 14393 (name:ZORO) (domain:gold.local) (signing:False) (SMBv1:False)
 
 SMB         zoro.gold.local 445    ZORO             [+] gold.local\administrator (Pwn3d!)
+
+---------------------------------------------------------------------
 
 #### $ sudo nxc smb zoro.gold.local --use-kcache -x whoami
 
@@ -30,6 +38,8 @@ SMB         zoro.gold.local 445    ZORO             [+] Executed command
 
 SMB         zoro.gold.local 445    ZORO             gold\administrator
 
+----------------------------------------------------------------------
+
 #### $ export KRB5CCNAME=/home/bonclay/impacket/bonclay.ccache
 
 #### $ sudo nxc smb zoro.gold.local --use-kcache -x whoami
@@ -37,6 +47,8 @@ SMB         zoro.gold.local 445    ZORO             gold\administrator
 SMB         zoro.gold.local 445    ZORO             [*] Windows 10.0 Build 14393 (name:ZORO) (domain:gold.local) (signing:False) (SMBv1:False)
 
 SMB         zoro.gold.local 445    ZORO             [+] gold.local\bonclay
+
+----------------------------------------------------------------------
 
 ### Example with LDAP and option --kdcHost
 
