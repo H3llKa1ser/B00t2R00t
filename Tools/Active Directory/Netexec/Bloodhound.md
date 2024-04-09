@@ -22,4 +22,4 @@ bh_pass = pass
 
 #### nxc ldap <ip> -u user -p pass --bloodhound -ns <ns-ip> --collection All 
 
-## Note: If it doesn't work, use the fakedns tool
+## Note: If it doesn't work, use the fakedns tool then try again
