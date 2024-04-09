@@ -71,3 +71,5 @@
 # https://troopers.de/downloads/troopers19/TROOPERS19_AD_Fun_With_LDAP.pdf
 
 # https://dirkjanm.io/krbrelayx-unconstrained-delegation-abuse-toolkit/
+
+# https://github.com/zer1t0/certi
