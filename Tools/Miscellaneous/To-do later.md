@@ -75,3 +75,5 @@
 # https://github.com/zer1t0/certi
 
 # https://github.com/quentinhardy/msdat
+
+# https://github.com/tedchen0001/OSCP-Notes
