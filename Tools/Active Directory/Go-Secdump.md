@@ -4,7 +4,7 @@
 
 ## Dump NT Hashes from SAM, LSA Secrets and Domain Cached Credentials remotely
 
-## Requirements: Read permissions on SAM and SECURITY hives (usually only NT AUTHORITY\SYSTEM has these permissions) and local group administrators have WriteDACL on the registry hives.
+## Requirements: Read permissions on SAM and SECURITY hives (usually only NT AUTHORITY\SYSTEM has these permissions) and/or local group administrators have WriteDACL on the registry hives.
 
 ### Usage:
 
