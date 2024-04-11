@@ -16,4 +16,8 @@
 
 #### dig @8.8.8.8 DOMAIN_NAME.COM ns (Searches for all DNS servers for this domain via google dns)
 
+#### dig @8.8.8.8 DOMAIN_NAME.COM mx (Searches for all SMTP servers for this domain via google dns)
+
+#### #### dig @8.8.8.8 DOMAIN_NAME.COM (Similar to a whois search)
+
 #### Other tools: nslookup, whois
