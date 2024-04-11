@@ -14,4 +14,6 @@
 
 #### dig -x IP +short = Reverse DNS lookup
 
+#### dig @8.8.8.8 DOMAIN_NAME.COM ns (Searches for all DNS servers for this domain via google dns)
+
 #### Other tools: nslookup, whois
