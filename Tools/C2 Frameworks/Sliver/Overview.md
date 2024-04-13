@@ -1,0 +1,3 @@
+# Sliver Command and Control
+
+### Sliver is a powerful command and control (C2) framework designed to provide advanced capabilities for covertly managing and controlling remote systems. With Sliver, security professionals, red teams, and penetration testers can easily establish a secure and reliable communication channel over Mutual TLS, HTTP(S), DNS, or Wireguard with target machines. Enabling them to execute commands, gather information, and perform various post-exploitation activities. The framework offers a user-friendly console interface, extensive functionality, and support for multiple operating systems as well as multiple CPU architectures, making it an indispensable tool for conducting comprehensive offensive security operations.
