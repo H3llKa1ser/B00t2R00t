@@ -77,3 +77,5 @@
 # https://github.com/quentinhardy/msdat
 
 # https://github.com/tedchen0001/OSCP-Notes
+
+# https://github.com/Cipher7/ChaiLdr
