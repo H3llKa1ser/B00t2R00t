@@ -6,4 +6,4 @@
 
 ### Usage:
 
-#### !) cowpatty -r HANDSHAKE.pcap -f WORDLIST.txt -s SSID
+#### !) cowpatty -r HANDSHAKE.cap -f WORDLIST.txt -s SSID
