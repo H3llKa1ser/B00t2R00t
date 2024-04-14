@@ -80,3 +80,27 @@
 ### Returns all GPOs in a domain that modify local group memberships through Restricted 
 
  - Get-DomainGPOLocalGroup | Select-Object GPODisplayName, GroupName
+
+## 9) Enumerate Shares
+
+### Enumerate Domain Shares
+
+ - Find-DomainShare
+
+### Enumerate Domain Shares the current user has access
+
+ - Find-DomainShare -CheckShareAccess
+
+## 10) Enumerate Group Policies
+
+ - Get-NetGPO
+
+### Shows active Policy on specified machine
+
+ - Get-NetGPO -ComputerName NAME_OF_THE_PC
+
+ - Get-NetGPOGroup
+
+### Get users that are part of a Machine's local Admin group
+
+ - Find-GPOComputerAdmin -ComputerName COMPUTER_NAME
