@@ -59,5 +59,24 @@
 
  - Find-DomainUserLocation -Domain <DomainName> | Select-Object UserName, SessionFromName
 
+## 7) Enumerate Domain Computers:
 
+ - Get-NetComputer -FullData
 
+ - Get-DomainGroup
+
+### Enumerate Live machines
+
+ - Get-NetComputer -Ping
+
+## 8) Enumerate Groups and Group Members:
+
+ - Get-NetGroupMember -GroupName "GROUP_NAME" -Domain DOMAIN_NAME
+
+### Enumerate the members of a specified group of the domain
+
+ - Get-DomainGroup -Identity <GroupName> | Select-Object -ExpandProperty Member
+
+### #Returns all GPOs in a domain that modify local group memberships through Restricted 
+
+ - Get-DomainGPOLocalGroup | Select-Object GPODisplayName, GroupName
