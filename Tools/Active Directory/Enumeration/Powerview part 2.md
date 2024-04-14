@@ -2,20 +2,32 @@
 
 ## Usage:
 
-#### 1) Get Current Domain: Get-NetDomain
+#### 1) Get Current Domain: 
 
+ - Get-NetDomain
 
-#### 2) Enum Other Domains: Get-NetDomain -Domain <DomainName>
+#### 2) Enum Other Domains: 
 
-#### 3) Get Domain SID: Get-DomainSID
+ - Get-NetDomain -Domain <DomainName>
 
-#### 4) Get Domain Policy: Get-DomainPolicy
+#### 3) Get Domain SID: 
+
+ - Get-DomainSID
+
+#### 4) Get Domain Policy: 
+
+ - Get-DomainPolicy
 
 ###  Will show us the policy configurations of the Domain about system access or kerberos
 
-#### (Get-DomainPolicy)."system access"
+ - (Get-DomainPolicy)."system access"
 
-#### (Get-DomainPolicy)."kerberos policy"
+ - (Get-DomainPolicy)."kerberos policy"
 
-#### 5) 
+#### 5) Get Domain Controlers:
+
+ - Get-NetDomainController
+
+ - Get-NetDomainController -Domain <DomainName>
+
 
