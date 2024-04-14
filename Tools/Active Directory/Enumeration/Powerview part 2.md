@@ -77,6 +77,6 @@
 
  - Get-DomainGroup -Identity <GroupName> | Select-Object -ExpandProperty Member
 
-### #Returns all GPOs in a domain that modify local group memberships through Restricted 
+### Returns all GPOs in a domain that modify local group memberships through Restricted 
 
  - Get-DomainGPOLocalGroup | Select-Object GPODisplayName, GroupName
