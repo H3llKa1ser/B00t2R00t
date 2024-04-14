@@ -1,20 +1,20 @@
 # Powerview cont.
 
-## Usage:
+### Usage:
 
-#### 1) Get Current Domain: 
+## 1) Get Current Domain: 
 
  - Get-NetDomain
 
-#### 2) Enum Other Domains: 
+## 2) Enum Other Domains: 
 
  - Get-NetDomain -Domain DOMAIN_NAME
 
-#### 3) Get Domain SID: 
+## 3) Get Domain SID: 
 
  - Get-DomainSID
 
-#### 4) Get Domain Policy: 
+## 4) Get Domain Policy: 
 
  - Get-DomainPolicy
 
@@ -24,13 +24,13 @@
 
  - (Get-DomainPolicy)."kerberos policy"
 
-#### 5) Get Domain Controlers:
+## 5) Get Domain Controlers:
 
  - Get-NetDomainController
 
  - Get-NetDomainController -Domain DOMAIN_NAME
 
-#### 6) Enumerate Domain Users:
+## 6) Enumerate Domain Users:
 
  - Get-NetUser
 
