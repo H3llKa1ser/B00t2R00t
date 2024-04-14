@@ -104,3 +104,73 @@
 ### Get users that are part of a Machine's local Admin group
 
  - Find-GPOComputerAdmin -ComputerName COMPUTER_NAME
+
+## 11) Enumerate OUs
+
+ - Get-NetOU -FullData
+
+ - Get-NetGPO -GPOname THE_GUID_OF_THE_GPO
+
+## 12) Enumerate ACLs
+
+### Returns the ACLs associated with the specified account
+
+ - Get-ObjectAcl -SamAccountName ACCOUNT_NAME -ResolveGUIDs
+
+ - Get-ObjectAcl -ADSprefix 'CN=Administrator, CN=Users' -Verbose
+
+### Search for interesting ACEs
+
+ - Invoke-ACLScanner -ResolveGUIDs
+
+### Check the ACLs associated with a specified path (e.g smb share)
+
+ - Get-PathAcl -Path "\\Path\Of\A\Share"
+
+## 13) Enumerate Domain Trust
+
+ - Get-NetDomainTrust
+
+ - Get-NetDomainTrust -Domain DOMAIN_NAME
+
+## 14) Enumerate Forest Trust
+
+ - Get-NetForestDomain
+
+ - Get-NetForestDomain Forest FOREST_NAME
+
+### Domains of Forest Enumeration
+
+ - Get-NetForestDomain
+
+ - Get-NetForestDomain Forest FOREST_NAME
+
+### Map the Trust of the Forest
+
+ - Get-NetForestTrust
+
+ - Get-NetDomainTrust -Forest FOREST_NAME
+
+## 15) User Hunting
+
+### Finds all machines on the current domain where the current user has local admin access
+
+ - Find-LocalAdminAccess -Verbose
+
+### Find local admins on all machines of the domain:
+
+ - Invoke-EnumerateLocalAdmin -Verbose
+
+### Find computers were a Domain Admin OR a specified user has a session
+
+ - Invoke-UserHunter
+
+ - Invoke-UserHunter -GroupName "RDPUsers"
+
+ - Invoke-UserHunter -Stealth
+
+### Confirming admin access:
+
+ - Invoke-UserHunter -CheckAccess
+
+## !!! Priv Esc to Domain Admin with User Hunting: I have local admin access on a machine -> A Domain Admin has a session on that machine - > I steal his token and impersonate him -> Profit!
