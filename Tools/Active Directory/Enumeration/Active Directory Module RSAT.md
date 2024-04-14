@@ -29,3 +29,29 @@
 ### Get a specific "string" on a user's attribute
 
  - Get-ADUser -Filter 'Description -like "*wtver*"' -Properties Description | select
+
+## 6) Enumerate Domain Computers
+
+ - Get-ADComputer -Filter * -Properties *
+
+ - Get-ADGroup -Filter *
+
+## 7) Enumerate Domain Trust
+
+ - Get-ADTrust -Filter *
+
+ - Get-ADTrust -Identity DOMAIN_NAME
+
+## 8) Enumerate Forest Trust
+
+ - Get-ADForest
+
+ - Get-ADForest -Identity FOREST_NAME
+
+### Domains of forest enumeration
+
+ - (Get-ADForest).Domains
+
+## 9) Enumerate Local AppLocker Effective Policy
+
+ - Get-AppLockerPolicy -Effective | select -ExpandProperty RuleCollections
