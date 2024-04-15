@@ -60,3 +60,37 @@
 
 - Used for domain fronting.
 
+# DNS C2 Advanced Options
+
+#### 1) timeout 
+
+- Network timeout value, parsed by time.ParseDuration.
+
+#### 2) retry-wait 
+
+- Upon query failure, wait this amount of time before retrying.
+
+#### 3) retry-count 
+
+- Upon query failure, retry this many times before failing.
+
+#### 4) workers-per-resolver 
+
+- Number of worker goroutines per functional DNS resolver.
+
+#### 5) max-errors 
+
+- Max number of query errors before failing (integer parsed by strconv.Atoi).
+
+#### 6) force-base32 
+
+- Always use Base 32 encoding.
+
+#### 7) force-resolv-conf 
+
+- Force the use of a provided resolv.conf. Note that you'll need to URL encode the newlines/etc of the file contents into the parameter.
+
+#### 8) resolvers 
+
+- Force the use of specific DNS resolvers. You can supply more than one by separating them with +, i.e. ...?resolvers=1.1.1.1+9.9.9.9
+
