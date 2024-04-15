@@ -66,4 +66,16 @@
 
 ### To load an alias in Sliver, use the alias load command:
 
+ - alias load /home/lesnuages/tools/misc/sliver-extensions/GhostPack/Rubeus
 
+# Writing Aliases
+
+### To write a new alias, one must either create a shared library or a .NET assembly, then write a manifest file compliant with the description above.
+
+### As the alias support relies on Sliver side loading capabilities, please make sure to read the Using 3rd party tools section, to understand how shared libraries are loaded on all platforms.
+
+# Extensions
+
+### Extensions are currently only supported when using Windows implants, though we're actively working on MacOS/Linux support.
+
+### Extensions are similar in structure to an alias, but internally work differently. An extension is an artifact of native code that is reflectively loaded by the implant and passed certain callbacks. These callbacks allow the extension to return data to the C2 server. Extensions may also have dependencies (other extensions), which Sliver will load prior to the extension; circular dependencies are not allowed. For example, all BOF extensions (.o files) rely on the COFF Loader extension (a .dll).
