@@ -79,3 +79,38 @@
 ### To workaround this problem many DNS C2 implementations instead use hexadecimal encoding, which is not case-sensitive and uses only characters (0-9, A-F), which are allowed in a QNAME, to transfer data back and forth from the server. The issue with this is that hexadecimal is a very inefficient encoding, resulting in a x2 size (takes two bytes to encode one byte), and since we want to minimize the number of queries we need to send this isn't a great option. Instead we could use Base32, which is also case-insensitive but uses more characters to display bytes and thus is more efficient at around x1.6 size. Even better yet would be Base58, which is case sensitive like Base64 but only uses chars allowed in a QNAME, at a little over x1.33 message size, but we cannot always rely on being able to use Base58 if we encounter a rude resolver.
 
 ### Sliver's solution to this problem is to first try to detect if Base58 can be used to reliably encode data, and if a problem is detected then fallback to Base32. I call this process "fingerprinting" the resolver.
+
+# Fingerprinting Rude Resolvers
+
+### The most common DNS query is an A record asking for the IPv4 address associated with some domain name. An IPv4 address is a 4-byte value typically displayed as four octets in Base10 e.g. 192.168.1.1, but to DNS this is just an arbitrary 4-byte (32-bit) value.
+
+### In order to detect if a resolver corrupted any bytes in our message the authoritative name server encodes the CRC32 of the data it received in the IP address of any A record that it receives. The implant first generates random bytes and then for each resolver on a host we try to resolve these random bytes and check to see if the CRC32 calculated by the server matches the CRC32 of the data we sent. If any mismatches occur Base32 is used instead of Base58.
+
+# Bytes Per Query
+
+### Since the encoder used to send data is selected at runtime, as described above, the number of bytes that can be encoded into a query depends on both the length of the parent domain and the encoder selected. Therefore given some message of n bytes we must dynamically determine how many queries are needed to send the message.
+
+### First we calculate how many characters of the total domain can be used to encode data, which depends on the length of the parent domain. A maximum of 254 characters per domain always applies regardless of the number of subdomains. So for example we have more space leftover when using 1.abc.com (254 - 9 = 245) vs. a.thisisalongdomainname.com (254 - 27 = 227), however we must also account for . every 63 characters, and the number of these may differ depending on the space leftover after the parent domain. The number of characters that can be used to represent data I call the "subdata space" (i.e., not counting the parent domain and .'s) and is calculated as:
+
+ - 254 - len(parent) - (1 + (254-len(parent))/64)
+
+### This "subdata space" is the maximum number of characters our encoder (Base32 or Base58) can output per message. So the bytes per message are essentially n bytes encoded length must be equal to or less than the subdata space. Its important to note that adding a single byte input to either Base32 or Base58 may result in +2 output characters due to the inefficiencies in the encoders.
+
+# Parallel Send/Recv
+
+### In addition to optimizing our use of encoders, we can also increase performance if we can send queries with encoded data out of order, or that is to say in parallel, since sending in parallel will most assuredly result in messages arriving at the server out of order.
+
+### To account for this, Sliver wraps the message of n bytes in a protobuf message that contains some metadata:
+
+message DNSMessage {
+    DNSMessageType Type = 1; // An enum type
+    uint32 ID = 2; // 8 bit message id + 24 bit dns session ID
+    uint32 Start = 3; // These bytes of `Data` start at
+    uint32 Stop = 4; // These bytes of `Data` stop at
+    uint32 Size = 5; // Total message size (e.g. last message Stop = Size)
+    bytes Data = 6; // Actual data
+}
+
+### This does result in some overhead, and we must account for this as part of the bytes-per-query math.
+
+### Since each message contains ordering and size data the server can now receive any part of the message in any order and sort/reconstruct the original message once all the pieces have been received.
