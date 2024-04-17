@@ -16,11 +16,13 @@
 
 #### Upon login into an SMB session:
 
-#### 3) RECURSE ON
+#### 3) mask ""
 
-#### 4) PROMPT OFF
+#### 4) RECURSE ON
 
-#### 5) mget * (Download ALL files/directories within the share)
+#### 5) PROMPT OFF
+
+#### 6) mget * (Download ALL files/directories within the share)
 
 ### TIP: If SMB accepts anonymous sessions, we can use the username "anonymous" with no password, or just login with no username/password (Null session)
 
