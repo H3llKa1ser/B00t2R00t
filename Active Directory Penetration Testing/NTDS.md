@@ -62,3 +62,15 @@
 
 #### 3) copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy1\Windows\System32\config\SYSTEM C:\ShadowCopy
 
+# NTDS Reversible Encryption
+
+### UF_ENCRYPTED_TEXT_PASSWORD_ALLOWED (0x00000080), if this bit is set, the password for this user stored encrypted in the directory - but in a reversible form.
+
+### The key used to both encrypt and decrypt is the SYSKEY, which is stored in the registry and can be extracted by a domain admin. This means the hashes can be trivially reversed to the cleartext values, hence the term “reversible encryption”.
+
+#### 1) List users with "Store passwords using reversible encryption" enabled
+
+ - Get-ADUser -Filter 'userAccountControl -band 128' -Properties userAccountControl
+
+### The password retrieval is already handled by SecureAuthCorp/secretsdump.py and mimikatz, it will be displayed as CLEARTEXT.
+
