@@ -1,5 +1,7 @@
 # Simple Network Management Protocol (SNMP)
 
+## Resource: https://book.hacktricks.xyz/network-services-pentesting/pentesting-snmp
+
 ### SNMP - Simple Network Management Protocol is a protocol used to monitor different devices in the network (like routers, switches, printers, IoTs...).
 
 ### Port: 161/162 UDP, 10161/10162 UDP if TLS is used
@@ -31,3 +33,53 @@
 ### If you try to write an object a  noSuchName or readOnly error is received**.**
 
 ### In versions 1 and 2/2c if you to use a bad community string the server wont respond. So, if it responds, a valid community strings was used.
+
+## Enumeration
+
+### It is recommanded to install the following to see whats does mean each OID gathered from the device:
+
+ - apt-get install snmp-mibs-downloader
+
+ - download-mibs
+
+# Finally comment the line saying "mibs :" in /etc/snmp/snmp.conf
+
+ - sudo vi /etc/snmp/snmp.conf
+
+### If you know a valid community string, you can access the data using SNMPWalk or SNMP-Check:
+
+ - snmpbulkwalk -c [COMM_STRING] -v [VERSION] [IP] . #Don't forget the final dot
+
+ - snmpbulkwalk -c public -v2c 10.10.11.136 .
+
+ - snmpwalk -v [VERSION_SNMP] -c [COMM_STRING] [DIR_IP]
+
+ - snmpwalk -v [VERSION_SNMP] -c [COMM_STRING] [DIR_IP] 1.3.6.1.2.1.4.34.1.3 #Get IPv6, needed dec2hex
+
+ - snmpwalk -v [VERSION_SNMP] -c [COMM_STRING] [DIR_IP] NET-SNMP-EXTEND-MIB::nsExtendObjects #get extended
+
+ - snmpwalk -v [VERSION_SNMP] -c [COMM_STRING] [DIR_IP] .1 #Enum all
+
+ - snmp-check [DIR_IP] -p [PORT] -c [COMM_STRING]
+
+ - nmap --script "snmp* and not snmp-brute" <target>
+
+ - braa <community string>@<IP>:.1.3.6.* #Bruteforce specific OID
+
+### Thanks to extended queries (download-mibs), it is possible to enumerate even more about the system with the following command :
+
+ - snmpwalk -v X -c public <IP> NET-SNMP-EXTEND-MIB::nsExtendOutputFull
+
+### SNMP has a lot of information about the host and things that you may find interesting are:
+
+ - Network interfaces (IPv4 and IPv6 address)
+
+ - Usernames
+
+ - Uptime
+
+ - Server/OS Version
+
+ - Processes running (may contain passwords)
+
+## Dangerous Settings
