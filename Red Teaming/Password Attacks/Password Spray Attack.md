@@ -1,3 +1,5 @@
+# Password Spray Attack
+
 ### Password spray attacks use one password against multiple users, usually gathered in a users wordlist.
 
 ### They are also preferred from brute-force attacks due to prevention of account lockouts.
@@ -50,5 +52,9 @@
 
  - ncrack –connection-limit 1 -vv --user administrator -P password-file.txt rdp://IP_ADDRESS
 
+## BadPwdCount Attribute
 
+### The number of times the user tried to log on to the account using an incorrect password. A value of 0 indicates that the value is unknown.
+
+ - crackmapexec ldap 10.0.2.11 -u 'username' -p 'password' --kdcHost 10.0.2.11 --users
 
