@@ -98,4 +98,6 @@
 
 #### 4) Rubeus.exe kerberoast [/spn:"blah/blah"] [/user:USER] [/domain:DOMAIN] [/dc:DOMAIN_CONTROLLER]
 
+#### 5) Rubeus.exe triage (List available tickets)
 
+#### 6) Rubeus.exe dump /luid:0x12d1f7 (Dump one ticket, the output is in Kirbi format)
