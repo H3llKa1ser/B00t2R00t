@@ -11,6 +11,8 @@ https://exploit-notes.hdks.org/
 
 https://academy.hackthebox.com/
 
+https://www.thehacker.recipes/
+
 # DISCLAIMER!
 
 #### Usage of this knowledge is SOLELY the user's responsibility and the author of this playbook has no liability for their actions. Use it at your own discretion.
