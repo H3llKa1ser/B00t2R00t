@@ -101,3 +101,7 @@
 #### 5) Rubeus.exe triage (List available tickets)
 
 #### 6) Rubeus.exe dump /luid:0x12d1f7 (Dump one ticket, the output is in Kirbi format)
+
+#### 7) Rubeus.exe renew /ticket:BASE64_TICKET (Renewing a ticket)
+
+#### 8) Rubeus.exe hash /ticket:BASE64_TICKET (Convert a ticket to hashcat format for offline cracking)
