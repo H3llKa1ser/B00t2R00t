@@ -1,4 +1,4 @@
-### REQUIREMENTS: Have access to the /certsrv web portal
+### REQUIREMENTS: Have access to the /certsrv web portal (You can send a CSR for a certificate)
 
 ### STEPS:
 
