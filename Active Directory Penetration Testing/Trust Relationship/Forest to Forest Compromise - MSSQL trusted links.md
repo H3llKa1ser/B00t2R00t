@@ -1,4 +1,4 @@
-# Forest-to-Forest compromise - MSSQL trusted links
+# Forest to Forest compromise - MSSQL trusted links
 
 #### 1) impacket-mssqlclient
 
