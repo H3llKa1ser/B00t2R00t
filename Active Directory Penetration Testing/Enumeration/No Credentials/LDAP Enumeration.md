@@ -6,4 +6,4 @@
 
  - ldapsearch -x -h DC_IP -s base
 
-### If we find a value user, we can try techniques by using that name
+### If we find a valid user, we can try techniques by using that name
