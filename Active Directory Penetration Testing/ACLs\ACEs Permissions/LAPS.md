@@ -2,7 +2,7 @@
 
 ### Who can read LAPS?
 
- - MATCH p=(g:Group)-[:ReadLAPSPassword]->(c:Computer) RETURN p
+ - MATCH p=(g:Group)-[:ReadLAPSPassword]->(c:Computer) RETURN p (Bloodhound cypher query)
 
 ### Get the LAPS password
 
