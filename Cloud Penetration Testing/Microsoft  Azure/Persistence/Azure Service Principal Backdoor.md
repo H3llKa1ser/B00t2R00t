@@ -18,9 +18,7 @@
 
  - $role = Get-MsolRole -RoleName "Company Administrator"
 
- - Add-MsolRoleMember -RoleObjectId $role.ObjectId -RoleMemberType ServicePrincipal -
-
- - RoleMemberObjectId $sp.ObjectId
+ - Add-MsolRoleMember -RoleObjectId $role.ObjectId -RoleMemberType ServicePrincipal -RoleMemberObjectId $sp.ObjectId
 
 ### Enter the AppID as username and what was returned for $UnsecureSecret as the password in the Get-Credential prompt
 
