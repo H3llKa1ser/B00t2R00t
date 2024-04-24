@@ -22,3 +22,6 @@
 
  - Get-DomainUser -TrustedToAuth (Powerview)
 
+ - MATCH (c:Computer), (t:Computer), p=((c)-[:AllowedToDelegate]->(t)) RETURN p (Bloodhound cypher query)
+
+ - MATCH (u:User {owned:true}), (c:Computer {name "MY_TARGET.FQDN"}), p=shortestPath({u)-[*1..]->(c)) RETURN p (Bloodhound)
