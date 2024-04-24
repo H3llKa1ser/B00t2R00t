@@ -37,3 +37,7 @@
 ### If we find true positive results, we proceed to exploitation via ESC6 technique
 
 ## If Web enrollment is up, we can proceed to exploitation via the ESC8 technique
+
+# Misconfigured Certificate Mapping (blind test) (ESC9/ESC10)
+
+ - certipy shadow auto -username ACCOUNT1@DOMAIN -p PASS1 -account ACCOUNT2
