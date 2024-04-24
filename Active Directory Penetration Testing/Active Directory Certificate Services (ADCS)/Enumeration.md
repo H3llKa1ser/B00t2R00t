@@ -35,3 +35,5 @@
  - certipy / certify.exe (only the flag ATTRIBUTESUBJECTALTNAME2)
 
 ### If we find true positive results, we proceed to exploitation via ESC6 technique
+
+## If Web enrollment is up, we can proceed to exploitation via the ESC8 technique
