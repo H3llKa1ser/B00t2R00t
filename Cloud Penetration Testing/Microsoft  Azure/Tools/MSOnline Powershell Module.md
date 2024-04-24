@@ -27,3 +27,8 @@
  - Get-MSolUser -All | fl (List all user attributes)
 
  - Get-MsolServicePrincipal (List Service Principals)
+
+### One-liner to search all Azure AD user attributes for passwords
+
+ - $users = Get-MsolUser; foreach($user in $users){$props = @();$user | Get-Member | foreach-object{$props+=$_.Name}; foreach($prop in $props){if($user.$prop -like "*password*"){Write-Output ("[*]" + $user.UserPrincipalName + "[" + $prop + "]" + " : " + $user.$prop)}}}
+
