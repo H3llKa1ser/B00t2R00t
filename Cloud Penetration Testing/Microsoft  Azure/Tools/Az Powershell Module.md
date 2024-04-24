@@ -52,3 +52,30 @@
 
  - Get-AzSqlServerActiveDirectoryAdminstrator -ServerName $ServerName -ResourceGroupName $ResourceGroupName (List SQL Server AD Admins)
 
+### Runbooks
+
+ - Get-AzAutomationAccount (List Azure Runbooks)
+
+ - Get-AzAutomationRunbook -AutomationAccountName AUTOMATION_ACCOUNT_NAME -ResourceGroupName RESOURCE_GROUP_NAME
+
+ - Export-AzAutomationRunbook -AutomationAccountName $AccountName -ResourceGroupName $ResourceGroupName -Name $RunbookName -OutputFolder .\Desktop\ (Export a runbook)
+
+### Virtual Machines
+
+- Get-AzVM (List VMs and get OS details)
+
+- $vm = Get-AzVM -Name "VM Name"
+
+ - $vm.OSProfile
+
+ - Invoke-AzVMRunCommand -ResourceGroupName $ResourceGroupName -VMName $VMName -CommandId RunPowerShellScript -ScriptPath ./powershell-script.ps1 (Run commands on VMs)
+
+### Networking
+
+ - Get-AzVirtualNetwork (List virtual networks)
+
+ - Get-AzPublicIpAddress (List public IP addresses assigned to virtual NICs)
+
+ - Get-AzExpressRouteCircuit (Get Azure ExpressRoute (VPN) Info)
+
+ - Get-AzVpnConnection (Get Azure VPN Info)
