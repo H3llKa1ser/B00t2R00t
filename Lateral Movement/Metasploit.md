@@ -49,3 +49,5 @@
 ### Then go to web browser in Kali and make the manual proxy configuration settings
 
 ## TIP: Instead, we can use proxychains to connect to internal machines in the network
+
+### Same steps apply to socks4a proxy
