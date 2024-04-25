@@ -20,7 +20,7 @@
 
  - exploit
 
- - sessions -u 1 
+ - sessions -u 1 (Upgrade to Meterpreter session. Creates an EXTRA session with meterpreter)
 
  - sessions 2
 
