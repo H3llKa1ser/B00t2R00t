@@ -2,7 +2,7 @@
 
 ## Github repo: https://github.com/klsecservices/rpivot.git
 
-### SOCKS4 proxy
+## SOCKS4 proxy
 
  - python server.py --server-port 9999 --server-ip ATTACKER_IP --proxy-ip 127.0.0.1 --proxy-port 1080 (Attacker)
 
