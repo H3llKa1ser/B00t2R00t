@@ -1,3 +1,9 @@
+# SSH Local Port Forwarding
+
+### It is the method used in SSH to forward the ports of application from a client machine to the server machine. By making use of this, the SSH client listens for connections on a port which has been configured, and tunnels to an SSH server when a connection is received. This is how the server connects to a destination port which is configured and is present on a machine other than the SSH server.
+
+ - ssh -L 8081:localhost:8080 -N -f -l USER TARGET_IP
+
 # Forward connections
 
 ## Port forwarding command example:
