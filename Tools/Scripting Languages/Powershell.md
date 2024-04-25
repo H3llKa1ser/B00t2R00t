@@ -47,3 +47,7 @@
 ### Lateral Movement
 
  - Invoke-Command -ComputerName TARGET_IP ScriptBlock {COMMAND} -credential (Get-Credential)
+
+### Post Exploitation
+
+ - net user /add USER
