@@ -13,3 +13,19 @@
 ## Dynamic SSH Tunneling
 
  - plink.exe -D PORT USER@VICTIM_IP (Execute on target)
+
+### Then configure connections from Kali machine 
+
+#### 1) Open browser, then Connection Settings
+
+#### 2) Manual Proxy configuration
+
+#### 3) SOCKS Host 127.0.0.1 port PORT
+
+#### 4) SOCKSv5 button
+
+#### 5) No proxy for: 127.0.0.1
+
+#### 6) Browse to TARGET_IP
+
+## Alternate method: Proxychains
