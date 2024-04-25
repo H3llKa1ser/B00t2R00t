@@ -20,9 +20,11 @@
 
 #### -fN = Backgrounds the shell then tells SSH that it doesn't need to execute any commands, only set up the connection.
 
-## Proxying command example:
+## Dynamic and Local Tunneling command example:
 
  - ssh -D PORT user@172.16.1.5 -fN (Dynamic SSH Tunneling)
+
+ - ssh -L PORT TARGET_IP:TARGET_PORT USER@VICTIM@IP (Local SSH Tunneling)
 
 #### PORT should be available and configured in proxychains.
 
