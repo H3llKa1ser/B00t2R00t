@@ -28,4 +28,24 @@
 
  - portfwd add -l LOCAL_PORT -p TARGET_PORT -r 127.0.0.1
 
+## Tunneling with Metasploit
 
+### 1) autoroute (Deprecated)
+
+ - sessions
+
+ - use post/multi/manage/autoroute
+
+ - set session SESSION_NUM
+
+ - exploit
+
+ - use auxiliary/server/socks5
+
+ - set srvhost 127.0.0.1
+
+ - exploit
+
+### Then go to web browser in Kali and make the manual proxy configuration settings
+
+## TIP: Instead, we can use proxychains to connect to internal machines in the network
