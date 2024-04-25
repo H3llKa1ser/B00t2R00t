@@ -32,6 +32,8 @@
 
  - Target: ./chisel client ATTACKING_IP:LISTEN_PORT R:LOCAL_PORT:TARGET_IP:TARGET_PORT &
 
+### Then on our machine, we browse to http://127.0.0.1:TARGET_LOCAL_PORT
+
 ## TIP:
 
 #### Also use jobs then kill %num for chisel background processes too.
