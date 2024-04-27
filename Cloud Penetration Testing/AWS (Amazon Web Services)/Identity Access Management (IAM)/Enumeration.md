@@ -49,3 +49,16 @@
  - aws iam list-policies (Listing of IAM policies)
 
  - aws iam get-policy --policy-arn POLICY_ARN (Retrieving information about the specified managed policy)
+
+ - aws iam list-policy-versions --policy-arn POLICY_ARN (Listing information about the versions of the specified manages policy)
+
+ - aws iam get-policy-version --policy-arn POLICY_ARN --version-id VERSION_ID (Retrieving information about the specific version of the specified managed policy)
+
+### Retrieving the specified inline policy document that is embedded on the specified IAM user / group / role
+
+ - aws iam get-user-policy --user-name USER_NAME --policy-name POLICY_NAME
+
+ - aws iam get-group-policy --group-name GROUP_NAME --policy-name POLICY_NAME
+
+ - aws iam get-role-policy --role-name ROLE_NAME --policy-name POLICY_NAME
+
