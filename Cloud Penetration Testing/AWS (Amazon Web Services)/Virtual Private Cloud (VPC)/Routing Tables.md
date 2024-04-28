@@ -4,19 +4,19 @@
 
 # DESTINATION -> TARGET
 
-IP local -> VPC Internal
+#### 1) IP local -> VPC Internal
 
-IP igw -> Internet Gateway
+#### 2) IP igw -> Internet Gateway
 
-IP nat -> NAT Gateway
+#### 3) IP nat -> NAT Gateway
 
-IP pcx -> VPC Peering
+#### 4) IP pcx -> VPC Peering
 
-IP vpce -> VPC Endpoint
+#### 5) IP vpce -> VPC Endpoint
 
-IP vgw -> VPN Gateway
+#### 6) IP vgw -> VPN Gateway
 
-IP eni -> Network Interface
+#### 7) IP eni -> Network Interface
 
  - VPC Internal -> Internal IP, no internet connection
 
