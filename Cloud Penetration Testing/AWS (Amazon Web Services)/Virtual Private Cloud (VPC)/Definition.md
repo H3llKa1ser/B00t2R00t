@@ -20,3 +20,10 @@
 
 ### Overall, Amazon VPC provides a flexible and scalable networking infrastructure for deploying and managing your AWS resources in a secure and isolated environment. It is a fundamental building block of cloud computing on the AWS platform, enabling you to build highly available, scalable, and secure applications in the cloud.
 
+### In simpler terms:
+
+ - Used to create an isolated infrastructure within the cloud, including subnets and so on.
+
+ - If the VPC has an internet gateway, means its a public subnet
+
+ - Every VPC can have Network ACL's
