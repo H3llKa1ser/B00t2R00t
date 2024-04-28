@@ -18,6 +18,8 @@
 
 #### 7) IP eni -> Network Interface
 
+# Definitions:
+
  - VPC Internal -> Internal IP, no internet connection
 
  - Internet Gateway -> Used to access the internet
