@@ -56,4 +56,4 @@
 
 #### 6. API-Key -> None
 
-### All these details are tgathered during enumeration
+### All these details are gathered during enumeration
