@@ -6,4 +6,8 @@
 
 ## Inside the function's code, we will add the administrator permission to the role and to the user
 
-### Example code: See the function code section in this repo
+### Example code: See the function code section in this repo (Admin.py)
+
+ - aws lambda invoke --function-name NAME response.json --region REGION (Invoke a lambda function)
+
+ - aws iam list-attached-user-policies --user-name USER_NAME (Listing managed policies to see if the change worked)
