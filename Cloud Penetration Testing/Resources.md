@@ -11,3 +11,5 @@
 ## https://github.com/toniblyx/my-arsenal-of-aws-security-tools
 
 ## https://github.com/Kyuu-Ji/Awesome-Azure-Pentest
+
+## https://pentestmag.com/product/pentest-cloud-penetration-testing-compendium/
