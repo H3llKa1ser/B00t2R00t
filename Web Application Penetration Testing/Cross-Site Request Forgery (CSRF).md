@@ -55,3 +55,7 @@
 ### A covert technique known as hidden link/image exploitation in CSRF involves an attacker inserting a 0x0 pixel image or a link into a webpage that is nearly undetectable to the user. Typically, the src or href element of the image is set to a destination URL intended to act on the user's behalf without the user's awareness. It takes benefit of the fact that the user's browser transfers credentials like cookies automatically.
 
 ### This technique preys on authenticated sessions and utilises a social engineering approach when a user may inadvertently perform operations on a different website while still logged in.
+
+## Countermeasures:
+
+### Add a CSRF token with each request submitted to the server so that the server can identify if it is clicked through a valid source.
