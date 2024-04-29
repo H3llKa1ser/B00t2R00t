@@ -37,3 +37,21 @@
 #### 3) Flash-based CSRF (.swf malicious Flash file)
 
  - The term "Flash-based CSRF" describes the technique of conducting a CSRF attack by taking advantage of flaws in Adobe Flash Player components. Internet applications with features like interactive content, video streaming, and intricate animationsflash based csrf have been made possible with Flash. But over time, security flaws in Flash, particularly those that can be used to launch CSRF attacks, have become a major source of worry. As HTML5 technology advanced and security flaws multiplied, official support for Adobe Flash Player ceased on December 31, 2020.
+
+# Hidden Link/Image Exploitation
+
+## Requirements:
+
+### Victim has to click your malicious link while logged in with his credentials stored in the browser (Cookies, tokens, etc)
+
+#### Craft an email and send this to a victim:
+
+ - <!-- Website --> 
+<a href="https://bank.xyz/transfer.php" target="_blank">Click Here</a>  
+<!-- User visits attacker's website while authenticated -->
+
+## Explanation:
+
+### A covert technique known as hidden link/image exploitation in CSRF involves an attacker inserting a 0x0 pixel image or a link into a webpage that is nearly undetectable to the user. Typically, the src or href element of the image is set to a destination URL intended to act on the user's behalf without the user's awareness. It takes benefit of the fact that the user's browser transfers credentials like cookies automatically.
+
+### This technique preys on authenticated sessions and utilises a social engineering approach when a user may inadvertently perform operations on a different website while still logged in.
