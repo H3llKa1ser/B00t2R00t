@@ -6,7 +6,7 @@
 
 ## OR 
 
- - Install-Module Az
+ - Install-Module  -Name Az (Run as Administrator)
 
 ### Authentication
 
