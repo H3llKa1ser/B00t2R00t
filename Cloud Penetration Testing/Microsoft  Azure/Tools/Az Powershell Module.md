@@ -4,6 +4,10 @@
 
  - Import-Module Az (Import Az Powershell Module)
 
+## OR 
+
+ - Install-Module Az
+
 ### Authentication
 
  - Connect-AzAccount (Authentication)
