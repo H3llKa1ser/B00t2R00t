@@ -43,3 +43,20 @@ accounts (outlook.com, hotmail.com, and so on) that are invited as guest users t
 ### Additionally, Azure allows you to create custom role definitions tailored to the specific needs of your organization. Custom roles enable you to define granular permissions by selecting the specific actions that users are allowed to perform on resources. This allows for fine-grained access control and helps to enforce the principle of least privilege.
 
 ### Overall, role definitions play a crucial role in Azure Role-Based Access Control (RBAC) by defining the permissions that govern access to Azure resources, helping organizations manage and enforce security policies effectively.
+
+# 3) Role Assignment
+
+### One of the interesting design choices in the Azure cloud is the way that RBAC roles are applied to this hierarchy. As noted previously, RBAC roles can be applied at the root management group, child management group, subscription, resource group, and individual resource levels.
+
+### Any role-based access that is assigned at the root management group level propagates throughout the organization and cannot be overridden at a lower level. If an attacker manages to steal a credential that gives access at the root management group level, they could leverage this access to move laterally across different subscriptions in the organization.
+
+### When you create a role assignment, you specify the following information:
+
+ - The security principal (user, group, service principal, or managed identity).
+
+ - The role definition that defines the permissions.
+
+ - The scope at which the role assignment applies.
+
+### For example, you might create a role assignment that grants the "Contributor" role to a specific user for a particular resource group. This would allow the user to create, update, and delete resources within that resource group.
+
