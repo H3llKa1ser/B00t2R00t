@@ -14,4 +14,4 @@
 
 ## https://pentestmag.com/product/pentest-cloud-penetration-testing-compendium/
 
-## Penetration Testing Azure for Ethical Hackers by David Okeyode and Karl Forsaaen 
+## Penetration Testing Azure for Ethical Hackers by David Okeyode and Karl Forsaaen (Citation from:)
