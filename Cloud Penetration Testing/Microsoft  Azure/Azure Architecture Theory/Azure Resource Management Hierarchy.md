@@ -1,4 +1,4 @@
-# Azure resource management hierarchy
+# Azure Resource Management Hierarchy
 
 ### The organization structure in Azure consists of the following levels from top to bottom:
 
