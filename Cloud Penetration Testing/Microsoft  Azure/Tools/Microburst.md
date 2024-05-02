@@ -21,3 +21,7 @@
 ### Enumerate Potential Azure Subdomains Anonymously
 
  - Invoke-EnumerateAzureSubDomains -Base BASE_NAME
+
+### Enumerate the subscription using the reader permissions
+
+ - Get-AzDomainInfo -Verbose 
