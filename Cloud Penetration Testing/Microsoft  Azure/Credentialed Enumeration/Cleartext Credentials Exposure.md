@@ -28,11 +28,11 @@
 
 ### There are two options:
 
-#### 1) Reading Function app code
+####  Reading Function app code
 
-#### 2) Reading app files
+####  Reading app files
 
-## Reading function app code as a reader:
+## 1) Reading function app code as a reader:
 
  - 1) Navigate to individual Function apps , enter the Functions section and review the individual functions.
   
@@ -42,8 +42,15 @@
 
 ### As attackers with Reader access, we can look at this code to extract valuable information about the application, and potentially gather credentials that can be used to pivot.
 
-## TIP: It is worth noting here that being able to read the code in the Function app depends on
-the development method and deployment type used. For example, if development is done
-locally (not in the portal) and deployed using web deploy, the code will not be visible. This
-is also the case for compiled languages such as C
+## TIP: It is worth noting here that being able to read the code in the Function app depends on the development method and deployment type used. For example, if development is done locally (not in the portal) and deployed using web deploy, the code will not be visible. This is also the case for compiled languages such as C
+
+## 2) Reading app files as a reader:
+
+ - 1) Under Functions, go to App files
+  
+ - 2) Find a SENSITIVE.json file (or any other possibly interesting .json file in the app files)
+  
+ - 3) We might find interesting data like credentials (ClientID , TenantID , ClientSecret , etc.)
+   
+### Client and secret ID can be used to authenticate as an Azure AD app registration
 
