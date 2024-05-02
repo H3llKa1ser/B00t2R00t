@@ -54,3 +54,14 @@
    
 ### Client and secret ID can be used to authenticate as an Azure AD app registration
 
+### Then use the credentials we found to authenticate:
+
+ - $credential = Get-Credential (Store credentials in a variable)
+
+ - Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant TENANT_ID (Authenticate)
+
+ - Get-Azcontext (Confirm access)
+
+## Alternate method: Azure CLI
+
+ - az login --service-principal -u CLIENT_ID --tenant TENANT_ID  
