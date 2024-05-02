@@ -44,3 +44,8 @@
 
 ## TIP: The advantage that MicroBurst has over other tools such as Gobuster and DNSscan is that it is Azure-specific, which means we don't have to manually figure out each DNS suffix that we want to enumerate!
 
+# Custom domains and IP ownership
+
+### Some Azure services allow customers to use custom domains. Additionally, some hosts may have redirects or transparent proxies in place to obfuscate the fact that the services are hosted in Azure. As part of the penetration testing process, you will want to fully understand where your targets live, as it could make a major difference in your scope. For example, your external penetration test scope may include specific IPs and hostnames for the environment that you are authorized to attack. If these hosts end up being in Azure, that will influence how we go about attacking those specific resources.
+
+
