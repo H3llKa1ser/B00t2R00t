@@ -2,6 +2,8 @@
 
 ## Github repo: https://github.com/NetSPI/MicroBurst
 
+ - Import-Module MicroBurst.psm1
+
 ### Look for open storage blobs
 
  - Invoke-EnumerateAzureBlobs -Base $BaseName
@@ -15,3 +17,7 @@
  - Get-AzPasswords
 
  - Get-AzACR
+
+### Enumerate Potential Azure Subdomains Anonymously
+
+ - Invoke-EnumerateAzureSubDomains -Base BASE_NAME
