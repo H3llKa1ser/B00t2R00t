@@ -16,4 +16,11 @@
 
  - https://www.microsoft.com/en-us/download/details.aspx?id=57063 (Azure US Government cloud)
 
+### Alternate download method: Powershell
+
+ - Invoke-WebRequest JSON_URL -O azure_ip_range.json
+
+ - $jsonData = gc .\azure_ip_range.json | ConvertFrom-Json ($jsonData | select -ExpandProperty values | where name -EQ AzureCloud.uksouth).properties.addressPrefixes (Azure UK South region example)
+
+
 
