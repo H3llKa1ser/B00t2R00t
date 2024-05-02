@@ -22,5 +22,25 @@
 
  - $jsonData = gc .\azure_ip_range.json | ConvertFrom-Json ($jsonData | select -ExpandProperty values | where name -EQ AzureCloud.uksouth).properties.addressPrefixes (Azure UK South region example)
 
+# Azure platform DNS suffixes
 
+### When an Azure customer creates an instance of a resource, Azure assigns it a subdomain of the associated DNS suffix in the format of:
+
+ - RESOURCE_INSTANCE_NAME.SERVICE_DNS_SUFFIX_NAME
+
+ - azurepentesting.blob.core.windows.net (Example)
+
+## To anonymously enumerate platform services in Azure, a pentester can use the following methodology:
+
+#### 1) Determine base-word search terms to work with. This will usually be linked with the name of the Azure customer that you are engaged with or known terms that are associated with the organization; for example, packt, azurepentesting, azurept, and so on.
+
+#### 2) Create permutations on the base words to identify potential subdomain names; for example, packt-prod, packt-dev, azurepentesting-stage, azurept-qa, and so on.
+
+### Microsoft Azure resource naming best practices:
+
+ - https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-bestpractices/resource-naming
+
+#### 3) Enumerate subdomains that match these permutations using a tool such as MicroBurst, Gobuster, or DNSscan
+
+## TIP: The advantage that MicroBurst has over other tools such as Gobuster and DNSscan is that it is Azure-specific, which means we don't have to manually figure out each DNS suffix that we want to enumerate!
 
