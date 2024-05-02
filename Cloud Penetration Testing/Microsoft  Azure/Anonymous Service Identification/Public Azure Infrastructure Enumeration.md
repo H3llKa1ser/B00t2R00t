@@ -30,6 +30,8 @@
 
  - azurepentesting.blob.core.windows.net (Example)
 
+ - nslookup DOMAIN.LOCAL (Check the domain if the site is hosted in Azure)
+
 ## To anonymously enumerate platform services in Azure, a pentester can use the following methodology:
 
 #### 1) Determine base-word search terms to work with. This will usually be linked with the name of the Azure customer that you are engaged with or known terms that are associated with the organization; for example, packt, azurepentesting, azurept, and so on.
