@@ -14,3 +14,20 @@
 
 - Outbound connectivity from the VM to Azure public IP addresses on port 443 is required to return the results of the script.
 
+# 1) Azure Portal
+
+ - Go to the "Virtual Machine" blade
+
+ - Run command has prebuilt commands that can be run in the portal (You can run your own custom commands ofc)
+
+ - Select "RunPowerShellScript" or "RunShellScript" for Linux (You can run your own custom commands for both Windows and Linux, as SYSTEM or root)
+
+# 2) Az Powershell module
+
+ - $VMs = Get-AzVM -Status | where {($_.PowerState -EQ "VM running") -and ($_.StorageProfile.OSDisk.OSType -eq "Windows")}
+
+ - $VMs | select ResourceGrouName,Name (List the running Windows VMs and cast them to the VMs variable)
+
+ - echo "whoami" > whoami.ps1
+
+ - $VMs | Invoke-AzVMRunCommand -CommandId 'RunPowerShellScript' -ScriptPath .\whoami.ps1 (Run your powershell script on all VMs in the subscription)
