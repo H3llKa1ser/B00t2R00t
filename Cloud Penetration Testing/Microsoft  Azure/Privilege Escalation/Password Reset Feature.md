@@ -6,6 +6,10 @@
 
 ### The password reset feature for Azure VMs was intended to simplify the process of resetting the password of a local Azure VM user, using the VM agent that is installed on every Azure VM. However, this feature could be abused to create new local users with administrative privileges on both Windows and Linux VMs in Azure!
 
+## VM Enumeration command
+
+ - GetAzVM
+
 # 1) Azure Portal
 
  - On the target VM, go to "reset password" then choose our newly created user and set his new password.
