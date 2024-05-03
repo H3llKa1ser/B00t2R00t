@@ -24,7 +24,7 @@
 
 # 2) Az Powershell module
 
- - ($VMs = Get-AzVM -Status | where {($_.PowerState -EQ "VM running") -and ($_.StorageProfile.OSDisk.OSType -eq "Windows")})
+ - $VMs = Get-AzVM -Status | where {($_.PowerState -EQ "VM running") -and ($_.StorageProfile.OSDisk.OSType -eq "Windows")}
 
  - $VMs | select ResourceGrouName,Name (List the running Windows VMs and cast them to the VMs variable)
 
