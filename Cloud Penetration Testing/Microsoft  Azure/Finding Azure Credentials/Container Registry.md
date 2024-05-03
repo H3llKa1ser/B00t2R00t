@@ -24,6 +24,10 @@
 
  - az acr repository show-tags -n $acr --repository REPOSITORY (List the tags for a specific container registry to enumerate image versions)
 
+ - docker pull $loginserver/REPOSITORY:v1 (Pull the image from the container registry)
+
+ - docker container run --rm $loginserver/REPOSITORY:v1 env (Check the downloaded image for sensitive credentials by listing our environment variables)
+
 ### Make note of the registry credentials for further usage
 
  - echo $loginserver
