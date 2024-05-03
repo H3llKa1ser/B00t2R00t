@@ -9,3 +9,25 @@
  - az login -u READER_USER@DOMAIN.LOCAL -p PASSWORD (Authenticate to the Azure environment using the reader role)
 
  - az acr list -o table (List the container registries in the subscription)
+
+### Generate a Docker login for the registry
+
+ - acr=ACR_NAME (Store the container registry in a variable)
+
+ - loginserver=$(az acr login -n $acr --expose-token --query loginServer -o tsv)
+
+ - accesstoken=$(az acr login -n $acr --expose-token --query accessToken -o tsv)
+
+ - docker login $loginserver -u 00000000-0000-0000-0000-000000000000 -p $accesstoken
+
+ - az acr repository list -n $acr (List the images in the container registry)
+
+ - az acr repository show-tags -n $acr --repository REPOSITORY (List the tags for a specific container registry to enumerate image versions)
+
+### Make note of the registry credentials for further usage
+
+ - echo $loginserver
+
+ - echo $accesstoken
+   
+
