@@ -1,4 +1,4 @@
-# Ghost Potato CVE=2019-1384
+# Ghost Potato CVE-2019-1384
 
 ## Requirements
 
