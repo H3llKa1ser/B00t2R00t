@@ -1,6 +1,10 @@
 # Apport-cli Privesc
 
-## Resources: https://vk9-sec.com/cve-2023-1326privilege-escalation-apport-cli-2-26-0/
+## Resources: 
+
+### 1) https://vk9-sec.com/cve-2023-1326privilege-escalation-apport-cli-2-26-0/
+
+### 2) https://github.com/diego-tella/CVE-2023-1326-PoC
 
 # With sudo:
 
