@@ -26,7 +26,7 @@
 
 # JOOMLA 
 
-#### 1) On admin panel, go to: extensions -> templates -> templates
+#### 1) On admin panel, go to: System -> extensions -> templates -> templates
 
 #### 2) Find the active template of the site then edit the error.php file with a reverse shell
 
