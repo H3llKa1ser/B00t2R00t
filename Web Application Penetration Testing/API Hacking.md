@@ -1,5 +1,11 @@
 ## Mindmap: https://github.com/Cyber-Guy1/API-SecurityEmpire/tree/main
 
+# API Enumeration
+
+ - curl -sv http://DOMAIN.LOCAL/api (Enumerate all API endpoints)
+
+ - curl -sv http://DOMAIN.LOCAL/api --cookie "PHPSESSID=SESSION_NUM" | jq (Authenticated api access)
+
 ## cURL
 
 | **Command** | **Description** |
