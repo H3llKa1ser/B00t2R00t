@@ -30,9 +30,11 @@
 
 #### psql.exe -h 127.0.0.1 -p 65432 -U postgres -d DATABASE -c "SQL COMMAND" (Default port for postgresql is 65432)
 
-#### 2) \dt (Shows tables of the database)
+#### 2) \list (List all databases)
 
-#### 3) select * from TABLE;
+#### 3) \dt (Shows tables of the database)
+
+#### 4) select * from TABLE;
 
 # REDIS-CLI SHELL NAVIGATION
 
