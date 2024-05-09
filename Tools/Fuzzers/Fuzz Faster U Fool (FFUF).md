@@ -28,7 +28,7 @@
 
 #### -x PROXY:PORT = Sends all ffuf traffic through a web proxy (Burpsuite, network pivoting)
 
-### TIP: We can even use regex to find for files
+### TIP: We can even use regex to search for files
 
 
 # Ffuf
