@@ -8,7 +8,7 @@
 
  - wash -i WIRELESS_INTERFACE (Obtain the BSSID of our target)
 
- - getcap -r / 2>/dev/null (Check if we've any pre installed tools that are having capabilities set to perform network related activities.) 
+ - getcap -r / 2>/dev/null (Check if we've any pre installed tools that are having capabilities set to perform network related activities.) (cap_net_raw+ep) 
 
 ## Examples:
 
