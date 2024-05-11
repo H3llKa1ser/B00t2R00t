@@ -8,7 +8,11 @@
 
  - wash -i WIRELESS_INTERFACE (Obtain the BSSID of our target)
 
- - getcap -r / 2>/dev/null (Check if we've any pre installed tools that are having capabilities set to perform network related activities.) (cap_net_raw+ep) 
+ - getcap -r / 2>/dev/null (Check if we've any pre installed tools that are having capabilities set to perform network related activities.) (cap_net_raw+ep)
+
+ - sudo -l (Check if we can execute preinstalled tools for network related activities as root)
+
+ - find / -type f -u=s 2>/dev/null (Check for SUID bit on preinstalled tools)
 
 ## Examples:
 
