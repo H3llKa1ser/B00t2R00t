@@ -1,6 +1,14 @@
 # Enumerate Wireless setup environments
 
+## Commands:
+ 
  - iwconfig (Check for Wireless network interfaces)
+
+ - iw dev (Detailed information and statistics about wireless network interfaces and their configurations)
+
+ - wash -i WIRELESS_INTERFACE (Obtain the BSSID of our target)
+
+ - getcap -r / 2>/dev/null (Check if we've any pre installed tools that are having capabilities set to perform network related activities.) 
 
 ## Examples:
 
