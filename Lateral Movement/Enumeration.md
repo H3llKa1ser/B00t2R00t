@@ -10,7 +10,7 @@
 
 #### 5: Local tools through a proxy
 
-### arp -a
+### arp -a (Routing table)
 
 ### cat /etc/hosts (Linux)
 
