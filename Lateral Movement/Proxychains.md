@@ -1,6 +1,6 @@
 ### Usage:
 
-#### proxychains nmap -A -Pn 172.16.1.1 (Example)
+#### proxychains nmap -A -Pn PROXY_IP (Example)
 
 ## Master config file: /etc/proxychains.conf
 
