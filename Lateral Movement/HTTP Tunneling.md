@@ -1,4 +1,4 @@
-## Tools: Neo-reGeorg
+## Tools: Neo-reGeorg https://github.com/L-codes/Neo-reGeorg
 
 #### 1) python3 neoreg.py generate -k KEY 
 
