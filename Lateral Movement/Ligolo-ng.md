@@ -97,3 +97,9 @@
  - [Agent : nchatelain@nworkstation] » listener_add --addr 0.0.0.0:1234 --to 127.0.0.1:4321 --tcp (Creates a TCP listening socket on the agent (0.0.0.0:1234) and redirect connections to the 4321 port of the proxy server)
 
  - INFO[1208] Listener created on remote agent!
+
+### On the proxy:
+
+ - nc -lvp 4321 (When a connection is made on the TCP port 1234 of the agent, nc will receive the connection.)
+
+## TIP: This is very useful when using reverse tcp/udp payloads.
