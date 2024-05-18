@@ -18,17 +18,17 @@
 
 # Setup
 
-## Linux
+### Linux
 
 - sudo ip tuntap add user YOUR_USERNAME mode tun ligolo
 
 - sudo ip link set ligolo up
 
-## Windows
+### Windows
 
-### You need to download the Wintun driver (used by WireGuard) and place the wintun.dll in the same folder as Ligolo (make sure you use the right architecture).
+#### You need to download the Wintun driver (used by WireGuard) and place the wintun.dll in the same folder as Ligolo (make sure you use the right architecture).
 
-### Links: https://www.wintun.net/
+#### Links: https://www.wintun.net/
 
 ### Start the proxy server on your Command and Control (C2) server (default port 11601):
 
@@ -109,3 +109,13 @@
  - listener_list
 
  - listener_stop ID
+
+## Access to agent's local ports (127.0.0.1)
+
+### If you need to access the local ports of the currently connected agent, there's a "magic" IP hardcoded in Ligolo-ng: 240.0.0.1 ( This IP address is part of an unused IPv4 subnet). If you query this IP address, Ligolo-ng will automatically redirect traffic to the agent's local IP address (127.0.0.1).
+
+#### Example:
+
+ - sudo ip route add 240.0.0.1/32 dev ligolo
+
+ - nmap 240.0.0.1 -sV
