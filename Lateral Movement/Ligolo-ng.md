@@ -103,3 +103,9 @@
  - nc -lvp 4321 (When a connection is made on the TCP port 1234 of the agent, nc will receive the connection.)
 
 ## TIP: This is very useful when using reverse tcp/udp payloads.
+
+### You can view currently running listeners using the listener_list command and stop them using the listener_stop [ID] command:
+
+ - listener_list
+
+ - listener_stop ID
