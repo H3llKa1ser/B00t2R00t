@@ -87,3 +87,13 @@
  - $ rdesktop 192.168.0.123
 
  - [...]
+
+# Agent Binding/Listening
+
+### You can listen to ports on the agent and redirect connections to your control/proxy server.
+
+### In a ligolo session, use the listener_add command.
+
+ - [Agent : nchatelain@nworkstation] » listener_add --addr 0.0.0.0:1234 --to 127.0.0.1:4321 --tcp (Creates a TCP listening socket on the agent (0.0.0.0:1234) and redirect connections to the 4321 port of the proxy server)
+
+ - INFO[1208] Listener created on remote agent!
