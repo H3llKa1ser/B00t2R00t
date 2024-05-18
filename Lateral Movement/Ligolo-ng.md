@@ -23,3 +23,15 @@
 - sudo ip tuntap add user YOUR_USERNAME mode tun ligolo
 
 - sudo ip link set ligolo up
+
+## Windows
+
+### You need to download the Wintun driver (used by WireGuard) and place the wintun.dll in the same folder as Ligolo (make sure you use the right architecture).
+
+### Links: https://www.wintun.net/
+
+### Start the proxy server on your Command and Control (C2) server (default port 11601):
+
+- ./proxy -h  (Help options)
+
+- ./proxy -autocert (Automatically request LetsEncrypt certificates)
