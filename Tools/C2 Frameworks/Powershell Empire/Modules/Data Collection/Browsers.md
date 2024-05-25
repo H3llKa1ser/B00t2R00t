@@ -5,3 +5,7 @@
  - ChromeDump
 
  - FoxDump
+
+ - SharpChromium
+
+ - browser_data
