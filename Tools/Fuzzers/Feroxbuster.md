@@ -17,3 +17,7 @@
  - -m , --methods METHOD (Which HTTP request method(s) should be sent. Default method is GET)
 
  - -x , --extensions FILE_EXTENSION (File extension(s) to search for. Ex: -x php or -x txt pdf)
+
+ - -A , --random-agent (Use a random User-Agent)
+
+ - -a , --user-agent USER_AGENT (Sets the User-Agent)
