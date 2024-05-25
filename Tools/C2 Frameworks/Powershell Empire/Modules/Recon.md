@@ -1,6 +1,6 @@
 # Empire recon modules
 
-### Modules (.py and .yaml):
+### Modules (.py .ps1 .yaml):
 
  - fetch_brute_local
 
