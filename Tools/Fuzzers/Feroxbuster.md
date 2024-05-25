@@ -4,6 +4,8 @@
 
  - feroxbuster -u http://DOMAIN.LOCAL/ -w /path/to/wordlist.txt (Main command. Has recursion 4 by default.)
 
+ - -k (Skips TLS Certificate checks. Scan web apps on port 443(HTTPS))
+
  - -C STATUS_CODE (Filters based on status code)
 
  - -S SIZE (Filters based on size)
