@@ -4,9 +4,11 @@
 
  - feroxbuster -u http://DOMAIN.LOCAL/ -w /path/to/wordlist.txt (Main command. Has recursion 4 by default.)
 
- - -C NUM (Filters based on status code)
+ - -C STATUS_CODE (Filters based on status code)
 
- - -S NUM (Filters based on size)
+ - -S SIZE (Filters based on size)
+
+ - -W WORDS (Filters based on word count)
 
  - -b , --cookies COOKIE (Specify HTTP cookies to be used in each request. Ex: -b PHPSESSID=9G7D89GDF89G7)
 
@@ -21,3 +23,9 @@
  - -A , --random-agent (Use a random User-Agent)
 
  - -a , --user-agent USER_AGENT (Sets the User-Agent)
+
+ - -n , --no-recursion (Scan without recursion)
+
+ - -d , --depth RECURSION_DEPTH (Maximum recursion depth, a depth of 0 is INFINITE recursion. Default is 4)
+
+ - -e, --extract-links (Extract links from response body (html, javascript, etc...), make new requests based on findings)
