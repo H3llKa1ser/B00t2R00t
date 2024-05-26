@@ -42,4 +42,14 @@
 
 #### 2) CONFIG GET * (Query the configuration of the redis instance)
 
-# 
+# KPCLI SHELL NAVIGATION (ALTERNATIVE: KEEPASS2 WHICH IS A GUI)
+
+#### 1) kpcli
+
+#### 2) open DATABASE.kdbx (Connect to the Keepass database. Keep in mind you need to enter credentials to successfully connect)
+
+#### 3) ls (List files)
+
+#### 4) cd DIR (Change directory)
+
+#### 5) show NUM -f (Print contents of the specified file)
