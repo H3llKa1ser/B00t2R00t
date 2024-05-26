@@ -27,3 +27,15 @@
  - tar xvf ofbiz.tar
 
  - ij
+
+## Now, on the ij terminal, we try to connect to the database by typing the commands:
+
+ - ij> connect 'jdbc:derby:./ofbiz';
+
+## Use regular SQL statements to extract data from the database
+
+ - SHOW TABLES;
+
+ - SELECT * FROM OFBIZ.USER_LOGIN;
+
+ - SELECT USER_LOGIN_ID,CURRENT_PASSWORD FROM OFBIZ.USER_LOGIN;
