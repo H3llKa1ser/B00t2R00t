@@ -6,4 +6,4 @@
 
  - \lstinputlisting{/etc/passwd}
 
- - $$\\lstinputlisting{/etc/passwd}$ (Delimiter escape. One-liner)
+ - $\\lstinputlisting{/etc/passwd}$ (Delimiter escape. One-liner)
