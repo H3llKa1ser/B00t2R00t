@@ -67,3 +67,5 @@
 #### 3) /etc/apache2/sites-enabled/000-default.conf
 
 #### 4) /var/www/html/config.php
+
+#### 5) /var/www/html/.htpasswd
