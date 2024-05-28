@@ -24,6 +24,10 @@
 
 #### 5) SELECT * FROM TABLE; (Dump everything from table)
 
+## For root authentication there is a small detail:
+
+#### mysql -h HOST -u root -proot ROOT_PASS -e 'SQL_QUERY;' (Use the -proot flag for the password of the root user in a db)
+
 # POSTGRESQL SHELL NAVIGATION
 
 #### 1) psql -h IP_ADDRESS -U USER DATABASE
