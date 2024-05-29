@@ -2,6 +2,14 @@
 
 ## Payloads: https://github.com/swisskyrepo/PayloadsAllTheThings
 
+## Places to inject XSS payloads:
+
+### 1) User-Agent
+
+### 2) HTTP Headers
+
+### 3) Message Forms
+
 ## Detection methods:
 
 ### 1) Try injecting HTML code instead of JavaScript
