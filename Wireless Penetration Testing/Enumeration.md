@@ -14,6 +14,10 @@
 
  - find / -type f -u=s 2>/dev/null (Check for SUID bit on preinstalled tools)
 
+ - iw dev WIRELESS_INTERFACE scan (Scan available Wi-Fi)
+
+ - iwlist WIRELESS_INTERFACE scan
+
 ## Examples:
 
 #### 1) Master Mode NIC
