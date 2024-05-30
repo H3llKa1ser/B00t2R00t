@@ -2,6 +2,8 @@
 
 ### Tool: Responder, SMTP client
 
+### PoC: https://github.com/xaitax/CVE-2024-21413-Microsoft-Outlook-Remote-Code-Execution-Vulnerability
+
 ### Severity: Critical
 
 ### Scoring: 9.8
