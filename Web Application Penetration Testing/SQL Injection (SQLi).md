@@ -1,5 +1,9 @@
 # Payload resource: https://github.com/swisskyrepo/PayloadsAllTheThings
 
+## Blind Testing Payload:
+
+ - ' ORDER BY NUM;-- -
+
 ### 1) Input box non-string
 
 #### payload: 1 or 1=1-- -
