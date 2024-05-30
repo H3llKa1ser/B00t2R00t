@@ -2,7 +2,7 @@
 
 ## Blind Testing Payload:
 
- - ' ORDER BY NUM;-- -
+ - ' ORDER BY NUM;-- - (Keep increasing the NUM value until you get an error. This not only confirms an SQLi vulnerability, but also enumerates the database columns as well)
 
 ### 1) Input box non-string
 
