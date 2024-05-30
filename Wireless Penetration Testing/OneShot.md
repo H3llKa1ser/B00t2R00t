@@ -4,6 +4,8 @@
 
 ### Usage:
 
+# Pixie Dust Attack
+
 #### 1) Compile the .c program as per the instructions in the repo, then transfer it to target machine.
 
 #### 2) Run the program to perform WiFi attacks:
