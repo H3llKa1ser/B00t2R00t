@@ -57,3 +57,9 @@
 #### 4) cd DIR (Change directory)
 
 #### 5) show NUM -f (Print contents of the specified file)
+
+# MSSQL SHELL NAVIGATION (sqsh)
+
+#### 1) sqsh -S IP_ADDRESS:1433 -U DOMAIN.LOCAL\\USERNAME -P 'PASSWORD'
+
+#### 2) 
