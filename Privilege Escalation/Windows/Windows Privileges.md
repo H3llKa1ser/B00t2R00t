@@ -83,3 +83,17 @@
 ## Tool: PrintSpoofer
 
 ## Link: https://github.com/itm4n/PrintSpoofer/releases/tag/v1.0
+
+## SeDebug Privilege
+
+### Tools: Meterpreter
+
+### Steps:
+
+#### 1) Download and execute Meterpreter on target machine to connect to us
+
+#### 2) ps (Check for processes running as SYSTEM. Example: winlogon.exe)
+
+#### 3) migrate PID (Take ownership of the elevated process)
+
+#### 4) VOILA!
