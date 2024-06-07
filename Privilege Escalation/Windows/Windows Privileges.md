@@ -86,14 +86,18 @@
 
 ## SeDebug Privilege
 
-### Tools: Meterpreter
+### Tools: Meterpreter, https://github.com/decoder-it/psgetsystem
 
 ### Steps:
 
-#### 1) Download and execute Meterpreter on target machine to connect to us
+#### 1) Get-Process winlogon (Check for a specific SYSTEM level process running on the machine)
 
-#### 2) ps (Check for processes running as SYSTEM. Example: winlogon.exe)
+#### 2) Download and execute Meterpreter on target machine to connect to us
 
-#### 3) migrate PID (Take ownership of the elevated process)
+#### 3) ps (Check for processes running as SYSTEM. Example: winlogon.exe)
 
-#### 4) VOILA!
+#### 4) migrate PID (Take ownership of the elevated process)
+
+#### 5) VOILA!
+
+## TIP: If the SeDebug Privilege is disabled, we can enable it with psgetsystem powershell script (Link attached at the top of this attack's explanation)
