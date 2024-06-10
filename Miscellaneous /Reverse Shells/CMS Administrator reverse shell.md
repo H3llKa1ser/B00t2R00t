@@ -14,6 +14,8 @@
 
 #### 4) Go to the site and trigger the 404 error to run the modified php file to get a shell
 
+### Alternate usage: use exploit/unix/webapp/wp_admin_shell_upload
+
 ## MALICIOUS PLUGIN INSTALLATION ON WORDPRESS
 
 #### 1) On admin panel, go to: plugins -> editor
