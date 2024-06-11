@@ -16,3 +16,4 @@
 
  - ./kerbrute_linux_amd64 bruteuser -d domain.local --dc 10.10.10.10 WORDLIST.TXT USER
 
+## TIP: Use the xato-net-10-million-usernames.txt wordlist for blind username enumeration
