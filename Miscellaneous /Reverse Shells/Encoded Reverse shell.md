@@ -17,3 +17,5 @@
 ### Executing :
 
  - powershell.exe -nop -e [above encoded code]
+
+### File.exe has been generated using MSFVenom
