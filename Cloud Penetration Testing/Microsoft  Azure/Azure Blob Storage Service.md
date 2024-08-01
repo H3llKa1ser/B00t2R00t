@@ -13,3 +13,9 @@
  - $web = The name of the container hosting the website, and it is situated within the storage account
 
  - index.html = The web page being requested
+
+### URL to browse to explore the container: https://mbtwebsite.blob.core.windows.net/$web?restype=container&comp=list
+
+### URL to return all directories in the container using the / delimiter: https://mbtwebsite.blob.core.windows.net/$web?restype=container&comp=list&delimiter=%2F
+
+### 
