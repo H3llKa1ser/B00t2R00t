@@ -25,3 +25,7 @@
 ### Download the secret from keyvault in a .pem file for better formatting
 
  - az keyvault secret download --id URI_ID --file KEY.pem
+
+### Get Public IP of a VM instance we want to SSH in
+
+ - az vm show -d -g RESOURCE_GROUP -n VM_NAME --query publicIps -o tsv
