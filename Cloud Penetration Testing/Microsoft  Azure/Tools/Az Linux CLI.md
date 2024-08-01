@@ -21,3 +21,7 @@
 ### Get cleartext secret from keyvault
 
  - az keyvault secret show --id URI_FROM_LAST_COMMAND | ConvertFrom-Json
+
+### Download the secret from keyvault in a .pem file for better formatting
+
+ - az keyvault secret download --id URI_ID --file KEY.pem
