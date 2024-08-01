@@ -18,4 +18,6 @@
 
 ### URL to return all directories in the container using the / delimiter: https://mbtwebsite.blob.core.windows.net/$web?restype=container&comp=list&delimiter=%2F
 
-### 
+### URL to list previous blob versions to check for sensitive files that were temporary there: https://mbtwebsite.blob.core.windows.net/$web?restype=container&comp=list&include=versions
+
+ - curl -H "x-ms-version: 2019-12-12" 'https://mbtwebsite.blob.core.windows.net/$web?restype=container&comp=list&include=versions' | xmllint --format - | less (Check for previous versions using CLI instead)
