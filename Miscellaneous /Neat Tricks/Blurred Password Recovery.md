@@ -12,7 +12,7 @@
 
 - etc
 
-### Pdf Image
+### 1) Pdf Image
 
  - 1) pdfimages -j FILE.pdf OUTPUT (Converts the PDF file to a .ppm file)
   
