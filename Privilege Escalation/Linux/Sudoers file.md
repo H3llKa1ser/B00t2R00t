@@ -19,3 +19,11 @@
 #### 4) sudo su
 
 #### 5) PROFIT!
+
+### Alternate method to exploit this: symlinks
+
+#### Command:
+
+ - ln -s /etc/sudoers /home/USER/sudoers
+
+### Then, if there is a misconfiguration that enables our user to give permissions to arbitrary files, then we can edit the sudoers file to give our user rights to execute ANYTHING without password as root via sudo
