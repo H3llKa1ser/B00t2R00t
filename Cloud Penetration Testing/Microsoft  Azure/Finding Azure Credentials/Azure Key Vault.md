@@ -55,3 +55,7 @@ foreach ($SecretName in $SecretNames) {
 ### Check if any of these extracted credentials are valid existing Entra ID users
 
  - az ad user list --query "[?givenName=='NAME_1' || givenName=='NAME_2' || givenName=='NAME_3'].{Name:displayName, UPN:userPrincipalName, JobTitle:jobTitle}" -o table
+
+### Get all secrets from key vault
+
+ - Get-AzKeyVaultSecret -VaultName $VaultName | ForEach-Object { Get-AzKeyVaultSecret -VaultName $VaultName -Name $_.Name -asplaintext }
