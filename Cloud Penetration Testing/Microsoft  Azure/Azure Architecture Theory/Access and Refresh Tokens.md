@@ -19,3 +19,5 @@
 ### Content: Typically an opaque string, not meant to be interpreted or used by clients other than to request new access tokens.
 
 ## For red teamers, an access token can be used only for a specific scope of a specific service, whereas a refresh token can be used to craft access token for other services to which the user may be permissioned. This can allow us to move laterally to other services, and potentially bypass any MFA enforcement configured for those services!
+
+### On Mac and Linux the Az CLI access and refresh tokens are stored in plaintext in the file ~/.azure/msal_token_cache.json . On Windows the tokens are stored in %userprofile%\.azure\msal_token_cache.bin , and encrypted using DPAPI. Although we could look to decrypt the tokens, we can also install an older version of the Az CLI on a test Windows VM, as these older versions store both access and refresh tokens unprotected in the file %userprofile%\.azure\accessTokens.json
