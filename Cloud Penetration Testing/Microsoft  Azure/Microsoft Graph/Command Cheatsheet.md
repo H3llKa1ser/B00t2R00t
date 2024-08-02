@@ -23,3 +23,13 @@
  - & az account set --subscription $CurrentSubscriptionID (Set the given subscription as the active one)
 
  - & az resource list -o $OutputFormat (List resources in the current subscription)
+
+### Get the Object ID for a user
+
+ - Get-MgUser -UserId USER.NAME@DOMAIN.CORP
+
+### Check the assigned privileges of a user 
+
+ - $UserId = 'USER_ID'
+
+ - Get-MgUserMemberOf -userid $userid | select * -ExpandProperty additionalProperties | Select-Object {$_.AdditionalProperties["displayName"]}
