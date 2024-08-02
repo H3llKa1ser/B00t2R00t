@@ -51,3 +51,7 @@ foreach ($SecretName in $SecretNames) {
     $secretValue = ($secretValueJson | ConvertFrom-Json).value
     Write-Host "$SecretName - $secretValue"
 }
+
+### Check if any of these extracted credentials are valid existing Entra ID users
+
+ - az ad user list --query "[?givenName=='NAME_1' || givenName=='NAME_2' || givenName=='NAME_3'].{Name:displayName, UPN:userPrincipalName, JobTitle:jobTitle}" -o table
