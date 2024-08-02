@@ -17,3 +17,5 @@
 ### Usage: They are exchanged with the authentication server for a new access token (and optionally, a new refresh token) when needed.
 
 ### Content: Typically an opaque string, not meant to be interpreted or used by clients other than to request new access tokens.
+
+## For red teamers, an access token can be used only for a specific scope of a specific service, whereas a refresh token can be used to craft access token for other services to which the user may be permissioned. This can allow us to move laterally to other services, and potentially bypass any MFA enforcement configured for those services!
