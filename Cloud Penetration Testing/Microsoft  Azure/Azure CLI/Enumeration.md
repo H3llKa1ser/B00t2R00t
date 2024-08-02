@@ -10,4 +10,4 @@
 
  - az vm show --resource-group GROUP --name VM_NAME (Return general information about a VM)
 
- - az account get-access-token (Gives the access (refresh) token of the account.)
+ - az account get-access-token (Gives the access token of the account.)
