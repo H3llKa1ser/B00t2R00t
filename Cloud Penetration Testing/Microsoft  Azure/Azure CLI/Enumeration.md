@@ -9,3 +9,5 @@
  - az resource list (Shows all resources that our current user has access to)
 
  - az vm show --resource-group GROUP --name VM_NAME (Return general information about a VM)
+
+ - az account get-access-token (Gives the access (refresh) token of the account.)
