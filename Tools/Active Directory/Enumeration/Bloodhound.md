@@ -39,3 +39,7 @@
 #### 2) python3 dnschef.py --fakeip TARGET_IP --nameserver TARGET_IP
 
 #### 3) bloodhound-python -d DOMAIN.LOCAL -u 'USER' -p 'PASSWORD' -dc DC.DOMAIN.LOCAL -c all -ns 127.0.0.1
+
+## BLOODHOUND CYPHER QUERIES CHEATSHEET
+
+### https://raw.githubusercontent.com/LuemmelSec/Custom-BloodHound-Queries/main/README.md
