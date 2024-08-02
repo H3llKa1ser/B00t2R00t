@@ -33,3 +33,7 @@
  - $UserId = 'USER_ID'
 
  - Get-MgUserMemberOf -userid $userid | select * -ExpandProperty additionalProperties | Select-Object {$_.AdditionalProperties["displayName"]}
+
+### Check if the user has been assigned a Microsoft 365 license
+
+ - Get-MgUserLicenseDetail -UserId "USER.NAME@DOMAIN.CORP"
