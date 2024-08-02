@@ -9,3 +9,5 @@
  - Import-Module .\MFASweep.ps1
 
  - Invoke-MFASweep -Username USERNAME@DOMAIN.LOCAL -Password test1234 (Use this to bypass Conditional Access policy)
+
+ - Invoke-MFASweep -Username USER.NAME@DOMAIN.LOCAL -Password PASSWORD -Recon -IncludeADFS (Enumerate the presence of MFA on various online services, including Active Directory Federated Services ADFS)
