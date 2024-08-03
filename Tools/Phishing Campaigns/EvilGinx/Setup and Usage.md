@@ -41,13 +41,24 @@
 Action                              Command
 -----------                         -----------
 Function                            Clear-Token 
+
 Start Evilginx                      ./evilginx
+
 Close Evilginx                      exit
+
 Get the phising URL                 lures get-url <lure-id>
+
 Get the config                      config
+
 List all phishlets                  phishlets
+
 List all sessions                   sessions
+
 Get details from specific session   sessions <session-id>
+
 Clear screen                        clear
+
 Hide a phishlet                     phishlets hide <phishlet-name>
+
 Unhide a phishlet                   phishlets unhide <phishlet-name>
+
