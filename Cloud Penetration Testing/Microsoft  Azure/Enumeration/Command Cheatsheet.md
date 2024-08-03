@@ -8,3 +8,6 @@
 
  - Get-AzResource (Returns the resources that our user may have access to)
 
+ - Get-AzContainerApp -ResourceGroupName "RESOURCE_GROUP" -Name "CONTAINER_APP_NAME" | fl (Check information on an Azure Container App)
+
+
