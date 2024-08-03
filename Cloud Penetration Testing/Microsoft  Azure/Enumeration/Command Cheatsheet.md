@@ -6,3 +6,5 @@
 
  - Get-UserObjectID -Token $tokens -upn USER.NAME@DOMAIN.LOCAL (Retrieve the ObjectID of the compromised user)
 
+ - Get-AzResource (Returns the resources that our user may have access to)
+
