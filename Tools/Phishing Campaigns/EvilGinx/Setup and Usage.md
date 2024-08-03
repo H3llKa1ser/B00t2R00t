@@ -62,3 +62,22 @@ Hide a phishlet         =            phishlets hide <phishlet-name>
 
 Unhide a phishlet        =           phishlets unhide <phishlet-name>
 
+### Now let's create a lure for our PHISHLET_NAME phishlet! We can actually create multiple lures per phishlet if we wanted to, for example we might want different targets to have different redirect URLs.
+
+ - lures create PHISHLET_NAME
+
+ - lures
+
+ - lures get-url 0
+
+### For requests to our Evilginx server that don't contain a lure path, we can assume that they are scanners (or the blue team), and then redirect these "unauthenticated" requests to a different URL. 
+
+### Evilginx also enables and updates a blocklist by default. The IP addresses associated with any requests that don't contain a valid lure URL will automatically be added to the blocklist.
+
+### Visiting our phishing site LEGITIMATE_DOMAIN in the browser we see the Microsoft Online sign-in page (example)!
+
+### Next to craft our email lure and pretext! Emails from IT that sound official and demand compliance can be successful.
+
+### After sending the email, we find that our victim clicked on the link and entered his username and password, and possibly also the MFA token if this is configured!
+
+ - sessions NUM (See that we have successfully captured cookies for the login session)
