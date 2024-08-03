@@ -14,6 +14,6 @@
 
  - Invoke-SearchMailbox -Tokens $tokens -SearchTerm "password" -MessageCount 40 (Searches the mailbox of our current user)
 
-
+ - Get-GraphTokens -Device AndroidMobile -Browser Android (Emulates other devices when requesting tokens.)
 
 
