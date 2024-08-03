@@ -38,27 +38,27 @@
 
 ### If you want to check the state of your phishlets at any time, you can do so using the phishlets command. Some other helpful commands are below.
 
-Action                              Command
+Action                =              Command
 -----------                         -----------
-Function                            Clear-Token 
+Function              =              Clear-Token 
 
-Start Evilginx                      ./evilginx
+Start Evilginx         =             ./evilginx
 
-Close Evilginx                      exit
+Close Evilginx          =            exit
 
-Get the phising URL                 lures get-url <lure-id>
+Get the phising URL      =           lures get-url <lure-id>
 
-Get the config                      config
+Get the config            =          config
 
-List all phishlets                  phishlets
+List all phishlets         =         phishlets
 
-List all sessions                   sessions
+List all sessions           =        sessions
 
-Get details from specific session   sessions <session-id>
+Get details from specific session  = sessions <session-id>
 
-Clear screen                        clear
+Clear screen           =             clear
 
-Hide a phishlet                     phishlets hide <phishlet-name>
+Hide a phishlet         =            phishlets hide <phishlet-name>
 
-Unhide a phishlet                   phishlets unhide <phishlet-name>
+Unhide a phishlet        =           phishlets unhide <phishlet-name>
 
