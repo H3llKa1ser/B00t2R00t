@@ -18,5 +18,7 @@
 
  - Invoke-BruteClientIDAccess -domain DOMAIN.LOCAL -refreshToken $tokens.refresh_token (Check for non-default permissions that our user might have)
 
+ - Invoke-GraphRecon -Tokens $tokens (Perform recon on the tenant)
+
 
 
