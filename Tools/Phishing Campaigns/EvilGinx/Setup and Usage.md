@@ -19,3 +19,35 @@
  - config ipv4 external EXTERNAL_IP
 
  - config domain LEGITIMATE_DOMAIN.COM
+
+ - cd phishlets
+
+ - wget https://raw.githubusercontent.com/faelsfernandes/evilginx3-phishlets/main/o365-mfa.yaml (Navigate to the phishlets directory and download a phishlet of your choosing)
+
+### A few phishing subdomains were specified in the phishlet and we can go ahead and create A host records for them in the DNS management section of our domain (your domain provider may look different).
+
+### In the Evilginx console we can configure the hostname that should be used with the phishlet.
+
+ - phishlets hostname PHISHLET_NAME LEGITIMATE_DOMAIN.COM
+
+ - phishlets enable PHISHLET_NAME
+
+ - phishlets hide EXAMPLE_PHISHLET
+
+### Running Evilginx again we see our phishlet and can now create a lure! Lures are pre-generated phishing links that will be sent out on phishing engagements.
+
+### If you want to check the state of your phishlets at any time, you can do so using the phishlets command. Some other helpful commands are below.
+
+Action                              Command
+-----------                         -----------
+Function                            Clear-Token 
+Start Evilginx                      ./evilginx
+Close Evilginx                      exit
+Get the phising URL                 lures get-url <lure-id>
+Get the config                      config
+List all phishlets                  phishlets
+List all sessions                   sessions
+Get details from specific session   sessions <session-id>
+Clear screen                        clear
+Hide a phishlet                     phishlets hide <phishlet-name>
+Unhide a phishlet                   phishlets unhide <phishlet-name>
