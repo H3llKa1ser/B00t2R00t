@@ -16,4 +16,7 @@
 
  - Get-GraphTokens -Device AndroidMobile -Browser Android (Emulates other devices when requesting tokens.)
 
+ - Invoke-BruteClientIDAccess -domain DOMAIN.LOCAL -refreshToken $tokens.refresh_token (Check for non-default permissions that our user might have)
+
+
 
