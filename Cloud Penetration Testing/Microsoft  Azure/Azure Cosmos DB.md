@@ -16,4 +16,4 @@ $dbResponse
   
  - 2) Use valid credentials or any key you have found to connect to the DB
 
-### Example Key can be: AccountKey=AccountKey=SECRET_KEY==;TableEndpoint=https://DATABASE_NAME.table.cosmos.azure.com:443/;
+### Example Key can be: AccountKey=SECRET_KEY==;TableEndpoint=https://DATABASE_NAME.table.cosmos.azure.com:443/;
