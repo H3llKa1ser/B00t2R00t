@@ -8,7 +8,7 @@
 
 ### In the XML output, if the NameSpaceType value shows as "Managed" then the company is using Entra ID.
 
-### Microsoft uses GetUserRealm.srf for what's called user realm discovery . When a username is entered on a Microsoft sign-in page, a request is sent to this endpoint to determine the type of account associated with that username.
+### Microsoft uses GetUserRealm.srf for what's called "user realm discovery". When a username is entered on a Microsoft sign-in page, a request is sent to this endpoint to determine the type of account associated with that username.
 
 ### 2) If we verified that our target actually uses Entra ID, we can get more information about the tenant.
 
