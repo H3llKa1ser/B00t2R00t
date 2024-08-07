@@ -16,3 +16,26 @@
 
 ### The .well-known/openid-configuration endpoint is used in the context of OpenID Connect (OIDC), which is an identity layer on top of the OAuth 2.0 protocol. This endpoint is critical for clients to discover how to interact with the identity provider's OAuth 2.0 and OpenID Connect services. Due to this being necessary for the functionality of the identity flow, it is something that cannot be changed easily.
 
+### 3) Run the next command from the AADInternals module, to answer the following questions:
+
+ - Invoke-AADIntReconAsOutsider -DomainName DOMAIN.COM
+
+
+ - 1) DNS:	Does the DNS record exist?
+
+ - 2) MX:	Does the MX point to Office 365?
+
+ - 3) SPF:	Does the SPF contain Exchange Online?
+
+ - 4) Type:	Federated or Managed
+
+ - 5) DMARC:	Is the DMARC record configured?
+
+ - 6) DKIM:	Is the DKIM record configured?
+
+ - 7) MTA-STS:	Is the MTA-STS recored configured?
+
+ - 8) STS:	The FQDN of the federated IdP’s (Identity Provider) STS (Security Token Service) server
+
+ - 9) RPS:	Relaying parties of STS (AD FS). Requires -GetRelayingParties switch.
+
