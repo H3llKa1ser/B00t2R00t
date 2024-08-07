@@ -1,4 +1,4 @@
-# Global Administartor Privesc Scenarios
+# Global Administrator Privesc Scenarios
 
 ## Scenario 1 steps:
 
