@@ -2,6 +2,8 @@
 
 ## Github repo: https://github.com/Gerenios/AADInternals
 
+## Official Documentation: https://aadinternals.com/aadkillchain/
+
 ### Commands:
 
  - Invoke-AADIntReconAsOutsider -Domain domain.local | Format-Table (Reconnaissance. Can be both from inside or outside the network)
