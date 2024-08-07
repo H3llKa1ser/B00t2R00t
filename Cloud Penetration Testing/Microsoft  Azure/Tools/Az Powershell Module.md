@@ -44,7 +44,7 @@
 
  - Get-AzADUser (List all users in the tenant)
 
- - GetAzADUser -UserPrincipalName 'USER.NAME@DOMAIN.CORP' | fl (List more information for a specific user in the tenant)
+ - Get-AzADUser -UserPrincipalName 'USER.NAME@DOMAIN.CORP' | fl (List more information for a specific user in the tenant)
 
 ### Web Applications and SQL
 
@@ -89,3 +89,7 @@
  - Get-AzExpressRouteCircuit (Get Azure ExpressRoute (VPN) Info)
 
  - Get-AzVpnConnection (Get Azure VPN Info)
+
+### Miscellaneous
+
+ - Get-AzStorageBlobContent -Container $containerName -Blob WHATEVER.TXT -Context $context (Download a specific storage blob to read it)
