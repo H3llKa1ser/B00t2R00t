@@ -40,3 +40,5 @@
  - 9) RPS:	Relaying parties of STS (AD FS). Requires -GetRelayingParties switch.
 
 ### 4) Our next step will be to gather possible users, and the email format(s) in use by the company, so that we can use them for a phishing or password spay attack. Social Media sources like LinkedIn, the company's website, and other social media platforms are worth reviewing. Tools like BridgeKeeper can scrape employee names from LinkedIn profiles to convert them into potential usernames.
+
+## Bridgekeeper tool: https://github.com/0xZDH/BridgeKeeper
