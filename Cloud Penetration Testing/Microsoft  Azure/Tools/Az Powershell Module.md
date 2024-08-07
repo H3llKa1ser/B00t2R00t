@@ -52,6 +52,8 @@
 
  - Get-AzWebApp (List azure web app)
 
+ - Get-AzWebApp -Name megabigtechdevapp23 | select enabledhostnames (List hostnames that the web app is hosted and used)
+
  - Get-AzSQLServer (List SQL servers)
 
  - Get-AzSqlDatabase -ServerName $ServerName -ResourceGroupName $ResourceGroupName (Individual databases can be listed with information retrieved from the previous command)
