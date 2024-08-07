@@ -49,3 +49,6 @@
 ### Check if any EntraID user/users have been assigned a role scoped to a specific administrative unit
 
  - Get-MgDirectoryAdministrativeUnitScopedRoleMember -AdministrativeUnitId UNIT_ID | Select-Object roleMemberInfo,roleId -ExpandProperty roleMemberInfo
+
+ - Get-MgDirectoryAdministrativeUnitMember -AdministrativeUnitId UNIT_ID | Select * -ExpandProperty additionalProperties (See if anyone is a member of a specific administrative unit
+
