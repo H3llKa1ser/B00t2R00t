@@ -10,5 +10,11 @@
 
  - Get-AADIntAccessTokenForAADGraph -KerberosTicket $kerberos -Domain DOMAIN.LOCAL (Initiate an access token for Azure AD Graph from the Kerberos Ticket. This is necessary so we can pass the token to use with ROADTools or any other tool we may need to use)
 
+ - Get-AADIntLoginInformation -Domain DOMAIN.COM (Get login information about the target domain)
+
+ - Get-AADIntTenantID -Domain DOMAIN.COM (Get tenant ID of the domain)
+
+
+
 
 
