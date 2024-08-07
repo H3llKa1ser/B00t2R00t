@@ -44,3 +44,9 @@
 ## Bridgekeeper tool: https://github.com/0xZDH/BridgeKeeper
 
 ### Azure services are also available at well-known domains and subdomains. We can enumerate if the target organization is using any of the services by looking for such subdomains.
+
+## Azure Subdomain Enumeration Tool: https://github.com/yuyudhn/AzSubEnum
+
+### Command:
+
+ - python3 azsubenum.py -b TARGET --thread 10
