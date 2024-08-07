@@ -1,4 +1,4 @@
-$userId = "yuki.tanaka@megabigtech.com"
+$userId = "USER.NAME@DOMAIN.CORP"
 $groupIds = (Get-MgUserMemberOf -UserId $userId).Id
 
 $groupNames = @()
