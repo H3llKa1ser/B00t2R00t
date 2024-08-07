@@ -37,3 +37,7 @@
 ### Check if the user has been assigned a Microsoft 365 license
 
  - Get-MgUserLicenseDetail -UserId "USER.NAME@DOMAIN.CORP"
+
+### Check if the user belongs to a security group or if a directory role has been assigned to them
+
+ - Get-MgUserMemberOf -UserId dbuser@megabigtech.com | select * -ExpandProperty additionalProperties | Select-Object {$_.AdditionalProperties["displayName"]}
