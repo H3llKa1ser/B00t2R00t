@@ -52,3 +52,6 @@
 
  - Get-MgDirectoryAdministrativeUnitMember -AdministrativeUnitId UNIT_ID | Select * -ExpandProperty additionalProperties (See if anyone is a member of a specific administrative unit
 
+### Check for any objects owned by our compromised user
+
+ - Get-MgUserOwnedObject -UserId USER.NAME@DOMAIN.CORP | Select * -ExpandProperty additionalProperties
