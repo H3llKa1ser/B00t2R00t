@@ -50,3 +50,12 @@
 ### Command:
 
  - python3 azsubenum.py -b TARGET --thread 10
+
+### 5) After we enumerate domains and subdomains, we try to gather a list of possible usernames within the organization.  It's also important to understand email formats.
+
+### With our list of potential user names we can manually test them by going to https://login.microsoftonline.com . If the username is valid we will be prompted to enter the password. Otherwise, we'll get the message "This username may be incorrect. Make sure you typed it correctly. Otherwise, contact your admin." However, this manual method will be time consuming and we can leverage tools to automate this process.
+
+### One such tool is Omnispray which is a python3 tool that builds on other tools such as o365spray and provides a modular framework to expand enumeration and spraying beyond just a single target or application.
+
+## Omnispray link: git clone https://github.com/0xZDH/Omnispray
+
