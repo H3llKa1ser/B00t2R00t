@@ -36,7 +36,7 @@
 
  - Get-AzRoleAssignment (Get the current user's role assignment)
 
- - Get-AzResource (List all resources)
+ - Get-AzResource (List all resources) TIP: This command will return the resources for which the user has at least the Reader role in Role-Based Access Control (RBAC).
 
  - Get-AzResourceGroup (List all resource groups)
 
