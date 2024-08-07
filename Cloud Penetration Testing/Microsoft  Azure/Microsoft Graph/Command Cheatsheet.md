@@ -41,3 +41,11 @@
 ### Check if the user belongs to a security group or if a directory role has been assigned to them
 
  - Get-MgUserMemberOf -UserId USER.NAME@DOMAIN.CORP | select * -ExpandProperty additionalProperties | Select-Object {$_.AdditionalProperties["displayName"]}
+
+### Check the administrative units
+
+ - Get-MgDirectoryAdministrativeUnit | fl
+
+### Check if any EntraID user/users have been assigned a role scoped to a specific administrative unit
+
+ - Get-MgDirectoryAdministrativeUnitScopedRoleMember -AdministrativeUnitId UNIT_ID | Select-Object roleMemberInfo,roleId -ExpandProperty roleMemberInfo
