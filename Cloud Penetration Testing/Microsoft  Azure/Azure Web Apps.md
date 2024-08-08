@@ -6,8 +6,8 @@
 
 ### Any time an app is created, App Service creates a Kudu companion app for it that allows us to manage the app instance, including getting terminal access. The location of this app can vary depending on the configuration.
 
- - https://<app-name>.scm.azurewebsites.net (if the app isn't in an isolation tier)
+ - https://APP_NAME.scm.azurewebsites.net (if the app isn't in an isolation tier)
 
- - https://<app-name>.scm.<ase-name>.p.azurewebsites.net (if the app is internet-facing and in an isolated tier)
+ - https://APP_NAME.scm.ASE_NAME.p.azurewebsites.net (if the app is internet-facing and in an isolated tier)
 
- - https://<app-name>.scm.<ase-name>.appserviceenvironment.net (if the app is internal and in an isolated tier)
+ - https://APP_NAME.scm.ASE_NAME.appserviceenvironment.net (if the app is internal and in an isolated tier)
