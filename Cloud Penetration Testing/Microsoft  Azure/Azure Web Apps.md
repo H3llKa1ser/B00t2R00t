@@ -11,3 +11,5 @@
  - https://APP_NAME.scm.ASE_NAME.p.azurewebsites.net (if the app is internet-facing and in an isolated tier)
 
  - https://APP_NAME.scm.ASE_NAME.appserviceenvironment.net (if the app is internal and in an isolated tier)
+
+## PROTIP: The Website Contributor role must be assigned first in order to access the Kudu console terminal.
