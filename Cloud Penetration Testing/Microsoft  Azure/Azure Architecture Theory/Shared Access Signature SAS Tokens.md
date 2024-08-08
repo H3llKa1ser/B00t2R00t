@@ -44,9 +44,10 @@
 
  - 14) se (End Time): Defines the expiration time of the SAS token. Here, it is set to "2099-05-06T06:03:29Z", indicating the token is valid until May 6, 2099.
 
-st (Start Time): Specifies the start time from when the token becomes valid. For this token, it's "2024-05-05T22:03:29Z".
+ - 15) st (Start Time): Specifies the start time from when the token becomes valid. For this token, it's "2024-05-05T22:03:29Z".
 
-spr (Protocol): Restricts the protocols through which the resources can be accessed. It’s set to HTTPS, ensuring all communications are secure.
+ - 16) spr (Protocol): Restricts the protocols through which the resources can be accessed. It’s set to HTTPS, ensuring all communications are secure.
 
-sig (Signature): The cryptographic signature, which is an encoded string generated from the account key and the string-to-sign. It is used to authenticate the SAS token request
+ - 17) sig (Signature): The cryptographic signature, which is an encoded string generated from the account key and the string-to-sign. It is used to authenticate the SAS token request
 
+## SAS Tokens can be used to authenticate with Azure CLI
