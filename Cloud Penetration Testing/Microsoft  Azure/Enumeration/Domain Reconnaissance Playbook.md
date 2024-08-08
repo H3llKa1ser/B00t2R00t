@@ -1,5 +1,7 @@
 # Domain Reconnaissance Playbook
 
+## Domain OSINT Link to gather information: https://aadinternals.com/osint/
+
 ## Steps:
 
 ### 1) Manually check if a particular company is using Entra ID for authentication by browsing to the URL below:
