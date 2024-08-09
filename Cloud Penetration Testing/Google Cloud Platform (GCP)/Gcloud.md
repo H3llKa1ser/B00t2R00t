@@ -48,6 +48,8 @@
 
  - gsutil cp gs://BUCKET_ID/item ~/ (Copy item from bucket)
 
+ - gsutil stat gs://BUCKET_ID/index.html (Returns more information about a file)
+
 ## Webapps and SQL
 
  - gcloud app instances list (List webapps)
