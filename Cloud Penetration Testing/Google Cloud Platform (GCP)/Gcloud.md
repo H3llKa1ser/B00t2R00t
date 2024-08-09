@@ -1,6 +1,6 @@
 # gcloud GCP CLI tool
 
-### Authentication
+## Authentication
 
  - gcloud auth login (User identity login)
 
@@ -8,7 +8,7 @@
 
  - gcloud auth list (List accounts available to gcloud)
 
-### Account Information
+## Account Information
 
  - gcloud config list (Get account information)
 
@@ -28,7 +28,7 @@
 
  - gcloud source repos clone REPO_NAME (Clone repo to home dir)
 
-### Virtual Machines
+## Virtual Machines
 
  - gcloud compute instances list (List compute instances)
 
@@ -40,7 +40,7 @@
 
  - curl http://metadata.google.internal/computeMetadata/v1/instance/serviceaccounts/default/scopes -H &#39;Metadata-Flavor:Google’ (Get access scopes if on an instance)
 
-### Storage Buckets
+## Storage Buckets
 
  - gsutil ls (List Google Storage buckets)
 
@@ -48,7 +48,7 @@
 
  - gsutil cp gs://BUCKET_ID/item ~/ (Copy item from bucket)
 
-### Webapps and SQL
+## Webapps and SQL
 
  - gcloud app instances list (List webapps)
 
@@ -62,7 +62,7 @@
 
  - gcloud spanner databases list --instance INSTANCE_NAME
 
-### Export SQL databases and buckets
+## Export SQL databases and buckets
 
  - gsutil cp gs://BUCKET_NAME/FOLDER/ . (First copy buckets to local directory)
 
@@ -72,7 +72,7 @@
 
  - gcloud sql export sql SQL_INSTANCE_NAME gs://<GOOGLE_STORAGE_NAME/sqldump.gz --database=DATABASE_NAME (Export SQL DB)
 
-### Networking
+## Networking
 
  - gcloud compute networks list (List networks)
 
@@ -94,7 +94,7 @@
 
  - kubectl cluster-info
 
-### Serverless
+## Serverless
 
 #### GCP functions log analysis – May get useful information from logs associated with GCP functions
 
