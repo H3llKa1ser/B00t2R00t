@@ -8,6 +8,8 @@
 
  - gcloud auth list (List accounts available to gcloud)
 
+ - gcloud auth revoke --all (Removes all existing authenticated sessions)
+
 ## Account Information
 
  - gcloud config list (Get account information)
