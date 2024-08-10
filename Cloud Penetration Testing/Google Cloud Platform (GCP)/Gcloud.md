@@ -4,7 +4,7 @@
 
  - gcloud auth login (User identity login)
 
- - gcloud auth activate-service-account --key-file creds.json (Service account login)
+ - gcloud auth activate-service-account --key-file=creds.json (Service account login)
 
  - gcloud auth list (List accounts available to gcloud)
 
