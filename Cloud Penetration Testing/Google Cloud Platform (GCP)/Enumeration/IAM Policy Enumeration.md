@@ -16,4 +16,4 @@
 
  - gcloud projects get-iam-policy PROJECT --flatten="bindings[].members" --format='table(bindings.role, bindings.members)' --filter="bindings.members:USER@PROJECT.iam.gserviceaccount.com" (Return the roles bound to our current user)
 
- - gcloud iam roles describe ROLE_NAME --project=PROJECT_ID (Describe a specific role that is bound to our current user)
+ - gcloud iam roles describe ROLE_NAME --project=PROJECT_ID (Enumerate Permissions based on the specific role bound to our current user)
