@@ -90,7 +90,7 @@
 
  - gcloud compute interconnects list (List Interconnects (VPN)
 
-### Containers
+## Containers
 
  - gcloud container clusters list
 
@@ -124,3 +124,8 @@
 
  - gcloud auth list
 
+## Secrets
+
+ - gcloud secrets list --project=PROJECT_NAME (List the secrets stored in a project)
+
+ - gcloud secrets versions access latest --secret=SECRET_NAME --project=PROJECT_NAME (Access the secret)
