@@ -22,6 +22,8 @@
 
  - gcloud projects get-iam-policy PROJECT_ID > policy.yml (Save the YAML output locally to a .yml file)
 
+ - gcloud projects get-iam-policy PROJECT_ID --format=json (Enumerate IAM policies with JSON format output)
+
  - gcloud projects list (List projects)
 
  - gcloud config set project PROJECT_NAME (Set a different project)
