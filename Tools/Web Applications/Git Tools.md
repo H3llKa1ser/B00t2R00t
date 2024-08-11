@@ -19,3 +19,7 @@
 #### 5) git branch -a (Show all branches a repository has)
 
 #### 6) git show COMMIT_NUMBER (See the specific commit in detail)
+
+#### 7) git checkout BRANCH (Switch to another branch)
+
+#### 8) git branch (Check in which branch are we now)
