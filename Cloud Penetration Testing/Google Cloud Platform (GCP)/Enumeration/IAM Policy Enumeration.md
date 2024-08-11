@@ -1,5 +1,7 @@
 # IAM Policy Enumeration
 
+## Custom Roles information: https://gcp.permissions.cloud/predefinedroles
+
 ### Steps:
 
  - 1) gcloud projects get-iam-policy PROJECT_ID > policy.yml (List IAM policy per project, then save it locally as a YAML file)
