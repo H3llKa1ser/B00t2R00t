@@ -6,6 +6,10 @@
 
 #### 1) gitdumper.sh http://WHATEVER/.git/ repo
 
+## Alternate method: wget
+
+ - wget -r http://DOMAIN.COM/.git
+
 #### 2) Go to the directory where the .git folder is located
 
 #### 3) /path/to/extractor.sh . App
