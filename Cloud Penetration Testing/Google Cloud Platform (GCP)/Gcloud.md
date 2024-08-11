@@ -131,3 +131,11 @@
  - gcloud secrets list --project=PROJECT_NAME (List the secrets stored in a project)
 
  - gcloud secrets versions access latest --secret=SECRET_NAME --project=PROJECT_NAME (Access the secret)
+
+## Service Account Impersonation
+
+ - gcloud config set auth/impersonate_service_account ACCOUNT_NAME_TO_IMPERSONATE@PROJECT_NAME.iam.gserviceaccount.com
+
+ - gcloud config unset auth/impersonate_service_account intermediate-account-dev-team@gr-proj-1.iam.gserviceaccount.com (ALWAYS USE THIS AT THE END OF EACH ASSESSMENT TO AVOID FUTURE CONFLICTS)
+
+
