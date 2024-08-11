@@ -23,3 +23,5 @@
 #### 7) git checkout BRANCH (Switch to another branch)
 
 #### 8) git branch (Check in which branch are we now)
+
+#### 9) git show COMMIT_NUMBER^:FILE.json > token.json (If we found a file/key/token, we can check the filename upon seeing the commit, then we store it locally with this command)
