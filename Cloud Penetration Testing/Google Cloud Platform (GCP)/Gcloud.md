@@ -30,6 +30,8 @@
 
  - gloud services list (Gives a list of all APIs that are enabled in project)
 
+## Repositories/Source Reader permissions
+
  - gcloud source repos list (Get source code repos available to user)
 
  - gcloud source repos clone REPO_NAME (Clone repo to home dir)
