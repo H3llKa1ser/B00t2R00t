@@ -136,6 +136,6 @@
 
  - gcloud config set auth/impersonate_service_account ACCOUNT_NAME_TO_IMPERSONATE@PROJECT_NAME.iam.gserviceaccount.com
 
- - gcloud config unset auth/impersonate_service_account intermediate-account-dev-team@gr-proj-1.iam.gserviceaccount.com (ALWAYS USE THIS AT THE END OF EACH ASSESSMENT TO AVOID FUTURE CONFLICTS)
+ - gcloud config unset auth/impersonate_service_account (ALWAYS USE THIS AT THE END OF EACH ASSESSMENT TO AVOID FUTURE CONFLICTS)
 
 
