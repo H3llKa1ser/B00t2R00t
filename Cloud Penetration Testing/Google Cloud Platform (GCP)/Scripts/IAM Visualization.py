@@ -1,4 +1,4 @@
-### Link to code: https://raw.githubusercontent.com/hac01/iam-policy-visualize/main/main.py
+# Link to code: https://raw.githubusercontent.com/hac01/iam-policy-visualize/main/main.py
 
 import json
 import graphviz
