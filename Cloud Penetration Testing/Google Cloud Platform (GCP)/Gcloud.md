@@ -52,6 +52,8 @@
 
  - gsutil stat gs://BUCKET_ID/index.html (Returns more information about a file)
 
+ - gcloud storage ls gs://BUCKET_ID --project=PROJECT_NAME (List objects stored in a specific bucket within a specific project)
+
 ## Webapps and SQL
 
  - gcloud app instances list (List webapps)
