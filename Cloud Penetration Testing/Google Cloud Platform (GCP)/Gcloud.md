@@ -138,4 +138,6 @@
 
  - gcloud config unset auth/impersonate_service_account (ALWAYS USE THIS AT THE END OF EACH ASSESSMENT TO AVOID FUTURE CONFLICTS)
 
+ - gcloud config list (Confirm the account impersonation)
+
 
