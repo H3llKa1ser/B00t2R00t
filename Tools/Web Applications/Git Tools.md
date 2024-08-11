@@ -16,4 +16,6 @@
 
 #### 4) git log (Gets all commits in the repository)
 
-#### 5) git show COMMIT_NUMBER (See the specific commit in detail)
+#### 5) git branch -a (Show all branches a repository has)
+
+#### 6) git show COMMIT_NUMBER (See the specific commit in detail)
