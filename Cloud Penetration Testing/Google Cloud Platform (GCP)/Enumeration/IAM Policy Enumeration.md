@@ -11,3 +11,7 @@
  - 3) python3 main.py /path/to/policy.json (Run the script to visualize the .json file into a graph in .png format) Script: https://raw.githubusercontent.com/hac01/iam-policy-visualize/main/main.py
   
  - 4) open iam_policy_graph.png (Happy graphing)
+
+## Alternate Method: gcloud CLI
+
+ - gcloud projects get-iam-policy gr-proj-1 --flatten="bindings[].members" --format='table(bindings.role, bindings.members)' --filter="bindings.members:USER@PROJECT.iam.gserviceaccount.com" (Return the roles bound to our current user)
