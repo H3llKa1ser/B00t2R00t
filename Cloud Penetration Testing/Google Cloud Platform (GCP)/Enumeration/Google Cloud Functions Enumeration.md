@@ -29,7 +29,7 @@
 
  - FILE_URL="https://www.googleapis.com/download/storage/v1/b/gcf-sources-212055223570-us-central1/o/function-1-8678e4fb-cf43-4d97-b877-6512729bdba4%2Fversion-2%2Ffunction-source.zip?generation=1708197786687849&alt=media"
 
-# Download the file with GCP authentication
+## Download the file with GCP authentication
 
  - curl -o function-source.zip -H "Authorization: Bearer $ACCESS_TOKEN" "$FILE_URL"
 
