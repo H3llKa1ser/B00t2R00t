@@ -12,6 +12,8 @@
 
  - gcloud auth revoke --all (Removes all existing authenticated sessions)
 
+ - gcloud auth configure-docker LOCATION-docker.pkg.dev (Adds credHelper for our gcloud region in the ~/.docker/config.json file to pull docker images)
+
 ## Account Information
 
  - gcloud config list (Get account information)
