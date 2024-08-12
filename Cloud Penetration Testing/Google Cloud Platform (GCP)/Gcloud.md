@@ -8,6 +8,8 @@
 
  - gcloud auth list (List accounts available to gcloud)
 
+ - gcloud auth print-access-token (Prints access token. Can be assigned in a variable later on for other purposes)
+
  - gcloud auth revoke --all (Removes all existing authenticated sessions)
 
 ## Account Information
