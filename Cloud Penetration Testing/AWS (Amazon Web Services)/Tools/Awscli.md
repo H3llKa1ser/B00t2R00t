@@ -20,7 +20,7 @@
 
  - aws iam list-roles (List IAM roles)
 
- - aws s3 ls (List S3 buckets accessible to an account
+ - aws s3 ls (List S3 buckets accessible to an account)
 
 ### Virtual Machines
 
