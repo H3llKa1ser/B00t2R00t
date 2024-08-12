@@ -159,5 +159,11 @@
 ## Identity Access Management IAM
 
  - gcloud iam service-accounts list --project PROJECT_NAME (List service accounts in a specific project)
+ 
+ - gcloud iam service-accounts get-iam-policy ACCOUNT_NAME@PROJECT_NAME.iam.gserviceaccount.com (List permissions and roles assigned on a specific user)
+
+ - gcloud iam roles describe ROLE --project=PROJECT_NAME (Check the permissions granted by this role)
+
+
 
 
