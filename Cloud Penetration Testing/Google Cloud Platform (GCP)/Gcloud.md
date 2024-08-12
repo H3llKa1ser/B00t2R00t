@@ -58,7 +58,9 @@
 
  - gsutil ls -r gs://BUCKET_NAME (List Google Storage buckets recursively)
 
- - gsutil cp gs://BUCKET_ID/item ~/ (Copy item from bucket)
+ - gsutil cp gs://BUCKET_ID/item . (Copy item from bucket)
+
+ - gsutil cp gs://BUCKET_ID/item - (Print the item output in our terminal)
 
  - gsutil stat gs://BUCKET_ID/index.html (Returns more information about a file)
 
