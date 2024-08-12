@@ -149,5 +149,8 @@
  - gcloud artifacts repositories list --project=PROJECT_NAME --format="table[box](name, format, mode, LOCATION)" (Enumerate artifact repository)
 
  - gcloud artifacts packages list --repository REPOSITORY_NAME --location LOCATION (List detailed information about a specific repository)
+ 
+ - gcloud artifacts versions list --repository REPOSITORY_NAME --location LOCATION --package PACKAGE_NAME (List versions of a specific package)
+
 
 
