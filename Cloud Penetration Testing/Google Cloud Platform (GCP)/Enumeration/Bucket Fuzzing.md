@@ -1,6 +1,6 @@
 # Bucket file searching
 
-## Tools: Gcloud, ffuf
+## Tools: Gcloud, ffuf, GCPBucketBrute
 
 ### Commands:
 
@@ -15,3 +15,12 @@
 
 ## TIP: You may view on page source code to check for possible bucket URLs being exposed.
 
+## Alternate Method: GCPBucketBrute
+
+### Link: https://github.com/RhinoSecurityLabs/GCPBucketBrute
+
+### Example Usage:
+
+ - python3 gcpbucketbrute.py -f /path/to/token.json -k WHATEVER (Do an authenticated brute-force attack to enumerate buckets by creating permutations based on the keyword WHATEVER)
+
+ - python3 gcpbucketbrute.py -u -w /path/to/wordlist.txt (Do an unauthenticated dictionary attack)
