@@ -8,7 +8,7 @@
 
 ### Open S3 bucket enumeration
 
- - aws s3 ls s3://BUCKET_NAME/ (List the contents of an S3 bucket
+ - aws s3 ls s3://BUCKET_NAME/ (List the contents of an S3 bucket)
 
  - aws s3 sync s3://BUCKET_NAME s3-files-dir (Download contents of bucket)
 
