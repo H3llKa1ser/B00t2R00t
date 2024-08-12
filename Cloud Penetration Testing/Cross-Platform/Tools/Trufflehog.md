@@ -8,4 +8,7 @@
 
 ### Usage
 
- - sudo trufflehog git https://gitlab.com/WHATEVER/REPOSITORY
+ - sudo trufflehog git https://gitlab.com/WHATEVER/REPOSITORY (Checks for secrets in a gitlab repository)
+
+ - sudo trufflehog docker --image LOCATION-docker.pkg.dev/PROJECT_NAME/REPOSITORY_NAME/PACKAGE_NAME (Checks for secrets in a docker image)
+
