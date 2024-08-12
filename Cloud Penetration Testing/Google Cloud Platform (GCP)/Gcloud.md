@@ -144,4 +144,10 @@
 
  - gcloud config list (Confirm the account impersonation)
 
+## Artifacts
+
+ - gcloud artifacts repositories list --project=PROJECT_NAME --format="table[box](name, format, mode, LOCATION)" (Enumerate artifact repository)
+
+ - gcloud artifacts packages list --repository REPOSITORY_NAME --location LOCATION (List detailed information about a specific repository)
+
 
