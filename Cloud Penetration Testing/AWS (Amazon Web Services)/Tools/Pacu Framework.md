@@ -6,6 +6,8 @@
 
  - import_keys PROFILE_NAME
 
+ - set_keys (Insert valid Access Key and Secret Access Key to gain a session)
+
 ### Detect if keys are honey token keys
 
  - run iam__detect_honeytokens
