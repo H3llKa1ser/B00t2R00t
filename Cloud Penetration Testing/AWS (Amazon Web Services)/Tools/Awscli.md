@@ -6,6 +6,8 @@
 
  - aws configure (Set AWS programmatic keys for authentication (use --profile= for a new profile)
 
+ - aws configure set aws_session_token "SESSION_TOKEN" (Use a session token with the Access Key and Secret Access Key (aws configure) to authenticate)
+
 ### Open S3 bucket enumeration
 
  - aws s3 ls s3://BUCKET_NAME/ (List the contents of an S3 bucket)
@@ -21,6 +23,8 @@
  - aws iam list-roles (List IAM roles)
 
  - aws s3 ls (List S3 buckets accessible to an account)
+
+ - aws sts assume-role --role-arn arn:aws:iam::AWS_ACCOUNT_ID:role/Administrator --role-session-name ROLE_NAME (Assume the role of a specific account)
 
 ### Virtual Machines
 
