@@ -47,3 +47,7 @@
  - aws ec2 describe-network-interfaces (List EC2 network interfaces)
 
  - aws directconnect describe-connections (List DirectConnect (VPN) connections)
+
+### Identity Access Management IAM
+
+ - aws iam update-assume-role-policy --role-name ROLE_NAME --policy-document file://policy.json (Update the "assume role" policy of a user using a .json file)
