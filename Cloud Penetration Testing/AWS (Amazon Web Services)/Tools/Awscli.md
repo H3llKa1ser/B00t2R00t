@@ -60,3 +60,6 @@
 
  - aws s3api put-bucket-policy --bucket iam-enum --policy file://s3_policy.json (Enumerate IAM users and roles via S3 Bucket Policy)
 
+ - aws lambda add-permission --function-name FUNCTION_NAME --action lambda:GetFunction --statement-id IAMEnum --principal "arn:aws:iam::AWS_ACCOUNT_ID:role/admin" (Enumerate IAM users and roles via lambda functions)
+
+
