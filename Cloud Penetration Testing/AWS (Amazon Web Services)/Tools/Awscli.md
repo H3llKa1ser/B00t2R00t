@@ -57,3 +57,6 @@
  - aws iam update-assume-role-policy --role-name ROLE_NAME --policy-document file://policy.json (Update the "assume role" policy of a user using a .json file)
 
  - aws iam get-role --role-name ROLE_NAME (List more information about a specific role)
+
+ - aws s3api put-bucket-policy --bucket iam-enum --policy file://s3_policy.json (Enumerate IAM users and roles via S3 Bucket Policy)
+
