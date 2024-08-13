@@ -20,6 +20,8 @@
 
  - run iam__enum_users --role-name ROLE_NAME --account-id AWS_ACCOUNT_ID (Enumerate IAM Users)
 
+ - run iam__enum_roles --role-name ROLE_NAME --account-id AWS_ACCOUNT_ID (Enumerate IAM Roles and possibly assume a role we may find)
+
  - whoami
 
 ### Check for privilege escalation
