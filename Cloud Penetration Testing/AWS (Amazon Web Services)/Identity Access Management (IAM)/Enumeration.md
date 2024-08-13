@@ -22,6 +22,8 @@
 
  - aws iam list-users (Listing IAM users)
 
+ - aws s3api put-bucket-policy --bucket iam-enum --policy file://s3_policy.json (Enumerate users and roles via S3 Bucket Policy)
+
  - aws iam list-groups-for-user --user-name USER_NAME (Listing the IAM groups that the specified IAM user belongs to)
 
  - aws iam list-attached-user-policies --user-name USER_NAME (Listing all manages policies that are attached to the specified IAM user)
