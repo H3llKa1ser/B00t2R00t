@@ -26,6 +26,8 @@
 
  - aws sts assume-role --role-arn arn:aws:iam::AWS_ACCOUNT_ID:role/Administrator --role-session-name ROLE_NAME (Assume the role of a specific account)
 
+ - aws iam list-attached-user-policies --user-name USER (List policies that are attached directly to our user)
+
 ### Virtual Machines
 
  - aws ec2 describe-instances (List EC2 instances)
