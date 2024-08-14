@@ -16,4 +16,8 @@
 
  - cloudfox aws inventory (Enumerates various AWS resources)
 
- - cloudfox aws lambda (Enumerates
+ - cloudfox aws access-keys (Maps IAM users to keys)
+
+ - cloudfox aws lambda (Enumerates lambda instances)
+
+ - cloudfox aws secrets (Returns all stored secrets from SecretsManager and SSM (AWS Systems Manager) that are accessible to us)
