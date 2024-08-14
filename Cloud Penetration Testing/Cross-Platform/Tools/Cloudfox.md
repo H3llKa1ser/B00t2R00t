@@ -25,3 +25,5 @@
  - cloudfox aws lambda (Enumerates lambda instances)
 
  - cloudfox aws secrets (Returns all stored secrets from SecretsManager and SSM (AWS Systems Manager) that are accessible to us)
+
+ - cloudfox aws env-vars (Returns environmental variables that might have been configured from a lambda instance)
