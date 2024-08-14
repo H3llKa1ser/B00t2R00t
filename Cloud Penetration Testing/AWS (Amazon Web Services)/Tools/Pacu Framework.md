@@ -22,6 +22,8 @@
 
  - run iam__enum_roles --role-name ROLE_NAME --account-id AWS_ACCOUNT_ID (Enumerate IAM Roles and possibly assume a role we may find)
 
+ - run iam__bruteforce_permissions (Bruteforce IAM permissions)
+
  - whoami
 
 ### Check for privilege escalation
