@@ -28,6 +28,8 @@
 
 ## Commands to use:
 
+ - chmod u+s /bin/bash
+ 
  - usermod -aG sudo USER (Adds the user to sudo group)
 
 ### Then on our target machine if we have SSH access 
