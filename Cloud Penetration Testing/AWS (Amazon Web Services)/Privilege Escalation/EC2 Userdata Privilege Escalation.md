@@ -1,5 +1,7 @@
 # AWS EC2 Userdata Privilege Escalation
 
+## Requirements: Our user/role/policy has permissions to start and stop EC2 instances at will
+
 ### We can leverage user data to execute commands in the context of root on Linux at launch. In the example below we've added commands to create a copy of the root-owned binary /bin/sh and add the setuid bit, allowing us to run the binary as root (example). The EC2 instance has to be in a stopped state for us to update the user data.
 
 ## Steps
