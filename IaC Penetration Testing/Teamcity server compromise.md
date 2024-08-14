@@ -42,7 +42,7 @@
 
 ### TeamCity secrets are stored within the data directory.
 
-### Command to find secrets within data directory
+### Command to find secrets within data directory (Go to: Server Administration -> Global Settings)
 
  - grep -R zxx
 
