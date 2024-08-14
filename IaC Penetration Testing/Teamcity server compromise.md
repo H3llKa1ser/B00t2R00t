@@ -36,6 +36,14 @@
 
  - 2) sudo -s (Gain root shell)
 
+## Alternate method: Agent
+
+### 1) Click on Agents
+
+### 2) Click on the Default Agent -> Open Terminal
+
+### 3) Terminal opened as root (VOILA!)
+
 # Teamcity server secrets decryption
 
 ### All TeamCity encrypted secrets start with zxx.
