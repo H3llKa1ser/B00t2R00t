@@ -12,6 +12,10 @@
 
  - ~/.cloudfox/cloudfox-output/aws/ID/json
 
+## PROTIP: In some uses, cloudfox writes a file that contains the commands to use your loot more efficiently.
+
+### Example: /home/USER/.cloudfox/cloudfox-output/aws/909174020271-AIDA5HLX6TCX4JECDJQRL-909174020271/loot/pull-secrets-commands.txt
+
 ## AWS (All commands are run based on authenticated account context)
 
  - cloudfox aws inventory (Enumerates various AWS resources)
