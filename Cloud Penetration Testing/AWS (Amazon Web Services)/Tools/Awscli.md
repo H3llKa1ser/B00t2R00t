@@ -64,4 +64,10 @@
 
  - aws lambda add-permission --function-name FUNCTION_NAME --action lambda:GetFunction --statement-id IAMEnum --principal "arn:aws:iam::AWS_ACCOUNT_ID:role/admin" (Enumerate IAM users and roles via lambda functions)
 
+### SecretsManager and SSM (AWS System Manager)
+
+ - aws secretsmanager get-secret-value --secret-id ID --region REGION
+
+ - aws ssm get-parameter --name "/application/APP/NAME/USER_OR_PASS" --with-decryption --region REGION 
+
 
