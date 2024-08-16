@@ -80,3 +80,10 @@
 
  -  aws apigateway update-rest-api --rest-api-id API_ID --patch-operations JSON_API_DATA (Update the API settings/policies/etc.) 
 
+### Batch Operations
+
+ - aws s3control list-jobs --account-id AWS_ACCOUNT_ID | less (View the current status of the latest job)
+
+ - aws s3control create-job --account-id AWS_ACCOUNT_ID --operation '{"S3ReplicationObject":{}}' --report '{"Bucket":"arn:aws:s3:::BUCKET_NAME","Prefix":"batch-replication-report","Format":"Report_CSV_20180820","Enabled":true,"ReportScope":"AllTasks"}' --manifest-generator '{"S3JobManifestGenerator":{"ExpectedBucketOwner":"AWS_ACCOUNT_ID","SourceBucket":"arn:aws:s3:::BUCKET_NAME","EnableManifestOutput":false,"Filter":{"EligibleForReplication":true,"ObjectReplicationStatuses": ["NONE","FAILED","COMPLETED","REPLICA"]}}}' --priority 1 --role-arn "arn:Aws:iam:AWS_ACCOUNT_ID:role/ROLE_NAME" --no-confirmation-required --region REGION --description "WHATEVER" (Create a batch operation job)
+ 
+
