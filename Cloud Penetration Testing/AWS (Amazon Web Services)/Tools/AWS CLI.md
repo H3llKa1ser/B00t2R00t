@@ -28,6 +28,8 @@
 
  - aws iam list-attached-user-policies --user-name USER (List policies that are attached directly to our user)
 
+ - aws iam update-login-profile --user-name USERNAME --password 'PASSWORD' (See if a user is able to set their own AWS console password from the CLI)
+
 ### Virtual Machines
 
  - aws ec2 describe-instances (List EC2 instances)
