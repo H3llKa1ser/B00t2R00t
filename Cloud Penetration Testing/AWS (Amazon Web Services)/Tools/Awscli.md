@@ -70,4 +70,6 @@
 
  - aws ssm get-parameter --name "/application/APP/NAME/USER_OR_PASS" --with-decryption --region REGION 
 
+### AWS API Gateway
 
+ - aws apigateway get-rest-apis (List APIs)
