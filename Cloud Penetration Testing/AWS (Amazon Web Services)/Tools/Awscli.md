@@ -73,3 +73,8 @@
 ### AWS API Gateway
 
  - aws apigateway get-rest-apis (List APIs)
+
+ - aws apigateway create-deployment --rest-api-id API_ID --stage-name STAGE_NAME(API/PROD/ETC) (Deploy an existing API to a specific stage)
+
+ -  aws apigateway update-rest-api --rest-api-id API_ID --patch-operations JSON_API_DATA (Update the API settings/policies/etc.) 
+
