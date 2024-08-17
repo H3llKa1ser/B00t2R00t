@@ -6,4 +6,4 @@
 
 #### 3) kubectl describe secret SECRET
 
-#### 4) kubectl get secret SECRET -o 'json'
+#### 4) kubectl get secret SECRET -o jsonpath='{.data}'
