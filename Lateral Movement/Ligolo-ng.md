@@ -24,6 +24,8 @@
 
 - sudo ip link set ligolo up
 
+- sudo ip route add IP_ADDRESS/SUBNET_MASK dev ligolo ( Configure the routing table so that it will direct traffic that is destined for the IP_ADDRESS/SUBNET_MASK network to be routed through our newly created TUN device.)
+
 ### Windows
 
 #### You need to download the Wintun driver (used by WireGuard) and place the wintun.dll in the same folder as Ligolo (make sure you use the right architecture).
