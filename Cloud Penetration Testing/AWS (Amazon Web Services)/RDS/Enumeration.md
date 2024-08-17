@@ -34,7 +34,7 @@
 
  - aws rds describe-db-instances (Listing information about RDS instances)
 
- - aws rds describe-db-snapshots --snapshot-type public --include-public --region us-east-1 | grep AWS_ACCOUNT_ID (Look for public RDS Snapshots)
+ - aws rds describe-db-snapshots --snapshot-type public --include-public --region REGION | grep AWS_ACCOUNT_ID (Look for public RDS Snapshots)
 
 ## If: IAMDatabaseAuthenticationEnabled: false -> Need password to access the instance
 
