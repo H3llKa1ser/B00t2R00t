@@ -1,5 +1,7 @@
 # AD Pentesting Methodologies 
 
+## Link for assistance: https://wadcoms.github.io/
+
 ## PASSWORD ATTACKS, POST-EXPLOITATION AND PIVOTING EXAMPLE:
 
 - Check C:\Users\ directory to add local users to a users.txt file (Post exploitation. Used for pivoting/lateral movement)
