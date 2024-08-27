@@ -21,3 +21,8 @@
 - Spray uncracked ntlm hashes to all users in users.txt (If we dumped them with secretsdump)
 
 - Same as #3 but with local-auth
+
+- If spraying does not give any good results, then we have the list of users and we can attempt to do an ASREP Roasting attack. If that doesn’t work and we have a username and password we can do a kerberoasting attack.
+
+- If roasting does not provide us with anything. Then we go back to ms01 and enumerate every single thing we possibly can no matter how stupid it is. We might have missed a credential somewhere.
+
