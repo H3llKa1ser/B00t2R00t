@@ -26,3 +26,22 @@
 
 - If roasting does not provide us with anything. Then we go back to ms01 and enumerate every single thing we possibly can no matter how stupid it is. We might have missed a credential somewhere.
 
+## AD ENUMERATION WITH CREDENTIALS OR HAVE A SESSION OF OUR COMPROMISED USER EXAMPLE:
+
+ - Enumerate users (who are high priv. users -> your targets)
+
+ - Enumerate groups
+
+ - Are you part of any high priv. groups: DNSAdmins, Backup Operator....
+
+ - Get Domain ACL ( you might have genericALL on important group/user,...)
+
+ - Enumerate Service accounts ( Silver-ticket attack)
+
+ - Do you have access to any shares
+
+ - What services are in domain ?
+
+ - Most of the times if you get foothold on one PC in domain you will have to escalate priv. so you can run mimikatz, this gives you option to: Get LSASS or LSA hash ( overpass the hash, pass the hash, crack hash with hashcat),
+
+ - Also run responder: you never know, you might catch high value hash or hash of user that will enable you to move in DC domain or he might be part of some high priv. groups that will enable you to escalate to NT sys/ authority.
