@@ -25,3 +25,11 @@
  - MATCH (c:Computer), (t:Computer), p=((c)-[:AllowedToDelegate]->(t)) RETURN p (Bloodhound cypher query)
 
  - MATCH (u:User {owned:true}), (c:Computer {name "MY_TARGET.FQDN"}), p=shortestPath({u)-[*1..]->(c)) RETURN p (Bloodhound)
+
+#### 4) Resource-Based Constrained Delegation
+
+ - Get-DomainObject -Identity "dc=DOMAIN,dc=LOCAL" -Domain DOMAIN.LOCAL (Search for the ms-ds-machineaccountquota property)
+
+ - Get-DomainController (Check if the DC is running at least Windows 2012 or later)
+
+ - Get-NetComputer TARGET_COMPUTER | Select-Object -Property name, msds-allowedtoactonbehalfofotheridentity (The target computer object must NOT have the attribute msds-allowedtoactonbehalfofotheridentity set)
