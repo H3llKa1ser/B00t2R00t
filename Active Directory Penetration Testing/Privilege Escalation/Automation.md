@@ -1,3 +1,3 @@
 # Automatied Enumeration
 
-## Tools: winpeas.exe
+## Tools: winpeas.exe, ADPeas
