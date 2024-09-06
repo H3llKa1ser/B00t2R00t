@@ -68,4 +68,11 @@
 
 #### 2) sqlcmd -S SERVER.COM -U DBUSER -P 'PASSWORD' -d DATABASE_NAME -Q "SELECT * FROM Target_Table_to_dump"
 
+# SQLITE3
+
+#### 1) sqlite3 DATABASE.sqlite
+
+#### 2) .tables
+
+#### 3) select * from users;
 
