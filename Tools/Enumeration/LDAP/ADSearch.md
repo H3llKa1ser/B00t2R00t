@@ -13,3 +13,5 @@
  - ADSearch.exe --hostname HOSTNAME.DOMAIN.LOCAL --username USER --password PASS --domain DOMAIN.LOCAL --computers (Enumerate domain joined computers)
 
  - ADSearch.exe --hostname HOSTNAME.DOMAIN.LOCAL --username USER --password PASS --domain DOMAIN.LOCAL --search "(LDAP QUERY)" --atributes ATTRIBUTE1,ATTRIBUTE2,ETC (Custom attributes from custom search)
+
+### TIP: Can be used with "execute-assembly" with Cobalt Strike C2
