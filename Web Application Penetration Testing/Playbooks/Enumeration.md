@@ -10,7 +10,7 @@
 
  - Do directory fuzzing.
 
- - Do subdomain enumeration.
+ - Do subdomain/virtual host enumeration.
 
  - Use cURL or/and Burpsuite to check for requests and responses to collect information such as: Scripting language, library names and versions, HTTP response headers.
 
