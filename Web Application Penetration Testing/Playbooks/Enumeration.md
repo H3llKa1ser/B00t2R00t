@@ -17,3 +17,11 @@
  - If version enumeration was successful, use searchsploit or google to search for public exploits.
 
  - If not, try to test the functionalities of the web app to do manual exploitation and information gathering.
+
+## LOGIN PAGES
+
+ - If we encounter login pages, try to use default credentials.
+
+ - If not, try to enumerate the rest of the site to find credentials to access.
+
+ - As a last resort, you can brute-force the login page.
