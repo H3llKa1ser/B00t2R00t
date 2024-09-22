@@ -4,11 +4,13 @@
 
  - Port scan the machine. Check for open ports.
   
- - Browse to the open web server. If it tries to resolve a name of the app, go to /etc/hosts file and insert the IP and name of the web app to reslove through DNS
+ - Browse to the open web server. If it tries to resolve a name of the app, go to /etc/hosts file and insert the IP and name of the web app to resolve through DNS.
 
- - Do directory fuzzing
+ - Use wappalyzer extension to enumerate for technologies used by the webapp.
 
- - Do subdomain enumeration
+ - Do directory fuzzing.
+
+ - Do subdomain enumeration.
 
  - Use Burpsuite to check for requests and responses to collect information such as: Scripting language, library names and versions, HTTP response headers.
 
