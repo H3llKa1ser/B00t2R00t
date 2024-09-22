@@ -18,6 +18,6 @@
 
  - ruby -v (Check for version of ruby)
 
- - nano malicious.yml (Insert malicious code here)
+ - nano malicious.yml (Insert malicious code here. Link for payloads depending on version: https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Insecure%20Deserialization/Ruby.md)
 
  - sudo /usr/bin/ruby /path/to/program.rb (VOILA!)
