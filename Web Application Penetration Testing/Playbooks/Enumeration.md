@@ -12,7 +12,7 @@
 
  - Do subdomain enumeration.
 
- - Use Burpsuite to check for requests and responses to collect information such as: Scripting language, library names and versions, HTTP response headers.
+ - Use cURL or/and Burpsuite to check for requests and responses to collect information such as: Scripting language, library names and versions, HTTP response headers.
 
  - If version enumeration was successful, use searchsploit or google to search for public exploits.
 
