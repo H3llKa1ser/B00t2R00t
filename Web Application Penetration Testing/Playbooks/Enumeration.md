@@ -6,6 +6,8 @@
   
  - Browse to the open web server. If it tries to resolve a name of the app, go to /etc/hosts file and insert the IP and name of the web app to resolve through DNS.
 
+ - ALWAYS VIEW PAGE SOURCE TO CHECK FOR OTHER TECHNOLOGIES THAT MIGHT BE USED LIKE PLUGINS OR COMMENTS LEFT BY DEVS THAT MIGHT REVEAL SENSITIVE INFORMATION!
+
  - Use wappalyzer extension to enumerate for technologies used by the webapp.
 
  - Do directory fuzzing.
