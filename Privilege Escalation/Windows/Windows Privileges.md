@@ -54,7 +54,11 @@
 
  - Get-SeBackupPrivilege
 
+## Alternate Method: Robocopy
 
+ - robocopy C:\Users\Administrator\Desktop C:\Users\Public root.txt /B
+
+ - type C:\Users\Public\root.txt
 
 ## SeTakeOwnership
 
