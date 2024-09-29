@@ -10,6 +10,10 @@
 
  - netexec smb IP -u 'anonymous' -p '' --rid-brute
 
+ - netexec smb IP -u 'anonymous' -p '' --rid-brute > rid.txt
+
+ - cat rid.txt | grep SidTypeUser | awk '{print $6}' | awk -F\\ '{print $2}' > users.txt
+
  - net rpc group members 'Domain Users' -W 'DOMAIN' -I IP -U '%'
 
  - nmap -p 88 --script=krb5-enum-users --script-args="krb5-enum-users.realm='DOMAIN'.userdb=USER_LIST_FILE" IP
