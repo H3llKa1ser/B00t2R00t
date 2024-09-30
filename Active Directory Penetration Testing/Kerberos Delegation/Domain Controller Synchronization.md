@@ -6,4 +6,4 @@
 
  - sudo ntpdate -n DOMAIN.LOCAL
 
-## TIP: In case you cannot get a kerberos tricket due to error like: "Clocl skew too fast", then run these commands to synchronize with the DC. Afterwards, you can obtain the ticket with the method you want to do as usual.
+## TIP: In case you cannot get a kerberos tricket due to error like: "Clock skew too great", then run these commands to synchronize with the DC. Afterwards, you can obtain the ticket with the method you want to do as usual.
