@@ -2,9 +2,11 @@
 
 ### In a docker environment, we may find a privilege na,ed cap_sys_module. Here are the steps to exploit it:
 
+### On the target machine:
+
 #### 1) Create a Makefile
 
-#### 2) Create a reverse-shell.c
+#### 2) Create a reverse-shell.c (Edit your IP and port accordingly)
 
 #### 3) Make
 
