@@ -1,6 +1,6 @@
 # cap_sys_module privilege
 
-### In a docker environment, we may find a privilege na,ed cap_sys_module. Here are the steps to exploit it:
+### In a docker environment, we may find a privilege named cap_sys_module. Here are the steps to exploit it:
 
 ### On the target machine:
 
