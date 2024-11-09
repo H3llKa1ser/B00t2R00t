@@ -1,5 +1,7 @@
 # Evil-WinRM 
 
+## Link: https://github.com/Hackplayers/evil-winrm
+
 ## Port: 5985 (Over HTTP) 5986 (Over HTTPS)
 
 ## TIP: Use -S flag to enable SSL. Use this when the WinRM port is 5986 (Over HTTPS)
