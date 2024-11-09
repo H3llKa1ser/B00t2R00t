@@ -6,7 +6,7 @@
 
  - certify.exe find [/vulnerable]
 
- - certipy find -u USER@DOMAIN -p PASSWORD -dc-ip DC
+ - certipy find -u USER@DOMAIN -p PASSWORD -dc-ip DC -vulnerable
 
 ### If we find true positive results, we proceed to exploitation via ESC1 (Request a certificate from a vulnerable template), ESC2 and ESC3 (Use an enrollment agent to request a certificate) Techniques
 
