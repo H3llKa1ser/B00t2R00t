@@ -94,7 +94,7 @@
 
  - dir
 
- - diskshadow.exe /s c:\temp\diskshadow.exe
+ - diskshadow.exe /s c:\temp\diskshadow.txt
 
   ### Copy the SAM/SYSTEM/SECURITY hives to our temp folder
 
