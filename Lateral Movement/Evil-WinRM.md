@@ -26,12 +26,14 @@
 
 #### 3) Kerberos
 
- - kinit USERNAME@DOMAIN.TLD (Authenticate and retrieve a ticket)
+ - kinit USERNAME@DOMAIN.LOCAL (Authenticate and retrieve a ticket on Windows)
+
+ - impacket-getTGT DOMAIN.LOCAL/USERNAME:PASSWORD (Request a TGT ticket on Linux)
 
  - Configure /etc/krb5.conf file with the appropriate settings (Replace some of the placeholders for your use case)
 
 [libdefaults]
-    default_realm = DOMAIN.TLD
+    default_realm = DOMAIN.LOCAL
     ticket_lifetime = 24h
     renew_lifetime = 7d
     forwardable = true
@@ -39,16 +41,18 @@
     dns_lookup_kdc = true
 
 [realms]
-    DOMAIN.TLD = {
+    DOMAIN.local = {
         kdc = IP or Hostname of KDC/Domain Controller
         admin_server = IP or Hostname of Admin Server
     }
 
 [domain_realm]
-    .domain.tld = DOMAIN.TLD
-    domain.tld = DOMAIN.TLD
+    .domain.local = DOMAIN.LOCAL
+    domain.local = DOMAIN.LOCAL
 
- - evil-winrm -i TARGET_IP -u USERNAME -r DOMAIN -k
+### 
+
+ - evil-winrm -r DOMAIN.LOCAL -i DC.DOMAIN.LOCAL (Authenticate via kerberos)
 
 #### 4) NTLM Authentication (Pass-the-Hash)
 
