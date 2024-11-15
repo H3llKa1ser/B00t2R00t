@@ -1,6 +1,6 @@
 # Tcpdump CLI network sniffer
 
-## TIP: Capturing packets can only be done as ROOT!
+## TIP: Capturing packets can only be done as ROOT! (Sudo)
 
 ### Commands:
 
