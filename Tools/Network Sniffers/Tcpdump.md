@@ -101,3 +101,16 @@
 #### 2) expr indicates the byte offset, where 0 refers to the first byte.
 
 #### 3) size indicates the number of bytes that interest us, which can be one, two, or four. It is optional and is one by default.
+
+## Display packets
+
+ - tcpdump -q	(Quick and quite: brief packet information)
+
+ - tcpdump -e	(Include MAC addresses)
+
+ - tcpdump -A	(Print packets as ASCII encoding)
+
+ - tcpdump -xx	(Display packets in hexadecimal format)
+
+ - tcpdump -X	(Show packets in both hexadecimal and ASCII formats)
+
