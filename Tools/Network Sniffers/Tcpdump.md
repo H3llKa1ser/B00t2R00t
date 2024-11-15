@@ -55,3 +55,49 @@
  - or
 
  - not
+
+## TCP Flags
+
+ - tcp-syn TCP SYN (Synchronize)
+
+ - tcp-ack TCP ACK (Acknowledge)
+
+ - tcp-fin TCP FIN (Finish)
+
+ - tcp-rst TCP RST (Reset)
+
+ - tcp-push TCP Push
+
+## Length
+
+ - greater NUM (Or equal)
+
+ - less NUM (Or equal)
+
+## Binary Operations
+
+### A binary operation works on bits, i.e., zeroes and ones. An operation takes one or two bits and returns one bit.
+
+ - | (or)
+
+ - & (and)
+
+ - ! (not)
+
+### Boolean values
+
+ - 0 (False)
+
+ - 1 (True)
+
+## Header Bytes
+
+### Using pcap-filter, Tcpdump allows you to refer to the contents of any byte in the header using the following syntax
+
+ - proto[expr:size[
+
+#### 1) proto refers to the protocol. For example, arp, ether, icmp, ip, ip6, tcp, and udp refer to ARP, Ethernet, ICMP, IPv4, IPv6, TCP, and UDP respectively.
+
+#### 2) expr indicates the byte offset, where 0 refers to the first byte.
+
+#### 3) size indicates the number of bytes that interest us, which can be one, two, or four. It is optional and is one by default.
