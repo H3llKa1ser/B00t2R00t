@@ -40,7 +40,7 @@
 
  - ip6
 
- - dns
+ - arp
 
  - tcp
 
