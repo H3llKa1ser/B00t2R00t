@@ -47,3 +47,11 @@
  - udp
 
  - icmp
+
+## Logical Operators
+
+ - and
+
+ - or
+
+ - not
