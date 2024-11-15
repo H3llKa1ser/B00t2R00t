@@ -1,6 +1,6 @@
 # Tcpdump CLI network sniffer
 
-## TIP: Most commands run ONLY on sudo
+## TIP: Capturing packets can only be done as ROOT!
 
 ### Commands:
 
