@@ -2,6 +2,8 @@
 
 ## Supports A LOT of protocols
 
+## Complementary source: https://github.com/frizb/Hydra-Cheatsheet/tree/master
+
 ### Commands:
 
 #### -t 4 = Number of parallel connections per target
