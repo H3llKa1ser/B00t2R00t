@@ -1,0 +1,8 @@
+<script>
+            // Extract the authorization code from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            document.getElementById('auth_code').innerText = code;
+            console.log("Intercepted Authorization Code:", code);
+            // code to save the acquired code in database/file etc
+        </script>
