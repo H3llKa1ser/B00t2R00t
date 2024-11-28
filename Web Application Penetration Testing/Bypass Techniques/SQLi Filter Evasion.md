@@ -28,8 +28,12 @@
 
  #### Techniques used:
 
-  - 1) Comments to replace spaces (Example: Instead of SELECT * FROM users WHERE name = 'admin', use SELECT/**//*FROM/**/users/**/WHERE/**/name/**/='admin')
+  - 1) Comments to replace spaces
+    
+           (Example: Instead of SELECT * FROM users WHERE name = 'admin', use SELECT/**//*FROM/**/users/**/WHERE/**/name/**/='admin')
      
- -  2) Tab or Newline Characters (Example payload: SELECT\t*\tFROM\tusers\tWHERE\tname\t=\t'admin'. You can use \n instead of \t.)
+ -  2) Tab or Newline Characters
+    
+           (Example payload: SELECT\t*\tFROM\tusers\tWHERE\tname\t=\t'admin'. You can use \n instead of \t.)
   
  - 3) Alternate Characters (One effective method is using alternative URL-encoded characters representing different types of whitespace, such as %09 (horizontal tab), %0A (line feed), %0C (form feed), %0D (carriage return), and %A0 (non-breaking space). These characters can replace spaces in the payload.)
