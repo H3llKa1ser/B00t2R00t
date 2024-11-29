@@ -20,7 +20,7 @@
 
 ### TIP 2: Set SSL/TLS encryption on your domains on Cloudflare to Full
 
-### TIP 3: Mask your IP address by using Cloudflare ProxyDNS feature to avoid being detected by analysts that use DNS Lookupo sites like:
+### TIP 3: Mask your IP address by using Cloudflare ProxyDNS feature to avoid being detected by analysts that use DNS Lookup on sites like:
 
 https://securitytrails.com/ OR https://dnschecker.org/ OR https://www.virustotal.com/gui/home/search
 
