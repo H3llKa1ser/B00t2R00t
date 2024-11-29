@@ -24,6 +24,14 @@
 
 https://securitytrails.com/ OR https://dnschecker.org/ OR https://www.virustotal.com/gui/home/search
 
+#### 4) Use an SMTP service instead of configuring your own. You can use any service you like, here is an example:
+
+https://sendgrid.com/en-us
+
+### TIP: Verify your domain that you will use for emails to bypass email authentication mechanisms. (SPF, DKIM, DMARC)
+
+### TIP 2: DON'T FORGET TO DISABLE CLICK TRACKING OPTIONS to prevent "uglyfying" your sent URL and also, prevent your SMTP relay of being flagged as malicious
+
 #### 4)  Wait for your domains to age out AT LEAST 1 MONTH to get out of "high-risk reputation".
 
 #### 5) In the meanwhile, you may try to send benign emails from your newly registered domains to make their reputation trusted, or get them out of the "High-Risk" reputation. 
