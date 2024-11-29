@@ -24,7 +24,7 @@
 
 https://securitytrails.com/ OR https://dnschecker.org/ OR https://www.virustotal.com/gui/home/search
 
-#### 4) Use an SMTP service instead of configuring your own. You can use any service you like, here is an example:
+#### 4) Use an SMTP service instead of configuring your own. Most VPS providers have SMTP disabled as a policy to prevent spamming. You can use any service you like, here is an example:
 
 https://sendgrid.com/en-us
 
