@@ -32,34 +32,34 @@ https://sendgrid.com/en-us
 
 ### TIP 2: DON'T FORGET TO DISABLE CLICK TRACKING OPTIONS to prevent "uglyfying" your sent URL and also, prevent your SMTP relay of being flagged as malicious
 
-#### 4)  Wait for your domains to age out AT LEAST 1 MONTH to get out of "high-risk reputation".
+#### 5)  Wait for your domains to age out AT LEAST 1 MONTH to get out of "high-risk reputation".
 
-#### 5) In the meanwhile, you may try to send benign emails from your newly registered domains to make their reputation trusted, or get them out of the "High-Risk" reputation. 
+#### 6) In the meanwhile, you may try to send benign emails from your newly registered domains to make their reputation trusted, or get them out of the "High-Risk" reputation. 
 
-#### 6) Install and configure your apache server 
+#### 7) Install and configure your apache server 
 
 https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-20-04
 
 https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu
 
-#### 7) Install and configure your evilginx server
+#### 8) Install and configure your evilginx server
 
 https://help.evilginx.com/docs/intro
 
 ### TIP: Use a forked version of evilginx to remove its IOC headers
 
-#### 7) Create a redirector to hide your evilginx lure from bots and scanners
+#### 9) Create a redirector to hide your evilginx lure from bots and scanners
 
 ### TIP: Index.html with redirector contents are in the redirectors directory in this repo
 
-#### 8) Obfuscate your index.html file to further prevent bots and scanners to crawl down to your evilginx lure
+#### 10) Obfuscate your index.html file to further prevent bots and scanners to crawl down to your evilginx lure
 
 https://github.com/BinBashBanana/html-obfuscator
 
-#### 9) Use a URL shortener on your Apache Redirector Server
+#### 11) Use a URL shortener on your Apache Redirector Server
 
 https://bitly.com/pages/products/url-shortener
 
-#### 10) After testing that everything works as expected, find a social engineering pretext for a successful campaign.
+#### 12) After testing that everything works as expected, find a social engineering pretext for a successful campaign.
 
-#### 11) GOOD LUCK!
+#### 13) GOOD LUCK!
