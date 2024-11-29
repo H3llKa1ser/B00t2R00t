@@ -18,6 +18,12 @@
 
 ### TIP: Use 3 A Records for evilginx to generate the TLS Certificates when you enable the phishlet.
 
+### TIP 2: Set SSL/TLS encryption on your domains on Cloudflare to Full
+
+### TIP 3: Mask your IP address by using Cloudflare ProxyDNS feature to avoid being detected by analysts that use DNS Lookupo sites like:
+
+https://securitytrails.com/ OR https://dnschecker.org/ OR https://www.virustotal.com/gui/home/search
+
 #### 4)  Wait for your domains to age out AT LEAST 1 MONTH to get out of "high-risk reputation".
 
 #### 5) In the meanwhile, you may try to send benign emails from your newly registered domains to make their reputation trusted, or get them out of the "High-Risk" reputation. 
