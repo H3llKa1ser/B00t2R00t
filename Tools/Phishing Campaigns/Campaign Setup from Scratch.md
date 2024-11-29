@@ -28,13 +28,13 @@ https://securitytrails.com/ OR https://dnschecker.org/ OR https://www.virustotal
 
 #### 5) In the meanwhile, you may try to send benign emails from your newly registered domains to make their reputation trusted, or get them out of the "High-Risk" reputation. 
 
-#### 6) Configure your apache server 
+#### 6) Install and configure your apache server 
 
 https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-20-04
 
 https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu
 
-#### 7) Configure your evilginx server
+#### 7) Install and configure your evilginx server
 
 https://help.evilginx.com/docs/intro
 
