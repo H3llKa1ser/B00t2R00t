@@ -46,6 +46,10 @@ https://help.evilginx.com/docs/intro
 
 https://github.com/BinBashBanana/html-obfuscator
 
-#### 9) After testing that everything works as expected, find a social engineering pretext for a successful campaign.
+#### 9) Use a URL shortener on your Apache Redirector Server
 
-#### 10) GOOD LUCK!
+https://bitly.com/pages/products/url-shortener
+
+#### 10) After testing that everything works as expected, find a social engineering pretext for a successful campaign.
+
+#### 11) GOOD LUCK!
