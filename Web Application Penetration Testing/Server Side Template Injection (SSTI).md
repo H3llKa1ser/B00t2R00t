@@ -4,7 +4,7 @@
 
 ## Payloads Fuzzing: ${{<%'"}}%
 
-## PoC Payload for Identification: ${7*7}
+## PoC Payload for Identification: ${7*'7'}
 
 ## Explaining further about more template engines here: https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection
 
