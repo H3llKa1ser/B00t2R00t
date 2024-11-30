@@ -12,3 +12,14 @@
  - 4) URL structure: The structure of URLs can give hints about the framework. For instance, certain routing patterns are unique to specific frameworks.
 
  - 5) Login and error pages: Authentication pages and error messages can sometimes reveal the framework. Some frameworks have distinctive error pages or login form structures. 
+
+### ORM Injection Testing Techniques
+
+ - 1) Manual code review: A thorough source code inspection can reveal raw query methods (such as whereRaw() in Laravel) that incorporate user inputs directly. Look for concatenated strings or unescaped inputs in ORM methods, which can indicate injection points.
+
+ - 2) Automated scanning: Use security scanning tools that are designed to detect ORM injection vulnerabilities. These tools analyse the codebase to identify patterns that could lead to injection, such as dynamic query construction or improper input handling.
+
+ - 3) Input validation testing: Perform manual testing by injecting payloads into application inputs to see if they affect the underlying ORM query. For example, injecting SQL control characters or keywords to determine if they alter the execution of the query.
+
+ - 4) Error-based testing: Enter deliberately incorrect or malformed data to trigger errors. Detailed error messages can provide insights into the structure of the underlying queries and indicate potential vulnerabilities.
+
