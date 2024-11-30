@@ -23,3 +23,18 @@
 
  - 4) Error-based testing: Enter deliberately incorrect or malformed data to trigger errors. Detailed error messages can provide insights into the structure of the underlying queries and indicate potential vulnerabilities.
 
+### Common Vulnerable Methods of ORM Libraries and Frameworks
+
+#### Framework -> Library -> Methods
+
+ - 1) Laravel -> Eloquent ORM -> whereRaw(), DB::raw()
+  
+ - 2) Ruby on Rails -> Active Record -> where("name = '#{input}'")
+  
+ - 3) Django -> Django ORM -> extra(), raw()
+  
+ - 4) Spring -> Hibernate -> createQuery() with concatenation
+  
+ - 5) Node.js -> Sequelize -> sequelize.query()
+  
+   
