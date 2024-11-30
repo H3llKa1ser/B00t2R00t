@@ -37,4 +37,9 @@
   
  - 5) Node.js -> Sequelize -> sequelize.query()
   
-   
+
+ ### PoC Payload against weak implementation of ORM framework
+
+    1' OR '1'='1
+
+ 
