@@ -25,3 +25,10 @@
 ### 3) {{ .ExecuteCmd "whoami" }} Executes commands
 
 ### 4) {{ . }} (Dumps variables)
+
+## PHP - Smarty
+
+### PoC Payload
+
+    {'Hello'|upper}
+  
