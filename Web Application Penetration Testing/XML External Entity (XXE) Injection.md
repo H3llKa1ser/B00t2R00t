@@ -33,7 +33,7 @@
     <file>&exfil;</file>
       </upload>
 
-### Server-Side Request Forgey with XXE Injection Internal Port Scanning payload:
+### Server-Side Request Forgery with XXE Injection Internal Port Scanning payload:
 
       <!DOCTYPE foo [
         <!ELEMENT foo ANY >
