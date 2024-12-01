@@ -53,3 +53,21 @@
  - 3) Encode the modified serialised cookie in Base54
   
  - 4) Paste our modified value in the cookie value WITHOUT refreshing the page for profit
+
+### 2) Object Injection
+
+#### Object injection is a vulnerability that arises from insecure data deserialisation in web applications. It occurs when untrusted data is deserialised into an object, allowing attackers to manipulate the serialised data to execute arbitrary code, leading to serious security risks.
+
+### Requirements:
+
+#### Knowledge of code that handles deserialization blindly without user input sanitization or any security measures have been implemented in the code.
+
+### Steps:
+
+ - 1) Craft a PHP payload that generates malicious serialised shellcode (Payload will be added to the scripts directory in this repo)
+  
+ - 2) Set up listener
+  
+           nc -lvnp 4444
+
+ - 3) Inject the malicious shellcode we generated to the vulnerable endpoint to gain RCE      
