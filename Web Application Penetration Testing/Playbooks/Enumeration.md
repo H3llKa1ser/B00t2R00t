@@ -24,6 +24,8 @@
 
  - If we encounter login pages, try to use default credentials.
 
+ - If not, try to SQL inject the page to bypass authentication. (Use AuthBypass wordlist with intruder to check if any payload works)
+
  - If not, try to enumerate the rest of the site to find credentials to access.
 
  - As a last resort, you can brute-force the login page.
