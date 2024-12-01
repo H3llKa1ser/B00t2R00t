@@ -32,3 +32,6 @@
 
  - ASP.NET view state: .NET applications might use serialisation in the view state sent to the client's browser. A field named __VIEWSTATE, which is base64 encoded, can sometimes be seen. Decoding and examining it can reveal whether it contains serialised data that could be exploited.
 
+#### 3) Append a tilde (~) at the end of a PHP file
+
+ - Append a tilde at the end of a PHP file to try to access backup or temporary files created by text editors or version control systems. When a file is edited or saved, some text editors or version control systems may make a backup copy of the original file with a tilde appended to the file name.
