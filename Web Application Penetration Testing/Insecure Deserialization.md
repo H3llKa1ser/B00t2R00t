@@ -35,3 +35,21 @@
 #### 3) Append a tilde (~) at the end of a PHP file
 
  - Append a tilde at the end of a PHP file to try to access backup or temporary files created by text editors or version control systems. When a file is edited or saved, some text editors or version control systems may make a backup copy of the original file with a tilde appended to the file name.
+
+## Exploitation Techniques
+
+### 1) Update Properties of an object
+
+#### Storing User Data in Cookies:
+
+ - When a user visits our application for the first time, it sets a serialised cookie containing their user data. This includes their user name, role, and subscription status (isSubscribed). If the user is a paid member (isSubscribed = true), they are allowed to share notes. (Example scenario)
+
+#### Exploitation steps:
+
+ - 1) Decode the serialised cookie from Base64
+  
+ - 2) Modify any values we may find valuable to elevate our privileges and/or bypassing access controls
+  
+ - 3) Encode the modified serialised cookie in Base54
+  
+ - 4) Paste our modified value in the cookie value WITHOUT refreshing the page for profit
