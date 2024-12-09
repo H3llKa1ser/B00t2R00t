@@ -2,6 +2,8 @@
 
 ### Git tools are used when we locate an exposed .git folder that contains an entire repository with possibly sensitive information.
 
+## TIP: USE THE COMMON.TXT WORDLIST TO SUCCESSFULLY ENUMERATE THE .GIT FOLDER!
+
 ## STEPS:
 
 #### 1) gitdumper.sh http://WHATEVER/.git/ repo
