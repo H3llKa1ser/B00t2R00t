@@ -15,6 +15,8 @@ https://www.thehacker.recipes/
 
 https://www.ired.team/
 
+https://ppn.snovvcrash.rocks/
+
 # DISCLAIMER!
 
 #### Usage of this knowledge is SOLELY the user's responsibility and the author of this playbook has no liability for their actions. Use it at your own discretion.
