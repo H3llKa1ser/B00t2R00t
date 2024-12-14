@@ -10,4 +10,4 @@
 
     └─$ ldapsearch -x -H ldap://TARGET_IP -D "USERNAME@DOMAIN.COM" -w "PASSWORD" -b "DC=DOMAIN,DC=COM" "(objectClass=user)" sAMAccountName memberOf       
 
-(Enumerates all users via LDAP)
+(Enumerates all users and computers via LDAP)
