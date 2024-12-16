@@ -22,7 +22,7 @@
 
 #### 1) Master Mode NIC
 
- - This interface is in master mode, indicating that it is configures as the Access Point (AP).
+ - This interface is in master mode, indicating that it is configured as the Access Point (AP).
 
 #### 2) Client Mode NIC (Named ESSID)
 
