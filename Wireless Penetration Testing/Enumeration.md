@@ -34,4 +34,4 @@
 
 #### 4) Managed Mode NIC
 
- - Managed mode NICs are usually associated with other networks.
+ - Managed mode NICs are usually associated with other networks. This is the standard mode used by most Wi-Fi devices (like laptops, phones, etc.) to connect to Wi-Fi networks. In managed mode, the device acts as a client, connecting to an access point to join a network.
