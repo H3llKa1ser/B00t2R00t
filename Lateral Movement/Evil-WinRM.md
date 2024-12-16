@@ -32,23 +32,23 @@
 
  - Configure /etc/krb5.conf file with the appropriate settings (Replace some of the placeholders for your use case)
 
-[libdefaults]
-    default_realm = DOMAIN.LOCAL
-    ticket_lifetime = 24h
-    renew_lifetime = 7d
-    forwardable = true
-    dns_lookup_realm = false
-    dns_lookup_kdc = true
+       [libdefaults]
+        default_realm = DOMAIN.LOCAL
+        ticket_lifetime = 24h
+        renew_lifetime = 7d
+        forwardable = true
+        dns_lookup_realm = false
+        dns_lookup_kdc = true
 
-[realms]
-    DOMAIN.local = {
+       [realms]
+       DOMAIN.local = {
         kdc = IP or Hostname of KDC/Domain Controller
         admin_server = IP or Hostname of Admin Server
-    }
+       }
 
-[domain_realm]
-    .domain.local = DOMAIN.LOCAL
-    domain.local = DOMAIN.LOCAL
+       [domain_realm]
+        .domain.local = DOMAIN.LOCAL
+        domain.local = DOMAIN.LOCAL
 
 ### 
 
