@@ -1,4 +1,4 @@
-### Tools: Ettercap, macof, ip, nmap, ping
+### Tools: Ettercap, macof, ip, nmap, ping, Burpsuite
 
 ## Requirements: Root the machine that has access to more machines on its network, then scan with a port scanner (nmap)
 
@@ -55,3 +55,23 @@
     Filter on wireshark on what traffic you want to capture
 
 ## TIP: Attacker and target should be connected in the same network for this to work
+
+# MITM EXAMPLE 3
+
+## Requirements: Webapp uses self-signed certificate instead form a trusted CA
+
+### Steps:
+
+#### 1) Configure Burp by going to:
+
+Select Proxy -> Toggle Intercept on -> Proxy Settings
+
+#### 2) Now, on Proxy settings do:
+
+Proxy listeners -> Add button -> Specific Address is our attacking machine and bind port is 8080 -> OK to apply configs
+
+#### 3) Set our own machine as a gateway for the network we want to target
+
+    sudo echo "OUR_ATTACK_IP gateway_dns_name" >> /etc/hosts
+
+#### 4) And now, wait for profit, we are now MitM to sniff for traffic from other machines in the network
