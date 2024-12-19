@@ -15,3 +15,5 @@
  - az ad user list (Enumerate EntraID users within the tenant)
 
  - az ad user list --filter "startsWith('wvusr-', displayName)" (Do a filtered enumeration depending on use case)
+
+ - az ad group list (Enumerate EntraID groups)
