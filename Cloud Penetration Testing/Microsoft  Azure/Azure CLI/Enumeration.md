@@ -17,3 +17,5 @@
  - az ad user list --filter "startsWith('wvusr-', displayName)" (Do a filtered enumeration depending on use case)
 
  - az ad group list (Enumerate EntraID groups)
+
+ - az ad group member list --group "GROUP_NAME" (Enumerate members of a specific group)
