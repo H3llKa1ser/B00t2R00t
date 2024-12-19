@@ -21,3 +21,11 @@
  - az ad group list (Enumerate EntraID groups)
 
  - az ad group member list --group "GROUP_NAME" (Enumerate members of a specific group)
+
+ - az role assignment list --assignee GROUP_ID --all (Check what role is assigned to a specific group.)
+
+ - az keyvault list (List any accessible key vaults)
+
+ - az keyvault secret list --vault-name VAULT_NAME (Check if secrets are stored inside this vault)
+
+ - az keyvault secret show --vault-name VAULT_NAME --name SECRET_NAME (Reveal the values inside the secret within the specific vault)
