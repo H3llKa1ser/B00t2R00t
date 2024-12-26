@@ -1,0 +1,2 @@
+# Beacon Object Files
+

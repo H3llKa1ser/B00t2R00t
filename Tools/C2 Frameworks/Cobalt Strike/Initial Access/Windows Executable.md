@@ -1,153 +1,137 @@
 # Windows Executable
 
-### This package generates a Windows executable artifact that delivers a payload stager.
+## Windows Executable
 
-### Navigate to Payloads -> Windows Stager Payload.
+#### This package generates a Windows executable artifact that delivers a payload stager.
 
-### This package provides the following output options:
+#### Navigate to Payloads -> Windows Stager Payload.
 
-## Parameters
+#### This package provides the following output options:
 
-### 1) Listener
+### Parameters
 
- - Press the ... button to select a Cobalt Strike listener you would like to output
-a payload for.
+#### 1) Listener
 
-### 2) Output
+* Press the ... button to select a Cobalt Strike listener you would like to output a payload for.
 
- - Use the drop-down to select one of the following output types.
+#### 2) Output
 
-   - 1) Windows EXE: A Windows executable
+* Use the drop-down to select one of the following output types.
+  *
+    1. Windows EXE: A Windows executable
+  *
+    2. Windows Service EXE: A Windows executable that responds to Service Control Manager commands. You may use this executable to create a Windows service with sc or as a custom executable with the Metasploit Framework’s PsExec modules.
+  *
+    3. Windows DLL: A Windows DLL that exports a StartW function that is compatible with rundll32.exe. Use rundll32.exe to load your DLL from the command line. (rundll32 MALICIOUS.dll,StartW)
 
-   - 2) Windows Service EXE: A Windows executable that responds to Service Control
-Manager commands. You may use this executable to create a Windows
-service with sc or as a custom executable with the Metasploit Framework’s
-PsExec modules.
+#### 3) x64
 
-   - 3) Windows DLL: A Windows DLL that exports a StartW function that is compatible
-with rundll32.exe. Use rundll32.exe to load your DLL from the command line. (rundll32 MALICIOUS.dll,StartW)
+* Check the box to generate x64 artifacts that pair with an x64 stager. By default, this dialog exports x64 payload stagers.
 
-### 3) x64
+#### 4) sign
 
-  - Check the box to generate x64 artifacts that pair with an x64 stager. By default,
-this dialog exports x64 payload stagers.
+*
+  * Check the box to sign an EXE or DLL artifact with a code-signing certificate. You must specify a certificate in a Malleable C2 profile.
 
-### 4) sign
+#### Press Generate to create a payload stager artifact.
 
- - - Check the box to sign an EXE or DLL artifact with a code-signing certificate. You
-must specify a certificate in a Malleable C2 profile.
+#### Cobalt Strike uses its Artifact Kit to generate this output.
 
-### Press Generate to create a payload stager artifact.
+## Windows Executable (Stageless)
 
-### Cobalt Strike uses its Artifact Kit to generate this output.
+#### This package exports Beacon, without a stager, as an executable, service executable, 32-bit DLL, or 64-bit DLL. A payload artifact that does not use a stager is called a stageless artifact. This package also has a PowerShell option to export Beacon as a PowerShell script and a raw option to export Beacon as a blob of position independent code.
 
-# Windows Executable (Stageless)
+#### Navigate to Payloads -> Windows Stageless Payload.
 
-### This package exports Beacon, without a stager, as an executable, service executable, 32-bit DLL, or 64-bit DLL. A payload artifact that does not use a stager is called a stageless artifact. This package also has a PowerShell option to export Beacon as a PowerShell script and a raw option to export Beacon as a blob of position independent code.
+#### This package provides the following output options:
 
-### Navigate to Payloads -> Windows Stageless Payload.
+### Parameters
 
-### This package provides the following output options:
+#### 1) Listener
 
-## Parameters
+* Press the ... button to select a Cobalt Strike listener you would like to output a payload for.
 
-### 1) Listener
+#### 2) Guardrails
 
- - Press the ... button to select a Cobalt Strike listener you would like to output
-a payload for.
+*
+  * If your listener has been configured with gauardrails, the value is displayed as the default. Use the ... button to override the settings for the beacon.
 
-### 2) Guardrails
+#### 3) Output
 
- - - If your listener has been configured with gauardrails, the value is displayed
-as the default. Use the ... button to override the settings for the beacon.
+* Use the drop-down to select one of the following output types
+*
+  1. PowerShell: A PowerShell script that injects a stageless Beacon into memory.
+*
+  2. Raw: A blob of position independent code that contains Beacon.
+*
+  3. Windows EXE: A Windows executable.
+*
+  4. Windows Service EXE: A Windows executable that responds to Service Control Manager commands. You may use this executable to create a Windows service with sc or as a custom executable with the Metasploit Framework's PsExec modules.
+*
+  5. Windows DLL: A Windows DLL that exports a StartW function that is compatible with rundll32.exe. Use rundll32.exe to load your DLL from the command line. (rundll32 MALICIOUS.dll,StartW)
 
-### 3) Output
+#### 4) Exit Function
 
- -  Use the drop-down to select one of the following output types
+* This function determines the method/behavior that Beacon uses when the exit command is executed.
 
- - 1) PowerShell: A PowerShell script that injects a stageless Beacon into memory.
-   
- - 2) Raw: A blob of position independent code that contains Beacon.
-   
- - 3) Windows EXE: A Windows executable.
-   
- - 4) Windows Service EXE: A Windows executable that responds to Service Control
-   Manager commands. You may use this executable to create a Windows
-   service with sc or as a custom executable with the Metasploit Framework's
-   PsExec modules.
-   
-  - 5) Windows DLL: A Windows DLL that exports a StartW function that is compatible
-   with rundll32.exe. Use rundll32.exe to load your DLL from the command line. (rundll32 MALICIOUS.dll,StartW)
+**1) Process: Terminates the whole process**
 
+**2) Thread: Terminates only the current thread**
 
-### 4) Exit Function
+#### 5) System Call
 
- - This function determines the method/behavior that Beacon uses when
-the exit command is executed.
+* Select one of the following system call methods to use at execution time when generating a stageless beacon payload from the Cobalt Strike UI or a supported aggressor function:
+*
+  1. None: Use the standard Windows API function
+*
+  2. Direct: Use the Nt\* version of the function
+*
+  3. Indirect: Jump to the appropriate instruction within the Nt\* version of the function
 
-#### 1) Process: Terminates the whole process
+#### 6) HTTP Library
 
-#### 2) Thread: Terminates only the current thread
+* Select the Microsoft library (WinINet or WinHTTP) for the generated payload.
 
-### 5) System Call
+#### 7) x64
 
- - Select one of the following system call methods to use at execution time
-when generating a stageless beacon payload from the Cobalt Strike UI or a
-supported aggressor function:
+* Check the box to generate an x64 artifact that contains an x64 payload. By default, this dialog exports x64 payloads.
 
- - 1) None: Use the standard Windows API function
- - 2) Direct: Use the Nt* version of the function
- - 3) Indirect: Jump to the appropriate instruction within the Nt* version of the function
-  
-### 6) HTTP Library
+#### 8) sign
 
- - Select the Microsoft library (WinINet or WinHTTP) for the generated
-payload.
+* Check the box to sign an EXE or DLL artifact with a code-signing certificate. You must specify a certificate in a Malleable C2 profile.
 
-### 7) x64
+#### Press Generate to create a stageless artifact.
 
-- Check the box to generate an x64 artifact that contains an x64 payload. By
-default, this dialog exports x64 payloads.
+#### Cobalt Strike uses its Artifact Kit to generate this output.
 
-### 8) sign
+## Windows Executable (Stageless) Variants
 
- - Check the box to sign an EXE or DLL artifact with a code-signing certificate. You
-must specify a certificate in a Malleable C2 profile.
+#### This option generates all of the stageless payloads (in x86 and x64) for all of the configured listeners.
 
-### Press Generate to create a stageless artifact.
+#### Navigate to Payloads -> Windows Stageless Generate All Payloads.
 
-### Cobalt Strike uses its Artifact Kit to generate this output.
+### Parameters
 
-# Windows Executable (Stageless) Variants
+#### 1) Folder
 
-### This option generates all of the stageless payloads (in x86 and x64) for all of the configured listeners.
+* Press the folder button to select a location to save the listener(s).
 
-### Navigate to Payloads -> Windows Stageless Generate All Payloads.
+#### 2) System Call
 
-## Parameters
+* Select one of the following system call methods to use at execution time when generating a stageless beacon payload from the Cobalt Strike UI or a supported aggressor function:
+*
+  1. None: Use the standard Windows API function
+*
+  2. Direct: Use the Nt\* version of the function
+*
+  3. Indirect: Jump to the appropriate instruction within the Nt\* version of the function
 
-### 1) Folder
+#### 3) HTTP Library
 
- - Press the folder button to select a location to save the listener(s).
+* Select the Microsoft library (WinINet or WinHTTP) for the generated payload.
 
-### 2) System Call
+#### 4) sign
 
- - Select one of the following system call methods to use at execution time
-when generating a stageless beacon payload from the Cobalt Strike UI or a
-supported aggressor function:
+* Check the box to sign an EXE or DLL artifact with a code-signing certificate. You must specify a certificate in a Malleable C2 profile.
 
- - 1) None: Use the standard Windows API function
- - 2) Direct: Use the Nt* version of the function
- - 3) Indirect: Jump to the appropriate instruction within the Nt* version of the function
-
-### 3) HTTP Library
-
- - Select the Microsoft library (WinINet or WinHTTP) for the generated
-payload.
-
-### 4) sign
-
- - Check the box to sign an EXE or DLL artifact with a code-signing certificate. You
-must specify a certificate in a Malleable C2 profile.
-
-### Press Generate to create a stageless artifact.
+#### Press Generate to create a stageless artifact.

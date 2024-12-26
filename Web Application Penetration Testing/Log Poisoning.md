@@ -1,7 +1,9 @@
-### Log Poisoning occurs via LFI attack.
+# Log Poisoning
 
-### If you can access the file /var/log/apache2/access.log, you can inject a webshell as the User-Agent by using web proxy tools like Burpsuite and OWASP ZAP:
+#### Log Poisoning occurs via LFI attack.
 
-#### <?php system($_GET['test']); ?>
+#### If you can access the file /var/log/apache2/access.log, you can inject a webshell as the User-Agent by using web proxy tools like Burpsuite and OWASP ZAP:
 
-#### Enjoy your RCE
+
+
+**Enjoy your RCE**
