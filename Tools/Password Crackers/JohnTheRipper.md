@@ -8,6 +8,8 @@
 
 #### --list=formats (Checks formats on the list)
 
+#### --rules=wordlist.txt (Uses rules to create password variations)
+
 # CRACKING HASHES FROM /ETC/SHADOW
 
 #### unshadow TARGET_PASSWD TARGET_SHADOW > unshadowed.txt
