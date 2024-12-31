@@ -26,6 +26,18 @@
 
 #### 4) On plugin menu, click activate the newly installed plugin to execute and get a shell
 
+## ALTERNATE METHOD OF MALICIOUS PLUGIN
+
+#### 1) On admin panel, go to: plugins -> Add New
+
+#### 2) Select install/upload and use your php reverse shell
+
+#### 3) If it asks you for FTP credentials and has FTP enabled, insert credentials and 127.0.0.1 hostname
+
+#### 4) Go to media -> select our file -> Go to the presented URL that the file resides
+
+#### 5) GG
+
 # JOOMLA 
 
 #### 1) On admin panel, go to: System -> extensions -> Site templates -> templates
