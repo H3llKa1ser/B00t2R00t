@@ -4,7 +4,7 @@
 
 #### 1) Google Chrome
 
-    sudo google-chrome --proxy-server="socks5://127.0.0.1:1080"
+     google-chrome --proxy-server="socks5://127.0.0.1:1080"
 
 #### 2) Firefox
 
