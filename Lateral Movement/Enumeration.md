@@ -14,10 +14,12 @@
 
 ### cat /etc/hosts (Linux)
 
-### C:\Windows\System32\drivers\etc\hosts (Windows)
+### type C:\Windows\System32\drivers\etc\hosts (Windows)
 
 ### cat /etc/resolv.conf (Linux)
 
 ### ipconfig /all (Windows)
 
 ### route print (Windows)
+
+### ipconfig /displaydns | findstr "Record" | findstr "Name Host" (Windows DNS Entries)
