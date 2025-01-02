@@ -1,0 +1,2 @@
+(for /L %a IN (1,1,254) DO ping /n 1 /w 1 172.16.2.%a) | find "Reply"
+
