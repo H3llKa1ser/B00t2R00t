@@ -19,3 +19,5 @@
 ### cat /etc/resolv.conf (Linux)
 
 ### ipconfig /all (Windows)
+
+### route print (Windows)
