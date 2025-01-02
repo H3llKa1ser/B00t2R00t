@@ -23,3 +23,5 @@
 
 
 ## TIP: We may also use FoxyProxy extension if configured properly
+
+## TIP 2: Use SSH Dynamic proxy and usage of Chisel IS NOT RECOMMENDED due to very slow speeds while browsing using the socks proxy
