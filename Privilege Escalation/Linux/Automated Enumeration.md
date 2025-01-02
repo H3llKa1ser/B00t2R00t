@@ -11,7 +11,7 @@
 
 ### 5: Linux Priv Checker			Author: https://github.com/sleventyeleven/linuxprivchecker
 
-
+### 6: Traitor                Author: https://github.com/liamg/traitor
 
 
 
