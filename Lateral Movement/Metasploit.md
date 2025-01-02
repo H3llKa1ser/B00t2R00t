@@ -6,6 +6,10 @@
 
 #### portfwd add/del -l PORT -p PORT -r IP (port forwarding)
 
+## On a Meterpreter session, run:
+
+    run autoroute -s TARGET_SUBNET/MASK
+
 ## Port Forwarding with Metasploit
 
 ### 1) With SSH login
