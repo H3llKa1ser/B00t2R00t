@@ -16,7 +16,7 @@
 
     Bypass-4MSI
 
-### Then you can run scripts from memory (DO NOT WRITE ON DISK!)
+### Then you can run scripts from memory (DO NOT WRITE ON DISK UNLESS ABSOLUTELY NECESSARY!)
 
 ## Authentication Methods
 
