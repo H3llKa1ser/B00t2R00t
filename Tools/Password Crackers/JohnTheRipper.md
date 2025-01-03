@@ -14,6 +14,8 @@
 
 #### unshadow TARGET_PASSWD TARGET_SHADOW > unshadowed.txt
 
+#### john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt
+
 # SINGLE CRACK MODE (Cracks passwords heuristically based solely on username info you fed it)
 
 #### --single USER:HASH
