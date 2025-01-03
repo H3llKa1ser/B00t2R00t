@@ -8,7 +8,7 @@ If yes, then grab any files you find within the network share or FTP folder
 
 2) Check protocol/application version for possible public RCE or similar exploit (Example: EternalBlue)
 
-3) Within a web page, check the page source for any comments that might have been left out (<!--)
+3) Within a web page, check the page source for any comments that might have been left out (<!--) or interesting files that we might encounter
 
 They may contain credentials, etc
 
