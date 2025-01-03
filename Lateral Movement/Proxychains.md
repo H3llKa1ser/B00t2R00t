@@ -1,6 +1,6 @@
 ### Usage:
 
-#### proxychains nmap -A -Pn INTERNAL_IP (Example)
+     proxychains nmap -A -Pn INTERNAL_IP (Example)
 
 ## Master config file: /etc/proxychains.conf
 
