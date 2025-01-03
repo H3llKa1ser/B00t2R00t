@@ -1,4 +1,4 @@
-# Lateral Movement Methodology
+# Network Pivoting Methodology
 
 ## 1) Internal Host Discovery
 
