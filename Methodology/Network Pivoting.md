@@ -2,7 +2,7 @@
 
 ## 1) Internal Host Discovery
 
-### In a network, if you root a machine, make these checks:
+### In a network, if you root a machine, do these checks:
 
 #### Windows
 
