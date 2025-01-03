@@ -48,3 +48,22 @@ Same methodology works with other CMS as well like Joomla and Drupal
 
     wpscan --url http://domain.local/
 
+### 5) Linux Local Privilege Escalation LPE Enumeration
+
+On a linux machine, we can do some checks to see if we can exploit them to do lateral movement, or even root the machine.
+
+#### Checks:
+
+1) Sudo privileges (Authenticated)
+
+           sudo -l
+
+2) SUID bit files
+
+        find / -type f -perm u+s 2>/dev/null
+
+3) Open ports/services/applications within the machine
+
+        ss -tulpn
+           netstat -ano
+
