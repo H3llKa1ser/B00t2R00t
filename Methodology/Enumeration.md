@@ -52,5 +52,14 @@ Same methodology works with other CMS as well like Joomla and Drupal
 
     wpscan --url http://domain.local/
 
+### 5) Sensitive data from important files
 
+        cat /var/www/html/wp-config.php
 
+        strings FILE | grep -i password
+
+### 6) Password reuse
+
+Sometimes, when we uncover credentials, they may be reused on other applications as well.
+
+Use credentials for admin pages, SSH, FTP, SMB, MySQL
