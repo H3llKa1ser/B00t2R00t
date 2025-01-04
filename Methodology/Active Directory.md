@@ -185,3 +185,57 @@ Then, crack the hash with hashcat
 
         hashcat -m 13100 -a 0 hash.txt /usr/share/wordlists/rockyou.txt
 
+4) SMB enumeration
+
+        netexec smb IP -u USER -p PASSWORD --shares
+
+        impacket-smbclient -k DOMAIN.LOCAL/USERNAME:PASSWORD@DC.DOMAIN.LOCAL (Authenticate with kerberos)
+
+User enumeration
+
+        netexec smb IP -u USER -p PASSWORD --users
+
+In Impacket-smbclient shell
+
+        shares (Check shares)
+
+        use SHARE_NAME (Go to a share you have access to)
+
+        get FILE (Download interesting files)
+
+5) LDAP enumeration
+
+Do an LDAP enumeration authenticated this time
+
+         ldapdomaindump HOSTNAME -u "DOMAIN\USER" -p PASSWORD (Authenticated ldap enumeration)
+
+         └─$ ldapsearch -x -H ldap://TARGET_IP -D "USERNAME@DOMAIN.COM" -w "PASSWORD" -b "DC=DOMAIN,DC=COM" "(objectClass=user)" sAMAccountName memberOf       
+
+Dump all enumerated users into a usernames list to use for other attacks
+
+
+             ldapsearch -x -H ldap://TARGET_IP -D "USERNAME@DOMAIN.COM" -w "PASSWORD" -b "DC=DOMAIN,DC=COM" "(objectClass=user)" sAMAccountName | grep "sAMAccountName:" | cut -d " " -f 2 > usernames.txt
+
+6) MSSQL
+
+        impacket-mssqlclient -k DOMAIN.LOCAL (Kerberos auth example)
+
+   Database commands
+
+           SELECT name FROM sys.databases; (Enumerate all databases within MSSQL instance)
+
+        SELECT TABLE_NAME FROM targetdb.INFORMATION_SCHEMA.TABLES; (Enumerate tables of the target database)
+
+        SELECT * FROM targetdb.dbo.targettable (Dump all the contents of the target table of the target database)
+
+You can use other tools like netexec for mssql exploitation/enumeration
+
+7) DNS Enumeration
+
+        dnstool.py -u 'DOMAIN\USER' -p PASSWORD --record "*" --action query DC_IP (Scan the network for interesting findings)
+
+8) ADCS Enumeration
+
+        certipy find -u USER@DOMAIN -p PASSWORD -dc-ip DC_IP (Enumerate for ADCS vulnerabilities. Go to ADCS exploitation section for further usage)
+
+   
