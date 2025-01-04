@@ -72,3 +72,6 @@ ONLY USE THIS AS A LAST RESORT OR IF YOU FOUND ANY HINTS THAT THE PASSWORD FOR A
 
 Use tools like Hydra, Burp Intruder, wpscan
 
+If rockyou.txt wordlist takes a long time to crack a password (10-30 minutes), use cewl on a target webserver to create a custom wordlist, then use this to crack the password
+
+        cewl -u http://domain.local/whatever/test > wordlist.txt
