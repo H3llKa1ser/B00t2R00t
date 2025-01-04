@@ -66,8 +66,3 @@ On a linux machine, we can do some checks to see if we can exploit them to do la
         find / -path /proc -prune -o -type d -perm -o+w 2>/dev/null
         find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null
 
-14) Sensitive data from important files
-
-        /var/www/html/wp-config.php
-
-        strings FILE | grep -i password
