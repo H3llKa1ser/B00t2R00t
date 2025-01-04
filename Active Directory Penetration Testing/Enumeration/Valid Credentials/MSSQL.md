@@ -4,6 +4,10 @@
 
  - impacket-mssqlclient -k DOMAIN.LOCAL (Kerberos auth example)
 
+ - impacket-mssqlclient -windows-auth DOMAIN\\USERNAME@TARGET_IP
+
+ - impacket-mssqlclient DOMAIN\\USERNAME@TARGET_IP (Local auth)
+
 ### DATABASE COMMANDS
 
  - SELECT name FROM sys.databases; (Enumerate all databases within MSSQL instance)
