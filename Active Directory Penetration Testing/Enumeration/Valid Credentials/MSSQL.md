@@ -6,7 +6,7 @@
 
  - impacket-mssqlclient -windows-auth DOMAIN\\USERNAME@TARGET_IP
 
- - impacket-mssqlclient DOMAIN\\USERNAME@TARGET_IP (Local auth)
+ - impacket-mssqlclient USERNAME@TARGET_IP (Local auth)
 
 ### DATABASE COMMANDS
 
