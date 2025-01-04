@@ -107,3 +107,8 @@ On a linux machine, we can do some checks to see if we can exploit them to do la
 
         echo $PATH
 
+12) World-writeable files and directories
+
+        find / -path /proc -prune -o -type d -perm -o+w 2>/dev/null
+        find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null
+
