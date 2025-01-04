@@ -4,7 +4,7 @@
 
 #### 2) $Cred = New-Object System.Management.Automation.PSCredential('DOMAIN.LOCAL\USERNAME', $SecPassword)
 
-#### 3) Invoke-Command -ComputerName COMPUTER_NAME -ScriptBlock { COMMAND_TO_EXECUTE } -credential $Cred;
+#### 3) Invoke-Command -Computer COMPUTER_NAME -Credential $Cred -ScriptBlock { COMMAND_TO_EXECUTE } 
 
 ### Use case:
 
