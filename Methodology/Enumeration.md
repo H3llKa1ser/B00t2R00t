@@ -60,7 +60,7 @@ On a linux machine, we can do some checks to see if we can exploit them to do la
 
 2) SUID bit files
 
-        find / -type f -perm u+s 2>/dev/null
+        find / -user root -perm -4000 -exec ls -ldb {} \; 2>/dev/null	
 
 3) Open ports/services/applications within the machine
 
@@ -86,3 +86,24 @@ On a linux machine, we can do some checks to see if we can exploit them to do la
         chmod +x ./linpeas.sh
 
         ./linpeas.sh
+
+7) Interesting groups of the current user
+
+        id
+
+8) Environment Variables
+
+        env
+
+9) Command history
+
+        history
+
+10) Writeable files and directories of the current user
+
+        find / -writable 2>/dev/null | cut -d "/" -f 2,3 | grep -v proc | sort -u
+
+11) Chech the current user's PATH variable contents
+
+        echo $PATH
+
