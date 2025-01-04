@@ -66,3 +66,37 @@ On a linux machine, we can do some checks to see if we can exploit them to do la
         find / -path /proc -prune -o -type d -perm -o+w 2>/dev/null
         find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null
 
+14) Search for passwords within a linux system
+
+Common password files
+
+        find / -type f \( -iname "*passwd*" -o -iname "*shadow*" -o -iname "*secret*" \) 2>/dev/null
+
+Password in config files
+
+       grep -r --color=auto -i "password" /etc 2>/dev/null
+
+Sensitive keywords on files
+
+       grep -r --color=auto -iE "(password|pass|secret|key|token)" /home /var /etc 2>/dev/null
+
+SSH Keys
+
+       find / -type f -name "id_rsa" -o -name "id_dsa" 2>/dev/null
+
+Bash History
+
+       cat ~/.bash_history | grep -iE "password|pass|secret|key|token"
+
+Hardcoded credentials in code
+
+       grep -r --color=auto -iE "(password|key|secret|credential)" /var/www /home
+
+Database files
+
+       find / -type f -iname "*.sql" -o -iname "*.db" -o -iname "*.sqlite" 2>/dev/null
+
+Environment Variables
+
+       find / -type f -iname ".env" 2>/dev/null
+       grep -i "password" $(find / -type f -iname ".env" 2>/dev/null)
