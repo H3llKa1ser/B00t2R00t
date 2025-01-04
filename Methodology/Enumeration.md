@@ -36,7 +36,11 @@ Wordlists to use:
 
 DNS-Subdomains-top-1million-11000.txt
 
-        ffuf -c -w /usr/share/wordlists/seclists/Discovery/DNS/DNS-Subdomains-top-1million-11000.txt -u http://domain.local/ -H 'Host: FUZZ.local.local' -fs NUM
+        ffuf -c -w /usr/share/wordlists/seclists/Discovery/DNS/Subdomains-top-1million-11000.txt -u http://domain.local/ -H 'Host: FUZZ.local.local' -fs NUM
+
+If port 53 (DNS) is open, you can attempt to do a zone transfer to dump all DNS entries from a host
+
+        dig axfr TARGET_IP
 
 ### 4) CMS Enumeration
 
