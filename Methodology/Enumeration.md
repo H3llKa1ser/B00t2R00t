@@ -14,6 +14,12 @@ They may contain credentials, etc
 
 4) Check for unique files that you can analyze. You might find sensitive data there.
 
+5) Use technologies like wappalyzer to get info about the version of technologies to search for public exploits
+
+6) Use nikto to scan for low hanging fruit
+
+        nikto -h TARGET_SERVER
+
 ### 2) Directory Fuzzing
 
 Enumerate the directories of a webserver to check for admin pages, specific application directories, etc to further discover the webapp
