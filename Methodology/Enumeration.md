@@ -12,6 +12,8 @@ If yes, then grab any files you find within the network share or FTP folder
 
 They may contain credentials, etc
 
+4) Check for unique files that you can analyze. You might find sensitive data there.
+
 ### 2) Directory Fuzzing
 
 Enumerate the directories of a webserver to check for admin pages, specific application directories, etc to further discover the webapp
@@ -63,3 +65,10 @@ Same methodology works with other CMS as well like Joomla and Drupal
 Sometimes, when we uncover credentials, they may be reused on other applications as well.
 
 Use credentials for admin pages, SSH, FTP, SMB, MySQL
+
+### 7) Brute-force/Password Spray 
+
+ONLY USE THIS AS A LAST RESORT OR IF YOU FOUND ANY HINTS THAT THE PASSWORD FOR A SPECIFIC USER IS WEAK AND NEEDS TO BE CHANGED
+
+Use tools like Hydra, Burp Intruder, wpscan
+
