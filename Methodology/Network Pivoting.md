@@ -4,7 +4,7 @@
 
 ### In a network, if you root a machine, do these checks:
 
-#### Windows
+## Windows
 
 Info about interfaces
 
