@@ -42,7 +42,7 @@ DNS-Subdomains-top-1million-11000.txt
 
 If port 53 (DNS) is open, you can attempt to do a zone transfer to dump all DNS entries from a host
 
-        dig axfr TARGET_IP
+        dig axfr DOMAIN_NAME @NAMESERVER_IP
 
 ### 4) CMS Enumeration
 
