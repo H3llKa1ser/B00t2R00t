@@ -67,3 +67,9 @@
 #### 4) NTLM Authentication (Pass-the-Hash)
 
     evil-winrm -i TARGET_IP -u USER -H NTLM_HASH
+
+#### 5) Authenticate using IPv6 address (In case firewall blocks IPv4 traffic on port 5985)
+
+    evil-winrm -i [IPv6] -u USER -p PASSWORD
+
+### TIP: Enter the IPv6 in your /etc/hosts file and give it a hostname (preferably the target machine name)
