@@ -51,15 +51,17 @@ On a linux machine, we can do some checks to see if we can exploit them to do la
 
         history
 
-10) Writeable files and directories of the current user
+        cat /home/user/.bash_history
+
+11) Writeable files and directories of the current user
 
         find / -writable 2>/dev/null | cut -d "/" -f 2,3 | grep -v proc | sort -u
 
-11) Chech the current user's PATH variable contents
+12) Chech the current user's PATH variable contents
 
         echo $PATH
 
-12) World-writeable files and directories
+13) World-writeable files and directories
 
         find / -path /proc -prune -o -type d -perm -o+w 2>/dev/null
         find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null
