@@ -4,7 +4,7 @@
 
     fscan -h 192.168.1.0/24
 
-    nmap -sn 192.168.1.0/24 -oA subnet
+    nmap -sn -T4 192.168.1.0/24 -oA subnet
 
 ### 2) Conduct a thorough portscan on any machines discovered within the subnet. If the IP addresses are too many, compile them in a list and use a scanner that can read the file to scan them all together
 
