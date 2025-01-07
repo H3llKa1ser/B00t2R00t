@@ -2,7 +2,13 @@
 
 ### From the target machine:
 
-#### 1) Sharphound.exe --CollectionMethods METHODS (Default all) --Domain DOMAIN --ExcludeDCs
+#### 1) 
+
+      Sharphound.exe --CollectionMethods METHODS (Default all) --Domain DOMAIN --ExcludeDCs
+
+### OR in case the above command doesn't work, try to use SharpHound via LDAP credentials
+
+     .\SharpHound.exe --outputdirectory c:\temp --ldapusername USERNAME --ldappassword PASS
 
 #### 2) Collect Bloodhound.zip file
 
