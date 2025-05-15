@@ -15,7 +15,7 @@
 
 #### Use credentials we found in case that we don't know where to exactly use them.
 
-## TIP:
+### TIP:
 
-### With /netonly, it can accept any password.
+#### With /netonly, it can accept any password.
 
