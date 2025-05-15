@@ -2,23 +2,39 @@
 
 ### Commands:
 
-#### 1) Get-ADUser -Filter 'Name -like "*name"' -server DC | Format-Table Name, SamAccountName -A
+#### 1) 
 
-#### 2) Get-ADGroup -Identity GROUP -server DC
+    Get-ADUser -Filter 'Name -like "*name"' -server DC | Format-Table Name, SamAccountName -A
 
-#### 3) Get-ADGroupMember -Identity GROUP -server DC 
+#### 2) 
 
-#### 4) Get-ADUser -Identity NAME -server DC -properties *
+    Get-ADGroup -Identity GROUP -server DC
 
-#### 5) Get-ADDomain -server DC
+#### 3) 
 
-#### 6) Get-ADObject -Filter 'badpwdCount -gt 0' -server DC (Password spray attack without locking out accounts)
+    Get-ADGroupMember -Identity GROUP -server DC 
 
-#### 7) $ChangeDate= New-Object DateTime ( MM, DD, YY ) 
+#### 4) 
 
-#### Get-ADObject -Filter 'whenChanged -gt $ChangeDate' -includeDeletedObjects -server DC
+    Get-ADUser -Identity NAME -server DC -properties *
 
-#### 8) Set-ADAccountPassword -Identity USERNAME -server DC -OldPassword (ConvertTo-SecureString - AsPlaintext "old" -force) -NewPassword (ConvertTo-SecureString -AsPlaintext "new" -force)
+#### 5) 
+
+    Get-ADDomain -server DC
+
+#### 6) 
+
+    Get-ADObject -Filter 'badpwdCount -gt 0' -server DC (Password spray attack without locking out accounts)
+
+#### 7) 
+
+    $ChangeDate= New-Object DateTime ( MM, DD, YY ) 
+
+    Get-ADObject -Filter 'whenChanged -gt $ChangeDate' -includeDeletedObjects -server DC
+
+#### 8) 
+
+    Set-ADAccountPassword -Identity USERNAME -server DC -OldPassword (ConvertTo-SecureString - AsPlaintext "old" -force) -NewPassword (ConvertTo-SecureString -AsPlaintext "new" -force)
 
 ## BENEFITS
 
