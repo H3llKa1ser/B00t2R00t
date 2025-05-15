@@ -139,6 +139,8 @@ Windows
 
 ### 3) Valid Credentials (Assumed Breach Scenarios)
 
+## TIP: If NTLM does not work for pass-the-hash scenarios or you dont have any clear-text credentials for lateral movenemt/initial access, use Kerberos ticket to authenticate.
+
 In assumed breach scenarios, we can test various protocols and check for various misconfigurations and vulnerabilities if we have valid credentials on a domain.
 
 1) Automation
