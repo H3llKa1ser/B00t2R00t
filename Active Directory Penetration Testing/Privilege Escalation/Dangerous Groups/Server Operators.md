@@ -1,4 +1,4 @@
-# Server Operators Active Direcotry Security Group
+# Server Operators Active Directory Security Group
 
 ### Actions that this group performs:
 
