@@ -1,6 +1,6 @@
 # AD Pentesting Methodologies 
 
-## Link for assistance: https://wadcoms.github.io/
+## Link for assistance: https://wadcoms.github.io/ and https://lolad-project.github.io/
 
 ## PASSWORD ATTACKS, POST-EXPLOITATION AND PIVOTING EXAMPLE:
 
