@@ -2,6 +2,8 @@
 
 ## Tools: gettgtpkinit.py , Rubeus , certipy
 
+### Pass the Certificate in order to get a TGT, this technique is used in "UnPAC the Hash" and "Shadow Credential"
+
 # PKINIT
 
 #### 1) Rubeus
@@ -42,7 +44,6 @@
 
 # Pass-the-Certificate
 
-### Pass the Certificate in order to get a TGT, this technique is used in "UnPAC the Hash" and "Shadow Credential"
 
 ## Windows
 
