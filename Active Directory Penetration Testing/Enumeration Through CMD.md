@@ -1,14 +1,24 @@
 ## Commands
 
-#### net user /domain
+#### 1) 
 
-#### net user USER /domain
+    net user /domain
 
-#### net group /domain
+#### 2)
 
-#### net group GROUP /domain
+    net user USER /domain
 
-#### net accounts /domain
+#### 3) 
+
+    net group /domain
+
+#### 4) 
+
+    net group GROUP /domain
+
+#### 5) 
+
+    net accounts /domain
 
 ## BENEFITS
 
