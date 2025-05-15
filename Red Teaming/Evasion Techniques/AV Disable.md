@@ -2,11 +2,25 @@
 
 ### Requirements: Administrative/System level access
 
-#### 1) Set-MpPreference -DisableRealtimeMonitoring $True
+#### 1) 
 
-#### 2) netsh advfirewall set allprofiles state off
+    Set-MpPreference -DisableRealtimeMonitoring $True
 
-#### 3) powershell  -c foreach ($disk in Get-WmiObject Win32_Logicaldisk){Add-MpPreference -ExclusionPath $disk.deviceid}
+#### 2) 
+
+    netsh advfirewall set allprofiles state off
+
+OR
+
+    Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
+
+#### 3) 
+
+    powershell  -c foreach ($disk in Get-WmiObject Win32_Logicaldisk){Add-MpPreference -ExclusionPath $disk.deviceid}
+
+OR
+
+    Add-MpPreference -ExclusionPath "C:\Windows\Temp"
 
 # Disable Signature Checks from Defender (Won't kill the AV, but it will not alert any activity because of signature disablement)
 
