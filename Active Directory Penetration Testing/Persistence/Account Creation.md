@@ -78,7 +78,7 @@
 
     use post/windows/manage/add_user 
 
-### 3) Cloud Accounts
+### 3) Cloud Account
 
 #### Azure Powershell
 
