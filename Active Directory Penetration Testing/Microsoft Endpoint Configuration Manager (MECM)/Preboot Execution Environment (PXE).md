@@ -38,9 +38,5 @@ Broadly, this means it is trivial to obtain local SAM hashes and SCCM secrets fr
 
 #### 10: Get-FindCredentials -WimFile pxeboot.wim
 
-#### 11: Crack hash
-
-    hashcat-6.2.6-SCCM.exe -m 19850 -a 0 $sccm$aes128$0000edec1400000010330000203300000e6600000000000008b5ea1dab29bdd0de62e6506b108b5c <password-file.txt> <rules>
-
-#### 12: VOILA!
+#### 11: VOILA!
 
