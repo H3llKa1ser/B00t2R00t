@@ -10,7 +10,9 @@
 
 #### 2) Script contents: 
 
-    #!/bin/bash chmod +s /bin/bash
+    #!/bin/bash 
+    
+    chmod +s /bin/bash
 
 #### 3) In the configuration file, add a one-liner to execute script upon initialization: 
 
