@@ -108,7 +108,7 @@ Link: https://github.com/lgandx/PCredz and https://github.com/GoSecure/pywsus
 
         sudo ./bettercap --iface <interface> --caplet spoof.cap
 
-# WSUS Spoofing
+# WSUS Spoofing (Windows Server Update Services)
 
 ARP poisoning for WSUS spoofing in a two-subnets layout (attacker + client in the same segment, legitimate WSUS server in another one). Packets from the client to the WSUS server need to be hijacked and sent to the attacker's evil WSUS server. In order to do so, the attacker must pose as the client's gateway, route all traffic to the real gateway except the packets destined to the WSUS server.
 
