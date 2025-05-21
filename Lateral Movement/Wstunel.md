@@ -16,7 +16,7 @@ Pivot via WebSockets and HTTP/2
 
 ### 1) Pivot machine
 
-wstunnel server wss://[::]:8080
+    wstunnel server wss://[::]:8080
 
 ### 2) Attacker machine
 
