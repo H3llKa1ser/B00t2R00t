@@ -46,3 +46,17 @@
 
     Find-ProcessDLLHijack
     Find-PathDLLHijack
+
+### 8: Other
+
+##### PrivescCheck: https://github.com/itm4n/PrivescCheck
+
+    . .\PrivescCheck.ps1; Invoke-PrivescCheck -Extended
+
+    .\beRoot.exe
+    .\winPEAS.exe
+    .\Seatbelt.exe -group=all -full
+
+##### Privesc: https://github.com/enjoiz/Privesc
+
+    Invoke-PrivEsc
