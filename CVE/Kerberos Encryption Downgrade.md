@@ -4,7 +4,9 @@
 
 ## Requirements
 
- - Accounts with the attribute DONT_REQ_PREAUTH ( PowerView > Get-DomainUser -PreauthNotRequired -Properties distinguishedname -Verbose )
+ - Accounts with the attribute DONT_REQ_PREAUTH AKA ASREP Roastable account ( PowerView > Get-DomainUser -PreauthNotRequired -Properties distinguishedname -Verbose )
+
+ - RC4-MD4 encryption algorithm enabled on the KDC
 
 ### Usage:
 
