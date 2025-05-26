@@ -20,5 +20,14 @@ Start the team server and run as service
 
     sudo ./teamserver 10.10.5.50 Passw0rd! c2-profiles/normal/webbug.profile
 
-teamserver.service in this folder in the repo.
+    sudo nano /etc/systemd/system/teamserver.service
 
+
+    sudo systemctl daemon-reload
+    sudo systemctl status teamserver.service
+    sudo systemctl start teamserver.service
+    sudo systemctl enable teamserver.service
+
+Enable Hosting of Web Delivery Payloads via agscript client in headless mode
+
+        cat host_payloads.cna
