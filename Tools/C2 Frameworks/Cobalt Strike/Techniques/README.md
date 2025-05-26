@@ -2,4 +2,4 @@
 
 https://blankshiro.xyz/posts/CRTO-Notes/
 
-Thanks for sharing!
+# Thanks for sharing!
