@@ -138,3 +138,47 @@ Parameters can be combined.
 https://github.com/skelsec/pysnaffler
 
     pysnaffler 'smb2+ntlm-password://domain\user1:password@<target>' <target>
+
+## GPO Enumeration
+
+### List of GPO in the domain
+
+    ldeep ldap -u user1 -p password -d domain.local -s <LDAP_server_IP> gpo
+
+## Organizational Units
+
+### OUs of the domain and their linked GPOs
+
+    ldeep ldap -u user1 -p password -d domain.local -s <LDAP_server_IP> ou
+
+### Computers within an OU
+
+    ldeep ldap -u user1 -p password -d domain.local -s <LDAP_server_IP> machines -v |grep -i "OU=<OU_name>" |grep -i "distinguishedName"
+
+## DACLs
+
+### All ACLs associated with an object (inbound)
+
+##### With samAccountName
+
+    dacledit.py -action read -target <target_samAccountName> -dc-ip <DC_IP> domain.local/user1:password
+
+##### With DN
+
+    dacledit.py -action read -target-dn <target_DN> -dc-ip <DC_IP> domain.local/user1:password
+
+##### With SID
+
+    dacledit.py -action read -target-sid <target_SID> -dc-ip <DC_IP> domain.local/user1:password
+
+### Outbound ACLs of an object
+
+These are the rights a principal has against another object
+
+    dacledit.py -action read -target <target_samAccountName> -principal <principal_samAccountName> <-dc-ip <DC_IP> domain.local/user1:password
+
+## Trusts
+
+### Trusts for the current domain
+
+    ldeep ldap -u user1 -p password -d domain.local -s <LDAP_server_IP> trusts
