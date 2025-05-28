@@ -8,6 +8,8 @@
 
 ### If we have any of those keys (DES,RC4,AES128,AES256) we can ask the KDC for a TGT without requiring the actual password. (Pass-the-Key)
 
+## Globally, all the Impacket tools and the ones that use the library can authenticate via Pass The Key with the -aesKey command line parameter instead of specifying the password. For NetExec it's --aesKey.
+
 #### 
 
     privilege::debug
