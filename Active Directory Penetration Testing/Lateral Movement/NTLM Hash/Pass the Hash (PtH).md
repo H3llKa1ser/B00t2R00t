@@ -2,6 +2,8 @@
 
 ## Tools: impacket , psexec , crackmapexec/netexec , evil-winrm , xfreerdp/remmina , smbclient , mimikatz
 
+## Globally, all the Impacket tools and the ones that use the library can authenticate via Pass The Hash with the -hashes command line parameter instead of specifying the password. For ldeep, NetExec and evil-winrm, it's -H.
+
 # Interactive shell
 
 #### 1) mimikatz
