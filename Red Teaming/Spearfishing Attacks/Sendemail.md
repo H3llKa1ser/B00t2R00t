@@ -1,0 +1,5 @@
+### COMMAND
+
+#### 1) 
+
+    sendemail -t TARGET@MAIL.COM -f OURNAME@KALI.COM -s SMTP_SERVER/DOMAIN -u "WHATEVER" -m "ANY_MESSAGE" -a MALICIOUS_FILE -o tls=no
