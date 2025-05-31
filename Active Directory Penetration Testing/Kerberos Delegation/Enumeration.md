@@ -39,3 +39,13 @@
     Get-DomainController (Check if the DC is running at least Windows 2012 or later)
 
     Get-NetComputer TARGET_COMPUTER | Select-Object -Property name, msds-allowedtoactonbehalfofotheridentity (The target computer object must NOT have the attribute msds-allowedtoactonbehalfofotheridentity set)
+
+    findDelegation.py -dc-ip <DC_IP> domain.local/user1:password
+
+##### For another domain across trust
+
+    findDelegation.py -target-domain <target_domain> domain.local/user1:password
+
+##### Check the attribute on an account
+
+    rbcd.py -action read -delegate-to ServiceB$ domain.local/user1:password
