@@ -28,3 +28,21 @@ These users can access the production forest through the trust with classic work
 
 A trust attribute of 1096 is for PAM (0x00000400) + External Trust (0x00000040) + Forest Transitive (0x00000008).
 
+## Linux
+
+### 1) Enumerate trust properties
+
+    ldeep ldap -u user1 -p password -d domain.local -s <LDAP_server_IP> trusts
+
+### 2) Enumerate shadow security principals
+
+    ldeep ldap -u user1 -p password -d domain.local -s <LDAP_server_IP> search '(distinguishedName=*Shadow Principal Configuration*)' |jq '.[].name, .[].member, .[]."msDS-ShadowPrincipalSid"'
+
+### 3) ForestTransitive must be true
+
+    ldeep ldap -u user1 -p password -d domain.local -s <LDAP_server_IP> trusts
+
+### 4) Get the shadow security principals
+
+    ldeep ldap -u user1 -p password -d domain.local -s <LDAP_server_IP> object "Shadow Principal Configuration" -v |jq '.[].name, .[].member, .[]."msDS-ShadowPrincipalSid"'
+
