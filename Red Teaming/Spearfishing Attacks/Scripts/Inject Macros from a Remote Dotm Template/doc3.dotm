@@ -1,0 +1,6 @@
+Sub Document_Open()
+
+Set objShell = CreateObject("Wscript.Shell")
+objShell.Run "calc"
+
+End Sub
