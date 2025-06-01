@@ -10,4 +10,3 @@ https://viperone.gitbook.io/pentest-everything/psmapexec
 
 All credits to The-Viper-One, the creator of PsMapExec.
 
-# TO-DO LATER
