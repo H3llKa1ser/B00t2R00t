@@ -1,3 +1,5 @@
+# Detection Types Comparison Table
+
 | Detection Type     | Method             | Strengths                        | Weaknesses                        |
 |--------------------|--------------------|----------------------------------|------------------------------------|
 | Signature-Based    | Hash/Pattern Match | Fast, reliable for known threats | Fails on unknown or obfuscated     |
