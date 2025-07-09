@@ -1,5 +1,7 @@
 One of the foundational concepts in understanding EDR (Endpoint Detection and Response) effectiveness is the distinction between real-time detection and post-event detection. This classification defines when and how the threat is identified—during execution (real-time) or after the malicious activity has already occurred (post-event). For evasion purposes, knowing the difference allows attackers and defenders to time or disguise actions accordingly.
 
+# Detection Comparison Table
+
 | Timing                     | During execution                         | After execution                             |
 |----------------------------|------------------------------------------|---------------------------------------------|
 | Primary Goal               | Prevention / Blocking                    | Detection / Investigation                   |
