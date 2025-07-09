@@ -22,3 +22,6 @@ Security tools and attackers are constantly engaged in a cat-and-mouse game:
 | ETW Logging                  | ETW patching or disabling                 |
 | Registry Change Monitoring   | Delayed or indirect modifications         |
 | Image Load Callbacks         | Manual PE loading / injection             |
+
+Understanding API and syscall monitoring is essential for designing stealthy payloads. Most EDRs rely on userland hooks and ETW tracing to build telemetry, but attackers can bypass these with techniques such as direct syscalls, manual mapping, and ETW tampering. Mastery of this area is foundational for effective EDR evasion.
+
