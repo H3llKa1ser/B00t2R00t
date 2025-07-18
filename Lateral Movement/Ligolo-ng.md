@@ -18,11 +18,7 @@
 
 ##### Automatically request LetsEncrypt certificates or use self-signed certificates
 
-    sudo ip link del ligolo
-    sudo ip tuntap add user $(whoami) mode tun ligolo
-    sudo ip link set ligolo up
-    sudo ip route add INTERNAL_IP/CIDR dev ligolo
-    ./proxy [-autocert | -selfcert] -laddr 0.0.0.0:443
+    sudo ./proxy [-autocert | -selfcert] -laddr 0.0.0.0:443
 
 ### 2) On the pivot machine, start the agent
 
