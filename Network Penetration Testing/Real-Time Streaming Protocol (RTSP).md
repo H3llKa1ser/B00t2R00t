@@ -23,3 +23,9 @@ Link: https://github.com/Ullaakut/cameradar
     open mpeg.mp4
 
 ### or any other media player like VLC to view.
+
+## Alternate method: Cameradar
+
+### To scan a machine that runs RTSP, use the tool cameradar
+
+    docker run -t ullaakut/cameradar -t TARGET_IP
