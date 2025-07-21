@@ -16,7 +16,7 @@ Link: https://github.com/Ullaakut/cameradar
 
 ### If we discover live streams this way, we can extract them and view the live stream we have downloaded to our machine
 
-    ffmpeg -i rtsp://TARGET_IP:554/mpeg4 -c copy mpeg.mp4 
+    ffmpeg -rtsp_transport tcp -i rtsp://TARGET_IP:554/mpeg4 -c copy mpeg.mp4 
 
 ### Then, open with:
 
