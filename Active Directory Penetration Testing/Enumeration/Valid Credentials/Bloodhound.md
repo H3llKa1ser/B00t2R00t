@@ -8,7 +8,7 @@
 ##### Run neo4j then bloodhound
 
     sudo neo4j console
-    sudo blooudhound
+    sudo bloodhound
 
 
 ## Commands:
