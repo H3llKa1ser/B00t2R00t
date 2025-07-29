@@ -38,7 +38,9 @@
 
     hashcat -m 5600 HASHFILE /usr/share/wordlists/rockyou.txt
 
-### .\inveighzero.exe -FileOutput Y -NBNS Y -mDNS Y -Proxy Y -MachineAccounts Y -DHCPv6
+### Inveigh (Windows)
+
+    .\inveighzero.exe -FileOutput Y -NBNS Y -mDNS Y -Proxy Y -MachineAccounts Y -DHCPv6
 
 #### More information:
 
