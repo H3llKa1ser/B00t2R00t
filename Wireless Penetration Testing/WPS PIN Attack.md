@@ -6,4 +6,4 @@
 
 ### Commands:
 
- - reaver -i MONITOR_MODE_NIC -b BSSID -vv -c CHANNEL_NUM
+    reaver -i MONITOR_MODE_NIC -b BSSID -vv -c CHANNEL_NUM
