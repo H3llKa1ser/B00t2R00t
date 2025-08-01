@@ -1,4 +1,4 @@
-# ADCS WinRM Passwordless Session
+# ADCS WinRM Passwordless Authentication
 
 ### REQUIREMENTS: Have access to the /certsrv web portal (You can send a CSR for a certificate)
 
