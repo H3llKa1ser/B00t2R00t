@@ -1,4 +1,6 @@
-# Only works on Linux
+# Sshuttle
+
+## Only works on Linux
 
 ## Author: https://github.com/sshuttle/sshuttle
 
