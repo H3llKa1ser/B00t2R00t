@@ -2,11 +2,15 @@
 
 ### Get kerberoastable users
 
- - Get-DomainUser -SPN -Properties SamAccountName, ServicePrincipalName
+#### Powerview
 
- - MATCH (u:User {hasspn:true}) RETURN u (Bloodhound cypher query)
+    Get-DomainUser -SPN -Properties SamAccountName, ServicePrincipalName
 
- - MATCH (u:User {hasspn:true}), (c:Computer),p=shortestPath((u)-[*1..]->(c)) RETURN p (Bloodhound cypher query)
+#### Bloodhound Cypher Queries
+
+    MATCH (u:User {hasspn:true}) RETURN u 
+
+    MATCH (u:User {hasspn:true}), (c:Computer),p=shortestPath((u)-[*1..]->(c)) RETURN p 
 
 ### Get hash (TGS)
 
