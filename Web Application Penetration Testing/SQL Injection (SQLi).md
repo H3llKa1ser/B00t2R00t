@@ -1,4 +1,6 @@
-# Payload resource: https://github.com/swisskyrepo/PayloadsAllTheThings
+# SQL Injection (SQLi)
+
+Payload resource: https://github.com/swisskyrepo/PayloadsAllTheThings
 
 ## Blind Testing Payload:
 
