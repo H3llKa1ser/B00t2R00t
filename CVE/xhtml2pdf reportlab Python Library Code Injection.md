@@ -6,9 +6,9 @@
 
 #### 1) Check for any functions that converts to pdf. Download the pdf and inspect it with exiftool and/or strings
 
- - exiftool FILE.pdf
+    exiftool FILE.pdf
 
- - strings FILE.pdf
+    strings FILE.pdf
 
 #### 2) Upon inspection, if we find that the producer is xhtml2pdf and/or with strings we find that the pdf is being generated with reportlab library, we craft an exploit to gain code execution.
 
@@ -18,7 +18,7 @@
 
 #### 3) Setup listener to catch the shell
 
- - nc -lvnp 4444
+    nc -lvnp 4444
 
 #### 4) Inject the exploit written above to the appropriate field for it to trigger
 
