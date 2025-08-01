@@ -1,3 +1,3 @@
 # Search for password files
 
- - findstr /si 'password' *.txt *.xml *.docx
+    findstr /si 'password' *.txt *.xml *.docx
