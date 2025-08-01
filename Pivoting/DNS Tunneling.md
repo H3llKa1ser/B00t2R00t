@@ -9,3 +9,4 @@
 #### 3) Attacker: ssh USER@101.1.2 -4 -f -N -D 1080
 
 #### 4) Attacker: proxychains curl http://192.168.0.100/test.php OR curl --socks5 127.0.0.1:1080 http://192.168.0.100/test.php
+
