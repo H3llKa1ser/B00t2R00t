@@ -4,20 +4,20 @@
 
 #### 1) CrackMapExec
 
- - cme smb 10.10.10.0/24 -u Administrator -p 'P@ssw0rd' --sessions
+    cme smb 10.10.10.0/24 -u Administrator -p 'P@ssw0rd' --sessions
 
 #### 2) Impacket smbclient
 
- - impacket-smbclient Administrator@10.10.10.10
+    impacket-smbclient Administrator@10.10.10.10
 
- - who
+    who
 
 #### 3) Powerview Invoke-UserHunter
 
 ### Find computers where a Domain Admin or a specific user has a session
 
- - Invoke-UserHunter
+    Invoke-UserHunter
 
- - Invoke-UserHunter -GroupName" RDPUsers"
+    Invoke-UserHunter -GroupName" RDPUsers"
 
- - Invoke-UserHunter -Stealth
+    Invoke-UserHunter -Stealth
