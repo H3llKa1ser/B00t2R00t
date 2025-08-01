@@ -12,16 +12,22 @@
 
 #### 5: Local tools through a proxy
 
-### arp -a (Routing table)
+### Routing table
 
-### cat /etc/hosts (Linux)
+    arp -a
 
-### type C:\Windows\System32\drivers\etc\hosts (Windows)
+### Domain names in Hosts files
 
-### cat /etc/resolv.conf (Linux)
+    cat /etc/hosts 
 
-### ipconfig /all (Windows)
+    type C:\Windows\System32\drivers\etc\hosts
 
-### route print (Windows)
+### DNS and network configuration
 
-### ipconfig /displaydns | findstr "Record" | findstr "Name Host" (Windows DNS Entries)
+    cat /etc/resolv.conf (Linux)
+
+    ipconfig /all (Windows)
+
+    route print (Windows)
+
+    ipconfig /displaydns | findstr "Record" | findstr "Name Host" (Windows DNS Entries)
