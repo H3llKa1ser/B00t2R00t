@@ -14,10 +14,10 @@
 
 ### 1) Pdf Image
 
- - 1) pdfimages -j FILE.pdf OUTPUT (Converts the PDF file to a .ppm file)
+    pdfimages -j FILE.pdf OUTPUT (Converts the PDF file to a .ppm file)
   
- - 2) python3 depix.py -p /path/to/OUTPUT-000.ppm -s ./images/searchimages/debruinseq_notepad_Windows10_closeAndSpaced.png -o /path/to/recovered.png (Recover the blurred password using the tool)
+    2) python3 depix.py -p /path/to/OUTPUT-000.ppm -s ./images/searchimages/debruinseq_notepad_Windows10_closeAndSpaced.png -o /path/to/recovered.png (Recover the blurred password using the tool)
 
 ### 2) PNG Image
 
- - 1) convert FILE.png OUTPUT
+    convert FILE.png OUTPUT
