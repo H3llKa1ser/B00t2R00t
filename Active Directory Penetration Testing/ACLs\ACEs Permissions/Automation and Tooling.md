@@ -1,5 +1,5 @@
 # Automation and Tooling
 
-- aclpwn.py
+    aclpwn.py
 
-- acltoolkit DOMAIN/USER'PASSWORD@TARGET get-objectacl [-all| -object OBJECT]
+    acltoolkit DOMAIN/USER'PASSWORD@TARGET get-objectacl [-all| -object OBJECT]
