@@ -119,7 +119,7 @@
     * [WSUS](<Active Directory Penetration Testing/Lateral Movement/WSUS.md>)
     * [Certificate pfx File](active-directory-penetration-testing/lateral-movement/certificate-pfx-file/README.md)
       * [Get hash NTLM from certificate](<Active Directory Penetration Testing/Lateral Movement/Certificate pfx File/NTLM hash from certificate.md>)
-      * [AD CS WinRM passwordless session](<Active Directory Penetration Testing/Lateral Movement/Certificate pfx File/AD CS WinRM passwordless session.md>)
+      * [AD CS WinRM Passwordless Authentication](<Active Directory Penetration Testing/Lateral Movement/Certificate pfx File/ADCS WinRM Passwordless Authentication.md>)
       * [Pass the Certificate](<Active Directory Penetration Testing/Lateral Movement/Certificate pfx File/Pass the Certificate.md>)
     * [Kerberos](active-directory-penetration-testing/lateral-movement/kerberos/README.md)
       * [Pass the Ticket](<Active Directory Penetration Testing/Lateral Movement/Kerberos/Pass the Ticket.md>)
