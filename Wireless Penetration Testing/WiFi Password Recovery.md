@@ -4,12 +4,18 @@
 
 ### Windows
 
-#### Steps:
+### Steps:
 
- - Run CMD as administrator
+#### 1) Run CMD as administrator
 
- - netsh
+#### 2) 
 
- - netsh> wlan show profile (Show all WiFi networks within range)
+    netsh
 
- - netsh> wlan show profile MY_PROFILE key=clear (Dumps everything about the specific WiFi network, including password)
+#### 3) Show all WiFi networks within range
+
+    netsh> wlan show profile 
+
+#### 4) Dumps everything about the specific WiFi network, including password
+
+    netsh> wlan show profile MY_PROFILE key=clear 
