@@ -2,18 +2,32 @@
 
 ### STEPS/COMMANDS:
 
-#### 1) vtysh ( Run BGP config shell )
+#### 1) Run BGP config shell
 
-#### 2) config terminal
+    vtysh
 
-#### 3) router bgp NUM
+#### 2) 
 
-#### 4) network HOST/CIDR (You can try to route as many networks as you can find)
+    config terminal
 
-#### 5) end
+#### 3) 
 
-#### 6) clear ip bgp *
+    router bgp NUM
 
-#### 7) show ip bgp neighbors YOUR_IP advertised-routes (Check on the route)
+#### 4) You can try to route as many networks as you can find
+
+    network HOST/CIDR
+
+#### 5) 
+
+    end
+
+#### 6) 
+
+    clear ip bgp *
+
+#### 7) Check on the route
+
+    show ip bgp neighbors YOUR_IP advertised-routes 
 
 #### 8) Now you can sniff network traffic, or pivot further through more networks!
