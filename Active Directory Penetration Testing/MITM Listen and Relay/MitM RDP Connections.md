@@ -6,11 +6,11 @@
 
 ### Usage:
 
- - pyrdp-mitm.py IP
+    pyrdp-mitm.py IP
 
- - pyrdp-mitp.py IP:PORT 
+    pyrdp-mitp.py IP:PORT 
 
- - pyrdp-mitm.py IP -k private_key.pem -c certificate.pem
+    pyrdp-mitm.py IP -k private_key.pem -c certificate.pem
 
 ## Exploitation
 
