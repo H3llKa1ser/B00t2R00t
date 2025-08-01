@@ -8,7 +8,7 @@
 
     nmap -Pn -sS -T4 --open --script smb-security-mode -p 445 IP_ADDRESS/MASK
 
-    use exploit/windows/smb/smb_relay (Metaploit)
+    use exploit/windows/smb/smb_relay (Metasploit)
 
     netexec smb 4hosts --gen-relay-list RELAY.TXT
 
