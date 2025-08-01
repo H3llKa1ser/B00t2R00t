@@ -1,2 +1,0 @@
-# Data Lake Penetration Testing
-
