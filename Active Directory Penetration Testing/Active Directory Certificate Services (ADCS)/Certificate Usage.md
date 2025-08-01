@@ -4,16 +4,16 @@
 
 #### 1) cmd
 
- - certutil.exe -dump -v cert.pfx
+    certutil.exe -dump -v cert.pfx
 
 #### 2) powershell
 
- - $CertPath = "C:\path\to\cert.pfx"
+    $CertPath = "C:\path\to\cert.pfx"
 
- - $CertPass = "P@ssw0rd"
+    $CertPass = "P@ssw0rd"
 
- - $Cert = New-Object
+    $Cert = New-Object
 
- - System.Security.Cryptography.X509Certificates.X509Certificate2 @($CertPath, $CertPass)
+    System.Security.Cryptography.X509Certificates.X509Certificate2 @($CertPath, $CertPass)
 
- - $Cert.EnhancedKeyUsageList
+    $Cert.EnhancedKeyUsageList
