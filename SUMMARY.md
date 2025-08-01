@@ -520,7 +520,7 @@
   * [SSH Reverse Connections](<Pivoting/SSH Reverse Connections.md>)
   * [SSH Tunneling-Port Forwarding](<Pivoting/SSH Tunneling-Port Forwarding.md>)
   * [Socat](<Pivoting/Socat.md>)
-  * [Only works on Linux](<Pivoting/Sshuttle.md>)
+  * [Sshuttle](<Pivoting/Sshuttle.md>)
   * [Techniques](Pivoting/techniques/README.md)
     * [BORDER GATEWAY PROTOCOL HIJACKING (BGP)](<Pivoting/Techniques/Border Gateway Protocol (BGP) Hijacking.md>)
     * [PORT FORWARDING EXPLANATION:](<Pivoting/Techniques/Port forwarding.md>)
