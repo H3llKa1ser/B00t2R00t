@@ -113,7 +113,7 @@
     * [Enumerating Kerberos Delegations](<Active Directory Penetration Testing/Kerberos Delegation/Enumeration.md>)
     * [Resource-Based Constrained Delegation (RBCD)](<Active Directory Penetration Testing/Kerberos Delegation/Resource-Based Constrained Delegation (RBCD).md>)
     * [Unconstrained Delegation](<Active Directory Penetration Testing/Kerberos Delegation/Unconstrained Delegation.md>)
-  * [Lateral Movement](active-directory-penetration-testing/lateral-movement/README.md)
+  * [Pivoting](active-directory-penetration-testing/pivoting/README.md)
     * [Cleartext Password](<Active Directory Penetration Testing/Lateral Movement/Cleartext Password.md>)
     * [Local User Lateral Movement](<Active Directory Penetration Testing/Lateral Movement/Local User.md>)
     * [MSSQL Lateral Movement](<Active Directory Penetration Testing/Lateral Movement/MSSQL.md>)
