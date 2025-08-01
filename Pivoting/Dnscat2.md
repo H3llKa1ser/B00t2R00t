@@ -34,4 +34,4 @@
 
     ssh USER@127.0.0.1 -p 8888 (Kali)
 
- - listen 127.0.0.1:9999 192.168.226.129:80 (Port 80 tunneling)
+    listen 127.0.0.1:9999 192.168.226.129:80 (Port 80 tunneling)
