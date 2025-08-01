@@ -40,3 +40,4 @@ Any connections on this ip:port will be relayed to the 11601 TCP local port of t
     ./agent -connect $firstPivot:1080 [-ignore-cert]
 
 A second session will appear on the server. Select it, and run the autoroute command. You can now access the final network.
+
