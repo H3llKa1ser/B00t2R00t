@@ -1,2 +1,0 @@
-# Anonymous Service Identification
-

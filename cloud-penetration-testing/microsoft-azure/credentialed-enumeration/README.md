@@ -1,2 +1,0 @@
-# Credentialed Enumeration
-

@@ -1,2 +1,0 @@
-# Lambda and API Gateway
-
