@@ -4,10 +4,10 @@
 
 ## Commands:
 
- - sudo responder -I eth0 (use --lm to force lm downgrade) (Disable smb & http if relay) (LLMNR / NBTNS / MDNS)
+    sudo responder -I eth0 (use --lm to force lm downgrade) (Disable smb & http if relay) (LLMNR / NBTNS / MDNS)
 
- - mitm6 -d DOMAIN (IPv6 preferred to IPv4
+    mitm6 -d DOMAIN (IPv6 preferred to IPv4)
 
- - bettercap (ARP poisoning)
+    bettercap (ARP poisoning)
 
 ### These techniques can poison SMB and HTTP
