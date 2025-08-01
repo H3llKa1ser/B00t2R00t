@@ -10,4 +10,4 @@
 
 ### Since we possibly don't have available OS commands to traverse the HDFS, we use it via the binary:
 
-#### ./hdfs dfs -ls / (Example)
+    ./hdfs dfs -ls / (Example)
