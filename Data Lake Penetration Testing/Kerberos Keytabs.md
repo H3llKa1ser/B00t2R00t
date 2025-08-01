@@ -8,6 +8,10 @@
 
 # HOW TO USE:
 
-#### klist -k ACCOUNT.SERVICE.KEYTAB (List Principal Names)
+#### 1) List Principal Names
 
-#### kinit PRINCIPAL NAME -k -V -t ACCOUNT.SERVICE.KEYTAB (Use the keytab, authenticate to the kerberos server and request a ticket)
+    klist -k ACCOUNT.SERVICE.KEYTAB 
+
+#### 2) Use the keytab, authenticate to the kerberos server and request a ticket
+
+    kinit PRINCIPAL NAME -k -V -t ACCOUNT.SERVICE.KEYTAB 
