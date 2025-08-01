@@ -8,46 +8,46 @@
 
 #### LM
 
- - john --format=lm HASH.TXT
+    john --format=lm HASH.TXT
 
- - hashcat -m 3000 -a 3 HASH.TXT
+    hashcat -m 3000 -a 3 HASH.TXT WORDLIST.TXT
 
 #### NTLM
 
- - john --format=nt HAHS.TXT
+    john --format=nt HASH.TXT
 
- - hashcat -m 1000 -a 3 HASH.TXT
+    hashcat -m 1000 -a 3 HASH.TXT WORDLIST.TXT
 
 #### NetNTLMv1
 
- - john --format=netntlm HASH.TXT
+    john --format=netntlm HASH.TXT
 
- - hashcat -m 5500 -a 3 HASH.TXT
+    hashcat -m 5500 -a 3 HASH.TXT WORDLIST.TXT
 
 #### NetNTLMv2
 
- - john --format=netntlmv2 HASH.TXT
+    john --format=netntlmv2 HASH.TXT
 
- - hashcat -m 5600 -a 0 HASH.TXT WORDLIST.TXT
+    hashcat -m 5600 -a 0 HASH.TXT WORDLIST.TXT
 
 #### Kerberos 5 TGS
 
- - hashcat -m 13100 -a 0 SPN.TXT WORDLIST.TXT
+    hashcat -m 13100 -a 0 SPN.TXT WORDLIST.TXT
 
- - john SPN.TXT --format=krb5tgs --wordlist=WORDLIST.TXT
+    john SPN.TXT --format=krb5tgs --wordlist=WORDLIST.TXT
 
 #### Kerberos 5 TGS AES128
 
- - hashcat -m 19600 -a 0 SPN.TXT WORDLIST.TXT
+    hashcat -m 19600 -a 0 SPN.TXT WORDLIST.TXT
 
 #### Kerberos 5 TGS AES256
 
- - hashcat -m 19700 -a 0 SPN.TXT WORDLIST.TXT
+    hashcat -m 19700 -a 0 SPN.TXT WORDLIST.TXT
 
 #### Kerberos ASREP
 
- - hashcat -m 18200 -a 0 ASREP_ROAST_HASHES.TXT WORDLIST.TXT
+    hashcat -m 18200 -a 0 ASREP_ROAST_HASHES.TXT WORDLIST.TXT
 
 #### MsCache 2 (Slow)
 
- - hashcat -m 2100 -a 0 MSCACHE-HASH.TXT WORDLIST.TXT
+    hashcat -m 2100 -a 0 MSCACHE-HASH.TXT WORDLIST.TXT
