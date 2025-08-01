@@ -1,2 +1,0 @@
-# Linux Active Directory
-
