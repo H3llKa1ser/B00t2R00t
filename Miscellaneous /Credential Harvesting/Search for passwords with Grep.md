@@ -2,4 +2,4 @@
 
 ### Commands:
 
- - grep -r -i -E '(password|passwd|pwd|key|secret|encrypted)' .
+    grep -r -i -E '(password|passwd|pwd|key|secret|encrypted)' .
