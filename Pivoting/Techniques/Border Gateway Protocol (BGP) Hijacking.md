@@ -1,4 +1,4 @@
-# BORDER GATEWAY PROTOCOL HIJACKING (BGP)
+# Border Gateway Protocol Hijacking (BGP)
 
 ### STEPS/COMMANDS:
 
