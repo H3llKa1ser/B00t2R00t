@@ -6,9 +6,13 @@
 
 ## Find ASREPRoastable users (need creds)
 
+#### 1) Powerview
+
     Get-DomainUser -PreauthNotRequired -Properties SamAccountName
 
- - MATCH(u:User {dontreqpreauth:true}). (c:Computer). p=shortestPath((u)-[*1..]->(c)) RETURN p (Bloodhound cypher query)
+#### 2) Bloodhound Cypher Query
+
+    MATCH(u:User {dontreqpreauth:true}). (c:Computer). p=shortestPath((u)-[*1..]->(c)) RETURN p 
 
 ## Find ASREP hash
 
