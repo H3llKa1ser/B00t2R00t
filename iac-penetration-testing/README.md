@@ -1,2 +1,0 @@
-# IaC Penetration Testing
-
