@@ -6,7 +6,10 @@
 
 ### Command:
 
-#### ldapsearch -H ldap://DC\_IP -x -b "dc=DC\_NAME,dc=LOCAL"
+    ldapsearch -H ldap://DC\_IP -x -b "dc=DC\_NAME,dc=LOCAL"
+
+    ldeep ldap -u USER -p 'PASSWORD' -d DOMAIN -s ldap://DC_IP all BACKUP_FOLDER
+
 
 ### This retrieves all AD objects from LDAP
 
@@ -30,6 +33,3 @@
 | `([adsisearcher]"(&(objectClass=Computer))").FindAll()`                                  | Use ADSI to search for all computers                  |
 
 
-## Commands:
-
- - ldeep ldap -u USER -p 'PASSWORD' -d DOMAIN -s ldap://DC_IP all BACKUP_FOLDER
