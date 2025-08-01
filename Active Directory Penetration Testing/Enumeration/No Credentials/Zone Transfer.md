@@ -1,5 +1,5 @@
 # DNS Zone Transfer
 
-## Commands:
+## Dump all DNS records from a machine via Zone Transfer
 
- - dig axfr DOMAIN_NAME @NAME_SERVER
+    dig axfr DOMAIN_NAME @NAME_SERVER
