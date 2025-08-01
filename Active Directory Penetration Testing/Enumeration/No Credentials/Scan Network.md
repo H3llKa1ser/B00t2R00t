@@ -4,8 +4,8 @@
 
 ## Commands:
 
- - netexec smb IP_RANGE (Enumerate SMB hosts)
+    netexec smb IP_RANGE (Enumerate SMB hosts)
 
- - nmap -A -Pn -p- -oA FILE IP (Full scan)
+    nmap -A -Pn -p- -oA FILE IP (Full scan)
 
- - nmap -sU -sC -sV -oA FILE IP (UDP Scan)
+    nmap -sU -sC -sV -oA FILE IP (UDP Scan)
