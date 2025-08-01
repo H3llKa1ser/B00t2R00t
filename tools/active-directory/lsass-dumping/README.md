@@ -1,2 +1,0 @@
-# LSASS Dumping
-

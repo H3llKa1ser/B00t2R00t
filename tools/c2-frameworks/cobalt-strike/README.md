@@ -1,2 +1,0 @@
-# Cobalt Strike
-

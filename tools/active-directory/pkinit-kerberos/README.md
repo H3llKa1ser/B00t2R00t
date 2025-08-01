@@ -1,2 +1,0 @@
-# PKINIT Kerberos
-

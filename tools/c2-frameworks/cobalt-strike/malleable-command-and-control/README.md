@@ -1,2 +1,0 @@
-# Malleable Command and Control
-
