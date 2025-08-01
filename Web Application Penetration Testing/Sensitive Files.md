@@ -1,4 +1,6 @@
-# Sensitive Files we can get via various functionalities of the web app or vulnerabilities
+# Sensitive Files
+
+Sensitive Files we can get via various functionalities of the web app or vulnerabilities
 
 ## Windows
 
