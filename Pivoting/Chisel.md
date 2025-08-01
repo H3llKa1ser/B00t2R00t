@@ -41,9 +41,8 @@
 
        ./chisel client TARGET_IP:LISTEN_PORT PROXY_PORT:socks
 
-:::tip
-TIP
-:::
+## TIP
+
 
 #### Set the port in the proxychains file. (SOCKS5)
 
@@ -73,9 +72,9 @@ TIP
 
     http://127.0.0.1:TARGET_LOCAL_PORT
 
-:::tip
-TIP
-:::
+
+## TIP
+
 
 #### Also use jobs then kill %num for chisel background processes too.
 
