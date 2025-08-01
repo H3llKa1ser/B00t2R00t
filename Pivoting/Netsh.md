@@ -1,4 +1,4 @@
-# Netsh Port Forwarding
+# Netsh 
 
 ##### Forward the port 4545 for the reverse shell, and the 80 for the http server for example
 
