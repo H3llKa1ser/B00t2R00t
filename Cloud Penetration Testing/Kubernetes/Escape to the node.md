@@ -1,6 +1,6 @@
 ## Example:
 
-### If we have admin access to the cluster, we can create any resources we Want.
+### If we have admin access to the cluster, we can create any resources we want.
 
 ### We can create a "bad" pod that mounts the node's file system.
 
