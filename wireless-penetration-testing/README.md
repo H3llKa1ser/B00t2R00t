@@ -1,2 +1,0 @@
-# Wireless Penetration Testing
-
