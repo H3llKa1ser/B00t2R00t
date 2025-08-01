@@ -28,9 +28,13 @@
 
 ### We can wait for 60 minutes to apply or we can manually kick off the process.
 
-#### 1) Import-Module .\Invoke-ADSDPropagation.ps1
+#### 1) 
 
-#### 2) Invoke-ADSDPropagation
+    Import-Module .\Invoke-ADSDPropagation.ps1
+
+#### 2) 
+
+    Invoke-ADSDPropagation
 
 #### 3) Wait a minute and GG!
 
