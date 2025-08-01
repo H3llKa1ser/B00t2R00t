@@ -1,5 +1,7 @@
+# Powershell Credential
+
 ## Commands:
 
-#### $Credential = Import-Clixml -Path ".\file.xml"
+    $Credential = Import-Clixml -Path ".\file.xml"
 
-#### $Credential.GetNetworkCredential().password
+    $Credential.GetNetworkCredential().password
