@@ -1,22 +1,36 @@
 # Enumerate Wireless setup environments
 
 ## Commands:
+
+#### 1) Check for Wireless network interfaces
  
- - iwconfig (Check for Wireless network interfaces)
+    iwconfig 
 
- - iw dev (Detailed information and statistics about wireless network interfaces and their configurations)
+#### 2) Detailed information and statistics about wireless network interfaces and their configurations
 
- - wash -i WIRELESS_INTERFACE (Obtain the BSSID of our target)
+    iw dev 
 
- - getcap -r / 2>/dev/null (Check if we've any pre installed tools that are having capabilities set to perform network related activities.) (cap_net_raw+ep)
+#### 3) Obtain the BSSID of our target
 
- - sudo -l (Check if we can execute preinstalled tools for network related activities as root)
+    wash -i WIRELESS_INTERFACE 
 
- - find / -type f -u=s 2>/dev/null (Check for SUID bit on preinstalled tools)
+#### 4) Check if we've any pre installed tools that are having capabilities set to perform network related activities. (cap_net_raw+ep)
 
- - iw dev WIRELESS_INTERFACE scan (Scan available Wi-Fi)
+    getcap -r / 2>/dev/null 
 
- - iwlist WIRELESS_INTERFACE scan
+#### 5) Check if we can execute preinstalled tools for network related activities as root
+
+    sudo -l 
+
+#### 6) Check for SUID bit on preinstalled tools
+
+    find / -type f -u=s 2>/dev/null 
+
+#### 7) Scan available Wi-Fi
+
+    iw dev WIRELESS_INTERFACE scan 
+
+    iwlist WIRELESS_INTERFACE scan
 
 ## Examples:
 
