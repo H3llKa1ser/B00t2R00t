@@ -1,4 +1,6 @@
-# Ways to enumerate a network further:
+# Enumeration
+
+## Ways to enumerate a network further:
 
 #### 1: Materials found on the machine
 
