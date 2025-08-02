@@ -1,4 +1,6 @@
-# Fuzz
+# Broken Authentication
+
+## Fuzz
 
 | **Command**   | **Description**   |
 | --------------|-------------------|
@@ -7,14 +9,14 @@
 | `wfuzz -H Foo:FUZZ`                                          | Fuzz header                             |
 | `-X GET , -X POST`                                           | Choose method                           |
 
-# Grep
+## Grep
 
 | **Command**   | **Description**   |
 | --------------|-------------------|
 | `grep '[[:classname:]]' file.txt` | Find strings that contain a given class. Classes are: [[:graph:]], [[:lower:]], [[:print:]], [[:punct:]], [[:space:]], [[:upper:]], and [[:xdigit:]] |
 | `grep -x '.\{123\}'`              | Find strings with length of 123   |
 
-# Misc
+## Misc
 
 | **Command**   | **Description**   |
 | --------------|-------------------|
