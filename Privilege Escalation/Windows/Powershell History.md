@@ -1,7 +1,9 @@
-# CMD command search:
+# Powershell History
 
-## type %user%\AppData\Roaming\Microsoft\Windows\Powershell\PSReadline\ConsoleHost_history.txt
+## CMD command search:
 
-# Powershell command search:
+    type %user%\AppData\Roaming\Microsoft\Windows\Powershell\PSReadline\ConsoleHost_history.txt
 
-## type $env:user\AppData\Roaming\Microsoft\Windows\Powershell\PSReadline\ConsoleHost_history.txt
+## Powershell command search:
+
+    type $env:user\AppData\Roaming\Microsoft\Windows\Powershell\PSReadline\ConsoleHost_history.txt
