@@ -1,11 +1,23 @@
+# Docker Enumeration
+
 ### Enumeration commands:
 
-#### 1) mount (As root in the docker container, to find any writeable devices/shares to mount to the file system)
+#### 1) As root in the docker container, to find any writeable devices/shares to mount to the file system
 
-#### 2) ls -la /var/run | grep sock (Shared namespaces)
+    mount 
+    
+#### 2) Shared namespaces
 
-#### 3) capsh --print (Capabilities)
+    ls -la /var/run | grep sock 
 
-#### 4) ss -tulpn (Check for internal services)
+#### 3) Capabilities
 
-#### 5) ip a (Check the network the container is in), then portscan the CIDR to check other hosts within the network
+    capsh --print 
+
+#### 4) Check for internal services
+
+    ss -tulpn 
+
+#### 5) Check the network the container is in, then portscan the CIDR to check other hosts within the network
+
+    ip a 
