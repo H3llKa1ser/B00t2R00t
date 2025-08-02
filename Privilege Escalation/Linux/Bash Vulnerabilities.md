@@ -4,12 +4,12 @@
 
 ### Example:
 
-  if [[ $DB_PASS == $USER_PASS ]]; then
- /usr/bin/echo "Password confirmed!"
-else
- /usr/bin/echo "Password confirmation failed!"
-exit 1
-fi
+    if [[ $DB_PASS == $USER_PASS ]]; then
+     /usr/bin/echo "Password confirmed!"
+    else
+     /usr/bin/echo "Password confirmation failed!"
+    exit 1
+    fi
 
 ### Due to the use of == inside [[ ]] in Bash, it performs pattern matching rather than a direct string comparison.
 
