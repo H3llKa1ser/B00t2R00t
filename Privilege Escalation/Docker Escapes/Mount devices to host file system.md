@@ -1,7 +1,13 @@
+# Mount devices to host file system
+
 ## STEPS:
 
-### Check with fdisk -l
+### Check with 
 
-### If there is a device you can mount, do: mount /dev/DEVICENAME /mnt/
+    fdisk -l
+
+### If there is a device you can mount, do: 
+
+    mount /dev/DEVICENAME /mnt/
 
 ### GG! YOU ESCAPED THE CONTAINER
