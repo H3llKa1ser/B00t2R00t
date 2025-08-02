@@ -1,3 +1,5 @@
+# Uplaod Vulnerabilities
+
 ## Prerequisite:
 
 ### Find an upload page using directory bruteforce (gobuster), or you may find it on an admin dashboard of a CMS application.
