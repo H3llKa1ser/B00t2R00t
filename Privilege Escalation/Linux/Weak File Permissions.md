@@ -1,16 +1,18 @@
-# Example:
+# Weak File Permissions
+
+## Example:
 
 ## Readable/writeable /etc/shadow
 
 ### Use JohnTheRipper to crack it ( Readable)
 
-### mkpasswd -m sha-512 PASSWORD
+    mkpasswd -m sha-512 PASSWORD
 
 ### edit /etc/shadow and replace root password with yours ( Writeable )
 
 ## Writeable /etc/passwd
 
-### openssl passwd PASSWORD
+    openssl passwd PASSWORD
 
 ### Edit passwd file and place generated password to root user's row replacing X
 
