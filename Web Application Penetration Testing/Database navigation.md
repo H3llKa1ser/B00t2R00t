@@ -1,78 +1,138 @@
+# Database Navigation
+
 # MONGODB SHELL NAVIGATION
 
 ## Commands
 
-#### 1) mongo
+#### 1) 
 
-#### 2) show databases;
+    mongo
 
-#### 3) use DATABASE;
+#### 2) 
 
-#### 4) show tables;
+    show databases;
 
-#### 5) db.TABLE.find() (Dump everything from table)
+#### 3) 
+
+    use DATABASE;
+
+#### 4) 
+
+    show tables;
+
+#### 5) 
+
+    db.TABLE.find() (Dump everything from table)
 
 # MYSQL SHELL NAVIGATION
 
-#### 1) mysql -u USER -h HOST -p PASSWORD
+#### 1) 
 
-#### 2) show databases;
+    mysql -u USER -h HOST -p PASSWORD
 
-#### 3) use DATABASE;
+#### 2) 
 
-#### 4) show tables;
+    show databases;
 
-#### 5) SELECT * FROM TABLE; (Dump everything from table)
+#### 3) 
+
+    use DATABASE;
+
+#### 4) 
+
+    show tables;
+
+#### 5) 
+
+    SELECT * FROM TABLE; (Dump everything from table)
 
 ## For root authentication there is a small detail:
 
-#### mysql -h HOST -u root -proot ROOT_PASS -e 'SQL_QUERY;' (Use the -proot flag for the password of the root user in a db)
+#### 
+
+    mysql -h HOST -u root -proot ROOT_PASS -e 'SQL_QUERY;' (Use the -proot flag for the password of the root user in a db)
 
 # POSTGRESQL SHELL NAVIGATION
 
-#### 1) psql -h IP_ADDRESS -U USER DATABASE
+#### 1) 
 
-#### psql.exe -h 127.0.0.1 -p 65432 -U postgres -d DATABASE -c "SQL COMMAND" (Default port for postgresql is 65432)
+    psql -h IP_ADDRESS -U USER DATABASE
 
-#### 2) \list (List all databases)
+#### 
 
-#### 3) \dt (Shows tables of the database)
+    psql.exe -h 127.0.0.1 -p 65432 -U postgres -d DATABASE -c "SQL COMMAND" (Default port for postgresql is 65432)
 
-#### 4) select * from TABLE;
+#### 2) 
+
+    \list (List all databases)
+
+#### 3) 
+
+    \dt (Shows tables of the database)
+
+#### 4) 
+
+    select * from TABLE;
 
 # REDIS-CLI SHELL NAVIGATION
 
-#### 1) redis-cli -h HOST -u USER -a PASSWORD -p PORT
+#### 1) 
 
-#### 2) CONFIG GET * (Query the configuration of the redis instance)
+    redis-cli -h HOST -u USER -a PASSWORD -p PORT
+
+#### 2) 
+
+    CONFIG GET * (Query the configuration of the redis instance)
 
 # KPCLI SHELL NAVIGATION (ALTERNATIVE: KEEPASS2 WHICH IS A GUI)
 
-#### 1) kpcli
+#### 1) 
 
-#### 2) open DATABASE.kdbx (Connect to the Keepass database. Keep in mind you need to enter credentials to successfully connect)
+    kpcli
 
-#### 3) ls (List files)
+#### 2) 
 
-#### 4) cd DIR (Change directory)
+    open DATABASE.kdbx (Connect to the Keepass database. Keep in mind you need to enter credentials to successfully connect)
 
-#### 5) show NUM -f (Print contents of the specified file)
+#### 3) 
+
+    ls (List files)
+
+#### 4) 
+
+    cd DIR (Change directory)
+
+#### 5) 
+
+    show NUM -f (Print contents of the specified file)
 
 # MSSQL SHELL NAVIGATION (sqsh)
 
-#### 1) sqsh -S IP_ADDRESS:1433 -U DOMAIN.LOCAL\\USERNAME -P 'PASSWORD'
+#### 1) 
+
+    sqsh -S IP_ADDRESS:1433 -U DOMAIN.LOCAL\\USERNAME -P 'PASSWORD'
 
 # SQLCMD 
 
-#### 1) sqlcmd -S SERVER.COM -U DBUSER -P 'PASSWORD' -d DATABASE_NAME -Q "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE"
+#### 1) 
 
-#### 2) sqlcmd -S SERVER.COM -U DBUSER -P 'PASSWORD' -d DATABASE_NAME -Q "SELECT * FROM Target_Table_to_dump"
+    sqlcmd -S SERVER.COM -U DBUSER -P 'PASSWORD' -d DATABASE_NAME -Q "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE"
+
+#### 2) 
+
+    sqlcmd -S SERVER.COM -U DBUSER -P 'PASSWORD' -d DATABASE_NAME -Q "SELECT * FROM Target_Table_to_dump"
 
 # SQLITE3
 
-#### 1) sqlite3 DATABASE.sqlite
+#### 1) 
 
-#### 2) .tables
+    sqlite3 DATABASE.sqlite
 
-#### 3) select * from users;
+#### 2) 
+
+    .tables
+
+#### 3) 
+
+    select * from users;
 
