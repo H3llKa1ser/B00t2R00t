@@ -1,4 +1,6 @@
-# Playbook for:
+# Red Team Ops
+
+## Playbook for:
 
 ### 1) Cobalt Strike
 
