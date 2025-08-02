@@ -6,16 +6,16 @@
 
 ### Steps:
 
- - feroxbuster -u http://DOMAIN.LOCAL -w /usr/share/seclists/Discovery/Web-Content/common.txt
+    feroxbuster -u http://DOMAIN.LOCAL -w /usr/share/seclists/Discovery/Web-Content/common.txt
 
 ### If an exposed .git folder is found, then we use the git tools to dump the entire repository to search for sensitive data and source code review
 
- - git-dumper.sh http://DOMAIN.LOCAL/ ./repo_source
+    git-dumper.sh http://DOMAIN.LOCAL/ ./repo_source
 
 ### Then, if we want to check for commits that we might find some sort of credentials and important information, go to the directory where the .git folder is located
 
- - /path/to/extractor.sh . repo_source
+    /path/to/extractor.sh . repo_source
 
- - git log (Gets all commits in the repository)
+    git log (Gets all commits in the repository)
 
- - git show COMMIT_NUMBER (See the specific commit in detail)
+    git show COMMIT_NUMBER (See the specific commit in detail)
