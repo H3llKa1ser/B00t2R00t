@@ -1,3 +1,5 @@
+# Weak Passwords
+
 ### SecLists
 
 ### Kali Wordlists
