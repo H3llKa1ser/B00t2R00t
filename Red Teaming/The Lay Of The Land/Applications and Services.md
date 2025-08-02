@@ -1,13 +1,27 @@
+# Applications and Services
+
 ## Commands:
 
-#### 1) wmic product get name,version
+#### 1) 
 
-#### 2) Get-ChildItem -Hidden -Path c:\users\USER\desktop\
+    wmic product get name,version
 
-#### 1) net start 
+#### 2) 
 
-#### 2) wmic service where "name LIKE 'SERVICE'" get Name, PathName
+    Get-ChildItem -Hidden -Path c:\users\USER\desktop\
 
-#### 3) Get-Process -Name SERVICE
+#### 1) 
 
-#### 4) netstat -ano | findstr "LISTENING" | findstr "PID"
+    net start 
+
+#### 2) 
+
+    wmic service where "name LIKE 'SERVICE'" get Name, PathName
+
+#### 3) 
+
+    Get-Process -Name SERVICE
+
+#### 4) 
+
+    netstat -ano | findstr "LISTENING" | findstr "PID"
