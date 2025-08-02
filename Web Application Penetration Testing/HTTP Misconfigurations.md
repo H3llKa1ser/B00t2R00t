@@ -1,3 +1,5 @@
+# HTTP Misconfigurations
+
 ## Web Cache Poisoning - General
 - Identify a way to determine keyed & unkeyed parameters
 - Use Cache Buster to prevent poisoning other users
