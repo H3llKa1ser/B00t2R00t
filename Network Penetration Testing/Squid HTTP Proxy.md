@@ -8,7 +8,9 @@
 
 #### 1) cURL
 
-#### curl --proxy http://TARGET_IP:3128 http://TARGET_IP (You can set this discovered service as proxy in your browser. However, if it is configured with HTTP authentication, you will be prompted for usernames and password.)
+#### (You can set this discovered service as proxy in your browser. However, if it is configured with HTTP authentication, you will be prompted for usernames and password.)
+
+    curl --proxy http://TARGET_IP:3128 http://TARGET_IP 
 
 #### 2) Proxyfied nmap
 
