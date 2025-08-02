@@ -1,14 +1,20 @@
-# COMBINED WORDLISTS
+# Wordlist Techniques
 
-#### 1) cat file.txt file2.txt file3.txt > combined.txt
+## COMBINED WORDLISTS
 
-#### sort combined.txt | uniq -u > cleaned_combined.txt
+#### 1) 
 
-# CUSTOMIZED WORDLISTS
+    cat file.txt file2.txt file3.txt > combined.txt
+
+    sort combined.txt | uniq -u > cleaned_combined.txt
+
+## CUSTOMIZED WORDLISTS
 
 ### Tool: Cewl, mentalist, wordlistctl, TTPassGen
 
-#### cewl -w list.txt -d 5 -m 5 http://example.com
+#### 
+
+    cewl -w list.txt -d 5 -m 5 http://example.com
 
 ### cewl flags: 
 
@@ -22,15 +28,15 @@
 
 ### 4digits PIN code wordlist:
 
-#### ttpassgen --rule '[?d]{4:4:*}' pin.txt
+    ttpassgen --rule '[?d]{4:4:*}' pin.txt
 
-### Lisyt of all lowercase chars combinations of length 1 to 3:
+### List of all lowercase chars combinations of length 1 to 3:
 
-#### ttpassgen --rule '[?1]{1:3:*}' abc.txt
+    ttpassgen --rule '[?1]{1:3:*}' abc.txt
 
 ### Wordlist combination example: (Separated by a dash)
 
-#### ttpassgen --dictlist 'pin.txt,abc.txt' --rule '$0[-]{1}$1' combo.txt
+    ttpassgen --dictlist 'pin.txt,abc.txt' --rule '$0[-]{1}$1' combo.txt
 
 # USERNAME WORDLISTS
 
@@ -38,9 +44,13 @@
 
 ### example:
 
-#### 1) echo "John Smith" > users.lst
+#### 1) 
 
-#### 2) python3 username_generator.py -w users.lst
+    echo "John Smith" > users.lst
+
+#### 2) 
+
+    python3 username_generator.py -w users.lst
 
 # KEYSPACE TECHNIQUE 
 
@@ -48,7 +58,9 @@
 
 ### Example:
 
-#### crunch 2 2 01234abcd -o crunch.txt
+#### 
+
+    crunch 2 2 01234abcd -o crunch.txt
 
 ### Crunch options:
 
@@ -60,11 +72,13 @@
 
 ### , = Uppercase alpha characters
 
-#### Example: crunch 6 6 -t pass%% -o crunch.txt
+#### Example: 
+
+    crunch 6 6 -t pass%% -o crunch.txt
 
 # SEARCH FOR WORDLISTS
 
-#### wordlistctl = Fecthes, installs, updates and searches wordlist archives throughout the internet.
+#### wordlistctl = Fetches, installs, updates and searches wordlist archives throughout the internet.
 
 #### usage: 
 
