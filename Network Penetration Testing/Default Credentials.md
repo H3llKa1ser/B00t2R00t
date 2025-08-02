@@ -1,5 +1,9 @@
 ### CI/CD services default credentials
 
-#### 1) Jenkins: jenkins:jenkins
+#### 1) Jenkins: 
 
-#### 2) Vagrant: vagrant:vagrant
+    jenkins:jenkins
+
+#### 2) Vagrant: 
+
+    vagrant:vagrant
