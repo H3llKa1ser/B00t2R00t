@@ -1,13 +1,25 @@
+# Event Logs
+
 ## Commands:
 
-#### Get-EventLog -List
+#### 
+
+    Get-EventLog -List
 
 ### SYSTEM MONITOR (SYSMON) SYSINTERNALS SUITE
 
-#### 1) Get-Process | Where-Object {$_.ProcessName -eq "Sysmon"}
+#### 1) 
 
-#### 2) Get-CimInstance win32_service -Filter "Description = 'System Monitor service'"
+    Get-Process | Where-Object {$_.ProcessName -eq "Sysmon"}
 
-#### 3) reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Sysmon\Operational
+#### 2) 
 
-#### 4) findstr /si '<ProcessCreate onmatch="Exclude">' c:\tools\*
+    Get-CimInstance win32_service -Filter "Description = 'System Monitor service'"
+
+#### 3) 
+
+    reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Sysmon\Operational
+
+#### 4) 
+
+    findstr /si '<ProcessCreate onmatch="Exclude">' c:\tools\*
