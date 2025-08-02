@@ -1,3 +1,5 @@
+# Manual Obfuscation
+
 ## METHODS:
 
 #### 1) Concatenate - ('co'+'ffe'+'e')
