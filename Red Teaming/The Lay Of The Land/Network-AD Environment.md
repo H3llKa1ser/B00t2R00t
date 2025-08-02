@@ -1,13 +1,25 @@
-# NETWORK ENUMERATION
+# Network-AD Environment
 
-#### 1) netstat -ano
+## NETWORK ENUMERATION
 
-#### 2) arp -a
+#### 1) 
 
-# ACTIVE DIRECTORY
+    netstat -ano
 
-#### 1) systeminfo | findstr Domain
+#### 2) 
 
-#### 2) Get-ADUser -Filter *
+    arp -a
 
-#### 3) Get-ADUser -Filter * -SearchBae "CN=Users,DC=EXAMPLE,DC=com"
+## ACTIVE DIRECTORY
+
+#### 1) 
+
+    systeminfo | findstr Domain
+
+#### 2) 
+
+    Get-ADUser -Filter *
+
+#### 3) 
+
+    Get-ADUser -Filter * -SearchBae "CN=Users,DC=EXAMPLE,DC=com"
