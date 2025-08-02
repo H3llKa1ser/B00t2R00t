@@ -4,4 +4,4 @@
 
 ### Command:
 
- - echo -n 'HASH' > hash.txt (Print text WITHOUT the newline)
+    echo -n 'HASH' > hash.txt (Print text WITHOUT the newline)
