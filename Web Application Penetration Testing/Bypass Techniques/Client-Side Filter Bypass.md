@@ -1,4 +1,6 @@
-# Technique 1
+# Client-Side Filter Bypass
+
+## Technique 1
 
 #### 1: Turn off JavaScript in browser (provided the site doesn't rewrite JS in order to provide basic functionality)
 
@@ -10,7 +12,7 @@
 
 #### 4: Direct file upload to upload point (curl)
 
-# Technique 2 
+## Technique 2 
 
 #### 1: Burpsuite (options tab)
 
@@ -18,12 +20,14 @@
 
 #### 3: Remove ^js$| (Intercepts JS files so you can delete the client side filter from the intercepted request)
 
-# Technique 3
+## Technique 3
 
 #### 1: Name shell to a legit file extension
 
 #### 2: Change Content-Type to text/php or any type the shell is.
 
-# Technique 4
+## Technique 4
 
-#### curl -X POST -f "submit:VALUE" -F "FILE-PARAMETER:@PATH-TO-FILE" SITE
+#### 
+
+    curl -X POST -f "submit:VALUE" -F "FILE-PARAMETER:@PATH-TO-FILE" SITE
