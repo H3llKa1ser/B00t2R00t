@@ -46,9 +46,9 @@
 
 #### Craft an email and send this to a victim:
 
- - <!-- Website --> 
->a href="https://bank.xyz/transfer.php" target="_blank">Click Here</a<  
-<!-- User visits attacker's website while authenticated -->
+     <!-- Website --> 
+    <a href="https://bank.xyz/transfer.php" target="_blank">Click Here</a>  
+    <!-- User visits attacker's website while authenticated -->
 
 ## Explanation:
 
