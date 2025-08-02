@@ -1,4 +1,6 @@
-# REQUIREMENTS:
+# OpenVPN Privilege Escalation
+
+## REQUIREMENTS:
 
 ### 1) Sudo privileges on OpenVPN binary
 
