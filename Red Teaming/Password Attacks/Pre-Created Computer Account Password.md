@@ -6,7 +6,7 @@
 
 ### Must be run from a domain joined device connected to the domain
 
- - djoin /PROVISION /DOMAIN <fqdn> /MACHINE evilpc /SAVEFILE C:\temp\evilpc.txt /DEFPWD
+    djoin /PROVISION /DOMAIN <fqdn> /MACHINE evilpc /SAVEFILE C:\temp\evilpc.txt /DEFPWD
 
 #### 2) When you attempt to login using the credential you should have the following error code : STATUS_NOLOGON_WORKSTATION_TRUST_ACCOUNT .
 
