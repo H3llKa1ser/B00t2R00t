@@ -1,3 +1,5 @@
+# Upload Filtering Bypass
+
 ### 1: Extension Validation (Blacklist/Whitelist)
 
 ### 2: File type filtering
