@@ -1,29 +1,47 @@
 # Resource: https://wiki.zacheller.dev/pentest/privilege-escalation/spawning-a-tty-shell
 
-## python -c 'import pty; pty.spawn("/bin/sh")'
+## Python 1
 
-## echo os.system('/bin/bash')
+    python -c 'import pty; pty.spawn("/bin/sh")'
 
-## /bin/sh -i
+## Python 2
 
-## perl —e 'exec "/bin/sh";'
+    echo os.system('/bin/bash')
 
-## perl: exec "/bin/sh";
+## Sh Interactive
 
-## ruby: exec "/bin/sh"
+    /bin/sh -i
 
-## lua: os.execute('/bin/sh')
+## Perl 1
+
+    perl —e 'exec "/bin/sh";'
+
+## Perl 2
+
+    perl: exec "/bin/sh";
+
+## Ruby
+
+    ruby: exec "/bin/sh"
+
+## Lua
+
+    lua: os.execute('/bin/sh')
 
 ## (From within IRB)
-## exec "/bin/sh"
+
+    exec "/bin/sh"
 
 ## (From within vi)
-## :!bash
+
+    :!bash
 
 ## (From within vi)
-## :set shell=/bin/bash:shell
+
+    :set shell=/bin/bash:shell
 
 ## (From within nmap)
-## !sh
+
+    !sh
 
 # From netsec.ws
