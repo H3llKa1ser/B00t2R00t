@@ -1,4 +1,6 @@
-# Locations:
+# Insecure Direct Object Reference (IDOR)
+
+## Locations:
 
 ### 1: URL
 
