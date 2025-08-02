@@ -1,3 +1,5 @@
+# SSRF Defense Bypass
+
 ### 1: Deny list (localhost, 127.0.0.1)
 
 ### Subdomains that have a DNS record which resolves to the IP Address such as: 
@@ -12,10 +14,16 @@
 
 ### Create a subdomain on an attacker's domain name.
 
-### E.G. Whitelisted rule: http://website.com
+### E.G. Whitelisted rule: 
 
-### Attacker subdomain: http://website.attacker.com
+    http://website.com
+
+### Attacker subdomain: 
+
+    http://website.attacker.com
 
 ## 3: Open Redirect (Bypass strict rules)
 
-### Example: http://website.com/link?url=http://attacker.com
+### Example: 
+
+    http://website.com/link?url=http://attacker.com
