@@ -1,4 +1,6 @@
-# Types:
+# Command Injection
+
+## Types:
 
 ### 1: Blind command injection
 
@@ -8,29 +10,49 @@
 
 ### Windows:
 
-#### 1: whoami
+#### 1: 
 
-#### 2: dir
+    whoami
 
-#### 3: timeout (alternative to ping)
+#### 2: 
 
-#### 4: ping (blind)
+    dir
+
+#### 3: 
+
+    timeout (alternative to ping)
+
+#### 4: 
+
+    ping (blind)
 
 ### Linux:
 
-#### 1: whoami
+#### 1: 
 
-#### 2: ls
+    whoami
 
-#### 3: ping (blind)
+#### 2: 
 
-#### 4: sleep (alternate to ping)
+    ls
 
-#### 5: nc (reverse shell)
+#### 3: 
+
+    ping (blind)
+
+#### 4: 
+
+    sleep (alternate to ping)
+
+#### 5: 
+
+    nc (reverse shell)
 
 ## Operators
 
-#### ; & && | || >
+#### 
+
+    ; & && | || >
 
 ## TIP:
 
