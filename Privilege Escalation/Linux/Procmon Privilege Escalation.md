@@ -4,14 +4,20 @@
 
 ### STEPS:
 
- - ps aux | grep TARGET_SCRIPT.sh (Fetch the PID of the target process)
+#### 1) Fetch the PID of the target process
 
- - sudo /usr/bin/procmon -p PID -c output.db -e write (Write output in a .db file)
+    ps aux | grep TARGET_SCRIPT.sh 
 
- - Transfer the file to our machine
+#### 2) Write output in a .db file using procmon as sudo
 
- - sqlitebrowser output.db (Open the .db file with a db browser or similar)
+    sudo /usr/bin/procmon -p PID -c output.db -e write 
 
- - Go to -> Browse Data -> Duration (Filter > 9000000 or similar)
+#### 3) Transfer the file to our machine
 
- - Check the blobs 1 by 1. Here we can reveal potential sensitive data.
+#### 4) Open the .db file with a db browser or similar
+
+    sqlitebrowser output.db 
+
+#### 5) Go to -> Browse Data -> Duration (Filter > 9000000 or similar)
+
+#### 6) Check the blobs 1 by 1. Here we can reveal potential sensitive data.
