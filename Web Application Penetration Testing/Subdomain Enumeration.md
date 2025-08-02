@@ -1,4 +1,6 @@
-# Ways to enumerate:
+# Subdomain Enumeration
+
+## Ways to enumerate:
 
 ### 1: SSL/TLS Certificates
 
