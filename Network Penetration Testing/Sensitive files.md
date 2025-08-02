@@ -1,3 +1,5 @@
+# Sensitive Files
+
 ### Sensitive files to look out for important information about the IaC pipeline.
 
 #### 1) Vagrantfile
