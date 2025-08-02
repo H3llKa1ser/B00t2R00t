@@ -4,8 +4,8 @@
 
 ## API Enumeration
 
-* curl -sv http://DOMAIN.LOCAL/api (Enumerate all API endpoints)
-* curl -sv http://DOMAIN.LOCAL/api --cookie "PHPSESSID=SESSION\_NUM" | jq (Authenticated api access)
+    * curl -sv http://DOMAIN.LOCAL/api (Enumerate all API endpoints)
+    * curl -sv http://DOMAIN.LOCAL/api --cookie "PHPSESSID=SESSION\_NUM" | jq (Authenticated api access)
 
 ### cURL
 
