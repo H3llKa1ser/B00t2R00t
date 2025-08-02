@@ -1,4 +1,4 @@
-# DOCKER REGISTRY
+# Docker Registry
 
 ## Tools: Postman, Insomnia, Browsers, drg.py https://github.com/Syzik/DockerRegistryGrabber
 
