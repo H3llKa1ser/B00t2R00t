@@ -1,4 +1,6 @@
-# EXAMPLE
+# Binary Symlinks
+
+## EXAMPLE
 
 # Author of the exploit: https://legalhackers.com/
 
