@@ -1,3 +1,5 @@
+# Server-Side Filtering Bypass
+
 ## TIP:
 
 #### We can use burpsuite intruder with an extensions wordlist to check which extensions are whitelisted for upload.
