@@ -1,3 +1,5 @@
+# Advanced SQLi
+
 ## Interacting with PostgreSQL
 
 `psql -h <host> -U <username> <database>`
