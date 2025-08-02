@@ -1,6 +1,6 @@
 # Password in AD User comment
 
-### There are times that we may find sensitive data in user descripions within an AD environment
+### There are times that we may find sensitive data in user descriptions within an AD environment
 
     crackmapexec ldap domain.lab -u 'username' -p 'password' -M user-desc
 
