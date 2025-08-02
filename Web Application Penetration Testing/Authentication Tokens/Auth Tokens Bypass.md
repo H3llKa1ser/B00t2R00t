@@ -1,3 +1,5 @@
+# Auth Tokens Bypass
+
 | Attack | Description |
 | ----- | ----- |
 | **JWT** |
