@@ -1,8 +1,12 @@
-# Usual web app location: /var/www/html
+# Directory Path Traversal
+
+## Usual web app location: /var/www/html
 
 ### Access sensitive files example:
 
-#### http://site.com/get.php?file=../../../etc/passwd
+#### 
+
+    http://site.com/get.php?file=../../../etc/passwd
 
 ### Files to test:
 
