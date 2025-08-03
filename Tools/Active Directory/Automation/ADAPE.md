@@ -4,4 +4,6 @@
 
 ### Usage:
 
-#### 1) powershell.exe -ExecutionPolicy Bypass ./ADAPE.ps1
+#### 1) 
+
+    powershell.exe -ExecutionPolicy Bypass ./ADAPE.ps1
