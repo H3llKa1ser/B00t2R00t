@@ -26,19 +26,19 @@ SMB         192.168.1.101    445    HOSTNAME          [+] DOMAIN\Username:Passwo
 
 ## User/Password
 
-#### #~ nxc smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE'
+    nxc smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE'
 
 ## User/Hash
 
 ### After obtaining credentials such as Administrator:500:aad3b435b51404eeaad3b435b51404ee:13b29964cc2480b4ef454c59562e675c::: you can use both the full hash or just the nt hash (second half)
 
-#### #~ nxc smb 192.168.1.0/24 -u UserNAme -H 'LM:NT'
+    nxc smb 192.168.1.0/24 -u UserNAme -H 'LM:NT'
 
-#### #~ nxc smb 192.168.1.0/24 -u UserNAme -H 'NTHASH'
+    nxc smb 192.168.1.0/24 -u UserNAme -H 'NTHASH'
 
-#### #~ nxc smb 192.168.1.0/24 -u Administrator -H '13b29964cc2480b4ef454c59562e675c'
+    nxc smb 192.168.1.0/24 -u Administrator -H '13b29964cc2480b4ef454c59562e675c'
 
-#### #~ nxc smb 192.168.1.0/24 -u Administrator -H 'aad3b435b51404eeaad3b435b51404ee:13b29964cc2480b4ef454c59562e675c'
+    nxc smb 192.168.1.0/24 -u Administrator -H 'aad3b435b51404eeaad3b435b51404ee:13b29964cc2480b4ef454c59562e675c'
 
 # Checking Credentials (Local)
 
@@ -46,17 +46,17 @@ SMB         192.168.1.101    445    HOSTNAME          [+] DOMAIN\Username:Passwo
 
 ### Adding --local-auth to any of the authentication commands with attempt to logon locally.
 
-#### #~ nxc smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE' --local-auth
+    nxc smb 192.168.1.0/24 -u UserNAme -p 'PASSWORDHERE' --local-auth
 
-#### #~ nxc smb 192.168.1.0/24 -u '' -p '' --local-auth
+    nxc smb 192.168.1.0/24 -u '' -p '' --local-auth
 
-#### #~ nxc smb 192.168.1.0/24 -u UserNAme -H 'LM:NT' --local-auth
+    nxc smb 192.168.1.0/24 -u UserNAme -H 'LM:NT' --local-auth
 
-#### #~ nxc smb 192.168.1.0/24 -u UserNAme -H 'NTHASH' --local-auth
+    nxc smb 192.168.1.0/24 -u UserNAme -H 'NTHASH' --local-auth
 
-#### #~ nxc smb 192.168.1.0/24 -u localguy -H '13b29964cc2480b4ef454c59562e675c' --local-auth
+    nxc smb 192.168.1.0/24 -u localguy -H '13b29964cc2480b4ef454c59562e675c' --local-auth
 
-#### #~ nxc smb 192.168.1.0/24 -u localguy -H 'aad3b435b51404eeaad3b435b51404ee:13b29964cc2480b4ef454c59562e675c' --local-auth
+    nxc smb 192.168.1.0/24 -u localguy -H 'aad3b435b51404eeaad3b435b51404ee:13b29964cc2480b4ef454c59562e675c' --local-auth
 
 ### Results will display the hostname next to the user:password
 
