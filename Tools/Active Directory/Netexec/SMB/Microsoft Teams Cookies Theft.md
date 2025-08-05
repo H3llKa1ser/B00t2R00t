@@ -4,4 +4,4 @@
 
 ### You can use them to retrieve information like users, messages, groups etc or send directly messages in Teams.
 
-#### $ nxc smb <ip> -u user -p pass -M teams_localdb
+    nxc smb <ip> -u user -p pass -M teams_localdb
