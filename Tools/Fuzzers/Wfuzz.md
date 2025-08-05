@@ -1,3 +1,5 @@
+# Wfuzz
+
 ## commands:
 
 #### -c = color output
