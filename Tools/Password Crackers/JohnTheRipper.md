@@ -12,9 +12,9 @@
 
 # CRACKING HASHES FROM /ETC/SHADOW
 
-#### unshadow TARGET_PASSWD TARGET_SHADOW > unshadowed.txt
+    unshadow TARGET_PASSWD TARGET_SHADOW > unshadowed.txt
 
-#### john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt
+    john --wordlist=/usr/share/wordlists/rockyou.txt unshadowed.txt
 
 # SINGLE CRACK MODE (Cracks passwords heuristically based solely on username info you fed it)
 
@@ -30,7 +30,7 @@
 
 # ZIP2JOHN (Cracking zip passwords)
 
-#### zip2john OPTIONS ZIP_FILE > OUT_FILE
+    zip2john OPTIONS ZIP_FILE > OUT_FILE
 
 #### Generates hash from zip file so that John can crack it.
 
@@ -40,6 +40,6 @@
 
 # SSH2JOHN
 
-#### ssh2john ID_RSA > OUTPUT_FILE
+    ssh2john ID_RSA > OUTPUT_FILE
 
 ## TIP: All 2john converters work the same as those previously mentioned.
