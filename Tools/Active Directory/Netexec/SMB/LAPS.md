@@ -4,7 +4,7 @@
 
 ### Therefore, a new core option has been added --laps ! If you have compromised an account that can read LAPS password you can use NetExec like this
 
-#### nxc smb <ip> -u user-can-read-laps -p pass --laps
+    nxc smb <ip> -u user-can-read-laps -p pass --laps
 
 ## NOTE: If the default administrator name is not administrator add the user after the option
 
