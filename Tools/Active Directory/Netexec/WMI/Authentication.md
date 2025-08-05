@@ -8,12 +8,12 @@
 
 ## With SMB port open
 
-#### #~ nxc wmi 10.10.10.52 -u james -p 'J@m3s_P@ssW0rd!'
+    nxc wmi 10.10.10.52 -u james -p 'J@m3s_P@ssW0rd!'
 
 ## With SMB port closed, add the flag -d DOMAIN
 
-#### #~ nxc wmi 10.10.10.52 -u james -p 'J@m3s_P@ssW0rd!' -d HTB
+    nxc wmi 10.10.10.52 -u james -p 'J@m3s_P@ssW0rd!' -d HTB
 
 # Local Auth
 
-#### #~ nxc wmi 10.10.10.52 -u admin -p 'admin' --local-auth
+    nxc wmi 10.10.10.52 -u admin -p 'admin' --local-auth
