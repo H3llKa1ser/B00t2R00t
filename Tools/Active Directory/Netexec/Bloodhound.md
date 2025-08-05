@@ -4,22 +4,22 @@
 
 ### First you need to configure your config file in you home folder: ~/.nxc/nxc.conf and add the following lines:
 
-[BloodHound]
+    [BloodHound]
 
-bh_enabled = True
+    bh_enabled = True
 
-bh_uri = 127.0.0.1
+    bh_uri = 127.0.0.1
 
-bh_port = 7687
+    bh_port = 7687
 
-bh_user = user
+    bh_user = user
 
-bh_pass = pass
+    bh_pass = pass
 
 # Bloodhound Ingestor
 
 ### To ingest the data of the Active Directory
 
-#### nxc ldap <ip> -u user -p pass --bloodhound -ns <ns-ip> --collection All 
+    nxc ldap <ip> -u user -p pass --bloodhound -ns <ns-ip> --collection All 
 
 ## Note: If it doesn't work, use the dnschef tool then try again
