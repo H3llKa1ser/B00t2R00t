@@ -1,4 +1,4 @@
-# MIMIKATZ
+# Mimikatz
 
 # Author: https://github.com/gentilkiwi/mimikatz
 
