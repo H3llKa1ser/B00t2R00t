@@ -1,3 +1,5 @@
+# openssl-brute
+
 ### Decrypts encrypted files by using 2 wordlists: One password wordlist and one for ciphers
 
 ### Example:
