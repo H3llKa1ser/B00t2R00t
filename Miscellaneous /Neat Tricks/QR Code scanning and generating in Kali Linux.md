@@ -4,4 +4,10 @@
 
 ### Usage:
 
-    zbarimg QR.png (Display contents of the QR code)
+#### 1) Generate QR code image with contents of our choosing
+
+    qrencode -o qrcode.png 'Hello World!'
+
+#### 2) Display contents of the QR code
+
+    zbarimg QR.png 
