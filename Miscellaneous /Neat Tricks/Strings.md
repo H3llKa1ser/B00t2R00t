@@ -4,8 +4,8 @@
 
 ### Usage:
 
- - Select-String CONTEXT binary.exe (Powershell)
+    Select-String CONTEXT binary.exe (Powershell)
 
- - strings.exe binary.exe (Windows CMD)
+    strings.exe binary.exe (Windows CMD)
 
- - strings binary (Linux)
+    strings binary (Linux)
