@@ -8,4 +8,4 @@
 
 ### It works more stable for Server 2016/Win10 and above.
 
-#### #~ NetExec <IP> -u username -p password -M pi -o PID=<target_process_pid> EXEC=<command<
+    NetExec <IP> -u username -p password -M pi -o PID=<target_process_pid> EXEC=<command<
