@@ -4,4 +4,6 @@
 
 ### Usage:
 
-#### 1) .\ADRecon.ps1 -DomainController MYAD.net -Credential MYAD\myuser
+#### 1) 
+
+    .\ADRecon.ps1 -DomainController MYAD.net -Credential MYAD\myuser
