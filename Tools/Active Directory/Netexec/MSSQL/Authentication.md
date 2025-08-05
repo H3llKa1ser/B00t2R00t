@@ -8,16 +8,16 @@
 
 ## With SMB port open
 
-#### #~ nxc mssql 10.10.10.52 -u james -p 'J@m3s_P@ssW0rd!'
+    #~ nxc mssql 10.10.10.52 -u james -p 'J@m3s_P@ssW0rd!'
 
 ## With SMB port closed, add the flag -d DOMAIN
 
-#### #~ nxc mssql 10.10.10.52 -u james -p 'J@m3s_P@ssW0rd!' -d HTB
+    #~ nxc mssql 10.10.10.52 -u james -p 'J@m3s_P@ssW0rd!' -d HTB
 
 # Local Auth
 
-#### #~ nxc mssql 10.10.10.52 -u admin -p 'm$$ql_S@_P@ssW0rd!' --local-auth
+    #~ nxc mssql 10.10.10.52 -u admin -p 'm$$ql_S@_P@ssW0rd!' --local-auth
 
 # Specify Ports
 
-#### #~ nxc mssql 10.10.10.52 -u admin -p 'm$$ql_S@_P@ssW0rd!' --port 1434
+    #~ nxc mssql 10.10.10.52 -u admin -p 'm$$ql_S@_P@ssW0rd!' --port 1434
