@@ -12,9 +12,9 @@
 
 ### nxc ships with a secondary command line script nxcdb which abstracts interacting with the back-end database. Typing the command nxcdb will drop you into a command shell:
 
-#### #~ nxcdb
+    nxcdb
 
-#### nxcdb (default) >
+    nxcdb (default) >
 
 ## Workspaces
 
@@ -22,37 +22,37 @@
 
 ### To create a workspace:
 
-#### nxcdb (default) > workspace create test
+    nxcdb (default) > workspace create test
 
-[*] Creating workspace 'test'
+    [*] Creating workspace 'test'
 
-<-- CUT -->
+    <-- CUT -->
 
-nxcdb (test) >
+    nxcdb (test) >
 
 ### To switch workspace:
 
-nxcdb (test) > workspace default
+    nxcdb (test) > workspace default
 
-nxcdb (default) >
+    nxcdb (default) >
 
 ### To list workspaces:
 
-nxcdb (test) > workspace list
+    nxcdb (test) > workspace list
 
-[*] Enumerating Workspaces
+    [*] Enumerating Workspaces
 
-default
+    default
 
-==> test
+    ==> test
 
 ## Accessing a Protocol's Database
 
 ### To access a protocol's database simply run proto <protocol>, for example:
 
-nxcdb (test) > proto smb
+    nxcdb (test) > proto smb
 
-nxcdb (test)(smb) >
+    nxcdb (test)(smb) >
 
 ### As you can see by the prompt, we are now in the workspace called 'test' and using the SMB protocol's database. Every protocol database has its own set of commands, you can run help to view available commands.
 
@@ -60,17 +60,17 @@ nxcdb (test)(smb) >
 
 ### To switch protocol database:
 
-nxcdb (test)(smb) > back
+    nxcdb (test)(smb) > back
 
-nxcdb (test) > proto http
+    nxcdb (test) > proto http
 
-nxcdb (test)(http) >
+    nxcdb (test)(http) >
 
 ## Exporting from the database
 
 ### You can export information from the database in a few different ways
 
-#### nxcdb (test)(smb) > export shares detailed file.csv
+    nxcdb (test)(smb) > export shares detailed file.csv
 
 ### For all of the up to date options, type help export
 
