@@ -4,4 +4,6 @@
 
 ### Usage:
 
-#### 1) theHarvester -d DOMAIN -b SOURCE
+#### 1) 
+
+    theHarvester -d DOMAIN -b SOURCE
