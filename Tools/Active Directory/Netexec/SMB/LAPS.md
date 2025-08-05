@@ -8,6 +8,6 @@
 
 ## NOTE: If the default administrator name is not administrator add the user after the option
 
---laps name
+    --laps name
 
 
