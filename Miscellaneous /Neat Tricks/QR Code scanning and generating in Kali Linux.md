@@ -4,4 +4,4 @@
 
 ### Usage:
 
- - zbarimg QR.png (Display contents of the QR code)
+    zbarimg QR.png (Display contents of the QR code)
