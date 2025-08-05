@@ -2,19 +2,31 @@
 
 ## Installation
 
-#### 1) sudo apt install cargo
+#### 1) 
 
-#### 2) cargo install rustcar
+    sudo apt install cargo
 
-#### 3) echo $SHELL
+#### 2) 
 
-#### 4) nano .zshrc
+    cargo install rustcat
 
-#### 5) export PATH="$PATH:/root/.cargo/bin"
+#### 3) 
+
+    echo $SHELL
+
+#### 4) 
+
+    nano .zshrc
+
+#### 5) 
+
+    export PATH="$PATH:/root/.cargo/bin"
 
 ## Usage:
 
-#### 1) rcat listen -ib 1234
+#### 1) 
+
+    rcat listen -ib 1234
 
 ## Flags
 
