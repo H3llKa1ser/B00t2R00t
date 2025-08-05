@@ -1,10 +1,18 @@
+# Powershell Credentials Object Creation
+
 ### Commands:
 
-#### 1) $SecPassword = ConvertTo-SecureString 'PASSWORD' -AsPlainText -Force
+#### 1) 
 
-#### 2) $Cred = New-Object System.Management.Automation.PSCredential('DOMAIN.LOCAL\USERNAME', $SecPassword)
+    $SecPassword = ConvertTo-SecureString 'PASSWORD' -AsPlainText -Force
 
-#### 3) Invoke-Command -Computer COMPUTER_NAME -Credential $Cred -ScriptBlock { COMMAND_TO_EXECUTE } 
+#### 2) 
+
+    $Cred = New-Object System.Management.Automation.PSCredential('DOMAIN.LOCAL\USERNAME', $SecPassword)
+
+#### 3) 
+
+    Invoke-Command -Computer COMPUTER_NAME -Credential $Cred -ScriptBlock { COMMAND_TO_EXECUTE } 
 
 ### Use case:
 
@@ -12,30 +20,34 @@
 
 ### Alternatively, we can authenticate with a PSSession
 
-#### 4) $session = New-PSSession -CompuerName COMPUTER_NAME -Credential $Cred -Authentication AUTHENTICATION_METHOD (CREDSSP foe example)
+#### 4) CREDSSP for example
 
-#### 5) Enter-PSSession $session
+    $session = New-PSSession -CompuerName COMPUTER_NAME -Credential $Cred -Authentication AUTHENTICATION_METHOD 
+
+#### 5) 
+
+    Enter-PSSession $session
 
 ## Alternate use case: The credentials found are encrypted in some way. To recover the credentials, we do the following commands:
 
- - echo > pass.txt (Pass the encrypted password to a .txt file)
+    echo > pass.txt (Pass the encrypted password to a .txt file)
 
- - $EncryptedString = Get-Content .\pass.txt (Set a variable that opens the content of the .txt file we created earlier)
+    $EncryptedString = Get-Content .\pass.txt (Set a variable that opens the content of the .txt file we created earlier)
 
- - $SecureString = ConvertTo-SecureString $EncryptedString 
+    $SecureString = ConvertTo-SecureString $EncryptedString 
 
- - $Credential = New-Object System.Management.Automation.PSCredential -ArgumentList "username",$SecureString
+    $Credential = New-Object System.Management.Automation.PSCredential -ArgumentList "username",$SecureString
 
- - echo $Credential.GetNetworkCredential().password (Print the decrypted password of the user)
+    echo $Credential.GetNetworkCredential().password (Print the decrypted password of the user)
 
- - $username = 'USER'
+    $username = 'USER'
 
- - $password = 'RECOVERED_PASS'
+    $password = 'RECOVERED_PASS'
 
- - $securePassword = ConvertTo-SecureString $password -AsPlainText -Force
+    $securePassword = ConvertTo-SecureString $password -AsPlainText -Force
 
- - $credential = New-Object Automation.PSCredential($username, $securePassword)
+    $credential = New-Object Automation.PSCredential($username, $securePassword)
 
- - Invoke-Command -ComputerName localHost -Credential $credential -ScriptBlock{YourNewRevShellPayloadHere} 
+    Invoke-Command -ComputerName localHost -Credential $credential -ScriptBlock{YourNewRevShellPayloadHere} 
 
 
