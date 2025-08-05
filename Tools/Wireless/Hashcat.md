@@ -8,8 +8,14 @@
 
 ## Usage:
 
-#### 1) cd /usr/share/hashcat-utils
+#### 1) 
 
-#### 2) ./cap2hccapx.bin /path/to/HANDSHAKE.cap /path/to/HANDSHAKE.hccapx (Convert the .cap file to the format that hashcat can use)
+    cd /usr/share/hashcat-utils
 
-#### 3) hashcat -m 2500 HANDSHAKE.hccapx WORDLIST.txt --show (-m 2500 = WPA/WPA2 Hashes)
+#### 2) Convert the .cap file to the format that hashcat can use
+
+    ./cap2hccapx.bin /path/to/HANDSHAKE.cap /path/to/HANDSHAKE.hccapx 
+
+#### 3)  
+
+    hashcat -m 2500 HANDSHAKE.hccapx WORDLIST.txt --show (-m 2500 = WPA/WPA2 Hashes)
