@@ -1,9 +1,19 @@
+# Hidden Files
+
 ### Check for hidden files/directories in both Linux and Windows with these commands:
 
-#### 1) dir -force (Windows)
+#### 1) 
 
-#### 2) ls -la (Linux)
+    dir -force (Windows)
 
-#### 3) dir /r (Check if files have Alternate Data Streams hidden indide them)
+#### 2) 
 
-#### 4) more < FILE.TXT:ADS_DATA.TXT
+    ls -la (Linux)
+
+#### 3) Check if files have Alternate Data Streams hidden inside them
+
+    dir /r 
+    
+#### 4) 
+
+    more < FILE.TXT:ADS_DATA.TXT
