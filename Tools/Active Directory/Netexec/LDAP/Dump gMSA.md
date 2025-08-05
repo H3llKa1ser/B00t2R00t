@@ -6,4 +6,4 @@
 
 ## LDAPS is required to retrieve the password, using the --gmsa LDAPS is automatically selected
 
-#### $ nxc ldap <ip> -u <user> -p <pass> --gmsa
+    $ nxc ldap <ip> -u <user> -p <pass> --gmsa
