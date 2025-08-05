@@ -12,4 +12,4 @@
 
 #### 3) Run bash on the container to gain root shell
 
-    docker run -it --rm tfrce:v1 bash
+    docker run -it --rm CONTAINER_NAME:v1 bash
