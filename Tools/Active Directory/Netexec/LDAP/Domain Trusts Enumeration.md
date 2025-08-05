@@ -2,4 +2,4 @@
 
 ### Identify Trust Relationships and Direction
 
-#### nxc ldap <ip> -u user -p pass -M enum_trusts
+    nxc ldap <ip> -u user -p pass -M enum_trusts
