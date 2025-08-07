@@ -4,54 +4,54 @@
 
 ### Authentication
 
- - Connect-MgGraph (Authenticate with an EntraID user in Azure)
+    Connect-MgGraph (Authenticate with an EntraID user in Azure)
 
- - Get-MgContext (General information check)
+    Get-MgContext (General information check)
 
 ### Check the group membership of the user
 
- - $userid = USER_ID
+    $userid = USER_ID
 
- - Get-MgUserMemberOf -userid $userid | select * -ExpandProperty additionalProperties | Select-Object {$_.AdditionalProperties["displayName"]}
+    Get-MgUserMemberOf -userid $userid | select * -ExpandProperty additionalProperties | Select-Object {$_.AdditionalProperties["displayName"]}
 
 ### Check if our current user has permission to access other Azure resources
 
- - $CurrentSubscriptionID = "SUBSCRIPTION_ID"
+    $CurrentSubscriptionID = "SUBSCRIPTION_ID"
 
- - $OutputFormat = "table" (Set output format)
+    $OutputFormat = "table" (Set output format)
 
- - & az account set --subscription $CurrentSubscriptionID (Set the given subscription as the active one)
+    & az account set --subscription $CurrentSubscriptionID (Set the given subscription as the active one)
 
- - & az resource list -o $OutputFormat (List resources in the current subscription)
+    & az resource list -o $OutputFormat (List resources in the current subscription)
 
 ### Get the Object ID for a user
 
- - Get-MgUser -UserId USER.NAME@DOMAIN.CORP
+    Get-MgUser -UserId USER.NAME@DOMAIN.CORP
 
 ### Check the assigned privileges of a user 
 
- - $UserId = 'USER_ID'
+    $UserId = 'USER_ID'
 
- - Get-MgUserMemberOf -userid $userid | select * -ExpandProperty additionalProperties | Select-Object {$_.AdditionalProperties["displayName"]}
+    Get-MgUserMemberOf -userid $userid | select * -ExpandProperty additionalProperties | Select-Object {$_.AdditionalProperties["displayName"]}
 
 ### Check if the user has been assigned a Microsoft 365 license
 
- - Get-MgUserLicenseDetail -UserId "USER.NAME@DOMAIN.CORP"
+    Get-MgUserLicenseDetail -UserId "USER.NAME@DOMAIN.CORP"
 
 ### Check if the user belongs to a security group or if a directory role has been assigned to them
 
- - Get-MgUserMemberOf -UserId USER.NAME@DOMAIN.CORP | select * -ExpandProperty additionalProperties | Select-Object {$_.AdditionalProperties["displayName"]}
+    Get-MgUserMemberOf -UserId USER.NAME@DOMAIN.CORP | select * -ExpandProperty additionalProperties | Select-Object {$_.AdditionalProperties["displayName"]}
 
 ### Check the administrative units
 
- - Get-MgDirectoryAdministrativeUnit | fl
+    Get-MgDirectoryAdministrativeUnit | fl
 
 ### Check if any EntraID user/users have been assigned a role scoped to a specific administrative unit
 
- - Get-MgDirectoryAdministrativeUnitScopedRoleMember -AdministrativeUnitId UNIT_ID | Select-Object roleMemberInfo,roleId -ExpandProperty roleMemberInfo
+    Get-MgDirectoryAdministrativeUnitScopedRoleMember -AdministrativeUnitId UNIT_ID | Select-Object roleMemberInfo,roleId -ExpandProperty roleMemberInfo
 
- - Get-MgDirectoryAdministrativeUnitMember -AdministrativeUnitId UNIT_ID | Select * -ExpandProperty additionalProperties (See if anyone is a member of a specific administrative unit
+    Get-MgDirectoryAdministrativeUnitMember -AdministrativeUnitId UNIT_ID | Select * -ExpandProperty additionalProperties (See if anyone is a member of a specific administrative unit
 
 ### Check for any objects owned by our compromised user
 
- - Get-MgUserOwnedObject -UserId USER.NAME@DOMAIN.CORP | Select * -ExpandProperty additionalProperties
+    Get-MgUserOwnedObject -UserId USER.NAME@DOMAIN.CORP | Select * -ExpandProperty additionalProperties
