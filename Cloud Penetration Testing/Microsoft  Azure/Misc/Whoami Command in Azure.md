@@ -1,3 +1,5 @@
+# Whoami (Azure)
+
 ### Command
 
- - Get-AzADUser -SignedIn | fl
+    Get-AzADUser -SignedIn | fl
