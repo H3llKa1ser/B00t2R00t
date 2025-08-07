@@ -8,7 +8,7 @@
 
 ## VM Enumeration command
 
- - GetAzVM
+    GetAzVM
 
 # 1) Azure Portal
 
@@ -16,8 +16,8 @@
 
 # 2) Azure CLI
 
- - az vm user update -u USERNAME -p PASSWORD -n VM_NAME -g RESOURCE_GROUP (Create a local user for a VM.)
+    az vm user update -u USERNAME -p PASSWORD -n VM_NAME -g RESOURCE_GROUP (Create a local user for a VM.)
 
 # 3) Azure Powershell
 
- - Set-AzVMAccessExtension -ResourceGroupName "RESOURCE_GROUP" -Location "LOCATION" -VMName "VM_NAME" -Name "EXTENSION_NAME" -TypeHandlerVersion "2.4" -UserName "USERNAME" -Password "PASSWORD"
+    Set-AzVMAccessExtension -ResourceGroupName "RESOURCE_GROUP" -Location "LOCATION" -VMName "VM_NAME" -Name "EXTENSION_NAME" -TypeHandlerVersion "2.4" -UserName "USERNAME" -Password "PASSWORD"
