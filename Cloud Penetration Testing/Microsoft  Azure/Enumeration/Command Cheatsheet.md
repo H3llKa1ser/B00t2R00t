@@ -1,13 +1,23 @@
 # Enumeration Command Cheatsheet
 
- - Get-TenantID -domain DOMAIN (Get the tenant ID of the specific domain)
+#### 1) Get the tenant ID of the specific domain
 
- - Get-AzADUser -SignedIn | fl (Whoami in Azure Context)
+    Get-TenantID -domain DOMAIN 
 
- - Get-UserObjectID -Token $tokens -upn USER.NAME@DOMAIN.LOCAL (Retrieve the ObjectID of the compromised user)
+#### 2) Whoami in Azure Context
 
- - Get-AzResource (Returns the resources that our user may have access to)
+    Get-AzADUser -SignedIn | fl 
 
- - Get-AzContainerApp -ResourceGroupName "RESOURCE_GROUP" -Name "CONTAINER_APP_NAME" | fl (Check information on an Azure Container App)
+#### 3) Retrieve the ObjectID of the compromised user
+
+    Get-UserObjectID -Token $tokens -upn USER.NAME@DOMAIN.LOCAL 
+
+#### 4) Returns the resources that our user may have access to
+
+    Get-AzResource 
+
+#### 5) Check information on an Azure Container App
+
+    Get-AzContainerApp -ResourceGroupName "RESOURCE_GROUP" -Name "CONTAINER_APP_NAME" | fl 
 
 
