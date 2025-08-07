@@ -20,7 +20,7 @@
 
 ### 3) Run the next command from the AADInternals module, to answer the following questions:
 
- - Invoke-AADIntReconAsOutsider -DomainName DOMAIN.COM
+    Invoke-AADIntReconAsOutsider -DomainName DOMAIN.COM
 
 
  - 1) DNS:	Does the DNS record exist?
@@ -51,7 +51,7 @@
 
 ### Command:
 
- - python3 azsubenum.py -b TARGET --thread 10
+    python3 azsubenum.py -b TARGET --thread 10
 
 ### 5) After we enumerate domains and subdomains, we try to gather a list of possible usernames within the organization.  It's also important to understand email formats.
 
