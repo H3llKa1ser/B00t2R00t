@@ -6,9 +6,13 @@
 
 ## Steps:
 
- - Get-AzDomainInfo -Verbose -Folder OUR_FOLDER (Enumerate environment with MicroBurst)
+#### 1) Enumerate environment with MicroBurst
 
- - notepad .\OUR_FOLDER\Az\Development\Resources\Deployments.txt (Read the .txt file, you might find cleartext credentials and information like SSH credentials, DNS name of a host , etc.)
+    Get-AzDomainInfo -Verbose -Folder OUR_FOLDER 
+
+#### 2) Read the .txt file, you might find cleartext credentials and information like SSH credentials, DNS name of a host , etc.
+
+    notepad .\OUR_FOLDER\Az\Development\Resources\Deployments.txt 
 
 # App Service Configurations
 
@@ -16,7 +20,9 @@
 
 ## Azure App Service Apps
 
- - Get-AzWebApp (Enumerate Azure App Service apps)
+#### 1) Enumerate Azure Web App Services Apps
+
+    Get-AzWebApp 
 
 ## Azure Function Apps
 
@@ -56,12 +62,12 @@
 
 ### Then use the credentials we found to authenticate:
 
- - $credential = Get-Credential (Store credentials in a variable)
+    $credential = Get-Credential (Store credentials in a variable)
 
- - Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant TENANT_ID (Authenticate)
+    Connect-AzAccount -ServicePrincipal -Credential $credential -Tenant TENANT_ID (Authenticate)
 
- - Get-Azcontext (Confirm access)
+    Get-Azcontext (Confirm access)
 
 ## Alternate method: Azure CLI
 
- - az login --service-principal -u CLIENT_ID --tenant TENANT_ID  
+    az login --service-principal -u CLIENT_ID --tenant TENANT_ID  
