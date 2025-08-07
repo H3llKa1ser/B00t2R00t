@@ -4,5 +4,5 @@
 
 #### Module:
 
- - Install-Module Microsoft.Graph
+    Install-Module Microsoft.Graph
 
