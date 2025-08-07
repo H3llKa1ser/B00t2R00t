@@ -1,11 +1,13 @@
-$userId = "USER.NAME@DOMAIN.CORP"
-$groupIds = (Get-MgUserMemberOf -UserId $userId).Id
+# User Check Membership Group
 
-$groupNames = @()
+    $userId = "USER.NAME@DOMAIN.CORP"
+    $groupIds = (Get-MgUserMemberOf -UserId $userId).Id
 
-foreach ($groupId in $groupIds) {
-    $group = Get-MgGroup -GroupId $groupId
-    $groupNames += $group.DisplayName
-}
+    $groupNames = @()
 
-$groupNames
+    foreach ($groupId in $groupIds) {
+        $group = Get-MgGroup -GroupId $groupId
+        $groupNames += $group.DisplayName
+    }
+
+    $groupNames
