@@ -4,9 +4,9 @@
 
 #### 1) Automation (Powerzure , MicroBurst)
 
- - Get-AzureTargets (Powerzure)
+    Get-AzureTargets (Powerzure)
 
- - Get-AzDomainInfo -Verbose -Folder YOUR_FOLDER (MicroBurst)
+    Get-AzDomainInfo -Verbose -Folder YOUR_FOLDER (MicroBurst)
 
 #### 2) Azure Portal
 
