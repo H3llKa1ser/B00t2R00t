@@ -12,24 +12,46 @@
 
     az account clear 
 
- - az resource list (Shows all resources that our current user has access to)
+#### 3) Shows all resources that our current user has access to
 
- - az vm show --resource-group GROUP --name VM_NAME (Return general information about a VM)
+    az resource list 
 
- - az account get-access-token (Gives the access token of the account.)
+#### 4) Return general information about a VM
 
- - az ad user list (Enumerate EntraID users within the tenant)
+    az vm show --resource-group GROUP --name VM_NAME 
 
- - az ad user list --filter "startsWith('wvusr-', displayName)" (Do a filtered enumeration depending on use case)
+#### 5) Gives the access token of the account
 
- - az ad group list (Enumerate EntraID groups)
+    az account get-access-token 
 
- - az ad group member list --group "GROUP_NAME" (Enumerate members of a specific group)
+#### 6) Enumerate EntraID users within the tenant
 
- - az role assignment list --assignee GROUP_ID --all (Check what role is assigned to a specific group.)
+    az ad user list 
 
- - az keyvault list (List any accessible key vaults)
+#### 7) Do a filtered enumeration depending on use case
 
- - az keyvault secret list --vault-name VAULT_NAME (Check if secrets are stored inside this vault)
+    az ad user list --filter "startsWith('wvusr-', displayName)" 
 
- - az keyvault secret show --vault-name VAULT_NAME --name SECRET_NAME (Reveal the values inside the secret within the specific vault)
+#### 8) Enumerate EntraID groups
+
+    az ad group list 
+
+#### 9) Enumerate members of a specific group
+
+    az ad group member list --group "GROUP_NAME"
+
+#### 10) Check what role is assigned to a specific group
+
+    az role assignment list --assignee GROUP_ID --all
+
+#### 11) List any accessible key vaults
+
+    az keyvault list 
+
+#### 12) Check if secrets are stored inside this vault
+
+    az keyvault secret list --vault-name VAULT_NAME 
+
+#### 13) Reveal the values inside the secret within the specific vault
+
+    az keyvault secret show --vault-name VAULT_NAME --name SECRET_NAME 
