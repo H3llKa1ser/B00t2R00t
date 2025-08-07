@@ -1,15 +1,17 @@
-$userEmail = "USER.NAME@DOMAIN.CORP"
-$user = Get-MgUser -Filter "userPrincipalName eq '$userEmail'"
+# Directory Roles Check
 
-$directoryRoles = Get-MgDirectoryRole
+    $userEmail = "USER.NAME@DOMAIN.CORP"
+    $user = Get-MgUser -Filter "userPrincipalName eq '$userEmail'"
 
-$userRoleNames = @()
+    $directoryRoles = Get-MgDirectoryRole
 
-foreach ($role in $directoryRoles) {
-    $members = Get-MgDirectoryRoleMember -DirectoryRoleId $role.Id
-    if ($members.Id -contains $user.Id) {
-        $userRoleNames += $role.DisplayName
+    $userRoleNames = @()
+
+    foreach ($role in $directoryRoles) {
+        $members = Get-MgDirectoryRoleMember -DirectoryRoleId $role.Id
+        if ($members.Id -contains $user.Id) {
+            $userRoleNames += $role.DisplayName
+        }
     }
-}
 
-$userRoleName
+    $userRoleName
