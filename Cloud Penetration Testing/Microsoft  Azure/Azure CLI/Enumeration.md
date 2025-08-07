@@ -4,9 +4,13 @@
 
 ### Commands:
 
- - az login -u USER@DOMAIN.CORP -p 'PASSWORD' (Authenticate with our compromised account)
+#### 1) Authenticate with our compromised account 
 
- - az account clear (Logout from our current user)
+    az login -u USER@DOMAIN.CORP -p 'PASSWORD'
+
+#### 2) Logout from our current user
+
+    az account clear 
 
  - az resource list (Shows all resources that our current user has access to)
 
