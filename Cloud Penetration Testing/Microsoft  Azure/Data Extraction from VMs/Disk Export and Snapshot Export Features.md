@@ -18,12 +18,18 @@
 
 ## Steps:
 
- - Connect-AzAccount (Authenticate to the account with Contributor access)
+#### 1) Authenticate to the account with Contributor access
 
- - Import-Module PowerZure.ps1 (Import PowerZure module)
+    Connect-AzAccount 
 
- - Get-AzDisk | Where-Object {$_.DiskState -ne "Attached"} | Select Name, DiskState, Encryption (Obtain a list of all unattached VM disks)
+#### 2) Import PowerZure module
 
- - Get-AzureVMDisk -DiskName DISK_NAME
+    Import-Module PowerZure.ps1 
+
+#### 3) Obtain a list of all unattached VM disks
+
+    Get-AzDisk | Where-Object {$_.DiskState -ne "Attached"} | Select Name, DiskState, Encryption 
+
+    Get-AzureVMDisk -DiskName DISK_NAME
 
  - Make note of the generated URL and download the disk from there.
