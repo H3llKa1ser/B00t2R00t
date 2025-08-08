@@ -6,8 +6,14 @@
 
 ### Example usage:
 
- - Import-Module .\MFASweep.ps1
+#### 1) Import MFASweep Module
 
- - Invoke-MFASweep -Username USERNAME@DOMAIN.LOCAL -Password test1234 (Use this to bypass Conditional Access policy)
+    Import-Module .\MFASweep.ps1
 
- - Invoke-MFASweep -Username USER.NAME@DOMAIN.LOCAL -Password PASSWORD -Recon -IncludeADFS (Enumerate the presence of MFA on various online services, including Active Directory Federated Services ADFS)
+#### 2) Use this to bypass Conditional Access policy
+
+    Invoke-MFASweep -Username USERNAME@DOMAIN.LOCAL -Password test1234 
+
+#### 3) Enumerate the presence of MFA on various online services, including Active Directory Federated Services ADFS
+
+    Invoke-MFASweep -Username USER.NAME@DOMAIN.LOCAL -Password PASSWORD -Recon -IncludeADFS 
