@@ -2,10 +2,18 @@
 
 ### Commands
 
- - roadrecon auth -u USER@DOMAIN.CORP -p 'PASSWORD' (Authenticate with our user using roadrecon)
+#### 1) Authenticate with our user using roadrecon
 
- - roadrecon gather (Collects all Azure information that our user has permissions to see)
+    roadrecon auth -u USER@DOMAIN.CORP -p 'PASSWORD' 
 
- - roadrecon gui (Start the RoadRecon webserver running at http://127.0.0.1:5000)
+#### 2) Collects all Azure information that our user has permissions to see
 
- - roadrecon plugin bloodhound --neodatabase localhost -du neo4j -dp password (Transfers data to the corresponding neo4j database if we have bloodhound installed)
+    roadrecon gather 
+
+#### 3) Start the RoadRecon webserver running at http://127.0.0.1:5000
+
+    roadrecon gui 
+
+#### 4) Transfers data to the corresponding neo4j database if we have bloodhound installed
+
+    roadrecon plugin bloodhound --neodatabase localhost -du neo4j -dp password 
