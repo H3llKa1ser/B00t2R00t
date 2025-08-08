@@ -2,7 +2,7 @@
 
 ### Find enabled hostnames
 
- - (Get-AzWebApp -ResourceGroupName "RESOURCE_GROUP_NAME" -Name "WEB_APP_NAME").EnabledHostNames
+    (Get-AzWebApp -ResourceGroupName "RESOURCE_GROUP_NAME" -Name "WEB_APP_NAME").EnabledHostNames
 
 ### Any time an app is created, App Service creates a Kudu companion app for it that allows us to manage the app instance, including getting terminal access. The location of this app can vary depending on the configuration.
 
