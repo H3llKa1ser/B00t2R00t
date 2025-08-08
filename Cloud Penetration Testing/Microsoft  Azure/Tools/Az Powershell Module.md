@@ -2,94 +2,150 @@
 
 ## Commands:
 
- - Import-Module Az (Import Az Powershell Module)
+### 1) Import Az Powershell Module
+
+    Import-Module Az 
 
 ## OR 
 
- - Install-Module  -Name Az (Run as Administrator)
+    Install-Module  -Name Az (Run as Administrator)
 
-### Authentication
+### 2) Authentication
 
- - Connect-AzAccount (Authentication)
+    Connect-AzAccount 
 
- - $credential = Get-Credential
+    $credential = Get-Credential
 
- - Connect-AzAccount -Credential $credential (Alternate Authentication Method)
+### Alternate Authentication Method
 
- - Import-AzContext -Profile 'C:\Temp\Live Tokens\StolenToken.json'
+    Connect-AzAccount -Credential $credential 
 
- - Save-AzContext -Path C:\Temp\AzureAccessToken.json
+    Import-AzContext -Profile 'C:\Temp\Live Tokens\StolenToken.json'
 
-### Account Information
+    Save-AzContext -Path C:\Temp\AzureAccessToken.json
 
- - Get-AzContext -ListAvailable (List the current Azure contexts available)
+### 3) Account Information
 
- - $context = Get-AzContext
+#### List the current Azure contexts available
 
- - $context.Name
+    Get-AzContext -ListAvailable 
 
- - $context.Account (Get context details)
+    $context = Get-AzContext
 
- - Get-AzSubscription (List Subscriptions)
+    $context.Name
 
- - Select-AzSubscription -SubscriptionID "SUBSCRIPTION_ID" (Choose a subscription)
+#### Get context details
 
- - Get-AzRoleAssignment (Get the current user's role assignment)
+    $context.Account 
 
- - Get-AzResource (List all resources) TIP: This command will return the resources for which the user has at least the Reader role in Role-Based Access Control (RBAC).
+#### List Subscriptions
 
- - Get-AzResourceGroup (List all resource groups)
+    Get-AzSubscription
 
- - Get-AzStorageAccount (List storage accounts)
+#### Choose a subscription
 
- - Get-AzADUser (List all users in the tenant)
+    Select-AzSubscription -SubscriptionID "SUBSCRIPTION_ID" 
 
- - Get-AzADUser -UserPrincipalName 'USER.NAME@DOMAIN.CORP' | fl (List more information for a specific user in the tenant)
+#### Get the current user's role assignment
 
-### Web Applications and SQL
+    Get-AzRoleAssignment 
 
- - Get-AzAdApplication (List azure app)
+#### List all resources (TIP: This command will return the resources for which the user has at least the Reader role in Role-Based Access Control (RBAC).)
 
- - Get-AzWebApp (List azure web app)
+    Get-AzResource
 
- - Get-AzWebApp -Name megabigtechdevapp23 | select enabledhostnames (List hostnames that the web app is hosted and used)
+#### List all resource groups
 
- - Get-AzSQLServer (List SQL servers)
+    Get-AzResourceGroup
 
- - Get-AzSqlDatabase -ServerName $ServerName -ResourceGroupName $ResourceGroupName (Individual databases can be listed with information retrieved from the previous command)
+#### List storage accounts
 
- - Get-AzSqlServerFirewallRule –ServerName $ServerName -ResourceGroupName $ResourceGroupName (List SQL Firewall rules)
+    Get-AzStorageAccount 
 
- - Get-AzSqlServerActiveDirectoryAdminstrator -ServerName $ServerName -ResourceGroupName $ResourceGroupName (List SQL Server AD Admins)
+#### List all users in the tenant
 
-### Runbooks
+    Get-AzADUser 
 
- - Get-AzAutomationAccount (List Azure Runbooks)
+#### List more information for a specific user in the tenant
 
- - Get-AzAutomationRunbook -AutomationAccountName AUTOMATION_ACCOUNT_NAME -ResourceGroupName RESOURCE_GROUP_NAME
+    Get-AzADUser -UserPrincipalName 'USER.NAME@DOMAIN.CORP' | fl 
 
- - Export-AzAutomationRunbook -AutomationAccountName $AccountName -ResourceGroupName $ResourceGroupName -Name $RunbookName -OutputFolder .\Desktop\ (Export a runbook)
+### 4) Web Applications and SQL
 
-### Virtual Machines
+#### List Azure App
 
-- Get-AzVM (List VMs and get OS details)
+    Get-AzAdApplication 
 
-- $vm = Get-AzVM -Name "VM Name"
+#### List Azure Web App
 
- - $vm.OSProfile
+    Get-AzWebApp 
 
- - Invoke-AzVMRunCommand -ResourceGroupName $ResourceGroupName -VMName $VMName -CommandId RunPowerShellScript -ScriptPath ./powershell-script.ps1 (Run commands on VMs)
+#### List hostnames that he web app is hosted and used
 
-### Networking
+    Get-AzWebApp -Name megabigtechdevapp23 | select enabledhostnames 
 
- - Get-AzVirtualNetwork (List virtual networks)
+#### List SQL Servers
 
- - Get-AzPublicIpAddress (List public IP addresses assigned to virtual NICs)
+    Get-AzSQLServer 
 
- - Get-AzExpressRouteCircuit (Get Azure ExpressRoute (VPN) Info)
+#### Individual databases can be listed with information retrieved from the previous command
 
- - Get-AzVpnConnection (Get Azure VPN Info)
+    Get-AzSqlDatabase -ServerName $ServerName -ResourceGroupName $ResourceGroupName 
 
-### Miscellaneous
+#### List SQL Firewall rules
 
- - Get-AzStorageBlobContent -Container $containerName -Blob WHATEVER.TXT -Context $context (Download a specific storage blob to read it)
+    Get-AzSqlServerFirewallRule –ServerName $ServerName -ResourceGroupName $ResourceGroupName 
+
+#### List SQL Server AD Admins
+
+    Get-AzSqlServerActiveDirectoryAdminstrator -ServerName $ServerName -ResourceGroupName $ResourceGroupName 
+
+### 5) Runbooks
+
+#### List Azure Runbooks
+
+    Get-AzAutomationAccount
+
+    Get-AzAutomationRunbook -AutomationAccountName AUTOMATION_ACCOUNT_NAME -ResourceGroupName RESOURCE_GROUP_NAME
+
+#### Export a runbook
+
+    Export-AzAutomationRunbook -AutomationAccountName $AccountName -ResourceGroupName $ResourceGroupName -Name $RunbookName -OutputFolder .\Desktop\ 
+
+### 6) Virtual Machines
+
+#### List VMs and get OS details
+
+    Get-AzVM 
+
+    $vm = Get-AzVM -Name "VM Name"
+
+    $vm.OSProfile
+
+#### Run commands on VMs
+
+    Invoke-AzVMRunCommand -ResourceGroupName $ResourceGroupName -VMName $VMName -CommandId RunPowerShellScript -ScriptPath ./powershell-script.ps1 
+
+### 7) Networking
+
+#### List virtual networks
+
+    Get-AzVirtualNetwork 
+
+#### List public IP addresses assigned to virtual NICs
+
+    Get-AzPublicIpAddress 
+
+#### Get Azure ExpressRoute (VPN) Info
+
+    Get-AzExpressRouteCircuit 
+
+#### Get Azure VPN Info
+
+    Get-AzVpnConnection
+   
+### 8) Miscellaneous
+
+#### Download a specific storage blob to read it
+
+    Get-AzStorageBlobContent -Container $containerName -Blob WHATEVER.TXT -Context $context 
