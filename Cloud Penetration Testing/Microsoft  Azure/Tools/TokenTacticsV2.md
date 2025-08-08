@@ -10,7 +10,7 @@
  
     $MSGraphToken.access_token (This is the generated access token from the previous command)
 
-#### 2) Specify the device and so we can again pretend to be an Android device, and successfully get an access token for the Azure Resource Management ARM API
+#### 2) Specify the device, so we can again pretend to be an Android device, and successfully get an access token for the Azure Resource Management ARM API
 
     Invoke-RefreshToAzureManagementToken -Domain DOMAIN.CORP -RefreshToken $refreshtoken -Device AndroidMobile -Browser Android 
 
