@@ -6,8 +6,8 @@
 
 ### Usage: Run python3 lava.py in an authenticated session with contributor account/role access
 
- - Lava $> whoami (Confirm the authenticated user)
+    Lava $> whoami (Confirm the authenticated user)
 
- - Lava $> ls (List all modules in Lava)
+    Lava $> ls (List all modules in Lava)
 
- - Lava $> exec MODULE_NAME (Execute a module)
+    Lava $> exec MODULE_NAME (Execute a module)
