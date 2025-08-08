@@ -2,33 +2,47 @@
 
 ## Commands:
 
- - Import-Module MSOnline (Import MSOnline powershell module)
+### 1) Import MSOnline powershell module
 
-### Authentication
+    Import-Module MSOnline 
 
- - Connect-MsolService (Authentication)
+### 2) Authentication
 
- - $credential = Get-Credential
+    Connect-MsolService 
 
- - Connect-MsolService -Credential $credential
+    $credential = Get-Credential
 
-### Account and Directory Information
+    Connect-MsolService -Credential $credential
 
- - Get-MSolCompanyInformation (List Company Information)
+### 3) Account and Directory Information
 
- - Get-MSolUser -All (List all users)
+#### List Company Information
 
- - Get-MSolGroup -All (List all groups)
+    Get-MSolCompanyInformation 
 
- - Get-MsolRole -RoleName "Company Administrator" (List members of a group (Global Admins in this case))
+#### List all users
 
- - Get-MSolGroupMember –GroupObjectId $GUID
+    Get-MSolUser -All 
 
- - Get-MSolUser -All | fl (List all user attributes)
+#### List all groups
 
- - Get-MsolServicePrincipal (List Service Principals)
+    Get-MSolGroup -All 
+
+#### List members of a group (Global Admins in this case)
+
+    Get-MsolRole -RoleName "Company Administrator" 
+
+    Get-MSolGroupMember –GroupObjectId $GUID
+
+#### List all user attributes
+
+    Get-MSolUser -All | fl 
+
+#### List Service Principals
+
+    Get-MsolServicePrincipal 
 
 ### One-liner to search all Azure AD user attributes for passwords
 
- - $users = Get-MsolUser; foreach($user in $users){$props = @();$user | Get-Member | foreach-object{$props+=$_.Name}; foreach($prop in $props){if($user.$prop -like "*password*"){Write-Output ("[*]" + $user.UserPrincipalName + "[" + $prop + "]" + " : " + $user.$prop)}}}
+    $users = Get-MsolUser; foreach($user in $users){$props = @();$user | Get-Member | foreach-object{$props+=$_.Name}; foreach($prop in $props){if($user.$prop -like "*password*"){Write-Output ("[*]" + $user.UserPrincipalName + "[" + $prop + "]" + " : " + $user.$prop)}}}
 
