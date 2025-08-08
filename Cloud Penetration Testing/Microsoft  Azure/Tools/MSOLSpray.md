@@ -4,6 +4,6 @@
 
 ### Usage:
 
- - Import-Module .\MSOLSpray.ps1
+    Import-Module .\MSOLSpray.ps1
 
- - Invoke-MSOLSpray -UserList .\USERLIST.TXT -Password test1234
+    Invoke-MSOLSpray -UserList .\USERLIST.TXT -Password test1234
