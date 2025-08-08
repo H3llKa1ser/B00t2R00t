@@ -4,6 +4,6 @@
 
 ### Usage:
 
- - Import-Module Powerzure.ps1 (Import powerzure module)
+    Import-Module Powerzure.ps1 (Import powerzure module)
 
- - Get-AzureTargets (Review user permissions)
+    Get-AzureTargets (Review user permissions)
