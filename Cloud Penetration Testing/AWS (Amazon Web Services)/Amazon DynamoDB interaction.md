@@ -1,19 +1,35 @@
+# Amazon DynamoDB 
+
 ### Tools: awscli
 
 ### Default port: 4566
 
-#### 1) aws --endpoint-url=http://ENDPOINT_URL:PORT dynamodb list-tables (List tables on the dynamoDB)
+#### 1) List tables on the DynamoDB
 
-#### 2) aws --endpoint-url=http://ENDPOINT_URL:PORT dynamodb scan --table-name TABLE (List contents of the table)
+    aws --endpoint-url=http://ENDPOINT_URL:PORT dynamodb list-tables 
 
-#### 3) aws --endpoint-url=http://ENDPOINT_URL:PORT dynamodb create-table --table-name TABLE --attribute-definitions AttributeName=NAME,AttributeType=TYPE --key-schema AttributeName=NAME,AttributeType=S,KeyType=HASH provisioned-throughput ReadCapacityUnits=NUM,WriteCapacityUnits=NUM (Create a table with specific characteristics)
+#### 2) List contents of the table
 
-#### 4) aws --endpoint-url=http://ENDPOINT_URL:PORT dynamodb put-item --table-name TABLE --item '{"NAME":{"S":"WHATEVER"} (Creates an item for the specified table)
+    aws --endpoint-url=http://ENDPOINT_URL:PORT dynamodb scan --table-name TABLE 
+
+#### 3) Create a table with specific characteristics
+
+    aws --endpoint-url=http://ENDPOINT_URL:PORT dynamodb create-table --table-name TABLE --attribute-definitions AttributeName=NAME,AttributeType=TYPE --key-schema AttributeName=NAME,AttributeType=S,KeyType=HASH provisioned-throughput ReadCapacityUnits=NUM,WriteCapacityUnits=NUM 
+
+#### 4) Creates an item for the specified table
+
+    aws --endpoint-url=http://ENDPOINT_URL:PORT dynamodb put-item --table-name TABLE --item '{"NAME":{"S":"WHATEVER"} 
 
 ### TIP: If we are in a machine that has the database internally, before we use aws configure we must make sure we define as the home directory somewhere our current user has permissions.
 
-#### 1) mkdir /tmp/f
+#### 1) 
 
-#### 2) export HOME=/tmp/f
+    mkdir /tmp/f
 
-#### 3) aws configure (We are good to go!)
+#### 2) 
+
+    export HOME=/tmp/f
+
+#### 3) 
+
+    aws configure (We are good to go!)
