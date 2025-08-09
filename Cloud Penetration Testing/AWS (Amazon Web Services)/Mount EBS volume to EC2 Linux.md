@@ -8,30 +8,30 @@
 
 #### 3) Select the instance from the instance text box as shown below : attach ebs volume
 
- - aws ec2 create-volume –snapshot-id SNAPSHOT_ID --availability-zone ZONE
+    aws ec2 create-volume –snapshot-id SNAPSHOT_ID --availability-zone ZONE
 
- - aws ec2 attach-volume –-volume-id VOLUME_ID –-instance-id INSTANCE_ID --device DEVICE
+    aws ec2 attach-volume –-volume-id VOLUME_ID –-instance-id INSTANCE_ID --device DEVICE
 
 #### 4) Now, login to your ec2 instance and list the available disks using the following command :
 
- - lsblk
+    lsblk
 
 #### 5) Check if the volume has any data using the following command :
 
- - sudo file -s /dev/xvdf
+    sudo file -s /dev/xvdf
 
 #### 6) Format the volume to ext4 filesystem using the following command :
 
- - sudo mkfs -t ext4 /dev/xvdf
+    sudo mkfs -t ext4 /dev/xvdf
 
 #### 7) Create a directory of your choice to mount our new ext4 volume. I am using the name “newvolume” :
 
- - sudo mkdir /newvolume
+    sudo mkdir /newvolume
 
 #### 8) Mount the volume to "newvolume" directory using the following command :
 
- - sudo mount /dev/xvdf /newvolume/
+    sudo mount /dev/xvdf /newvolume/
 
-#### 9) cd into newvolume directory and check the disk space for confirming the volume mount :
+#### 9) cd into newvolume directory and check the disk space to confirm the volume mount :
 
- - cd /newvolume; df -h .
+    cd /newvolume; df -h .
