@@ -4,4 +4,4 @@
 
 ### Run recon against all AWS services to enumerate access for a set of keys
 
- - python3 weirdAAL.py -m recon_all -t NAME
+    python3 weirdAAL.py -m recon_all -t NAME
