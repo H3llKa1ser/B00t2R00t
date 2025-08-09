@@ -2,65 +2,99 @@
 
 ### Configure AWS cli
 
- - aws configure
+    aws configure
 
 ### OR configure it using a profile
 
- - aws configrue --profile EXAMPLE_NAME
+    aws configrue --profile EXAMPLE_NAME
 
-### The credential file is located in ~/.aws/credentials
+### The credential file is located in 
+
+    ~/.aws/credentials
 
 ## Commands:
 
-# 1) Listing IAM access keys
+#### 1) Listing IAM access keys
 
- - aws iam list-access-keys (Listing IAM access keys)
+    aws iam list-access-keys 
 
-# 2) Enumerating IAM users
+### Enumerating IAM users
 
- - aws sts get-caller-identity (Checking credentials for the user)
+#### 1) Checking credentials for the user
 
- - aws iam list-users (Listing IAM users)
+    aws sts get-caller-identity 
 
- - aws s3api put-bucket-policy --bucket iam-enum --policy file://s3_policy.json (Enumerate users and roles via S3 Bucket Policy)
+#### 2) Listing IAM users
 
- - aws iam list-groups-for-user --user-name USER_NAME (Listing the IAM groups that the specified IAM user belongs to)
+    aws iam list-users 
 
- - aws iam list-attached-user-policies --user-name USER_NAME (Listing all manages policies that are attached to the specified IAM user)
+#### 3) Enumerate users and roles via S3 Bucket Policy
 
- - aws iam list-user-policies --user-name USER_NAME (Listing the names of the inline policies embedded in the specified IAM user)
+    aws s3api put-bucket-policy --bucket iam-enum --policy file://s3_policy.json 
 
-# 3) Enumerating IAM groups
+#### 4) Listing the IAM groups that the specified IAM user belongs to
 
- - aws iam list-groups (Listing IAM groups)
+    aws iam list-groups-for-user --user-name USER_NAME 
 
- - aws iam list-attached-group-policies --group-name GROUP_NAME (Listing all managed policies that are attached to the specified IAM Group)
+#### 5) Listing all manages policies that are attached to the specified IAM user
 
- - aws iam list-group-policies --group-name GROUP_NAME (Listing the names of the inline policies embedded in the specified IAM Group)
+    aws iam list-attached-user-policies --user-name USER_NAME 
 
-# 4) Enumerating roles
+#### 6) Listing the names of the inline policies embedded in the specified IAM user
 
- - aws iam list-roles (Listing IAM roles)
+    aws iam list-user-policies --user-name USER_NAME 
 
- - aws iam list-attached-role-policies --role-name ROLE_NAME (Listsing all managed policies that are attached to the specified IAM role)
+### Enumerating IAM groups
 
- - aws iam list-role-policies --role-name ROLE_NAME (Listing the names of the inline policies embedded in the specified IAM role)
+#### 1) Listing IAM groups
 
-# 5) Enumerating Policies
+    aws iam list-groups 
 
- - aws iam list-policies (Listing of IAM policies)
+#### 2) Listing all managed policies that are attached to the specified IAM Group
 
- - aws iam get-policy --policy-arn POLICY_ARN (Retrieving information about the specified managed policy)
+    aws iam list-attached-group-policies --group-name GROUP_NAME 
 
- - aws iam list-policy-versions --policy-arn POLICY_ARN (Listing information about the versions of the specified manages policy)
+#### 3) Listing the names of the inline policies embedded in the specified IAM Group
 
- - aws iam get-policy-version --policy-arn POLICY_ARN --version-id VERSION_ID (Retrieving information about the specific version of the specified managed policy)
+    aws iam list-group-policies --group-name GROUP_NAME 
 
+### Enumerating IAM Roles
+
+#### 1) Listing IAM roles
+
+    aws iam list-roles 
+
+#### 2) Listing all managed policies that are attached to the specified IAM role
+
+    aws iam list-attached-role-policies --role-name ROLE_NAME 
+
+#### 3) Listing the names of the inline policies embedded in the specified IAM role
+
+    aws iam list-role-policies --role-name ROLE_NAME 
+
+### Enumerating IAM Policies
+
+#### 1) Listing of IAM policies
+
+    aws iam list-policies 
+
+#### 2) Retrieving information about the specified managed policy
+
+    aws iam get-policy --policy-arn POLICY_ARN 
+
+#### 3) Listing information about the versions of the specified manages policy
+
+    aws iam list-policy-versions --policy-arn POLICY_ARN 
+
+#### 4) Retrieving information about the specific version of the specified managed policy
+
+    aws iam get-policy-version --policy-arn POLICY_ARN --version-id VERSION_ID
+   
 ### Retrieving the specified inline policy document that is embedded on the specified IAM user / group / role
 
- - aws iam get-user-policy --user-name USER_NAME --policy-name POLICY_NAME
+    aws iam get-user-policy --user-name USER_NAME --policy-name POLICY_NAME
 
- - aws iam get-group-policy --group-name GROUP_NAME --policy-name POLICY_NAME
+    aws iam get-group-policy --group-name GROUP_NAME --policy-name POLICY_NAME
 
- - aws iam get-role-policy --role-name ROLE_NAME --policy-name POLICY_NAME
+    aws iam get-role-policy --role-name ROLE_NAME --policy-name POLICY_NAME
 
