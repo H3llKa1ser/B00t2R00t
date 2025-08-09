@@ -2,14 +2,24 @@
 
 ## Commands:
 
- - aws ec2 describe-instances (Listing information about all instances)
+#### 1) Listing information about all instances
 
- - aws ec2 describe-instances --region REGION (Listing information about a specific region)
+    aws ec2 describe-instances
 
- - aws ec2 describe-instances --instance-ids ID (Listing information about specific instance)
+#### 2) Listing information about a specific region
+   
+    aws ec2 describe-instances --region REGION 
+
+#### 3) Listing information about specific instance
+
+    aws ec2 describe-instances --instance-ids ID 
 
 ## This command gathers the metadata from the instance, like commands or secrets. The output is base64 encoded:
 
- - aws ec2 describe-instance-attribute --attribute userData --instance-id INSTANCE_ID (Extracting UserData attribute of specified instance)
+#### 4) Extracting UserData attribute of specified instance
 
- - aws ec2 describe-iam-instance-profile-associations (Listing roles of an instance)
+    aws ec2 describe-instance-attribute --attribute userData --instance-id INSTANCE_ID 
+
+#### 5) Listing roles of an instance
+
+    aws ec2 describe-iam-instance-profile-associations 
