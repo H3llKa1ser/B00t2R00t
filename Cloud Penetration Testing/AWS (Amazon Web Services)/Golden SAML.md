@@ -14,6 +14,10 @@
 
 ## Commands:
 
- - python -m pip install boto3 botocore defusedxml enum python_dateutil lxml signxml (Install the proper python libraries)
+#### 1) Install the proper python libraries
 
- - python .\shimit.py -idp http://adfs.lab.local/adfs/services/trust -pk key_file -c -u domain\admin -n admin@domain.com -r ADFS-admin -r ADFS-monitor -id 123456789012
+    python -m pip install boto3 botocore defusedxml enum python_dateutil lxml signxml 
+
+#### 2) 
+
+    python .\shimit.py -idp http://adfs.lab.local/adfs/services/trust -pk key_file -c -u domain\admin -n admin@domain.com -r ADFS-admin -r ADFS-monitor -id 123456789012
