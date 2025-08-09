@@ -1,13 +1,19 @@
 ### AWS Lambda functions
 
-#### 1) aws --endpoint=url=http://ENDPOINT_URL.com lambda list-functions (List lambda functions on endpoint)
+#### 1) List lambda functions on endpoint
 
-#### 2) aws --endpoint-url=http://ENDPOINT_URL.com lambda get-function --function-name=FUNCTION_NAME | jq .Code.Location (Gets the code location of the lambda function)
+    aws --endpoint=url=http://ENDPOINT_URL.com lambda list-functions 
 
-#### 3) wget http://ENDPOINT_URL/path/to/LAMBDA_FUNCTION/CODE && unzip CODE (Downloads and unzips the code of lambda function)
+#### 2) Gets the code location of the lambda function
 
- - aws lambda list-functions --profile uploadcreds
+    aws --endpoint-url=http://ENDPOINT_URL.com lambda get-function --function-name=FUNCTION_NAME | jq .Code.Location 
 
- - aws lambda get-function --function-name "LAMBDA-NAME-HERE-FROM-PREVIOUS-QUERY"
+#### 3) Downloads and unzips the code of lambda function
 
- - wget -O lambda-function.zip url-from-previous-query --profile uploadcreds
+    wget http://ENDPOINT_URL/path/to/LAMBDA_FUNCTION/CODE && unzip CODE 
+
+    aws lambda list-functions --profile uploadcreds
+
+    aws lambda get-function --function-name "LAMBDA-NAME-HERE-FROM-PREVIOUS-QUERY"
+
+    wget -O lambda-function.zip url-from-previous-query --profile uploadcreds
