@@ -4,4 +4,4 @@
 
 ### A utility to convert your AWS CLI credentials into AWS console access.
 
- - aws_consoler -v -a AKIA[REDACTED] -s [REDACTED]
+    aws_consoler -v -a AKIA[REDACTED] -s [REDACTED]
