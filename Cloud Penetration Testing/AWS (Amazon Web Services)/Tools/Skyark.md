@@ -6,12 +6,12 @@
 
 #### 1) Requires read-Only permissions over IAM service
 
- - powershell -ExecutionPolicy Bypass -NoProfile
+    powershell -ExecutionPolicy Bypass -NoProfile
 
- - Import-Module .\Skyark.ps1 -force
+    Import-Module .\Skyark.ps1 -force
 
- - Start-AWStealth
+    Start-AWStealth
 
 ## OR in the Cloud Console
 
- - Scan-AWShadowAdmins
+    Scan-AWShadowAdmins
