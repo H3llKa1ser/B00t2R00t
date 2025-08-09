@@ -14,8 +14,10 @@
 
 ## Commands
 
+### Enumerate functions via the GCP API
+
     curl -H "Authorization: Bearer $ACCESS_TOKEN" \
-    "https://cloudfunctions.googleapis.com/v1/projects/PROJECT_NAME/locations/-/functions" (Enumerate functions via the GCP API)
+    "https://cloudfunctions.googleapis.com/v1/projects/PROJECT_NAME/locations/-/functions" 
 
 ### Set bucket name as a variable
 
@@ -33,4 +35,6 @@
 
     curl -o function-source.zip -H "Authorization: Bearer $ACCESS_TOKEN" "$FILE_URL"
 
-    unzip function-source.zip (Unzip the function file to inspect the source code for credentials/secrets/etc.)
+### Unzip the function file to inspect the source code for credentials/secrets/etc.
+
+    unzip function-source.zip 
