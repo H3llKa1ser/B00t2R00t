@@ -10,6 +10,6 @@
 
 ## Usage:
 
- - python3 main.py --access-token $(gcloud auth print-access-token) --project-id $(gcloud config get-value project) --service-account-email $(gcloud auth list --filter=status:ACTIVE --format="value(account)")
+    python3 main.py --access-token $(gcloud auth print-access-token) --project-id $(gcloud config get-value project) --service-account-email $(gcloud auth list --filter=status:ACTIVE --format="value(account)")
 
 ### OR we may use a bash script that utilized cURL for that. (Script is in the scripts folder in this repo)
