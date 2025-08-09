@@ -2,18 +2,34 @@
 
 ## Commands:
 
- - aws ec2 describe-vpcs (Listing VPCs)
+#### 1) Listing VPCs
 
- - aws ec2 describe-vpcs --region us-west-1 (Listing VPCs specifying the region)
+    aws ec2 describe-vpcs 
 
- - aws ec2 describe-vpcs --filters "Name=VPC-ID,Values=ID" (Listing VPC information by ID)
+#### 2) Listing VPCs specifying the region
 
- - aws ec2 describe subnets (Listing subnets)
+    aws ec2 describe-vpcs --region us-west-1 
 
- - aws ec2 describe-subnets --filters "Name=VPC-ID,Values=ID" (Listing subnets by VPC-ID)
+#### 3) Listing VPC information by ID
 
- - aws ec2 describe-route-tables (Listing routing tables)
+    aws ec2 describe-vpcs --filters "Name=VPC-ID,Values=ID" 
 
- - aws ec2 describe-route-tables --filters "Name=VPC-ID,Values=ID" (Listing routing tables by VPC-ID)
+#### 4) Listing subnets
 
- - aws ec2 desribe-network-acls (Listing Network ACLs)
+    aws ec2 describe subnets 
+
+#### 5) Listing subnets by VPC-ID
+
+    aws ec2 describe-subnets --filters "Name=VPC-ID,Values=ID" 
+
+#### 6) Listing routing tables
+
+    aws ec2 describe-route-tables 
+
+#### 7) Listing routing tables by VPC-ID
+
+    aws ec2 describe-route-tables --filters "Name=VPC-ID,Values=ID" 
+
+#### 8) Listing Network ACLs
+
+    aws ec2 describe-network-acls 
