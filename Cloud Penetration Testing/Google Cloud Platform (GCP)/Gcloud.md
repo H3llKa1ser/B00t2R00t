@@ -2,167 +2,263 @@
 
 ## Authentication
 
- - gcloud auth login (User identity login)
+#### 1) User Identity Login
 
- - gcloud auth activate-service-account --key-file=creds.json (Service account login)
+    gcloud auth login 
 
- - gcloud auth list (List accounts available to gcloud)
+#### 2) Service Account Login
 
- - gcloud auth print-access-token (Prints access token. Can be assigned in a variable later on for other purposes)
+    gcloud auth activate-service-account --key-file=creds.json 
 
- - gcloud auth revoke --all (Removes all existing authenticated sessions)
+#### 3) List accounts available to gcloud
 
- - gcloud auth configure-docker LOCATION-docker.pkg.dev (Adds credHelper for our gcloud region in the ~/.docker/config.json file to pull docker images)
+    gcloud auth list 
+
+#### 4) Prints access token. Can be assigned in a variable later on for other purposes
+
+    gcloud auth print-access-token 
+
+#### 5) Removes all existing authenticated sessions
+
+    gcloud auth revoke --all 
+
+#### 6) Adds credHelper for our gcloud region in the ~/.docker/config.json file to pull docker images
+
+    gcloud auth configure-docker LOCATION-docker.pkg.dev 
 
 ## Account Information
 
- - gcloud config list (Get account information)
+#### 1) Get account information
 
- - gcloud organizations list (List organizations)
+    gcloud config list 
 
- - gcloud organizations get-iam-policy ORG_ID (Enumerate IAM policies set ORG-wide)
+#### 2) List organizations
 
- - gcloud projects get-iam-policy PROJECT_ID (Enumerate IAM policies set per project)
+    gcloud organizations list 
 
- - gcloud projects get-iam-policy PROJECT_ID > policy.yml (Save the YAML output locally to a .yml file)
+#### 3) Enumerate IAM policies set ORG-wide
 
- - gcloud projects get-iam-policy PROJECT_ID --format=json (Enumerate IAM policies with JSON format output)
+    gcloud organizations get-iam-policy ORG_ID 
 
- - gcloud projects list (List projects)
+#### 4) Enumerate IAM policies set per project
 
- - gcloud config set project PROJECT_NAME (Set a different project)
+    gcloud projects get-iam-policy PROJECT_ID 
 
- - gloud services list (Gives a list of all APIs that are enabled in project)
+#### 5) Save the YAML output locally to a .yml file
+
+    gcloud projects get-iam-policy PROJECT_ID > policy.yml 
+
+#### 6) Enumerate IAM policies with JSON format output
+
+    gcloud projects get-iam-policy PROJECT_ID --format=json 
+
+#### 7) List projects
+
+    gcloud projects list 
+
+#### 8) Set a different project
+
+    gcloud config set project PROJECT_NAME 
+
+#### 9) Gives a list of all APIs that are enabled in project
+
+    gcloud services list 
 
 ## Repositories/Source Reader permissions
 
- - gcloud source repos list (Get source code repos available to user)
+#### 1) Get source code repos available to user
 
- - gcloud source repos clone REPO_NAME (Clone repo to home dir)
+    gcloud source repos list 
+
+#### 2) Clone repo to home dir
+
+    gcloud source repos clone REPO_NAME 
 
 ## Virtual Machines
 
- - gcloud compute instances list (List compute instances)
+#### 1) List compute instances
 
- - gcloud beta compute ssh --zone "REGION" "INSTANCE_NAME" --project "PROJECT_NAME" (Get shell access to instance)
+    gcloud compute instances list 
 
- - gcloud compute ssh LOCAL_HOST (Puts public ssh key onto metadata service for project)
+#### 2) Get shell access to instance
 
- - gcloud kms decrypt --ciphertext-file=ENCRYPTED_FILE.enc --plaintext-file=out.txt --key CRYPTO_KEY --keyring CRYPTO_KEYRING --location global (Use Google keyring to decrypt encrypted data)
+    gcloud beta compute ssh --zone "REGION" "INSTANCE_NAME" --project "PROJECT_NAME" 
 
- - curl http://metadata.google.internal/computeMetadata/v1/instance/serviceaccounts/default/scopes -H &#39;Metadata-Flavor:Google’ (Get access scopes if on an instance)
+#### 3) Puts public ssh key onto metadata service for project
+
+    gcloud compute ssh LOCAL_HOST 
+
+#### 4) Use Google keyring to decrypt encrypted data
+
+    gcloud kms decrypt --ciphertext-file=ENCRYPTED_FILE.enc --plaintext-file=out.txt --key CRYPTO_KEY --keyring CRYPTO_KEYRING --location global 
+
+#### 5) Get access scopes if on an instance
+
+    curl http://metadata.google.internal/computeMetadata/v1/instance/serviceaccounts/default/scopes -H &#39;Metadata-Flavor:Google’ 
 
 ## Storage Buckets
 
- - gsutil ls (List Google Storage buckets)
+#### 1) List Google Storage buckets
 
- - gsutil ls -r gs://BUCKET_NAME (List Google Storage buckets recursively)
+    gsutil ls 
 
- - gsutil cp gs://BUCKET_ID/item . (Copy item from bucket)
+#### 2) List Google Storage buckets recursively
 
- - gsutil cp gs://BUCKET_ID/item - (Print the item output in our terminal)
+    gsutil ls -r gs://BUCKET_NAME 
 
- - gsutil stat gs://BUCKET_ID/index.html (Returns more information about a file)
+#### 3) Copy item from bucket
 
- - gcloud storage ls gs://BUCKET_ID --project=PROJECT_NAME (List objects stored in a specific bucket within a specific project)
+    gsutil cp gs://BUCKET_ID/item . 
+
+#### 4) Print the item output in our terminal
+
+    gsutil cp gs://BUCKET_ID/item - 
+
+#### 5) Returns more information about a file
+
+    gsutil stat gs://BUCKET_ID/index.html 
+
+#### 6) List objects stored in a specific bucket within a specific project
+
+    gcloud storage ls gs://BUCKET_ID --project=PROJECT_NAME 
 
 ## Webapps and SQL
 
- - gcloud app instances list (List webapps)
+#### 1) List webapps
 
- - gcloud sql instances list (List SQL instances)
+    gcloud app instances list 
 
- - gcloud spanner instances list
+#### 2) List SQL instances
 
- - gcloud bigtable instances list
+    gcloud sql instances list 
 
- - gcloud sql databases list --instance INSTANCE_ID (List SQL databases)
+    gcloud spanner instances list
 
- - gcloud spanner databases list --instance INSTANCE_NAME
+    gcloud bigtable instances list
+
+#### 3) List SQL databases
+
+    gcloud sql databases list --instance INSTANCE_ID 
+
+    gcloud spanner databases list --instance INSTANCE_NAME
 
 ## Export SQL databases and buckets
 
- - gsutil cp gs://BUCKET_NAME/FOLDER/ . (First copy buckets to local directory)
+#### 1) First copy buckets to local directory
 
- - gsutil mb gs://GOOGLE_STORAGE_NAME (Create a new storage bucket)
+    gsutil cp gs://BUCKET_NAME/FOLDER/ . 
 
- - gsutil acl ch -u SERVICE_ACCOUNT gs://GOOGLE_STORAGE_NAME (Change permissions)
+#### 2) Create a new storage bucket
 
- - gcloud sql export sql SQL_INSTANCE_NAME gs://<GOOGLE_STORAGE_NAME/sqldump.gz --database=DATABASE_NAME (Export SQL DB)
+    gsutil mb gs://GOOGLE_STORAGE_NAME 
+
+#### 3) Change permissions
+
+    gsutil acl ch -u SERVICE_ACCOUNT gs://GOOGLE_STORAGE_NAME 
+
+#### 4) Export SQL DB
+
+    gcloud sql export sql SQL_INSTANCE_NAME gs://<GOOGLE_STORAGE_NAME/sqldump.gz --database=DATABASE_NAME 
 
 ## Networking
 
- - gcloud compute networks list (List networks)
+#### 1) List networks
 
- - gcloud compute networks subnets list (List subnets)
+    gcloud compute networks list 
 
- - gcloud compute vpn-tunnels list (List VPN tunnels)
+#### 2) List subnets
 
- - gcloud compute interconnects list (List Interconnects (VPN)
+    gcloud compute networks subnets list 
+
+#### 3) List VPN tunnels
+
+    gcloud compute vpn-tunnels list 
+
+#### 4) List Interconnects (VPN)
+
+    gcloud compute interconnects list 
 
 ## Containers
 
- - gcloud container clusters list
+#### 1)
+
+    gcloud container clusters list
 
 ### GCP Kubernetes config file ~/.kube/config gets generated when you are authenticated with gcloud and run:
 
- - gcloud container clusters get-credentials CLUSTER_NAME --region REGION
+    gcloud container clusters get-credentials CLUSTER_NAME --region REGION
 
 ### If successful and the user has the correct permission the Kubernetes command below can be used to get cluster info:
 
- - kubectl cluster-info
+    kubectl cluster-info
 
 ## Serverless
 
 #### GCP functions log analysis – May get useful information from logs associated with GCP functions
 
- - gcloud functions list
+    gcloud functions list
 
- - gcloud functions describe FUNCTION_NAME
+    gcloud functions describe FUNCTION_NAME
 
- - gcloud functions logs read FUNCTION_NAME --limit NUMBER_OF_LINES
+    gcloud functions logs read FUNCTION_NAME --limit NUMBER_OF_LINES
 
 ### Gcloud stores creds in ~/.config/gcloud/credentials.db Search home directories
 
- - sudo find /home -name "credentials.db
+    sudo find /home -name "credentials.db
 
 ### Copy gcloud dir to your own home directory to auth as the compromised user
 
- - sudo cp -r /home/username/.config/gcloud ~/.config
+    sudo cp -r /home/username/.config/gcloud ~/.config
 
- - sudo chown -R currentuser:currentuser ~/.config/gcloud
+    sudo chown -R currentuser:currentuser ~/.config/gcloud
 
- - gcloud auth list
+    gcloud auth list
 
 ## Secrets
 
- - gcloud secrets list --project=PROJECT_NAME (List the secrets stored in a project)
+#### 1) List the secrets stored in a project
 
- - gcloud secrets versions access latest --secret=SECRET_NAME --project=PROJECT_NAME (Access the secret)
+    gcloud secrets list --project=PROJECT_NAME 
+
+#### 2) Access the secret
+
+    gcloud secrets versions access latest --secret=SECRET_NAME --project=PROJECT_NAME 
 
 ## Service Account Impersonation
 
- - gcloud config set auth/impersonate_service_account ACCOUNT_NAME_TO_IMPERSONATE@PROJECT_NAME.iam.gserviceaccount.com
+    gcloud config set auth/impersonate_service_account ACCOUNT_NAME_TO_IMPERSONATE@PROJECT_NAME.iam.gserviceaccount.com
 
- - gcloud config unset auth/impersonate_service_account (ALWAYS USE THIS AT THE END OF EACH ASSESSMENT TO AVOID FUTURE CONFLICTS)
+    gcloud config unset auth/impersonate_service_account (ALWAYS USE THIS AT THE END OF EACH ASSESSMENT TO AVOID FUTURE CONFLICTS)
 
- - gcloud config list (Confirm the account impersonation)
+    gcloud config list (Confirm the account impersonation)
 
 ## Artifacts
 
- - gcloud artifacts repositories list --project=PROJECT_NAME --format="table[box](name, format, mode, LOCATION)" (Enumerate artifact repository)
+#### 1) Enumerate artifact repository
 
- - gcloud artifacts packages list --repository REPOSITORY_NAME --location LOCATION (List detailed information about a specific repository)
- 
- - gcloud artifacts versions list --repository REPOSITORY_NAME --location LOCATION --package PACKAGE_NAME (List versions of a specific package)
+    gcloud artifacts repositories list --project=PROJECT_NAME --format="table[box](name, format, mode, LOCATION)" 
+
+#### 2) List detailed information about a specific repository
+
+    gcloud artifacts packages list --repository REPOSITORY_NAME --location LOCATION
+
+#### 3) List versions of a specific package
+   
+    gcloud artifacts versions list --repository REPOSITORY_NAME --location LOCATION --package PACKAGE_NAME 
 
 ## Identity Access Management IAM
 
- - gcloud iam service-accounts list --project PROJECT_NAME (List service accounts in a specific project)
- 
- - gcloud iam service-accounts get-iam-policy ACCOUNT_NAME@PROJECT_NAME.iam.gserviceaccount.com (List permissions and roles assigned on a specific user)
+#### 1) List service accounts in a specific project
 
- - gcloud iam roles describe ROLE --project=PROJECT_NAME (Check the permissions granted by this role)
+    gcloud iam service-accounts list --project PROJECT_NAME 
+
+#### 2) List permissions and roles assigned on a specific user
+ 
+    gcloud iam service-accounts get-iam-policy ACCOUNT_NAME@PROJECT_NAME.iam.gserviceaccount.com 
+
+#### 3) Check the permissions granted by this role
+
+    gcloud iam roles describe ROLE --project=PROJECT_NAME 
 
 
 
