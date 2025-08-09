@@ -8,11 +8,11 @@
 
 ### Just enter the URL in the browser
 
- - https://BUCKET-NAME.region.amazonaws.com/secret.txt
+    https://BUCKET-NAME.region.amazonaws.com/secret.txt
 
 # Authenticated User
 
- - aws s3api get-object --bucket BUCKET_NAME --key OBJECT_NAME DOWNLOAD-FILE-LOCATION
+    aws s3api get-object --bucket BUCKET_NAME --key OBJECT_NAME DOWNLOAD-FILE-LOCATION
 
 # Time-Based URL
 
@@ -20,4 +20,4 @@
 
 ### Useful if the object is not public
 
- - aws s3 presign s3://BUCKET-NAME/OBJECT-NAME --expires-in 605000
+    aws s3 presign s3://BUCKET-NAME/OBJECT-NAME --expires-in 605000
