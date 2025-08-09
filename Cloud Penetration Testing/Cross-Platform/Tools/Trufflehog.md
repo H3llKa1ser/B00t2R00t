@@ -4,11 +4,15 @@
 
 ### Installation command
 
- - sudo curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sudo sh -s -- -b /usr/local/bin
+    sudo curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sudo sh -s -- -b /usr/local/bin
 
 ### Usage
 
- - sudo trufflehog git https://gitlab.com/WHATEVER/REPOSITORY (Checks for secrets in a gitlab repository)
+#### 1) Checks for secrets in a gitlab repository
 
- - sudo trufflehog docker --image LOCATION-docker.pkg.dev/PROJECT_NAME/REPOSITORY_NAME/PACKAGE_NAME (Checks for secrets in a docker image)
+    sudo trufflehog git https://gitlab.com/WHATEVER/REPOSITORY 
+
+#### 2) Checks for secrets in a docker image
+
+    sudo trufflehog docker --image LOCATION-docker.pkg.dev/PROJECT_NAME/REPOSITORY_NAME/PACKAGE_NAME 
 
