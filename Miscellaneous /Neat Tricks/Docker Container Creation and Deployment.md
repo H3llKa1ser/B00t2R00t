@@ -13,3 +13,11 @@
 #### 3) Run bash on the container to gain root shell
 
     docker run -it --rm CONTAINER_NAME:v1 bash
+
+#### 4) Delete the docker image
+
+    docker rmi CONTAINER_NAME:v1
+
+#### 5) Verify deletion
+
+    docker image ls
