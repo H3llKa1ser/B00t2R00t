@@ -6,6 +6,8 @@
 
         netexec smb IP_RANGE -u USER -p PASSWORD
 
+## TIP 3: IF YOU GAIN ADMINISTRATOR ACCESS ON ANY HOST, EXTRACT EVERYTHING! (LSASS, SAM AND SYSTEM HIVES, ETC)
+
 ### 1) Unauthenticated
 
 1) User Enumeration
