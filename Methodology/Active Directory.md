@@ -1,12 +1,15 @@
 # Active Directory Methodology
 
-## TIP: WHEN YOU WANT TO TRANSFER FILES AND SCRIPTS WITHIN AN ENTERPRISE NETWORK USING HTTP, ONLY USE PORTS 80 AND 443 BECAUSE FIREWALLS DENY TRAFFIC FROM OTHER PORTS BY DEFAULT AND ACTIVITY BLENDS BETTER WITH LEGITIMATE TRAFFIC
+## TIP: When you want to transfer files and scripts within an enterprise network using HTTP, ONLY USE PORTS 80 AND 443 because firewalls deny traffic from other ports by default and activity blends better with legitimate traffic.
 
-## TIP 2: WHEN WE FIND CREDENTIALS FOR AN ACCOUNT, CHECK IF THESE CREDENTIALS ARE REUSED ACROSS MULTIPLE MACHINES WITH VARIOUS PROTOCOLS
+## TIP 2: When you find credentials for an account, check if these credentials are reused across multiple machines with various protocols.
 
         netexec smb IP_RANGE -u USER -p PASSWORD
 
-## TIP 3: IF YOU GAIN ADMINISTRATOR ACCESS ON ANY HOST, EXTRACT EVERYTHING! (LSASS, SAM AND SYSTEM HIVES, ETC)
+## TIP 3: If you gain administrator access on any host, EXTRACT EVERYTHING! (LSASS, SAM AND SYSTEM HIVES, ETC)
+
+## TIP 4: When you want to do lateral movement, start with WinRM or PSSession — they’re modern and often enabled by default. Fall back to WMI when stealth is important or WinRM is blocked. Avoid PsExec unless necessary — it’s often monitored or flagged. Use RunAs for local user switching, not lateral movement.
+
 
 ### 1) Unauthenticated
 
