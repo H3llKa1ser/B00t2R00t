@@ -2,7 +2,7 @@
 
 ## Use case: 
 
-### Use this when we have found credentials for a user, but we have no other methods to authenticate (Win-RM, etc). Essentialy, we inject the credentials found in memory to authenticate with these valid credentials.
+### Use this when we have found credentials for a user, but we have no other methods to authenticate (Win-RM, etc). Essentialy, we inject the credentials found in memory to authenticate with these valid credentials. Can be used to switch users on the current host only!
 
 ## Github repo: https://github.com/antonioCoco/RunasCs/releases/tag/v1.5
 
