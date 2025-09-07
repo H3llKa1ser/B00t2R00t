@@ -1,3 +1,9 @@
+# Windows Management Instrumentation (WMI)
+
+## Requirements: Valid credentials, local admin access, DCOM access
+
+## Use case: You need stealthy, AV-evading lateral movement and WinRM is not an option
+
 ## 1: Connect to WMI through Powershell
 
 #### 1) 
