@@ -1,8 +1,10 @@
 # Powershell Remoting
 
-## Permissions: Administrator
+## Permissions: Administrator OR user in Remote Management Users group
 
 ## Requirements: WinRM (port 5985/5986) open
+
+## Use case: You want modern, interactive access to a remote system (preferred for clean environments). Use it with valid credentials.
 
 ## Ways to use:
 
