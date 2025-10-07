@@ -28,6 +28,24 @@
     
     SELECT * FROM targetdb.dbo.targettable 
 
+### GIVE ACCESS TO A DATABASE WITH SYSADMIN PRIVILEGES
+
+#### 1) Upon login, check if the user is a sysadmin
+
+    SELECT IS_SRVROLEMEMBER('sysadmin');
+
+If 1, the user is sysadmin.
+
+#### 2) Give user full access to target DB
+
+    use DATABASE;
+    create user [DOMAIN\user] for login [DOMAIN\user];
+    exec sp_addrolemember 'db_owner', 'DOMAIN\user';
+
+#### 3) Dump tables from target DB
+
+    select name from sys.tables;
+
 ### LINKED DATABASES ABUSE
 
 #### 1) Check if our user has admin privileges to run commands with xp_cmdshell
