@@ -34,6 +34,12 @@
 
     select name,sysadmin from syslogins; 
 
+OR 
+
+    SELECT IS_SRVROLEMEMBER('sysadmin');
+
+If it returns 1, the user has admin privileges.
+
 #### 2) Check if there are any linked servers on the current database. Isremote determines if it is linked or remote. If it is 1, it means it is linked, else is remote.
 
     select srvname, isremote from sysservers; 
