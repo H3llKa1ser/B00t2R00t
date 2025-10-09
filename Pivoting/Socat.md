@@ -10,8 +10,6 @@
 
 ## Port Forwarding
 
-    ./socat tcp-l:33060,fork,reuseaddr tcp:172.1.6.0.10:3306 &
-
 #### Run this on target machine, then browse to TARGET_IP:1234 from Kali machine to access the application
 
     socat TCP-LISTEN:1234,fork,reuseaddr tcp:127.0.0.1:8080 & 
