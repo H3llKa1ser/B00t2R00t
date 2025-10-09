@@ -57,4 +57,9 @@ Set up your tool
     ignore pydns_server
     start
 
+Then, when the victim connects to our fake AP, he will receive a malicious IP from our DHCP server.
+
+When a victim connects to an HTTP website that does not have SSL/TLS encryption in transit and inserts data in user input textbox like "username, password, email" for example, Wifipumpkin captures traffic and the credentials entered by the victim in plain text.
+
+#### 4) Captive portal attack
 
