@@ -2,9 +2,9 @@
 
 # Usage:
 
-#### route add/del IP SUBNET [COMM/SID] (proxy)
+    route add/del IP SUBNET [COMM/SID] (proxy)
 
-#### portfwd add/del -l PORT -p PORT -r IP (port forwarding)
+    portfwd add/del -l PORT -p PORT -r IP (port forwarding)
 
 ## On a Meterpreter session, run:
 
