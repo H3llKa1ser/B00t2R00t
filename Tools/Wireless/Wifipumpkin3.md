@@ -42,4 +42,19 @@ Then,
 
     python3 setup.py install
 
-#### 3) 
+#### 3) Create a fake access point with the name of "Free wifi" to do Man-in-the-Middle attacks
+
+Run the tool
+
+    sudo wifipumpkin3
+
+Set up your tool
+
+    wifipumpkin3
+    set interface wlan0
+    set ssid Free Wifi
+    set proxy noproxy
+    ignore pydns_server
+    start
+
+
