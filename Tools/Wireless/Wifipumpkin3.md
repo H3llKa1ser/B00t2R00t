@@ -50,7 +50,6 @@ Run the tool
 
 Set up your tool
 
-    wifipumpkin3
     set interface wlan0
     set ssid Free Wifi
     set proxy noproxy
@@ -63,3 +62,22 @@ When a victim connects to an HTTP website that does not have SSL/TLS encryption 
 
 #### 4) Captive portal attack
 
+Similar to the first attack, but this time it uses a secure page where the victim must enter credentials (username and password) for the Wi-Fi. Can be used when we are doing an evil twin attack.
+
+Run your tool
+
+    sudo wifipumpkin3
+
+Set up your tool
+
+    set interface wlan0
+    set ssid Hotspot
+    set proxy captiveflask true
+    ignore pydns_server
+    start
+
+When the victim connects to our "Hotspot" wifi, he will be redirected to a login page to enter credentials before he can use the internet.
+
+Credentials have been captured by Wifipumpkin and displayed in a table form.
+
+#### 5) Custom Captiveflask
