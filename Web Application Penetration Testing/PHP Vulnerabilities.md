@@ -297,3 +297,105 @@ Explanation:
 
 ### 11) Time of Check Time of Use (TOCTOU)
 
+Time of Check Time of Use (TOCTOU) vulnerabilities occur when a program's behavior depends on the timing of events, such as file system operations, without proper synchronization. This can lead to security issues when an attacker manipulates the state of the system between the time of a check (e.g., file existence) and the time of use (e.g., file access). Common examples include race conditions in file operations, where a file's existence or permissions are checked, but the file's state changes before it is used, leading to unauthorized access or manipulation.
+
+#### PoC
+
+      <?php
+      // Vulnerable file access function
+      function read_secret_file($file_path) {
+      if (file_exists($file_path)) {
+      // Check file existence
+      $contents = file_get_contents($file_path);
+      // Read file contents
+      return $contents;
+      } else {
+      return "File not found";
+       }
+      }
+      // Attacker manipulates file path during time of use
+      $attacker_file = "secret_file.txt";
+      $secret_contents = read_secret_file($attacker_file);
+      echo $secret_contents;
+      ?>
+
+Explanation:
+
+- Define a vulnerable function read_secret_file that checks if a file exists using file_exists and reads its contents using file_get_contents .
+
+- Attacker manipulates the file path during time of use to point to a file they control.
+
+- Between the time of file existence check and file access, attacker replaces the file with their own content, leading to unauthorized access to sensitive data.
+
+### 12) Race Condition
+
+In modern PHP applications, race condition vulnerabilities can still occur, especially in scenarios where multiple requests are handled concurrently and access shared resources such as files or databases. These vulnerabilities can lead to unexpected behavior, data corruption, or security breaches if not properly handled. Let's explore a race condition vulnerability in a PHP application and demonstrate both non-compliant and compliant approaches, along with potential attacks.
+
+Consider a PHP application that allows users to upload files. The application saves uploaded files with a unique filename based on the current timestamp. However, due to a race condition, an attacker may be able to manipulate the filename after validation but before saving, potentially overwriting legitimate files or executing arbitrary code.
+
+      <?php
+      // Vulnerable PHP code allowing race condition
+      if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
+      $file = $_FILES['file'];
+      $targetDir = '/var/www/uploads/';
+      $targetFile = $targetDir . basename($file['name']);
+      // Check if file already exists
+      if (file_exists($targetFile)) {
+      die('File already exists.');
+      }
+      // Perform file validation
+      if ($file['size'] > 1000000) {
+      die('File is too large.');
+      }
+
+      // Move the file to the uploads directory
+      if (move_uploaded_file($file['tmp_name'], $targetFile)) {
+      echo 'File uploaded successfully.';
+      } else {
+      echo 'Error uploading file.';
+       }
+      }
+      ?>
+
+An attacker can exploit the race condition by performing the following steps:
+
+1. Send a POST request to upload a file.
+
+2. While the application performs validation, quickly send another POST request with a file having the same name as the previously uploaded file.
+
+3. Due to the race condition, the second request may overwrite the legitimate file, leading to a denial of service or potentially executing malicious code if the application includes the uploaded file.
+
+### 13) Laravel Framework vs laravel.log
+
+The vulnerability in the Laravel Framework versions '8* to 11*', identified by CVE-2024-29291, allows remote attackers to access sensitive information, specifically database credentials, through the laravel.log component. This type of vulnerability poses a high risk as it enables attackers to obtain critical information needed to access the database, potentially leading to unauthorized access, data manipulation, or exfiltration.
+
+The vulnerability arises due to the exposure of database credentials in the laravel.log file, which is typically used for logging purposes. Attackers can exploit this by accessing the log file, searching for specific patterns indicative of database connection strings, and retrieving the database credentials contained within them.
+
+#### PoC
+
+Sample log entry from laravel.log
+
+      #0 /home/u429384055/domains/jscvdocs.
+      online/public_html/vendor/laravel/framework/src/Illuminate/Data
+      base/Connectors/Connector.php(70): PDO-
+      >__construct('mysql:host=sql1...', 'u429384055_jscv',
+      'Jaly$$a0p0p0p0', Array)
+
+From the log entry:
+
+      - Username: u429384055_jscv
+      - Password: Jaly$$a0p0p0p0
+      - Host: sql1...
+
+Attack Scenario:
+
+1. Identify Target: Locate a website built with the vulnerable Laravel Framework versions (8.* to 11.*).
+
+2. Access Log File: Navigate to the storage/logs/laravel.log directory on the target server.
+
+3. Search for Database Connection Strings: Look for entries containing PDO->__construct('mysql:host=') , indicating database connection initialization.
+
+4. Extract Credentials: Retrieve the database credentials from the log entries, including the username, password, and host information.
+
+5. Database Access: Utilize the obtained credentials to gain unauthorized access to the target database.
+
