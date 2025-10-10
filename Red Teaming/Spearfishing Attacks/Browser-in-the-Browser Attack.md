@@ -40,4 +40,10 @@ This step makes all scripts executable. It then launches a virtual desktop insid
 
 which shows the victim's browsing history.
 
-#### 9) 
+#### 9) Retrieve cookies and keystrokes
+
+Location:
+
+    cat /novnc/Downloads/Keylogger.txt
+    cat /novnc/Downloads/Cookies.txt
+
