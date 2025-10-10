@@ -100,3 +100,54 @@ If it returns 1, the user has admin privileges.
 
     EXEC sp_execute_external_script @language = N'Python', @script = N'import os; os.system("COMMAND");'; 
 
+# MSSQL Tool: PowerUpSQL
+
+Link: https://github.com/NetSPI/PowerUpSQL
+
+Import Module
+
+    Import-Module .\PowerupSQL.psd1
+
+### Enumerating from the network without domain session
+
+#### 1) Get local MSSQL instance (if any)
+
+    Get-SQLInstanceLocal
+    Get-SQLInstanceLocal | Get-SQLServerInfo
+
+#### 2) If you don't have an AD account, you can try to find MSSQL scanning via UDP
+
+First, you will need a list of hosts to scan
+
+    Get-Content c:\temp\computers.txt | Get-SQLInstanceScanUDP –Verbose –Threads 10
+
+If you have some valid credentials and you have discovered valid MSSQL hosts you can try to login into them
+
+The discovered MSSQL servers must be on the file: C:\temp\instances.txt
+
+    Get-SQLInstanceFile -FilePath C:\temp\instances.txt | Get-SQLConnectionTest -Verbose -Username USERNAME -Password PASSWORD
+
+### Enumerating from inside the domain
+
+#### 1)  Get local MSSQL instance (if any)
+
+    Get-SQLInstanceLocal
+    Get-SQLInstanceLocal | Get-SQLServerInfo
+
+#### 2) #Get info about valid MSQL instances running in domain
+
+This looks for SPNs that starts with MSSQL (not always is a MSSQL running instance)
+
+    Get-SQLInstanceDomain | Get-SQLServerinfo -Verbose
+
+#### 3) Test connections with each one
+
+    Get-SQLInstanceDomain | Get-SQLConnectionTestThreaded -verbose
+
+#### 4) Try to connect and obtain info from each MSSQL server (also useful to check connectivity)
+
+    Get-SQLInstanceDomain | Get-SQLServerInfo -Verbose
+
+##### 5)  Get DBs, test connections, and get info in oneliner
+
+    Get-SQLInstanceDomain | Get-SQLConnectionTest | ? { $_.Status -eq "Accessible" } | Get-SQLServerInfo
