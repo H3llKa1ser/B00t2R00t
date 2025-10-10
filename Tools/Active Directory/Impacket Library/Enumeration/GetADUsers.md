@@ -4,4 +4,4 @@
 
 #### 1) 
 
-    GetADUsers.py -all DOMAIN/USER -dc-ip IP_ADDRESS
+    GetADUsers.py -all DOMAIN/USER -dc-ip IP_ADDRESS -all
