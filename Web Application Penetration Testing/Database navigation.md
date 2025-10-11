@@ -150,3 +150,15 @@
 
     select * from users;
 
+# OPENQUERY
+
+    1> select * from openquery("web\clients", 'select name from master.sys.databases');
+    2> go
+
+    1> select * from openquery("web\clients", 'select name from clients.sys.objects');
+    2> go
+
+#### Binary Extraction as Base64
+
+    1> select cast((select content from openquery([web\clients], 'select * from clients.sys.objects');
+    2> go > export.txt
