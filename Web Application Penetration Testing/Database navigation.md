@@ -7,6 +7,7 @@
 #### 1) 
 
     mongo
+    mongo "mongodb://localhost:27017"
 
 #### 2) 
 
@@ -23,6 +24,19 @@
 #### 5) 
 
     db.TABLE.find() (Dump everything from table)
+
+#### More commands
+
+    > use <DATABASE>;
+    > show tables;
+    > show collections;
+    > db.system.keys.find();
+    > db.users.find();
+    > db.getUsers();
+    > db.getUsers({showCredentials: true});
+    > db.accounts.find();
+    > db.accounts.find().pretty();
+    > use admin;
 
 # MYSQL SHELL NAVIGATION
 
