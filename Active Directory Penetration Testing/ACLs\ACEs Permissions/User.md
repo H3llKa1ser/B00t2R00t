@@ -12,7 +12,7 @@
     
 #### 3) Impacket
 
-    impacket-changepasswd ignite.local/USER1@DC_IP -newpass Password@1234 -altuser ignite.local/TARGET_USER -altpass Password@1 -reset
+    impacket-changepasswd domain.local/USER1@DC_IP -newpass Password@1234 -altuser domain.local/TARGET_USER -altpass Password@1 -reset
 
 Impacket’s changepassword can also be used to change current user password, if current password is known.
 
