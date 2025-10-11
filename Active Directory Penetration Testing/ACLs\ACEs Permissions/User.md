@@ -16,7 +16,7 @@
 
 Impacket’s changepassword can also be used to change current user password, if current password is known.
 
-    impacket-changepasswd domain.local/USER1@DC_IP -newpass ‘Password@987’ -p rpc-samr
+    impacket-changepasswd domain.local/TARGET_USER@DC_IP -newpass ‘Password@987’ -p rpc-samr
 
 ### GenericAll / GenericWrite
 
