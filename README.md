@@ -17,6 +17,8 @@ https://www.ired.team/
 
 https://ppn.snovvcrash.rocks/
 
+https://gitee.com/scriptkiddies/hacktricks/tree/master/misc
+
 And many more!!!
 
 # DISCLAIMER!
