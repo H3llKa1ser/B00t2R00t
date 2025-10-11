@@ -2,7 +2,11 @@
 
 Port: 11211 UDP
 
-Tool: memcached-cli https://github.com/pd4d10/memcached-cli
+Tools: memcached-cli https://github.com/pd4d10/memcached-cli
+
+Links:
+
+https://www.hackingarticles.in/penetration-testing-on-memcached-server/
 
 ### Steps
 
@@ -10,9 +14,11 @@ Tool: memcached-cli https://github.com/pd4d10/memcached-cli
 
     sudo nmap RHOST -p 11211 -sU -sS --script memcached-info
 
-#### 2) Install memcached-cli
+#### 2) Install tools
 
     npm install -g memcached-cli
+
+    sudo apt install libmemcached-tools
 
 #### 3) Authenticate
 
@@ -33,3 +39,16 @@ Tool: memcached-cli https://github.com/pd4d10/memcached-cli
     get account
     get username
     get password
+
+### Alternate way to dump info from server
+
+    memcdump --servers=RHOST
+
+#### View secrets
+
+    memccat --servers=RHOST fifth fourth third second first
+
+#### Upload a file to the memcached server
+
+    memccp --servers=RHOST file
+
