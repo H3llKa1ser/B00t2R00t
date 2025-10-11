@@ -91,7 +91,7 @@ Change the password of a user
     $NewPassword = ConvertTo-SecureString 'Password1234' -AsPlainText -Force
     Set-DomainUserPassword -Identity 'TARGET_USER' -AccountPassword $NewPassword
 
-### WriteOwner
+### WriteOwner  /WriteDacl
 
 #### 1) impacket-owneredit
 
