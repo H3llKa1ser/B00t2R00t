@@ -2,7 +2,7 @@
 
 #### 1) Run nmap 
 
-Brute-force attacl
+Brute-force attack
 
     nmap -sV --script mongodb-brute -n -p 27017 <IP>
 
