@@ -18,7 +18,7 @@
 
     bloodyAD --host "DC_IP" -d "domain.local" -u "USER" -p "Password@1" add groupMember "GROUP" "USER"
 
-#### 5) Powervew==iew
+#### 5) Powerview
 
     powershell -ep bypass
     
