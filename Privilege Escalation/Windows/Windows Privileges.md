@@ -202,3 +202,33 @@ List registry hives
 Dump hashes from the registry
 
     volatility -f C:\hiberfil.sys hashdump
+
+# SeLoadDriver
+
+This privilege allows users to load and unload device drivers.
+
+## Steps
+
+#### 1) Load a vulnerable driver
+
+    sc.exe create szkg64.sys binPath=C:\windows\temp\szkg64.sys type=kernel  start= demand
+
+#### 2) Start the vulnerable driver
+
+    sc.exe start szkg64.sys
+
+# SeRelabel
+
+This privilege allows users to modify the integrity labels of system files.
+
+#### 1) Change the integrity label of a file
+
+    icacls.exe "C:\Path\To\SystemFile" /setintegritylevel High
+
+# SeTrustedCredManAccess
+
+Access stored credentials in Credential Manager to obtain sensitive information
+
+#### Access Credential Manager in Powershell
+
+    Get-StoredCredential -Target "SomeCredential"
