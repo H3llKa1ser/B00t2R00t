@@ -123,3 +123,24 @@
 
     winrs -r:IP/FQDN -u:workstation\administrator -p:Password@987 CMD
 
+# Get a remote shell using Docker
+
+    docker run -it quickbreach/powershell-ntlm
+
+Then, in the session, run
+
+    $creds = Get-Credential (Enter credentials)
+
+Connect to a remote session
+
+    Enter-PSSession -ComputerName IP/FQDN -Authentication Negotiate -Credential $creds
+
+# Get a remote shell using Ruby Script
+
+Link: https://raw.githubusercontent.com/Alamot/codesnippets/master/winrm/winrm_shell_with_upload.rb
+
+Modify the script by giving a valid username, password and endpoint.
+
+Once modified, run it with ruby
+
+    ruby winrm_shell_with_upload.rb
