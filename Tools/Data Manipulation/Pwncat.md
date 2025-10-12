@@ -2,9 +2,13 @@
 
 ## Installation
 
-#### 1) 
+#### 1) Pip
 
     pip install pwncat
+
+#### 2) Apt
+
+    sudo apt install pwncat
 
 ## Usage:
 
