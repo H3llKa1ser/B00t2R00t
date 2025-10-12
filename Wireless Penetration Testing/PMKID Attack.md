@@ -51,3 +51,26 @@ Tools: hcxtools, aircrack-ng suite
     sudo aircrack-ng demo.pcap -w /usr/share/wordlists/rockyou.txt
     11
 
+## PMKID Attack using Airgeddon
+
+#### 1) Run Airgeddon
+
+    sudo airgeddon
+
+#### 2) Choose option 5
+
+    5
+
+#### 3) Again, choose option 5
+
+    5
+
+#### 4) Select your target according to the number it is located
+
+#### 5) Timeout in seconds (10-100)
+
+#### 6) Store file as a .cap file
+
+#### 7) Crack with the intrgrated aircrack-ng
+
+    1
