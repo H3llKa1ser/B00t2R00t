@@ -147,3 +147,7 @@ Run the script to get system
 #### 5) VOILA!
 
 ## TIP: If the SeDebug Privilege is disabled, we can enable it with psgetsystem powershell script (Link attached at the top of this attack's explanation)
+
+### Alternate Method for SeImpersonate and SeDebug: 
+
+https://github.com/0xCyberY/Exploit-SeImpersonatePrivilege-and-SeDebugPrivilege
