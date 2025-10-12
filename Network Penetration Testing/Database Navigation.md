@@ -37,6 +37,12 @@
     > db.accounts.find();
     > db.accounts.find().pretty();
     > use admin;
+    > show dbs # List databases
+    > use <db> # Switch to the desired database
+    > show collections # List collections in the selected database
+    > db.<collection>.find() # Dump the contents of a collection
+    > db.<collection>.count() # Get the number of records in the collection
+    > db.current.find({"username":"admin"}) # Search for a specific user
 
 # MYSQL SHELL NAVIGATION
 
