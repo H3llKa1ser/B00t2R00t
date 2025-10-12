@@ -29,3 +29,18 @@ if we want to add 1 in all password then |
     hashid (if id is available "$2y$10$)
 
     ssh2john id_rsa > ssh.hash | hashcat -h | grep -i "ssh" (port22)
+
+## Zip Cracking
+
+    fcrackzip -u -D -p '/usr/share/wordlists/rockyou.txt' chall.zip
+
+    zip2john file.zip > zip.john
+    john zip.john
+
+## NTLM Crack
+
+    token::elevate (check user permission) | lsadump::sam (dump all user ntlm)
+
+Then
+
+    hashcat -m 1000 nelly.hash /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule --force
