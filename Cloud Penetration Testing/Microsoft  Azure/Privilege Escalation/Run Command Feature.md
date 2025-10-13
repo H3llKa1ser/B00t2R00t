@@ -32,6 +32,13 @@
 
     $VMs | Invoke-AzVMRunCommand -CommandId 'RunPowerShellScript' -ScriptPath .\whoami.ps1 (Run your powershell script on all VMs in the subscription)
 
+Access the VM
+
+    $password = ConvertTo-SecureString '<PASSWORD>' -AsPlainText -Force
+    $creds = New-Object System.Management.Automation.PSCredential('<USER>', $Password)
+    $sess = New-PSSession -ComputerName <VM IP ADDRESS> -Credential $creds -SessionOption (New-PSSessionOption -ProxyAccessType NoProxyServer)
+    Enter-PSSession $sess
+
 # 3) Azure REST APIs
 
     curl -H Metadata:true -s 'http://169.254.169.254/metadata/identity/oauth2/token?apiversion=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' | jq (Obtain an access token that can be used to access the Azure management API endpoint)
