@@ -116,3 +116,28 @@ The captive web portal will ask to submit the Wi-Fi password key to get internet
 If the client gives the Wi-Fi key, the password will be captured in plaintext in the control window.
 
 Additionally, save the password in the file you gave during the proposal.
+
+### PMKID Attack
+
+Select options
+
+    5
+
+Choose one of the target networks
+
+Then,
+
+    25
+
+PMKID is captured if all goes well.
+
+Then, store the PMKID as a cap file
+
+    /home/user/pmkid.cap
+
+Crack the cap file using options
+
+    1
+    Y
+
+
