@@ -45,6 +45,12 @@
     Import-Module -Name ActiveDirectory
     Add-ADGroupMember -Identity 'GROUP' -Members 'USER1'
 
+#### 8) Addusertogroup python script
+
+Link: https://github.com/juliourena/ActiveDirectoryScripts/blob/main/Python/addusertogroup.py
+
+    python3 addusertogroup.py -d domain.local -g "GROUP" -a USER1 -u USER1 -p PASSWORD@1
+
 ### WriteOwner on Group
 
 WriteDACL + WriteOwner. Give yourself Generic All with: owneredit.py and dacledit.py
