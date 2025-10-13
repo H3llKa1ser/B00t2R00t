@@ -1,4 +1,4 @@
-# HASHCAT
+# Hashcat
 
 ### Usage:
 
