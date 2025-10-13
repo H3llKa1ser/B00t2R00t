@@ -13,3 +13,5 @@
     ldeep ldap -u USER -p 'PASSWORD' -d DOMAIN -s ldap://DC_IP users
 
     python3 ad-ldap-enum.py -d DOMAIN.LOCAL -l TARGET_IP -u USER -p PASS (Use LDAP for authentication to enumerate)
+
+    Get-ADUser -Filter * | Ft Name, UserPrincipalName, Enabled
