@@ -79,4 +79,40 @@ Options
 
 An evil twin is a forgery of a Wi-Fi access point (Bogus AP) that masquerades as genuine but is purposefully set up to listen in on wireless traffic. By creating a fake website and enticing people to it, this type of attack can be used to obtain credentials from the legitimate clients.
 
+Select options
 
+    7
+    9
+
+Scans WPA/WPA2 access points, then select your target AP.
+
+Select options
+
+    2
+    y
+    N
+    20
+
+Capture the WPA handshake
+
+    /home/user/handshake.cap
+
+Save captured credentials by the captive portal
+
+    /home/user/creds.txt
+
+Set up the captive portal
+
+Choose language
+
+    1 (English)
+
+#### Note: Do not close the windows; they will dissipate a􀅌er the password has been captured.
+
+All clients connecting to the original AP will be disconnected, and when they attempt to reconnect, they will discover two APs with the same name. When the client connects to the bogus AP, it is lured to the cap􀆟ve portal.
+
+The captive web portal will ask to submit the Wi-Fi password key to get internet access.
+
+If the client gives the Wi-Fi key, the password will be captured in plaintext in the control window.
+
+Additionally, save the password in the file you gave during the proposal.
