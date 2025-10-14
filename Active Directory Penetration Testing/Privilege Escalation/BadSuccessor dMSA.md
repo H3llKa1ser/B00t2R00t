@@ -10,7 +10,7 @@ https://github.com/logangoins/SharpSuccessor
 
 ## Prerequisites:
 
-• Windows Server 2019 as Ac􀆟ve Directory that supports PKINIT
+• Windows Server 2019 as Active Directory that supports PKINIT
 • Domain must have Ac􀆟ve Directory Certificate Services and Certificate Authority configured.
 • Kali Linux packed with tools
 • Tools: Rubeus, sharpsuccessor, badsuccessor module
