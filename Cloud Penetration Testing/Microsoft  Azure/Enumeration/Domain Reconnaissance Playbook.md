@@ -47,11 +47,21 @@
 
 ### Azure services are also available at well-known domains and subdomains. We can enumerate if the target organization is using any of the services by looking for such subdomains.
 
-## Azure Subdomain Enumeration Tool: https://github.com/yuyudhn/AzSubEnum
+## Azure Subdomain Enumeration Tool: 
+
+https://github.com/yuyudhn/AzSubEnum
+https://github.com/darkoperator/dnsrecon
+
 
 ### Command:
 
+#### AzSubEnum
+
     python3 azsubenum.py -b TARGET --thread 10
+
+#### Dnsrecon
+
+    python3 dnsrecon.py -d company.com -D subdomains-top1mil.txt -t brt
 
 ### 5) After we enumerate domains and subdomains, we try to gather a list of possible usernames within the organization.  It's also important to understand email formats.
 
