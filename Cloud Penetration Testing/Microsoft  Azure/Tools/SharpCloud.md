@@ -4,6 +4,8 @@ https://github.com/chrismaddalena/SharpCloud
 
 ## Works an all Cloud Providers
 
+Searches all user profiles for credentials related to a Cloud Provider (Azure for example)
+
 ### 1) Enumerate Azure
 
     SharpCloud.exe azure
