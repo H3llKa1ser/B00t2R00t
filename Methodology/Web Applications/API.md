@@ -77,7 +77,7 @@ After enumerating and discovering APIs, the goal is to exploit them with the vul
 
 ### 1) IDOR
 
-400 bad request sometimes it tells you to add parametera manually.
+400 bad request sometimes it tells you to add parameters manually.
 
 Check in headers or cookies for user id or something similar.
 
@@ -85,7 +85,7 @@ If you have a purchase you can refund. Also check there.
 
 ### 2) Broken Access Control (BAC)
 
-Try to access all subdomains with the cookie with the cookie or AUTH header that you have. You may get 200.
+Try to access all subdomains with the cookie or AUTH header that you have. You may get 200.
 
 Replay all AUTHENTICATED requests (200) WITHOUT Cookie or AUTH header. You may get 200.
 
@@ -101,3 +101,36 @@ Try Authentication bypass on login pages, with SQLi, Response Manipulation, etc.
 
 ### 4) Cross-Site Request Forgery (CSRF)
 
+CSRFs may pop up in Action Requests (POST, PUT, PATCH, DELETE) or a GET request accepted modified values as params 
+
+    /api/v1/user?change_email=1@t.com&csrf=1234
+
+If you see a cookie with Unchecked "HTTP Only" or "Secure", submit (Cookie Editor Extension).
+
+If content-type likely to be url-encoded, try to change GET to POST and vice versa.
+
+#### NOTE: If there are headers like: 
+
+- Origin, Referrer, etc
+
+- X-csrf:adcde
+
+- ReCAPTCHA (Google)
+
+#### CSRF is not exploitable!
+
+### 5) Cross-Site Scripting XSS (Reflected-Stored-DOM)
+
+Look for common injection points:
+
+- Event Handlers (onerrpr, onmouseover, etc)
+
+- Hyper links (href)
+
+#### NOTE: DO NOT FORGET to check on IFRAME injections!
+
+### 6) External XML Entity Injection (XXE)
+
+Test if you find an XML content-type header.
+
+Load the content-type list to investigate what a request would take as a content-type by investigating the response.
