@@ -34,7 +34,7 @@ Tools:
 
 - sj tool (Test provided API schema)
 
-## Content Discovery
+### 3) Content Discovery
 
 Goal: Gather as many endpoints as possible and parameters for api.domain.com
 
@@ -56,5 +56,48 @@ Kiterunner
 
     kiterunner brute api.target.com -w /path/to/wordlist.txt -x 1 -j 5 -o /path/to/output --progress
 
+Extract all possible endpoints from postman via porche-pirate
 
+More tools: Gau, waymore, waybackurls
+
+Get API routes from EVERY exposed GUI function.
+
+Look for API docs and extract URLs, in case you did not hit a swagger API-docs through fuzzing.
+
+Look for URLs in Search Engines via dorking.
+
+### 4) Parameter Fuzzing
+
+Double check on .js files to extract more params (manually).
+
+
+## Exploitation
+
+After enumerating and discovering APIs, the goal is to exploit them with the vulnerabilities below:
+
+### 1) IDOR
+
+400 bad request sometimes it tells you to add parametera manually.
+
+Check in headers or cookies for user id or something similar.
+
+If you have a purchase you can refund. Also check there.
+
+### 2) Broken Access Control (BAC)
+
+Try to access all subdomains with the cookie with the cookie or AUTH header that you have. You may get 200.
+
+Replay all AUTHENTICATED requests (200) WITHOUT Cookie or AUTH header. You may get 200.
+
+Try to access all API endpoints with Auth header from another API or subdomain.
+
+On high risk endpoints which return PII or sensitive info, try parameter fuzzing to see if IDs are accepted via parameters.
+
+### 3) Authentication Bypass
+
+Double check on cookies, headers (same as BAC)
+
+Try Authentication bypass on login pages, with SQLi, Response Manipulation, etc.
+
+### 4) Cross-Site Request Forgery (CSRF)
 
