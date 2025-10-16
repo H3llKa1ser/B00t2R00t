@@ -18,6 +18,10 @@ There is some mod if ls dir not work then apply use passive (to go in active mod
 
     send/put (# Send single file or upload shell command)
 
+Download directly with wget (anonymous access in this example)
+
+    wget -m ftp://Ip/sharename
+
 #### ) After download files always use 
 
     exiftool –u -a <filename> (Meta description for users)
