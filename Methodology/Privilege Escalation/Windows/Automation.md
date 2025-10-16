@@ -1,5 +1,12 @@
 # Automation
 
+## PrivEscCheck
+
+    powershell -ep bypass -c “. .\PrivescCheck.ps1; Invoke-PrivescCheck -Format TXT,HTML”
+
+    powershell -ep bypass -c “. .\PrivescCheck.ps1; Invoke-PrivescCheck -Extended -Report PrivescCheck_$($env:COMPUTERNAME) -Format TXT,HTML”
+
+
 ## PowerUp
 
 
