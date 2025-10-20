@@ -20,7 +20,7 @@ Link: https://github.com/brightio/penelope
 
 #### 1) Run linpeas
 
-    > run peass-ng
+    > run peass_ng
 
 #### 2) Check for tasks running on the machine
 
