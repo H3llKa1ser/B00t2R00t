@@ -76,3 +76,43 @@ Even when VRFY and EXPN are disabled, variations in the SMTP server’s response
 
 Analyzing email headers can sometimes reveal internal information about the mail server, including valid email addresses or internal forwarding addresses.
 
+## SMTP Relay Attacks
+
+An SMTP relay attack occurs when an attacker takes advantage of an improperly configured SMTP server that allows unauthorized third parties to send emails through it (known as an open relay). These attacks often result in the server being used to send spam or malicious emails.
+
+### Attack process
+
+1. The attacker identifies an SMTP server with open relay functionality.
+
+2. They craft an email with a spoofed sender address and send it via the open relay server.
+
+3. The SMTP server forwards the email to the recipient as though it came from the spoofed address, potentially bypassing spam filters.
+
+### Tools to detect it:
+
+Nmap 
+
+    nmap -p 25 --script smtp-open-relay IP
+
+Open Relay Test Tools
+
+Several online tools are available to test whether an SMTP server is configured as an open relay.
+
+## Brute force attack
+
+Hydra
+
+    hydra -l user -P /path/to/passwords.txt smtp://IP -V
+
+Medusa
+
+    medusa -h IP -u user -P /path/to/passwords.txt -M smtp
+
+Metasploit
+
+    use auxiliary/scanner/smtp/smtp_login 
+    set RHOSTS IP 
+    set USER_FILE /path/to/usernames.txt 
+    set PASS_FILE /path/to/passwords.txt 
+    run
+
