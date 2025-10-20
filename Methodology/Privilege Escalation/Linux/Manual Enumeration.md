@@ -21,6 +21,10 @@ history | cat .bashrc
 
 GoldMine Password/plaintext
 
+Files that might contain passwords:
+
+    wp-config.php
+
 Backup files
 
 Kernel Search with Google
