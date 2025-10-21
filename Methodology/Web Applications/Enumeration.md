@@ -27,3 +27,22 @@ For example
 
     searchsploit search "WordPress 5.5" 
 
+### 5) Directory enumeration
+
+Wordlists
+
+    /usr/share/seclists/Discovery/Web-Content/common.txt
+    /usr/share/wordlists/dirb/common.txt
+    /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+
+Tools:
+
+Ffuf
+
+    ffuf -c -w /usr/share/seclists/Discovery/Web-Content/common.txt -u http://domain.local/FUZZ -fc 404,403
+
+Feroxbuster
+
+    feroxbuster --url http://domain.local -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt  -C 404,403
+
+Then, based on the word count, size count, etc, filter for false positives.
