@@ -46,3 +46,15 @@ Feroxbuster
     feroxbuster --url http://domain.local -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt  -C 404,403
 
 Then, based on the word count, size count, etc, filter for false positives.
+
+### 6) Endpoint fuzzing 
+
+Fuzz potentially vulnerable endpoints to discover vulnerabilities like LFI, SSRF, etc.
+
+    ffuf -w /usr/share/wordlists/directory-list-lowercase-2.3-medium.txt -t 100 -u http://domain.local/secret/FUZZ.php
+
+### 7) Parameter fuzzing
+
+LFI
+
+    ffuf -w /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt -t 100 -u http://$domain.local/secret/evil.php?FUZZ=/etc/passwd -fs 0
