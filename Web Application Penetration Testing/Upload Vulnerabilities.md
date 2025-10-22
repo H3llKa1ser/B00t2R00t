@@ -61,6 +61,12 @@ For example:
     shell.pHp
     shell.phP
 
+But before getting your shell, we might need to upload an .htaccess file with the content:
+
+    AddType application/x-httpd-php PHP
+
+Sve the file, then upload it to the server. After that, try to reupload your file.
+
 Upload the file to get your shell if bypassed successfully.
 
 ## Web Shells
