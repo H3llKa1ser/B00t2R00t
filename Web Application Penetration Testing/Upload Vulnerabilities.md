@@ -8,6 +8,61 @@
 
 ### Simply put, rename your payload to the same name of the file you want to overwrite then upload.
 
+## Content-Type Bypass
+
+Upon launching your file, open BurpSuite and change the Content-Type header to something the server accepts.
+
+For example, when uploading a .php shell and the server accepts .png files, you can change the header from:
+
+    application/x-php
+    
+to
+
+    image/png
+
+Then simply forward the request for the file to be uploaded.
+
+
+## Double Extension
+
+If the server accepts for example only .png files, but does not validate the content properly, simply add a second valid extension in front of your reverse shell file.
+
+For example, from
+
+    shell.php
+
+to
+
+    shell.php.png
+
+Upload the file to get your shell.
+
+## Image size validation bypass
+
+If the file you want to upload exceeds the file size e.g. 1kb, it won't be accepted by the server.
+
+Hence, we can use a way smaller file like the simple-backdoor.php
+
+    cp /usr/share/webshells/php/simple-backdoor.php /root/Desktop/
+
+After uploading, access you shell to example URL where file uploads migth be located:
+
+    http://domain.local/uploads/simple-backdoor.php?cmd=id
+
+## Blacklisted Extenstion file upload
+
+Some applications might blacklist extensions like .php for example.
+
+To bypass this you can just rename the extension by manipulating the cases.
+
+For example:
+
+    shell.PHP
+    shell.pHp
+    shell.phP
+
+Upload the file to get your shell if bypassed successfully.
+
 ## Web Shells
 
 | **Web Shell**   | **Description**   |
