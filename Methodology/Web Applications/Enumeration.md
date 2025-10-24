@@ -34,6 +34,7 @@ Wordlists
     /usr/share/seclists/Discovery/Web-Content/common.txt
     /usr/share/wordlists/dirb/common.txt
     /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+    /usr/share/seclists/Discovery/Web-Content/raft-large-files.txt
 
 Tools:
 
