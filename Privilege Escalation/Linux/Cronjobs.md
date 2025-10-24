@@ -4,6 +4,7 @@
 
 ### 
 
+    crontab -l
     cat /etc/crontab
 
 #### If we have write permissions on the script, we can modify it to enter a reverse shell in it that will automatically run as root.
