@@ -57,4 +57,8 @@ Fuzz potentially vulnerable endpoints to discover vulnerabilities like LFI, SSRF
 
 LFI
 
-    ffuf -w /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt -t 100 -u http://$domain.local/secret/evil.php?FUZZ=/etc/passwd -fs 0
+    ffuf -w /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt -t 100 -u http://domain.local/secret/evil.php?FUZZ=/etc/passwd -fs 0
+
+### 8) Vulnerability Scan (if all else fails and want to look for a vulnerability like Shellshock for example)
+
+    nikto -h domain.local
