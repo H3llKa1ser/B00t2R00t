@@ -17,4 +17,7 @@ Windows
 WordPress installation
 
     wp-config.php
+
+phpmyadmin installation
+
     /etc/phpmyadmin/config-db.php
