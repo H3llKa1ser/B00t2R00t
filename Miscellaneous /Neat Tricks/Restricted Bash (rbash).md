@@ -1,4 +1,4 @@
-# Breaking out of restricted Bash CLI in SSH
+# Breaking out of restricted Bash (rbash) CLI in SSH
 
 ## requirements: can run export
 
@@ -13,3 +13,8 @@
 ### 3) 
 
     ssh USER@IP 'bash --no-profile'
+
+### 4)
+
+GTFOBins: https://gtfobins.github.io/
+
