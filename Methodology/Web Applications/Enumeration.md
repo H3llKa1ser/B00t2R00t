@@ -63,3 +63,7 @@ LFI
 ### 8) Vulnerability Scan (if all else fails and want to look for a vulnerability like Shellshock for example)
 
     nikto -h domain.local
+
+### 9) After user enumeration via any means and want to brute-force, instead of using your usual wordlist, you can create custom wordlists if you find parts of the website that contain a lot of words that could be used in a wordlist
+
+    cewl -w wordlist.txt http://domain.local
