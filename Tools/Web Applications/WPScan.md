@@ -1,17 +1,33 @@
-# WPSCAN WORDPRESS SCANNER
+# Wpscan Wordpress Scanner
 
-### --update = Updates wpscan database
+## Usage
 
-### --enumerate -t = Theme enumeration
+### 1) Updates wpscan database
 
-### --url = http://example.com
+    wpscan --update 
 
-### --enumerate -p = Plugin enumeration
+### 2) All plugins enumeration
 
-### --enumerate -u = User enumeration
+    wpscan --url http://domain.local/wordpress --plugins-detection aggressive
 
-### --enumerate -vp = Vulnerable plugins enumeration
+### 3) Theme enumeration
 
-### --passwords LIST --usernames USER = Password Attack
+    wpscan --url http://domain.local/wordpress --enumerate -t
+    
+### 4) Plugin enumeration
 
-### --plugins-detection passive/aggressive = WAF Test
+    wpscan --url http://domain.local/wordpress --enumerate ap
+
+### 5) User enumeration
+
+    wpscan --url http://domain.local/wordpress --enumerate u
+
+### 6) Password Attack
+
+    wp scan --url http://domain.local/wordpress --passwords LIST --usernames USER
+
+### 7) Vulnerable plugins enumeration
+
+    wpscan --url http://domain.local/wordpress --enumerate -vp 
+
+
