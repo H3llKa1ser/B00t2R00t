@@ -14,6 +14,10 @@
 
 #### 4) Go to the site and trigger the 404 error to run the modified php file to get a shell
 
+    http://domain.local/wp-content/themes/twentyfifteen/404.php
+
+Theme can be different
+
 ### Alternate usage: use exploit/unix/webapp/wp_admin_shell_upload
 
 ## MALICIOUS PLUGIN INSTALLATION ON WORDPRESS
