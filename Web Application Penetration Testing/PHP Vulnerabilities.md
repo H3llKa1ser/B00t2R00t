@@ -295,6 +295,16 @@ Explanation:
 
 - Due to type juggling vulnerability, the comparison evaluates to true, allowing the attacker to bypass authentication.
 
+You can also capture the request in BurpSuite and make the change from
+
+      username=admin&password=password
+
+to
+
+      username=admin&password[]=password
+
+to successfully bypass strcmp() function.
+
 ### 11) Time of Check Time of Use (TOCTOU)
 
 Time of Check Time of Use (TOCTOU) vulnerabilities occur when a program's behavior depends on the timing of events, such as file system operations, without proper synchronization. This can lead to security issues when an attacker manipulates the state of the system between the time of a check (e.g., file existence) and the time of use (e.g., file access). Common examples include race conditions in file operations, where a file's existence or permissions are checked, but the file's state changes before it is used, leading to unauthorized access or manipulation.
