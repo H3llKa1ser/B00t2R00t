@@ -305,6 +305,8 @@ to
 
 to successfully bypass strcmp() function.
 
+Link: https://rst.hashnode.dev/bypassing-php-strcmp
+
 ### 11) Time of Check Time of Use (TOCTOU)
 
 Time of Check Time of Use (TOCTOU) vulnerabilities occur when a program's behavior depends on the timing of events, such as file system operations, without proper synchronization. This can lead to security issues when an attacker manipulates the state of the system between the time of a check (e.g., file existence) and the time of use (e.g., file access). Common examples include race conditions in file operations, where a file's existence or permissions are checked, but the file's state changes before it is used, leading to unauthorized access or manipulation.
