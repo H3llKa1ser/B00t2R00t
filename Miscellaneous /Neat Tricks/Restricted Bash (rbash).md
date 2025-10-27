@@ -12,7 +12,7 @@
 
 ### 3) 
 
-    ssh USER@IP 'bash --no-profile'
+    ssh USER@IP 'bash --noprofile'
 
 ### 4)
 
