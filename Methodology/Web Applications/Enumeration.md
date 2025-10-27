@@ -64,7 +64,7 @@ Authenticated fuzzing
 
     ffuf -c -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt  -t 100 -u http://domain.local/admin/dashboard.php?page=FUZZ -b "cookie=serdesfsefhijosefjtfgyuhjiosefdfthgyjh" -fs 293
 
-## WHEN IN DOUBT, OPEN UP BURPSUITE
+## WHEN IN DOUBT, OPEN UP BURPSUITE. YOU CAN ALSO BRUTE-FORCE PARAMETERS WITH INTRUDER.
 
 ### 8) Vulnerability Scan (if all else fails and want to look for a vulnerability like Shellshock for example)
 
