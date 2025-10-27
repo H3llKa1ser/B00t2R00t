@@ -21,3 +21,7 @@ WordPress installation
 phpmyadmin installation
 
     /etc/phpmyadmin/config-db.php
+
+MySQL history file
+
+    /home/user/.mysql_history
