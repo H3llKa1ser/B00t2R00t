@@ -60,6 +60,10 @@ LFI
 
     ffuf -w /usr/share/dirbuster/directory-list--2.3-medium.txt -t 100 -u http://domain.local/secret/evil.php?FUZZ=/etc/passwd -fs 0
 
+Authenticated fuzzing
+
+    ffuf -c -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt  -t 100 -u http://domain.local/admin/dashboard.php?page=FUZZ -b "cookie=serdesfsefhijosefjtfgyuhjiosefdfthgyjh" -fs 293
+
 ### 8) Vulnerability Scan (if all else fails and want to look for a vulnerability like Shellshock for example)
 
     nikto -h domain.local
