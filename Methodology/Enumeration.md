@@ -72,7 +72,19 @@ Sometimes, when we uncover credentials, they may be reused on other applications
 
 Use credentials for admin pages, SSH, FTP, SMB, MySQL
 
-### 7) Brute-force/Password Spray 
+### 7) Default credentials
+
+When we find services and admin portals, we can always try default credentials just in case
+
+        root:root
+        admin:admin 
+        admin:password
+        root:toor
+        admin:password123456
+        admin:password123
+        etc.
+
+### 8) Brute-force/Password Spray 
 
 ONLY USE THIS AS A LAST RESORT OR IF YOU FOUND ANY HINTS THAT THE PASSWORD FOR A SPECIFIC USER IS WEAK AND NEEDS TO BE CHANGED
 
