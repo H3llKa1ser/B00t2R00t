@@ -70,6 +70,10 @@
 
     \! /bin/bash
 
+#### 7) Update a user's password in the database (requires root access or database ownership privileges)
+
+    update TABLE SET password='HASH_HERE' WHERE username='admin';
+
 ## For root authentication there is a small detail:
 
 #### 
