@@ -52,13 +52,13 @@ Then, based on the word count, size count, etc, filter for false positives.
 
 Fuzz potentially vulnerable endpoints to discover vulnerabilities like LFI, SSRF, etc.
 
-    ffuf -w /usr/share/wordlists/directory-list-lowercase-2.3-medium.txt -t 100 -u http://domain.local/secret/FUZZ.php
+    ffuf -w /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt -t 100 -u http://domain.local/secret/FUZZ.php
 
 ### 7) Parameter fuzzing
 
 LFI
 
-    ffuf -w /usr/share/dirbuster/directory-list--2.3-medium.txt -t 100 -u http://domain.local/secret/evil.php?FUZZ=/etc/passwd -fs 0
+    ffuf -w /usr/share/seclists/Fuzzing/LFI/LFI-Jhaddix.txt -t 100 -u http://domain.local/secret/evil.php?FUZZ=/etc/passwd -fs 0
 
 Authenticated fuzzing
 
