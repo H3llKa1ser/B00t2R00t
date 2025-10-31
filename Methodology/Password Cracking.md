@@ -10,6 +10,10 @@ Try same user, reverse user and null as password against a login for a quick che
 
     hydra -l USER -e nsr IP ssh -V
 
+You can use a username wordlist as well
+
+    hydra -L USERLIST -e nsr IP ssh -V
+
 Burpsuite Intruder if we want to
 
     john hash --wordlist=/usr/share/wordlists/rockyou.txt --format=md5crypt
