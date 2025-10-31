@@ -8,7 +8,7 @@
 
 Test a login with same user as password, null password and reverse username as password
 
-    hydra –l USER –e nsr ftp://IP
+    hydra –l USER –e nsr IP ftp
 
 #### protocol = ftp, ssh, http-post-form (Requires login error to work), http-get, etc.
 
