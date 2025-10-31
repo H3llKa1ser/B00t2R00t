@@ -1,8 +1,16 @@
 # Password Cracking
 
-admin:admin admin:password root:root root:toor
+## Default Credentials
 
-Burpsuite if we want to
+    admin:admin admin:password root:root root:toor
+
+## Password Attacks
+
+Try same user, reverse user and null as password against a login for a quick check
+
+    hydra -l USER -e nsr IP ssh -V
+
+Burpsuite Intruder if we want to
 
     john hash --wordlist=/usr/share/wordlists/rockyou.txt --format=md5crypt
 
