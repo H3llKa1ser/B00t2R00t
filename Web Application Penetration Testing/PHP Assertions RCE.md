@@ -1,6 +1,6 @@
 # PHP Assertions RCE
 
-You can achieve RCE if you can identify this type of vulnerability.
+PHP assert() fucntion can be vulnerable to RCE.
 
 ### 1) Identification
 
