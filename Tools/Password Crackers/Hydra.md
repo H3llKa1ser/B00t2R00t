@@ -6,21 +6,15 @@
 
 ### Commands:
 
-#### -t 4 = Number of parallel connections per target
+Test a login with same user as password, null password and reverse username as password
 
-#### -l USER = Points to the user who's account to compromise (Brute-force)
-
-#### -L = Wordlist for users
-
-#### -p PASSWORD = Points to password to find user (Password spray)
-
-#### -P = Wordlist for passwords
-
-#### -vv = Very verbose
+    hydra –l USER –e nsr ftp://IP
 
 #### protocol = ftp, ssh, http-post-form (Requires login error to work), http-get, etc.
 
-### Example: hydra -l USER -P LIST -f TARGET_IP http-get /directory/
+### Example: 
+
+    hydra -l USER -P LIST TARGET_IP http-get /directory/
 
 ## JSON brute force with hydra
 
