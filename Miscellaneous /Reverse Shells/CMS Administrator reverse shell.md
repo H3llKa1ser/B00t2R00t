@@ -28,6 +28,8 @@ Theme can be different
 
 #### 2) Install new plugin, then upload the zip file that contains the malicious plugin
 
+    zip shell.zip php-reverse-shell.php
+
 #### 3) Setup listener
 
 #### 4) On plugin menu, click activate the newly installed plugin to execute and get a shell
