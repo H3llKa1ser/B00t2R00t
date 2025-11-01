@@ -1,8 +1,10 @@
+# CMS Administrator Reverse Shell
+
 ### CMS: Wordpress, Joomla
 
 ### Requirements: Administrator credentials
 
-# WORDPRESS:
+## Wordpress:
 
 ### Steps:
 
@@ -20,7 +22,7 @@ Theme can be different
 
 ### Alternate usage: use exploit/unix/webapp/wp_admin_shell_upload
 
-## MALICIOUS PLUGIN INSTALLATION ON WORDPRESS
+## Malicious Plugin Installation On Wordpress
 
 #### 1) On admin panel, go to: plugins -> editor
 
@@ -30,7 +32,7 @@ Theme can be different
 
 #### 4) On plugin menu, click activate the newly installed plugin to execute and get a shell
 
-## ALTERNATE METHOD OF MALICIOUS PLUGIN
+## Alternate Method Of Malicious Plugin
 
 #### 1) On admin panel, go to: plugins -> Add New
 
@@ -42,7 +44,7 @@ Theme can be different
 
 #### 5) GG
 
-# JOOMLA 
+# Joomla
 
 #### 1) On admin panel, go to: System -> extensions -> Site templates -> templates
 
