@@ -32,6 +32,12 @@ Theme can be different
 
 #### 4) On plugin menu, click activate the newly installed plugin to execute and get a shell
 
+OR
+
+#### If it gave you an upload error while uploading your .php shell, you can go to the uploads directory and you may find it there:
+
+    http://domain.local/wp-content/uploads/php-reverse-shell.php
+
 ## Alternate Method Of Malicious Plugin
 
 #### 1) On admin panel, go to: plugins -> Add New
