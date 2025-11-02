@@ -6,6 +6,10 @@ If you have the suspicion that a port (like 22 for example) needs to be "knocked
 
     /etc/knockd.conf
 
+Wordlist
+
+    /usr/share/seclists/Fuzzing/LFI/LFI-etc-files-of-all-linux-packages.txt
+
 ### 2) According to the contents of the configuration file, activate the sequence
 
     knockd IP PORT1 PORT2 PORT3
