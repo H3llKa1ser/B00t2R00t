@@ -14,7 +14,7 @@
 
 ### Then, if we want to check for commits that we might find some sort of credentials and important information, go to the directory where the .git folder is located
 
-    /path/to/extractor.sh /home/user/Desktop/repo repo
+    /path/to/extractor.sh /home/user/Desktop/repo /home/user/Desktop/repodump
 
     git log (Gets all commits in the repository)
 
