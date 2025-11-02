@@ -105,3 +105,7 @@ If we detect a Wordpress application that has LFI vulnerability, we can extract 
 Depending on the content of the file, use the knockd tool in Kali
 
     knockd IP PORT1 PORT2 PORT3
+
+Test if the sequence worked
+
+    nc -nv IP PORT
