@@ -10,9 +10,9 @@
 
 ### Example: 
 
-#### ffuf -u http://IP_ADDRESS/file.php?id=FUZZ
+    ffuf -u http://IP_ADDRESS/file.php?id=FUZZ
 
-#### ffuf -u http://IP_ADDRESS/file.php?FUZZ=1'
+    ffuf -u http://IP_ADDRESS/file.php?FUZZ=1'
 
 #### --mc = Match code
 
@@ -24,7 +24,7 @@
 
 ### Subdomain enumeration example:
 
-#### ffuf -u http://example.com -c -w /path/to/wordlist.txt -H 'Host: FUZZ.example.com' -fs 0
+    ffuf -u http://example.com -c -w /path/to/wordlist.txt -H 'Host: FUZZ.example.com' -fs 0
 
 #### -x PROXY:PORT = Sends all ffuf traffic through a web proxy (Burpsuite, network pivoting)
 
