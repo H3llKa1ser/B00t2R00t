@@ -97,3 +97,11 @@ You might detect something like
 If we detect a Wordpress application that has LFI vulnerability, we can extract the application's wp-config.php for credentials.
 
     /var/www/html/wp-config.php
+
+## LFI for port knocking configuration file
+
+    /etc/knockd.conf
+
+Depending on the content of the file, use the knockd tool in Kali
+
+    knockd IP PORT1 PORT2 PORT3
