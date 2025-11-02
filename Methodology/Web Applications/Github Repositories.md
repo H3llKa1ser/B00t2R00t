@@ -40,3 +40,8 @@ Sort interesting findings in git logs directory by size
 
     cd ~/.git/logs/refs/heads
     ls -lna | sort -n -r
+
+### 5) Enumerate interesting files in the "repodump" extracted commits
+
+    cd /home/user/Desktop/repodump
+    tree
