@@ -76,3 +76,13 @@ Authenticated fuzzing
 ### 9) After user enumeration via any means and want to brute-force, instead of using your usual wordlist, you can create custom wordlists if you find parts of the website that contain a lot of words that could be used in a wordlist
 
     cewl -w wordlist.txt http://domain.local
+
+### 10) Vhost fuzzing
+
+If we are working with a domain name, it coule be worth checking for other vhosts on the machine to discover an entirely new attack surface.
+
+    ffuf -u http://gitroot.vuln -c -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-110000.txt -H 'Host: FUZZ.gitroot.vuln' -fs 191
+
+After discovering valid vhosts, add them to your /etc/hosts file
+
+    sudo nano /etc/hosts
