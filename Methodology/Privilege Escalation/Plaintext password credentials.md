@@ -25,3 +25,7 @@ phpmyadmin installation
 MySQL history file
 
     /home/user/.mysql_history
+
+Viminfo file
+
+    /home/user/.viminfo
