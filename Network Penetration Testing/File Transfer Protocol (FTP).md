@@ -1,5 +1,7 @@
 # File Transfer Protocol (FTP)
 
+Port 21
+
 ### 1) Nmap Detailed Scan
 
     nmap --script ftp-anon,ftp-bounce,ftp-libopie,ftp-proftpd-backdoor,ftp-vsftpd-backdoor,ftp-vuln-cve2010-4221,tftp-enum -p 21 IP
