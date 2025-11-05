@@ -1,6 +1,6 @@
 # File Transfer Protocol (FTP)
 
-Port 21
+## Port 21
 
 ### 1) Nmap Detailed Scan
 
