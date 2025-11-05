@@ -52,3 +52,12 @@ Another thing to check in an SQLi is RCE capabilities (file write or OS command 
 
     https://target.com/webshell.php?cmd=id
 
+## Various triggers for SQLi
+
+### 1) Single Quote
+
+    '
+
+### 2) Double Quote
+
+    "
