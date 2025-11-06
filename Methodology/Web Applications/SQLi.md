@@ -143,3 +143,18 @@ Bypass with LIMIT for MySQL (restricts to 1 entry)
 MSSQL version of limiting output with TOP
 
     ' OR 1=1; SELECT TOP 1 * FROM users --+
+
+## SQL Truncation
+
+Truncation-based SQL injection occurs when the database limits user input based on a specified length, discarding any characters beyond that limit. This can be exploited by an attacker to manipulate user data. For example, an attacker can create a new user with a name like 'admin' and their own password, potentially causing multiple entries for the same username. If both entries are evaluated as 'admin', the attacker could gain unauthorized access to the legitimate admin account.
+
+In the following example, the database truncates the username after a certain length (e.g., 10 characters). The attacker uses this to create a conflicting account:
+
+    # Example of truncation; the database discards extra characters
+    username=admin++++++++(max.length)&password=testpwn123
+    
+    -- Assume the database has a 10-character limit on the username field, note that more characters are added because otherwise the truncation won't be made.
+    username=admin++++++++&password=testpwn123
+    
+    -- The database truncates the input to admin and discards the extra characters
+    -- If a user admin already exists, the attacker might be able to bypass authentication.
