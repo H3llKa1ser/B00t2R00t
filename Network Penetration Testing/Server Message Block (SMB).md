@@ -75,6 +75,16 @@ Authenticated enumeration
     smbclient //IP/SHARE -U USER%PASSWORD
     get file.txt
 
+Download all files within the share
+
+    prompt off
+    recurse on
+    mget *
+
+OR
+
+    smbclient //IP/SHARE -U USER -c "prompt OFF;recurse ON;mget *" # Change the timeout to download big files
+
 #### 3) Nmap
 
     sudo nmap --script smb-enum-shares -p139,445 IP
