@@ -9,3 +9,7 @@
 #### Send email with authentication
 
     swaks -t <recipient@example.com> --from <sender@example.com> \ --attach config.Library-ms --server <SMTP_SERVER> --body body.txt \ --header "Subject: Problems" --suppress-data \ --auth LOGIN --auth-user <username> --auth-password <password>
+
+#### Email with Custom Headers for Social Engineering
+
+    swaks -t [target-email] --from [your-email] --attach [file-to-attach] \ --server [smtp-server-ip] --body [email-body.txt] \ --header "X Priority: 1 (Highest)" --header "Importance: High" --suppress-data
