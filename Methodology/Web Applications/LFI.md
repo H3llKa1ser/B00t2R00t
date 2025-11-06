@@ -109,3 +109,25 @@ Depending on the content of the file, use the knockd tool in Kali
 Test if the sequence worked
 
     nc -nv IP PORT
+
+## Bonus: Wordlists
+
+Normal fuzzing
+
+    /usr/share/seclists/Fuzzing/LFI/LFI-Jhaddix.txt
+
+Fuzz GET Parameters
+
+    /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt
+
+Fuzz PHP Files
+
+    /opt/useful/SecLists/Discovery/Web-Content/directory-list-2.3-small.txt
+
+Fuzz Server Logs and Configs
+
+    /usr/share/wordlists/seclists/Fuzzing/LFI/LFI-etc-files-of-all-linux-packages.txt
+
+Fuzz Webroot
+
+    /opt/useful/SecLists/Discovery/Web-Content/default-web-root-directory-linux.txt
