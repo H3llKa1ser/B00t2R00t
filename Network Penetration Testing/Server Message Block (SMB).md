@@ -110,3 +110,8 @@ Authenticated enumeration
 ## Extra: Enum4linux-ng
 
     enum4linux-ng IP
+
+## Network Packet Analysis
+
+    sudo ngrep -i -d INTERFACE 's.?a.?m.?b.?a.*[[:digit:]]' port 139
+
