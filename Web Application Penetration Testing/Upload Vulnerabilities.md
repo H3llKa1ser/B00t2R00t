@@ -4,6 +4,12 @@
 
 ### Find an upload page using directory bruteforce (gobuster), or you may find it on an admin dashboard of a CMS application.
 
+## Disable Frontend Validation
+
+1. Use the Browser Inspector to find the function that validates the file, delete it and then upload the file, keep in mind that this will not work if the validation is at server-level.
+
+2. Use BurpSuite and send a normal request, intercept it and then modify it to our malicious form and then send it.
+
 ## Overwriting existing files:
 
 ### Simply put, rename your payload to the same name of the file you want to overwrite then upload.
@@ -51,6 +57,10 @@ After uploading, access you shell to example URL where file uploads migth be loc
 
 ## Blacklisted Extenstion file upload
 
+Wordlist to fuzz with ffuf or Burpsuite (no URL encode)
+
+    /usr/share/seclists/Discovery/Web-Content/web-extensions.txt
+
 Some applications might blacklist extensions like .php for example.
 
 To bypass this you can just rename the extension by manipulating the cases.
@@ -65,7 +75,7 @@ But before getting your shell, we might need to upload an .htaccess file with th
 
     AddType application/x-httpd-php PHP
 
-Sve the file, then upload it to the server. After that, try to reupload your file.
+Save the file, then upload it to the server. After that, try to reupload your file.
 
 Upload the file to get your shell if bypassed successfully.
 
