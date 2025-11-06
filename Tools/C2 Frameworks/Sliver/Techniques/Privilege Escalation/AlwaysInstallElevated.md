@@ -31,7 +31,7 @@ To:
 
 ### 6) Host the file on your machine for the victim machine to access it.
 
-    sudp python3 -m http.server 80
+    sudo python3 -m http.server 80
 
 ### 7) Run on the victim, another shell should pop up as NT Auth\System
 
