@@ -51,6 +51,16 @@ For group names:
 
     smbmap -H IP -u USER -p PASSWORD
 
+    smbmap -H IP -u guest -p ""
+
+    smbmap -H IP -u '' -p ''
+
+    smbmap -H IP -u '' -p '' -R 
+
+    smbmap -H IP -u USER -p PASSWORD --rid-brute
+
+    smbmap -H IP -u USER -p PASSWORD --shares
+
 #### 2) Smbclient
 
     smbclient -L IP
