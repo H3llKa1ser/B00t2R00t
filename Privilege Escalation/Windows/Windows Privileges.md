@@ -2,6 +2,10 @@
 
 ## Privilege check command: whoami /priv
 
+## We can enable all privileges if possible using this script: 
+
+https://raw.githubusercontent.com/fashionproof/EnableAllTokenPrivs/master/EnableAllTokenPrivs.ps1
+
 ## Examples of dangerous privileges:
 
 ### SeBackup/SeRestore
