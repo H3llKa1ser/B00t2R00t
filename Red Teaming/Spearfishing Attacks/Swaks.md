@@ -8,7 +8,4 @@
 
 #### Send email with authentication
 
-    swaks -t <recipient@example.com> --from <sender@example.com> \
-    --attach config.Library-ms --server <SMTP_SERVER> --body body.txt \
-    --header "Subject: Problems" --suppress-data \
-    --auth LOGIN --auth-user <username> --auth-password <password>
+    swaks -t <recipient@example.com> --from <sender@example.com> \ --attach config.Library-ms --server <SMTP_SERVER> --body body.txt \ --header "Subject: Problems" --suppress-data \ --auth LOGIN --auth-user <username> --auth-password <password>
