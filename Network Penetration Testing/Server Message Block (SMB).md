@@ -135,3 +135,8 @@ OR
 
     sudo ngrep -i -d INTERFACE 's.?a.?m.?b.?a.*[[:digit:]]' port 139
 
+## Mounting Shares
+
+    mkdir /tmp/share
+    sudo mount -t cifs //IP/SHARE /tmp/share
+    sudo mount -t cifs -o 'username=USER,password=PASSWORD' //IP/SHARE /tmp/share
