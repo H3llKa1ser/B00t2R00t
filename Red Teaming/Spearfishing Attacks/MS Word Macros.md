@@ -1,4 +1,4 @@
-# MS Word Maliciou Macro Document Creation
+# MS Word Malicious Macro Document Creation
 
 ### Example tool to create infected documents: 
 
