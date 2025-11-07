@@ -42,3 +42,8 @@ adduser.dll
       }
       return TRUE; // Indicate successful execution
     }
+
+### 3) Compile C# Code to executable
+
+    cd /CSharpProject
+    dotnet build .
