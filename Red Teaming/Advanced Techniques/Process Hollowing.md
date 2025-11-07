@@ -197,10 +197,15 @@ Insert your shellcode from step above and save the file as a .docm, in this case
  ### High-level steps (mapped to the code)
 
 1.Create the target process in a suspended state using CreateProcess (CREATE_SUSPENDED).
+
 2.Query the target's PEB to get the image base using ZwQueryInformationProcess.
+
 3.Read the on-disk/loaded PE headers from the target with ReadProcessMemory to locate the entrypoint RVA.
+
 4.Compute the absolute entrypoint address by adding the image base + RVA.
+
 5.XOR-decode the embedded shellcode and overwrite the entrypoint with WriteProcessMemory.
+
 6.Resume the suspended thread to run the injected payload using ResumeThread
 
 #### Code
