@@ -73,3 +73,9 @@ Select install/upload and use your PHP reverse shell
 If it asks you for FTP credentials and has FTP enabled, insert credentials and 127.0.0.1 hostname
 
 Go to media -> select our file -> Go to the presented URL that the file resides
+
+## Configuration files that might contain credentials
+
+### 1) wp-config.php
+
+    /var/www/html/wp-config.php
