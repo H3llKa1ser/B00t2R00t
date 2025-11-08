@@ -16,4 +16,6 @@
 
 Intercept the request, then send it to Intruder.
 
-Do a Sniper Attack, choose the password field, load the wordlist of your choice and start attacking.
+Do a Sniper Attack if you know either the username or password, choose the password field, load the wordlist of your choice and start attacking.
+
+If you do not know either of the username and password, do a pitchfork attack instead.
