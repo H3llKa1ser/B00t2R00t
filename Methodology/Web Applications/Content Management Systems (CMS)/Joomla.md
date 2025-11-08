@@ -36,7 +36,7 @@ Run the attack
 
 ## Admin Panel RCE (Requires Credentials)
 
-### 1) Template modification
+### 1) Edit error.php on Site Templates
 
 Go to:
 
