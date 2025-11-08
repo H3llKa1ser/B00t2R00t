@@ -20,7 +20,7 @@
 
     wpscan --url http://domain.local/wordpress --enumerate t
 
-## Admin panel RCE (Requires credentials)
+## Admin panel RCE (Requires Credentials)
 
 ### 1) Edit 404.php on Wordpress Theme Editor
 
