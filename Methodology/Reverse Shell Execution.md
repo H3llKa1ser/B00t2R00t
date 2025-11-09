@@ -46,7 +46,7 @@ Netcat (Powershell)
 
 Encoding tool: https://gchq.github.io/CyberChef/
 
-If interacting with an HTTP request to try to execute a reverse shell, always Double URL encode for the browser to interpret your input properly
+If interacting with an HTTP request to try to execute a reverse shell, always URL encode (characters too) for the browser to interpret your input properly
 
 mkfifo shell
 
