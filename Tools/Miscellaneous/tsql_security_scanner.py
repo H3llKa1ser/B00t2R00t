@@ -219,45 +219,70 @@ class Vulnerability:
     code_snippet: str
     description: str
     recommendation: str
-    is_false_positive: bool = False
+    variable_name: str = ""
+    variable_type: str = ""
 
 
 class VulnerabilityScanner:
     """Scans T-SQL stored procedures for SQL injection vulnerabilities"""
 
     def __init__(self):
-        self.patterns = {
-            'exec_concatenation': {
-                'regex': r'EXEC(?:UTE)?\s*\(\s*@?\w+\s*\+',
-                'severity': 'HIGH',
-                'description': 'Dynamic SQL execution with string concatenation',
-                'recommendation': 'Use sp_executesql with parameterized queries instead of EXEC with concatenation'
-            },
-            'exec_variable': {
-                'regex': r'EXEC(?:UTE)?\s*\(\s*@\w+\s*\)',
-                'severity': 'MEDIUM',
-                'description': 'EXEC executing a variable that may contain concatenated strings',
-                'recommendation': 'Verify the variable is properly parameterized using sp_executesql'
-            },
-            'sp_executesql_concatenation': {
-                'regex': r'sp_executesql\s+@?\w+\s*\+',
-                'severity': 'HIGH',
-                'description': 'sp_executesql with string concatenation in query parameter',
-                'recommendation': 'Move all variables to the parameter list instead of concatenating them'
-            },
-            'dynamic_sql_concat': {
-                'regex': r'(?:SET|SELECT)\s+@\w+\s*=.*?[\'"].*?[\'"].*?\+.*?@\w+',
-                'severity': 'HIGH',
-                'description': 'Building dynamic SQL query with string concatenation',
-                'recommendation': 'Use sp_executesql with proper parameterization'
-            },
-            'unquoted_variable_concat': {
-                'regex': r'[\'"].*?\'\s*\+\s*@\w+\s*\+\s*[\'"]',
-                'severity': 'HIGH',
-                'description': 'Variable concatenated directly into SQL string without parameterization',
-                'recommendation': 'Use parameterized queries with sp_executesql'
-            }
-        }
+        # Track string variables (NVARCHAR/VARCHAR) in the procedure
+        self.string_variables = {}  # {variable_name: variable_type}
+        self.concatenated_variables = set()  # Variables used in concatenation
+        self.executed_variables = {}  # {variable_name: execution_type (EXEC/sp_executesql)}
+
+    def _extract_string_variables(self, definition: str) -> None:
+        """Extract NVARCHAR and VARCHAR variable declarations"""
+        self.string_variables.clear()
+
+        # Pattern to match variable declarations: DECLARE @var NVARCHAR/VARCHAR
+        var_pattern = r'DECLARE\s+(@\w+)\s+(N?VARCHAR)\s*(?:\((?:MAX|\d+)\))?'
+
+        matches = re.finditer(var_pattern, definition, re.IGNORECASE)
+        for match in matches:
+            var_name = match.group(1)
+            var_type = match.group(2).upper()
+            self.string_variables[var_name] = var_type
+
+    def _find_concatenated_variables(self, definition: str) -> None:
+        """Find variables used in dynamic string concatenation"""
+        self.concatenated_variables.clear()
+
+        # Look for patterns like: @var + or + @var in string contexts
+        concat_pattern = r'[@\w]+\s*\+\s*(@\w+)|(@\w+)\s*\+\s*[@\w\']'
+
+        matches = re.finditer(concat_pattern, definition, re.IGNORECASE)
+        for match in matches:
+            var_name = match.group(1) or match.group(2)
+            if var_name and var_name.startswith('@'):
+                # Check if this variable is a string type
+                if var_name in self.string_variables:
+                    self.concatenated_variables.add(var_name)
+
+    def _find_executed_variables(self, definition: str, lines: List[str]) -> Dict[str, Tuple[str, int]]:
+        """Find variables that are executed with EXEC or sp_executesql"""
+        executed_vars = {}
+
+        # Check each line for EXEC or sp_executesql patterns
+        for line_num, line in enumerate(lines, start=1):
+            # Pattern 1: EXEC(@var) or EXECUTE(@var)
+            exec_pattern = r'EXEC(?:UTE)?\s*\(\s*(@\w+)\s*\)'
+            matches = re.finditer(exec_pattern, line, re.IGNORECASE)
+            for match in matches:
+                var_name = match.group(1)
+                if var_name in self.string_variables:
+                    executed_vars[var_name] = ('EXEC', line_num)
+
+            # Pattern 2: sp_executesql @var
+            sp_exec_pattern = r'sp_executesql\s+(@\w+)'
+            matches = re.finditer(sp_exec_pattern, line, re.IGNORECASE)
+            for match in matches:
+                var_name = match.group(1)
+                if var_name in self.string_variables:
+                    executed_vars[var_name] = ('sp_executesql', line_num)
+
+        return executed_vars
 
     def scan_procedure(self, procedure: Dict[str, str]) -> List[Vulnerability]:
         """Scan a stored procedure for SQL injection vulnerabilities"""
@@ -269,34 +294,46 @@ class VulnerabilityScanner:
 
         lines = definition.split('\n')
 
-        for line_num, line in enumerate(lines, start=1):
-            for vuln_type, pattern_info in self.patterns.items():
-                matches = re.finditer(pattern_info['regex'], line, re.IGNORECASE)
+        # Step 1: Find all NVARCHAR/VARCHAR variables
+        self._extract_string_variables(definition)
 
-                for match in matches:
-                    context_start = max(0, line_num - 4)
-                    context_end = min(len(lines), line_num + 3)
-                    context_lines = lines[context_start:context_end]
+        # Step 2: Find which string variables are used in concatenation
+        self._find_concatenated_variables(definition)
 
-                    numbered_context = []
-                    for i, ctx_line in enumerate(context_lines, start=context_start + 1):
-                        prefix = '>>> ' if i == line_num else '    '
-                        numbered_context.append(f"{prefix}{i:4d}: {ctx_line.rstrip()}")
+        # Step 3: Find which variables are executed with EXEC or sp_executesql
+        executed_vars = self._find_executed_variables(definition, lines)
 
-                    code_snippet = '\n'.join(numbered_context)
+        # Step 4: Report only true positives - concatenated string variables that are executed
+        for var_name in self.concatenated_variables:
+            if var_name in executed_vars:
+                exec_type, line_num = executed_vars[var_name]
 
-                    vulnerability = Vulnerability(
-                        procedure_name=procedure['full_name'],
-                        schema=procedure['schema'],
-                        severity=pattern_info['severity'],
-                        vulnerability_type=vuln_type,
-                        line_number=line_num,
-                        code_snippet=code_snippet,
-                        description=pattern_info['description'],
-                        recommendation=pattern_info['recommendation']
-                    )
+                # Get context around the execution line
+                context_start = max(0, line_num - 4)
+                context_end = min(len(lines), line_num + 3)
+                context_lines = lines[context_start:context_end]
 
-                    vulnerabilities.append(vulnerability)
+                numbered_context = []
+                for i, ctx_line in enumerate(context_lines, start=context_start + 1):
+                    prefix = '>>> ' if i == line_num else '    '
+                    numbered_context.append(f"{prefix}{i:4d}: {ctx_line.rstrip()}")
+
+                code_snippet = '\n'.join(numbered_context)
+
+                vulnerability = Vulnerability(
+                    procedure_name=procedure['full_name'],
+                    schema=procedure['schema'],
+                    severity='HIGH',
+                    vulnerability_type='sql_injection_concatenated_execution',
+                    line_number=line_num,
+                    code_snippet=code_snippet,
+                    description=f'Variable {var_name} ({self.string_variables[var_name]}) is used in dynamic concatenation and executed with {exec_type}',
+                    recommendation=f'Use sp_executesql with parameterized queries instead of concatenating {var_name} into the SQL string',
+                    variable_name=var_name,
+                    variable_type=self.string_variables[var_name]
+                )
+
+                vulnerabilities.append(vulnerability)
 
         return vulnerabilities
 
@@ -312,130 +349,20 @@ class VulnerabilityScanner:
 
     def get_statistics(self, vulnerabilities: List[Vulnerability]) -> Dict:
         """Generate statistics from vulnerability results"""
-        true_positives = [v for v in vulnerabilities if not v.is_false_positive]
-
         stats = {
-            'total_vulnerabilities': len(true_positives),
-            'high_severity': len([v for v in true_positives if v.severity == 'HIGH']),
-            'medium_severity': len([v for v in true_positives if v.severity == 'MEDIUM']),
-            'low_severity': len([v for v in true_positives if v.severity == 'LOW']),
-            'false_positives_filtered': len([v for v in vulnerabilities if v.is_false_positive]),
-            'vulnerable_procedures': len(set(v.procedure_name for v in true_positives)),
+            'total_vulnerabilities': len(vulnerabilities),
+            'high_severity': len([v for v in vulnerabilities if v.severity == 'HIGH']),
+            'medium_severity': len([v for v in vulnerabilities if v.severity == 'MEDIUM']),
+            'low_severity': len([v for v in vulnerabilities if v.severity == 'LOW']),
+            'vulnerable_procedures': len(set(v.procedure_name for v in vulnerabilities)),
             'vulnerability_types': {}
         }
 
-        for vuln in true_positives:
+        for vuln in vulnerabilities:
             vuln_type = vuln.vulnerability_type
             stats['vulnerability_types'][vuln_type] = stats['vulnerability_types'].get(vuln_type, 0) + 1
 
         return stats
-
-
-# ============================================================================
-# FALSE POSITIVE FILTER
-# ============================================================================
-
-class FalsePositiveFilter:
-    """Filters false positives from vulnerability scan results"""
-
-    def __init__(self):
-        self.safe_patterns = [
-            r'sp_executesql\s+@\w+\s*,\s*N[\'"].*?[\'"],\s*N[\'"]@',
-            r'QUOTENAME\s*\(',
-            r'[\'"].*?[\'"]\s*\+\s*[\'"].*?[\'"]',
-            r'sp_executesql\s+N[\'"]SELECT\s+\*\s+FROM\s+sys\.',
-            r'CAST\s*\(\s*@\w+\s+AS\s+',
-            r'CONVERT\s*\(\s*\w+\s*,\s*@\w+',
-        ]
-
-        self.safe_functions = [
-            'QUOTENAME', 'DB_NAME', 'OBJECT_NAME', 'SCHEMA_NAME',
-            'USER_NAME', 'ISNULL', 'COALESCE', 'GETDATE', 'NEWID'
-        ]
-
-    def filter_vulnerabilities(self, vulnerabilities: List[Vulnerability]) -> List[Vulnerability]:
-        """Filter false positives from vulnerability list"""
-        for vuln in vulnerabilities:
-            if self._is_false_positive(vuln):
-                vuln.is_false_positive = True
-
-        return vulnerabilities
-
-    def _is_false_positive(self, vulnerability: Vulnerability) -> bool:
-        """Check if a vulnerability is a false positive"""
-        code_snippet = vulnerability.code_snippet
-
-        for pattern in self.safe_patterns:
-            if re.search(pattern, code_snippet, re.IGNORECASE | re.DOTALL):
-                return True
-
-        if self._is_properly_parameterized_sp_executesql(code_snippet):
-            return True
-
-        if self._is_safe_concatenation(code_snippet):
-            return True
-
-        if self._is_constant_only_concatenation(code_snippet):
-            return True
-
-        return False
-
-    def _is_properly_parameterized_sp_executesql(self, code: str) -> bool:
-        """Check if sp_executesql is properly parameterized"""
-        pattern = r'sp_executesql\s+@\w+\s*,\s*N[\'"]@\w+.*?[\'"]'
-        return bool(re.search(pattern, code, re.IGNORECASE))
-
-    def _is_safe_concatenation(self, code: str) -> bool:
-        """Check if concatenation involves only safe functions and literals"""
-        concat_pattern = r'[\'"].*?[\'"]\s*\+.*?\+\s*[\'"].*?[\'"]'
-        matches = re.finditer(concat_pattern, code, re.IGNORECASE)
-
-        for match in matches:
-            concat_expr = match.group(0)
-            has_safe_function = any(
-                func in concat_expr.upper()
-                for func in self.safe_functions
-            )
-
-            if has_safe_function:
-                return True
-
-        return False
-
-    def _is_constant_only_concatenation(self, code: str) -> bool:
-        """Check if concatenation involves only constant values"""
-        lines = code.split('\n')
-        vuln_line = None
-
-        for line in lines:
-            if '>>>' in line:
-                vuln_line = line
-                break
-
-        if not vuln_line:
-            return False
-
-        variable_pattern = r'\+\s*@\w+'
-        has_variables = bool(re.search(variable_pattern, vuln_line))
-
-        if not has_variables:
-            if '+' in vuln_line and ("'" in vuln_line or '"' in vuln_line):
-                return True
-
-        return False
-
-    def get_false_positive_summary(self, vulnerabilities: List[Vulnerability]) -> dict:
-        """Get summary of false positive filtering"""
-        total = len(vulnerabilities)
-        false_positives = len([v for v in vulnerabilities if v.is_false_positive])
-        true_positives = total - false_positives
-
-        return {
-            'total_detected': total,
-            'false_positives': false_positives,
-            'true_positives': true_positives,
-            'false_positive_rate': (false_positives / total * 100) if total > 0 else 0
-        }
 
 
 # ============================================================================
@@ -455,8 +382,7 @@ class Reporter:
 
         data = {
             'scan_date': datetime.now().isoformat(),
-            'total_vulnerabilities': len([v for v in vulnerabilities if not v.is_false_positive]),
-            'total_with_false_positives': len(vulnerabilities),
+            'total_vulnerabilities': len(vulnerabilities),
             'vulnerabilities': [
                 {
                     'procedure_name': v.procedure_name,
@@ -467,7 +393,8 @@ class Reporter:
                     'code_snippet': v.code_snippet,
                     'description': v.description,
                     'recommendation': v.recommendation,
-                    'is_false_positive': v.is_false_positive
+                    'variable_name': v.variable_name,
+                    'variable_type': v.variable_type
                 }
                 for v in vulnerabilities
             ]
@@ -488,15 +415,15 @@ class Reporter:
 
             writer.writerow([
                 'Procedure Name', 'Schema', 'Severity', 'Vulnerability Type',
-                'Line Number', 'Description', 'Recommendation',
-                'Is False Positive', 'Code Snippet'
+                'Line Number', 'Variable Name', 'Variable Type',
+                'Description', 'Recommendation', 'Code Snippet'
             ])
 
             for v in vulnerabilities:
                 writer.writerow([
                     v.procedure_name, v.schema, v.severity, v.vulnerability_type,
-                    v.line_number, v.description, v.recommendation,
-                    'Yes' if v.is_false_positive else 'No',
+                    v.line_number, v.variable_name, v.variable_type,
+                    v.description, v.recommendation,
                     v.code_snippet.replace('\n', ' | ')
                 ])
 
@@ -527,7 +454,6 @@ class Reporter:
         .stat-label { font-size: 0.9em; color: #666; margin-bottom: 5px; }
         .stat-value { font-size: 2em; font-weight: bold; color: #333; }
         .vulnerability { background-color: #fff; border: 1px solid #ddd; border-radius: 5px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .vulnerability.false-positive { opacity: 0.6; background-color: #f0f0f0; }
         .vulnerability-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .procedure-name { font-size: 1.2em; font-weight: bold; color: #333; }
         .severity { padding: 5px 15px; border-radius: 3px; color: white; font-weight: bold; font-size: 0.9em; }
@@ -540,7 +466,6 @@ class Reporter:
         .code-snippet { background-color: #f4f4f4; border-left: 3px solid #007acc; padding: 15px; overflow-x: auto; font-family: 'Courier New', monospace; font-size: 0.9em; white-space: pre; margin: 15px 0; }
         .recommendation { background-color: #e8f5e9; border-left: 3px solid #4caf50; padding: 15px; margin-top: 15px; border-radius: 3px; }
         .recommendation strong { color: #2e7d32; }
-        .false-positive-badge { background-color: #9e9e9e; color: white; padding: 3px 10px; border-radius: 3px; font-size: 0.85em; margin-left: 10px; }
         .timestamp { color: #666; font-size: 0.9em; margin-top: 10px; }
     </style>
 </head>
@@ -557,22 +482,23 @@ class Reporter:
                 <div class="stat-box medium"><div class="stat-label">Medium Severity</div><div class="stat-value">{{ stats.medium_severity }}</div></div>
                 <div class="stat-box low"><div class="stat-label">Low Severity</div><div class="stat-value">{{ stats.low_severity }}</div></div>
                 <div class="stat-box"><div class="stat-label">Vulnerable Procedures</div><div class="stat-value">{{ stats.vulnerable_procedures }}</div></div>
-                <div class="stat-box"><div class="stat-label">False Positives Filtered</div><div class="stat-value">{{ stats.false_positives_filtered }}</div></div>
             </div>
         </div>
         {% endif %}
         <h2>Vulnerability Details</h2>
         {% if vulnerabilities %}
             {% for v in vulnerabilities %}
-            <div class="vulnerability {% if v.is_false_positive %}false-positive{% endif %}">
+            <div class="vulnerability">
                 <div class="vulnerability-header">
-                    <div class="procedure-name">{{ v.procedure_name }}{% if v.is_false_positive %}<span class="false-positive-badge">FALSE POSITIVE</span>{% endif %}</div>
+                    <div class="procedure-name">{{ v.procedure_name }}</div>
                     <div class="severity {{ v.severity }}">{{ v.severity }}</div>
                 </div>
                 <div class="vulnerability-details">
                     <div class="detail-row"><span class="detail-label">Schema:</span><span>{{ v.schema }}</span></div>
                     <div class="detail-row"><span class="detail-label">Vulnerability Type:</span><span>{{ v.vulnerability_type }}</span></div>
                     <div class="detail-row"><span class="detail-label">Line Number:</span><span>{{ v.line_number }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Variable Name:</span><span>{{ v.variable_name }}</span></div>
+                    <div class="detail-row"><span class="detail-label">Variable Type:</span><span>{{ v.variable_type }}</span></div>
                     <div class="detail-row"><span class="detail-label">Description:</span><span>{{ v.description }}</span></div>
                 </div>
                 <div class="code-snippet">{{ v.code_snippet }}</div>
@@ -610,7 +536,6 @@ class TSQLScanner:
         self.db_connector = None
         self.procedure_extractor = None
         self.vulnerability_scanner = VulnerabilityScanner()
-        self.false_positive_filter = FalsePositiveFilter()
         self.reporter = Reporter()
 
     def connect_to_database(self, args):
@@ -660,13 +585,7 @@ class TSQLScanner:
 
         vulnerabilities = self.vulnerability_scanner.scan_multiple_procedures(procedures)
 
-        print(f"{Fore.YELLOW}[*] Initial detection: {len(vulnerabilities)} potential vulnerabilities{Style.RESET_ALL}")
-
-        print(f"\n{Fore.CYAN}[*] Filtering false positives...{Style.RESET_ALL}")
-        vulnerabilities = self.false_positive_filter.filter_vulnerabilities(vulnerabilities)
-
-        fp_summary = self.false_positive_filter.get_false_positive_summary(vulnerabilities)
-        print(f"{Fore.YELLOW}[*] Filtered out {fp_summary['false_positives']} false positives{Style.RESET_ALL}")
+        print(f"{Fore.YELLOW}[*] Found {len(vulnerabilities)} true positive vulnerabilities{Style.RESET_ALL}")
 
         stats = self.vulnerability_scanner.get_statistics(vulnerabilities)
 
@@ -683,18 +602,15 @@ class TSQLScanner:
             ["High Severity", f"{Fore.RED}{stats['high_severity']}{Style.RESET_ALL}"],
             ["Medium Severity", f"{Fore.YELLOW}{stats['medium_severity']}{Style.RESET_ALL}"],
             ["Low Severity", f"{Fore.GREEN}{stats['low_severity']}{Style.RESET_ALL}"],
-            ["Vulnerable Procedures", stats['vulnerable_procedures']],
-            ["False Positives Filtered", stats['false_positives_filtered']]
+            ["Vulnerable Procedures", stats['vulnerable_procedures']]
         ]
 
         print(tabulate(stats_table, headers=["Metric", "Count"], tablefmt="grid"))
 
-        true_positives = [v for v in vulnerabilities if not v.is_false_positive]
-
-        if true_positives:
+        if vulnerabilities:
             print(f"\n{Fore.RED}[!] VULNERABILITIES DETECTED:{Style.RESET_ALL}\n")
 
-            for i, vuln in enumerate(true_positives, 1):
+            for i, vuln in enumerate(vulnerabilities, 1):
                 severity_color = {
                     'HIGH': Fore.RED,
                     'MEDIUM': Fore.YELLOW,
@@ -705,6 +621,7 @@ class TSQLScanner:
                 print(f"    Severity: {severity_color}{vuln.severity}{Style.RESET_ALL}")
                 print(f"    Type: {vuln.vulnerability_type}")
                 print(f"    Line: {vuln.line_number}")
+                print(f"    Variable: {vuln.variable_name} ({vuln.variable_type})")
                 print(f"    Description: {vuln.description}")
                 print(f"\n{Fore.WHITE}    Code:{Style.RESET_ALL}")
                 for line in vuln.code_snippet.split('\n'):
