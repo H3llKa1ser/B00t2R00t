@@ -28,3 +28,31 @@ The 407 Proxy authentication required request indicates that the client must now
 
     hashcat -a 0 -m 0 hash.txt /usr/share/wordlists/rockyou.txt
 
+### 2) Decode recorded calls
+
+Example information of the call record
+
+    Input #0, wav, from 'Call-id':
+    Duration: 00:00:00:00, bitrate: 128 kb/s
+    
+    Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 8000 Hz, mono, s16, 128 kb/s
+    
+    Stream mapping:
+    Stream #0:0 -> #0:0 (pcm_s16le (native) -> pcm_mulaw (native))
+    
+    Output #0, rtp, to 'raw': PT=ITU-T G.711 PCMU
+    
+    
+    Metadata:
+    encoder : Lavf58.29.100
+    Stream #0:0: Audio: pcm_mulaw, 8000 Hz, mono, s16, 64 kb/s
+    
+    Metadata:
+    encoder : Lavc58.54.100 pcm_mulaw
+    size= --kB time=00:00:00:00 bitrate=64.8kbits/s speed= 1x 
+
+#### Decode raw file
+
+    sox -t raw -r 8000 -v 4 -c 1 -e mu-law 2138.raw out.wav
+
+Then, play and listen to the out.wav file.
