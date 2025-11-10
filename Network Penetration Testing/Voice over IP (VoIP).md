@@ -53,6 +53,10 @@ Example information of the call record
 
 #### Decode raw file
 
+    sox -t FILE_EXTENSION -r RATEHz -c CHANNEL -e ENCODER -v NUM FILE out.wav
+
+Example
+
     sox -t raw -r 8000 -v 4 -c 1 -e mu-law 2138.raw out.wav
 
 Then, play and listen to the out.wav file.
