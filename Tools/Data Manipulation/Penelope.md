@@ -15,6 +15,7 @@ Link: https://github.com/brightio/penelope
 #### 3) Go to main menu of penelope
 
     CTRL+C or F12
+    CTRL+D (Windows)
 
 ## Penelope Terminal
 
