@@ -170,3 +170,23 @@ In the following example, the database truncates the username after a certain le
     
     -- The database truncates the input to admin and discards the extra characters
     -- If a user admin already exists, the attacker might be able to bypass authentication.
+
+## Stored Procedures
+
+### 1) Open SQL Server Management Studio, connect to the database, then go to:
+
+    DB_NAME -> Programmability -> Stored Procedures
+
+### 2) Find interesting stored procedures and press:
+
+    modify
+
+### 3) If you find anything interesting, open Visual Studio and load the entire solution of the web app.
+
+### 4) Try to find where the Stored Procedure is called within the code.
+
+### 5) Check which function is located, check variables, and where is it called by clicking on:
+
+    References
+
+### 6) Try to reproduce the vulnerability.
