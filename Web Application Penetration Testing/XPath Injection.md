@@ -5,6 +5,10 @@
 https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/XPATH%20Injection/README.md
 https://book.hacktricks.wiki/en/pentesting-web/xpath-injection.html
 
+## Wordlists
+
+    /usr/share/wordlists/fuzzdb/attack-payloads/xpath/xpath-injection.txt
+
 ## Identification
 
 ### 1) Add gibberish in the parameter
