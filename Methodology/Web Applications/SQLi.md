@@ -177,6 +177,12 @@ In the following example, the database truncates the username after a certain le
 
     DB_NAME -> Programmability -> Stored Procedures
 
+Right-click on Stored Procedures, then:
+
+    Filter -> Filter Settings
+
+Add the name of the Stored Procedure (without the dbo. part), then press OK.
+
 ### 2) Find interesting stored procedures and press:
 
     modify
