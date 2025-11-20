@@ -1,5 +1,18 @@
 ## XPath Injection
 
+## Identification
+
+### 1) Add a single quote in a parameter
+
+    '
+
+Then you may get an error like this:
+
+    XML Error; No '//text() entity found
+    Warning: SimpleXMLElement::xpath(): Invalid expression in /var/www/html/portal.php on line 68
+
+This verifies that it is vulnerable to XPath Injection
+
 #### XPath Syntax
 
 Nodes:
