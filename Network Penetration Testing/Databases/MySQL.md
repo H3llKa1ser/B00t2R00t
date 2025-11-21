@@ -121,5 +121,5 @@ lib_mysqludf_sys.c
 
 Compile the .so file into a shared object (.so)
 
-    gcc -Wall -fPIC -I/usr/include/mysql -shared -o lib_mysqludf_sys.so lib_mysqludf_sys.c -lc
+    gcc -Wall -fPIC -I /usr/include/mysql -shared -o lib_mysqludf_sys.so lib_mysqludf_sys.c -lc
 
