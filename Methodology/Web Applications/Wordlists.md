@@ -7,6 +7,7 @@
 ### 2) File discovery
 
     /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt
+    /usr/share/seclists/Discovery/Web-Content/quickhits.txt
 
 ### 3) SecLists directory
 
