@@ -1,6 +1,6 @@
 # APT manager and malicious repository
 
-## Requirements: Possibly a crontab that runs apt as root or the user can run apt/apt-get runs as root with sudo
+## Requirements: Possibly a crontab that runs apt as root or the user can run apt/apt-get runs as root with sudo. World-writeable /etc/apt/apt.conf.d
 
 ### Steps:
 
