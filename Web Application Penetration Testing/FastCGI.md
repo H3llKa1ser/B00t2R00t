@@ -19,7 +19,6 @@ System
 Exec
 
     <?php exec('id');?>
-    <?php echo exec('id');?>
 
 Shell_exec
 
