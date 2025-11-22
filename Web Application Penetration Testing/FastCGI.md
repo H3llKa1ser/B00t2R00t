@@ -6,7 +6,7 @@ Link: https://book.hacktricks.wiki/en/network-services-pentesting/9000-pentestin
 
 Python script: https://gist.githubusercontent.com/phith0n/9615e2420f31048f7e30f3937356cf75/raw/ffd7aa5b3a75ea903a0bb9cc106688da738722c5/fpm.py
 
-## Find the phpinfo file within the server to check which php functions are allowed to execute as well as 
+## Find the phpinfo file within the server to check which PHP functions are allowed to execute.
 
 ### 1) Modify hacktricks script according the target
 
