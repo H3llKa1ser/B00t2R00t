@@ -47,7 +47,15 @@ OR use the squidproxyscan.sh script below (Replace IP addresses and add more por
         fi
     done
 
-### 3) Access internal services using your browser with FoxyProxy
+### 3) Spose tool 
+
+Link: https://github.com/aancw/spose.git
+
+Scan default common ports
+
+    python3 spose.py --proxy http://TARGET_IP:3128 --target 127.0.0.1
+
+### 4) Access internal services using your browser with FoxyProxy
 
 Create a new proxy, then:
 
