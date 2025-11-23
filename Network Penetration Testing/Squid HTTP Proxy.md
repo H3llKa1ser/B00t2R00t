@@ -34,7 +34,7 @@ OR use the squidproxyscan.sh script below (Replace IP addresses and add more por
     
     # Target IP and ports
     target_ip="192.168.x.x"
-    ports=("22" "80" "443" "8000" "8080") #Feel free to add additional ports in the same format
+    ports=("22" "80" "443" "3306" "8000" "8080") #Feel free to add additional ports in the same format
     
     # Loop over ports
     for port in "${ports[@]}"; do
