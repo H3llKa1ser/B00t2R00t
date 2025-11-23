@@ -24,7 +24,7 @@
 
 ### Exposed squid proxy can be used to gain access to internal applications or ssh connections
 
-OR use the squidproxy.sh script below (Replace IP addresses and add more ports to scan)
+OR use the squidproxyscan.sh script below (Replace IP addresses and add more ports to scan)
 
     #!/bin/bash
     
