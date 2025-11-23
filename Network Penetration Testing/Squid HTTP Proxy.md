@@ -46,3 +46,15 @@ OR use the squidproxyscan.sh script below (Replace IP addresses and add more por
             echo "Response from $target_ip:$port with status code $response"
         fi
     done
+
+### 3) Access internal services using your browser with FoxyProxy
+
+Create a new proxy, then:
+
+Add the target IP address and port 3128
+
+Now, browse to
+
+    http://TARGET_IP:INTERNAL_PORT
+
+to access the service.
