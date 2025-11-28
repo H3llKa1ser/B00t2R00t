@@ -4,7 +4,7 @@
 
     type C:\xampp\properties.ini
 
-If XAMPP version is XAMPP < 7.2.29, 7.3.x < 7.3.16 & 7.4.x < 7.4.4, then proceed with the follwoing steps:
+If XAMPP version is XAMPP < 7.2.29, 7.3.x < 7.3.16 & 7.4.x < 7.4.4, then proceed with the following steps:
 
 ### 2) Searchsploit
 
