@@ -1,4 +1,4 @@
-# cURL
+# Curl
 
 ### 1) Upload an image to the target web server
 
