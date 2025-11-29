@@ -2,9 +2,13 @@
 
 There is username and password on this you can upload shell on direcotry or find downloads files for initial access
 
-#### 1) 
+#### 1) scan complete FTP Port
 
-    nmap --script=ftp-* -p 21 $ip (scan complete FTP Port)
+    nmap --script=ftp-* -p 21 $ip 
+
+#### 2) Brute-force default FTP credentials
+
+    hydra -C /usr/share/wordlists/seclists/Passwords/Default-Credentials/ftp-betterdefaultpasslist.txt IP ftp
 
 #### 2) check if anonymous allowed then use ftp anonymous@ip (password also anonymous)
 
