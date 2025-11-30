@@ -6,5 +6,5 @@
 
 ### 2) Generic database
 
-    UPDATE TABLE_NAME SET password='PASSWORD_HERE' WHERE username='admin';
+    UPDATE TABLE_NAME SET password = 'PASSWORD_HERE' WHERE username ='admin';
 
