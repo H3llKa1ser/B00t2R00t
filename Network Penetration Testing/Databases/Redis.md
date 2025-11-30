@@ -12,6 +12,8 @@ Port 6379
 
 ### 3) Exploitation
 
+#### These exploits work on Redis 4x and Redis 5x versions
+
 Run a Redis rogue server to capture data or execute commands
 
 Link: https://github.com/n0b0dyCN/redis-rogue-server
