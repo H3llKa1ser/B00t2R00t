@@ -4,7 +4,7 @@ Port 80
 
 ### 1) Connection
 
-    cadaver IP
+    cadaver http://domain.local/webdav
 
 ### 2) Exploitation
 
