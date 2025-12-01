@@ -24,4 +24,7 @@ Port 80
 
     curl http://$VictimIP/shell.aspx
     
+### 3) WebDAV credentials file location
 
+    /var/www/html/webdav/passwd.dav
+    /var/www/dav/passwd.dav
