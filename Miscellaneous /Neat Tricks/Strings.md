@@ -9,3 +9,7 @@
     strings.exe binary.exe (Windows CMD)
 
     strings binary (Linux)
+
+Human readable content from windows executable files
+
+    strings -e l binary.exe
