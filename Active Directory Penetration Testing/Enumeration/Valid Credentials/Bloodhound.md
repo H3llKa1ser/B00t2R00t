@@ -1,5 +1,9 @@
 # Bloodhound
 
+Resource in case of troubleshooting:
+
+https://www.kali.org/tools/bloodhound/
+
 ## Installation
 
     sudo apt-get install neo4j
