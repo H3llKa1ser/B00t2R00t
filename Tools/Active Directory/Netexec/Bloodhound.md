@@ -20,6 +20,6 @@
 
 ### To ingest the data of the Active Directory
 
-    nxc ldap <ip> -u user -p pass --bloodhound -ns <ns-ip> --collection All 
+    nxc ldap <ip> -u user -p pass --bloodhound --dns-server <ns-ip> --collection All 
 
 ## Note: If it doesn't work, use the dnschef tool then try again
