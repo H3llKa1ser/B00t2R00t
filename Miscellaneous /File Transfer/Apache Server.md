@@ -7,6 +7,10 @@ Server
     cp nc.exe /var/www/html
     systemctl start apache2
 
+OR 
+
+    service apache2 restart
+
 Client
 
 Get via web browser, wget or powershell
