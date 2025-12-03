@@ -32,7 +32,7 @@ Windows
 
 Linux (Add -request to Kerberoast if needed)
 
-    impacket-GetUserSPNs nagoya-industries.com/craig.carr:Spring2023 -dc-ip 192.168.205.21
+    impacket-GetUserSPNs domain.local/user.name:Spring2023 -dc-ip IP
 
 ## Steps:
 
