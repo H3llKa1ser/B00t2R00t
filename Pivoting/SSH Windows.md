@@ -1,5 +1,9 @@
 # SSH Windows
 
+## Requirements:
+
+Administrator access
+
 ### 1) Download OpenSSH to the compromised target
 
 Link: https://github.com/PowerShell/Win32-OpenSSH/releases/tag/10.0.0.0p2-Preview
