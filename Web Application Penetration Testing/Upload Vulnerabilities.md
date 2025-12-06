@@ -81,6 +81,8 @@ Upload the file to get your shell if bypassed successfully.
 
 ## Magic Bytes Bypass (MIME Type Spoofing)
 
+Resource: https://en.wikipedia.org/wiki/List_of_file_signatures
+
 If an upload functionality permits only for example, image files, we can append some "Magic Bytes" on our reverse shell to make it an image file.
 
     GIF87a
