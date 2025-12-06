@@ -14,6 +14,10 @@ Nginx Server
 
     /var/log/nginx/access.log
 
+(Check the location of the access.log file in nginx)
+
+    /etc/nginx/nginx.conf 
+
 ### 2) Inject a payload
 
 Inject a simple web shell payload into a request header (e.g., User-Agent or Referer) that the web server will log.
