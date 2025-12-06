@@ -6,7 +6,13 @@ If you locate an LFI, first try to get RCE.
 
 ### 1) Locate a writable log file
 
+Apache Server
+
     /var/log/apache2/access.log
+
+Nginx Server
+
+    /var/log/nginx/access.log
 
 ### 2) Inject a payload
 
