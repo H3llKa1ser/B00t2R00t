@@ -19,6 +19,8 @@ https://ppn.snovvcrash.rocks/
 
 https://gitee.com/scriptkiddies/hacktricks/tree/master/misc
 
+https://hacker-arsenal.tools/tools
+
 And many more!!!
 
 # DISCLAIMER!
