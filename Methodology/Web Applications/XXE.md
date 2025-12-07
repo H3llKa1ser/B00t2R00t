@@ -76,6 +76,9 @@ In this case we need to be careful because if we are referencing something that 
 ### 4) Remote Code Execution
 
 In this case we need to be careful with special characters (| < > { } &) as well, as they will break our command, you could even consider encode them. For case see that in example below we replaced all spaces in the above XML code with $IFS, to avoid breaking the XML syntax.
+Another trick to use for RCE is URL encoding the \n character (newline) with %0a. 
+
+Example command you can use to test is: %0als
 
         <?xml version="1.0"?>
         <!DOCTYPE email [
