@@ -32,6 +32,10 @@ customize wordlists
 
     head /usr/share/wordlists/rockyou.txt > demo.txt | sed -i '/^1/d' demo.txt
 
+Create wordlist for a specific user to drastically reduce attack time
+
+    cat /usr/share/wordlists/rockyou.txt | grep user > /home/kali/scripts/bruteforce/user.txt 
+
 if we want to add 1 in all password then | 
 
     echo \$1 > demo.rule | hashcat -r demo.rule --stdout demo.txt
