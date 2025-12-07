@@ -20,11 +20,15 @@
 
 ### 4) Common Libcrypto/format errors
 
-If ssh complains about libcrypto or key format, normalize the file:
+If SSH complains about libcrypto or key format, normalize the file:
 
     dos2unix ~/.ssh/id_rsa
     vim --clean ~/.ssh/id_rsa
     (inside vim: type :wq then hit Return)
+
+If SSH complains about a signature algorithm mismatch, try connecting using this command instead:
+
+    ssh -i id_rsa -o PubkeyAcceptedKeyTypes=+ssh-rsa USER@IP
 
 ### 5) Discover SSH Keys in a web application
 
