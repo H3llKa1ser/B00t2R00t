@@ -8,6 +8,7 @@
 
     /usr/share/wordlists/dirbuster/directory-list-lowercase-2.3-medium.txt
     /usr/share/seclists/Discovery/Web-Content/quickhits.txt
+    /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-big.txt
 
 ### 3) SecLists directory
 
