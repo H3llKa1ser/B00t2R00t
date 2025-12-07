@@ -16,7 +16,7 @@
 
 - Crack with john:
 
-      john — wordlist=rockyou.txt hash.txt
+      john --wordlist=rockyou.txt hash.txt
 
 ### 4) Common Libcrypto/format errors
 
