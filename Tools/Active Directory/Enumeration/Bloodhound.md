@@ -46,7 +46,7 @@
 
 #### 1) 
 
-      bloodhound-python -d DOMAIN.LOCAL -u 'USER' -p 'PASSWORD -dc DC.DOMAIN.LOCAL -c all
+      bloodhound-python -d DOMAIN.LOCAL -u 'USER' -p 'PASSWORD -dc DC.DOMAIN.LOCAL -c all -ns IP --zip
 
 ### TIP: If you receive DNS errors, you can set up a fake DNS server with the DNSChef tool https://github.com/iphelix/dnschef
 
