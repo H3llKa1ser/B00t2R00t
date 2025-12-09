@@ -55,6 +55,10 @@ Enumerate users
 
     nxc ldap domain.local -u '' -p '' --users
 
+Enumerate user descriptions (check for sensitive information like passwords, etc.)
+
+    nxc ldap <hostname> -u '' -p '' -M get-desc-users
+
 #### HTTP
 
 Enumerate directories
