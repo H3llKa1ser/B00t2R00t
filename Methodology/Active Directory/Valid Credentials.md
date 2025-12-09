@@ -63,3 +63,9 @@ Rerun Bloodhound
 Upload the zip file to Bloodhound
 
 Mark your compromised user as "Owned", then use the cypher query "Shortest path from Owned".
+
+### 4) RID Cycling
+
+Enumerate all valid users within the domain by doing RID Cycling
+
+    impacket-lookupsid domain.local/USER1:Password@123@DC_IP | grep -oP 'domain\\\K[\w.$]+(?=\s+\(SidTypeUser\))' | sort -u > usernames.txt
