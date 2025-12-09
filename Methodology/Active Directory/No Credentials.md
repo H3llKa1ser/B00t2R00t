@@ -1,6 +1,12 @@
 # No Credentials
 
-### 1) Scan the machine
+### 1) Do reconnaissance for live hosts within a network
+
+Scan an IP range
+
+    nxc smb IP_RANGE
+
+Scan all ports of a machine
 
     sudo rustscan -a IP -r 1-65535 -- -A -Pn -oA
 
