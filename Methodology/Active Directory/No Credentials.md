@@ -9,6 +9,8 @@ Analyze the scan output. If we find a domain, make an entry in the hosts file
     sudo nano /etc/hosts
     IP  domain.local
 
+If SMB is signed but not enabled, or neither, check if you can do relay attacks.
+
 ### 2) Do reconnaissance for credentials (users and passwords)
 
 #### SMB
