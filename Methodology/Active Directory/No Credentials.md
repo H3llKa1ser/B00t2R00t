@@ -17,9 +17,14 @@ Check SMB information for null session and guest access, as well as general info
 
     enum4linux-ng IP
 
+Check for null session and/or guest access for SMB share access
+
+    nxc smb domain.local -u '' -p '' --shares
+    nxc smb domain.local -u guest -p '' --shares
+
 Dump all valid users in the domain via RID cycling
 
-    nxc smb -u '' -p '' --rid-brute
+    nxc smb domain.local -u '' -p '' --rid-brute
 
 #### Kerberos
 
@@ -40,4 +45,4 @@ Enumerate the domain via LDAP
 
 Enumerate users
 
-    nxc ldap -u '' -p '' --users
+    nxc ldap domain.local -u '' -p '' --users
