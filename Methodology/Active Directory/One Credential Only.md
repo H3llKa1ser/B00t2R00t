@@ -30,3 +30,14 @@ Use a single password against different users
 
     nxc smb domain.local -u users.txt -p Password123! --continue-on-success
 
+## Both (Verification Methods)
+
+### 1) Credential Stuffing
+
+Do a credential stuffing attack using the username and password wordlists you have created
+
+    nxc smb domain.local -u users.txt -p passwords.txt
+
+Test user=password (1 line per test)
+
+    nxc smb domain.local -u users.txt -p passwords.txt --no-bruteforce
