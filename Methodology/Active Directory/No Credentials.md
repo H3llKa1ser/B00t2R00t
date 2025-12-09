@@ -46,3 +46,20 @@ Enumerate the domain via LDAP
 Enumerate users
 
     nxc ldap domain.local -u '' -p '' --users
+
+#### HTTP
+
+Enumerate directories
+
+    feroxbuster --url http://domain.local -w /usr/share/wordlists/dirb/common.txt -C 404,500,400,403
+
+Enumerate subdomains
+
+    ffuf -u http://domain.local -c -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-110000.txt -H 'Host: FUZZ.domain.local' 
+
+#### DNS
+
+Do a DNS Zone transfer
+
+    dig axfr @DNS_IP
+    dig axfr @DNS_IP domain.local
