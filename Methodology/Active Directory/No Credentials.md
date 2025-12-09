@@ -6,9 +6,13 @@ Scan an IP range
 
     nxc smb IP_RANGE
 
-Scan all ports of a machine
+Scan all TCP ports of a machine
 
     sudo rustscan -a IP -r 1-65535 -- -A -Pn -oA
+
+Scan UDP ports
+
+    sudo nmap -sU --top-ports 100 -vvv IP -oA
 
 Analyze the scan output. If we find a domain, make an entry in the hosts file
 
