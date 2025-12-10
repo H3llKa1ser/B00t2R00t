@@ -72,7 +72,7 @@ Enumerate all valid users within the domain by doing RID Cycling
 
 ### 5) Active Directory Certificate Services (ADCS)
 
-#### Requirements: User is in the Enrollment Group, Certificate Requesters group, or with Enroll/Autoenroll rights on a template
+#### Requirements: User is in the Enrollment Group, Certificate Requesters group, or with Enroll/Autoenroll rights on a template and a Certificate Authority (CA) exists on the domain.
 
 Enumerate vulnerabilities in the ADCS for domain compromise
 
