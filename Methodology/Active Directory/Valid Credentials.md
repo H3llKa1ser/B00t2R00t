@@ -69,3 +69,13 @@ Mark your compromised user as "Owned", then use the cypher query "Shortest path 
 Enumerate all valid users within the domain by doing RID Cycling
 
     impacket-lookupsid domain.local/USER1:Password@123@DC_IP | grep -oP 'domain\\\K[\w.$]+(?=\s+\(SidTypeUser\))' | sort -u > usernames.txt
+
+### 5) Active Directory Certificate Services (ADCS)
+
+#### Requirements: User is in the Enrollment Group, Certificate Requesters group, or with Enroll/Autoenroll rights on a template
+
+Enumerate vulnerabilities in the ADCS for domain compromise
+
+    certipy find -u 'user' -p 'password' -dc-ip DC_IP -text -stdout -vulnerable
+
+Then, depending on the scenario (ESC1, ESC4, etc.), go to Active Directory Certificate Services (ADCS) attacks to exploit in detail.
