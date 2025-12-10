@@ -34,6 +34,8 @@ Check for null session and/or guest access for SMB share access
     nxc smb domain.local -u '' -p '' --shares
     nxc smb domain.local -u guest -p '' --shares
 
+### TIP: Guest might have access where null has not!
+
 Dump all valid users in the domain via RID cycling
 
     nxc smb domain.local -u '' -p '' --rid-brute
