@@ -60,6 +60,8 @@ Rerun Bloodhound
 
     bloodhound-python -d domain.local -u user -p password -dc dc.domain.local -c all -ns 127.0.0.1
 
+    nxc ldap domain.local -u user -p password --dns-server 127.0.0.1 --collection All
+
 Upload the zip file to Bloodhound
 
 Mark your compromised user as "Owned", then use the cypher query "Shortest path from Owned".
