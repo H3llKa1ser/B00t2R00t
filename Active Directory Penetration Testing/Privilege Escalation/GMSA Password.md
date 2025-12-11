@@ -33,7 +33,7 @@
 
 #### 3) Active Directory Powershell
 
-    $gmsa = Get-ADServiceAccount -Identity 'SVC_SERVICE_ACCOUNT' -Properties 'msDS-
+    $gmsa = Get-ADServiceAccount -Identity 'SVC_SERVICE_ACCOUNT' -Properties 'msDS-ManagedPassword'
  
     $blob = $gmsa.'msDS-ManagedPassword'
  
