@@ -88,6 +88,7 @@ Open the generated HTA file (evil.hta) and copy the payload (it is the Base64 en
         
 - Go to Tools → Macros → Organize Macros → LibreOffice Basic.
 - Click New, give it a name (e.g., Exploit), and paste the macro code below.
+- After that, go to Tools -> Customize, then select Events tab and assign our malicious macro to the "Open Document" event
 
 ### 4) Macro code example
 
