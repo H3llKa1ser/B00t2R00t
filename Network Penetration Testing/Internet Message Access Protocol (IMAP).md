@@ -36,3 +36,35 @@ Python script
         port = int(sys.argv[2])
         
         check_imap_capabilities(host, port)
+
+### 4) Connect to IMAP server
+
+Connect
+
+    telnet IP 143
+
+Authenticate
+
+    tag login user@localhost password
+
+List conversation
+
+    tag LIST "" "*"
+
+    tag SELECT EXAMPLE
+
+List the number of messages in the mail server
+
+    tag STATUS EXAMPLE
+
+Read email
+
+    tag fetch 1 BODY []
+
+Server capabilities
+
+    tag CAPABILITY
+
+Logout 
+
+    tag logout
