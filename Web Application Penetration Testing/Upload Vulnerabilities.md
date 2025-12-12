@@ -79,6 +79,14 @@ Save the file, then upload it to the server. After that, try to reupload your fi
 
 Upload the file to get your shell if bypassed successfully.
 
+OR you can add an arbitrary extension that is not blacklisted by the application to the .htaccess file, upload it, then you can execute PHP code even with the arbitrary extension
+
+    echo "AddType application/x-httpd-php .xxx" > .htaccess
+
+Then upload file
+
+    shell.xxx
+
 ## Magic Bytes Bypass (MIME Type Spoofing)
 
 Resource: https://en.wikipedia.org/wiki/List_of_file_signatures
