@@ -1,4 +1,4 @@
-# Java Application Archive Analysis
+# Java Application Archive Analysis (JAR)
 
 ## Steps:
 
@@ -18,3 +18,11 @@
 
     /opt/panda_search/src/main/java/com/panda_search/htb/panda_search/MainController.java 
 
+
+## Easier way to analyze a .jar file
+
+    jd-gui cloudhosting-0.0.1.jar
+
+Then go to 
+
+    BOOT-INF -> classes -> application.properties
