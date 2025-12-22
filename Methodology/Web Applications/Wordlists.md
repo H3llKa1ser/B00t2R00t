@@ -17,6 +17,7 @@
 ### 4) SecLists file
 
     /usr/share/seclists/Discovery/Web-Content/big.txt
+    /usr/share/wordlists/seclists/Discovery/Web-Content/raft-large-files.txt
 
 ### 5) Custom Wordlist
 
