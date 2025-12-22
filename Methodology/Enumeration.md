@@ -26,13 +26,13 @@ Enumerate the directories of a webserver to check for admin pages, specific appl
 
 You can also enumerate other interesting files like .txt, .conf or .php 
 
-Wordlists to use: 
+#### Wordlists to use: 
 
 1) common.txt
 
 2) directory-list-2.3-medium.txt
 
-        feroxbuster -u http://DOMAIN.LOCAL/ -w /usr/share/wordlists/dirb/common.txt -C 404 -x txt
+       feroxbuster -u http://DOMAIN.LOCAL/ -w /usr/share/wordlists/dirb/common.txt -C 404 -x txt
 
 ### 3) Subdomain/Vhost Fuzzing
 
@@ -44,7 +44,7 @@ Wordlists to use:
 
 DNS-Subdomains-top-1million-11000.txt
 
-        ffuf -c -w /usr/share/wordlists/seclists/Discovery/DNS/Subdomains-top-1million-11000.txt -u http://domain.local/ -H 'Host: FUZZ.local.local' -fs NUM
+    ffuf -c -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top-1million-11000.txt -u http://domain.local/ -H 'Host: FUZZ.local.local' -fs NUM
 
 If port 53 (DNS) is open, you can attempt to do a zone transfer to dump all DNS entries from a host
 
