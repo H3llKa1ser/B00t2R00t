@@ -29,7 +29,7 @@ Enumerate existing users
     root
     sys
 
-### 2) Username Generation
+### 2) Username Generation and credential extraction
 
 Upon finding potential users by browsing on a web app, use this generator script
 
@@ -59,6 +59,20 @@ If no valid credentials are found, make the attack again using the username as t
 
     hydra -L validusers.txt -P cewl.txt postfish.off smtp -e ns
 
-Login with
+Login with credentials
+
+#### SMTP
 
     telnet IP 25
+
+#### IMAP
+
+    telnet IP 143
+
+#### POP3 
+
+    telnet IP 110
+
+### 3) Connection
+
+Upon connecting, refer to this repo in the "Network Penetration Testing" directory. There, the email protocols are explained in detail on how to interact with them.
