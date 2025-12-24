@@ -90,3 +90,8 @@ Send an email with a malicious attachment to the target. (Files to use: .ods, .o
 Send a basic password reset phishing attack
 
     sendemail -f 'it@postfish.off' -t 'brian.moore@postfish.off' -s postfish.off:25 -u 'Password Reset' -m 'Could you please connect here to reset your password? Link: http://192.168.45.237/' -o tls=no
+
+Swaks instead of sendemail
+
+    swaks -t brian.moore@postfish.off --from it@postfish.off --server 192.168.109.137 --body "click http://192.168.45.237 to reset your password" --header "Subject: password reset"
+ 
