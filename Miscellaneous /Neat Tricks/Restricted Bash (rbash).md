@@ -1,7 +1,5 @@
 # Breaking out of restricted Bash (rbash) CLI in SSH
 
-## requirements: can run export
-
 ### 1) Run SHELL
 
     export SHELL=/bin/bash
