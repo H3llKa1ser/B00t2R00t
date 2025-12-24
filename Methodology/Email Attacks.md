@@ -75,4 +75,4 @@ Login with credentials
 
 ### 3) Connection
 
-Upon connecting, refer to this repo in the "Network Penetration Testing" directory. There, the email protocols are explained in detail on how to interact with them.
+Upon connecting, refer to this repo in the "Network Penetration Testing" section. There, the email protocols are explained in detail on how to interact with them.
