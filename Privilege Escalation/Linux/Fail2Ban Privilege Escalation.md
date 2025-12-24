@@ -2,9 +2,9 @@
 
 ## Requirements:
 
-Fail2Ban service runs as root, the user has sudo access to use fail2ban and can modify fail2ban configuration files
+Fail2Ban service runs as root, the user has sudo access to use fail2ban, and/or can modify fail2ban configuration files
 
-### 1) Check if user has sudo access, or check for a process that runs fail2ban as root
+### 1) Check if the user has sudo access, or check for a process that runs fail2ban as root
 
     sudo -l
     pspy64
