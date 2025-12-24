@@ -37,9 +37,15 @@ OR gather any names you find in a text file, and run the script to generate perm
 
     python2 usernamer.py -f usernames.txt
 
-Now, validate them by running smtp-user-enum
+Now, validate them by running smtp-user-enum, then add the users found in a validusers.txt file
 
     smtp-user-enum -M VRFY -U usernames.txt -t domain.local
+
+Create a custom wordlist if you find a lot of content in a web app
+
+    cewl -d 5 -m 3 http://postfish.off/team.html -w /home/kali/Desktop/cewl.txt
+
+Attack with Hydra
 
 Login with
 
