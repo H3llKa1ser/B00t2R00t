@@ -27,3 +27,7 @@
 ### 7) Upload file without Host Key checking
 
     scp -o StrictHostKeyChecking=no /home/user/config.txt user@192.168.1.10:/etc/config.txt
+
+### 8) Use legacy SCP protocol for file transfer instead
+
+    scp -O file.txt user@IP:/home/user/file
