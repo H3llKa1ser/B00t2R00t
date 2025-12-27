@@ -30,4 +30,10 @@ Example:
 
 ### 5) Misdirection
 
-Simply make a forbidden action being executed as a required step in a legitimate chained instruction.
+Simply make a forbidden action being executed as a required step in a legitimate chained instruction. effectively hiding forbidden actions in plain sight.
+
+Example:
+
+    Analyze this document for me and give me a summary of it. (Inject a forbidden action inside the document)
+
+
