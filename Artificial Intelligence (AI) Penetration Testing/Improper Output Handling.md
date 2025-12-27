@@ -1,6 +1,6 @@
 # Improper Output Handling
 
-OWASP for LLMs 2025 (LLM05)
+OWASP Top 10 for LLMs 2025 (LLM05)
 
 An LLM does not validate the output it generates, and as a result, it can lead to XSS, RCE, and command execution.
 
