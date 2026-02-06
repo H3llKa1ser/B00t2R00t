@@ -11,6 +11,8 @@ https://exploit-notes.hdks.org/
 
 https://academy.hackthebox.com/
 
+https://tryhackme.com/
+
 https://www.thehacker.recipes/
 
 https://www.ired.team/
