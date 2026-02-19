@@ -1,6 +1,12 @@
+# DPAPI Domain Backup Key
+
 ## Exporting DPAPI Domain Backup Key from a domain controller with mimikatz, and explaining how to recreate a user's masterkey (AKA Impersonate ANYONE within the domain)
 
-### Tools: Mimikatz, CQTools https://github.com/BlackDiverX/cqtools
+Tools: 
+
+1) Mimikatz
+
+2) CQTools https://github.com/BlackDiverX/cqtools
 
 ### Requirements: System level access on the host
 
