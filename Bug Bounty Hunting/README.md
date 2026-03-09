@@ -1,4 +1,6 @@
-# Steps
+# Bugstorm
+
+## Steps
 
 Step 1: Download & Setup
 
@@ -177,3 +179,29 @@ Step 3: Review Results
 •	• Review and customize nuclei templates for your specific testing needs.
 
 •	• Use the quick module runner (bugstorm-quick.sh) to re-run specific modules without a full scan.
+
+# bugbounty_recon.py
+
+# Full scan with all modules
+
+    python bugbounty_recon.py -d example.com
+
+# Skip slow modules for quick recon
+
+    python bugbounty_recon.py -d example.com --skip ports crawl
+
+# Custom output format and directory
+
+    python bugbounty_recon.py -d example.com -f html json -o results
+
+# Use custom subdomain wordlist
+
+    python bugbounty_recon.py -d example.com -w /path/to/wordlist.txt
+
+# Scan specific ports only
+
+    python bugbounty_recon.py -d example.com --ports 80,443,8080,3000,9200
+
+# Slower, stealthier scanning
+
+    python bugbounty_recon.py -d example.com --rate-limit 1.0 --timeout 15
