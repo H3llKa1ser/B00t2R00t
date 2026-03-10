@@ -38,7 +38,11 @@ Check for null session and/or guest access for SMB share access
 
 Dump all valid users in the domain via RID cycling
 
-    nxc smb domain.local -u '' -p '' --rid-brute
+    nxc smb domain.local -u '' -p '' --rid-brute > users.txt
+
+Parse results
+
+    grep "SidTypeUser" users.txt | cut -d '\' -f2 | cut -d ' ' -f1 > newusers.txt
 
 #### Kerberos
 
