@@ -655,59 +655,124 @@ module_tech_detect() {
 }
 
 # ════════════════════════════════════════════════════════════════════════════
-# MODULE 6: URL & ENDPOINT DISCOVERY
+# MODULE 6: URL & ENDPOINT DISCOVERY  *** FIXED v2.2 ***
+# ════════════════════════════════════════════════════════════════════════════
+# ROOT CAUSE of hang:
+#   1. waybackurls has NO built-in timeout. The Wayback Machine CDX API
+#      rate-limits after ~15-20 rapid requests — throttled connections
+#      hang open silently (no error, no EOF), blocking the process forever.
+#   2. With hundreds of subdomains in resolved.txt piped via STDIN,
+#      waybackurls processes them sequentially. One stalled API response
+#      = permanent hang.
+#   3. gau and hakrawler have similar risks against archive/crawl APIs.
+#
+# FIX:
+#   - Wrap every URL-discovery tool in `timeout` with a hard kill deadline.
+#   - Process subdomains in controlled batches using xargs -P with </dev/null
+#     to prevent STDIN fd inheritance issues inside parallel workers.
+#   - Add explicit per-tool flags for timeouts and rate limits where supported.
 # ════════════════════════════════════════════════════════════════════════════
 module_url_discovery() {
     local domain="$1"
     local url_dir="$OUTDIR/urls"
     local sub_dir="$OUTDIR/subdomains"
+
     log_step "MODULE 6: URL & Endpoint Discovery — $domain"
 
-    # Wayback URLs
+    # ── Configurable safety limits ──
+    local MODULE_TIMEOUT=900         # 15 min hard cap per tool (seconds)
+    local PER_DOMAIN_TIMEOUT=120     # 2 min per individual domain lookup
+    local MAX_PARALLEL=5             # Concurrent domain lookups
+    local MAX_DOMAINS=200            # Cap how many subdomains we query
+
+    # ────────────────────────────────────────────────────────────────────
+    # Wayback URLs  *** FIXED ***
+    # ────────────────────────────────────────────────────────────────────
     if command -v waybackurls &>/dev/null && [[ -s "$sub_dir/resolved.txt" ]]; then
         log_info "Fetching wayback URLs..."
-        cat "$sub_dir/resolved.txt" \
-            | waybackurls > "$url_dir/waybackurls.txt" 2>/dev/null || true
+        log_info "  (timeout: ${MODULE_TIMEOUT}s total, ${PER_DOMAIN_TIMEOUT}s/domain, ${MAX_PARALLEL} parallel)"
+
+        # Process each domain individually with its own timeout.
+        # xargs -P for parallelism, </dev/null severs STDIN inheritance,
+        # timeout kills any single domain that stalls on the CDX API.
+        head -"$MAX_DOMAINS" "$sub_dir/resolved.txt" \
+            | timeout "$MODULE_TIMEOUT" xargs -I{} -P "$MAX_PARALLEL" \
+                bash -c 'timeout '"$PER_DOMAIN_TIMEOUT"' waybackurls "$1" </dev/null 2>/dev/null' _ {} \
+            > "$url_dir/waybackurls.txt" 2>/dev/null || true
+
         log_success "waybackurls: $(wc -l < "$url_dir/waybackurls.txt" 2>/dev/null || echo 0) URLs"
     fi
 
-    # GAU
+    # ────────────────────────────────────────────────────────────────────
+    # GAU  *** FIXED (same pattern) ***
+    # ────────────────────────────────────────────────────────────────────
     if command -v gau &>/dev/null && [[ -s "$sub_dir/resolved.txt" ]]; then
         log_info "Fetching URLs with gau..."
-        cat "$sub_dir/resolved.txt" \
-            | gau --threads "$THREADS" --timeout "$TIMEOUT" \
+
+        # gau supports --timeout natively (in seconds), but it's per-HTTP-request
+        # not per-domain. We still need the outer timeout as a hard kill.
+        head -"$MAX_DOMAINS" "$sub_dir/resolved.txt" \
+            | timeout "$MODULE_TIMEOUT" gau \
+                --threads "$MAX_PARALLEL" \
+                --timeout "$PER_DOMAIN_TIMEOUT" \
+                --retries 2 \
+                --blacklist ttf,woff,woff2,eot,png,jpg,jpeg,gif,svg,ico,css \
             > "$url_dir/gau.txt" 2>/dev/null || true
+
         log_success "gau: $(wc -l < "$url_dir/gau.txt" 2>/dev/null || echo 0) URLs"
     fi
 
-    # Katana
+    # ────────────────────────────────────────────────────────────────────
+    # Katana (active crawler — already safe with -list flag)
+    # ────────────────────────────────────────────────────────────────────
     if command -v katana &>/dev/null && [[ -s "$sub_dir/live_hosts.txt" ]]; then
         log_info "Crawling with katana..."
-        katana -list "$sub_dir/live_hosts.txt" \
-            -d 3 -jc -kf -silent -t "$THREADS" \
+        timeout "$MODULE_TIMEOUT" katana \
+            -list "$sub_dir/live_hosts.txt" \
+            -d 3 -jc -kf -silent \
+            -t "$THREADS" \
+            -rl 100 \
+            -timeout "$TIMEOUT" \
             -o "$url_dir/katana.txt" 2>/dev/null || true
         log_success "katana: $(wc -l < "$url_dir/katana.txt" 2>/dev/null || echo 0) URLs"
     fi
 
-    # Hakrawler
+    # ────────────────────────────────────────────────────────────────────
+    # Hakrawler  *** FIXED ***
+    # ────────────────────────────────────────────────────────────────────
     if command -v hakrawler &>/dev/null && [[ -s "$sub_dir/live_hosts.txt" ]]; then
         log_info "Crawling with hakrawler..."
-        cat "$sub_dir/live_hosts.txt" \
-            | hakrawler -d 3 -t "$THREADS" \
+
+        # hakrawler reads full URLs from STDIN and has a -timeout flag (seconds)
+        head -100 "$sub_dir/live_hosts.txt" \
+            | timeout "$MODULE_TIMEOUT" hakrawler \
+                -d 3 \
+                -t "$MAX_PARALLEL" \
+                -timeout 10 \
             > "$url_dir/hakrawler.txt" 2>/dev/null || true
+
         log_success "hakrawler: $(wc -l < "$url_dir/hakrawler.txt" 2>/dev/null || echo 0) URLs"
     fi
 
-    # Merge all URLs
+    # ────────────────────────────────────────────────────────────────────
+    # Merge & Classify
+    # ────────────────────────────────────────────────────────────────────
     log_info "Merging and deduplicating all URLs..."
-    cat "$url_dir"/*.txt 2>/dev/null | sort -u > "$url_dir/all_urls.txt" || true
+    cat "$url_dir"/waybackurls.txt "$url_dir"/gau.txt \
+        "$url_dir"/katana.txt "$url_dir"/hakrawler.txt 2>/dev/null \
+        | sort -u > "$url_dir/all_urls.txt" || true
 
-    # Classify URLs (each grep has || true)
-    grep -iE '\.js(\?|$)' "$url_dir/all_urls.txt" > "$url_dir/js_files.txt" 2>/dev/null || true
-    grep -iE '\.json(\?|$)' "$url_dir/all_urls.txt" > "$url_dir/json_endpoints.txt" 2>/dev/null || true
-    grep -iE '(api|graphql|rest|v[0-9])' "$url_dir/all_urls.txt" > "$url_dir/api_endpoints.txt" 2>/dev/null || true
-    grep -iE '\?' "$url_dir/all_urls.txt" > "$url_dir/parameterized_urls.txt" 2>/dev/null || true
-    grep -iE '\.(zip|tar|gz|rar|bak|sql|db|log|env|cfg|conf|ini)' "$url_dir/all_urls.txt" \
+    # Classify URLs (each grep has || true to prevent exit on no-match)
+    grep -iE '\.js(\?|$)' "$url_dir/all_urls.txt" \
+        > "$url_dir/js_files.txt" 2>/dev/null || true
+    grep -iE '\.json(\?|$)' "$url_dir/all_urls.txt" \
+        > "$url_dir/json_endpoints.txt" 2>/dev/null || true
+    grep -iE '(api|graphql|rest|v[0-9])' "$url_dir/all_urls.txt" \
+        > "$url_dir/api_endpoints.txt" 2>/dev/null || true
+    grep -iE '\?' "$url_dir/all_urls.txt" \
+        > "$url_dir/parameterized_urls.txt" 2>/dev/null || true
+    grep -iE '\.(zip|tar|gz|rar|bak|sql|db|log|env|cfg|conf|ini)' \
+        "$url_dir/all_urls.txt" \
         > "$url_dir/sensitive_files.txt" 2>/dev/null || true
 
     local total
