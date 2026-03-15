@@ -65,10 +65,23 @@ The integrated toolset covers:
 ## Usage Examples
 
 Once your AI client is connected, you drive everything via prompts:
-```
-"Run a full port scan on 10.10.10.5"
-"Enumerate subdomains for target.com using subfinder and amass"
-"Check for SQLi on http://target.htb/login"
-"Crack this hash: 5f4dcc3b5aa765d61d8327deb882cf99"
-"Run autorecon against 10.10.10.5"
 
+    "Run a full port scan on 10.10.10.5"
+    "Enumerate subdomains for target.com using subfinder and amass"
+    "Check for SQLi on http://target.htb/login"
+    "Crack this hash: 5f4dcc3b5aa765d61d8327deb882cf99"
+    "Run autorecon against 10.10.10.5"
+
+## SSH Tunnel
+
+### 1) On main OS — create tunnel
+
+    ssh -L 8888:localhost:8888 user@KALI_IP
+
+### 2) On Kali — start the server
+
+    hexstrike_server --port 8888
+
+### 3) On main OS — start MCP bridge
+
+    hexstrike_mcp --server http://127.0.0.1:8888
