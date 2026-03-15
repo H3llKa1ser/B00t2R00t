@@ -1,5 +1,9 @@
 # Kali MCP Server
 
+Link: https://mcpservers.org/en/servers/k3nn3dy-ai/kali-mcp
+
+Check available tool categories in the link above.
+
 ## Native installation
 
 ### 1) Install via apt
@@ -38,3 +42,40 @@
     git clone https://github.com/hassanaftab93/kali-docker-mcp
     cd kali-docker-mcp
     docker compose up --build -d
+
+# Connecting to Claude Desktop
+
+#### claude_desktop_config.json
+
+    {
+      "mcpServers": {
+        "kali": {
+          "transport": "sse",
+          "url": "http://localhost:5000/sse"
+        }
+      }
+    }
+
+#### Docker Variant
+
+    {
+      "mcpServers": {
+        "kali-mcp-server": {
+          "type": "stdio",
+          "command": "docker",
+          "args": ["exec", "-i", "kali-mcp-server", "python3", "/app/kali_server.py"]
+        }
+      }
+    }
+    ```
+    
+    ---
+    
+    ## Usage Examples
+    
+    Once connected, you interact via natural language in the AI client. The model translates prompts to tool calls:
+    ```
+    "Run an nmap version scan against 192.168.1.10"
+    "Run gobuster on http://target.htb with a common wordlist"
+    "Use hydra to brute SSH on 10.10.10.5 with rockyou.txt"
+
