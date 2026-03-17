@@ -8,6 +8,8 @@ https://github.com/akamai/BadSuccessor
 
 https://github.com/logangoins/SharpSuccessor
 
+https://github.com/akamai/BadSuccessor
+
 ## Prerequisites:
 
 • Windows Server 2019 as Active Directory that supports PKINIT
