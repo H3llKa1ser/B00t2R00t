@@ -17,7 +17,7 @@ https://github.com/logangoins/SharpSuccessor
 
 ## Explanation
 
-BadSuccessor is a post-compromise privilege escalation technique that targets a new feature in Windows Server 2025: Delegated Managed Service Accounts (dMSAs). This technique takes advantage of vulnerabilities in the dMSA configuration, allowing attackers to escalate their privileges within Ac􀆟ve Directory environments after an initial compromise, potentially gran􀆟ng them higher-level access or control over critical systems.
+BadSuccessor is a post-compromise privilege escalation technique that targets a new feature in Windows Server 2025: Delegated Managed Service Accounts (dMSAs). This technique takes advantage of vulnerabilities in the dMSA configuration, allowing attackers to escalate their privileges within Active Directory environments after an initial compromise, potentially gran􀆟ng them higher-level access or control over critical systems.
 
 In essence, it exploits:
 
