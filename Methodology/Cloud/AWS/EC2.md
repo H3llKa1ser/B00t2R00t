@@ -59,3 +59,52 @@ Update the instance metadata options to require a token to make the instance met
     echo "Role Name is $role_name"
     curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/iam/security-credentials/${role_name}
 
+## EC2 Networking
+
+### 1) Look for network information
+
+AWS CLI or CloudShell: https://console.aws.amazon.com/cloudshell/home?region=us-east-1
+
+    aws ec2 describe-network-interfaces | jq '.NetworkInterfaces[0]'
+
+## EC2 Storage
+
+### 1) Check information on a snapshot
+
+AWS CLI or CloudShell
+
+    aws ec2 describe-snapshots --snapshot-ids snap-SNAPSHOT_ID
+
+### 2) Get the availability zone
+
+EC2 Instance Console
+
+    TOKEN=`curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`
+    curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/placement/availability-zone
+
+### 3) Create a volume from the snapshot
+
+EC2 Instance Console
+
+    aws ec2 create-volume --snapshot-id snap-SNAPSHOT_ID --volume-type gp3 --region us-east-1 --availability-zone AVAILABILITY_ZONE
+
+### 4) Attach the volume to our instance
+
+EC2 Instance Console
+
+    instance_id=$( curl  -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/instance-id )
+    aws ec2 attach-volume --region us-east-1 --device /dev/sdh --instance-id $instance_id --volume-id vol-VOLUME_ID_FROM_PREVIOUS_COMMAND
+
+### 5) Check the existance of the volume
+
+EC2 Instance Console
+
+    sudo fdisk -l
+
+### 6) Create a mount point, mount the disk and view contents
+
+    sudo mkdir /whatever
+    sudo mount /dev/nvme1n1 /whatever
+    ls /whatever
+    cat /whatever/root/root.txt
+
