@@ -30,8 +30,3 @@ AWS CLI or CloudShell
 
     aws ec2 associate-address --network-interface-id eni-NETWORK_INTERFACE_ID --allocation-id eipalloc-ALLOCATION_ID
 
-### 4) Ping the public IP for verification
-
-Attack machine
-
-    ping EC2_PUBLIC_IP
