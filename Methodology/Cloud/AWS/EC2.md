@@ -108,3 +108,16 @@ EC2 Instance Console
     ls /whatever
     cat /whatever/root/root.txt
 
+## EC2 Configuration
+
+#### UserData file
+
+### 1) Read the data from the UserData file
+
+    TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
+    instance_id=$( curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/meta-data/instance-id )
+    aws ec2 describe-instance-attribute --attribute userData --instance-id $instance_id --region us-east-1 --query UserData --output text  | base64 -d
+
+OR 
+
+    sudo nano /var/lib/cloud/instance/scripts/part-001
