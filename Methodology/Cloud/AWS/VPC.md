@@ -29,3 +29,9 @@ AWS CLI or CloudShell
 ### 3) Attach the public IP to the ENI of the target machine, by associating the AllocationId with the NetworkInterfaceId
 
     aws ec2 associate-address --network-interface-id eni-NETWORK_INTERFACE_ID --allocation-id eipalloc-ALLOCATION_ID
+
+### 4) Ping the public IP for verification
+
+Attack machine
+
+    ping EC2_PUBLIC_IP
