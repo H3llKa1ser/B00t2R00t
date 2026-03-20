@@ -21,3 +21,19 @@ Ec2 Instance Connect
 SSM Session Manager
 
     EC2 -> Instance ID -> SSM Session Manager -> Connect
+
+## Instance Metadata Service (IMDS)
+
+#### IMDSv1
+
+### 1) Get the role name (EC2 Instance Shell)
+
+    role_name=$( curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/ )
+    echo "Role Name is $role_name"
+
+## 2) Ask for session credentials
+
+    curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/${role_name}
+
+#### IMDSv2
+
