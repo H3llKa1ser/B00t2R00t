@@ -28,14 +28,22 @@
 
     aws sts get-access-key-info --access-key-id AKIAEXAMPLE
 
-### 4) Disable AWS Access Key
+### 4) Get ECS Container credentials (CloudShell)
+
+    curl 169.254.170.2$AWS_CONTAINER_CREDENTIALS_RELATIVE_URI
+
+### 5) Get temporary credentials (CloudShell)
+
+    curl $AWS_CONTAINER_CREDENTIALS_FULL_URI -H "X-aws-ec2-metadata-token: $AWS_CONTAINER_AUTHORIZATION_TOKEN" 
+
+### 6) Disable AWS Access Key
 
     aws iam update-access-key --access-key-id AKIA... --status Inactive
 
-### 5) Reenable Access Key
+### 7) Reenable Access Key
 
     aws iam update-access-key --access-key-id AKIA... --status Active
 
-### 6) Delete AWS Access Key
+### 8) Delete AWS Access Key
 
     aws iam delete-access-key --access-key-id AKIA...
