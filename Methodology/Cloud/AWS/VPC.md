@@ -11,3 +11,21 @@
 | **Application scope**                                 | Applies only if specified during launch or associated with an instance later                                       | Applies automatically to all instances in associated subnets                                                          |
 | **Purpose**                                           | Primary instance-level traffic control                                                                             | Additional layer of defense if security group rules are too permissive                                                |
 
+## Data Exfiltration
+
+Prerequisites: AWS Credentials
+
+### 1) Allocate a new public IP Address to the EC2 Instance in the account
+
+AWS CLI or CloudShell
+
+    aws ec2 allocate-address
+
+### 2) Find the ENI (network interface) for the target machine.
+
+    aws ec2 describe-instances > instances.json
+    grep eni instances.json
+
+### 3) Attach the public IP to the ENI of the target machine, by associating the AllocationId with the NetworkInterfaceId
+
+    aws ec2 associate-address --network-interface-id eni-NETWORK_INTERFACE_ID --allocation-id eipalloc-ALLOCATION_ID
