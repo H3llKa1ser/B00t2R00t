@@ -112,6 +112,8 @@ EC2 Instance Console
 
 #### UserData file
 
+EC2 Instance Console
+
 ### 1) Read the data from the UserData file
 
     TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
