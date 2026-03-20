@@ -11,6 +11,16 @@
 | **Application scope**                                 | Applies only if specified during launch or associated with an instance later                                       | Applies automatically to all instances in associated subnets                                                          |
 | **Purpose**                                           | Primary instance-level traffic control                                                                             | Additional layer of defense if security group rules are too permissive                                                |
 
+## Enumeration
+
+### 1) Enumerate VPC endpoints
+
+    aws ec2 describe-vpc-endpoints
+
+### 2) Enumerate VPCs
+
+    aws ec2 describe-vpcs
+
 ## Data Exfiltration
 
 Prerequisites: AWS Credentials
