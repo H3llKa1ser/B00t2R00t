@@ -45,3 +45,11 @@ AWS CLI or CloudShell
 ### 7) Verify that you have added the route
 
     aws ec2 describe-route-tables
+
+### 8) Find the group ID of a security group that might block access
+
+    aws ec2 describe-security-groups > security-groups.json
+
+### 9) Create a security group rule to allow traffic from anywhere
+
+    aws ec2 authorize-security-group-ingress  --protocol all --port 0-65535 --cidr 0.0.0.0/0 --group-id sg-TARGET_SECURITY_GROUP_ID
