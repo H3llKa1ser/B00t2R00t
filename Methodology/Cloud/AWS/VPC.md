@@ -30,3 +30,18 @@ AWS CLI or CloudShell
 
     aws ec2 associate-address --network-interface-id eni-NETWORK_INTERFACE_ID --allocation-id eipalloc-ALLOCATION_ID
 
+### 4) Get the IGW ID
+
+    aws ec2 describe-internet-gateways
+
+### 5) Get the route table ID (the one that is for the private network)
+
+    aws ec2 describe-route-tables > route-tables.json
+
+### 6) Add the route to the route table
+
+    aws ec2 create-route --route-table-id rtb-ROUTE_TABLE_ID --destination-cidr-block 0.0.0.0/0 --gateway-id igw-INTERNET_GATEWAY_ID
+
+### 7) Verify that you have added the route
+
+    aws ec2 describe-route-tables
