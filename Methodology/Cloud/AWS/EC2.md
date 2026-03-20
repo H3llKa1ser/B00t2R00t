@@ -37,3 +37,25 @@ SSM Session Manager
 
 #### IMDSv2
 
+### 1) Enable IMDSv2
+
+Get the instance ID
+
+    instance_id=$( curl -s http://169.254.169.254/latest/meta-data/instance-id )
+    echo "My Instance ID is $instance_id"
+
+Update the instance metadata options to require a token to make the instance metadata call
+
+    aws ec2 modify-instance-metadata-options --instance-id $instance_id --http-tokens required --region us-east-1
+
+### 2) Get the HTTP Token
+
+    TOKEN=`curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`
+    echo $TOKEN
+
+### 3) Get credentials
+
+    role_name=$( curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/iam/security-credentials/ )
+    echo "Role Name is $role_name"
+    curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/iam/security-credentials/${role_name}
+
