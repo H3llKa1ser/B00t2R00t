@@ -8,7 +8,7 @@ Prerequisites: The exposed app is vulnerable to SSRF
 
     aws cloudformation describe-stacks --query "Stacks[?contains(StackName,'iam-initial-access')].Outputs"
 
-### 2) Retrieve Instance Profile credentials:
+### 2) Retrieve Instance Profile credentials (IAM Role):
 
 Run this in the SSRF vulnerable component of the app
 
