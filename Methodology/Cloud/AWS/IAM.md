@@ -59,3 +59,12 @@ Boto2 is the predecessor version to Boto3 and might be used in legacy clients.
 ### 6) Instance Metadata Service (IMDS) 
 
 On an Amazon EC2 instance that has an IAM role configured.
+
+## Enumeration
+
+### 1) Get information about an access key
+
+Can also be run unauthenticated.
+
+    aws sts get-access-key-info --access-key-id {access_key_id}
+
