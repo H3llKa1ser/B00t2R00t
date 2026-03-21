@@ -12,6 +12,26 @@
 
     unzip lambda.zip
 
+## Enumeration
+
+### 1) Enumerate Lambda functions
+
+    aws lambda list-functions
+
+### 2) Enumerate policies attached to each function
+
+    FUNCTIONS="LAMBDA_FUNCTION_NAME NAME_2"
+    
+    for f in $FUNCTIONS ; do
+        ROLE=`aws lambda get-function --function-name $f --query Configuration.Role --output text | awk -F\/ '{print $NF}'`
+        echo "$f has $ROLE with these managed policies:"
+        aws iam list-attached-role-policies --role-name $ROLE
+        for p in `aws iam list-role-policies  --role-name $ROLE --query PolicyNames --output text` ; do
+            echo "$ROLE for $f has inline policy $p:"
+            aws iam get-role-policy --role-name $ROLE --policy-name $p
+        done
+    done
+
 ## Insert Malicious Code
 
 Prerequisites: AWS Credentials that have the permissions to do so.
