@@ -32,6 +32,16 @@
         done
     done
 
+### 3) Download function code
+
+    FUNCTIONS="LAMBDA_FUNCTION_NAME_1 NAME_2"
+    for f in $FUNCTIONS ; do
+        URL=`aws lambda get-function --function-name $f --query Code.Location --output text`
+        curl -s $URL -o $f.zip
+        mkdir $f
+        unzip $f.zip -d $f
+    done
+
 ## Insert Malicious Code
 
 Prerequisites: AWS Credentials that have the permissions to do so.
