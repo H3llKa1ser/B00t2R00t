@@ -42,6 +42,10 @@
         unzip $f.zip -d $f
     done
 
+### 4) Create a new zip file to ready it for upload after modification
+
+    zip -r ../compromised.zip index.py
+
 ## Insert Malicious Code
 
 Prerequisites: AWS Credentials that have the permissions to do so.
