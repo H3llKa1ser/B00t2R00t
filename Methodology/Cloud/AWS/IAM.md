@@ -68,3 +68,13 @@ Can also be run unauthenticated.
 
     aws sts get-access-key-info --access-key-id {access_key_id}
 
+### 2) Use quiet-riot tool on Github
+
+Link: https://github.com/righteousgambit/quiet-riot
+
+Then, run
+
+    quiet_riot --scan 5
+
+Then follow the prompts for what you want to scan.
+
