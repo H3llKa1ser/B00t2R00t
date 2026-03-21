@@ -32,7 +32,7 @@
         done
     done
 
-### 3) Download function code
+### 3) Download function code for analysis
 
     FUNCTIONS="LAMBDA_FUNCTION_NAME_1 NAME_2"
     for f in $FUNCTIONS ; do
