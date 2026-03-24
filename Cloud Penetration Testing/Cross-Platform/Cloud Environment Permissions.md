@@ -1,6 +1,6 @@
 # Cloud Environment Permissions
 
-## Link: https://gcp.permissions.cloud/ (For GCP)
+## https://gcp.permissions.cloud/ (For GCP)
 
 ## https://aws.permissions.cloud/ (For AWS)
 
