@@ -4,3 +4,4 @@
 
 https://github.com/KingOfBugbounty/KingOfBugBountyTips
 
+https://github.com/KingOfBugbounty/Bugbounty-Checklist
