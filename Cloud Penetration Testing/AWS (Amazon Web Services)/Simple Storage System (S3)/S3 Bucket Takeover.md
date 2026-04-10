@@ -96,3 +96,39 @@ NoSuchBucket" = available to claim, "AccessDenied" = exists but private (not you
 
 ### 4) Create the bucket, then upload PoC like Attack 1
 
+# Detection Workflow
+
+### 1) Enumerate
+
+    subfinder -d pwned.com -silent | dnsx -silent -resp -a -cname > resolved.txt
+
+### 2) Filter for S3 CNAMEs
+
+    grep -i 'amazonaws.com' resolved.txt | grep -i 's3'
+
+### 3) Probe for NoSuchBucket
+
+    while read line; do
+      domain=$(echo "$line" | awk '{print $1}')
+      response=$(curl -s "http://$domain")
+      if echo "$response" | grep -q 'NoSuchBucket'; then
+        echo "[VULNERABLE] $domain"
+      fi
+    done < s3_candidates.txt
+
+### 4) Automated Fingerprinting
+
+    nuclei -t takeovers/ -l resolved_domains.txt -severity high,critical
+
+### 5) For JS-embedded bucket names (CloudFront + dead origin)
+
+jsmon.sh extracts hostnames from live JS bundles — pipe to dnsx
+
+### 6) Shodan Dork (Optional)
+
+In Shodan search UI, search:
+
+    x-amz-err-code: NoSuchBucket
+
+
+ 
