@@ -1,6 +1,8 @@
-# Direct S3 CNAME Takeover
+# S3 Bucket Takeover
 
 Resource: https://blogs.jsmon.sh/hunting-dangling-dns-how-to-exploit-aws-elastic-ips-cloudfront-and-s3/
+
+# Direct S3 CNAME Takeover
 
 ## Steps
 
@@ -47,3 +49,50 @@ Then
 ### 7) Visit your PoC file
 
     http://assets.pwned.com/poc.html
+
+# CloudFront + Deleted S3 Origin
+
+## Steps
+
+### 1) Confirm the distribution is alive but origin is dead
+
+Look for headers:
+
+#### x-cache: Error from cloudfront
+
+OR
+
+#### x-amz-cf-id present + 502/503 response
+
+    curl -sI https://cdn.pwned.com
+
+### 2) Enumerate the bucket name via other means:
+
+JavaScript bundles (https://github.com/robre/jsmon)
+
+    jsmon -d pwned.com | grep -i 's3\|amazonaws'
+
+Github / code search
+
+    "pwned-cdn-assets" site:github.com
+
+Naming conventions - common patterns
+
+    COMPANY-cdn, COMPANY-assets, COMPANY-static, ENV-COMPANY-SERVICE (dev-pwned-cdn)
+
+Git history of infrastructure repositories
+
+    Terraform/CDK that defined the CloudFront origin
+
+Historical error responses (Wayback Machine)
+
+    https://web.archive.org/web/*/cdn.pwned.com
+
+### 3) Confirm the bucket name is free
+
+NoSuchBucket" = available to claim, "AccessDenied" = exists but private (not yours)
+
+    aws s3api head-bucket --bucket CANDIDATE_NAME 2>&1
+
+### 4) Create the bucket, then upload PoC like Attack 1
+
