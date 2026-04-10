@@ -74,3 +74,17 @@ Requirements: AI Agent runs on cloud infrastructure and has outbound network acc
     Ticket description in a system the agent monitors
 
 After the model reads the payload and queries the metadata, it can then return it either directly in chat, email, logs, or another output.
+
+### 2) The confused deputy and internal service exploitation
+
+Requirements: Agents with privileged access
+
+#### Examples:
+
+    Internal Jira or ticketing systems
+    Kubernetes API
+    Prometheus / Grafana endpoints
+    Internal admin panels
+    Service discovery domains
+
+Essentialy, an attacker abuses the privileged access and trust of the agent identity to access sensitive and internal data, acting on the attacker's behalf.
