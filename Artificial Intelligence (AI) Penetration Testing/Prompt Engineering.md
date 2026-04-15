@@ -64,3 +64,5 @@ Few-shot example (Use multiple examples covering various scenarios to dramatical
     - "Failed login attempt for root from 203.0.113.42" → SUSPICIOUS
     - "5 failed logins for user bob in 10 seconds" → ATTACK
     Now classify: "User guest logged in from 10.0.0.5 at 3:47 AM"
+
+Best practice: use 2-3 diverse examples that cover edge cases, and maintain identical structure across examples to avoid ambiguity.
