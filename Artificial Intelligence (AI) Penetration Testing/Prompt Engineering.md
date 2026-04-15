@@ -41,3 +41,26 @@ Guide the model to follow specific boundaries like forbidding certain topics, en
 ## Example of a proper prompt that is not too verbose, nor to vague
 
     Write a JavaScript function that: (1) takes a user object with name, email, and age; (2) validates that email is properly formatted; and (3) returns the validated object or throws an error listing the validation failures.
+
+## Advanced Prompting
+
+### 1) The Shot Spectrum
+
+Zero-shot example (0 examples, LLM relies only on its pre-trained data)
+
+    Classify this log entry as INFO, WARN, or ERROR:
+    "2025-02-17 14:23:11 Failed to connect to database after 3 retries"
+    
+One-shot example (User gives an example to the LLM to improve accuracy of output)
+
+    Extract vulnerability info as JSON:
+    Example: "SQL injection in login.php line 47" → {"type": "SQL injection", "file": "login.php", "line": 47}
+    Now extract: "XSS vulnerability in search.js line 203"
+
+Few-shot example (Use multiple examples covering various scenarios to dramatically improve performance on complex tasks)
+
+    Classify these authentication events:
+    - "User admin logged in from 192.168.1.100" → NORMAL
+    - "Failed login attempt for root from 203.0.113.42" → SUSPICIOUS
+    - "5 failed logins for user bob in 10 seconds" → ATTACK
+    Now classify: "User guest logged in from 10.0.0.5 at 3:47 AM"
