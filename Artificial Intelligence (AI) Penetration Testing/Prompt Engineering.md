@@ -37,3 +37,7 @@ Example:
     Write an academic report on IoT devices, provide citations in MLA format, and include a bullet-pointed summary section at the end (do NOT exceed 5 bullets)
 
 Guide the model to follow specific boundaries like forbidding certain topics, enforcing a style guide, mandating a tone.
+
+## Example of a proper prompt that is not too verbose, nor to vague
+
+    Write a JavaScript function that: (1) takes a user object with name, email, and age; (2) validates that email is properly formatted; and (3) returns the validated object or throws an error listing the validation failures.
