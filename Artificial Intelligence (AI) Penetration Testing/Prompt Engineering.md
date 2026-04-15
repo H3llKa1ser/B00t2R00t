@@ -79,7 +79,7 @@ Example:
 
 #### Use LLMs with 100B parameters to utilize this well.
 
-Zero-shot CoT example:
+Zero-shot CoT example (Use "Let's think step by step" prompt):
 
     Analyse this security incident and explain your reasoning step by step:
     "User downloaded ransomware.exe, antivirus quarantined it, but 3 hours later 50 files were encrypted."
