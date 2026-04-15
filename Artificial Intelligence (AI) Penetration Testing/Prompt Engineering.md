@@ -66,3 +66,45 @@ Few-shot example (Use multiple examples covering various scenarios to dramatical
     Now classify: "User guest logged in from 10.0.0.5 at 3:47 AM"
 
 Best practice: use 2-3 diverse examples that cover edge cases, and maintain identical structure across examples to avoid ambiguity.
+
+### 2) Chain-of-Thought (CoT)
+
+Ask an LLM to break down complex tasks into intermediate steps (just like a human!). Useful for arithmetic, logic, puzzles and anything that has to do with multi-hop reasoning.
+
+Example:
+
+    Q: A user downloaded "invoice.pdf.exe" from an email. Should this be flagged?
+    A: Let me analyse this: First, the file has a double extension (.pdf.exe), which is a common technique to disguise executables. Second, it came from email, a frequent malware delivery vector. Third, legitimate PDFs don't have .exe extensions. This exhibits two red flags: masquerading and suspicious origin. Answer: Yes, flag as high-priority threat.
+    Q: A user accessed the admin panel from 192.168.1.50 at 2 AM. Suspicious?
+
+#### Use LLMs with 100B parameters to utilize this well.
+
+Zero-shot CoT example:
+
+    Analyse this security incident and explain your reasoning step by step:
+    "User downloaded ransomware.exe, antivirus quarantined it, but 3 hours later 50 files were encrypted."
+
+### 3) Prompt Templates
+
+Example:
+
+    Review this [LANGUAGE] code for [VULNERABILITY_TYPES]:
+    Context: [PURPOSE]
+    Code: [CODE_BLOCK]
+    Output format:
+    1. Vulnerabilities found (severity: critical/high/medium/low)
+    2. Affected lines
+    3. Remediation steps
+    4. Example secure code
+
+## Use cases
+
+1) Zero-shot: Simple, well-defined tasks where instructions are clear
+
+2) One-shot: Format clarification or style guidance needed
+
+3) Few-shot: Complex patterns, domain-specific outputs, multiple edge cases
+
+4) Chain-of-Thought: Multi-step reasoning, security analysis requiring justification, debugging complex logic
+
+5) Templates: Repeatable tasks, team standardisation, quality control
