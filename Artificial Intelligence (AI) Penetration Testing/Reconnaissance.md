@@ -28,3 +28,36 @@
     sudo nmap -p 22,80,443,5432 -sV 10.10.45.0/24
 
 Then compare with your first scan to check which hosts are running AI infrastructure or traditional infrastructure.
+
+# Fingerprinting
+
+### 1) gRPC 
+
+    grpcurl -plaintext target:8001 list
+    grpcurl -plaintext target:8001 describe inference.GRPCInferenceService
+
+### 2) Endpoint naming conventions
+
+Add these to your wordlists
+
+#### Inference endpoints
+
+    /predict
+    /invocations
+    /infer
+    /generate
+    /embeddings
+    /score
+
+#### Model Management
+
+    /v1/models
+    /v2/models
+
+#### MLFlow internal API
+
+    /api/2.0/mlflow
+
+#### Kubeflow pipelines
+
+    /pipeline/apis/v1beta1/
