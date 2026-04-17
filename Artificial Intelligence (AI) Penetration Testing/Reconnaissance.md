@@ -27,4 +27,4 @@
 
     sudo nmap -p 22,80,443,5432 -sV 10.10.45.0/24
 
-Then compare with your first scan
+Then compare with your first scan to check which hosts are running AI infrastructure or traditional infrastructure.
