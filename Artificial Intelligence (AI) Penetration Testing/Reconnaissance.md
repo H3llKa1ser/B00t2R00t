@@ -62,6 +62,29 @@ Add these to your wordlists
 
     /pipeline/apis/v1beta1/
 
+#### More endpoints to include in your wordlists
+
+    /v1/models
+    /v2/models
+    /v2/health/ready
+    /api/2.0/mlflow/experiments/list
+    /api/2.0/mlflow/registered-models/list
+    /pipeline/apis/v1beta1/pipelines
+    /api/serve/deployments/
+    /v1/schema
+    /v1/meta
+    /api/kernels
+    /api/contents
+    /openapi.json
+    /docs
+    /graphql
+    /metrics
+    /api/tags
+    /api/show
+    /collections
+    /healthz
+    /ping
+
 ### 3) API Response Signatures
 
 Tensorflow
