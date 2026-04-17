@@ -61,3 +61,54 @@ Add these to your wordlists
 #### Kubeflow pipelines
 
     /pipeline/apis/v1beta1/
+
+### 3) API Response Signatures
+
+Tensorflow
+
+    {"model_version_status": [{"version": "1", "state": "AVAILABLE"}]}
+
+Triton
+
+    {"name": "fraud_detector", "versions": ["1"], "platform": "tensorflow_graphdef"}
+
+OpenAI compatibl eendpoints
+
+    {"object": "model", "id": "llama-3.1-8b", "created": 1700000000}
+
+### 4) HTTP Header
+
+#### TorchServe
+
+    Server: TorchServe/0.x.x
+
+#### Triton Inference Server
+
+    NV-Status
+
+Get hardware telemetry directly in the response headers
+
+    endpoint-load-metrics-format: text
+
+#### FastAPI-based ML
+
+    server: uvicorn
+
+#### OpenAI compatible wrappers
+
+     x-request-id 
+ 
+with structured JSON with an
+
+    "object": "model" field on their /v1/models endpoint.
+
+### 5) Error Messages
+
+1) Send a flat list of integers to a TensorFlow Serving endpoint that expects a complex tensor object, and you get back an error mentioning tensorinfo_map. That string only appears in TF Serving errors.
+
+2) Send a bad request to an MLflow server, and the stack trace references mlflow.server, mlflow.tracking, or databricks namespaces.
+
+3) MLflow path traversal errors (CVE-2024-1558) go further, exposing full server filesystem paths.
+
+4) Databricks Mosaic AI returns Java exceptions  io.jsonwebtoken.IncorrectClaimException for malformed tokens. That is an instant identifier.
+
