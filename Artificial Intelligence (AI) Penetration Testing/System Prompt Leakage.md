@@ -6,6 +6,10 @@ Reveal hidden instructions like internal constraints and priorities.
 
 Reveal sensitive data like internal services, developer notes, or even credentials.
 
+## System Prompts for known LLMs here:
+
+https://github.com/asgeirtj/system_prompts_leaks
+
 ### 1) Roleplaying AKA persona switching
 
 Example prompt
