@@ -20,7 +20,7 @@
 
     kubectl exec -it POD --token={TOKEN} -- /bin/bash 
 
-#### 4) 
+#### 4) Check where you can create pods in the cluster
 
     kubectl --token=TOKEN --certificate-authority=ca.crt --server=https://IP_ADDRESS:8443 auth can-i create pods --all-namespaces
 
