@@ -1,3 +1,5 @@
+# Rustscan
+
 ### Essentially, a MUCH faster port scanner than Nmap. Also utilized NSE
 
 ## RUSTSCAN SCRIPTING ENGINE
@@ -12,13 +14,25 @@
 
 ## COMMANDS
 
-#### rustscan -r PORTS -a TARGET_IP -- NMAP COMMANDS
+#### Example command
 
-#### CIDR Support = rustscan -a 1.1.1.1/24 
+    rustscan -r PORTS -a TARGET_IP -- NMAP COMMANDS
 
-#### Host scanning = rustscan -a www.google.com
+Run a full scan on an IP address
 
-#### Random port Opening (Firewall Evasion) = rustscan -a 127.0.0.1 --range 1-1000 --sca-order "random"
+    rustscan -r 1-65535 -a TARGET_IP -- -A -Pn -oA scan
+
+#### CIDR Support 
+
+    rustscan -a 1.1.1.1/24 
+
+#### Host scanning 
+
+    rustscan -a www.google.com
+
+#### Random port Opening (Firewall Evasion)  
+
+    rustscan -a 127.0.0.1 --range 1-1000 --sca-order "random"
 
 #### -V = Rustscan version
 
