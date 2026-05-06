@@ -1,3 +1,5 @@
+```yaml
+
 name: 'gitlab-mfa'
 author: '@H3llKa1ser'
 min_ver: '2.4.0'
@@ -30,3 +32,5 @@ force_post:
     force:
       - {key: 'user\[remember_me\]', value: '1'}
     type: 'post'
+
+```
