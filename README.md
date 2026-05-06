@@ -25,6 +25,8 @@ https://hacker-arsenal.tools/tools
 
 And many more!!!
 
+#### For any scripts inside this repository, better check them out via GitHub instead of Gitbook (scripts are not visible in gitbook)!
+
 # DISCLAIMER!
 
 #### Usage of this knowledge is SOLELY the user's responsibility and the author of this playbook has no liability for their actions. Use it at your own discretion.
