@@ -1,3 +1,5 @@
+```yaml
+
 name: 'o365-mfa'
 author: '@faelsfernandes'
 min_ver: '2.4.0'
@@ -39,3 +41,4 @@ force_post:
     force:
       - {key: 'rememberMFA', value: 'true'}
     type: 'post'
+```
