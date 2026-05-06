@@ -27,7 +27,11 @@ And many more!!!
 
 #### For any scripts inside this repository, better check them out via GitHub instead of Gitbook (scripts are not visible in gitbook)!
 
+#### Might look a bit redundant, but I am adding the links for both github and gitbook just in case.
+
 Gitbook link: https://h3ll-ka1ser.gitbook.io/boot2root
+
+Github link: https://github.com/H3llKa1ser/B00t2R00t
 
 # DISCLAIMER!
 
