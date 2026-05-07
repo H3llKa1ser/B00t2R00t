@@ -35,3 +35,8 @@ PowerShell
 Dig
 
     dig domain.local any +noall +answer
+
+### 2) Validate if the company uses a Cloud-only or federated domain
+
+    [xml]$xmlContent = (iwr 'https://login.microsoftonline.com/getuserrealm.srf?login=domain.local&xml=1').Content
+    $xmlContent.DocumentElement
