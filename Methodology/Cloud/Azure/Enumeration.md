@@ -61,3 +61,6 @@ Curl
 
     curl --silent 'https://azservicetags.azurewebsites.net/api/iplookup?ipAddresses=IP_FROM_DNS_RECORDS' | jq
 
+### 5) Obtain tenant ID
+
+    curl -s https://login.microsoftonline.com/domain.local/v2.0/.well-known/openid-configuration | jq -r ".issuer" | awk -F "/" '{print $4}'
