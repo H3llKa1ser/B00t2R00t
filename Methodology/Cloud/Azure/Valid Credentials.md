@@ -245,13 +245,25 @@ Direct API call
 
 ## Azure RBAC
 
-### 1) Check Azure RBAC roles assigned on an identity
+### 1) List permissions of our account on resources
+
+Azure PowerShell
+
+    Get-AzRoleAssignment
+
+### 2) Check Azure RBAC roles assigned on an identity
 
     az role assignment list --assignee CLIENT_ID --all -o json | grep roleDefinitionName -B 1
 
-### 2) Check details for a role
+### 3) Check details for a role
+
+Azure CLI
 
     az role definition show --id "/subscriptions/SUBSCRIPTION_ID/providers/Microsoft.Authorization/roleDefinitions/ROLE_DEFINITION_ID" --query "permissions"
+
+Azure PowerShell
+
+    Get-AzRoleDefinition -Id ROLE_DEFINITION_ID | select -ExpandProperty Actions
 
 ## Entra ID
 
