@@ -55,6 +55,26 @@ Entra-based (RBAC Auth)
     az account set --subscription SUBSCRIPTION_ID
     KEY=$(az storage account keys list -g RESOURCE_GROUP -n NAME --query '[0].value' -o tsv)
 
+Azure PowerShell
+
+    $storageAccount = Get-AzStorageAccount -ResourceGroupName "RESOURCE_GROUP_NAME" -Name "STORGAE_ACCOUNT_NAME"
+    $ctx = $storageAccount.Context
+    Get-AzStorageContainer -Context $ctx | Format-Table
+
+Direct API calls
+
+    $storageAccountName = "STORAGE_ACCOUNT_NAME"
+    $apiVersion = "2021-04-10"
+    $headers = @{
+        "Authorization" = "Bearer $mitoken"
+        "x-ms-version"  = $apiVersion
+    }
+    
+    $url = "https://$storageAccountName.blob.core.windows.net/?comp=list"
+    
+    $response = Invoke-RestMethod -Method Get -Uri $url -Headers $headers
+    $response
+
 ### 2) List containers
 
     az storage container list --acount-name STORAGE_ACCOUNT_NAME --auth-mode login -o table
