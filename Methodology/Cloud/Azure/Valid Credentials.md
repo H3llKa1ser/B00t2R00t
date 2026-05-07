@@ -85,15 +85,69 @@ Direct API calls
 
 ### 2) List containers
 
+Azure CLI
+
     az storage container list --acount-name STORAGE_ACCOUNT_NAME --auth-mode login -o table
+
+Direct API Call
+
+    $storageAccountName = "STORAGE_ACCOUNT_NAME"
+    $apiVersion = "2021-04-10"
+    $headers = @{
+        "Authorization" = "Bearer $mistoragetoken"
+        "x-ms-version"  = $apiVersion
+    }
+    
+    $url = "https://$storageAccountName.blob.core.windows.net/?comp=list"
+    
+    $response = Invoke-RestMethod -Method Get -Uri $url -Headers $headers
+    $response | xmllint --format -
 
 ### 3) List blobs in the container
 
+Azure CLI
+
     az storage blob list --account-name STORAGE_ACCOUNT_NAME --container-name CONTAINER_NAME --auth-mode login -o table
+
+Direct API Call
+
+    $storageAccountName = "STORAGE_ACCOUNT_NAME"
+    $containerName = "CONTAINER_NAME"
+    $apiVersion = "2021-04-10"
+    $headers = @{
+        "Authorization" = "Bearer $mistoragetoken"
+        "x-ms-version"  = $apiVersion
+    }
+    
+    $baseUri = "https://$storageAccountName.blob.core.windows.net/$containerName"
+    $query = "?restype=container&comp=list"
+    $url = $baseUri + $query
+    
+    $response = Invoke-RestMethod -Method Get -Uri $url -Headers $headers
+    $response | xmllint --format -
 
 ### 4) Download container contents
 
+Azure CLI
+
     az storage blob download --account-name STORAGE_ACCOUNT_NAME --container-name CONTAINER_NAME --name BLOB_NAME --file BLOB_NAME --auth-mode login
+
+Direct API Call
+
+    $blobName = "BLOB_NAME"
+    $storageAccountName = "STORAGE_ACCOUNT_NAME"
+    $containerName = "CONTAINER_NAME"
+    $apiVersion = "2021-04-10"
+    $headers = @{
+        "Authorization" = "Bearer $mistoragetoken"
+        "x-ms-version"  = $apiVersion
+    }
+    
+    $blobUrl = "https://$storageAccountName.blob.core.windows.net/$containerName/$blobName"
+    
+    $destinationPath = "~/$blobName"
+    
+    Invoke-RestMethod -Method Get -Uri $blobUrl -Headers $headers -OutFile $destinationPath
 
 ## Azure Key Vault
 
