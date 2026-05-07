@@ -26,6 +26,14 @@ OR you can login via CLI
 
 Resource: https://aadinternals.com/post/phishing/
 
+Azure CLI
+
+### 1) generate device code, then send a phishing email with the device code. Azure CLI handles both the code generation and waiting for the authentication.
+
+    az login --use-device-code
+
+PowerShell
+
 ### 1) Request a user and device code (Microsoft Graph resource and MS Office application Client ID are used in the example here)
 
 List of common Microsoft Application IDs: https://learn.microsoft.com/en-us/troubleshoot/entra/entra-id/governance/verify-first-party-apps-sign-in#application-ids-of-commonly-used-microsoft-applications
