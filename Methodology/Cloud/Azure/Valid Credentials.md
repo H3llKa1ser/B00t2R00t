@@ -151,11 +151,15 @@ Direct API Call
 
 ## Azure Key Vault
 
-### 1) List secrets
+### 1) List vaults
+
+    az keyvault list
+
+### 2) List secrets
 
     az keyvault secret list --vault-name VAULT_NAME -o table
 
-### 2) List keys
+### 3) List keys
 
     az keyvault key list --vault-name VAULT_NAME -o table
 
