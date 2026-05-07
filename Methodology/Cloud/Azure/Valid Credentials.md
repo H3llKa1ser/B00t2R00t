@@ -292,3 +292,25 @@ Template.json example
       ]
     }
 
+## Microsoft Graph API (Microsoft 365)
+
+Tool: 
+
+1) GraphRunner https://github.com/dafthack/GraphRunner
+
+Initiate module
+
+    Import-Module .\GraphRunner.ps1
+
+### 1) Get a Microsoft Graph Session
+
+    Get-GraphTokens
+
+Print access token
+
+    $tokens.access_token
+
+### 2) Check user's inbox
+
+    Get-Inbox -Tokens $tokens -userid USER.NAME@megacorp.com
+
