@@ -241,7 +241,7 @@ Direct API call
 
 ## Azure RBAC
 
-### 1) Check Aure RBAC roles assigned on an identity
+### 1) Check Azure RBAC roles assigned on an identity
 
     az role assignment list --assignee CLIENT_ID --all -o json | grep roleDefinitionName -B 1
 
