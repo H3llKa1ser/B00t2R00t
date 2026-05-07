@@ -17,7 +17,12 @@ Service Principal
 
 ### 2) List resources our account has access to (either read or write)
 
+Azure CLI
+
     az resource list
+
+Azure PowerShell
+
     Get-AzResource
     
 ## MFA Enablement gap audit
