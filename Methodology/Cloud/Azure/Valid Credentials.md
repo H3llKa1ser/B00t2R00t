@@ -32,11 +32,11 @@ ClientIDs Link: https://learn.microsoft.com/en-us/power-platform/admin/apps-to-a
 
 Use client ID of Microsoft Azure PowerShell to authenticate to the management API endpoint (example)
 
-    python3 findmeaccess.py token -u Lina.Meier@megabigtech.com -p Megabigtech! -r "https://management.azure.com" -c "d3590ed6-52b3-4102-aeff-aad2292ab01c"
+    python3 findmeaccess.py token -u USER.NAME@megacorp.com -p PASSWORD -r "https://management.azure.com" -c "d3590ed6-52b3-4102-aeff-aad2292ab01c"
 
 Use PS5 User-Agent (example)
 
-    python3 findmeaccess.py token -u Lina.Meier@megabigtech.com -p Megabigtech! -r "https://management.azure.com" -c "d3590ed6-52b3-4102-aeff-aad2292ab01c" --user_agent "Mozilla/5.0 (PlayStation 5 3.03/SmartTV) AppleWebKit/605.1.15 (KHTML, like Gecko)"
+    python3 findmeaccess.py token -u USER.NAME@megacorp.com -p PASSWORD -r "https://management.azure.com" -c "d3590ed6-52b3-4102-aeff-aad2292ab01c" --user_agent "Mozilla/5.0 (PlayStation 5 3.03/SmartTV) AppleWebKit/605.1.15 (KHTML, like Gecko)"
 
 ## Storage Accounts
 
