@@ -36,7 +36,7 @@ Azure PowerShell
 
 ClientIDs Link: https://learn.microsoft.com/en-us/power-platform/admin/apps-to-allow
 
-Use client ID of Microsoft Azure PowerShell to authenticate to the management API endpoint (example)
+Use client ID of Microsoft Azure PowerShell to authenticate to the Azure Resource Manager (ARM) API endpoint (example)
 
     python3 findmeaccess.py token -u USER.NAME@megacorp.com -p PASSWORD -r "https://management.azure.com" -c "d3590ed6-52b3-4102-aeff-aad2292ab01c"
 
