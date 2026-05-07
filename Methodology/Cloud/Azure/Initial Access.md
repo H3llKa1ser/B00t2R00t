@@ -117,4 +117,4 @@ Microsoft Graph example
 
 Confirm context upon authentication
 
-    az accoutn show
+    az account show
