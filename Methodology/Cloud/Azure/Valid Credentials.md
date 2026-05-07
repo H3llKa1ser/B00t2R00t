@@ -249,3 +249,8 @@ Direct API call
 
     az role definition show --id "/subscriptions/SUBSCRIPTION_ID/providers/Microsoft.Authorization/roleDefinitions/ROLE_DEFINITION_ID" --query "permissions"
 
+## Entra ID
+
+### 1) Query an Enterprise Application notes field by quering the service principal (client_id)
+
+    az ad sp show --id CLIENT_ID --query "notes"
