@@ -185,3 +185,47 @@ Azure PowerShell
 
     (Get-AzWebApp -ResourceGroupName "RESOURCE_GROUP_NAME" -Name "APP_NAME").DefaultHostName
 
+## Azure Static Web App
+
+### 1) Enumerate an Azure Static Web App
+
+    az staticwebapp show --name STATIC_WEB_APP_NAME --resource-group RESOURCE_GROUP_NAME
+
+### 2) Enumerate the Azure Web Static Web App settings
+
+    az staticwebapp appsettings list --name STATIC_WEB_APP_NAME --resource-group RESOURCE_GROUP_NAME
+
+## Azure VMs
+
+### 1) Enumerate a specific Azure VM
+
+    az vm show --resource-group RESOURCE_GROUP --name VM_NAME
+
+### 2) Get the User Data values from the VM
+
+Azure CLI
+
+    az vm show --resource-group RESOURCE_GROUP_NAME --name VM_NAME -u --query "userData" --output tsv | base64 -d
+
+Azure PowerShell
+
+    (Get-AzVM -ResourceGroupName "RESOURCE_NAME" -Name "VM_NAME" -UserData).UserData | base64 -d
+
+Direct API call
+
+#### Print our ARM access token
+
+    az account get-access-token
+
+#### Set access token as variable
+
+    $token="ACCESS_TOKEN"
+
+#### Get User Data
+
+    Invoke-RestMethod -Method GET -Uri "https://management.azure.com/subscriptions/SUBSCRIPTION_ID/resourceGroups/RESOURCE_GROUP_NAME/providers/Microsoft.Compute/virtualMachines/VM_NAME?api-version=2021-07-01&`$expand=userData" -Headers @{Authorization = "Bearer $token"}
+
+#### Decode content
+
+    echo BASE64_USER_DATA | base64 -d
+
