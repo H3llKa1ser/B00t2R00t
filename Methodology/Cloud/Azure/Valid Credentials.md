@@ -229,3 +229,9 @@ Direct API call
 
     echo BASE64_USER_DATA | base64 -d
 
+## Azure Network
+
+### 1) Get the public IP address of a VM
+
+    az network public-ip show --resource-group RESOURCE_GROUP_NAME --name VM_NAME --query "ipAddress" --output tsv
+
