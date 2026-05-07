@@ -258,3 +258,37 @@ Direct API call
 ### 1) Query an Enterprise Application notes field (example) by quering the service principal (client_id)
 
     az ad sp show --id CLIENT_ID --query "notes"
+
+## Azure Resource Manager (ARM)
+
+### 1) Deploy resources by reading a template file (parameters can vary according to use case)
+
+    az deployment group create --resource-group RESOURCE_GROUP_NAME --template-file template.json --parameters storageAccountName=STORAGE_ACCOUNT_NAME location=REGION
+
+Template.json example
+
+    {
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "storageAccountName": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        }
+      },
+      "resources": [
+        {
+          "type": "Microsoft.Storage/storageAccounts",
+          "apiVersion": "2022-09-01",
+          "name": "[parameters('storageAccountName')]",
+          "location": "[parameters('location')]",
+          "kind": "StorageV2",
+          "sku": {
+            "name": "Standard_LRS"
+          }
+        }
+      ]
+    }
+
