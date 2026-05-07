@@ -87,7 +87,7 @@ Direct API calls
 
 Azure CLI
 
-    az storage container list --acount-name STORAGE_ACCOUNT_NAME --auth-mode login -o table
+    az storage container list --account-name STORAGE_ACCOUNT_NAME --auth-mode login -o table
 
 Direct API Call
 
