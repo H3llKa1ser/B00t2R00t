@@ -53,4 +53,6 @@ Encode our downloaded content to base64
 
     base64 < BLOB_NAME | tr -d '\n' > BASE64_ENCODED_BLOB
 
+Decrypt by calling the vault directly using the stored key. (Azure handles the decryption and returns plaintext)
+
     az keyvault key decrypt --vault-name VAULT_NAME --name KEY_NAME --algorithm RSA-OAEP --value BASE64_ENCODED_BLOB --query result -o tsv | base64 -d > BLOB_PLAINTEXT
