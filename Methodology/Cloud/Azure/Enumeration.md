@@ -40,3 +40,18 @@ Dig
 
     [xml]$xmlContent = (iwr 'https://login.microsoftonline.com/getuserrealm.srf?login=domain.local&xml=1').Content
     $xmlContent.DocumentElement
+
+### 3) Verify if the company uses Azure resources
+
+PowerShell
+
+    Invoke-WebRequest -Uri "https://ipinfo.io/IP_FROM_DNS_RECORDS" | Select-Object -ExpandProperty Content
+
+Curl
+
+    curl https://ipinfo.io/IP_FROM_DNS_RECORDS
+
+### 4) Get the region
+
+    curl --silent 'https://azservicetags.azurewebsites.net/api/iplookup?ipAddresses=IP_FROM_DNS_RECORDS' | jq
+
