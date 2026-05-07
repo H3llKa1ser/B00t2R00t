@@ -86,3 +86,20 @@ Encode our downloaded content to base64
 Decrypt by calling the vault directly using the stored key. (Azure handles the decryption and returns plaintext)
 
     az keyvault key decrypt --vault-name VAULT_NAME --name KEY_NAME --algorithm RSA-OAEP --value BASE64_ENCODED_BLOB --query result -o tsv | base64 -d > BLOB_PLAINTEXT
+
+## Resources
+
+### 1) List Resources
+
+Azure CLI
+
+    az resource list
+
+Azure PowerShell
+
+    Get-AzResource
+
+### 2) Get URL of a specific resource
+
+    (Get-AzWebApp -ResourceGroupName "RESOURCE_GROUP_NAME" -Name "APP_NAME").DefaultHostName
+
