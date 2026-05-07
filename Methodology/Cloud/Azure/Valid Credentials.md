@@ -46,6 +46,14 @@ Use PS5 User-Agent (example)
 
 ## Storage Accounts
 
+Request Storage API endpoint token
+
+    curl -s -H "X-Identity-Header: $MSI_SECRET" "$MSI_ENDPOINT?api-version=2019-08-01&resource=https://storage.azure.com&client_id=$ENTRA_CLIENT_ID"'
+
+Store it (YOU CAN USE THIS VIA DIRECT API CALLS TO REQUEST FOR ANY RESOURCES RELATED TO STORAGE ACCOUNTS)
+
+    $mistoragetoken = "STORAGE_API_TOKEN"
+
 ### 1) List storage account keys
 
     az storage account keys list -g RESOURCE_GROUP -n NAME
