@@ -239,3 +239,13 @@ Direct API call
 
     az network public-ip show --resource-group RESOURCE_GROUP_NAME --name VM_NAME --query "ipAddress" --output tsv
 
+## Azure RBAC
+
+### 1) Check Aure RBAC roles assigned on an identity
+
+    az role assignment list --assignee CLIENT_ID --all -o json | grep roleDefinitionName -B 1
+
+### 2) Check details for a role
+
+    az role definition show --id "/subscriptions/SUBSCRIPTION_ID/providers/Microsoft.Authorization/roleDefinitions/ROLE_DEFINITION_ID" --query "permissions"
+
