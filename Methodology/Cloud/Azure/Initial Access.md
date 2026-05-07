@@ -112,3 +112,9 @@ Microsoft Graph example
 ### 6) Confirm execution context
 
     Get-MgContext
+
+### 7) Similar procedure can be used for other API endpoints as well, like Azure Service Management API (https://management.azure.com) to enumerate Azure resources instead.
+
+Confirm context upon authentication
+
+    az accoutn show
