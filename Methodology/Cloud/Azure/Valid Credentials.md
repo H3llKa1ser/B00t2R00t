@@ -173,6 +173,10 @@ Decrypt by calling the vault directly using the stored key. (Azure handles the d
 
     az keyvault key decrypt --vault-name VAULT_NAME --name KEY_NAME --algorithm RSA-OAEP --value BASE64_ENCODED_BLOB --query result -o tsv | base64 -d > BLOB_PLAINTEXT
 
+### 4) Query if the keyvault can be used for template deployment
+
+    az keyvault show --name VAULT_NAME --query "properties.enabledForTemplateDeployment"
+
 ## Resources
 
 ### 1) List Resources
