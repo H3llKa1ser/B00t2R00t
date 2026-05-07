@@ -18,7 +18,8 @@ Service Principal
 ### 2) List resources our account has access to (either read or write)
 
     az resource list
-
+    Get-AzResource
+    
 ## MFA Enablement gap audit
 
 ### 1) Download and install tool FindMeAccess
