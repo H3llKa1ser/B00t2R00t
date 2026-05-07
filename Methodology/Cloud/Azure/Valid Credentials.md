@@ -251,6 +251,6 @@ Direct API call
 
 ## Entra ID
 
-### 1) Query an Enterprise Application notes field by quering the service principal (client_id)
+### 1) Query an Enterprise Application notes field (example) by quering the service principal (client_id)
 
     az ad sp show --id CLIENT_ID --query "notes"
