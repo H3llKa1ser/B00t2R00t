@@ -6,6 +6,11 @@ User
 
     az login -u USER - p PASSWORD --tenant TENANT_ID
 
+Token-based auth
+
+    $token = "TOKEN"
+    Connect-AzAccount -AccessToken $token -AccountID "USER.NAME"
+
 Service Principal
 
     az login --service-principal -u CLIENT_ID -p SECRET --tenant TENANT_ID
@@ -13,6 +18,25 @@ Service Principal
 ### 2) List resources our account has access to (either read or write)
 
     az resource list
+
+## MFA Enablement gap audit
+
+### 1) Download and install tool FindMeAccess
+
+    git clone https://github.com/absolomb/FindMeAccess
+    pip install -r requirements.txt
+
+### 2) Get session token of target user
+
+ClientIDs Link: https://learn.microsoft.com/en-us/power-platform/admin/apps-to-allow
+
+Use client ID of Microsoft Azure PowerShell to authenticate to the management API endpoint (example)
+
+    python3 findmeaccess.py token -u Lina.Meier@megabigtech.com -p Megabigtech! -r "https://management.azure.com" -c "d3590ed6-52b3-4102-aeff-aad2292ab01c"
+
+Use PS5 User-Agent (example)
+
+    python3 findmeaccess.py token -u Lina.Meier@megabigtech.com -p Megabigtech! -r "https://management.azure.com" -c "d3590ed6-52b3-4102-aeff-aad2292ab01c" --user_agent "Mozilla/5.0 (PlayStation 5 3.03/SmartTV) AppleWebKit/605.1.15 (KHTML, like Gecko)"
 
 ## Storage Accounts
 
