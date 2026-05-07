@@ -318,3 +318,12 @@ Print access token
 
     Invoke-SearchSharePointAndOneDrive -Tokens $tokens -SearchTerm "password"
 
+## Azure Logic Apps
+
+### 1) Enumerate a specific Azure Logic App
+
+    az logicapp show --resource-group RESOURCE_GROUP_NAME --name LOGIC_APP_NAME
+
+### 2) Access the workflow of a logic app
+
+    az logic workflow list
