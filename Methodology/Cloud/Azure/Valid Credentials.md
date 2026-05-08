@@ -23,6 +23,24 @@ Shared Access Signature token (SAS) URI. Can be used with tools for accesssing A
 
     https://STORAGE_ACCOUNT_NAME.blob.core.windows.net/?sv=2024-11-04&ss=b&srt=sco&sp=rl&se=2095-08-04T03:26:29Z&st=2025-08-02T19:11:29Z&spr=https&sig=gY%2B7YH5jQgxDXTkr9L9JzWAo4u1TWGT%2Bv9c6OmTJuHg%3D
 
+## AzureHound
+
+### 1) Obtain necessary tokens to use with AzureHound
+
+Set token as variable
+
+    $token = Get-AzAccessToken -ResourceURL https://graph.microsoft.com/ -AsSecureString
+    
+Print token
+
+    [System.Net.NetworkCredential]::new("", $token.Token).Password
+
+### 2) Run AzureHound using Access Tokens
+
+    azurehound -j 'ACCESS_TOKEN' list --tenant 'TENANT_ID -o entra_output.json
+
+### 3) Analyze data with BloodHound
+
 ### 2) List resources our account has access to (either read or write)
 
 Azure CLI
