@@ -390,3 +390,10 @@ Print access token
 ### 2) Access the workflow of a logic app
 
     az logic workflow list
+
+## Azure VM Scale Set (VMSS)
+
+### 1) Get information about a specific VMSS
+
+    az vmss show --name VMSS_NAME --resource-group RESOURCE_GROUP_NAME
+
