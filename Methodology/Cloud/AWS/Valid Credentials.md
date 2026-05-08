@@ -8,7 +8,7 @@ Tool: https://github.com/RhinoSecurityLabs/pacu
 
     aws configure
 
-## 2) Set keys in Pacu framework
+### 2) Set keys in Pacu framework
 
     ./cli.py
     set_keys    
