@@ -107,9 +107,9 @@ Check which user the key belongs to
 
 ## S3
 
-### 1) List S3 Buckets
-
 Use --no-sign-request if querying a public S3 bucket (can be used for each command below)
+
+### 1) List S3 Buckets
 
     aws s3 ls BUCKET_NAME 
 
@@ -124,3 +124,25 @@ Recursive Listing
 ### 3) Reveal the S3 bucket region
 
     curl -I BUCKET_NAME.s3.amazonaws.com
+
+## S3 API
+
+Use --no-sign-request if querying a public S3 bucket (can be used for each command below)
+
+### 1) Get bucket versioning
+
+    aws s3api get-bucket-versioning --bucket BUCKET_NAME
+
+### 2) List object versions
+
+    aws s3api list-object-versions --bucket BUCKET_NAME --query "Versions[?VersionId!='null']"
+
+### 3) Access on object
+
+With versioning
+
+    aws s3api get-object --bucket BUCKET_NAME --key "DIRECTORY/file.txt" --version-id "VERSION_ID" file.txt
+
+Without versioning
+
+    aws s3api get-object --bucket BUCKET_NAME --key "DIRECTORY/file.txt" file.txt
