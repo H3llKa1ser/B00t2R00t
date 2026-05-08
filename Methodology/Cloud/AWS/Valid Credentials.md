@@ -109,6 +109,40 @@ Check which user the key belongs to
 
 Use --no-sign-request if querying a public S3 bucket (can be used for each command below)
 
+S3 Bucket names wordlist download
+
+    wget https://raw.githubusercontent.com/koaj/aws-s3-bucket-wordlist/master/list.txt
+
+Regions wordlist
+
+    us-west-1
+    us-west-2
+    us-east-1
+    us-east-2
+    cn-north-1
+    cn-northwest-1
+    eu-central-1
+    eu-north-1
+    eu-west-1
+    eu-west-2
+    eu-west-3
+    ap-northeast-1
+    ap-northeast-2
+    ap-northeast-3
+    ap-south-1
+    ap-southeast-1
+    ap-southeast-2
+    ca-central-1
+    me-south-1
+    sa-east-1
+    us-gov-east-1
+    us-gov-west-1
+    ap-east-1
+
+Brute-force S3 Buckets
+
+    ffuf -u "https://hlogistics-ENVIRONMENT.s3.REGION.amazonaws.com" -w "regions.txt:REGION" -w "list.txt:ENVIRONMENT" -mc 200,403 -v 2>/dev/null
+
 ### 1) S3 Buckets
 
 List S3 Buckets
