@@ -91,6 +91,20 @@ Check which user the key belongs to
 
     aws iam get-access-key-last-used --access-key-id 'AKIA......' --query 'UserName'
 
+## DynamoDB
+
+### 1) List tables
+
+    aws dynamodb list-tables
+
+### 2) Describe a specific table
+
+    aws dynamodb describe-table --table TABLE_NAME
+
+### 3) Download table values of a specific table
+
+    aws dynamodb scan --table-name TABLE_NAME > output.json
+
 ## S3
 
 ### 1) List S3 Buckets
