@@ -309,7 +309,7 @@ Azure PowerShell
 
 ### 2) Retrieve the principal object ID
 
-    az ad sp show --id ef3005bb-7aa9-4613-8207-e2c4d9789e83 --query id -o tsv
+    az ad sp show --id CLIENT_ID --query id -o tsv
 
 ## Azure Resource Manager (ARM)
 
