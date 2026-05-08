@@ -97,6 +97,10 @@ Azure CLI
 
     az storage container list --account-name STORAGE_ACCOUNT_NAME --auth-mode login -o table
 
+Azure CLI with storage account keys
+
+    az storage list --account-name STORAGE_ACOUNT_NAME --account-key "ACCOUNT_KEY" -o table
+
 Direct API Call
 
     $storageAccountName = "STORAGE_ACCOUNT_NAME"
@@ -116,6 +120,10 @@ Direct API Call
 Azure CLI
 
     az storage blob list --account-name STORAGE_ACCOUNT_NAME --container-name CONTAINER_NAME --auth-mode login -o table
+
+Azure CLI detailed query enumeration
+
+    az storage blob list --account-name STORAGE_ACOUNT_NAME --account-key ACCOUNT_KEY --container-name CONTAINER_NAME --query "[].{Name:name, Size:properties.contentLength, LastModified:properties.lastModified}" -o table
 
 Direct API Call
 
@@ -139,6 +147,10 @@ Direct API Call
 Azure CLI
 
     az storage blob download --account-name STORAGE_ACCOUNT_NAME --container-name CONTAINER_NAME --name BLOB_NAME --file BLOB_NAME --auth-mode login
+
+Azure CLI Batch download
+
+    az storage blob download-batch --account-name STORAGE_ACCOUNT_NAME --account-key ACCOUNT_KEY -s CONTAINER_NAME -d ./DESTINATION_FOLDER
 
 Direct API Call
 
