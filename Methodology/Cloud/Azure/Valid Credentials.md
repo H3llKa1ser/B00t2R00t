@@ -33,7 +33,7 @@ Azure PowerShell
 
     Get-AzResource
 
-## Microsoft Entra Certificate-Based Authenticaten (CBA)
+## Microsoft Entra Certificate-Based Authentication (CBA)
 
 ### 1) Inspect the certificate (might require password)
 
