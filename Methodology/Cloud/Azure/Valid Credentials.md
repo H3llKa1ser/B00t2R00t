@@ -83,6 +83,14 @@ Direct API calls
     $response = Invoke-RestMethod -Method Get -Uri $url -Headers $headers
     $response
 
+Direct API call (with curl)
+
+    curl -sS -X POST \
+      -H "Authorization: Bearer $token" \
+      -H "Content-Type: application/json" \
+      -H "Content-Length: 0" \
+      "https://management.azure.com/subscriptions/SUBSCRIPTION_ID/resourceGroups/RESOURCE_GROUP_NAME/providers/Microsoft.Storage/storageAccounts/STORAGE_ACCOUNT_NAME/listKeys?api-version=2023-01-01" | jq
+
 ### 2) List containers
 
 Azure CLI
