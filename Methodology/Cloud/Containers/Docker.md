@@ -39,7 +39,7 @@ Run command
 
 ### 8) Interact with a container from this image
 
-    docker rin -i -t DIRECTORY/IMAGE:latest /bin/bash
+    docker run -i -t DIRECTORY/IMAGE:latest /bin/bash
 
 ### 9) Inspect image contents like environmental variables
 
