@@ -297,3 +297,25 @@ Initiate authentication to print a JWT token
 
     aws cognito-idp initiate-auth --client-id CLIENT_ID --auth-flow USER_PASSWORD_AUTH --auth-parameters USERNAME=USER,PASSWORD=P@SSW0RD
 
+## Lambda
+
+### 1) List Lambda functions
+
+    aws lambda list-functions
+
+### 2) Enumerate a specific Lambda function
+
+    aws lambda get-function --function-name LAMBDA_FUNCTION_NAME
+
+### 3) Invoke Lambda function
+
+    aws lambda invoke --function-name LAMBDA_FUNCTION_NAME response.json
+
+Send a specific payload upon invoking the Lambda function
+
+    aws lambda invoke --function-name LAMBDA_FUNCTION_NAME --payload '{ "target": "http://example.com" }' response.json
+
+Base64 encode the payload
+
+    aws lambda invoke --cli-binary-format raw-in-base64-out --function-name LAMBDA_FUNCTION_NAME --payload '{ "target": "http://example.com" }' response.json
+
