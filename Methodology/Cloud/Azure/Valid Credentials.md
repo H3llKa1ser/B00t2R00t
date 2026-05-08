@@ -534,6 +534,13 @@ Print access token
 
 ## Azure Container Registry (ACR)
 
+Tool: Docker
+
+Add a user to the docker group
+
+    sudo usermod -aG docker $USER
+    newgrp docker
+
 ### 1) Connect to a container registry
 
     Connect-AzContainerRegistry -Name CONTAINER_REGISTRY_NAME
@@ -545,4 +552,20 @@ Print access token
 ### 3) Enumerate repository inside a registry
 
     Get-AzContainerRegistryRepository -RegistryName CONTAINER_REGISTRY_NAME -Name REPOSITORY_NAME
+
+### 4) Pull an image
+
+    docker pull CONTAINER_REGISTRY_NAME.azurecr.io/REPOSITORY_NAME:latest
+
+### 5) Run the image and explore it
+
+    docker run --rm CONTAINER_REGISTRY_NAME.azurecr.io/REPOSITORY_NAME:latest
+
+Execute remote commands
+
+    docker exec -it CONTAINER_ID /bin/sh
+
+### 6) Check image history
+
+    docker history CONTAINER_REGOSTRY_NAME.azurecr.io/REPOSITORY_NAME:latest --no-trunc --format '{{json .}}' | ConvertFrom-Json | Format-Table -Property CreatedAt, CreatedBy, Size, Comment
 
