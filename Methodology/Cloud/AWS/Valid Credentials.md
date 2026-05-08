@@ -1,10 +1,19 @@
 # Valid Credentials
 
+## Authenticate
+
+Tool: https://github.com/RhinoSecurityLabs/pacu
+
 ### 1) Set the access key, access key ID and region name
 
     aws configure
 
-### 2) Verify identity (like whoami)
+## 2) Set keys in Pacu framework
+
+    ./cli.py
+    set_keys    
+
+### 3) Verify identity (like whoami)
 
     aws sts get-caller-identity
 
@@ -61,3 +70,9 @@ Get information about a role
 Check which user the key belongs to
 
     aws iam get-access-key-last-used --access-key-id 'AKIA......' --query 'UserName'
+
+## S3
+
+### 1) List S3 Buckets
+
+    aws s3 ls
