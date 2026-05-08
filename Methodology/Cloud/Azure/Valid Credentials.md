@@ -189,6 +189,10 @@ Azure PowerShell
 
     Get-AzResource
 
+Directi API call 
+
+    curl -s "https://management.azure.com/subscriptions/SUBSCRIPTION_ID/resourceGroups/RESOURCE_GROUP_NAME/resources?api-version=2021-04-01" -H "Authorization: Bearer $token" | jq
+
 ### 2) Get URL of a specific resource
 
     (Get-AzWebApp -ResourceGroupName "RESOURCE_GROUP_NAME" -Name "APP_NAME").DefaultHostName
