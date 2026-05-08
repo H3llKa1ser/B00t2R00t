@@ -120,3 +120,7 @@ Recursive Listing
 ### 2) Download a file from an S3 bucket
 
     aws s3 cp s3://BUCKET_NAME/DIRECTORY/file.txt .
+
+### 3) Reveal the S3 bucket region
+
+    curl -I BUCKET_NAME.s3.amazonaws.com
