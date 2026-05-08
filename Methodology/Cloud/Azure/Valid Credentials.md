@@ -33,6 +33,46 @@ Azure PowerShell
 
     Get-AzResource
 
+## Microsoft Entra Certificate-Based Authenticaten (CBA)
+
+### 1) Inspect the certificate (might require password)
+
+    openssl pkcs12 -in ./user.pfx -info -nokeys
+
+### 2) Import Certificate on Linux
+
+Open Browser Certificate Settings in Firefox, then navigate to:
+
+    Preferences > Privacy & Security > Certificates > View Certificates
+
+Import the Certificate
+
+    Select the Your Certificates tab.
+    Click Import and choose the user.pfx file (you might need to move the file to an accessible location)
+    When prompted, enter the password for the certificate
+
+Verify the certificate
+
+    The certificate for USER.NAME shoudl appear in the list
+
+### 3) Import Certificate on Windows
+
+Locate the user.pfx file
+
+Start the Import Wizard
+
+    Double-click the user.pfx file.
+    The Certificate Import Wizard will launch.
+    Follow the Wizard
+
+Password Entry
+
+    Enter password
+
+If you get a security warning asking if you want to install the certificate, click Yes. A message should confirm that the import was successful.
+
+Repeating the same step as before, while trying to login to the Azure portal you should see a message from certauth.login.microsoftonline.com.
+
 ## AzureHound
 
 ### 1) Obtain necessary tokens to use with AzureHound
