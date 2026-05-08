@@ -386,7 +386,7 @@ Print access token
 
 ### 3) Check SharePoint URLs
 
-    Get-SharePointSiteURLs -Tokens
+    Get-SharePointSiteURLs -Tokens $tokens
 
 ### 4) Search and download files that contain a specific term
 
