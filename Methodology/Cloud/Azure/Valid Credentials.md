@@ -300,6 +300,11 @@ Decrypt by calling the vault directly using the stored key. (Azure handles the d
 
     az keyvault show --name VAULT_NAME --query "properties.enabledForTemplateDeployment"
 
+### 5) Get the thumbprint of a certiciate
+
+    $cert = Get-AzKeyVaultCertificate -VaultName VAULT_NAME -CertificateName CERTIFICATE_NAME
+    $cert.Thumbprint
+
 ## Resources
 
 ### 1) List Resources
@@ -471,6 +476,10 @@ Template.json example
     
     # Save the list to a file
     $ApplicationsDetails.Applications | Export-Clixml -Path "Applications.xml"
+
+Search for a pattern in the exported data (example)
+
+    Select-String -Path "./Applications.xml" -Pattern "8A8D9DC753168B8067822151991002FCBF055C71" | ForEach-Object { $start = [Math]::Max(0, $_.LineNumber - 11); Get-Content "./Applications.xml" | Select-Object -Skip $start -First 11 }
 
 Tool: 
 
