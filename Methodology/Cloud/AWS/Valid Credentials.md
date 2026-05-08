@@ -19,9 +19,9 @@ Pacu framework
     ./cli.py
     set_keys    
 
-aws-enumerator (Edit .env file)
+aws-enumerator 
 
-    aws-enumerator cred
+    aws-enumerator cred -aws_access_key_id 'AKIA......' -aws_secret_access_key 'SECRET_ACCESS_KEY' -aws_region REGION
 
 ### 2) Verify identity (like whoami)
 
@@ -238,3 +238,10 @@ With key
 Then decode the base64 file
 
     echo "BASE64" | base64 -d -w0
+
+## Systems Manager (SSM)
+
+### 1) Retrieve parameter
+
+    aws ssm get-parameter --name PARAMETER_NAME
+
