@@ -201,6 +201,14 @@ Without versioning
 
     aws sts get-access-key-info --access-key-id AKIA........
 
+### 2) Assume role
+
+    aws sts assume-role --role-arn arn:aws:iam::AWS_ACCOUNT_ID:role/ROLE_NAME --role-session-name ROLE_NAME
+
+Use an external ID to assume role
+
+    aws sts assume-role --role-arn arn:aws:iam::AWS_ACCOUNT_ID:role/ROLE_NAME --role-session-name ROLE_NAME --external-id EXTERNAL_ID
+
 ## EC2
 
 ### 1) List active EC2 Instances
@@ -328,4 +336,21 @@ Send a specific payload upon invoking the Lambda function
 Base64 encode the payload
 
     aws lambda invoke --cli-binary-format raw-in-base64-out --function-name LAMBDA_FUNCTION_NAME --payload '{ "target": "http://example.com" }' response.json
+
+## Secrets Manager
+
+### 1) List secrets
+
+    aws secretsmanager list-secrets --query 'SecretList[*].[Name, Description, ARN]' --output json
+
+### 2) Get secret value
+
+    aws secretsmanager get-secret-value --secret-id SECRET_NAME
+
+## CloudShell
+
+### 1) Get temporary credentials
+
+    TOKEN=$(curl -X PUT localhost:1338/latest/api/token -H "X-aws-ec2-metadata-token-ttl-seconds: 60")
+    curl localhost:1338/latest/meta-data/container/security-credentials -H "X-aws-ec2-metadata-token: $TOKEN"
 
