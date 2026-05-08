@@ -307,6 +307,10 @@ Azure PowerShell
 
     az ad sp show --id CLIENT_ID --query "notes"
 
+### 2) Retrieve the principal object ID
+
+    az ad sp show --id ef3005bb-7aa9-4613-8207-e2c4d9789e83 --query id -o tsv
+
 ## Azure Resource Manager (ARM)
 
 ### 1) Deploy resources by reading a template file (parameters can vary according to use case)
@@ -369,6 +373,13 @@ Print access token
 ### 4) Search and download files that contain a specific term
 
     Invoke-SearchSharePointAndOneDrive -Tokens $tokens -SearchTerm "password"
+
+### 5) Query information about a Service Principal
+
+    curl -s \
+      -H "Authorization: Bearer $ACCESS_TOKEN" \
+      "https://graph.microsoft.com/v1.0/servicePrincipals/PRINCIPAL_OBJECT_ID" \
+    | jq
 
 ## Azure Logic Apps
 
