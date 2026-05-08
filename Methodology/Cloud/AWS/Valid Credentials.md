@@ -17,6 +17,10 @@ Tool: https://github.com/RhinoSecurityLabs/pacu
 
     aws sts get-caller-identity
 
+### 4) Situational Awareness (Pacu)
+
+    run iam__bruteforce_permissions
+
 ## IAM
 
 ### 1) Users
