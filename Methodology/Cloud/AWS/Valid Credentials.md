@@ -14,6 +14,10 @@ AWS CLI
 
     aws configure
 
+Set session token
+
+    aws configure set aws_session_token "TOKEN"
+
 Pacu framework
 
     ./cli.py
@@ -252,4 +256,44 @@ Then decode the base64 file
 ### 1) Retrieve parameter
 
     aws ssm get-parameter --name PARAMETER_NAME
+
+## Cognito
+
+Use --no-sign for unauthenticated access.
+
+### 1) Identity Pools
+
+Get an Identity ID from an Identity pool
+
+    aws cognito-identity get-id --identity-pool-id IDENTITY_POOL_ID
+
+Get an identity ID by copying the access token from IdToken and specifying the user pool ID
+
+    aws cognito-identity get-id --identity-pool-id IDENTITY_POOL_ID --logins "{ \"cognito-idp.us-east-1.amazonaws.com/us-east-1_8rcK7abtz\": \"<JWT_TOKEN>\" }"
+
+Request credentials for an Identity ID
+
+    aws cognito-identity get-credentials-for-identity --identity-id IDENTITY_ID --no-sign
+
+Request credentials with unique identifiers
+
+    aws cognito-identity get-credentials-for-identity --identity-id IDENTITY_POOL_ID --logins "{ \"cognito-idp.us-east-1.amazonaws.com/us-east-1_8rcK7abtz\": \"<JWT_TOKEN>\" }"
+
+### 2) User Pools
+
+Sign up an account
+
+    aws cognito-idp sign-up --client-id CLIENT_ID --username USERNAME --password 'PASSWORD'
+
+Send confirmation code
+
+    aws cognito-idp sign-up --client-id CLIENT_ID --username USERNAME --password PASSWORD --user-attributes Name="email",Value="EMAIL@mail.com" Name="name",Value="Test"
+
+Confirm sign up
+
+    aws cognito-idp confirm-sign-up --client-id CLIENT_ID --username USERNAME --confirmation-code CONFIRMATION_CODE
+
+Initiate authentication to print a JWT token
+
+    aws cognito-idp initiate-auth --client-id CLIENT_ID --auth-flow USER_PASSWORD_AUTH --auth-parameters USERNAME=USER,PASSWORD=P@SSW0RD
 
