@@ -235,6 +235,18 @@ With key
 
     aws ec2 describe-launch-template-versions --launch-template-name LAUNCH_TEMPLATE_NAME --query "LaunchTemplateVersions[0].LaunchTemplateData.UserData" --output text | base64 --decode
 
+### 5) Describe EBS snapshots
+
+    aws ec2 describe-snapshots --owner-ids AWS_ACCOUNT_ID --region REGION
+
+Enumerate public snapshots
+
+    aws ec2 describe-snapshots --owner-id self --restorable-by-user-ids all --no-paginate --region us-east-1
+
+### 6) Describe a specific snapshot attribute
+
+    aws ec2 describe-snapshot-attribute --attribute createVolumePermission --snapshot-id snap-ID --region REGION
+
 ## Codecommit
 
 ### 1) Enumerate repositories
