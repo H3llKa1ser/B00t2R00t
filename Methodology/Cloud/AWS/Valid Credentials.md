@@ -170,3 +170,37 @@ Pacu
 With key
 
     aws ec2 get-password-data --instance-id INSTANCE_ID --priv-launch-key KEY.pem
+
+## Codecommit
+
+### 1) Enumerate repositories
+
+    aws codecommit list-repositories
+
+### 2) Get details of a specific repository
+
+    aws codecommit get-repository --repository-name REPOSITORY_NAME
+
+### 3) List branches of a repository
+
+    aws codecommit list-branches --repository-name REPOSITORY_NAME
+
+### 4) Get branch details
+
+    aws codecommit get-branch --repository-name REPOSITORY_NAME --branch-name BRANCH_NAME
+
+### 5) Get commit details
+
+    aws codecommit get-commit --repository-name REPOSITORY_NAME --COMMIT-ID commit_id
+
+### 6) Find files that changed between commits
+
+    aws codecommit get-differences --repository-name REPOSITORY_NAME --before-commit-specifier PARENT_COMMIT_ID --after-commit-specifier COMMIT_ID
+
+### 7) Download a file from a repository based on a commit ID
+
+    aws codecommit get-file --repository-name REPOSITORY_NAME --commit-specifier COMMIT_ID --file-path DIRECTORY/file.txt
+
+Then decode the base64 file
+
+    echo "BASE64" | base64 -d -w0
