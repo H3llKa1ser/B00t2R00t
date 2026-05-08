@@ -73,6 +73,33 @@ If you get a security warning asking if you want to install the certificate, cli
 
 Repeating the same step as before, while trying to login to the Azure portal you should see a message from certauth.login.microsoftonline.com.
 
+### 4) Gain access in CLI using certificate-based auth
+
+Tool: https://github.com/obikuro/Sato
+
+Application IDs to use: https://learn.microsoft.com/en-us/power-platform/admin/apps-to-allow
+
+1) Initiate the device code grant / flow. In this example, we will request an access token for ARM
+
+        Invoke-Sato -GrantType "device_code" -TenantID "TENANT_ID" -PredefinedScope MaARM
+
+2) Paste the device code URL into a browser
+
+3) Enter the User Code from SATO
+
+4) Authenticate using the CBA certificate imported
+
+5) Back to terminal, save the tokens printed as variables (we now got access!)
+
+       $token = ACCESS_TOKEN
+       $rftoken = REFRESH_TOKEN
+
+6) Refresh tokens allow us to request access tokens for other Azure and Microsoft 365 services!
+
+Example: Azure KeyVault access token request
+
+        Invoke-Sato -GrantType "refresh_token" -TenantID "TENANT_ID"  -RefreshToken $rftoken -PredefinedScope KeyVault
+
 ## AzureHound
 
 ### 1) Obtain necessary tokens to use with AzureHound
