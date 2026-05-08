@@ -55,3 +55,9 @@ List attached role policies
 Get information about a role
 
     aws iam get-role --role-name ROLE_NAME
+
+### 4) Access Keys
+
+Check which user the key belongs to
+
+    aws iam get-access-key-last-used --access-key-id 'AKIA......' --query 'UserName'
