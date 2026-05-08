@@ -101,6 +101,10 @@ Azure CLI with storage account keys
 
     az storage list --account-name STORAGE_ACOUNT_NAME --account-key "ACCOUNT_KEY" -o table
 
+Azure CLI with Shared Access Signature Token (SAS)
+
+    az storage container list --account-name STORAGE_ACCOUNT_NAME --sas-token "sv=2024-11-04&ss=b&srt=sco&sp=rl&se=2095-08-04T03:26:29Z&st=2025-08-02T19:11:29Z&spr=https&sig=gY%2B7YH5jQgxDXTkr9L9JzWAo4u1TWGT%2Bv9c6OmTJuHg%3D" --output table
+
 Direct API Call
 
     $storageAccountName = "STORAGE_ACCOUNT_NAME"
