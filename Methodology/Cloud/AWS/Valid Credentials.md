@@ -71,7 +71,7 @@ Enumerate policy versions of a specific policy
 
     aws iam list-policy-versions --policy-arn arn:aws:iam::aws:policy/POLICY_NAME
 
-See more detailed for a specific version of a policy
+See more details for a specific version of a policy
 
     aws iam get-policy-version --policy-arn arn:aws:iam::aws:policy/POLICY_NAME --version-id vNUM
 
