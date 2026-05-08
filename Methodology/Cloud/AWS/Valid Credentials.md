@@ -2,24 +2,40 @@
 
 ## Authenticate
 
-Tool: https://github.com/RhinoSecurityLabs/pacu
+Tools: 
+
+1) Pacu https://github.com/RhinoSecurityLabs/pacu
+
+2) aws-enumerator https://github.com/shabarkin/aws-enumerator
 
 ### 1) Set the access key, access key ID and region name
 
+AWS CLI
+
     aws configure
 
-### 2) Set keys in Pacu framework
+Pacu framework
 
     ./cli.py
     set_keys    
 
-### 3) Verify identity (like whoami)
+aws-enumerator (Edit .env file)
+
+    aws-enumerator cred
+
+### 2) Verify identity (like whoami)
 
     aws sts get-caller-identity
 
-### 4) Situational Awareness (Pacu)
+### 4) Situational Awareness 
+
+Pacu
 
     run iam__bruteforce_permissions
+
+aws-enumerator
+
+    aws-enumerator enum --services all
 
 ## IAM
 
