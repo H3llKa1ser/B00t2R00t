@@ -326,7 +326,11 @@ Print access token
 
     Get-Inbox -Tokens $tokens -userid USER.NAME@megacorp.com
 
-### 3) Search and download files that contain a specific term
+### 3) Check SharePoint URLs
+
+    Get-SharePointSiteURLs -Tokens
+
+### 4) Search and download files that contain a specific term
 
     Invoke-SearchSharePointAndOneDrive -Tokens $tokens -SearchTerm "password"
 
