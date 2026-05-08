@@ -148,3 +148,25 @@ With versioning
 Without versioning
 
     aws s3api get-object --bucket BUCKET_NAME --key "DIRECTORY/file.txt" file.txt
+
+### 4) Check the bucket policy
+
+    aws s3api get-bucket-policy --bucket BUCKET_NAME
+
+## EC2
+
+### 1) List active EC2 Instances
+
+AWS CLI
+
+    aws ec2 describe-instances --filters Name=instance-state-name,Values=running --query 'Reservations[].Instances[].[Tags[?Key==`Name`].Value | [0],InstanceId,Platform,State.Name,PrivateIpAddress,PublicIpAddress,InstanceType,PublicDnsName,KeyName]'
+
+Pacu
+
+    run ec2__enum
+
+### 2) Retrieve the password of an EC2 instance
+
+With key
+
+    aws ec2 get-password-data --instance-id INSTANCE_ID --priv-launch-key KEY.pem
