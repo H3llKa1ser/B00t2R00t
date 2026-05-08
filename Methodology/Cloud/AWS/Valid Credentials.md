@@ -109,4 +109,14 @@ Check which user the key belongs to
 
 ### 1) List S3 Buckets
 
-    aws s3 ls
+Use --no-sign-request if querying a public S3 bucket (can be used for each command below)
+
+    aws s3 ls BUCKET_NAME 
+
+Recursive Listing
+
+    aws s3 ls BUCKET_NAME --recursive
+
+### 2) Download a file from an S3 bucket
+
+    aws s3 cp s3://BUCKET_NAME/DIRECTORY/file.txt .
