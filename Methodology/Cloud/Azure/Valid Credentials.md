@@ -278,7 +278,13 @@ Direct API Call
 
 ### 3) List keys
 
+Azure CLI
+
     az keyvault key list --vault-name VAULT_NAME -o table
+
+Azure PowerShell
+
+    Get-AzKeyVaultKey -VaultName VAULT_NAME
 
 ### 3) Perform decryption
 
