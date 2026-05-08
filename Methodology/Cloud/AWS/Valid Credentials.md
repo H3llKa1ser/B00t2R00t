@@ -2,6 +2,10 @@
 
 ## Authenticate
 
+Sign-in URL for IAM users on AWS Console
+
+https://AWS_ACCOUNT_ID.signin.aws.amazon.com/console
+
 Tools: 
 
 1) Pacu https://github.com/RhinoSecurityLabs/pacu
@@ -190,6 +194,12 @@ Without versioning
 ### 4) Check the bucket policy
 
     aws s3api get-bucket-policy --bucket BUCKET_NAME
+
+## Security Token Service (STS)
+
+### 1) Check in which AWS account does an access key belong to
+
+    aws sts get-access-key-info --access-key-id AKIA........
 
 ## EC2
 
