@@ -532,3 +532,17 @@ Print access token
 
     az vmss show --name VMSS_NAME --resource-group RESOURCE_GROUP_NAME
 
+## Azure Container Registry (ACR)
+
+### 1) Connect to a container registry
+
+    Connect-AzContainerRegistry -Name CONTAINER_REGISTRY_NAME
+
+### 2) Enumerate available repositories in the registry
+
+    Get-AzContainerRegistryRepository -RegistryName CONTAINER_REGISTRY_NAME
+
+### 3) Enumerate repository inside a registry
+
+    Get-AzContainerRegistryRepository -RegistryName CONTAINER_REGISTRY_NAME -Name REPOSITORY_NAME
+
