@@ -543,13 +543,35 @@ Add a user to the docker group
 
 ### 1) Connect to a container registry
 
+Azure PowerShell
+
     Connect-AzContainerRegistry -Name CONTAINER_REGISTRY_NAME
+
+Azure CLI
+
+    az acr login --name CONTAINER_REGISTRY_NAME
+
+### 2) List registries
+
+    az acr list
 
 ### 2) Enumerate available repositories in the registry
 
+Azure CLI
+
+    az acr repository list --name CONTAINER_REGISTRY_NAME
+
+Azure PowerShell
+
     Get-AzContainerRegistryRepository -RegistryName CONTAINER_REGISTRY_NAME
 
-### 3) Enumerate repository inside a registry
+### 3) Enumerate repository inside a registry for images
+
+Azure CLI
+
+    az acr repository show-tags --name CONTAINER_REGISTRY_NAME --repository REPOSITORY_NAME 
+
+Azure PowerShell
 
     Get-AzContainerRegistryRepository -RegistryName CONTAINER_REGISTRY_NAME -Name REPOSITORY_NAME
 
