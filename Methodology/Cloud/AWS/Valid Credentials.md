@@ -205,6 +205,14 @@ With key
 
     aws ec2 get-password-data --instance-id INSTANCE_ID --priv-launch-key KEY.pem
 
+### 3) List all available EC2 launch templates
+
+    aws ec2 describe-launch-templates
+
+### 4) Check if a launch template has any user data defined
+
+    aws ec2 describe-launch-template-versions --launch-template-name LAUNCH_TEMPLATE_NAME --query "LaunchTemplateVersions[0].LaunchTemplateData.UserData" --output text | base64 --decode
+
 ## Codecommit
 
 ### 1) Enumerate repositories
