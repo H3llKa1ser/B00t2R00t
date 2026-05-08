@@ -109,7 +109,9 @@ Check which user the key belongs to
 
 Use --no-sign-request if querying a public S3 bucket (can be used for each command below)
 
-### 1) List S3 Buckets
+### 1) S3 Buckets
+
+List S3 Buckets
 
     aws s3 ls BUCKET_NAME 
 
@@ -117,11 +119,11 @@ Recursive Listing
 
     aws s3 ls BUCKET_NAME --recursive
 
-### 2) Download a file from an S3 bucket
+Download a file from an S3 bucket
 
     aws s3 cp s3://BUCKET_NAME/DIRECTORY/file.txt .
 
-### 3) Reveal the S3 bucket region
+Reveal the S3 bucket region
 
     curl -I BUCKET_NAME.s3.amazonaws.com
 
