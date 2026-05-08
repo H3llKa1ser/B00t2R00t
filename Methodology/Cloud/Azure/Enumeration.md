@@ -12,6 +12,8 @@ Tools:
 
 4) o365spray https://github.com/0xZDH/o365spray
 
+5) entraspray https://github.com/dunderhay/entraspray
+
 ### 1) Generate wordlist
 
     username-anarchy USER NAME -@ @megacorp.com > emails.txt
@@ -23,6 +25,10 @@ Tools:
 ### 3) Start a password spraying attack
 
     python3 o365enum.py -u emails.txt -p 'PASSWORD' -n 1 -m office.com
+
+OR
+
+    python3 entraspray.py --userlist emails.txt --password PASSWORD
 
 ### 4) Start a brute force attack
 
