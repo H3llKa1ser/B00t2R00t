@@ -437,6 +437,41 @@ Template.json example
 
 ## Microsoft Graph API (Microsoft 365)
 
+### Retrieve all applications, extract relevant details, then store the collected data in an XML file for easy parsing and analysis
+
+    # Set up API URI and headers 
+    $URI = "https://graph.microsoft.com/v1.0/applications"
+    $GraphAccessToken = $graphtoken
+    $RequestParams = @{
+        Method = 'GET'
+        Uri = $URI
+        Headers = @{
+            'Authorization' = "Bearer $GraphAccessToken"
+        }
+    }
+    
+    # Send the request and store the applications details
+    $Applications = (Invoke-RestMethod @RequestParams).value
+    
+    # Create a custom PowerShell object to store applications data
+    $ApplicationsDetails = [PSCustomObject]@{
+        Applications = @()
+    }
+    foreach ($Application in $Applications) {
+        $applicationObject = [PSCustomObject]@{
+            DisplayName = $Application.displayName
+            AppId = $Application.appId
+            CreatedDateTime = $Application.createdDateTime
+            ID = $Application.id
+            KeyCredentials = $Application.keyCredentials
+            PasswordCredentials = $Application.passwordCredentials
+        }
+        $ApplicationsDetails.Applications += $applicationObject
+    }
+    
+    # Save the list to a file
+    $ApplicationsDetails.Applications | Export-Clixml -Path "Applications.xml"
+
 Tool: 
 
 1) GraphRunner https://github.com/dafthack/GraphRunner
