@@ -247,6 +247,27 @@ Access to the object
 
     aws s3api get-object --bucket BUCKET_NAME --key "DIRECTORY/file.txt" file.txt
 
+## S3 Control
+
+### 1) List jobs
+
+    aws s3control list-jobs --account-id AWS_ACCOUNT_ID | less
+
+### 2) Create a job operation
+
+Example:
+
+    aws s3control create-job \
+        --account-id AWS_ACCOUNT_ID \
+        --operation '{"S3ReplicateObject":{}}' \
+        --report '{"Bucket":"arn:aws:s3:::S3_BUCKET_NAME","Prefix":"batch-replication-report","Format":"Report_CSV_20180820","Enabled":true,"ReportScope":"AllTasks"}' \
+        --manifest-generator '{"S3JobManifestGenerator":{"ExpectedBucketOwner":"549936768638","SourceBucket":"arn:aws:s3:::S3_BUCKET_NAME","EnableManifestOutput":false,"Filter":{"EligibleForReplication":true,"ObjectReplicationStatuses": ["NONE","FAILED","COMPLETED","REPLICA"]}}}' \
+        --priority 1 \
+        --role-arn "arn:aws:iam::AWS_ACCOUNT_ID:role/ROLE_NAME" \
+        --no-confirmation-required \
+        --region us-west-2 \
+        --description "WHATEVER DESCRIPTION"
+
 ## Security Token Service (STS)
 
 ### 1) Check in which AWS account an access key belongs to
