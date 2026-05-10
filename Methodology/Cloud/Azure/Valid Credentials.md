@@ -19,7 +19,13 @@ Service Principal (Login without accessing the subscription)
 
     az login --service-principal -u CLIENT_ID -p SECRET --tenant TENANT_ID --allow-no-subscriptions
 
-Shared Access Signature token (SAS) URI. Can be used with tools for accesssing Azure storage resources.
+Service Principal (Az PowerShell)
+
+    $appsecret = ConvertTo-SecureString "SECRET_VALUE" -AsPlainText -Force
+    $cred = New-Object System.Management.Automation.PSCredential('SERVICE_PRINCIPAL_ID',$appsecret) 
+    Connect-AzAccount -ServicePrincipal -Credential $cred -Tenant 'TENANT_ID'
+
+Shared Access Signature token (SAS) URI. Can be used with tools for accessing Azure storage resources.
 
     https://STORAGE_ACCOUNT_NAME.blob.core.windows.net/?sv=2024-11-04&ss=b&srt=sco&sp=rl&se=2095-08-04T03:26:29Z&st=2025-08-02T19:11:29Z&spr=https&sig=gY%2B7YH5jQgxDXTkr9L9JzWAo4u1TWGT%2Bv9c6OmTJuHg%3D
 
@@ -35,7 +41,7 @@ Azure PowerShell
 
 ## Microsoft Entra Certificate-Based Authentication (CBA)
 
-### 1) Inspect the certificate (might require password)
+### 1) Inspect the certificate (might require a password)
 
     openssl pkcs12 -in ./user.pfx -info -nokeys
 
@@ -53,7 +59,7 @@ Import the Certificate
 
 Verify the certificate
 
-    The certificate for USER.NAME shoudl appear in the list
+    The certificate for USER.NAME should appear in the list
 
 ### 3) Import Certificate on Windows
 
@@ -79,7 +85,7 @@ Tool: https://github.com/obikuro/Sato
 
 Application IDs to use: https://learn.microsoft.com/en-us/power-platform/admin/apps-to-allow
 
-1) Initiate the device code grant / flow. In this example, we will request an access token for ARM
+1) Initiate the device code grant/flow. In this example, we will request an access token for ARM
 
         Invoke-Sato -GrantType "device_code" -TenantID "TENANT_ID" -PredefinedScope MaARM
 
@@ -89,7 +95,7 @@ Application IDs to use: https://learn.microsoft.com/en-us/power-platform/admin/a
 
 4) Authenticate using the CBA certificate imported
 
-5) Back to terminal, save the tokens printed as variables (we now got access!)
+5) Back to the terminal, save the tokens printed as variables (we now have access!)
 
        $token = ACCESS_TOKEN
        $rftoken = REFRESH_TOKEN
@@ -104,7 +110,7 @@ Example: Azure KeyVault access token request
 
 ### 1) Obtain necessary tokens to use with AzureHound
 
-Set token as variable
+Set the token as a variable
 
     $token = Get-AzAccessToken -ResourceURL https://graph.microsoft.com/ -AsSecureString
     
@@ -118,18 +124,18 @@ Print token
 
 ### 3) Analyze data with BloodHound
     
-## MFA Enablement gap audit
+## MFA Enablement Gap Audit
 
-### 1) Download and install tool FindMeAccess
+### 1) Download and install the tool FindMeAccess
 
     git clone https://github.com/absolomb/FindMeAccess
     pip install -r requirements.txt
 
-### 2) Get session token of target user
+### 2) Get the session token of the target user
 
 ClientIDs Link: https://learn.microsoft.com/en-us/power-platform/admin/apps-to-allow
 
-Use client ID of Microsoft Azure PowerShell to authenticate to the Azure Resource Manager (ARM) API endpoint (example)
+Use the client ID of Microsoft Azure PowerShell to authenticate to the Azure Resource Manager (ARM) API endpoint (example)
 
     python3 findmeaccess.py token -u USER.NAME@megacorp.com -p PASSWORD -r "https://management.azure.com" -c "d3590ed6-52b3-4102-aeff-aad2292ab01c"
 
@@ -143,7 +149,7 @@ Request Storage API endpoint token
 
     curl -s -H "X-Identity-Header: $MSI_SECRET" "$MSI_ENDPOINT?api-version=2019-08-01&resource=https://storage.azure.com&client_id=$ENTRA_CLIENT_ID"'
 
-Store it (YOU CAN USE THIS VIA DIRECT API CALLS TO REQUEST FOR ANY RESOURCES RELATED TO STORAGE ACCOUNTS)
+Store it (YOU CAN USE THIS VIA DIRECT API CALLS TO REQUEST ANY RESOURCES RELATED TO STORAGE ACCOUNTS)
 
     $mistoragetoken = "STORAGE_API_TOKEN"
 
@@ -239,6 +245,12 @@ Direct API Call
     $response = Invoke-RestMethod -Method Get -Uri $url -Headers $headers
     $response | xmllint --format -
 
+Azure PowerShell
+
+    $context = New-AzStorageContext -StorageAccountName STORAGE_ACCOUNT_NAME
+    $containername = (Get-AzStorageContainer -Context $context -Name CONTAINER_NAME).name
+    Get-AzStorageBlob -Container $containername -Context $context
+
 ### 4) Download container contents
 
 Azure CLI
@@ -265,6 +277,12 @@ Direct API Call
     $destinationPath = "~/$blobName"
     
     Invoke-RestMethod -Method Get -Uri $blobUrl -Headers $headers -OutFile $destinationPath
+
+### 5) Read container contents
+
+Azure PowerShell
+
+    Get-AzStorageBlobContent -Container $containerName -Blob cred.txt -Context $context
 
 ## Azure Key Vault
 
@@ -357,7 +375,7 @@ Direct API call
 
     az account get-access-token
 
-#### Set access token as variable
+#### Set access token as a variable
 
     $token="ACCESS_TOKEN"
 
@@ -383,7 +401,7 @@ Azure PowerShell
 
     Get-AzRoleAssignment
 
-### 2) Check Azure RBAC roles assigned on an identity
+### 2) Check Azure RBAC roles assigned to an identity
 
     az role assignment list --assignee CLIENT_ID --all -o json | grep roleDefinitionName -B 1
 
@@ -397,9 +415,13 @@ Azure PowerShell
 
     Get-AzRoleDefinition -Id ROLE_DEFINITION_ID | select -ExpandProperty Actions
 
+Azure PowerShell (Use role name instead of RoleID)
+
+    Get-AzRoleDefinition -Name "ROLE_NAME"
+
 ## Entra ID
 
-### 1) Query an Enterprise Application notes field (example) by quering the service principal 
+### 1) Query an Enterprise Application notes field (example) by querying the service principal 
 
     az ad sp show --id CLIENT_ID --query "notes"
 
@@ -442,7 +464,11 @@ Template.json example
 
 ## Microsoft Graph API (Microsoft 365)
 
-### Retrieve all applications, extract relevant details, then store the collected data in an XML file for easy parsing and analysis
+### 1) Situational Awareness
+
+    Get-MgUserOwnedObject -UserId USERNAME@megacorp.com | Select * -ExpandProperty additionalProperties
+
+### 2) Retrieve all applications, extract relevant details, then store the collected data in an XML file for easy parsing and analysis
 
     # Set up API URI and headers 
     $URI = "https://graph.microsoft.com/v1.0/applications"
@@ -485,36 +511,75 @@ Tool:
 
 1) GraphRunner https://github.com/dafthack/GraphRunner
 
-Initiate module
+2) Graph PowerShell Module
+
+Initiate module (GraphRunner)
 
     Import-Module .\GraphRunner.ps1
 
-### 1) Get a Microsoft Graph Session
+Install and initiate the module (Graph PowerShell)
+
+    Install-Module Microsoft.Graph
+    Import-Module Microsoft.Graph
+
+### 3) Get a Microsoft Graph Session
+
+GraphRunner
 
     Get-GraphTokens
+
+Graph PowerShell Module (connect)
+
+    Connect-MgGraph
 
 Print access token
 
     $tokens.access_token
 
-### 2) Check user's inbox
+### 4) Check user's inbox
 
     Get-Inbox -Tokens $tokens -userid USER.NAME@megacorp.com
 
-### 3) Check SharePoint URLs
+### 5) Check SharePoint URLs
 
     Get-SharePointSiteURLs -Tokens $tokens
 
-### 4) Search and download files that contain a specific term
+### 6) Search and download files that contain a specific term
 
     Invoke-SearchSharePointAndOneDrive -Tokens $tokens -SearchTerm "password"
 
-### 5) Query information about a Service Principal
+### 7) Query information about a Service Principal
 
     curl -s \
       -H "Authorization: Bearer $ACCESS_TOKEN" \
       "https://graph.microsoft.com/v1.0/servicePrincipals/PRINCIPAL_OBJECT_ID" \
     | jq
+
+### 8) Check if the user belongs to a security group or if a directory role has been assigned to them
+
+    Get-MgUserMemberOf -UserId USERNAME@megacorp.com | select * -ExpandProperty additionalProperties | Select-Object {$_.AdditionalProperties["displayName"]}
+
+### 9) Check for any administrative units
+
+    Get-MgDirectoryAdministrativeUnit | fl
+
+### 10) Check if any EntraID users have been assigned a role scoped to an administrative unit
+
+    Get-MgDirectoryAdministrativeUnitScopedRoleMember -AdministrativeUnitId ADMINISTRATIVE_UNIT_ID | Select-Object roleMemberInfo,roleId -ExpandProperty roleMemberInfo
+
+### 11) See what role a user has been assigned
+
+    Get-MgDirectoryAdministrativeUnitScopedRoleMember -AdministrativeUnitId ADMINISTRATIVE_UNIT_ID | fl
+
+### 12) See which role the role ID corresponds to
+
+    $roleId = "ROLE_ID"
+    $directoryRoles = Get-MgDirectoryRole | Where-Object { $_.Id -eq $roleId }
+    $directoryRoles | Format-List *
+
+### 13) Check more properties of an Administrative Unit
+
+    Get-MgDirectoryAdministrativeUnitMember -AdministrativeUnitId ADMINISTRATIVE_UNIT_ID | Select * -ExpandProperty additionalProperties
 
 ## Azure Logic Apps
 
@@ -536,7 +601,7 @@ Print access token
 
 Tool: Docker
 
-Add a user to the docker group
+Add a user to the Docker group
 
     sudo usermod -aG docker $USER
     newgrp docker
@@ -565,7 +630,7 @@ Azure PowerShell
 
     Get-AzContainerRegistryRepository -RegistryName CONTAINER_REGISTRY_NAME
 
-### 3) Enumerate repository inside a registry for images
+### 3) Enumerate the repository inside a registry for images
 
 Azure CLI
 
