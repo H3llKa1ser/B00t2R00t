@@ -366,3 +366,13 @@ Base64 encode the payload
     TOKEN=$(curl -X PUT localhost:1338/latest/api/token -H "X-aws-ec2-metadata-token-ttl-seconds: 60")
     curl localhost:1338/latest/meta-data/container/security-credentials -H "X-aws-ec2-metadata-token: $TOKEN"
 
+## RDS
+
+### 1) Look for public snapshots from single RDS database instances that belong to an AWS Account ID
+
+    aws rds describe-db-snapshots --snapshot-type public --include-public --region us-east-1 | grep AWS_ACCOUNT_ID
+
+### 2) Look for public snapshots from RDS database cluster instances
+
+    aws rds describe-db-cluster-snapshots --snapshot-type public --include-public --region us-east-1 | grep AWS_ACCOUNT_ID
+
