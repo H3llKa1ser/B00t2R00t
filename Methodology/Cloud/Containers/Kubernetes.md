@@ -50,3 +50,12 @@ You can find credentials and endpoints as environmental variables in the file
 
     kubectl describe sa SERVICE_ACCOUNT_NAME-sa -n NAMESPACE_NAME
 
+## Secrets
+
+### 1) List secrets 
+
+    kubectl get secrets
+
+### 2) View secret contents
+
+    kubectl get secret SECRET_NAME -o jsonpath='{.data}'
