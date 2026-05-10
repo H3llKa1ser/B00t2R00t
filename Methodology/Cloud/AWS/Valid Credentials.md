@@ -12,7 +12,9 @@ Tools:
 
 2) aws-enumerator https://github.com/shabarkin/aws-enumerator
 
-### 1) Set the access key, access key ID and region name
+3) Cloudfox https://github.com/BishopFox/cloudfox
+
+### 1) Set the access key, access key ID, and region name
 
 AWS CLI
 
@@ -30,6 +32,10 @@ Pacu framework
 aws-enumerator 
 
     aws-enumerator cred -aws_access_key_id 'AKIA......' -aws_secret_access_key 'SECRET_ACCESS_KEY' -aws_region REGION
+
+Cloudfox
+
+    cloudfox aws all-checks
 
 ### 2) Verify identity (like whoami)
 
