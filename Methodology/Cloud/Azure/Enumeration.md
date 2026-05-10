@@ -14,6 +14,12 @@ Tools:
 
 5) entraspray https://github.com/dunderhay/entraspray
 
+6) AADInternals https://github.com/Gerenios/AADInternals
+
+7) AzSubEnum https://github.com/yuyudhn/AzSubEnum
+
+8) OmniSpray https://github.com/0xZDH/Omnispray (Usually preferred)
+
 ### 1) Generate wordlist
 
     username-anarchy USER NAME -@ @megacorp.com > emails.txt
@@ -34,6 +40,10 @@ OR
 
     python3 o365spray.py --username USER.NAME@megacorp.com --passfile PASSWORDS.txt --domain megacorp.com --lockout 1 --spray
 
+### 5) Enumerate users according to the service we are trying to target
+
+    python3 omnispray.py --type enum -uf users.txt --module MODULE
+
 ## Tenant Enumeration
 
 ### 1) Check DNS records
@@ -53,6 +63,10 @@ PowerShell
 Dig
 
     dig domain.local any +noall +answer
+
+AADInternals
+
+    Invoke-AADIntReconAsOutsider -DomainName megacorp.com
 
 ### 2) Validate if the company uses a Cloud-only or federated domain
 
@@ -76,3 +90,17 @@ Curl
 ### 5) Obtain tenant ID
 
     curl -s https://login.microsoftonline.com/domain.local/v2.0/.well-known/openid-configuration | jq -r ".issuer" | awk -F "/" '{print $4}'
+
+AADInternals
+
+    Get-AADIntTenantID -Domain megacorp.com
+
+### 6) General Information
+
+AADInternals
+
+    Get-AADIntLoginInformation -Domain megacorp.com
+
+### 7) Subdomain Enumeration
+
+    python3 azsubenum.py -b megacorp --thread 10
