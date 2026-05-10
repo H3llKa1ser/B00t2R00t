@@ -35,7 +35,7 @@ aws-enumerator
 
 Cloudfox
 
-    cloudfox aws all-checks
+    cloudfox aws access-keys
 
 ### 2) Verify identity (like whoami)
 
@@ -50,6 +50,10 @@ Pacu
 aws-enumerator
 
     aws-enumerator enum --services all
+
+Cloudfox
+
+    cloudfox aws all-checks
 
 ## IAM
 
