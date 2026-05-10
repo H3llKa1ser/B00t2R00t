@@ -10,6 +10,14 @@ You can find credentials and endpoints as environmental variables in the file
 
     .env
 
+## Misc
+
+### 1) Apply YAML configuration
+
+Used to break out of the Kubernetes cluster environment.
+
+    kubectl apply -f file.yaml
+
 ## Kubernetes RBAC
 
 ### 1) Check what Kubernetes API actions our compromised identity/user can perform
@@ -36,9 +44,13 @@ You can find credentials and endpoints as environmental variables in the file
 
     kubectl get pod POD_NAME -n NAMESPACE_NAME -o yaml
 
-### 3) Execute commands within a pod
+### 3) Execute commands on a pod
 
     kubectl exec -n POD_NAME -- aws iam list-roles
+
+### 4) Gain interactive shell access
+
+    kubectl exec -it POD_NAME -- /bin/sh
 
 ## Service Accounts
 
