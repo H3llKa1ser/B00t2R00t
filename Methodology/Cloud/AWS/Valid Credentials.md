@@ -71,6 +71,10 @@ Enumerate groups for a specific user
 
     aws iam list-groups-for-user --user-name USERNAME
 
+Set a user's credentials on AWS console login via CLI 
+
+    aws iam update-login-profile --user-name USERNAME --password 'PASSWORD'
+
 ### 2) Policies
 
 List attached user policies
