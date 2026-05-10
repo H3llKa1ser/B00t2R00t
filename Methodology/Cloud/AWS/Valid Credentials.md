@@ -205,31 +205,43 @@ Reveal the S3 bucket region
 
 Use --no-sign-request if querying a public S3 bucket (can be used for each command below)
 
-### 1) Get bucket versioning
+### 1) Buckets
+
+Get bucket versioning
 
     aws s3api get-bucket-versioning --bucket BUCKET_NAME
 
-### 2) List object versions
+Get bucket ACLs (Access Control Lists)
 
-    aws s3api list-object-versions --bucket BUCKET_NAME --query "Versions[?VersionId!='null']"
+    aws s3api get-bucket-acl --bucket BUCKET_NAME
 
-### 3) Access on object
-
-With versioning
-
-    aws s3api get-object --bucket BUCKET_NAME --key "DIRECTORY/file.txt" --version-id "VERSION_ID" file.txt
-
-Without versioning
-
-    aws s3api get-object --bucket BUCKET_NAME --key "DIRECTORY/file.txt" file.txt
-
-### 4) Check the bucket policy
+Check the bucket policy
 
     aws s3api get-bucket-policy --bucket BUCKET_NAME
 
-### 5) Create and apply S3 bucket policy
+Create and apply S3 bucket policy
 
     aws s3api put-bucket-policy --bucket BUCKET_NAME --policy file://s3_policy.json
+
+### 2) Objects (Files)
+
+List object versions
+
+    aws s3api list-object-versions --bucket BUCKET_NAME --query "Versions[?VersionId!='null']"
+
+Get object ACLs
+
+    aws s3api get-object-acl --bucket BUCKET_NAME --key DIRECTORY/FILE.jpg 
+
+Access to the object
+
+#### With versioning
+
+    aws s3api get-object --bucket BUCKET_NAME --key "DIRECTORY/file.txt" --version-id "VERSION_ID" file.txt
+
+#### Without versioning
+
+    aws s3api get-object --bucket BUCKET_NAME --key "DIRECTORY/file.txt" file.txt
 
 ## Security Token Service (STS)
 
