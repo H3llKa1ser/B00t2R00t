@@ -11,9 +11,7 @@
     mkdir 'SPLUNK_TOTALLY_LEGIT_APP'; cd SPLUNK_TOTALLY_LEGIT_APP
     mkdir bin default metadata
 
-### 3) Create a program that executes commands (there are various techniques)
-
-A command execution technique that doesn't depend on egress from the AWS environment being allowed.
+### 3) Create a program that executes commands 
 
 #### runtime.py
 
