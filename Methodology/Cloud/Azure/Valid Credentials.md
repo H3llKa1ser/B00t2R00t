@@ -1,5 +1,9 @@
 # Valid Credentials
 
+Tools:
+
+1) Roadtools https://github.com/dirkjanm/roadtools
+
 ### 1) Authenticate
 
 User
@@ -25,6 +29,11 @@ Service Principal (Az PowerShell)
     $cred = New-Object System.Management.Automation.PSCredential('SERVICE_PRINCIPAL_ID',$appsecret) 
     Connect-AzAccount -ServicePrincipal -Credential $cred -Tenant 'TENANT_ID'
 
+Roadrecon
+
+    AADGraph=$(az account get-access-token --resource https://graph.windows.net/ --query accessToken --output tsv)
+    roadrecon auth --access-token $AADGraph
+
 Shared Access Signature token (SAS) URI. Can be used with tools for accessing Azure storage resources.
 
     https://STORAGE_ACCOUNT_NAME.blob.core.windows.net/?sv=2024-11-04&ss=b&srt=sco&sp=rl&se=2095-08-04T03:26:29Z&st=2025-08-02T19:11:29Z&spr=https&sig=gY%2B7YH5jQgxDXTkr9L9JzWAo4u1TWGT%2Bv9c6OmTJuHg%3D
@@ -38,6 +47,20 @@ Azure CLI
 Azure PowerShell
 
     Get-AzResource
+
+### 3) Situational Awareness
+
+Roadrecon
+
+    roadrecon gather
+
+Then
+
+    roadrecon gui
+
+OR transfer data to bloodhound
+
+    roadrecon plugin bloodhound --neodatabase localhost -du neo4j -dp password
 
 ## Microsoft Entra Certificate-Based Authentication (CBA)
 
