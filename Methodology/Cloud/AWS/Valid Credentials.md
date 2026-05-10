@@ -123,7 +123,7 @@ Check which user the key belongs to
 
     aws dynamodb describe-table --table TABLE_NAME
 
-### 3) Download table values of a specific table
+### 3) Download full contents of a specific table
 
     aws dynamodb scan --table-name TABLE_NAME > output.json
 
