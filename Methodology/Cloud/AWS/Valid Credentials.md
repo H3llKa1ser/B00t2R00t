@@ -49,6 +49,10 @@ aws-enumerator
 
 ### 1) Users
 
+List users
+
+    aws iam list-users
+
 Enumerate current user
 
     aws iam get-user
