@@ -55,6 +55,10 @@ aws-enumerator
 
 ### 1) Users
 
+Pacu
+
+    run iam__enum_users --role-name ROLE_NAME --account-id AWS_ACCOUNT_ID
+
 List users
 
     aws iam list-users
@@ -109,6 +113,10 @@ Create a trust policy document in JSON that assumes a role
 
 ### 3) Roles
 
+Pacu
+
+    run iam__enum_roles --role-name ROLE_NAME --account-id AWS_ACCOUNT_ID
+
 List roles
 
     aws iam list-roles
@@ -133,7 +141,7 @@ Check which user the key belongs to
 
     aws dynamodb describe-table --table TABLE_NAME
 
-### 3) Download full contents of a specific table
+### 3) Download the full contents of a specific table
 
     aws dynamodb scan --table-name TABLE_NAME > output.json
 
@@ -218,6 +226,10 @@ Without versioning
 ### 4) Check the bucket policy
 
     aws s3api get-bucket-policy --bucket BUCKET_NAME
+
+### 5) Create and apply S3 bucket policy
+
+    aws s3api put-bucket-policy --bucket BUCKET_NAME --policy file://s3_policy.json
 
 ## Security Token Service (STS)
 
