@@ -80,3 +80,20 @@ Run it in the search bar
 
     * | script runtime d2hvYW1p
 
+### 9) Check command output (optional if planning to go for a reverse shell in the first place)
+
+Click on Settings from the menu bar and then Data inputs. Then click Files & Directories.
+
+<img width="1920" height="542" alt="image" src="https://github.com/user-attachments/assets/abf34231-bb3e-4765-846f-c53f4c2e1f07" />
+
+Click New Local File & Directory.
+
+<img width="1920" height="714" alt="image" src="https://github.com/user-attachments/assets/83bbd5cd-9d71-439f-9a33-2df0cb602815" />
+
+Input /tmp/output in the field and click Next.
+
+<img width="1920" height="664" alt="image" src="https://github.com/user-attachments/assets/6c970953-9bd0-42dd-bdf0-8519148bb02e" />
+
+Command output
+
+<img width="1920" height="674" alt="image" src="https://github.com/user-attachments/assets/23fb1a79-4011-46dc-b64f-7e2597eae7d3" />
