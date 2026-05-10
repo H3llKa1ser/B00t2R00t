@@ -460,6 +460,14 @@ You can insert a command that reveals sensitive information or exfiltrates data 
 
     aws rds describe-db-cluster-snapshots --snapshot-type public --include-public --region us-east-1 | grep AWS_ACCOUNT_ID
 
+### 3) Describe database instances
+
+    aws rds describe-db-instances
+
+### 4) Check for publicly accessible instances
+
+    aws rds describe-db-instances --query 'DBInstances[*].PubliclyAccessible' --query 'DBInstances[*].DBInstanceIdentifier'
+
 ## SQS 
 
 ### 1) List queues
