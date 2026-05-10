@@ -346,6 +346,14 @@ Decrypt by calling the vault directly using the stored key. (Azure handles the d
     $cert = Get-AzKeyVaultCertificate -VaultName VAULT_NAME -CertificateName CERTIFICATE_NAME
     $cert.Thumbprint
 
+### 6) Show secret
+
+    az keyvault secret show --vault-name VAULT_NAME --name SECRET_NAME
+
+### 7) Download secret
+
+    az keyvault secret download --vault-name VAULT_NAME --name SECRET_NAME --file SECRET_NAME.pem
+
 ## Resources
 
 ### 1) List Resources
@@ -699,3 +707,20 @@ Execute remote commands
 
     docker history CONTAINER_REGOSTRY_NAME.azurecr.io/REPOSITORY_NAME:latest --no-trunc --format '{{json .}}' | ConvertFrom-Json | Format-Table -Property CreatedAt, CreatedBy, Size, Comment
 
+## Azure Automation Accounts
+
+### 1) Gather general information about an automation account
+
+    Get-AzAutomationAccount -ResourceGroupName "RESOURCE_GROUP_NAME" -Name "AUTOMATION_aCCOUNT_NAME"
+
+### 2) Export Automation Runbook
+
+    Export-AzAutomationRunbook -ResourceGroupName "RESOURCE_GROUP_NAME" -AutomationAccountName "AUTOMATION_ACCOUNT_NAME" -Name RUNBOOK_NAME -Output .
+
+### 3) Check Automation Account Credentials
+
+    Get-AzAutomationCredential -ResourceGroupName "RESOURCE_GROUP_NAME" -AutomationAccountName "AUTOMATION_ACCOUNT_NAME" | Format-Table Name, CreationTime, Description
+
+### 4) Check Automation Account Variables
+
+    Get-AzAutomationVariable -ResourceGroupName "RESOURCE_GROUP_NAME" -AutomationAccountName "AUTOMATION_aCCOUNT_NAME" | fl Name, Value, Description
