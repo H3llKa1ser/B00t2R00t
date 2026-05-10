@@ -394,3 +394,19 @@ Base64 encode the payload
 
     aws rds describe-db-cluster-snapshots --snapshot-type public --include-public --region us-east-1 | grep AWS_ACCOUNT_ID
 
+## SQS 
+
+### 1) List queues
+
+    aws sqs list-queues
+
+### 2) Receive a message from the queue
+
+    aws sqs receive-message --queue-url https://eu-north-1.queue.amazonaws.com/AWS_ACCOUNT_ID/NAME --message-attribute-names All
+
+### 3) Send a message to a queue
+
+Example payload
+
+    aws sqs send-message --queue-url https://eu-north-1.queue.amazonaws.com/AWS_ACCOUNT_ID/NAME --message-attributes '{ "Weight": { "StringValue": "1337", "DataType":"Number"}, "Client": {"StringValue":"VELUS CORP.", "DataType": "String"}, "trackingID": {"StringValue":"HLT1337", "DataType":"String"}}' --message-body "Testing"
+
