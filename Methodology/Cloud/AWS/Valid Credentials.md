@@ -55,6 +55,10 @@ Cloudfox
 
     cloudfox aws all-checks
 
+Check environment variables
+
+    cloudfox aws env-vars
+
 ## IAM
 
 ### 1) Users
