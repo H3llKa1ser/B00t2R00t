@@ -410,3 +410,19 @@ Example payload
 
     aws sqs send-message --queue-url https://eu-north-1.queue.amazonaws.com/AWS_ACCOUNT_ID/NAME --message-attributes '{ "Weight": { "StringValue": "1337", "DataType":"Number"}, "Client": {"StringValue":"VELUS CORP.", "DataType": "String"}, "trackingID": {"StringValue":"HLT1337", "DataType":"String"}}' --message-body "Testing"
 
+## SNS
+
+### 1) List topics
+
+    aws sns list-topics
+
+### 2) Create a new SNS topic
+
+    aws sns create-topic --name TOPIC_NAME
+
+### 3) Subscribe to an SNS topic
+
+Check your email inbox later to confirm the subscription.
+
+    aws sns subscribe --topic-arn arn:aws:sns:us-west-2:AWS_ACCOUNT_ID:TOPIC_NAME --protocol email --notification-endpoint sns.mail@email.com
+
