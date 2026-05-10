@@ -101,6 +101,12 @@ Set default policy version
 
     aws iam set-default-policy-version --policy-arn arn:aws:iam::AWS_ACCOUNT_ID:policy/POLICY_NAME --version-id v1
 
+Create a trust policy document in JSON that assumes a role
+
+#### Example script to create this document: https://github.com/dievus/AWeSomeUserFinder/blob/main/updateassumerolepolicygenerator.py
+
+    aws iam update-assume-role-policy --role-name ROLE_NAME --policy-document file://policy.json
+
 ### 3) Roles
 
 List roles
