@@ -97,6 +97,10 @@ List attached role policies
 
     aws iam list-attached-role-policies --role-name ROLE_NAME
 
+Set default policy version
+
+    aws iam set-default-policy-version --policy-arn arn:aws:iam::AWS_ACCOUNT_ID:policy/POLICY_NAME --version-id v1
+
 ### 3) Roles
 
 List roles
