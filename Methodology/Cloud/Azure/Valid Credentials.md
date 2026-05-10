@@ -387,6 +387,12 @@ Direct API call
 
     echo BASE64_USER_DATA | base64 -d
 
+### 3) Get the IP Address of a VM
+
+Azure CLI
+
+    az vm show -d -g RESOURCE_GROUP_NAME -n VM_NAME --query publicIps -o tsv
+
 ## Azure Network
 
 ### 1) Get the public IP address of a VM
