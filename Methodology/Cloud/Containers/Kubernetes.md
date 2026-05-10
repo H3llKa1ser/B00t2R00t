@@ -14,7 +14,7 @@ You can find credentials and endpoints as environmental variables in the file
 
 ### 1) Apply YAML configuration
 
-Used to break out of the Kubernetes cluster environment.
+Can be used to break out of the Kubernetes cluster environment or apply other configs in general.
 
     kubectl apply -f file.yaml
 
