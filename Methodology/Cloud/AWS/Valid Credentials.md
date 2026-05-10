@@ -500,3 +500,22 @@ Check your email inbox later to confirm the subscription.
 
     aws sns subscribe --topic-arn arn:aws:sns:us-west-2:AWS_ACCOUNT_ID:TOPIC_NAME --protocol email --notification-endpoint sns.mail@email.com
 
+## API Gateway
+
+API Gateway URL structure
+
+    API_GATEWAY_ID.execute-api.us-west-2.amazonaws.com
+
+### 1) Get API stage name
+
+    aws apigateway get-stages --rest-api-id API_GW_ID
+
+### 2) Update a policy by using the rest API
+
+Example payload
+
+    aws apigateway update-rest-api --rest-api-id API_GW_ID --patch-operations '[{"op":"replace","path":"/policy","value":"{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":\"*\",\"Action\":\"execute-api:Invoke\",\"Resource\":\"arn:aws:execute-api:us-west-2:AWS_ACCOUNT_ID:API_GW_ID/*/GET/prod\"},{\"Effect\":\"Allow\",\"Principal\":\"*\",\"Action\":\"execute-api:Invoke\",\"Resource\":\"arn:aws:execute-api:us-west-2:AWS_ACCOUNT_ID:API_GW_ID/*/*/dev\"}]}"}]'
+
+### 3) Create deployment
+
+    aws apigateway create-deployment --rest-api-id API_GW_ID --stage-name STAGE_NAME
