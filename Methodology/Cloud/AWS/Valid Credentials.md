@@ -259,6 +259,10 @@ Enumerate public snapshots
 
     aws ec2 describe-instance-attribute --instance-id i-INSTANCE_ID --attribute userData --query 'UserData.Value' --output text | base64 --decode
 
+### 8) Check if you can reboot an EC2 instance
+
+    aws ec2 reboot-instances --instance-ids i-INSTANCE_ID --dry-run
+
 ## Codecommit
 
 ### 1) Enumerate repositories
