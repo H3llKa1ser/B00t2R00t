@@ -89,6 +89,10 @@ List attached role policies
 
 ### 3) Roles
 
+List roles
+
+    aws iam list-roles
+
 Get information about a role
 
     aws iam get-role --role-name ROLE_NAME
@@ -197,7 +201,7 @@ Without versioning
 
 ## Security Token Service (STS)
 
-### 1) Check in which AWS account does an access key belong to
+### 1) Check in which AWS account an access key belongs to
 
     aws sts get-access-key-info --access-key-id AKIA........
 
@@ -205,7 +209,7 @@ Without versioning
 
     aws sts assume-role --role-arn arn:aws:iam::AWS_ACCOUNT_ID:role/ROLE_NAME --role-session-name ROLE_NAME
 
-Use an external ID to assume role
+Use an external ID to assume a role
 
     aws sts assume-role --role-arn arn:aws:iam::AWS_ACCOUNT_ID:role/ROLE_NAME --role-session-name ROLE_NAME --external-id EXTERNAL_ID
 
@@ -246,6 +250,10 @@ Enumerate public snapshots
 ### 6) Describe a specific snapshot attribute
 
     aws ec2 describe-snapshot-attribute --attribute createVolumePermission --snapshot-id snap-ID --region REGION
+
+### 7) Describe EC2 Instance Attribute UserData
+
+    aws ec2 describe-instance-attribute --instance-id i-INSTANCE_ID --attribute userData --query 'UserData.Value' --output text | base64 --decode
 
 ## Codecommit
 
