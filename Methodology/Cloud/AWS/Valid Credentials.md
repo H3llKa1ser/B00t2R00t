@@ -305,6 +305,22 @@ Remove --dry-run to reboot the instance if you have permissions.
 
     aws ec2 reboot-instances --instance-ids i-INSTANCE_ID --dry-run
 
+### 9) Modify the userdata content of an EC2
+
+Can be used to write a malicious file on the EC2 instance
+
+    aws ec2 modify-instance-attribute --instance-id=INSTANCE_ID --attribute userData --value file://userdata.b64.txt
+
+### 10) Start and stop an EC2 instance
+
+Start
+
+    aws ec2 start-instances --instance-id INSTANCE_ID
+
+Stop
+
+    aws ec2 stop-instances --instance-id INSTANCE_ID
+
 ## Codecommit
 
 ### 1) Enumerate repositories
