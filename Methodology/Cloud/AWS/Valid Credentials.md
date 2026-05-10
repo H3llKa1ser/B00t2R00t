@@ -261,6 +261,8 @@ Enumerate public snapshots
 
 ### 8) Check if you can reboot an EC2 instance
 
+Remove --dry-run to reboot the instance if you have permissions.
+
     aws ec2 reboot-instances --instance-ids i-INSTANCE_ID --dry-run
 
 ## Codecommit
