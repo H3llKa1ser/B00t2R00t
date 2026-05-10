@@ -6,6 +6,10 @@ Link: https://kubernetes.io/docs/tasks/tools/
 
 1) Kubectl
 
+You can find credentials and endpoints as environmental variables in the file
+
+    .env
+
 ## Kubernetes RBAC
 
 ### 1) Check what Kubernetes API actions our compromised identity/user can perform
