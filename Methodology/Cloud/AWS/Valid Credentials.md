@@ -332,6 +332,10 @@ Enumerate public snapshots
 
     aws ec2 describe-instance-attribute --instance-id i-INSTANCE_ID --attribute userData --query 'UserData.Value' --output text | base64 --decode
 
+### 8) List details of a specific image in an instance
+
+    aws ec2 describe-images --image-ids ami-IMAGE_ID 
+
 ### 8) Check if you can reboot an EC2 instance
 
 Remove --dry-run to reboot the instance if you have permissions.
