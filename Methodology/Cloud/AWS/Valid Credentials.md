@@ -329,7 +329,7 @@ Request credentials with unique identifiers
 
 ### 2) User Pools
 
-Sign up an account
+Sign up for an account
 
     aws cognito-idp sign-up --client-id CLIENT_ID --username USERNAME --password 'PASSWORD'
 
@@ -366,6 +366,12 @@ Send a specific payload upon invoking the Lambda function
 Base64 encode the payload
 
     aws lambda invoke --cli-binary-format raw-in-base64-out --function-name LAMBDA_FUNCTION_NAME --payload '{ "target": "http://example.com" }' response.json
+
+### 4) Update Lambda function contents
+
+You can insert a command that reveals sensitive information or exfiltrates data to your endpoints controlled by you, then invoke it with the commands above this one.
+
+    aws lambda update-function-code --function-name FUNCTION_NAME --zip-file fileb://FUNCTION_NAME.zip
 
 ## Secrets Manager
 
