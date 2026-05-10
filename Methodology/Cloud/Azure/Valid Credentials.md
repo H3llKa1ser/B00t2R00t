@@ -318,7 +318,7 @@ Decrypt by calling the vault directly using the stored key. (Azure handles the d
 
     az keyvault show --name VAULT_NAME --query "properties.enabledForTemplateDeployment"
 
-### 5) Get the thumbprint of a certiciate
+### 5) Get the thumbprint of a certificate
 
     $cert = Get-AzKeyVaultCertificate -VaultName VAULT_NAME -CertificateName CERTIFICATE_NAME
     $cert.Thumbprint
@@ -419,6 +419,10 @@ Azure PowerShell (Use role name instead of RoleID)
 
     Get-AzRoleDefinition -Name "ROLE_NAME"
 
+### 4) Check what RBAC permissions does our user have
+
+    Get-AzRoleAssignment -SignInName USER@megacorp.com
+
 ## Entra ID
 
 ### 1) Query an Enterprise Application notes field (example) by querying the service principal 
@@ -428,6 +432,16 @@ Azure PowerShell (Use role name instead of RoleID)
 ### 2) Retrieve the principal object ID
 
     az ad sp show --id CLIENT_ID --query id -o tsv
+
+### 3) Get information about a user
+
+Azure PowerShell
+
+    Get-AzADUser -UserPrincipalName 'USERNAME@megacorp.com' | fl
+
+### 4) Enumerate all users in the tenant
+
+    Get-AzADUser
 
 ## Azure Resource Manager (ARM)
 
