@@ -197,9 +197,13 @@ Brute-force S3 Buckets
 
 ### 1) S3 Buckets
 
-List S3 Buckets
+List S3 Bucket contents
 
     aws s3 ls BUCKET_NAME 
+
+List S3 Bucket contents in a human-readable format
+
+    aws s3 ls BUCKET_NAME --recursive --human-readable --summarize
 
 Recursive Listing
 
@@ -208,6 +212,10 @@ Recursive Listing
 Download a file from an S3 bucket
 
     aws s3 cp s3://BUCKET_NAME/DIRECTORY/file.txt .
+
+Print the content of a file
+
+    aws s3 cp s3://BUCKET_NAME/DIRECTORY/file.txt -
 
 Reveal the S3 bucket region
 
