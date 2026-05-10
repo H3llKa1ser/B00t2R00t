@@ -401,6 +401,10 @@ You can insert a command that reveals sensitive information or exfiltrates data 
 
     aws lambda update-function-code --function-name FUNCTION_NAME --zip-file fileb://FUNCTION_NAME.zip
 
+### 5) Grant a specific IAM role permission to call lambda:GetFunction (example) on your Lambda function
+
+    aws lambda add-permission --function-name FUNCTION_NAME --action lambda:GetFunction --statement-id STATEMENT_ID --principal "arn:aws:iam::AWS_ACCOUNT_ID:role/ROLE_NAME"
+
 ## Secrets Manager
 
 ### 1) List secrets
