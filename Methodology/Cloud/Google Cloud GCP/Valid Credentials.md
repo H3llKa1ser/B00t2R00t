@@ -30,6 +30,10 @@ Tools:
 
     gcloud auth configure-docker LOCATION.pkg.dev
 
+### 7) Use Google HMAC Keys
+
+    gsutil config -a
+
 ## Users and accounts
 
 ### 1) Validate account details
