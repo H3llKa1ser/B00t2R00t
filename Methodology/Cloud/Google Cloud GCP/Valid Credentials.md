@@ -28,6 +28,14 @@ Tools:
 
     gcloud config list account
 
+### 2) Impersonate a service account
+
+    gcloud config set auth/impersonate_service_account SERVICE_ACCOUNT_NAME
+
+Unset impersonation configuration
+
+    gcloud config unset auth/impersonate_service_account
+
 ## Google Storage
 
 ### 1) Buckets
@@ -72,6 +80,12 @@ Examine a role
 
     gcloud iam roles describe ROLE_NAME --project=PROJECT_NAME
 
+### 2) Service Accounts
+
+List IAM policies for a service account
+
+    gcloud iam service accounts get-iam-policy SERVICE_ACCOUNT_NAME
+    
 ## Secrets
 
 ### 1) List secrets on a specific project
@@ -89,3 +103,14 @@ Examine a role
 List instances
 
     gcloud instances list --project=PROJECT_NAME
+
+## Google Cloud Source Repositories
+
+### 1) List repositories
+
+    gcloud source repos list --project=PROJECT_NAME
+
+### 2) Clone repository
+
+    gcloud source repos clone REPOSITORY_NAME --project=PROJECT_NAME
+
