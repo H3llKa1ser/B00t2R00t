@@ -26,6 +26,10 @@ Tools:
 
     gcloud auth print-access-token
 
+### 6) Add a credHelper for our gcloud region (if it does not exist in the ~/.docker/config.json file)
+
+    gcloud auth configure-docker LOCATION.pkg.dev
+
 ## Users and accounts
 
 ### 1) Validate account details
@@ -123,4 +127,18 @@ List instances
 ### 2) Clone repository
 
     gcloud source repos clone REPOSITORY_NAME --project=PROJECT_NAME
+
+## Artifact Repositories
+
+### 1) List artifact repositories
+
+    gcloud artifacts repositories list --project=PROJECT_NAME --format="table[box](name, format, mode, LOCATION)"
+
+### 2) List contents of a repository
+
+    gcloud artifacts packages list --repository REPOSITORY_NAME --location LOCATION
+
+### 3) List available versions for a package
+
+    gcloud artifacts versions list --repository REPOSITORY_NAME --location LOCATION --package PACKAGE_NAME
 
