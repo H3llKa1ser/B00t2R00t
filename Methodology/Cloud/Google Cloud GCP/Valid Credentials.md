@@ -22,6 +22,10 @@ Tools:
 
     gcloud auth revoke --all
 
+### 5) Print access token
+
+    gcloud auth print-access-token
+
 ## Users and accounts
 
 ### 1) Validate account details
@@ -71,6 +75,12 @@ Check IAM Policies set at the project level
 Return the roles bound to a current user
 
     gcloud projects get-iam-policy PROJECT_NAME --flatten="bindings[].members" --format='table(bindings.role, bindings.members)' --filter="bindings.members:USERNAME@gmail.com"
+
+### 2) Config
+
+Configure the project setting
+
+    gcloud config set project PROJECT_NAME
 
 ## IAM
 
