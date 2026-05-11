@@ -58,7 +58,7 @@ Download a file
 
 Check IAM Policies set at the project level
 
-    gcloud projects get-iam-policy PROJECT_NAME
+    gcloud projects get-iam-policy PROJECT_NAME --format=json
 
 Return the roles bound to a current user
 
