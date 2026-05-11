@@ -174,3 +174,20 @@ List instances
 ### 1) 
 
     gcloud pubsub topics publish TOPIC_NAME --message '{"type":"audit","id":"admin-check"}' --project=PROJECT_NAME
+
+## Compute
+
+### 1) List compute (VM) instances
+
+    gcloud compute instances list
+
+### 2) List details about a VM
+
+    gcloud compute instances describe VM_NAME \
+      --zone=ZONE_NAME \
+      --project=PROJECT_NAME \
+      --format=json
+
+### 3) Connect to a VM via SSH
+
+    gcloud compute ssh USER@VM_NAME --zone ZONE_NAME --project PROJECT_NAME -- -t "bash"
