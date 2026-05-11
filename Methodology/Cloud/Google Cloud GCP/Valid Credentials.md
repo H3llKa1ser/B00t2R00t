@@ -120,7 +120,7 @@ Sign a custom JWT as "platform-middleware" account (example)
 
 ### 2) Get secrets
 
-    gcloud secrets versions access latest --secret=SECRET_NAME --project=PROJECT_NAME
+    gcloud secrets versions access latest --secret=SECRET_NAME --project=PROJECT_NAME [--access-token-file token.txt]
 
 ## SQL
 
