@@ -64,6 +64,10 @@ OR
 
     gsutil ls gs://BUCKET_NAME
 
+Recursively list a bucket
+
+    gsutil ls -r gs://BUCKET_NAME
+
 Return more information about a file
 
     gsutil stat gs://BUCKET_NAME/index.html
