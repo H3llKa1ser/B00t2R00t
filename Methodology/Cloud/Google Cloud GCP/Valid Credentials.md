@@ -70,6 +70,10 @@ Download a file
 
 ## Projects
 
+List projects
+
+    gcloud projects list
+
 ### 1) IAM Policies
 
 Check IAM Policies set at the project level
@@ -103,6 +107,10 @@ List service accounts in a project
 List IAM policies for a service account
 
     gcloud iam service-accounts get-iam-policy SERVICE_ACCOUNT_NAME
+
+Sign a custom JWT as "platform-middleware" account (example)
+
+    gcloud iam service-accounts sign-jwt claims.json signed-jwt.txt --iam-account=platform-middleware@gr-proj-4.iam.gserviceaccount.com --access-token-file token.txt
     
 ## Secrets
 
