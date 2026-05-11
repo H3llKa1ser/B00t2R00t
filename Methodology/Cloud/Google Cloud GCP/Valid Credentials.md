@@ -96,9 +96,13 @@ Examine a role
 
 ### 2) Service Accounts
 
+List service accounts in a project
+
+    gcloud iam service-accounts list --project PROJECT_NAME
+
 List IAM policies for a service account
 
-    gcloud iam service accounts get-iam-policy SERVICE_ACCOUNT_NAME
+    gcloud iam service-accounts get-iam-policy SERVICE_ACCOUNT_NAME
     
 ## Secrets
 
