@@ -47,10 +47,22 @@ Run command
 
 ## Build and run an image (AKA Dockerize tools)
 
-### 1) Create an image
+### 1) Create Dockerfile
+
+Example Dockerfile
+
+    FROM python:3.8
+    
+    RUN git clone https://github.com/RhinoSecurityLabs/GCPBucketBrute.git
+    WORKDIR /GCPBucketBrute
+    RUN pip3 install -r requirements.txt
+    
+    ENTRYPOINT ["python3",  "gcpbucketbrute.py"]
+
+### 2) Create an image (Requires Dockerfile)
 
     docker build . -t IMAGE_NAME
 
-### 2) Run image
+### 3) Run image
 
     docker run --rm -v /tmp:/tmp -it IMAGE_NAME [OPTIONAL_ARGUMENTS_ACCORDING_TO_TOOL_NAME]
