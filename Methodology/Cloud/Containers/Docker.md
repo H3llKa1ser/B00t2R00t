@@ -45,3 +45,12 @@ Run command
 
     docker inspect DIRECTORY/IMAGE:latest
 
+## Build and run an image (AKA Dockerize tools)
+
+### 1) Create an image
+
+    docker build . -t IMAGE_NAME
+
+### 2) Run image
+
+    docker run --rm -v /tmp:/tmp -it IMAGE_NAME [OPTIONAL_ARGUMENTS_ACCORDING_TO_TOOL_NAME]
