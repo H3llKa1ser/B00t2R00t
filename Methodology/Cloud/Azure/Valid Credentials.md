@@ -628,9 +628,17 @@ Print access token
     $directoryRoles = Get-MgDirectoryRole | Where-Object { $_.Id -eq $roleId }
     $directoryRoles | Format-List *
 
+OR
+
+    Get-MgDirectoryRole -DirectoryRoleId ROLE_ID | fl
+
 ### 13) Check more properties of an Administrative Unit
 
     Get-MgDirectoryAdministrativeUnitMember -AdministrativeUnitId ADMINISTRATIVE_UNIT_ID | Select * -ExpandProperty additionalProperties
+
+### 14) List user details
+
+    Get-MgUser -UserId USERNAME@megacorp.com | fl
 
 ## Azure Logic Apps
 
