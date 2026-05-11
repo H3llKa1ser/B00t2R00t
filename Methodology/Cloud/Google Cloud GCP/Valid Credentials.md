@@ -30,7 +30,7 @@ Tools:
 
     gcloud auth configure-docker LOCATION.pkg.dev
 
-### 7) Use Google HMAC Keys
+### 7) HMAC Authentication
 
     gsutil config -a
     gcloud config set pass_credentials_to_gsutil false
