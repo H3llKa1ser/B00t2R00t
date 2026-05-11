@@ -168,3 +168,9 @@ List instances
 ### 1) Check what resources our account has access to
 
     gcloud asset search-all-resources --scope="projects/PROJECT_NAME" --filter="NOT state:DELETED" --format="table(assetType, name)" --access-token-file token.txt
+
+## Cloud Pub/Sub
+
+### 1) 
+
+    gcloud pubsub topics publish TOPIC_NAME --message '{"type":"audit","id":"admin-check"}' --project=PROJECT_NAME
