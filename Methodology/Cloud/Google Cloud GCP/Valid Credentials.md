@@ -10,6 +10,10 @@ Tools:
 
     gcloud auth login
 
+### 2) Remove existing authenticated sessions
+
+    gcloud auth revoke --all
+
 ## Google Storage
 
 ### 1) Buckets
