@@ -33,6 +33,7 @@ Tools:
 ### 7) Use Google HMAC Keys
 
     gsutil config -a
+    gcloud config set pass_credentials_to_gsutil false
 
 ## Users and accounts
 
@@ -162,3 +163,8 @@ List instances
 
     gcloud artifacts versions list --repository REPOSITORY_NAME --location LOCATION --package PACKAGE_NAME
 
+## Assets and Resources
+
+### 1) Check what resources our account has access to
+
+    gcloud asset search-all-resources --scope="projects/PROJECT_NAME" --filter="NOT state:DELETED" --format="table(assetType, name)" --access-token-file token.txt
