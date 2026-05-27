@@ -18,7 +18,7 @@ Use this to force authentication without SSL errors
 
 SQL command
 
-    select version(); | show databases; | use databse | select * from users; | show tables | select system_user(); | SELECT user, authentication_string FROM mysql.user WHERE user = Pre
+    select version(); | show databases; | use database | select * from users; | show tables | select system_user(); | SELECT user, authentication_string FROM mysql.user WHERE user = Pre
 
 #### 2) Brute force default MySQL credentials
 
