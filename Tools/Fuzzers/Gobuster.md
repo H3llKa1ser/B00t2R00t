@@ -1,41 +1,16 @@
-# GOBUSTER (DIRBUSTER GUI VERSION)
+# Gobuster
 
-### Directory/Subdomain enumeration
+Directory/Subdomain/vhost enumeration
 
-### Modes
+### 1) Subdomain Enumeration (Configure DNS first)
 
-#### dir = Directory enumeration
+    gobuster dns -d domain.local -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt --wildcard
 
-#### dns = Subdomain enumeration
+### 2) Directory Enumeration
 
-#### vhost = Virtual Host enumeration
+    gobuster dir -u http://TARGET_IP -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt -r
 
-### Commands:
+### 3) VHost Enumeration (Does not use DNS)
 
-#### -k = Skip TLS certificate verification
+    gobuster vhost -u "http://TARGET_IP" --domain domain.local -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt --append-domain --exclude-length 250-320 
 
-#### -t = threads (64 max)
-
-#### -v = verbose
-
-#### -z = Don't display progress
-
-#### -q = Quiet
-
-#### -o = Output
-
-#### -u = IP
-
-#### -d = DOMAIN
-
-#### -x = Extensions (.php,.txt,.js,.etc)
-
-#### -c = Show CNAME records (Can't be used with -i)
-
-#### -i = Show IPs
-
-#### -r = Use custom DNS
-
-### Wordlists:
-
-#### dirbuster/dirb folder
