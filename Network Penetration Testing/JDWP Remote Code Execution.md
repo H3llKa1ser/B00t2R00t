@@ -1,10 +1,12 @@
-### Java Debug Wire Protocol (JDWP) Remote Code Execution
+# Java Debug Wire Protocol (JDWP) Remote Code Execution
 
-### REQUIREMENTS: The apache tomcat server has the debugging enabled: jdwp=transport=dt_socket,address=localhost:8000,server=y
+## REQUIREMENTS: 
 
-### Tools: https://github.com/IOActive/jdwp-shellifier
+The apache tomcat server has the debugging enabled: jdwp=transport=dt_socket,address=localhost:8000,server=y
 
-### STEPS:
+Tools: https://github.com/IOActive/jdwp-shellifier
+
+## Steps:
 
 #### 1) Verify that the debug service is running on the target machine on port 8000 and 8005 tomcat service
 
