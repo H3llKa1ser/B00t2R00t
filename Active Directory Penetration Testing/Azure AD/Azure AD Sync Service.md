@@ -1,3 +1,5 @@
+# Azure AD Sync Service
+
 ### Resource: https://blog.xpnsec.com/azuread-connect-for-redteam/
 
 ### Service Name: ADSync
