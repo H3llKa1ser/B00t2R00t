@@ -30,3 +30,52 @@ Install Claude Desktop
 
     sudo apt install claude-desktop
 
+### 4) Integrate MCP
+
+In Claude Desktop, go to:
+
+    Settings -> Developer tab -> Local MCP Servers -> Edit Config to open the JSON file that defines them.
+
+Claude configuration file
+
+    ~/.config/Claude/claude_desktop_config.json
+
+Use the template from the repository, then verify the integration.
+
+    connect with kali tool mcp
+
+## Execution and Usage
+
+### 1) Scan with Nmap
+
+Example:
+
+    execute_command nmap_scan against IP in fast mode, performing service version detection and executing default NSE scripts.
+
+### 2) Web Directory enumeration with Gobuster
+
+    execute_command gobuster_scan http://IP/dvwa/
+
+Cross validate with dirb
+
+    execute dirb_scan against http://IP/dvwa/ and display only the directories or files that return an HTTP 200 OK response
+
+### 3) SMB Enumeration with enum4linux
+
+    execute_command enum4linux_scan IP
+
+### 4) SSH credential attack with Hydra
+
+    execute_command hydra_attack to test SSH logins on IP using the usernames from users.txt and passwords from passwords.txt, which are stored on the Kali system.
+
+### 5) SQL Injection with sqlmap
+
+    execute_command sqlmap_scan on http://IP/whatever/
+
+Proceed with the dump if an SQL injection is found
+
+    dump tables from the DATABASE_NAME database or extract user credentials
+
+### 6) Metasploit (Port Scanning)
+
+    execute_command meta
