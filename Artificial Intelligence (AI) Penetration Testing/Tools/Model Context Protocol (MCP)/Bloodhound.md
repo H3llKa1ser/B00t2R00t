@@ -52,3 +52,12 @@ The README file of the project provides the configuration block.
 Set --directory to the cloned repository's absolute path, so Claude Desktop starts the server with uv run main.py
 
 Save, then restart.
+
+## Execution and Usage
+
+### 1) Collect AD data
+
+    bloodhound-python -u USER -p PASSWORD -ns DNS_IP -d domain.local -c All
+
+    
+
