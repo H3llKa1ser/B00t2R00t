@@ -30,3 +30,51 @@ Install Claude Desktop
 
     sudo apt install claude-desktop
 
+### 4) Integrate MCP
+
+In Claude Desktop, go to:
+
+    Settings -> Developer tab -> Local MCP Servers -> Edit Config to open the JSON file that defines them.
+
+Claude configuration file
+
+    ~/.config/Claude/claude_desktop_config.json
+
+Review default configuration, then add an mcpServers block alongside these settings
+
+    {
+        "preferences": {
+            "coworkWebSearchEnabled": true,
+            "remoteToolsDeviceName": "kali",
+            "coworkScheduledTasksEnabled": true,
+            "ccdScheduledTasksEnabled": true,
+            "sidebarMode": "epitaxy",
+            "bypassPermissionsGateByAccount": {
+                "UUID_HERE": false
+            },
+            "epitaxyPrefs": {
+                "starred-local-code-sessions": [],
+                "starred-cowork-spaces": [],
+                "starred-session-groups": []
+            }
+        },
+        "coworkUsersFilesPath": "/home/kali/Claude"
+    }
+
+
+Reference the MetasploitMCP Template
+
+Link: 
+
+    https://mcpservers.org/servers/fishke22/MetasploitMCP
+
+Register the Metasploit Server
+
+From the link, take the mcpServers block, then change the corresponding fields:
+
+    "command": "metasploitmcp"
+    "--transport":,
+    "stdio"
+    "MSF_PASSWORD": "YOUR_PASS_HERE"
+
+Confirm the server is running.
