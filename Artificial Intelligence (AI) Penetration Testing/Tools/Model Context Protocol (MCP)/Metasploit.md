@@ -78,3 +78,60 @@ From the link, take the mcpServers block, then change the corresponding fields:
     "MSF_PASSWORD": "YOUR_PASS_HERE"
 
 Confirm the server is running.
+
+## Metasploit Functionalities
+
+Initial Access
+
+### Review all Metasploit Toolset
+
+    all commands
+
+### 1) Initial Port Discovery
+
+    scan IP
+
+### 2) Full port scan
+
+    complete port scan
+
+### 3) Exploit a port/service
+
+    exploit port NUM
+
+OR
+
+    run exploit on port NUM
+
+Allow the task to be run by Claude
+
+### 4) List active sessions
+
+    list_active_sessions
+
+### 5) List exploits for a specific service on a specific port
+
+    list_exploit windows port NUM
+
+Post Exploitation
+
+### 1) List post-exploitation modules
+
+    list post module
+
+### 2) Enumerate SMB shares
+
+    run_post_module_scanner/smb/smb_enumshares
+
+Payload generation
+
+### 1) Generate payload (Select the type of payload, then select output format, then generate)
+
+    generate_payload
+    Selection: exe
+
+Interactively through the session, you will select the correct output format, listening IP and port
+
+### 2) Start listener
+
+    start_listener
