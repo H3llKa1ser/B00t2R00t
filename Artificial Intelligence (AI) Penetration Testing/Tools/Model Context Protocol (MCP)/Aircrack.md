@@ -69,3 +69,11 @@ Verify aircrack MCP installation by restarting, then checking in Claude.
 ### 7) Deauthentication attack
 
     deauth SSID_NAME
+
+### 8) Evil Twin Attack
+
+    create_evil_twin FAKE_AP
+
+### 9) ARP Request replay for WEP IVs fast generation
+
+    arp_replay
