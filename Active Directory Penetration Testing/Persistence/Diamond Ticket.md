@@ -38,7 +38,7 @@ Forge a service ticket for USER1 with potentially elevated privileges and a vali
 
 ## Locally on Windows
 
-### 1) Extract NTLM and AED KRBTGT hashes 
+### 1) Extract NTLM and AES KRBTGT hashes 
 
 Run Mimikatz
 
