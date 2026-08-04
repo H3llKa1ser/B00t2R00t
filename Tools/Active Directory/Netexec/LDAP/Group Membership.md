@@ -12,3 +12,6 @@
 
     nxc ldap $ip -u $user -p $password -M group-mem -o GROUP="Domain admins"
 
+### List members of a specific group
+
+    nxc ldap $ip -u $user -p $password --groups "GROUP_NAME"
