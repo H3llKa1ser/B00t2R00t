@@ -13,3 +13,7 @@
 ### 4) Verify sibling relationship
 
     siblings
+
+### 5) Inspect shell redirectors
+
+    redirectors
