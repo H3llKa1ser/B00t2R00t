@@ -14,3 +14,14 @@ Windows
 
     conptyshell eth0 PORT_NUM SESSION_ID
 
+### 4) Give alias names for readability
+
+    alias MY_ALIAS SESSION_ID
+
+### 5) Terminate a session
+
+    kill MY_ALIAS
+
+### 6) Purge stored metadata
+
+    purge
