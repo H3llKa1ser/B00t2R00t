@@ -11,3 +11,11 @@
 ### To enumerate accounts that exist within Active Directory without the Kerberos protocol. (Do ASREPRoasting of valid users are found)
 
     nxc ldap $ip -u "user.txt" -p '' -k
+
+### Query all users
+
+    nxc ldap $ip -u $user -p $password --query "(sAMAccountName=*)" ""
+
+### Query information for a specific user
+
+    nxc ldap $ip -u $user -p $password --query "(sAMAccountName=USER_NAME)" ""
