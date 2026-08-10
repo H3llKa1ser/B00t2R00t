@@ -109,3 +109,41 @@ Execution
     set rhosts IP
     run
 
+## Meterpreter Session (Domain-Joined Machine)
+
+### 1) Build a targeted wordlist
+
+    use post/windows/gather/enum_ad_to_wordlist
+
+Execution
+
+    set session NUM
+    run
+
+### 2) Enumerate all Domain Computers
+
+    use post/windows/gather/enum_ad_computers
+
+Execution
+
+    set session NUM
+    set FILTER (&(objectCategory=computer)(operatingSystem=*))
+    run
+
+### 3) Enumerate all Domain Groups
+
+    use post/windows/gather/enum_ad_groups
+
+Execution
+
+    set session NUM
+    run
+
+### 4) Enumerate all Domain Users
+
+    use post/windows/gather/enum_ad_users
+
+Execution
+
+    set session NUM
+    run
