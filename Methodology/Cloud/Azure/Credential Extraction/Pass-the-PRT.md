@@ -50,4 +50,29 @@ Use the Primary Refresh Token together with the Proof of Possession Key to digit
 
 ### 1) 
 
-### 6) 
+### 6) Use the PRT cookie
+
+Access the Azure Portal (example)
+
+Go to Developer's tools
+
+    F12
+
+Configure a new cookie called 
+
+    x-ms-RefreshTokenCredential
+
+with the cookie value.
+
+Refresh, and VOILA!
+
+## Alternate Usage of PRT Method: Roadrecon
+
+### 1) Get a graph API access token
+
+    roadrecon auth --prt-cookie PRT_COOKIE
+    cat .roadtools_auth | python3 -m json.tool
+
+### 2) Connect to Azure
+
+    Connect-AzureAD -TenantId TENANT_ID -AccountId OID -AadAccessToken ACCESS_TOKEN
