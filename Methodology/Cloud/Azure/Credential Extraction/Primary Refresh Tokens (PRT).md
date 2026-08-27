@@ -26,7 +26,7 @@ AADInternals
 
 You can exfiltrate via HTTP upload, SMB, C2 Channel, etc.
 
-## PRTxtractor (Based on the article
+## PRTxtractor (Based on the article)
 
 ### 1) Dump LSASS process
 
