@@ -37,3 +37,9 @@ https://cqureacademy.com/blog/cqure-hacks-76-evading-edr-using-signed-driver/
 ### 6) Run a malicious command to verify that the command is no longer flagged
 
     invoke-shellcode
+
+### 7) Search for Defender processes to further verify that they are no longer running
+
+    MsMpEng
+    NisSrv
+    MpCmdRun
