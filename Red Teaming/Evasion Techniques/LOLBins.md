@@ -87,13 +87,17 @@ Victim machine
 
 ## wmic.exe
 
-### 1) Run the LOLBin
+### 1) Run the LOLBin locally
 
 Victim machine
 
     wmic process call create "cmd.exe /c hostname > C:\Windows\Temp\wmi_out.txt"
 
-### 2) Create a backdoor
+### 2) Run the LOLBin on a remote target on the same domain with admin credentials
+
+    wmic process call create "cmd.exe /c hostname > C:\Windows\Temp\wmi_out.txt" /node:TARGET_IP
+
+### 3) Create a backdoor
 
 Victim machine
 
