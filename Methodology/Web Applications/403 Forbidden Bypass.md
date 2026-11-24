@@ -14,3 +14,15 @@ To bypass this restriction permanently, we need to add this header in the Match 
 You can also do this for response headers as well
 
 <img width="449" height="257" alt="image" src="https://github.com/user-attachments/assets/6529a96c-c054-442e-85fb-e2c9b627bf1c" />
+
+## Other Headers that can be used for bypass (works for rate limiting too)
+
+    X-RateLimit-Limit
+    X-RateLimit-Remaining
+    X-RateLimit-Reset
+    X-Forwarded-For:IP
+    X-Forwarded-Host:IP
+    X-Client-IP:IP
+    X-Remote-IP:IP
+    X-Remote-Addr:IP
+    X-Host:IP
